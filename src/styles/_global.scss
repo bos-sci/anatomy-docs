@@ -1,0 +1,63 @@
+html
+{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+*,
+*:before,
+*:after
+{
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body
+{
+  margin: 0;
+  padding: 0;
+  color: $shark-grey;
+  font-family: $sst-roman;
+  line-height: 1.5;
+}
+
+app-root
+{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-wrapper
+{
+  display: flex;
+  flex: 1 1 auto;
+  overflow-y: hidden;
+}
+
+.app-main
+{
+  width: 100%;
+  overflow-y: auto;
+}
+
+a
+{
+  color: $action-blue;
+  font-family: $sst-bold;
+  text-decoration: none;
+
+  &:hover
+  {
+    text-decoration: underline;
+  }
+
+  &:focus
+  {
+    outline: 0.125rem solid $focus-indicator;
+    outline-offset: 0.125rem;
+  }
+}

@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bsds-ui';
+
+  skipToMain() {
+    event.preventDefault();
+    location.hash='mainContent';
+  }
 }

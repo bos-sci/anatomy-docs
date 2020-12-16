@@ -1,0 +1,16 @@
+@import "../../../styles/_colors";
+
+header
+{
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  padding: .5rem 1rem;
+  background: $bsc-blue;
+}
+
+.bsc-logo
+{
+  width: 15rem;
+  margin: 0 0.25rem;
+}

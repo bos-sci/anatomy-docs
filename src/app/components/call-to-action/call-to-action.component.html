@@ -1,0 +1,156 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+      <h1>Call to Action</h1>
+      <p>
+        While a call to action looks like a button, it's really more of a design concept that can be applied to an anchor element or a button element, depending on its functionality. Calls to action can be any one of three styles (default, primary, or ghost) and three sizes (default, small, or large).
+      </p>
+      <h2>Accessibility</h2>
+       <ul>
+        <li>
+          Use an anchor element if the call to action navigates users to another location &mdash; keep in mind that <a href="https://css-tricks.com/how-to-disable-links/" target="_blank">anchor elements cannot be disabled</a>!
+        </li>
+        <li>
+          Use a button element if the call to action performs an action on the page, such as opening a modal or submitting a form
+        </li>
+        <li>
+          Don't use the input element to create a call to action &mdash; the button element is more semantic and supports the custom focus indicator, which is required for WCAG compliance
+        </li>
+        <li>
+          Validate keyboard interactions
+          <ul>
+            <li>
+              <a href="https://www.w3.org/TR/wai-aria-practices/#keyboard-interaction-10">Anchor element keyboard interactions</a>
+            </li>
+            <li>
+              <a href="https://www.w3.org/TR/wai-aria-practices/#keyboard-interaction-3">Button element keyboard interactions</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Styles & Sizes</h2>
+      <h3>Default</h3>
+      <p>Default CTAs are a secondary style. They are the default CTA style unless otherwise specified.</p>
+    </div>
+    <div class="col-12">
+      <div class="demo-wrapper">
+        <div class="demo-example">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <a href="#" class="bsds-cta">Default</a>
+            </div>
+            <div class="col-auto">
+              <a href="#" class="bsds-cta bsds-cta-lg">Default Large</a>
+            </div>
+            <div class="col-auto">
+              <a href="#" class="bsds-cta bsds-cta-sm">Default Small</a>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-auto">
+              <button type="button" class="bsds-cta">Enabled</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta demo-hover">Hover</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta demo-focus">Focus</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta demo-focus demo-active">Pressed</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta demo-disabled" disabled>Disabled</button>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code">
+          <!-- <markdown
+            [data]="defaultCallToActionHtml"
+            lineNumbers
+          ></markdown> -->
+        </div>
+      </div>
+      <h3>Primary</h3>
+      <p>Primary CTAs can be used once per page, for the most important action. If there is insufficient contrast between the Primary CTA and the background, use a Ghost CTA instead.</p>
+      <div class="demo-wrapper">
+        <div class="demo-example">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-primary">Primary</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-primary bsds-cta-lg">Primary Large</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-primary bsds-cta-sm">Primary Small</button>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-primary">Enabled</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-primary demo-hover">Hover</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-primary demo-focus">Focus</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-primary demo-focus demo-active">Pressed</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-primary demo-disabled" disabled>Disabled</button>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code">
+          <!-- <markdown
+            [data]="primaryCallToActionHtml"
+            lineNumbers
+          ></markdown> -->
+        </div>
+      </div>
+      <h3>Ghost</h3>
+      <p>Ghost CTAs should only be used on dark backgrounds that provide sufficient contrast.</p>
+      <div class="demo-wrapper">
+        <div class="demo-example dark">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-ghost">Ghost</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-ghost bsds-cta-lg">Ghost Large</button>
+            </div>
+            <div class="col-auto">
+              <a href="#" class="bsds-cta bsds-cta-ghost bsds-cta-sm">Ghost Small</a>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-ghost">Enabled</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-ghost demo-hover">Hover</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-ghost demo-focus">Focus</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-ghost demo-focus demo-active">Pressed</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="bsds-cta bsds-cta-ghost demo-disabled" disabled>Disabled</button>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code">
+          <!-- <markdown
+            [data]="ghostCallToActionHtml"
+            lineNumbers
+          ></markdown> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

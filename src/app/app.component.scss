@@ -1,4 +1,29 @@
-h1
+@import "../styles/_colors";
+
+.skip-link
 {
-  color: pink;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  border: 0;
+  padding: 0.5rem 1rem;
+  background: $white;
+  color: $action-blue;
+  font-size: .875rem;
+  text-decoration: none;
+  transition: top 1s ease-out;
+  z-index: 100;
+
+  &:hover
+  {
+    text-decoration: underline;
+  }
+
+  &:focus
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: top 0.5s ease-in;
+  }
 }

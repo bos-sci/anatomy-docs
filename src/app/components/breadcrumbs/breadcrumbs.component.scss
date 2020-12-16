@@ -1,0 +1,63 @@
+@import "./../../../styles";
+
+$bsds-breadcrumb-divider: '/';
+$bsds-breadcrumb-divider-padding: 0.5rem;
+$bsds-breadcrumb-focus-indicator-width: 0.125rem;
+$bsds-breadcrumb-focus-indicator-offset: 0.125rem;
+
+.bsds-breadcrumbs
+{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bsds-breadcrumb-item
+{
+  margin-top: 0;
+  font-size: 0.875rem;
+
+  & a
+  {
+    color: $shark-grey;
+    font-family: $sst-roman;
+    text-decoration: none;
+
+    &:hover
+    {
+      color: $blue-medium;
+      text-decoration: none;
+    }
+
+    &:active
+    {
+      color: $bsc-blue;
+    }
+
+    &:focus
+    {
+      outline: $bsds-breadcrumb-focus-indicator-width solid $focus-indicator;
+      outline-offset: $bsds-breadcrumb-focus-indicator-offset; // not supported in IE
+      box-shadow: none;
+    }
+  }
+
+  & + .bsds-breadcrumb-item
+  {
+    padding-left: $bsds-breadcrumb-divider-padding;
+
+    &::before
+    {
+      padding-right: $bsds-breadcrumb-divider-padding;
+      content: $bsds-breadcrumb-divider;
+      color: $raven-grey;
+    }
+  }
+
+  &.bsds-breadcrumb-item-active
+  {
+    color: $raven-grey;
+  }
+}

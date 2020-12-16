@@ -1,2 +1,10 @@
-<h1>BSDS UI</h1>
-<router-outlet></router-outlet>
+<a href="./#mainContent" class="skip-link" (click)="skipToMain()">
+  Skip to main content
+</a>
+<app-header></app-header>
+<div class="app-wrapper">
+  <app-nav-primary></app-nav-primary>
+  <main id="mainContent" class="app-main p-4" role="main">
+    <router-outlet></router-outlet>
+  </main>
+</div>
