@@ -1,5 +1,6 @@
-@import "./styles/_global-variables";
-@import "./styles/_markdown-theme";
+@import "partials/_fonts";
+@import "partials/_variables";
+
 
 // We get this from Bootstrap's _reboot, but it may be necessary to include in other platforms
 // *, ::after, ::before
@@ -105,6 +106,34 @@ a
   }
 }
 
+.skip-link
+{
+  position: absolute;
+  top: -50px;
+  left: 0;
+  border: 0;
+  padding: 0.5rem 1rem;
+  background: $white;
+  color: $action-blue;
+  font-size: .875rem;
+  text-decoration: none;
+  transition: top 1s ease-out;
+  z-index: 100;
+
+  &:hover
+  {
+    text-decoration: underline;
+  }
+
+  &:focus
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: top 0.5s ease-in;
+  }
+}
+
 .demo-example
 {
   border: 1px solid #1e1e1e; // matches markdown bg color
@@ -152,3 +181,10 @@ a
     }
   }
 }
+
+@import "vendors/markdown-theme";
+
+@import "components/header";
+@import "components/nav-primary";
+@import "components/breadcrumbs";
+@import "components/call-to-action";
