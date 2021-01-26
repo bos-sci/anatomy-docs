@@ -1,6 +1,5 @@
-@import "partials/_fonts";
-@import "partials/_variables";
-
+@import "./styles/partials/fonts";
+@import "./styles/partials/variables";
 
 // We get this from Bootstrap's _reboot, but it may be necessary to include in other platforms
 // *, ::after, ::before
@@ -96,7 +95,9 @@ a
 
   &:hover
   {
+    color: $action-blue;
     text-decoration: underline;
+    cursor: pointer;
   }
 
   &:focus
@@ -182,9 +183,50 @@ a
   }
 }
 
-@import "vendors/markdown-theme";
+@import "./styles/vendors/markdown-theme";
+@import "./styles/components/header";
+@import "./styles/components/nav-primary";
+@import "./styles/components/breadcrumbs";
+@import "./styles/components/call-to-action";
 
-@import "components/header";
-@import "components/nav-primary";
-@import "components/breadcrumbs";
-@import "components/call-to-action";
+/*
+
+  7-1 boilerplate
+
+  // 1. Configuration and helpers
+  @import
+    'abstracts/variables',
+    'abstracts/functions',
+    'abstracts/mixins';
+
+  // 2. Vendors
+  @import
+    'vendors/normalize';
+
+  // 3. Base stuff
+  @import
+    'base/base',
+    'base/fonts',
+    'base/typography',
+    'base/helpers';
+
+  // 4. Layout-related sections
+  @import
+    'layout/header',
+    'layout/footer';
+
+  // 5. Components
+  @import
+    'components/button';
+
+  // 6. Page-specific styles
+  @import
+    'pages/home';
+
+  // 7. Themes
+  @import
+    'themes/default';
+
+  https://github.com/HugoGiraudel/sass-boilerplate
+
+*/

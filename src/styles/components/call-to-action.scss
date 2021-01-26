@@ -96,6 +96,7 @@ $bsds-cta-blue-medium-shade-4: #00405b; // pressed/active primary buttons
     border-color: transparent;
     background: $bsds-cta-raven-grey-tint-5;
     color: $white;
+    cursor: not-allowed;
   }
 
   &.bsds-cta-ghost,
