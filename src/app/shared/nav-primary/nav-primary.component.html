@@ -1,15 +1,12 @@
-<nav class="nav-primary" aria-label="primary navigation">
-  <ul class="nav flex-column">
-    <li *ngFor="let item of navPrimaryItems" class="nav-item">
-      <a
-        class="nav-link"
-        [routerLink]="item.url" 
-        routerLinkActive="active" 
-        #menuItem="routerLinkActive"
-        [attr.aria-current]="menuItem.isActive ? 'page' : undefined"
-      >
-        {{item.linkText}}
-      </a>
-    </li>
-  </ul>
-</nav>
+<ul>
+  <li *ngFor="let item of navPrimaryItems">
+    <a
+      [routerLink]="item.url" 
+      routerLinkActive="active" 
+      #menuItem="routerLinkActive"
+      [attr.aria-current]="menuItem.isActive ? 'page' : undefined"
+    >
+      {{item.linkText}}
+    </a>
+  </li>
+</ul>

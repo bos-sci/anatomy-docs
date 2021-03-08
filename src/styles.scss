@@ -12,7 +12,6 @@ html
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-size: 1rem;
 }
 
 body
@@ -22,26 +21,44 @@ body
   color: $shark-grey;
   font-family: $sst-roman;
   line-height: 1.5;
+  font-size: 100%; // sets type relative to browser's default font size
 }
 
-app-root
+.grid-container
 {
-  display: flex;
-  flex-direction: column;
+  width: 100vw;
   height: 100vh;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 80px 1fr;
+  grid-template-areas: 
+    "header header header header"
+    "navigation main main main";
+  column-gap: 0;
+  row-gap: 0;
+
+  &.with-footer
+  {
+    grid-template-rows: 80px 1fr auto;
+    grid-template-areas: 
+      "header header header header"
+      "navigation main main main"
+      "footer footer footer footer";
+  }
 }
 
-.app-wrapper
+main
 {
-  display: flex;
-  flex: 1 1 auto;
-  overflow-y: hidden;
-}
-
-.app-main
-{
-  width: 100%;
+  grid-area: main;
+  padding: 1.5rem;
   overflow-y: auto;
+}
+
+footer
+{
+  grid-area: footer;
+  border-top: 1px solid var(--raven-grey-20);
+  padding: .25rem;
 }
 
 h1
@@ -188,45 +205,3 @@ a
 @import "./styles/components/nav-primary";
 @import "./styles/components/breadcrumbs";
 @import "./styles/components/call-to-action";
-
-/*
-
-  7-1 boilerplate
-
-  // 1. Configuration and helpers
-  @import
-    'abstracts/variables',
-    'abstracts/functions',
-    'abstracts/mixins';
-
-  // 2. Vendors
-  @import
-    'vendors/normalize';
-
-  // 3. Base stuff
-  @import
-    'base/base',
-    'base/fonts',
-    'base/typography',
-    'base/helpers';
-
-  // 4. Layout-related sections
-  @import
-    'layout/header',
-    'layout/footer';
-
-  // 5. Components
-  @import
-    'components/button';
-
-  // 6. Page-specific styles
-  @import
-    'pages/home';
-
-  // 7. Themes
-  @import
-    'themes/default';
-
-  https://github.com/HugoGiraudel/sass-boilerplate
-
-*/
