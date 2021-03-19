@@ -5,10 +5,12 @@
   display: flex;
   align-items: center;
   padding: 1rem;
-  background: $bsc-blue;
+  background: $white;
+  box-shadow: $box-shadow-primary;
 }
 
 .bsds-logo
 {
-  max-width: 15rem;
+  max-height: 2.125rem;
+  margin: 0 1rem;
 }

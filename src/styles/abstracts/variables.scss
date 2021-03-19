@@ -3,7 +3,7 @@
 //
 
 // primary colors
-$bsc-blue: #003c71;
+$bsc-blue: #003666;
 $action-blue: #007db3;
 
 // blue range
@@ -42,7 +42,8 @@ $focus-indicator: $action-blue;
 $focus-indicator-light: $white;
 $focus-indicator-dark: $raven-grey;
 
-
+// box-shadow: horizontal-shadow-length vertical-shadow-length blur-radius spread-radius rgba();
+$box-shadow-primary: 0px 0px 16px 0px rgba(0, 54, 102, 0.3);
 
 //
 // fonts

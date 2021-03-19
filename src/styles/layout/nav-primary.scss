@@ -3,7 +3,7 @@
 .nav-primary
 {
   position: absolute;
-  top: 80px; // change to 0
+//  top: 80px; // change to 0
   left: 0;
   width: 100%;
   height: 100vh;
@@ -11,8 +11,7 @@
   padding: 32px 40px;
   background: $white;
   text-align: left;
-  // box-shadow: horizontal-shadow-length vertical-shadow-length blur-radius spred-radius rgba();
-  box-shadow: 0px 0px 16px 0px rgba(0, 54, 102, 0.3);
+  box-shadow: $box-shadow-primary;
 
   .nav-primary-btn-close
   {
