@@ -1,0 +1,14 @@
+@import "./../abstracts/variables";
+
+.bsds-header
+{
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: $bsc-blue;
+}
+
+.bsds-logo
+{
+  max-width: 15rem;
+}

@@ -1,0 +1,58 @@
+// Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+// readers do not read off random characters that represent icons
+
+// This is a SUBSET of the only icons that are used on BSC site
+
+.#{$fa-css-prefix}-angle-down:before { content: fa-content($fa-var-angle-down); }
+.#{$fa-css-prefix}-angle-left:before { content: fa-content($fa-var-angle-left); }
+.#{$fa-css-prefix}-angle-right:before { content: fa-content($fa-var-angle-right); }
+
+.#{$fa-css-prefix}-caret-right:before { content: fa-content($fa-var-caret-right); }
+.#{$fa-css-prefix}-caret-up:before { content: fa-content($fa-var-caret-up); }
+
+.#{$fa-css-prefix}-chevron-down:before { content: fa-content($fa-var-chevron-down); }
+.#{$fa-css-prefix}-chevron-left:before { content: fa-content($fa-var-chevron-left); }
+.#{$fa-css-prefix}-chevron-right:before { content: fa-content($fa-var-chevron-right); }
+.#{$fa-css-prefix}-chevron-up:before { content: fa-content($fa-var-chevron-up); }
+
+.#{$fa-css-prefix}-external-link:before { content: fa-content($fa-var-external-link); }
+.#{$fa-css-prefix}-search:before { content: fa-content($fa-var-search); }
+.#{$fa-css-prefix}-play-circle:before { content: fa-content($fa-var-play-circle); }
+.#{$fa-css-prefix}-play:before { content: fa-content($fa-var-play); }
+.#{$fa-css-prefix}-pause:before { content: fa-content($fa-var-pause); }
+
+.#{$fa-css-prefix}-times:before { content: fa-content($fa-var-times); }
+.#{$fa-css-prefix}-check:before { content: fa-content($fa-var-check); }
+.#{$fa-css-prefix}-phone-alt:before { content: fa-content($fa-var-phone-alt); }
+.#{$fa-css-prefix}-clock:before { content: fa-content($fa-var-clock); }
+.#{$fa-css-prefix}-map-marker-alt:before { content: fa-content($fa-var-map-marker-alt); }
+.#{$fa-css-prefix}-question-circle:before { content: fa-content($fa-var-question-circle); }
+
+.#{$fa-css-prefix}-facebook-f:before { content: fa-content($fa-var-facebook-f); }
+.#{$fa-css-prefix}-google-plus-g:before { content: fa-content($fa-var-google-plus-g); }
+.#{$fa-css-prefix}-instagram:before { content: fa-content($fa-var-instagram); }
+.#{$fa-css-prefix}-linkedin-in:before { content: fa-content($fa-var-linkedin-in); }
+.#{$fa-css-prefix}-pinterest:before { content: fa-content($fa-var-pinterest); }
+.#{$fa-css-prefix}-rss:before { content: fa-content($fa-var-rss); }
+.#{$fa-css-prefix}-twitter:before { content: fa-content($fa-var-twitter); }
+.#{$fa-css-prefix}-youtube:before { content: fa-content($fa-var-youtube); }
+.#{$fa-css-prefix}-vimeo-v:before { content: fa-content($fa-var-vimeo-v); }
+
+.#{$fa-css-prefix}-plus-circle:before { content: fa-content($fa-var-plus-circle); }
+.#{$fa-css-prefix}-minus-circle:before { content: fa-content($fa-var-minus-circle); }
+.#{$fa-css-prefix}-plus:before { content: fa-content($fa-var-plus); }
+.#{$fa-css-prefix}-minus:before { content: fa-content($fa-var-minus);}
+.#{$fa-css-prefix}-circle:before { content: fa-content($fa-var-circle); }
+.#{$fa-css-prefix}-user:before { content: fa-content($fa-var-user); }
+.#{$fa-css-prefix}-share-alt:before { content: fa-content($fa-var-share-alt); }
+
+.#{$fa-css-prefix}-list:before { content: fa-content($fa-var-list); }
+.#{$fa-css-prefix}-th:before { content: fa-content($fa-var-th); }
+.#{$fa-css-prefix}-tag:before { content: fa-content($fa-var-tag); }
+.#{$fa-css-prefix}-envelope:before { content: fa-content($fa-var-envelope); }
+
+.#{$fa-css-prefix}-video:before { content: fa-content($fa-var-video); }
+.#{$fa-css-prefix}-image:before { content: fa-content($fa-var-image); }
+.#{$fa-css-prefix}-link:before { content: fa-content($fa-var-link); }
+.#{$fa-css-prefix}-file-pdf:before { content: fa-content($fa-var-file-pdf); }
+.#{$fa-css-prefix}-mobile:before { content: fa-content($fa-var-mobile); }

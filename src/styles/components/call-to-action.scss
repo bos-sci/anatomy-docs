@@ -1,11 +1,4 @@
-@import "./../partials/variables";
-
-$bsds-cta-radius: 0.1875rem;
-$bsds-cta-focus-indicator-width: 0.125rem;
-$bsds-cta-focus-indicator-radius: 0.3125rem;
-$bsds-cta-focus-indicator-offset: -0.375rem;
-$bsds-cta-raven-grey-tint-5: #c3c6ca; // updated disabled buttons
-$bsds-cta-blue-medium-shade-4: #00405b; // pressed/active primary buttons
+@import "./../abstracts/variables";
 
 .bsds-cta,
 .btn
@@ -16,7 +9,7 @@ $bsds-cta-blue-medium-shade-4: #00405b; // pressed/active primary buttons
   padding: 1rem 1.5rem; // legacy is 14px 21px
   background: $white;
   color: $blue;
-  font-family: $sst-bold;
+  font-family: $font-family-base-bold;
   font-size: 1rem; // 16px
   line-height: 1.25; // 23px
   text-decoration: none;

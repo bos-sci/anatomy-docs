@@ -1,4 +1,4 @@
-<ul>
+<!-- <ul>
   <li *ngFor="let item of navPrimaryItems">
     <a
       [routerLink]="item.url" 
@@ -9,4 +9,23 @@
       {{item.linkText}}
     </a>
   </li>
-</ul>
+</ul> -->
+<i class="fas fa-chevron-right"></i>
+<button type="button" aria-label="Close primary navigation" class="nav-primary-btn-close">
+  Menu
+</button>
+<ng-container *ngFor="let item of navPrimaryItems">
+  <p class="nav-primary-list-title">{{item.title}}</p>
+  <ul>
+    <li *ngFor="let child of item.children">
+      <a
+        [routerLink]="child.url" 
+        routerLinkActive="active" 
+        #menuItem="routerLinkActive"
+        [attr.aria-current]="menuItem.isActive ? 'page' : undefined"
+      >
+        {{child.linkText}}
+      </a>
+    </li>
+  </ul>
+</ng-container>

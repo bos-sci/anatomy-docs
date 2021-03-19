@@ -7,8 +7,20 @@ import { Component, OnInit } from '@angular/core';
 export class NavPrimaryComponent implements OnInit {
 
   navPrimaryItems = [
-    { linkText: 'Breadcrumbs', url: './components/breadcrumbs' },
-    { linkText: 'Call to Action', url: './components/call-to-action' }
+    { title: 'Overview' },
+    {
+      title: 'Components',
+      children: [
+        {
+          linkText: 'Breadcrumbs',
+          url: './components/breadcrumbs'
+        },
+        {
+          linkText: 'Call to Action',
+          url: './components/call-to-action'
+        }
+      ]
+    }
   ];
 
   constructor() { }

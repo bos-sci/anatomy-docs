@@ -1,0 +1,106 @@
+//
+// color
+//
+
+// primary colors
+$bsc-blue: #003c71;
+$action-blue: #007db3;
+
+// blue range
+$blue-light: #d8e8f2;
+$blue: #2486bd;
+$blue-medium: #006b99;
+
+// grey range
+$black: #000000;
+$charcoal: #242526;
+$shark-grey: #383838; // body text
+$raven-grey: #6a737b; // headings, focus indicator
+$raven-grey-70: #888e95; // disabled buttons, icons
+$raven-grey-50: #b4b9bd; // dividers
+$raven-grey-20: #e1e3e5; // backgrounds
+$raven-grey-10: #f0f1f1; // backgrounds
+$raven-grey-5: #f7f8f8; // backgrounds
+$white: #ffffff; // backgrounds
+
+// secondary colors
+$caribbean: #3eb1c8;
+$caribbean-30: #c5e7ee;
+$lagoon: #00778b;
+$plum: #470a68;
+$snazzberry: #da1884;
+$fire: #dc4405;
+
+// feedback colors
+$error: #c60f13;
+$warning: #fbac32;
+$success: #5da423;
+
+// utility
+$font-color-base: $black;
+$focus-indicator: $action-blue;
+$focus-indicator-light: $white;
+$focus-indicator-dark: $raven-grey;
+
+
+
+//
+// fonts
+//
+
+$font-family-base: "SST-Roman", sans-serif;
+$font-family-base-bold: "SST-Heavy", sans-serif;
+
+$font-weight-roman: 400;
+$font-weight-heavy: 900;
+$font-weight-base: $font-weight-roman;
+
+$font-size-root: null !default;
+$font-size-base: 1rem !default; // Assumes the browser default, typically 16px
+$font-size-sm: $font-size-base * .875 !default;
+$font-size-lg: $font-size-base * 1.25 !default;
+$ms-ratio: 1.18;
+
+$h6-font-size: $font-size-base !default;
+$h5-font-size: $font-size-base * $ms-ratio !default;
+$h4-font-size: $h5-font-size * $ms-ratio !default;
+$h3-font-size: $h4-font-size * $ms-ratio !default;
+$h2-font-size: $h3-font-size * $ms-ratio !default;
+$h1-font-size: $h2-font-size * $ms-ratio !default;
+
+$font-sizes: (
+  1: $h1-font-size,
+  2: $h2-font-size,
+  3: $h3-font-size,
+  4: $h4-font-size,
+  5: $h5-font-size,
+  6: $h6-font-size
+) !default;
+
+$headings-font-family: $font-family-base-bold !default;
+$headings-font-style: null !default;
+$headings-font-weight: $font-weight-heavy !default;
+$headings-line-height: 1.2 !default;
+$headings-color: $font-color-base !default;
+
+
+
+//
+// components
+//
+
+// TODO: figure out if these live here or in the component scss
+
+// breadcrumbs variables
+$bsds-breadcrumb-divider: '/';
+$bsds-breadcrumb-divider-padding: 0.5rem;
+$bsds-breadcrumb-focus-indicator-width: 0.125rem;
+$bsds-breadcrumb-focus-indicator-offset: 0.125rem;
+
+// cta variables
+$bsds-cta-radius: 0.1875rem;
+$bsds-cta-focus-indicator-width: 0.125rem;
+$bsds-cta-focus-indicator-radius: 0.3125rem;
+$bsds-cta-focus-indicator-offset: -0.375rem;
+$bsds-cta-raven-grey-tint-5: #c3c6ca; // updated disabled buttons
+$bsds-cta-blue-medium-shade-4: #00405b; // pressed/active primary buttons

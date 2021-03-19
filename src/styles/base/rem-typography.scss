@@ -1,0 +1,194 @@
+// Variables
+$base-alpha-px: 16;
+$base-beta-px: 18;
+$ratio-alpha: 1.16;
+$ratio-beta: 1.18;
+
+@function pow($number, $exponent) {
+  $value: 1;
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  } @else if $exponent < 0 {
+    @for $i from 1 through -$exponent {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
+
+// @function ms($step, $string: "alpha") {
+//   @if "alpha" {
+//     $size: pow($ratio-alpha, $value) * $base-alpha;
+//   } @else if "beta" {
+//     $size: pow($ratio-beta, $value) * $base-beta;
+//   }
+//   @return $size * 1em;
+// }
+
+@function ms-alpha($value, $ms-ratio: $ratio-alpha) {
+  $size: pow($ms-ratio, $value) * 1;
+  @return $size * 1em;
+}
+
+@function ms-beta($value, $ms-ratio: $ratio-beta) {
+  $size: pow($ms-ratio, $value) * 1;
+  @return $size * 1em;
+}
+
+@function unitless-lh($fs, $unitless-lh, $base)
+{
+  $unitless-fs: ($fs / 1) * $base; // (2.1em / 1) * 16 = 33.6;
+  $line-height: $unitless-fs * $unitless-lh; // $line-height = 33.6 * 1.2 = 40.32
+  $rounded-line-height: ceil($line-height / 4) * 4; // ceil(x / to) * to; // $rounded-line-height: round(40.32 / 4) * 4 = 40;
+  $rounded-unitless-line-height: ceil($unitless-fs / $rounded-line-height) * ($rounded-line-height / $unitless-fs); // $rounded-unitless-line-height: ceil( 33.6 / 40 ) * ( 40 / 33.6);
+  @return $rounded-unitless-line-height;
+}
+
+@mixin setType($fs, $lh, $base)
+{
+  font-size: $fs;
+  line-height: unitless-lh($fs, $lh, $base);
+}
+
+body
+{
+  font-family: $font-family-base;
+  font-size: 1rem;
+  line-height: unitless-lh(1rem, 1.5, $base-alpha-px);
+
+  @media (min-width: 992px)
+  {
+    font-size: 1.125rem;
+    line-height: unitless-lh(1rem, 1.5, $base-beta-px);
+  }
+}
+
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6, .display-7
+{
+  font-family: $font-family-base-bold;
+}
+
+.display-1
+{
+  @include setType(ms-alpha(7), 1, $base-alpha-px);
+
+  @media (min-width: 992px)
+  {
+    @include setType(ms-beta(7), 1, $base-beta-px);
+  }
+}
+
+.display-2
+{
+  @include setType(ms-alpha(6), 1, $base-alpha-px);
+
+  @media (min-width: 992px)
+  {
+    @include setType(ms-beta(6), 1, $base-beta-px);
+  }
+}
+
+h1
+{
+  @include setType(ms-alpha(5), 1, $base-alpha-px); // 33.61, 36
+
+  @media (min-width: 992px)
+  {
+    @include setType(ms-beta(5), 1, $base-beta-px); // 41.18, 44
+  }
+}
+
+h2
+{
+  @include setType(ms-alpha(4), 1, $base-alpha-px);
+
+  @media (min-width: 992px)
+  {
+    @include setType(ms-beta(4), 1, $base-beta-px);
+  }
+}
+
+h3
+{
+  @include setType(ms-alpha(3), 1, $base-alpha-px);
+
+  @media (min-width: 992px)
+  {
+    @include setType(ms-beta(3), 1, $base-beta-px);
+  }
+}
+
+h4
+{
+  @include setType(ms-alpha(2), 1, $base-alpha-px);
+
+  @media (min-width: 992px)
+  {
+    @include setType(ms-beta(2), 1, $base-beta-px);
+  }
+}
+
+h5
+{
+  @include setType(ms-alpha(1), 1, $base-alpha-px);
+
+  @media (min-width: 992px)
+  {
+    @include setType(ms-beta(1), 1, $base-beta-px);
+  }
+}
+
+h6
+{
+  @include setType(ms-alpha(0), 1, $base-alpha-px);
+
+  @media (min-width: 992px)
+  {
+    @include setType(ms-beta(0), 1, $base-beta-px);
+  }
+}
+
+.text-size-lg
+{
+  @include setType(ms-alpha(1), 1.5, $base-alpha-px); // 18.56, 28
+
+  @media (min-width: 992px)
+  {
+    @include setType(ms-beta(1), 1.5, $base-beta-px); // 21.24, 32
+  }
+}
+
+.text-size-sm
+{
+  @include setType(ms-alpha(-1), 1.5, $base-alpha-px); // 13.79, 24
+
+  @media (min-width: 992px)
+  {
+    @include setType(ms-beta(-1), 1.5, $base-beta-px); // 15.25, 24
+  }
+}
+
+.text-size-xs
+{
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+
+// // Apply the baseline grid as background
+// .grid {
+//   background-image: linear-gradient(to bottom, hsla(200, 100%, 50%, 0.3) 1px, transparent 1px);
+//   background-repeat: repeat;
+//   background-position: left top;
+//   background-size: 100% #{($base-beta / 100 * 16) * 1 + "px"};
+// }
+
+// .double-grid {
+//   @extend .grid;
+//   background-image: 
+//     linear-gradient(to bottom, hsla(200, 100%, 50%, 0.3) 1px, transparent 1px), 
+//     linear-gradient(to bottom, hsla(200, 100%, 50%, 0.3) 1px, transparent 1px, transparent #{ 0.5 * ($base-beta / 100 * 16) * 1 + "px"}, hsla(200, 100%, 50%, 0.2) #{ 0.5 * ($base-beta / 100 * 16) * 1 + "px"}, transparent #{ 0.5 * ($base-beta / 100 * 16) * 1 + 1 + "px"}, transparent #{($base-beta / 100 * 16) * 1 + "px"});
+// }

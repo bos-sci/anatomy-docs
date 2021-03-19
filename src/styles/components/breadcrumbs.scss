@@ -1,9 +1,4 @@
-@import "./../partials/variables";
-
-$bsds-breadcrumb-divider: '/';
-$bsds-breadcrumb-divider-padding: 0.5rem;
-$bsds-breadcrumb-focus-indicator-width: 0.125rem;
-$bsds-breadcrumb-focus-indicator-offset: 0.125rem;
+@import "./../abstracts/variables";
 
 .bsds-breadcrumbs
 {
@@ -22,7 +17,7 @@ $bsds-breadcrumb-focus-indicator-offset: 0.125rem;
   & a
   {
     color: $shark-grey;
-    font-family: $sst-roman;
+    font-family: $font-family-base;
     text-decoration: none;
 
     &:hover
