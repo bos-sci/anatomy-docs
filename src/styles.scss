@@ -1,18 +1,10 @@
 @import "./styles/abstracts/variables";
 @import "./styles/base/fonts";
-// @import "./styles/base/rfs";
-@import "./styles/base/rem-typography";
+@import "./styles/base/type";
 
 // We get this from Bootstrap's _reboot, but it may be necessary to include in other platforms
-// *, ::after, ::before
-// {
-//   box-sizing: border-box;
-// }
-
-html
+*, ::after, ::before
 {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -21,9 +13,6 @@ body
   margin: 0;
   padding: 0;
   color: $black;
-  // font-family: $font-family-base;
-  // line-height: 1.5;
-  //font-size: 100%; // sets type relative to browser's default font size
 }
 
 @import "./styles/layout/layout";

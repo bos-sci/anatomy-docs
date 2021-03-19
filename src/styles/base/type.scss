@@ -1,4 +1,3 @@
-// Variables
 $base-alpha-px: 16;
 $base-beta-px: 18;
 $ratio-alpha: 1.16;
@@ -58,6 +57,8 @@ body
 h1, h2, h3, h4, h5, h6,
 .display-1, .display-2, .display-3, .display-4, .display-5, .display-6, .display-7
 {
+  margin-top: 0;
+  margin-bottom: 0;
   font-family: $font-family-base-bold;
 }
 
@@ -172,19 +173,3 @@ h6
   font-size: 0.75rem;
   line-height: 1.5;
 }
-
-
-// // Apply the baseline grid as background
-// .grid {
-//   background-image: linear-gradient(to bottom, hsla(200, 100%, 50%, 0.3) 1px, transparent 1px);
-//   background-repeat: repeat;
-//   background-position: left top;
-//   background-size: 100% #{($base-beta / 100 * 16) * 1 + "px"};
-// }
-
-// .double-grid {
-//   @extend .grid;
-//   background-image: 
-//     linear-gradient(to bottom, hsla(200, 100%, 50%, 0.3) 1px, transparent 1px), 
-//     linear-gradient(to bottom, hsla(200, 100%, 50%, 0.3) 1px, transparent 1px, transparent #{ 0.5 * ($base-beta / 100 * 16) * 1 + "px"}, hsla(200, 100%, 50%, 0.2) #{ 0.5 * ($base-beta / 100 * 16) * 1 + "px"}, transparent #{ 0.5 * ($base-beta / 100 * 16) * 1 + 1 + "px"}, transparent #{($base-beta / 100 * 16) * 1 + "px"});
-// }
