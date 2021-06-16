@@ -2,15 +2,159 @@
 
 .bsds-header
 {
+  min-height: 5rem;
+  position: relative;
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 0;
   background: $white;
   box-shadow: $box-shadow-primary;
+}
+
+.navbar-brand
+{
+  padding: 0;
 }
 
 .bsds-logo
 {
   max-height: 2.125rem;
-  margin: 0 1rem;
+  margin: space(3x) space(4x);
+}
+
+.navbar-nav-primary
+{
+  .navbar-nav
+  {
+    margin-top: 0;
+  }
+
+  .nav-item
+  {
+    margin-top: 0;
+  }
+
+  .nav-link
+  {
+    border-top: 1px solid grey;
+    padding: space(2x) space(4x);
+    color: $neutral-darkest;
+    font-family: $font-family-base-regular;
+    @include font-size($fs-body-subtle);
+
+    &:hover
+    {
+      font-family: $font-family-base-heavy;
+      text-decoration: none;
+    }
+
+    &:focus
+    {
+      font-family: $font-family-base-heavy;
+      @include focus-default-shadow-inset;
+    }
+
+    &.active
+    {
+      font-family: $font-family-base-heavy;
+    }
+  }
+}
+
+.navbar-toggler
+{
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 0;
+  margin: space(3x) space(4x);
+  padding: space(sm) space(md);
+  @include font-size($fs-body-subtle);
+
+  &:focus
+  {
+    @include focus-default-shadow;
+  }
+}
+
+.navbar-toggler-icon
+{
+  margin-right: space(md);
+  background-image: none !important;
+  width: 1rem;
+  // color: $neutral-darkest;
+  color: black;
+}
+
+@media (min-width: 992px)
+{
+  .navbar-expand-lg
+  {
+    .navbar-nav-primary
+    {
+      .navbar-nav
+      {
+        margin-top: 0;
+        margin-right: space(4x);
+  
+        .nav-link
+        {
+          position: relative;
+          margin-left: space(2x);
+          border-top: 0;
+          padding: space(sm);
+
+          &:hover
+          {
+            font-family: $font-family-base-regular;
+
+            &::after
+            {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: space(xs);
+              background-color: black;
+            }
+          }
+
+          &:focus
+          {
+            font-family: $font-family-base-regular;
+            @include focus-default-shadow;
+
+            &::after
+            {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: space(xs);
+              background-color: black;
+            }
+          }
+
+          &.active
+          {
+            font-family: $font-family-base-heavy;
+            text-decoration: none;
+    
+            &::after
+            {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: space(xs);
+              background-color: black;
+            }
+          }
+        }
+      }
+    }
+  }
 }

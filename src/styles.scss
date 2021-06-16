@@ -1,6 +1,7 @@
+@import "./styles/global";
 @import "./styles/abstracts/variables";
-@import "./styles/base/fonts";
-@import "./styles/base/type";
+@import "./styles/base/old-fonts";
+@import "./styles/base/old-type";
 
 // We get this from Bootstrap's _reboot, but it may be necessary to include in other platforms
 *, ::after, ::before
@@ -22,7 +23,8 @@ body
 a
 {
   color: $action-blue;
-  font-family: $font-family-base-bold;
+  // font-family: $font-family-base-bold;
+  font-family: $font-family-base-heavy;
   text-decoration: none;
 
   &:hover

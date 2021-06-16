@@ -1,0 +1,19 @@
+// Text Utility Variables
+
+$text-color-primary: $neutral-darkest;
+$text-color-ghost: $neutral-lightest;
+
+
+// Border Utility Variables
+
+$border-color-primary: $neutral-darkest;
+$border-color-ghost: $neutral-lightest;
+$border-color-accent: $action-primary-dark;
+$border-color-subtle: $neutral-light;
+
+$border-radius: space(sm);
+
+
+// Shadow Utility Variables
+
+$box-shadow-primary: 0 0 space(lg) 0 rgba($neutral-darkest, 0.2);

@@ -1,0 +1,231 @@
+$fs-breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$fs-base: (
+  null: 1rem,
+  lg: 1.125rem
+);
+
+$fs-h1: (
+  null: 2.101rem,
+  lg: 2.574rem
+);
+
+$fs-h2: (
+  null: 1.811rem,
+  lg: 2.181rem
+);
+
+$fs-h3: (
+  null: 1.561rem,
+  lg: 1.848rem
+);
+
+$fs-h4: (
+  null: 1.346rem,
+  lg: 1.5666rem
+);
+
+$fs-h5: (
+  null: 1.16rem,
+  lg: 1.328rem
+);
+
+$fs-h6: (
+  null: 1rem,
+  lg: 1.125rem
+);
+
+$fs-display-1: (
+  null: 3.803rem,
+  lg: 4.99rem
+);
+
+$fs-display-2: (
+  null: 3.278rem,
+  lg: 4.229rem
+);
+
+$fs-display-3: (
+  null: 2.826rem,
+  lg: 3.584rem
+);
+
+$fs-display-4: (
+  null: 2.436rem,
+  lg: 3.037rem
+);
+
+$fs-body-assertive: (
+  null: 1.16rem,
+  lg: 1.328rem
+);
+
+$fs-body-subtle: (
+  null: 0.906rem
+);
+
+$fs-small: (
+  null: 0.75rem
+);
+
+@mixin font-size($fs-map, $fs-breakpoints: $fs-breakpoints)
+{
+  @each $fs-breakpoint, $fs-font-size in $fs-map
+  {
+    @if $fs-breakpoint == null
+    {
+      font-size: $fs-font-size;
+    }
+    @else
+    {
+      @if map-has-key($fs-breakpoints, $fs-breakpoint)
+      {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint)
+      {
+        font-size: $fs-font-size;
+      }
+    }
+  }
+}
+
+body
+{
+  color: $text-color-primary;
+  font-family: $font-family-base-regular;
+  @include font-size($fs-base);
+  line-height: 1.5;
+}
+
+p, ul, ol, dl
+{
+  margin: space(2x) 0 0;
+}
+
+li:not(:first-of-type)
+{
+  margin: space(2x) 0 0;
+}
+
+.display-1, .display-2, .display-3, .display-4,
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6
+{
+  color: $text-color-primary;
+  font-family: $font-family-base-bold;
+}
+
+.display-1
+{
+  margin: space(12x) 0 0;
+  @include font-size($fs-display-1);
+  line-height: 1.2;
+}
+
+.display-2
+{
+  margin: space(12x) 0 0;
+  @include font-size($fs-display-2);
+  line-height: 1.2;
+}
+
+.display-3
+{
+  margin: space(8x) 0 0;
+  @include font-size($fs-display-3);
+  line-height: 1.4;
+}
+
+.display-4
+{
+  margin: space(8x) 0 0;
+  @include font-size($fs-display-4);
+  line-height: 1.4;
+}
+
+h1,
+.h1
+{
+  margin: space(8x) 0 0;
+  @include font-size($fs-h1);
+  line-height: 1.4;
+}
+
+h2,
+.h2
+{
+  margin: space(6x) 0 0;
+  @include font-size($fs-h2);
+  line-height: 1.4;
+}
+
+h3,
+.h3
+{
+  margin: space(6x) 0 0;
+  @include font-size($fs-h3);
+  line-height: 1.4;
+}
+
+h4,
+.h4
+{
+  margin: space(4x) 0 0;
+  @include font-size($fs-h4);
+  line-height: 1.4;
+}
+
+h5,
+.h5
+{
+  margin: space(3x) 0 0;
+  @include font-size($fs-h5);
+  line-height: 1.5;
+}
+
+h6,
+.h6
+{
+  margin: space(3x) 0 0;
+  @include font-size($fs-h6);
+  line-height: 1.5;
+}
+
+.body-assertive
+{
+  margin: space(3x) 0 0;
+  @include font-size($fs-body-assertive);
+
+  & li:not(:first-of-type)
+  {
+    margin: space(3x) 0 0;
+  }
+}
+
+.body-subtle
+{
+  @include font-size($fs-body-subtle);
+}
+
+small,
+.font-size-sm
+{
+  display: block;
+  @include font-size($fs-small);
+
+  & li:not(:first-of-type)
+  {
+    margin: space(md) 0 0;
+  }
+}
+
+.font-weight-bold
+{
+  font-family: $font-family-base-bold;
+}

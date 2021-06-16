@@ -1,0 +1,56 @@
+//
+// Default Link Styles
+//
+
+a
+{
+  color: $action-primary-dark;
+  font-family: $font-family-base-bold;
+  text-decoration: none;
+
+  &:hover
+  {
+    color: $action-primary-dark;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &:active
+  {
+    color: $action-primary-darker;
+    cursor: pointer;
+  }
+
+  &:focus
+  {
+    @include focus-default-outline;
+  }
+}
+
+
+//
+// Link Mixins
+//
+
+@mixin link-navigation
+{
+  font-family: $font-family-base-regular;
+  color: $neutral-darkest;
+
+  &:hover
+  {
+    color: $neutral-darkest;
+    text-decoration: underline;
+  }
+
+  &:active
+  {
+    color: $neutral-darkest;
+    text-decoration: underline;
+  }
+
+  &.active
+  {
+    font-family: $font-family-base-bold;
+  }
+}

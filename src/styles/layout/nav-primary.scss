@@ -12,6 +12,7 @@
   background: $white;
   text-align: left;
   box-shadow: $box-shadow-primary;
+  z-index: 2;
 
   .nav-primary-btn-close
   {
@@ -75,7 +76,7 @@
         padding: 0;
         color: $black;
         font-family: $font-family-base;
-        font-size: ms(0, $ratio-alpha);
+        // font-size: ms(0, $ratio-alpha);
       
         &:hover,
         &:focus,
@@ -113,7 +114,7 @@
       {
         & > a
         {
-          font-size: ms(0, $ratio-beta);
+          // font-size: ms(0, $ratio-beta);
         }
       }
     }
