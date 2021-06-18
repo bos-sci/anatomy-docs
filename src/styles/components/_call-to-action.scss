@@ -1,22 +1,21 @@
-$bsds-cta-radius: 0.1875rem;
-$bsds-cta-focus-indicator-width: 0.125rem;
-$bsds-cta-focus-indicator-radius: 0.3125rem;
-$bsds-cta-focus-indicator-offset: -0.375rem;
-$bsds-cta-raven-grey-tint-5: #c3c6ca; // updated disabled buttons
-$bsds-cta-blue-medium-shade-4: #00405b; // pressed/active primary buttons
+@mixin button-hover
+{
+  border-color: $action-primary-dark;
+  background: $action-primary-lighter;
+  color: $action-primary-dark;
+  text-decoration: none;
+}
 
 .bsds-cta,
 .btn
 {
-  display: inline-block;
-  border: 1px solid $action-primary-dark;
-  border-radius: $bsds-cta-radius;
-  padding: 1rem 1.5rem; // legacy is 14px 21px
+  display: inline-flex;
+  border: 2px solid $action-primary-dark;
+  border-radius: 0;
+  padding: space(2x) space(3x);
   background: $neutral-lightest;
   color: $action-primary-dark;
-  font-family: $font-family-base-bold;
-  font-size: 1rem; // 16px
-  line-height: 1.25; // 23px
+  font-family: $font-family-base-heavy;
   text-decoration: none;
   text-align: center;
   cursor: pointer; // button is default, link is pointer
@@ -26,28 +25,25 @@ $bsds-cta-blue-medium-shade-4: #00405b; // pressed/active primary buttons
     &:hover,
     &.demo-hover
     {
-      background: $action-primary-lighter;
-      text-decoration: none;
+      @include button-hover;
     }
 
     &:active,
     &.demo-active
     {
       border-color: transparent;
-      background: $action-primary-dark;
+      background: $action-primary-darker;
       color: $neutral-lightest;
     }
 
     &:focus,
     &.demo-focus
     {
-      position: relative;
-      background: $action-primary-lighter;
-      @include focus-ghost;
+      @include focus-default;
     }
   }
 
-  &.bsds-cta-primary,
+  &.bsds-cta-assertive,
   &.btn-primary
   {
     border-color: transparent;
@@ -59,21 +55,15 @@ $bsds-cta-blue-medium-shade-4: #00405b; // pressed/active primary buttons
       &:hover,
       &.demo-hover
       {
-        background: $action-primary-darker;
+        @include button-hover;
       }
 
       &:active,
       &.demo-active
       {
         border-color: transparent;
-        background: $bsds-cta-blue-medium-shade-4;
-        color: $neutral-lightest;
-      }
-
-      &:focus,
-      &.demo-focus
-      {
         background: $action-primary-darker;
+        color: $neutral-lightest;
       }
     }
   }
@@ -81,9 +71,10 @@ $bsds-cta-blue-medium-shade-4: #00405b; // pressed/active primary buttons
   &[disabled]
   {
     opacity: 1;
-    border-color: transparent;
-    background: $bsds-cta-raven-grey-tint-5;
-    color: $neutral-lightest;
+    border: 1px solid $neutral;
+    background: $neutral-lighter;
+    color: $neutral-dark;
+    font-family: $font-family-base-regular;
     cursor: not-allowed;
   }
 
@@ -99,40 +90,29 @@ $bsds-cta-blue-medium-shade-4: #00405b; // pressed/active primary buttons
       &:hover,
       &.demo-hover
       {
-        background: rgba($neutral-lightest, 0.1);
+        @include button-hover;
       }
 
       &:active,
       &.demo-active
       {
         border-color: $neutral-lightest;
-        background: rgba($neutral-lightest, 0.3);
+        background: $action-primary-darker;
+        color: $neutral-lightest;
       }
 
       &:focus,
       &.demo-focus
       {
-        background: rgba($neutral-lightest, 0.1);
-
         @include focus-ghost;
       }
     }
 
     &[disabled]
     {
-      opacity: 0.5;
+      border-color: $neutral;
+      background: transparent;
+      color: $neutral;
     }
-  }
-
-  &.bsds-cta-sm
-  {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-  }
-
-  &.bsds-cta-lg
-  {
-    padding: 1.25rem 1.75rem;
-    font-size: 1.125rem;
   }
 }
