@@ -1,0 +1,186 @@
+@mixin nav-indicator-sm
+{
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: space(4x);
+  width: space(xs);
+  height: 50%;
+}
+
+@mixin nav-indicator-lg
+{
+  content: '';
+  position: absolute;
+  top: initial;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: space(xs);
+}
+
+.navbar
+{
+  padding: 0;
+  background: $neutral-lightest;
+  box-shadow: $box-shadow-primary;
+}
+
+.navbar-brand
+{
+  margin: space(2x) space(4x);
+  padding: 0;
+}
+
+.navbar-toggler
+{
+  display: flex;
+  align-items: center;
+  margin: space(md) space(4x);
+  border-radius: 0;
+  padding: space(lg) space(md);
+  @include font-size($fs-body-subtle);
+
+  &[aria-expanded="false"]
+  {
+    .navbar-toggle-close-menu
+    {
+      display: none;
+    }
+  }
+
+  &[aria-expanded="true"]
+  {
+    .navbar-toggle-open-menu
+    {
+      display: none;
+    }
+  }
+
+  &:hover
+  {
+    background: $action-primary-lighter;
+  }
+
+  &:focus
+  {
+    @include focus-default;
+  }
+
+  .navbar-toggler-wrapper
+  {
+    display: flex;
+    align-items: center;
+
+    .navbar-toggler-icon
+    {
+      margin-left: space(md);
+      width: auto;
+    }
+  }
+}
+
+.navbar-nav-primary
+{
+  .navbar-nav
+  {
+    margin-top: 0;
+    border-top: 1px solid $neutral-light;
+    padding: space(md) 0;
+  }
+
+  .nav-item
+  {
+    margin-top: 0;
+  }
+
+  .nav-link
+  {
+    position: relative;
+    padding: space(2x) space(4x) space(2x) space(6x);
+    color: $neutral-darkest;
+    font-family: $font-family-base-regular;
+
+    &.active
+    {
+      &::before
+      {
+        @include nav-indicator-sm;
+        background: $neutral-darkest;
+      }
+    }
+
+    &:hover,
+    &.active:hover
+    {
+      text-decoration: none;
+
+      &::before
+      {
+        @include nav-indicator-sm;
+        background: $action-primary-dark;
+      }
+    }
+
+    &:active,
+    &.active:active
+    {
+      color: $neutral-darkest;
+
+      &::before
+      {
+        @include nav-indicator-sm;
+        background: $neutral-darkest;
+      }
+    }
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
+  }
+}
+
+@media (min-width: 992px)
+{
+  .navbar.navbar-expand-lg
+  {
+    .navbar-nav-primary
+    {
+      .navbar-nav
+      {
+        margin-top: 0;
+        margin-right: space(4x);
+        border: 0;
+  
+        .nav-link
+        {
+          margin-left: space(2x);
+          border-top: 0;
+          padding: space(sm);
+          @include font-size($fs-body-subtle);
+
+          &:hover::before
+          {
+            @include nav-indicator-lg;
+          }
+
+          &:focus
+          {
+            @include focus-default;
+
+            &::before
+            {
+              @include nav-indicator-lg;
+            }
+          }
+
+          &.active::before
+          {
+            @include nav-indicator-lg;
+          }
+        }
+      }
+    }
+  }
+}

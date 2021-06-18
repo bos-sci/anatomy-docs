@@ -1,0 +1,119 @@
+@mixin button-hover
+{
+  border-color: $action-primary-dark;
+  background: $action-primary-lighter;
+  color: $action-primary-dark;
+  text-decoration: none;
+}
+
+.bsds-cta,
+.btn
+{
+  display: inline-flex;
+  border: 2px solid $action-primary-dark;
+  border-radius: 0;
+  padding: space(2x) space(3x);
+  background: $neutral-lightest;
+  color: $action-primary-dark;
+  font-family: $font-family-base-heavy;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 0.013rem;
+  cursor: pointer; // button is default, link is pointer
+
+  &:not([disabled])
+  {
+    &:hover,
+    &.demo-hover
+    {
+      @include button-hover;
+    }
+
+    &:active,
+    &.demo-active
+    {
+      border-color: transparent;
+      background: $action-primary-darker;
+      color: $neutral-lightest;
+    }
+
+    &:focus,
+    &.demo-focus
+    {
+      @include focus-default;
+    }
+  }
+
+  &.bsds-cta-assertive,
+  &.btn-primary
+  {
+    border-color: transparent;
+    background: $action-primary-dark;
+    color: $neutral-lightest;
+
+    &:not([disabled])
+    {
+      &:hover,
+      &.demo-hover
+      {
+        @include button-hover;
+      }
+
+      &:active,
+      &.demo-active
+      {
+        border-color: transparent;
+        background: $action-primary-darker;
+        color: $neutral-lightest;
+      }
+    }
+  }
+
+  &[disabled]
+  {
+    opacity: 1;
+    border: 1px solid $neutral;
+    background: $neutral-lighter;
+    color: $neutral-dark;
+    font-family: $font-family-base-regular;
+    cursor: not-allowed;
+  }
+
+  &.bsds-cta-ghost,
+  &.btn-ghost
+  {
+    border-color: $neutral-lightest;
+    background: transparent;
+    color: $neutral-lightest;
+
+    &:not([disabled])
+    {
+      &:hover,
+      &.demo-hover
+      {
+        @include button-hover;
+      }
+
+      &:active,
+      &.demo-active
+      {
+        border-color: $neutral-lightest;
+        background: $action-primary-darker;
+        color: $neutral-lightest;
+      }
+
+      &:focus,
+      &.demo-focus
+      {
+        @include focus-ghost;
+      }
+    }
+
+    &[disabled]
+    {
+      border-color: $neutral;
+      background: transparent;
+      color: $neutral;
+    }
+  }
+}

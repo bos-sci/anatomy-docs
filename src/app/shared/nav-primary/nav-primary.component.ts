@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: '.nav-primary',
+  selector: '.navbar-nav-primary',
   templateUrl: './nav-primary.component.html'
 })
 export class NavPrimaryComponent implements OnInit {

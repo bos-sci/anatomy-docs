@@ -1,7 +1,8 @@
-<ul>
-  <li *ngFor="let item of navPrimaryItems">
+<ul class="navbar-nav">
+  <li *ngFor="let item of navPrimaryItems" class="nav-item">
     <a
       [routerLink]="item.url" 
+      class="nav-link"
       routerLinkActive="active" 
       #menuItem="routerLinkActive"
       [attr.aria-current]="menuItem.isActive ? 'page' : undefined"
