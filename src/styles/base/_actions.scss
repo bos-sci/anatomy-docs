@@ -5,7 +5,7 @@
 a
 {
   color: $action-primary-dark;
-  font-family: $font-family-base-bold;
+  font-family: $font-family-base-heavy;
   text-decoration: none;
 
   &:hover
@@ -18,12 +18,11 @@ a
   &:active
   {
     color: $action-primary-darker;
-    cursor: pointer;
   }
 
   &:focus
   {
-    @include focus-default-outline;
+    @include focus-default;
   }
 }
 

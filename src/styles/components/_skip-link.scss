@@ -3,7 +3,7 @@
   position: absolute;
   top: -3.125rem; // NOTE: this is a one-off size that needs to change if the height of the skip link changes
   left: space(sm);
-  border: space(xs) solid $neutral-lightest;
+  border: space(xs) solid transparent;
   padding: space(lg) space(2x);
   background: $action-primary-dark;
   color: $neutral-lightest;
@@ -23,6 +23,16 @@
     position: absolute;
     top: space(sm);
     transition: top 0.5s ease-in;
-    @include focus-ghost-outline;
+  }
+
+  &.light
+  {
+    // Use for skip links positioned on top of dark headers
+    border-color: $neutral-lightest;
+
+    &:focus
+    {
+      @include focus-ghost;
+    }
   }
 }

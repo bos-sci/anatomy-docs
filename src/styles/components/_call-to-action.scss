@@ -1,14 +1,19 @@
-@import "./../abstracts/variables";
+$bsds-cta-radius: 0.1875rem;
+$bsds-cta-focus-indicator-width: 0.125rem;
+$bsds-cta-focus-indicator-radius: 0.3125rem;
+$bsds-cta-focus-indicator-offset: -0.375rem;
+$bsds-cta-raven-grey-tint-5: #c3c6ca; // updated disabled buttons
+$bsds-cta-blue-medium-shade-4: #00405b; // pressed/active primary buttons
 
 .bsds-cta,
 .btn
 {
   display: inline-block;
-  border: 1px solid $blue;
+  border: 1px solid $action-primary-dark;
   border-radius: $bsds-cta-radius;
   padding: 1rem 1.5rem; // legacy is 14px 21px
-  background: $white;
-  color: $blue;
+  background: $neutral-lightest;
+  color: $action-primary-dark;
   font-family: $font-family-base-bold;
   font-size: 1rem; // 16px
   line-height: 1.25; // 23px
@@ -21,37 +26,24 @@
     &:hover,
     &.demo-hover
     {
-      background: $blue-light;
+      background: $action-primary-lighter;
       text-decoration: none;
+    }
+
+    &:active,
+    &.demo-active
+    {
+      border-color: transparent;
+      background: $action-primary-dark;
+      color: $neutral-lightest;
     }
 
     &:focus,
     &.demo-focus
     {
       position: relative;
-      outline: none;
-      background: $blue-light;
-
-      &::after
-      {
-        content: '';
-        position: absolute;
-        top: $bsds-cta-focus-indicator-offset;
-        right: $bsds-cta-focus-indicator-offset;
-        bottom: $bsds-cta-focus-indicator-offset;
-        left: $bsds-cta-focus-indicator-offset;
-        border: $bsds-cta-focus-indicator-width solid $focus-indicator-dark;
-        border-radius: $bsds-cta-focus-indicator-radius;
-      }
-    }
-
-    &:active,
-    &.demo-active
-    {
-      // pressed state
-      border-color: transparent;
-      background: $action-blue;
-      color: $white;
+      background: $action-primary-lighter;
+      @include focus-ghost;
     }
   }
 
@@ -59,26 +51,29 @@
   &.btn-primary
   {
     border-color: transparent;
-    background: $blue;
-    color: $white;
-    
+    background: $action-primary-dark;
+    color: $neutral-lightest;
+
     &:not([disabled])
     {
       &:hover,
-      &:focus,
-      &.demo-hover,
-      &.demo-focus
+      &.demo-hover
       {
-        background: $blue-medium;
+        background: $action-primary-darker;
       }
 
       &:active,
       &.demo-active
       {
-        // pressed state
         border-color: transparent;
         background: $bsds-cta-blue-medium-shade-4;
-        color: $white;
+        color: $neutral-lightest;
+      }
+
+      &:focus,
+      &.demo-focus
+      {
+        background: $action-primary-darker;
       }
     }
   }
@@ -88,42 +83,38 @@
     opacity: 1;
     border-color: transparent;
     background: $bsds-cta-raven-grey-tint-5;
-    color: $white;
+    color: $neutral-lightest;
     cursor: not-allowed;
   }
 
   &.bsds-cta-ghost,
   &.btn-ghost
   {
-    border-color: $white;
+    border-color: $neutral-lightest;
     background: transparent;
-    color: $white;
+    color: $neutral-lightest;
 
     &:not([disabled])
     {
       &:hover,
       &.demo-hover
       {
-        background: rgba($white, 0.1);
-      }
-
-      &:focus,
-      &.demo-focus
-      {
-        background: rgba($white, 0.1);
-
-        &::after
-        {
-          border-color: $focus-indicator-light;
-        }
+        background: rgba($neutral-lightest, 0.1);
       }
 
       &:active,
       &.demo-active
       {
-        // pressed state
-        border-color: $white;
-        background: rgba($white, 0.3);
+        border-color: $neutral-lightest;
+        background: rgba($neutral-lightest, 0.3);
+      }
+
+      &:focus,
+      &.demo-focus
+      {
+        background: rgba($neutral-lightest, 0.1);
+
+        @include focus-ghost;
       }
     }
 

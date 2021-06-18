@@ -1,4 +1,9 @@
+// TODO: shuffle imports so we can use space(x) for $border-radius and $box-shadow-primary utility variables
+
 @import "./abstracts/abstracts";
 @import "./base/base";
-// @import "./layout/layout";
-@import "./components/skip-link";
+@import "./layout/layout";
+@import "./layout/nav-primary";
+@import "./themes/markdown-theme"; // theme for code snippets
+@import "./components/components";
+@import "./vendor/font-awesome/fontawesome";

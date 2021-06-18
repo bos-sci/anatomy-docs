@@ -1,0 +1,87 @@
+// TODO: fix layout imports
+
+*,
+::after,
+::before
+{
+  // We get this from Bootstrap's _reboot, but it may be necessary to include in other platforms
+  box-sizing: border-box;
+}
+
+.baseline-grid
+{
+  // For testing vertical rhythm
+  background-image: linear-gradient(to bottom, $accent-caribbean 0, $neutral-lightest 1px);
+  background-repeat: repeat-y;
+  background-size: 100% space(sm);
+}
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl
+{
+  padding: 0 space(4x); // override bootstrap's grid container padding
+}
+
+.grid-container
+{
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: 
+    "header header header header"
+    "main main main main";
+  column-gap: 0;
+  row-gap: 0;
+
+  &.with-footer
+  {
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+      "header header header header"
+      "main main main main"
+      "footer footer footer footer";
+  }
+}
+
+header.navbar
+{
+  grid-area: header;
+}
+
+main
+{
+  grid-area: main;
+  padding-bottom: space(4x);
+  overflow-y: auto;
+}
+
+footer
+{
+  grid-area: footer;
+  border-top: 1px solid var(--raven-grey-20);
+  padding: space(sm);
+}
+
+@media (min-width: 576px)
+{
+  .grid-container
+  {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+      "header header header header"
+      "main main main main";
+    column-gap: 0;
+    row-gap: 0;
+  }
+}

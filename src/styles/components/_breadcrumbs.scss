@@ -1,4 +1,7 @@
-@import "./../abstracts/variables";
+$bsds-breadcrumb-divider: '/';
+$bsds-breadcrumb-divider-padding: 0.5rem;
+$bsds-breadcrumb-focus-indicator-width: 0.125rem;
+$bsds-breadcrumb-focus-indicator-offset: 0.125rem;
 
 .bsds-breadcrumbs
 {
@@ -11,31 +14,29 @@
 
 .bsds-breadcrumb-item
 {
-  margin-top: 0;
+  margin-top: 0 !important; // TODO: reduce specificity
   font-size: 0.875rem;
 
   & a
   {
-    color: $shark-grey;
-    font-family: $font-family-base;
+    color: $neutral-darkest;
+    font-family: $font-family-base-regular;
     text-decoration: none;
 
     &:hover
     {
-      color: $blue-medium;
-      text-decoration: none;
+      color: $neutral-darkest;
+      text-decoration: underline;
     }
 
     &:active
     {
-      color: $bsc-blue;
+      color: $brand-primary;
     }
 
     &:focus
     {
-      outline: $bsds-breadcrumb-focus-indicator-width solid $focus-indicator;
-      outline-offset: $bsds-breadcrumb-focus-indicator-offset; // not supported in IE
-      box-shadow: none;
+      @include focus-default;
     }
   }
 
@@ -47,12 +48,12 @@
     {
       padding-right: $bsds-breadcrumb-divider-padding;
       content: $bsds-breadcrumb-divider;
-      color: $raven-grey;
+      color: $neutral;
     }
   }
 
   &.bsds-breadcrumb-item-active
   {
-    color: $raven-grey;
+    color: $neutral;
   }
 }

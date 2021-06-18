@@ -22,7 +22,7 @@
 .navbar
 {
   padding: 0;
-  background: $white;
+  background: $neutral-lightest;
   box-shadow: $box-shadow-primary;
 }
 
@@ -64,7 +64,7 @@
 
   &:focus
   {
-    @include focus-default-outline;
+    @include focus-default;
   }
 
   .navbar-toggler-wrapper
@@ -122,11 +122,6 @@
       }
     }
 
-    &:focus
-    {
-      @include focus-default-shadow-inset;
-    }
-
     &:active,
     &.active:active
     {
@@ -137,6 +132,11 @@
         @include nav-indicator-sm;
         background: $neutral-darkest;
       }
+    }
+
+    &:focus
+    {
+      @include focus-default-inset;
     }
   }
 }
@@ -167,7 +167,7 @@
 
           &:focus
           {
-            @include focus-default-outline;
+            @include focus-default;
 
             &::before
             {

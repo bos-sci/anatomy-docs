@@ -11,9 +11,18 @@ $border-color-ghost: $neutral-lightest;
 $border-color-accent: $action-primary-dark;
 $border-color-subtle: $neutral-light;
 
-$border-radius: space(sm);
+$border-radius: 0.25rem;
 
 
 // Shadow Utility Variables
 
-$box-shadow-primary: 0 0 space(lg) 0 rgba($neutral-darkest, 0.2);
+$box-shadow-primary: 0 0 0.75rem 0 rgba($neutral-darkest, 0.2);
+
+
+// Breakpoint Utility Variables
+// TODO: set up mixins for media queries
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
