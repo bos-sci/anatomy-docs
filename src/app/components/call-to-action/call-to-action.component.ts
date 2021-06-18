@@ -20,16 +20,16 @@ export class CallToActionComponent implements OnInit {
   \`\`\`
   `;
 
-  primaryCallToActionHtml  = `
+  assertiveCallToActionHtml  = `
   \`\`\`html
   <!-- Using an anchor element -->
-  <a href="/url" class="bsds-cta bsds-cta-primary">
-    Primary Call to Action
+  <a href="/url" class="bsds-cta bsds-cta-assertive">
+    Assertive Call to Action
   </a>
 
   <!-- Using a button element -->
-  <button type="button" class="bsds-cta bsds-cta-primary">
-    Primary Call to Action
+  <button type="button" class="bsds-cta bsds-cta-assertive">
+    Assertive Call to Action
   </button>
   \`\`\`
   `;

@@ -18,6 +18,7 @@
   font-family: $font-family-base-heavy;
   text-decoration: none;
   text-align: center;
+  letter-spacing: 0.013rem;
   cursor: pointer; // button is default, link is pointer
 
   &:not([disabled])
