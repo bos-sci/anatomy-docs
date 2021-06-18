@@ -23,19 +23,3 @@
   font-style: normal;
   font-display: fallback;
 }
-
-
-// Legacy -- to be retired ASAP, but currently still used in AEM
-
-@font-face {
-  font-family: 'SST-Bold';
-  src: url('/assets/fonts/SST-Bold/SST-Bold.eot');
-  src: url('/assets/fonts/SST-Bold/SST-Bold.woff2') format('woff2'),
-    url('/assets/fonts/SST-Bold/SST-Bold.woff') format('woff'),
-    url('/assets/fonts/SST-Bold/SST-Bold.ttf') format('truetype'),
-    url('/assets/fonts/SST-Bold/SST-Bold.svg#SST-Bold') format('svg'),
-    url('/assets/fonts/SST-Bold/SST-Bold.eot?#iefix') format('embedded-opentype');
-  font-weight: $font-weight-bold;
-  font-style: normal;
-  font-display: fallback;
-}
