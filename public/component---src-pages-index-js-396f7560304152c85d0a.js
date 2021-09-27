@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkanatomy=self.webpackChunkanatomy||[]).push([[678],{7704:function(e,t,n){n.r(t);var a=n(7294),l=(n(5444),n(2778)),c=n(3751);t.default=function(e){var t=e.location;return a.createElement(l.Z,{location:t},a.createElement(c.Z,{title:"Anatomy"}),a.createElement("h1",null,"Anatomy"))}}}]);
-//# sourceMappingURL=component---src-pages-index-js-396f7560304152c85d0a.js.map
