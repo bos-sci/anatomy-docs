@@ -21,6 +21,7 @@
 
 .navbar
 {
+  z-index: 20;
   padding: 0;
   background: $neutral-lightest;
   box-shadow: $box-shadow-primary;
@@ -152,7 +153,7 @@
         margin-top: 0;
         margin-right: space(4x);
         border: 0;
-  
+
         .nav-link
         {
           margin-left: space(2x);

@@ -1,6 +1,6 @@
-$bsds-breadcrumb-divider: '/';
+$ads-breadcrumb-divider: '/';
 
-.bsds-breadcrumbs
+.ads-breadcrumbs
 {
   display: flex;
   flex-wrap: wrap;
@@ -9,7 +9,7 @@ $bsds-breadcrumb-divider: '/';
   list-style: none;
 }
 
-.bsds-breadcrumb-item.bsds-breadcrumb-item
+.ads-breadcrumb-item.ads-breadcrumb-item
 {
   margin-top: 0; // TODO: reduce specificity
   @include font-size($fs-body-subtle);
@@ -37,19 +37,19 @@ $bsds-breadcrumb-divider: '/';
     }
   }
 
-  & + .bsds-breadcrumb-item
+  & + .ads-breadcrumb-item
   {
     padding-left: space(md);
 
     &::before
     {
       padding-right: space(md);
-      content: $bsds-breadcrumb-divider;
+      content: $ads-breadcrumb-divider;
       font-family: $font-family-base-regular;
     }
   }
 
-  &.bsds-breadcrumb-item-active
+  &.ads-breadcrumb-item-active
   {
     font-family: $font-family-base-heavy;
   }

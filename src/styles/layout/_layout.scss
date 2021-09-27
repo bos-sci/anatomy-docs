@@ -32,9 +32,9 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto 1fr;
-  grid-template-areas: 
+  grid-template-areas:
     "header header header header"
     "main main main main";
   column-gap: 0;
@@ -43,7 +43,7 @@
   &.with-footer
   {
     grid-template-rows: auto 1fr auto;
-    grid-template-areas: 
+    grid-template-areas:
       "header header header header"
       "main main main main"
       "footer footer footer footer";
@@ -57,9 +57,14 @@ header.navbar
 
 main
 {
-  grid-area: main;
-  padding-bottom: space(4x);
   overflow-y: auto;
+}
+
+.app-body
+{
+  grid-area: main;
+  padding-top: space(4x);
+  padding-bottom: space(4x);
 }
 
 footer
@@ -76,12 +81,19 @@ footer
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto 1fr;
-    grid-template-areas: 
+    grid-template-areas:
       "header header header header"
       "main main main main";
     column-gap: 0;
     row-gap: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .main
+  {
+    flex-direction: row;
   }
 }

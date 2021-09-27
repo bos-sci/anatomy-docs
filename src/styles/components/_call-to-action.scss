@@ -6,7 +6,7 @@
   text-decoration: none;
 }
 
-.bsds-cta,
+.ads-cta,
 .btn
 {
   display: inline-flex;
@@ -44,7 +44,7 @@
     }
   }
 
-  &.bsds-cta-assertive,
+  &.ads-cta-assertive,
   &.btn-primary
   {
     border-color: transparent;
@@ -79,7 +79,7 @@
     cursor: not-allowed;
   }
 
-  &.bsds-cta-ghost,
+  &.ads-cta-ghost,
   &.btn-ghost
   {
     border-color: $neutral-lightest;

@@ -1,0 +1,28 @@
+@mixin focus-default
+{
+  // Use for most interactive elements on a light background
+  outline: space(xs) solid $action-primary-dark;
+  outline-offset: space(xs); // NOTE: this is not supported in IE, but it will degrade gracefully
+  box-shadow: none;
+}
+
+@mixin focus-default-inset
+{
+  // Use for interactive elements on a light background that are contained in wrappers that would conceal the default focus indicator
+  outline: 0;
+  box-shadow: inset 0 0 0 space(xs) $action-primary-dark;
+}
+
+@mixin focus-ghost
+{
+  // Use for most interactive elements on a dark background
+  @include focus-default;
+  outline-color: $neutral-lightest;
+}
+
+@mixin focus-ghost-inset
+{
+  // Use for interactive elements on a dark background that are contained in wrappers that would conceal the default focus indicator
+  outline: 0;
+  box-shadow: inset 0 0 0 space(xs) $neutral-lightest;
+}
