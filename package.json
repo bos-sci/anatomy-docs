@@ -36,7 +36,8 @@
     "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
-    "prettier": "2.3.2"
+    "prettier": "2.3.2",
+    "sass": "^1.42.1"
   },
   "homepage": "https://www.anatomydesignsystem.com",
   "keywords": [
