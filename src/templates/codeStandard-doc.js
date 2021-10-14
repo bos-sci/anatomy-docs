@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Seo from "../components/seo"
@@ -10,27 +10,27 @@ const CodeStandardDoc = ({ data, location }) => {
   const navItems = [
     {
       text: 'General',
-      slug: '/code-standards/general'
+      slug: '/code-standards/general/'
     },
     {
       text: 'Accessibility',
-      slug: '/code-standards/accessibility'
+      slug: '/code-standards/accessibility/'
     },
     {
       text: 'HTML',
-      slug: '/code-standards/html'
+      slug: '/code-standards/html/'
     },
     {
       text: 'CSS',
-      slug: '/code-standards/css'
+      slug: '/code-standards/css/'
     },
     {
       text: 'Javascript',
-      slug: '/code-standards/javascript'
+      slug: '/code-standards/javascript/'
     },
     {
       text: 'DevOps',
-      slug: '/code-standards/devops'
+      slug: '/code-standards/devops/'
     },
   ];
 
@@ -39,16 +39,12 @@ const CodeStandardDoc = ({ data, location }) => {
       <Seo
         title={post.name}
       />
-      <article
-        itemScope
-        itemType="http://schema.org/Code"
-        className=""
-      >
+      <article>
         <header>
-          <h1 itemProp="headline">{post.name}</h1>
+          <h1>{post.name}</h1>
           <dl>
             <dt>Last Updated</dt>
-            <dd>{post.updatedAt}</dd>
+            <dd>{new Date(post.updatedAt).toLocaleDateString()}</dd>
           </dl>
         </header>
         <MDXRenderer>{post.content.childMdx.body}</MDXRenderer>

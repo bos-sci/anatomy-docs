@@ -33,12 +33,12 @@ const NavPrimary = ({ isRootPath }) => {
           <nav className="navbar-nav-primary" aria-label="primary">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link to='/components/breadcrumbs' className="nav-link">
+                <Link to='/components/breadcrumbs/' className="nav-link" activeClassName="active">
                   Components
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to='/code-standards/general' className="nav-link">
+                <Link to='/code-standards/general/' className="nav-link" activeClassName="active">
                   Code Standards
                 </Link>
               </li>

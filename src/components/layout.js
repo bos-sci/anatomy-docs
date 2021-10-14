@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
 import NavSecondary from "./shared/nav-secondary/nav-secondary";
 import NavPrimary from './shared/nav-primary';
 

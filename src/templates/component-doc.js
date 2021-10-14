@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Seo from "../components/seo"
@@ -18,15 +18,12 @@ const ComponentDoc = ({ data, location }) => {
       <Seo
         title={post.name}
       />
-      <article
-        itemScope
-        itemType="http://schema.org/Code"
-      >
+      <article>
         <header>
-          <h1 itemProp="headline">{post.name}</h1>
+          <h1>{post.name}</h1>
           <dl>
             <dt>Last Updated</dt>
-            <dd>{post.updatedAt}</dd>
+            <dd>{new Date(post.updatedAt).toLocaleDateString()}</dd>
           </dl>
         </header>
         <MDXRenderer>{post.description.childMdx.body}</MDXRenderer>

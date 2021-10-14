@@ -42,7 +42,7 @@ function getSlug(entry, name) {
     default:
       break;
   }
-  return '/' + base + '/' + slugify(name);
+  return '/' + base + '/' + slugify(name) + '/';
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -115,7 +115,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value: `/components/${slugify(node.frontmatter.title)}`
+      value: `/components/${slugify(node.frontmatter.title)}/`
     })
   }
   else if (contentfulTypes.includes(node.internal.type)) {
@@ -138,18 +138,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   // blog posts are stored inside "content/blog" instead of returning an error
   createTypes(`
     type SiteSiteMetadata {
-      author: Author
       siteUrl: String
-      social: Social
-    }
-
-    type Author {
-      name: String
-      summary: String
-    }
-
-    type Social {
-      twitter: String
     }
 
     type Mdx implements Node {
