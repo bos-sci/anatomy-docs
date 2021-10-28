@@ -1,0 +1,71 @@
+// Brand Color Range
+
+$brand-primary: #003c71;
+
+
+// Neutral Range
+
+$neutral-darkest: #000000;
+$neutral-darker: #333333;
+$neutral-dark: #666666;
+$neutral: #999999;
+$neutral-light: #cccccc;
+$neutral-lighter: #f2f2f2;
+$neutral-lightest: #ffffff;
+
+
+// Action Color Range
+
+$action-primary-darker: #012965;
+$action-primary-dark: #0153cc; // default value
+$action-primary: #3485fe;
+$action-primary-light: #9ac2fe;
+$action-primary-lighter: #e6f0ff;
+
+
+// Accent Color Ranges
+
+$accent-plum-darker: #440066;
+$accent-plum-dark: #8800cc;
+$accent-plum: #bb33ff;
+$accent-plum-light: #dd99ff;
+$accent-plum-lighter: #f7e6ff;
+
+$accent-caribbean-darker: #005f66;
+$accent-caribbean-dark: #00becc;
+$accent-caribbean: #00eeff;
+$accent-caribbean-light: #99f8ff;
+$accent-caribbean-lighter: #e6fdff;
+
+$accent-lime-darker: #356600;
+$accent-lime-dark: #69cc00;
+$accent-lime: #9cff33;
+$accent-lime-light: #ceff99;
+$accent-lime-lighter: #f3ffe6;
+
+
+// Feedback Color Ranges
+
+$feedback-success-darker: #135325;
+$feedback-success-dark: #26a64a;
+$feedback-success: #59d97d;
+$feedback-success-light: #acecbe;
+$feedback-success-lighter: #eafaef;
+
+$feedback-warning-darker: #644a02;
+$feedback-warning-dark: #c99403;
+$feedback-warning: #fcc736;
+$feedback-warning-light: #fde39b;
+$feedback-warning-lighter: #fff8e6;
+
+$feedback-error-darker: #590d11;
+$feedback-error-dark: #b31921;
+$feedback-error: #e64d54;
+$feedback-error-light: #f2a6aa;
+$feedback-error-lighter: #fce9ea;
+
+
+// Gradients
+
+$gradient-primary: linear-gradient(270deg, $action-primary-dark 0%, #35e0f7 100%);
+$gradient-secondary: linear-gradient(270deg, $action-primary-lighter 0%, $action-primary-light 100%);

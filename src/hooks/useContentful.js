@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-function useContentful(query, variables) {
+function useContentful(query, variables = {}) {
 
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
-  const vars = JSON.stringify(variables);
+  const vars = Object.keys(variables).length !== 0 ? JSON.stringify(variables) : '';
 
   useEffect(() => {
     let endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}?access_token=${process.env.REACT_APP_CONTENTFUL_TOKEN}`
@@ -28,7 +28,7 @@ function useContentful(query, variables) {
         try {
           const res = await fetch(endpoint);
           const data = await res.json();
-          sessionStorage.setItem(params, JSON.stringify(data.data));
+          sessionStorage.setItem(params, JSON.stringify(data));
           setResponse(data.data);
         } catch(e) {
           setError(e);

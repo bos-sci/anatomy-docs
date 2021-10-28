@@ -6,7 +6,7 @@ const Fallback = () => {
   );
 }
 
-const DocsComponent = ( props ) => {
+const Preview = ( props ) => {
   switch (props.component) {
     case 'breadcrumbs':
       const Breadcrumb = lazy(() => import('./variations/breadcrumb'));
@@ -16,7 +16,7 @@ const DocsComponent = ( props ) => {
         </Suspense>
       );
 
-    case 'call to action':
+    case 'call-to-action':
       const CallToAction = lazy(() => import('./variations/call-to-action'));
       return (
         <Suspense fallback={<Fallback />}>
@@ -29,4 +29,4 @@ const DocsComponent = ( props ) => {
   }
 }
 
-export default DocsComponent;
+export default Preview;
