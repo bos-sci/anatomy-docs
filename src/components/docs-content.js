@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DocsComponent from './docs-component';
 
-import { useEffect, useState } from 'react';
+import useContentful from '../hooks/useContentful';
 
 const DocsContent = ( props ) => {
 
   let [componentData, setComponentData] = useState(null);
 
-  useEffect(() => {
-    const query = `
+  const query = `
     query ComponentData($id: String!) {
       component(id: $id) {
         name
@@ -20,17 +19,15 @@ const DocsContent = ( props ) => {
       }
     }`;
 
-    const queryVariables = {
-      id: props.nameToId[props.component]
-    };
+  const queryVariables = {
+    id: props.nameToId[props.component]
+  };
 
-    const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}?access_token=${process.env.REACT_APP_CONTENTFUL_TOKEN}&query=${query}&variables=${JSON.stringify(queryVariables)}`;
+  const data = useContentful(query, queryVariables);
 
-    fetch(endpoint)
-      .then(response => response.json())
-      .then(data => setComponentData(data.data));
-
-  },[props])
+  useEffect(() => {
+    setComponentData(data.response);
+  }, [data]);
 
   return (
     <>
