@@ -1,10 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
-import NavSecondary from '../shared/nav-secondary/nav-secondary';
-import useContentful from '../../hooks/useContentful';
-import { slugify } from '../helpers';
-import { IdLookupContext } from '../App';
 import marked from 'marked';
 import DOMPurify from 'dompurify';
+import NavSecondary from '../shared/nav-secondary/nav-secondary';
+import useContentful from '../../hooks/useContentful';
+import { IdLookupContext } from '../App';
 
 const CodeStandards = (props) => {
   const codeStandard = props.match.params.codeStandard;
@@ -33,8 +32,8 @@ const CodeStandards = (props) => {
   if (data.error) console.error(data.error);
 
   useEffect(() => {
-    if (data.response && data.response.data) {
-      setCodeStandardData(data.response.data.codeStandard);
+    if (data.response) {
+      setCodeStandardData(data.response.codeStandard);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
     const navItems = Object.keys(idLookup.codeStandards).map(entry => ({

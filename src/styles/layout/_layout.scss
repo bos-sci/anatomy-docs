@@ -67,6 +67,16 @@ main
   padding-bottom: space(4x);
 }
 
+.app-content
+{
+  display: flex;
+  flex-wrap: wrap;
+
+  .nav-secondary {
+    flex-basis: 100%;
+  }
+}
+
 footer
 {
   grid-area: footer;
@@ -95,5 +105,20 @@ footer
   .main
   {
     flex-direction: row;
+  }
+
+  .app-content
+  {
+    display: flex;
+
+    .nav-secondary
+    {
+      flex: 1;
+    }
+
+    main
+    {
+      flex: 3;
+    }
   }
 }

@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
+import DOMPurify from 'dompurify';
+import marked from 'marked';
 import Preview from './preview';
 import NavSecondary from '../shared/nav-secondary/nav-secondary';
 import useContentful from '../../hooks/useContentful';
-import { slugify } from '../helpers';
 import { IdLookupContext } from '../App';
-import DOMPurify from 'dompurify';
-import marked from 'marked';
 
 const Components = (props) => {
   const component = props.match.params.component;
@@ -33,8 +32,8 @@ const Components = (props) => {
   if (data.error) console.error(data.error);
 
   useEffect(() => {
-    if(data.response && data.response.data) {
-      setComponentData(data.response.data.component);
+    if(data.response) {
+      setComponentData(data.response.component);
       const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
       const navItems = Object.keys(idLookup.components).map(entry => ({
         text: idLookup.components[entry].name,

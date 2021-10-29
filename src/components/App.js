@@ -41,6 +41,7 @@ function App() {
   `;
 
   const data = useContentful(query);
+  console.log(data);
 
   useEffect(() => {
     if (data.response) {
@@ -48,49 +49,48 @@ function App() {
         codeStandards: {},
         components: {}
       };
-      data.response.data.codeStandardCollection.items.forEach(item => (
+      data.response.codeStandardCollection.items.forEach(item => (
         idMap.codeStandards[slugify(item.name)] = {
           id: item.sys.id,
           name: item.name
         })
       );
-      data.response.data.componentCollection.items.forEach(item => (
+      data.response.componentCollection.items.forEach(item => (
         idMap.components[slugify(item.name)] = {
           id: item.sys.id,
           name: item.name
         })
       );
       setIdLookup(idMap);
+      console.log('setting idLookup');
     }
   }, [data.response]);
 
-  if (true) {
-    return (
-      <Router>
-        <div className="grid-container">
-          <IdLookupContext.Provider value={idLookup}>
-            <NavPrimary />
-            {idLookup &&
-              <div className="container-fluid container-lg app-body">
-                <div className="row">
-                  <div className="col-12 col-lg-9 col-xl-10">
-                      <Switch>
-                        <Route exact path="/">
-                          <Redirect to="/components" />
-                        </Route>
-                        <Route path="/components" component={ComponentsRouter} />
-                        <Route path="/code-standards" component={CodeStandardsRouter} />
-                      </Switch>
-                  </div>
+  return (
+    <Router>
+      <div className="grid-container">
+        <IdLookupContext.Provider value={idLookup}>
+          <NavPrimary />
+          {idLookup &&
+            <div className="container-fluid container-lg app-body">
+              <div className="row">
+                <div className="col-12 col-lg-9 col-xl-10">
+                    <Switch>
+                      <Route exact path="/">
+                        <Redirect to="/components" />
+                      </Route>
+                      <Route path="/components" component={ComponentsRouter} />
+                      <Route path="/code-standards" component={CodeStandardsRouter} />
+                    </Switch>
                 </div>
               </div>
-            }
-            {!idLookup && <p>Loading...</p>}
-          </IdLookupContext.Provider>
-        </div>
-      </Router>
-    );
-  }
+            </div>
+          }
+          {!idLookup && <p>Loading...</p>}
+        </IdLookupContext.Provider>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

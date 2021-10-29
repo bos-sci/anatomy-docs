@@ -28,7 +28,7 @@ function useContentful(query, variables = {}) {
         try {
           const res = await fetch(endpoint);
           const data = await res.json();
-          sessionStorage.setItem(params, JSON.stringify(data));
+          sessionStorage.setItem(params, JSON.stringify(data.data));
           setResponse(data.data);
         } catch(e) {
           setError(e);
