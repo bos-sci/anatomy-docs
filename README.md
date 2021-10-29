@@ -2,6 +2,23 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Architecture
+Detailed below is a brief map of the application detailing the important files and folders.
+- src/
+  - assets/ *Fonts & images*
+  - components/ *Where all the docs code lives. Sub folders break app into sections absed on the primary nav routes*
+    - App.js *Handles routing, base layout, and setting idMap context*
+    - shared/ *Components used multiple times throughout the application*
+    - codeStandards/ *Code Standards documentation*
+    - components/ *Component documentation*
+      - variations/ *All the different implementations of component variations e.g. primary button and secondary button*
+  - hooks/ *Custom hooks*
+  - styles/ *Global stylesheets*
+
+## Contributing
+
+<p>TODO: Add contribution documnetation once finalized (in regards to variations etc.)
+
 ## Available Scripts
 
 In the project directory, you can run:
