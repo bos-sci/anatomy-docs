@@ -1,63 +1,68 @@
-import { useState, useEffect } from 'react';
-import Content from './content';
+import { useState, useEffect, useContext } from 'react';
+import Preview from './preview';
 import NavSecondary from '../shared/nav-secondary/nav-secondary';
-
 import useContentful from '../../hooks/useContentful';
+import { slugify } from '../helpers';
+import { IdLookupContext } from '../App';
+import DOMPurify from 'dompurify';
+import marked from 'marked';
 
 const Components = (props) => {
-  const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
   const component = props.match.params.component;
-  let [nameToId, setNameToId] = useState(null);
+  const idLookup = useContext(IdLookupContext);
   let [navItems, setNavItems] = useState(null);
+  let [componentData, setComponentData] = useState(null);
 
   const query = `
-    query {
-      componentCollection(order: name_ASC) {
-        items {
-          name
-          sys {
-            id
-          }
+    query ComponentData($id: String!) {
+      component(id: $id) {
+        name
+        description
+        sys {
+          id
+          publishedAt
         }
       }
     }`;
 
+  const queryVariables = {
+    id: idLookup.components[component]
+  };
 
-  const data = useContentful(query);
+  const data = useContentful(query, queryVariables);
+  if (data.error) console.error(data.error);
 
   useEffect(() => {
-    if (data.error) {
-      console.error(data.error);
-    }
-    if (data.response) {
-      const slugify = (text) => {
-        return text
-          .toString()
-          .toLowerCase()
-          .replace(/\s+/g, "-")
-          .replace(/[^\w-]+/g, "")
-          .replace(/--+/g, "-")
-          .replace(/^-+/, "")
-          .replace(/-+$/, "");
-      }
-
-      const idMap = {};
-      data.response.data.componentCollection.items.forEach(entry => idMap[slugify(entry.name)] = entry.sys.id);
-      const navItems = data.response.data.componentCollection.items.map(item => ({
-        text: item.name,
-        slug: basePath + '/' + slugify(item.name)
+    if(data.response && data.response.data) {
+      setComponentData(data.response.data.component);
+      const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
+      const navItems = Object.keys(idLookup.components).map(name => ({
+        text: name,
+        slug: basePath + '/' + slugify(name)
       }));
       setNavItems(navItems);
-      setNameToId(idMap);
     }
-  }, [data.response, data.error, basePath]);
+  }, [data.response, idLookup, props.match.path]);
 
   return (
-    <div>
+    <div className="app-body">
       { navItems && <NavSecondary navItems={navItems} /> }
-      { (nameToId && component) && <Content nameToId={nameToId} component={component} /> }
-    </div>
-  );
+      <main>
+        { componentData &&
+          <>
+            <h1>{componentData.name}</h1>
+            <dl>
+              <dt>Last Updated</dt>
+              <dd>{new Date(componentData.sys.publishedAt).toLocaleDateString()}</dd>
+            </dl>
+            <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(marked(componentData.description))}} />
+          </>
+        }
+        <div className="demo-example">
+          <Preview component={component} />
+        </div>
+      </main>
+  </div>);
 }
 
 export default Components;

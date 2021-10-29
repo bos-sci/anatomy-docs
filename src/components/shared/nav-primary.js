@@ -37,7 +37,7 @@ const NavPrimary = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to='/code-standards/general' className="nav-link" activeClassName="active">
+                <NavLink to='/code-standards' className="nav-link" activeClassName="active">
                   Code Standards
                 </NavLink>
               </li>
