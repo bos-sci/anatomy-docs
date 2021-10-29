@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import "./nav-secondary.scss"
+import "./NavSecondary.scss"
 
 const NavSecondary = ({ navItems }) => {
   return (

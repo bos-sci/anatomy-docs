@@ -1,4 +1,4 @@
-import CodeStandards from './code-standards';
+import CodeStandards from './CodeStandards';
 import { Redirect, Switch, Route, useRouteMatch } from 'react-router-dom';
 
 const CodeStandardsRouter = () => {

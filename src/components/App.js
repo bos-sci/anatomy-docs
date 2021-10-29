@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 import { slugify } from './helpers';
 import useContentful from '../hooks/useContentful';
-import CodeStandardsRouter from './code-standards/code-standards-router';
-import ComponentsRouter from './components/components-router';
-import NavPrimary from './shared/nav-primary';
+import CodeStandardsRouter from './codeStandards/CodeStandardsRouter';
+import ComponentsRouter from './components/ComponentsRouter';
+import NavPrimary from './shared/NavPrimary';
 
 export const IdLookupContext = createContext({
   components: {},
@@ -41,7 +41,6 @@ function App() {
   `;
 
   const data = useContentful(query);
-  console.log(data);
 
   useEffect(() => {
     if (data.response) {

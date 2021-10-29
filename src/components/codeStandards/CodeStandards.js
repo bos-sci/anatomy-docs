@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import marked from 'marked';
 import DOMPurify from 'dompurify';
-import NavSecondary from '../shared/nav-secondary/nav-secondary';
+import NavSecondary from '../shared/navSecondary/NavSecondary';
 import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
 
