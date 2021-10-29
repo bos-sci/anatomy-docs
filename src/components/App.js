@@ -49,12 +49,16 @@ function App() {
         components: {}
       };
       data.response.data.codeStandardCollection.items.forEach(item => (
-        idMap.codeStandards[slugify(item.name)] = item.sys.id
-        )
+        idMap.codeStandards[slugify(item.name)] = {
+          id: item.sys.id,
+          name: item.name
+        })
       );
       data.response.data.componentCollection.items.forEach(item => (
-        idMap.components[slugify(item.name)] = item.sys.id
-        )
+        idMap.components[slugify(item.name)] = {
+          id: item.sys.id,
+          name: item.name
+        })
       );
       setIdLookup(idMap);
     }

@@ -26,7 +26,7 @@ const CodeStandards = (props) => {
     }`;
 
   const queryVariables = {
-    id: idLookup.codeStandards[codeStandard]
+    id: idLookup.codeStandards[codeStandard].id
   };
 
   const data = useContentful(query, queryVariables);
@@ -37,15 +37,15 @@ const CodeStandards = (props) => {
       setCodeStandardData(data.response.data.codeStandard);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
-    const navItems = Object.keys(idLookup.codeStandards).map(name => ({
-      text: name,
-      slug: basePath + '/' + slugify(name)
+    const navItems = Object.keys(idLookup.codeStandards).map(entry => ({
+      text: idLookup.codeStandards[entry].name,
+      slug: basePath + '/' + entry
     }));
     setNavItems(navItems);
   }, [data.response, idLookup, props.match.path]);
 
   return (
-    <div className="app-body">
+    <div className="app-content">
       { navItems && <NavSecondary navItems={navItems} /> }
         <main>
           {codeStandardData && <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(marked(codeStandardData.content))}} /> }

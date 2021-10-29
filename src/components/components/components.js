@@ -26,7 +26,7 @@ const Components = (props) => {
     }`;
 
   const queryVariables = {
-    id: idLookup.components[component]
+    id: idLookup.components[component].id
   };
 
   const data = useContentful(query, queryVariables);
@@ -36,16 +36,16 @@ const Components = (props) => {
     if(data.response && data.response.data) {
       setComponentData(data.response.data.component);
       const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
-      const navItems = Object.keys(idLookup.components).map(name => ({
-        text: name,
-        slug: basePath + '/' + slugify(name)
+      const navItems = Object.keys(idLookup.components).map(entry => ({
+        text: idLookup.components[entry].name,
+        slug: basePath + '/' + entry
       }));
       setNavItems(navItems);
     }
   }, [data.response, idLookup, props.match.path]);
 
   return (
-    <div className="app-body">
+    <div className="app-content">
       { navItems && <NavSecondary navItems={navItems} /> }
       <main>
         { componentData &&
