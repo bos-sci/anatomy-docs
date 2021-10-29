@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from 'react';
+import { useState, useEffect, createContext, lazy, Suspense } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,9 +7,10 @@ import {
 } from "react-router-dom";
 import { slugify } from './helpers';
 import useContentful from '../hooks/useContentful';
-import CodeStandardsRouter from './codeStandards/CodeStandardsRouter';
-import ComponentsRouter from './components/ComponentsRouter';
 import NavPrimary from './shared/NavPrimary';
+
+const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
+const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
 
 export const IdLookupContext = createContext({
   components: {},
@@ -74,6 +75,7 @@ function App() {
             <div className="container-fluid container-lg app-body">
               <div className="row">
                 <div className="col-12 col-lg-9 col-xl-10">
+                  <Suspense fallback={<p>Loading...</p>}>
                     <Switch>
                       <Route exact path="/">
                         <Redirect to="/components" />
@@ -81,6 +83,7 @@ function App() {
                       <Route path="/components" component={ComponentsRouter} />
                       <Route path="/code-standards" component={CodeStandardsRouter} />
                     </Switch>
+                  </Suspense>
                 </div>
               </div>
             </div>
