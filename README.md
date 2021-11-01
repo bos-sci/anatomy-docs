@@ -17,7 +17,14 @@ Detailed below is a brief map of the application detailing the important files a
 
 ## Contributing
 
-<p>TODO: Add contribution documnetation once finalized (in regards to variations etc.)
+### GraphQL
+You can build and test queries using GraphiQL at the following link.
+
+https://graphql.contentful.com/content/v1/spaces/{spaceID}/explore?access_token={accessToken}
+
+spaceID and accessToken can be found in your .env file or through the contentful dashboard.
+
+// TODO: Add contribution documnetation once finalized (in regards to variations etc.)
 
 ## Available Scripts
 
