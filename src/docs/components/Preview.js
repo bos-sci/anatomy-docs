@@ -16,6 +16,14 @@ const Preview = ( props ) => {
         </Suspense>
       );
 
+      /* case 'button':
+        const Button = lazy(() => import('./variations/buttons/default'));
+        return (
+          <Suspense fallback={<Fallback />}>
+            <Button>Default</Button>
+          </Suspense>
+        ); */
+
     case 'call-to-action':
       const CallToAction = lazy(() => import('./variations/CallToAction'));
       return (
