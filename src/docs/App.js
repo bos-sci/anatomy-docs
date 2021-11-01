@@ -62,7 +62,6 @@ function App() {
         })
       );
       setIdLookup(idMap);
-      console.log('setting idLookup');
     }
   }, [data.response]);
 

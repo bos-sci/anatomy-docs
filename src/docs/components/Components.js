@@ -61,18 +61,27 @@ const Components = (props) => {
           <>
             <PageHeader name={componentData.name} publishedAt={componentData.sys.publishedAt} />
             <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(marked(componentData.description))}} />
-            {componentData.variantsCollection && componentData.variantsCollection.items.map(variant => (
-              <div className="component-variant">
-                <h3>{variant.name}</h3>
-                <p>{variant.description}</p>
-                  <div className="demo-example">
-                  <Preview component={variant.name} />
+            {componentData.variantsCollection.items.length > 0 ? <>
+              <h2>Variants</h2>
+                { componentData.variantsCollection.items.map(variant => (
+                  <div key={variant.name} className="component-variant">
+                    <h3>{variant.name}</h3>
+                    <p>{variant.description}</p>
+                    <div className="demo-example">
+                      <Preview component={component} variant={variant.name} />
+                    </div>
+                  </div>
+                ))}
+              </> : (
+                <div className="demo-example">
+                  <Preview component={component} variant='Default' />
                 </div>
-              </div>
-            ))}
-            {componentData.accessibility &&
-              <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(marked(componentData.accessibility))}} />
+              )
             }
+            {componentData.accessibility && <>
+              <h2>Accessibility</h2>
+              <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(marked(componentData.accessibility))}} />
+            </>}
           </>
         }
       </main>
