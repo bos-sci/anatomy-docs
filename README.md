@@ -17,6 +17,14 @@ Detailed below is a brief map of the application detailing the important files a
 
 ## Contributing
 
+### Naming Convention
+
+**camelCase:** folders, non-component JS files, hooks
+
+**TitleCase:** components
+
+**kebab-case:** assets
+
 ### GraphQL
 You can build and test queries using GraphiQL at the following link.
 
