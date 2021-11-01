@@ -4,7 +4,7 @@ import DOMPurify from 'dompurify';
 import NavSecondary from '../shared/navSecondary/NavSecondary';
 import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
-import PageHeader from '../shared/PageHeader';
+import PageHeader from '../shared/pageHeader/PageHeader';
 
 const CodeStandards = (props) => {
   const codeStandard = props.match.params.codeStandard;

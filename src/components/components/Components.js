@@ -5,7 +5,7 @@ import Preview from './Preview';
 import NavSecondary from '../shared/navSecondary/NavSecondary';
 import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
-import PageHeader from '../shared/PageHeader';
+import PageHeader from '../shared/pageHeader/PageHeader';
 
 const Components = (props) => {
   const component = props.match.params.component;
