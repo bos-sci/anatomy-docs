@@ -4,6 +4,7 @@ import DOMPurify from 'dompurify';
 import NavSecondary from '../shared/navSecondary/NavSecondary';
 import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
+import PageHeader from '../shared/PageHeader';
 
 const CodeStandards = (props) => {
   const codeStandard = props.match.params.codeStandard;
@@ -47,7 +48,12 @@ const CodeStandards = (props) => {
     <div className="app-content">
       { navItems && <NavSecondary navItems={navItems} /> }
         <main>
-          {codeStandardData && <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(marked(codeStandardData.content))}} /> }
+          {codeStandardData && (
+            <>
+              <PageHeader name={codeStandardData.name} publishedAt={codeStandardData.sys.publishedAt} />
+              <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(marked(codeStandardData.content))}} />
+            </>
+          )}
         </main>
     </div>
   );

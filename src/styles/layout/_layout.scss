@@ -70,10 +70,11 @@ main
 .app-content
 {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 
-  .nav-secondary {
-    flex-basis: 100%;
+  .page-title
+  {
+    margin-top: 0;
   }
 }
 
@@ -109,7 +110,7 @@ footer
 
   .app-content
   {
-    display: flex;
+    flex-direction: row;
 
     .nav-secondary
     {

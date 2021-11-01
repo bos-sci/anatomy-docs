@@ -5,6 +5,7 @@ import Preview from './Preview';
 import NavSecondary from '../shared/navSecondary/NavSecondary';
 import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
+import PageHeader from '../shared/PageHeader';
 
 const Components = (props) => {
   const component = props.match.params.component;
@@ -45,15 +46,13 @@ const Components = (props) => {
 
   return (
     <div className="app-content">
+      <aside className="aside-nav">
       { navItems && <NavSecondary navItems={navItems} /> }
+      </aside>
       <main>
         { componentData &&
           <>
-            <h1>{componentData.name}</h1>
-            <dl>
-              <dt>Last Updated</dt>
-              <dd>{new Date(componentData.sys.publishedAt).toLocaleDateString()}</dd>
-            </dl>
+            <PageHeader name={componentData.name} publishedAt={componentData.sys.publishedAt} />
             <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(marked(componentData.description))}} />
           </>
         }
