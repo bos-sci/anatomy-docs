@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { slugify } from './helpers';
 import useContentful from '../hooks/useContentful';
-import NavPrimary from './shared/NavPrimary';
+import NavPrimary from './shared/navPrimary/NavPrimary';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
