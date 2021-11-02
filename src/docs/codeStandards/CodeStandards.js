@@ -1,10 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
-import marked from 'marked';
-import DOMPurify from 'dompurify';
 import NavSecondary from '../shared/navSecondary/NavSecondary';
 import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/pageHeader/PageHeader';
+import Markdown from '../shared/Markdown';
 
 const CodeStandards = (props) => {
   const codeStandard = props.match.params.codeStandard;
@@ -48,12 +47,10 @@ const CodeStandards = (props) => {
     <div className="app-content">
       { navItems && <NavSecondary navItems={navItems} /> }
         <main>
-          {codeStandardData && (
-            <>
-              <PageHeader name={codeStandardData.name} publishedAt={codeStandardData.sys.publishedAt} />
-              <div dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(marked(codeStandardData.content))}} />
-            </>
-          )}
+          {codeStandardData && <>
+            <PageHeader name={codeStandardData.name} publishedAt={codeStandardData.sys.publishedAt} />
+            <Markdown markdown={codeStandardData.content} />
+          </>}
         </main>
     </div>
   );
