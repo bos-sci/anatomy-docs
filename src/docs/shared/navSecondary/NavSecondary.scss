@@ -1,0 +1,81 @@
+@import "../../../styles/abstracts/abstracts";
+@import "../../../styles/base/base";
+
+.nav-secondary
+{
+  margin-bottom: space(3x);
+  z-index: 10;
+  overflow-x: auto;
+  background: #fff;
+  white-space: nowrap;
+  transition: width .25s ease-out;
+
+  .nav
+  {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 0;
+  }
+
+  .nav-item.nav-item
+  {
+    display: inline-flex;
+    margin-top: 0;
+  }
+
+  .nav-link
+  {
+    display: inline-flex;
+    align-items: center;
+    border-bottom: space(xs) solid $neutral-light;
+    padding: space(md) space(2x);
+    @include link-navigation;
+    text-align: center;
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
+
+    &.active
+    {
+      border-color: $border-color-accent;
+    }
+  }
+}
+
+
+@media (min-width: 992px)
+{
+  .nav-secondary
+  {
+    width: 18rem; // NOTE: this is a one-off size
+    height: 100%;
+    overflow-y: auto;
+    white-space: initial;
+
+    .nav
+    {
+      flex-direction: column;
+    }
+
+    .nav-item
+    {
+      display: block;
+    }
+
+    .nav-link
+    {
+      border-bottom: 0;
+      border-left: space(xs) solid $neutral-light;
+      padding: space(md) space(2x);
+      text-align: left;
+
+      &.active
+      {
+        border-color: $border-color-accent;
+      }
+    }
+  }
+
+}

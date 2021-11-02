@@ -1,0 +1,22 @@
+@import '/src/styles/base/space';
+
+.page-title
+{
+  margin-top: 0;
+}
+
+.page-publish-date
+{
+  margin-top: 0;
+
+  dt, dd
+  {
+    display: inline;
+  }
+
+  dd
+  {
+    margin-left: space(md);
+    margin-bottom: 0;
+  }
+}
