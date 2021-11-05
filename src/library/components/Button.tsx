@@ -1,4 +1,12 @@
-const Button = (props) => {
+import { ReactNode } from 'react';
+
+interface Props {
+  children: ReactNode;
+  variant?: string;
+  [key: string]: any;
+}
+
+const Button = (props: Props) => {
   const { variant, ...buttonAttrs } = props;
 
   let variantClass = '';

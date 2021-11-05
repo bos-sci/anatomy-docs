@@ -8,6 +8,8 @@ import {
 import { slugify } from './helpers';
 import useContentful from '../hooks/useContentful';
 import NavPrimary from './shared/navPrimary/NavPrimary';
+import { CodeStandardCollection, ComponentCollection } from '../types/contentful';
+import { IdLookup } from '../types/docs';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
@@ -17,8 +19,17 @@ export const IdLookupContext = createContext({
   codeStandards: {}
 });
 
+interface IData {
+  response?: {
+    codeStandardCollection: CodeStandardCollection;
+    componentCollection: ComponentCollection;
+  };
+  error?: unknown
+}
+
 function App() {
-  const [idLookup, setIdLookup] = useState(null);
+  const [idLookup, setIdLookup] = useState<IdLookup>({} as IdLookup);
+  const [isLookupReady, setIsLookupReady] = useState(false);
 
   const query = `
     {
@@ -41,27 +52,28 @@ function App() {
     }
   `;
 
-  const data = useContentful(query);
+  const data: IData = useContentful(query);
 
   useEffect(() => {
     if (data.response) {
-      const idMap = {
+      const idMap: IdLookup = {
         codeStandards: {},
         components: {}
       };
-      data.response.codeStandardCollection.items.forEach(item => (
-        idMap.codeStandards[slugify(item.name)] = {
-          id: item.sys.id,
-          name: item.name
+      data.response.codeStandardCollection.items.forEach((item) => (
+        idMap.codeStandards[slugify(item?.name as string)] = {
+          id: item?.sys.id as string,
+          name: item?.name as string
         })
       );
-      data.response.componentCollection.items.forEach(item => (
-        idMap.components[slugify(item.name)] = {
-          id: item.sys.id,
-          name: item.name
+      data.response.componentCollection.items.forEach((item) => (
+        idMap.components[slugify(item?.name as string)] = {
+          id: item?.sys.id as string,
+          name: item?.name as string
         })
       );
       setIdLookup(idMap);
+      setIsLookupReady(true);
     }
   }, [data.response]);
 
@@ -70,7 +82,7 @@ function App() {
       <div className="grid-container">
         <IdLookupContext.Provider value={idLookup}>
           <NavPrimary />
-          {idLookup &&
+          {isLookupReady &&
             <div className="container-fluid container-lg app-body">
               <div className="row">
                 <div className="col-12 col-lg-9 col-xl-10">
@@ -87,7 +99,6 @@ function App() {
               </div>
             </div>
           }
-          {!idLookup && <p>Loading...</p>}
         </IdLookupContext.Provider>
       </div>
     </Router>
