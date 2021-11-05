@@ -1,6 +1,11 @@
 import './PageHeader.scss';
 
-const PageHeader = (props) => {
+interface Props {
+  name: string;
+  publishedAt: string;
+}
+
+const PageHeader = (props: Props) => {
   return (
     <div className="page-header">
       <h1 className="page-title">{props.name}</h1>

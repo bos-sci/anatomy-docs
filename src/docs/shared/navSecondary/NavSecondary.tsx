@@ -1,7 +1,16 @@
 import { NavLink } from "react-router-dom"
 import "./NavSecondary.scss"
 
-const NavSecondary = ({ navItems }) => {
+export interface NavItem {
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  navItems: NavItem[];
+}
+
+const NavSecondary = ({ navItems }: Props) => {
   return (
     <nav className="nav-secondary">
       <ul className="nav">
@@ -20,7 +29,7 @@ const NavSecondary = ({ navItems }) => {
       })}
       </ul>
     </nav>
-  )
+  );
 }
 
-export default NavSecondary
+export default NavSecondary;
