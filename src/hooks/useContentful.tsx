@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 
-function useContentful(query, variables = {}) {
+function useContentful(query: string, variables?: {[key: string]: any}) {
 
-  const [response, setResponse] = useState(null);
-  const [error, setError] = useState(null);
-  const vars = Object.keys(variables).length !== 0 ? JSON.stringify(variables) : '';
+  const [response, setResponse] = useState(undefined);
+  const [error, setError] = useState(undefined);
+  let vars = '';
+  if (variables && Object.keys(variables).length !== 0) {
+    vars = JSON.stringify(variables);
+  }
 
   useEffect(() => {
     let endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}?access_token=${process.env.REACT_APP_CONTENTFUL_TOKEN}`
@@ -22,7 +25,7 @@ function useContentful(query, variables = {}) {
     const getData = async () => {
       if (sessionStorage.getItem(params)) {
         // Check for and pull data from session storage
-        setResponse(JSON.parse(sessionStorage.getItem(params)));
+        setResponse(JSON.parse(sessionStorage.getItem(params) || '{}'));
       } else {
         // If no data in session storage, fetch data and write to storage
         try {
@@ -30,7 +33,7 @@ function useContentful(query, variables = {}) {
           const data = await res.json();
           sessionStorage.setItem(params, JSON.stringify(data.data));
           setResponse(data.data);
-        } catch(e) {
+        } catch(e: any) {
           setError(e);
         }
       }
