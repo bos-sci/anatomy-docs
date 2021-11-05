@@ -10,15 +10,11 @@ interface Props {
 
 const Markdown = ({ markdown, headingOffset = 0, className }: Props) => {
   const [cleanMarkdown, setCleanMarkdown] = useState('');
-  const [isClean, setIsClean] = useState(false);
 
   useEffect(() => {
-    if (!isClean) {
-      const md = markdown.replaceAll(/^#+/gm, match => match.padEnd(match.length + headingOffset, '#'));
-      setCleanMarkdown(markdown ? DOMPurify.sanitize(marked(md)) : '');
-      setIsClean(true);
-    }
-  }, [markdown, headingOffset, isClean]);
+    const md = markdown.replaceAll(/^#+/gm, match => match.padEnd(match.length + headingOffset, '#'));
+    setCleanMarkdown(markdown ? DOMPurify.sanitize(marked(md)) : '');
+  }, [markdown, headingOffset]);
 
 
   if (markdown) {

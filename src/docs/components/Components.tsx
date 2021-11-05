@@ -87,7 +87,7 @@ const Components = (props: Props) => {
       </aside>
       <main>
         <PageHeader name={ componentData?.name || '' } publishedAt={ componentData?.sys?.publishedAt } />
-        <Markdown markdown={ componentData?.description || ''} />
+        { componentData.description && <Markdown markdown={ componentData.description} /> }
         {(componentData?.variantsCollection?.items && componentData.variantsCollection.items.length > 0) ? <>
           <h2>Variants</h2>
             { componentData.variantsCollection.items.map(variant => (
