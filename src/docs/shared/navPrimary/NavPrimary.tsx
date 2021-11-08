@@ -1,19 +1,24 @@
+import { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo-bsc-anatomy.svg";
 
 const NavPrimary = () => {
+
+  let [isNavOpen, setIsNavOpen] = useState(false);
+
   return (
     <header className="navbar navbar-expand-lg">
       <div className="container-fluid container-lg p-0">
         <img src={logo} className="navbar-brand" alt="Boston Scientific Design System"/>
         <button
           type="button"
-          className="navbar-toggler"
+          className={`navbar-toggler ${ !isNavOpen ? 'collapsed' : '' }`}
           data-bs-toggle="collapse"
           data-bs-target="#navPrimary"
           aria-controls="navPrimary"
-          aria-expanded="false"
+          aria-expanded={isNavOpen}
           aria-label="Toggle mega navigation"
+          onClick={() => setIsNavOpen(wasOpen => !wasOpen)}
         >
           <span aria-hidden="true" className="navbar-toggler-wrapper navbar-toggle-open-menu">
             Menu
@@ -28,7 +33,7 @@ const NavPrimary = () => {
             </svg>
           </span>
         </button>
-        <div className="collapse navbar-collapse justify-content-end" id="navPrimary">
+        <div className={`collapse navbar-collapse justify-content-end ${isNavOpen ? 'show' : ''}`} id="navPrimary">
           <nav className="navbar-nav-primary" aria-label="primary">
             <ul className="navbar-nav">
               <li className="nav-item">
