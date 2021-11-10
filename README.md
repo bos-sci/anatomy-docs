@@ -1,8 +1,13 @@
-# Getting Started with Create React App
+# Anatomy
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/61a5e8e4-0f4e-44c7-a2a2-1d9013d824e5/deploy-status)](https://app.netlify.com/sites/anatomydesignsystem/deploys)
+Anatomy is Boston Scientific's design system. It's goal is to create a unified look and feel accross Boston Scientific applications. It also promotes design and development best practices and accessibility standards.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Environments
+
+Name | Link | Status
+---|---|---
+Production | https://www.anatomydesignsystem.com | [![Netlify Status](https://api.netlify.com/api/v1/badges/61a5e8e4-0f4e-44c7-a2a2-1d9013d824e5/deploy-status)](https://app.netlify.com/sites/anatomydesignsystem/deploys)
+Develop | https://develop--anatomydesignsystem.netlify.app | N/A
 
 ## Contributing
 
@@ -52,8 +57,6 @@ https://graphql.contentful.com/content/v1/spaces/{spaceID}/explore?access_token=
 spaceID and accessToken can be found in your .env file or through the contentful dashboard.
 
 // TODO: Add contribution documnetation once finalized (in regards to variations etc.)
-
----
 
 ## Available Scripts
 
