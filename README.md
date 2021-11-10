@@ -56,8 +56,6 @@ https://graphql.contentful.com/content/v1/spaces/{spaceID}/explore?access_token=
 
 spaceID and accessToken can be found in your .env file or through the contentful dashboard.
 
-// TODO: Add contribution documnetation once finalized (in regards to variations etc.)
-
 ## Available Scripts
 
 In the project directory, you can run:
