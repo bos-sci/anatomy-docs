@@ -1,8 +1,12 @@
 # Getting Started with Create React App
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/61a5e8e4-0f4e-44c7-a2a2-1d9013d824e5/deploy-status)](https://app.netlify.com/sites/anatomydesignsystem/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Architecture
+## Contributing
+
+### Architecture
 Detailed below is a brief map of the application detailing the important files and folders.
 - **src/**
   - **assets/** Fonts & images
@@ -14,10 +18,25 @@ Detailed below is a brief map of the application detailing the important files a
       - **variations/** All the different implementations of component variations e.g. primary button and secondary button
   - **hooks/** Custom hooks
   - **styles/** Global stylesheets
-
-## Contributing
+### Process
+1. Ensure you have the latest from develop.
+2. Branch off of develop. See naming conventions below on how to name your branch.
+3. Reference Abstract for latest mockups then implement changes.
+4. Push your branch to origin and create a pull request (PR). See PR maming guidelines below.
+5. PR can only be merged after it has been reviewed and all tests pass.
 
 ### Naming Convention
+
+#### Git Naming
+
+##### Branches
+If the work is tied to a ticket, the branch should be named using the pattern feature/xdc-### or bug/xdc-###.
+In any case where the work doesnt have a ticket the ticket name can be replaced with a brief kebab-cased description.
+
+##### Pull Requests
+Pull requests should sart with the branch name, followed by a brief description of the work e.g. "feature/xcd-### Buttons".
+
+#### Filesystem Naming
 
 **camelCase:** folders, non-component JS files, hooks
 
@@ -33,6 +52,8 @@ https://graphql.contentful.com/content/v1/spaces/{spaceID}/explore?access_token=
 spaceID and accessToken can be found in your .env file or through the contentful dashboard.
 
 // TODO: Add contribution documnetation once finalized (in regards to variations etc.)
+
+---
 
 ## Available Scripts
 
@@ -60,6 +81,10 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run generate-types`
+
+Gets the typescript type interfaces from contentful to be used to properly type contentful data. This is run on start and buidl but can also be run manually.
 
 ### `npm run eject`
 
