@@ -67,7 +67,7 @@ const CodeStandards = (props:  Props) => {
     <div className="app-content">
       { navItems && <NavSecondary navItems={ navItems } /> }
         <main>
-          {codeStandardData && <>
+          {codeStandardData.sys && <>
             <PageHeader name={ codeStandardData.name || '' } publishedAt={ codeStandardData.sys.publishedAt } />
             <Markdown markdown={ codeStandardData.content || ''} />
           </>}
