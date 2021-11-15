@@ -10,6 +10,7 @@
 .btn
 {
   display: inline-flex;
+  align-items: center;
   border: 2px solid $action-primary-dark;
   border-radius: 0;
   padding: space(2x) space(3x);
