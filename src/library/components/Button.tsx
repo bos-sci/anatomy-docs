@@ -3,27 +3,32 @@ import { ReactNode } from 'react';
 interface Props {
   children: ReactNode;
   variant?: string;
+  icon?: boolean;
   [key: string]: any;
 }
 
 const Button = (props: Props) => {
-  const { variant, ...buttonAttrs } = props;
+  const { variant, icon, ...buttonAttrs } = props;
 
-  let variantClass = '';
+  let classes = '';
   switch (variant) {
     case 'assertive':
-      variantClass = 'ads-cta-assertive'
+      classes = 'ads-cta-assertive'
       break;
     case 'ghost':
-      variantClass = 'ads-cta-ghost'
+      classes = 'ads-cta-ghost'
       break;
     default:
-      variantClass = '';
+      classes = '';
       break;
   }
 
+  if (icon) {
+    classes += ' ads-cta-icon'
+  }
+
   return (
-    <button className={`ads-cta ${variantClass}`} {...buttonAttrs}>{props.children}</button>
+    <button className={`ads-cta ${classes}`} {...buttonAttrs}>{props.children}</button>
   );
 }
 

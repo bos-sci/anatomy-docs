@@ -638,6 +638,7 @@ export enum EntryOrder {
 }
 
 export enum ImageFormat {
+  Avif = 'AVIF',
   /** JPG image format. */
   Jpg = 'JPG',
   /**
