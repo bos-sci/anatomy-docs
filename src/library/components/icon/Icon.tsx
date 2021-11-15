@@ -29,6 +29,13 @@ const Icon = (props: Props) => {
           <IconPlus className={sizeClass + ' ' + props.className} />
         </Suspense>
       );
+    case 'chevronRight':
+      const IconChevronRight = lazy(() => import('../../icons/IconChevronRight'));
+      return (
+        <Suspense fallback={<Fallback />}>
+          <IconChevronRight className={sizeClass + ' ' + props.className} />
+        </Suspense>
+      );
 
     default:
       return <p>Failed to load icon</p>;
