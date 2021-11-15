@@ -1,3 +1,7 @@
+// TODO:
+// remove hardcoded english aria-label
+// add warning/error for href="#"
+
 interface Crumb {
   name: string;
   href: string;
@@ -14,7 +18,7 @@ const Breadcrumb = ({ crumbs, currentPage }: Props) => {
       <ol className="ads-breadcrumbs">
         {crumbs.map(crumb => (
           <li key={`crumb${crumb.name}`} className="ads-breadcrumb-item">
-            <a href={crumb.href}>{crumb.name}</a>
+            <a href={crumb.href} className="ads-breadcrumb-link">{crumb.name}</a>
           </li>
         ))}
         <li className="ads-breadcrumb-item ads-breadcrumb-item-active" aria-current="page">{currentPage}</li>
