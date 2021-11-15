@@ -7,10 +7,10 @@ const Default = () => {
   }
 
   return <>
-    <Button type="button" onClick={clickHandler}>Default Button</Button>
-    <Button type="button" disabled>Disabled Button</Button>
-    <Button type="button"><Icon name="plus" className="u-icon-left" />Icon Button</Button>
-    <Button type="button" icon={true}><Icon name="plus" /></Button>
+    <Button type="button" onClick={clickHandler}>Default button</Button>
+    <Button type="button" disabled>Disabled button</Button>
+    <Button type="button"><Icon name="plus" className="u-icon-left" />Icon on left</Button>
+    <Button type="button" icon="plus" aria-label="icon button" />
   </>;
 }
 

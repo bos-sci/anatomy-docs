@@ -3,10 +3,10 @@ import Icon from '../../../../library/components/icon/Icon';
 
 const Assertive = () => {
   return <>
-    <Button type="button" variant="assertive">Assertive Button</Button>
-    <Button type="button" variant="assertive" disabled>Disabled Button</Button>
-    <Button type="button" variant="assertive"><Icon name="plus" className="u-icon-left" /> Icon Button</Button>
-    <Button type="button" variant="assertive" icon={true}><Icon name="plus" /></Button>
+    <Button type="button" variant="assertive">Assertive button</Button>
+    <Button type="button" variant="assertive" disabled>Disabled button</Button>
+    <Button type="button" variant="assertive">Icon on right <Icon name="chevronRight" className="u-icon-right" size="lg" /></Button>
+    <Button type="button" variant="assertive" icon="plus" aria-label="icon button" />
   </>;
 }
 

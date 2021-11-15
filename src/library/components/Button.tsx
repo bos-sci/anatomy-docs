@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
+import Icon from './icon/Icon';
 
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
   variant?: string;
-  icon?: boolean;
+  icon?: string;
   [key: string]: any;
 }
 
@@ -18,18 +19,20 @@ const Button = (props: Props) => {
     case 'ghost':
       classes = 'ads-cta-ghost'
       break;
+    case 'subtle':
+      classes = 'ads-cta-subtle'
+      break;
     default:
       classes = '';
       break;
   }
 
   if (icon) {
-    classes += ' ads-cta-icon'
+    return <button className={`ads-cta ads-cta-icon ${classes}`}><Icon name={icon} /></button>
   }
 
-  return (
-    <button className={`ads-cta ${classes}`} {...buttonAttrs}>{props.children}</button>
-  );
+  return <button className={`ads-cta ${classes}`} {...buttonAttrs}>{props.children}</button>;
+
 }
 
 export default Button;

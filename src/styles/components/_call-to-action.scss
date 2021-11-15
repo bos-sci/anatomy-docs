@@ -1,8 +1,8 @@
 @mixin button-hover
 {
-  border-color: $action-primary-dark;
-  background: $action-primary-lighter;
-  color: $action-primary-dark;
+  border-color: transparent;
+  background: $action-primary-darker;
+  color: $neutral-lightest;
   text-decoration: none;
 }
 
@@ -29,18 +29,20 @@
       @include button-hover;
     }
 
-    &:active,
-    &.demo-active
-    {
-      border-color: transparent;
-      background: $action-primary-darker;
-      color: $neutral-lightest;
-    }
-
     &:focus,
     &.demo-focus
     {
       @include focus-default;
+    }
+
+    &:active,
+    &.demo-active
+    {
+      border-color: transparent;
+      outline: space(xs) solid $action-primary-darker;
+      outline-offset: space(xs);
+      background: $action-primary-darker;
+      color: $neutral-lightest;
     }
   }
 
@@ -50,6 +52,12 @@
     height: 3.1875rem;
     border-radius: 50%;
     padding: 0.75rem 1rem;
+  }
+
+  &.ads-cta-subtle
+  {
+    border-color: transparent;
+    background: transparent;
   }
 
   &.ads-cta-assertive,
@@ -99,15 +107,8 @@
       &:hover,
       &.demo-hover
       {
-        @include button-hover;
-      }
-
-      &:active,
-      &.demo-active
-      {
         border-color: $neutral-lightest;
-        background: $action-primary-darker;
-        color: $neutral-lightest;
+        background: rgba($neutral-lightest, 0.3);
       }
 
       &:focus,
@@ -115,6 +116,15 @@
       {
         @include focus-ghost;
       }
+
+      &:active,
+      &.demo-active
+      {
+        border-color: $neutral-lightest;
+        background: rgba($neutral-lightest, 0.3);
+        color: $neutral-lightest;
+      }
+
     }
 
     &[disabled]
