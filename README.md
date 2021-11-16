@@ -15,7 +15,7 @@ Develop | https://develop--anatomydesignsystem.netlify.app | N/A
 Detailed below is a brief map of the application detailing the important files and folders.
 - **src/**
   - **assets/** Fonts & images
-  - **components/** Where all the docs code lives. Sub folders break app into sections absed on the primary nav routes
+  - **components/** Where all the docs code lives. Sub folders break app into sections based on the primary nav routes
     - **App.js** Handles routing, base layout, and setting idMap context
     - **shared/** Components used multiple times throughout the application
     - **codeStandards/** Code Standards documentation
@@ -27,7 +27,7 @@ Detailed below is a brief map of the application detailing the important files a
 1. Ensure you have the latest from develop.
 2. Branch off of develop. See naming conventions below on how to name your branch.
 3. Reference Abstract for latest mockups then implement changes.
-4. Push your branch to origin and create a pull request (PR). See PR maming guidelines below.
+4. Push your branch to origin and create a pull request (PR). See PR naming guidelines below.
 5. PR can only be merged after it has been reviewed and all tests pass.
 
 ### Naming Convention
@@ -36,10 +36,10 @@ Detailed below is a brief map of the application detailing the important files a
 
 ##### Branches
 If the work is tied to a ticket, the branch should be named using the pattern feature/xdc-### or bug/xdc-###.
-In any case where the work doesnt have a ticket the ticket name can be replaced with a brief kebab-cased description.
+In any case where the work doesn't have a ticket, the ticket name can be replaced with a brief kebab-cased description.
 
 ##### Pull Requests
-Pull requests should sart with the branch name, followed by a brief description of the work e.g. "feature/xcd-### Buttons".
+Pull requests should start with the branch name, followed by a brief description of the work e.g. "feature/xcd-### Buttons".
 
 #### Filesystem Naming
 
@@ -50,7 +50,7 @@ Pull requests should sart with the branch name, followed by a brief description 
 **kebab-case:** assets
 
 ### GraphQL
-You can build and test queries using GraphiQL at the following link.
+You can build and test queries using GraphQL at the following link.
 
 https://graphql.contentful.com/content/v1/spaces/{spaceID}/explore?access_token={accessToken}
 
@@ -85,7 +85,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run generate-types`
 
-Gets the typescript type interfaces from contentful to be used to properly type contentful data. This is run on start and buidl but can also be run manually.
+Gets the typescript type interfaces from contentful to be used to properly type contentful data. This is run on start and build but can also be run manually.
 
 ### `npm run eject`
 
