@@ -33,9 +33,10 @@ const Components = (props: Props) => {
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
   let [componentData, setComponentData] = useState<Component>({} as Component);
 
+  const shouldGetPreview = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test';
   const query = `
     query ComponentData($id: String!) {
-      component(id: $id) {
+      component(id: $id, preview: ${shouldGetPreview}) {
         name
         description
         variantsCollection {

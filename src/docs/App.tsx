@@ -31,9 +31,10 @@ function App() {
   const [idLookup, setIdLookup] = useState<IdLookup>({} as IdLookup);
   const [isLookupReady, setIsLookupReady] = useState(false);
 
+  const shouldGetPreview = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test';
   const query = `
     {
-      codeStandardCollection {
+      codeStandardCollection(, preview: ${shouldGetPreview}) {
         items {
           name
           sys {
@@ -41,7 +42,7 @@ function App() {
           }
         }
       }
-      componentCollection(order: name_ASC) {
+      componentCollection(order: name_ASC, preview: ${shouldGetPreview}) {
         items {
           name
           sys {
