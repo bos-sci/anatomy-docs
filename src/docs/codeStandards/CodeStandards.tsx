@@ -32,10 +32,9 @@ const CodeStandards = (props:  Props) => {
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
-  const shouldGetPreview = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test';
   const query = `
     query CodeStandardData($id: String!) {
-      codeStandard(id: $id, preview: ${shouldGetPreview}) {
+      codeStandard(id: $id, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
         name
         content
         sys {
