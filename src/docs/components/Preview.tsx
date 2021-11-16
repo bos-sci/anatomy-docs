@@ -64,6 +64,36 @@ const Preview = ( props: Props ) => {
       }
       break;
 
+      case 'link':
+        switch (props.variant) {
+          case 'Ghost':
+            const Ghost = lazy(() => import('./variations/links/Ghost'));
+            RenderedComponent = (
+              <Suspense fallback={<Fallback />}>
+                <Ghost />
+              </Suspense>
+            );
+            break;
+  
+          case 'Subtle':
+            const Subtle = lazy(() => import('./variations/links/Subtle'));
+            RenderedComponent = (
+              <Suspense fallback={<Fallback />}>
+                <Subtle />
+              </Suspense>
+            );
+            break;
+  
+          default:
+            const Default = lazy(() => import('./variations/links/Default'));
+            RenderedComponent = (
+              <Suspense fallback={<Fallback />}>
+                <Default />
+              </Suspense>
+            );
+        }
+        break;
+
     default:
       RenderedComponent = <p>Failed to load component!</p>;
   }
