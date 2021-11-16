@@ -34,7 +34,7 @@ const CodeStandards = (props:  Props) => {
 
   const query = `
     query CodeStandardData($id: String!) {
-      codeStandard(id: $id) {
+      codeStandard(id: $id, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
         name
         content
         sys {

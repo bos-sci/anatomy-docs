@@ -35,7 +35,7 @@ const Components = (props: Props) => {
 
   const query = `
     query ComponentData($id: String!) {
-      component(id: $id) {
+      component(id: $id, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
         name
         description
         variantsCollection {
