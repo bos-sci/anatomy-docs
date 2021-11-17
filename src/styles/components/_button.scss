@@ -1,0 +1,24 @@
+.ads-button
+{
+  @include button-default;
+}
+
+.ads-button-assertive
+{
+  @include button-assertive;
+}
+
+.ads-button-subtle
+{
+  @include button-subtle;
+}
+
+.ads-button-ghost
+{
+  @include button-ghost;
+}
+
+.ads-button-icon
+{
+  @include button-icon;
+}
