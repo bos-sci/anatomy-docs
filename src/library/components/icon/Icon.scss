@@ -1,0 +1,45 @@
+@import '../../../styles/base/space';
+
+// TODO:
+// validate fixed/responsive icon sizes that we'll need to support
+// can we write something that will set the icon width to the parent's responsive/fixed font size?
+
+.ads-icon-base // use for icon-only buttons
+{
+  width: 1rem;
+
+  @media (min-width: 992px)
+  {
+    width: 1.125rem;
+  }
+}
+
+.ads-icon-sm
+{
+  width: space(sm);
+}
+
+.ads-icon-md
+{
+  width: space(md);
+}
+
+.ads-icon-lg
+{
+  width: space(lg);
+}
+
+.ads-icon-2x // use for buttons with text + icon
+{
+  width: space(2x);
+}
+
+.ads-icon-3x
+{
+  width: space(3x);
+}
+
+.ads-icon-4x
+{
+  width: space(4x);
+}

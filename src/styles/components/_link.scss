@@ -1,0 +1,14 @@
+.ads-link
+{
+  @include link-default;
+}
+
+.ads-link-subtle
+{
+  @include link-subtle;
+}
+
+.ads-link-ghost
+{
+  @include link-ghost;
+}

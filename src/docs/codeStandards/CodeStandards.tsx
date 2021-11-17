@@ -34,7 +34,7 @@ const CodeStandards = (props:  Props) => {
 
   const query = `
     query CodeStandardData($id: String!) {
-      codeStandard(id: $id) {
+      codeStandard(id: $id, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
         name
         content
         sys {
@@ -67,7 +67,7 @@ const CodeStandards = (props:  Props) => {
     <div className="app-content">
       { navItems && <NavSecondary navItems={ navItems } /> }
         <main>
-          {codeStandardData && <>
+          {codeStandardData.sys && <>
             <PageHeader name={ codeStandardData.name || '' } publishedAt={ codeStandardData.sys.publishedAt } />
             <Markdown markdown={ codeStandardData.content || ''} />
           </>}

@@ -1,30 +1,38 @@
 import { ReactNode } from 'react';
+import Icon from './icon/Icon';
 
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
   variant?: string;
+  icon?: string;
   [key: string]: any;
 }
 
 const Button = (props: Props) => {
-  const { variant, ...buttonAttrs } = props;
+  const { variant, icon, ...buttonAttrs } = props;
 
-  let variantClass = '';
+  let classes = '';
   switch (variant) {
     case 'assertive':
-      variantClass = 'ads-cta-assertive'
+      classes = 'ads-button-assertive'
       break;
     case 'ghost':
-      variantClass = 'ads-cta-ghost'
+      classes = 'ads-button-ghost'
+      break;
+    case 'subtle':
+      classes = 'ads-button-subtle'
       break;
     default:
-      variantClass = '';
+      classes = 'ads-button';
       break;
   }
 
-  return (
-    <button className={`ads-cta ${variantClass}`} {...buttonAttrs}>{props.children}</button>
-  );
+  if (icon) {
+    return <button className={`ads-button-icon ${classes}`} {...buttonAttrs}><Icon name={icon} /></button>
+  }
+
+  return <button className={`${classes}`} {...buttonAttrs}>{props.children}</button>;
+
 }
 
 export default Button;

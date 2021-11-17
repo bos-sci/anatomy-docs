@@ -33,7 +33,7 @@ function App() {
 
   const query = `
     {
-      codeStandardCollection {
+      codeStandardCollection(, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
         items {
           name
           sys {
@@ -41,7 +41,7 @@ function App() {
           }
         }
       }
-      componentCollection(order: name_ASC) {
+      componentCollection(order: name_ASC, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
         items {
           name
           sys {
