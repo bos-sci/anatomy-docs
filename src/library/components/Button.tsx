@@ -14,24 +14,24 @@ const Button = (props: Props) => {
   let classes = '';
   switch (variant) {
     case 'assertive':
-      classes = 'ads-cta-assertive'
+      classes = 'ads-button-assertive'
       break;
     case 'ghost':
-      classes = 'ads-cta-ghost'
+      classes = 'ads-button-ghost'
       break;
     case 'subtle':
-      classes = 'ads-cta-subtle'
+      classes = 'ads-button-subtle'
       break;
     default:
-      classes = '';
+      classes = 'ads-button';
       break;
   }
 
   if (icon) {
-    return <button className={`ads-cta ads-cta-icon ${classes}`}><Icon name={icon} /></button>
+    return <button className={`ads-button-icon ${classes}`} {...buttonAttrs}><Icon name={icon} /></button>
   }
 
-  return <button className={`ads-cta ${classes}`} {...buttonAttrs}>{props.children}</button>;
+  return <button className={`${classes}`} {...buttonAttrs}>{props.children}</button>;
 
 }
 
