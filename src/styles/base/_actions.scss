@@ -274,6 +274,11 @@ button
     text-decoration: underline;
   }
 
+  &:visited
+  {
+    color: $neutral-darkest;
+  }
+
   &.active
   {
     font-family: $font-family-base-heavy;
