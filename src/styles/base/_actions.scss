@@ -1,8 +1,6 @@
 // TODO:
-// map a to link-default
 // figure out text wrapping (center default, left with icon + text or text + icon)
-// figure out responsive padding for text buttons vs icon-only buttons
-// do we want to wrap button text in a span to help with visual vertical alignment and text wrapping?
+//// do we want to wrap button text in a span to help with this?
 // figure out button-links and link-buttons
 //// do we want to write special code for a.ads-button and button.ads-link so we're not loading link resets on buttons, etc.
 //// do we want to pull apart link-button vs button-link specific styles, e.g.: :visited in button-default
@@ -65,8 +63,9 @@
   border-width: space(xs);
   border-style: solid;
   border-radius: 0;
-  padding: space(lg) space(3x); // TODO: figure out responsive padding
+  padding: space(lg) space(3x) 0.6875rem; // NOTE: this is a one-off size because space(lg) - space(xxs) was rounding up
   font-family: $font-family-base-heavy;
+  font-size: $ffs-body-assertive;
 
   @include button-hover;
   @include button-active;
@@ -157,7 +156,7 @@
 @mixin button-icon
 {
   border-radius: 50%;
-  padding: space(2x); // TODO: figure out responsive padding
+  padding: space(2x) + space(xxs);
 }
 
 //
