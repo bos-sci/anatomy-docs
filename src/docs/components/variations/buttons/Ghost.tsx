@@ -3,7 +3,7 @@ import Button from '../../../../library/components/Button';
 const Ghost = () => {
   return <>
     <Button variant="ghost" type="button">Default button</Button>
-    <Button variant="ghots" type="button" disabled>Disabled button</Button>
+    <Button variant="ghost" type="button" disabled>Disabled button</Button>
     <Button variant="ghost" type="button" icon="plus">
       Icon left
     </Button>
