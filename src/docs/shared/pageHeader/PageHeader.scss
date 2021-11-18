@@ -1,3 +1,4 @@
+@import '/src/styles/abstracts/vars-type';
 @import '/src/styles/base/space';
 
 .page-title
@@ -12,6 +13,7 @@
   dt, dd
   {
     display: inline;
+    font-weight: $font-weight-regular; // TODO: delete this when we rip out bootstrap
   }
 
   dd
