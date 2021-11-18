@@ -1,8 +1,6 @@
 // TODO:
-// map a to link-default
 // figure out text wrapping (center default, left with icon + text or text + icon)
-// figure out responsive padding for text buttons vs icon-only buttons
-// do we want to wrap button text in a span to help with visual vertical alignment and text wrapping?
+//// do we want to wrap button text in a span to help with this?
 // figure out button-links and link-buttons
 //// do we want to write special code for a.ads-button and button.ads-link so we're not loading link resets on buttons, etc.
 //// do we want to pull apart link-button vs button-link specific styles, e.g.: :visited in button-default
@@ -66,8 +64,9 @@
   border-width: space(xs);
   border-style: solid;
   border-radius: 0;
-  padding: space(lg) space(3x); // TODO: figure out responsive padding
+  padding: space(lg) space(3x) 0.6875rem; // NOTE: this is a one-off size because space(lg) - space(xxs) was rounding up
   font-family: $font-family-base-heavy;
+  font-size: $ffs-body-assertive;
   text-align: center;
 
   .ads-button-text
@@ -165,7 +164,7 @@
 @mixin button-icon
 {
   border-radius: 50%;
-  padding: space(2x); // TODO: figure out responsive padding
+  padding: space(2x) + space(xxs);
 }
 
 //
@@ -183,9 +182,12 @@ button
 
 @mixin link-default
 {
-  color: $action-primary-dark;
-  font-family: $font-family-base-heavy;
-  text-decoration: underline;
+  &:link
+  {
+    color: $action-primary-dark;
+    font-family: $font-family-base-heavy;
+    text-decoration: underline;
+  }
 
   &:hover
   {
@@ -211,9 +213,12 @@ button
 
 @mixin link-subtle
 {
-  color: $neutral-darkest;
-  font-family: $font-family-base-heavy;
-  text-decoration: underline;
+  &:link
+  {
+    color: $neutral-darkest;
+    font-family: $font-family-base-heavy;
+    text-decoration: underline;
+  }
 
   &:hover
   {
@@ -239,9 +244,12 @@ button
 
 @mixin link-ghost
 {
-  color: $neutral-lightest;
-  font-family: $font-family-base-heavy;
-  text-decoration: underline;
+  &:link
+  {
+    color: $neutral-lightest;
+    font-family: $font-family-base-heavy;
+    text-decoration: underline;
+  }
 
   &:hover
   {
@@ -267,8 +275,12 @@ button
 
 @mixin link-navigation
 {
-  font-family: $font-family-base-regular;
-  color: $neutral-darkest;
+  &:link
+  {
+    font-family: $font-family-base-regular;
+    color: $neutral-darkest;
+    text-decoration: none;
+  }
 
   &:hover
   {
@@ -280,6 +292,11 @@ button
   {
     color: $neutral-darkest;
     text-decoration: underline;
+  }
+
+  &:visited
+  {
+    color: $neutral-darkest;
   }
 
   &.active
@@ -292,32 +309,7 @@ button
 // Default Link Styles
 //
 
-// TODO: test what happens if we map this to link-default
 a
 {
-  color: $action-primary-dark;
-  font-family: $font-family-base-heavy;
-  text-decoration: none;
-
-  &:hover
-  {
-    color: $action-primary-dark;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  &:active
-  {
-    color: $action-primary-darker;
-  }
-
-  &:focus
-  {
-    @include focus-default;
-  }
-
-  &:visited
-  {
-    color: $accent-plum-30;
-  }
+  @include link-default;
 }
