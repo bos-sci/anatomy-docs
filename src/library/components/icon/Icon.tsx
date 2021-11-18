@@ -1,5 +1,4 @@
-// TODO:
-// figure out why ads-icon-2x svgs also getting undefined
+// TODO: figure out why ads-icon-2x svgs also getting undefined
 
 import { lazy, Suspense } from 'react';
 
@@ -23,7 +22,7 @@ const Fallback = () => {
 
 const Icon = (props: Props) => {
 
-  const sizeClass = `ads-icon-${props.size ? props.size : 'base'}`;
+  const sizeClass = `ads-icon-${props.size ? props.size : '2x'}`;
 
   switch (props.name) {
     case 'plus':
