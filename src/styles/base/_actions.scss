@@ -62,11 +62,19 @@
 {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   border-width: space(xs);
   border-style: solid;
   border-radius: 0;
   padding: space(lg) space(3x); // TODO: figure out responsive padding
   font-family: $font-family-base-heavy;
+  text-align: center;
+
+  .ads-button-text
+  {
+    flex: 1;
+    text-align: left;
+  }
 
   @include button-hover;
   @include button-active;
