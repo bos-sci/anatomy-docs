@@ -1,7 +1,3 @@
-// TODO:
-// figure out text wrapping (center default, left with icon + text or text + icon)
-//// do we want to wrap button text in a span to help with this?
-
 // NOTE: if we update button/link mixins, we'll also need to modify button-link and link-button overrides in _button.scss and _link.scss
 
 @mixin button-hover
@@ -58,12 +54,21 @@
 {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   border-width: space(xs);
   border-style: solid;
   border-radius: 0;
   padding: space(lg) space(3x) 0.6875rem; // NOTE: this is a one-off size because space(lg) - space(xxs) was rounding up
   font-family: $font-family-base-heavy;
   font-size: $ffs-body-assertive;
+  text-align: center;
+
+  .ads-button-text
+  {
+    flex: 1;
+    text-align: left;
+  }
+
   @include button-hover;
   @include button-active;
 }
