@@ -1,5 +1,4 @@
 import Button from '../../../../library/components/Button';
-import Icon from '../../../../library/components/icon/Icon';
 
 const Default = () => {
 

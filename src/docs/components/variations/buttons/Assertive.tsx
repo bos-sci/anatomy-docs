@@ -1,8 +1,4 @@
-// TODO:
-// do we want to wrap button text in a span to help with text wrapping for text+icon buttons and icon sizing on icon-only buttons?
-
 import Button from '../../../../library/components/Button';
-import Icon from '../../../../library/components/icon/Icon';
 
 const Assertive = () => {
   return <>
