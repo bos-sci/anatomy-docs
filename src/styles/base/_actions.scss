@@ -1,10 +1,5 @@
 // TODO:
-// map a to link-default
-// figure out responsive padding for text buttons vs icon-only buttons
-// figure out button-links and link-buttons
-//// do we want to write special code for a.ads-button and button.ads-link so we're not loading link resets on buttons, etc.
-//// do we want to pull apart link-button vs button-link specific styles, e.g.: :visited in button-default
-//// test button-links and link-buttons
+// NOTE: if we update button/link mixins, we'll also need to modify button-link and link-button overrides in _button.scss and _link.scss
 
 @mixin button-hover
 {
@@ -86,14 +81,7 @@
   background: $neutral-lightest;
   color: $action-primary-dark;
   font-family: $font-family-base-heavy;
-
   @include button-focus;
-
-  &:visited
-  {
-    color: $action-primary-dark;
-  }
-
   @include button-disabled;
 }
 
@@ -102,7 +90,6 @@
   @include button-default;
   border-color: transparent;
   background: transparent;
-
   @include button-focus;
   @include button-disabled;
 }
@@ -113,14 +100,7 @@
   border-color: transparent;
   background: $action-primary-dark;
   color: $neutral-lightest;
-
   @include button-focus;
-
-  &:visited
-  {
-    color: $neutral-lightest;
-  }
-
   @include button-disabled;
 }
 
@@ -144,11 +124,6 @@
     {
       @include focus-ghost;
     }
-  }
-
-  &:visited
-  {
-    color: $neutral-lightest;
   }
 
   &[disabled]
@@ -182,12 +157,9 @@ button
 
 @mixin link-default
 {
-  &:link
-  {
-    color: $action-primary-dark;
-    font-family: $font-family-base-heavy;
-    text-decoration: underline;
-  }
+  color: $action-primary-dark;
+  font-family: $font-family-base-heavy;
+  text-decoration: underline;
 
   &:hover
   {
@@ -213,12 +185,9 @@ button
 
 @mixin link-subtle
 {
-  &:link
-  {
-    color: $neutral-darkest;
-    font-family: $font-family-base-heavy;
-    text-decoration: underline;
-  }
+  color: $neutral-darkest;
+  font-family: $font-family-base-heavy;
+  text-decoration: underline;
 
   &:hover
   {
@@ -244,12 +213,9 @@ button
 
 @mixin link-ghost
 {
-  &:link
-  {
-    color: $neutral-lightest;
-    font-family: $font-family-base-heavy;
-    text-decoration: underline;
-  }
+  color: $neutral-lightest;
+  font-family: $font-family-base-heavy;
+  text-decoration: underline;
 
   &:hover
   {
@@ -275,12 +241,9 @@ button
 
 @mixin link-navigation
 {
-  &:link
-  {
-    font-family: $font-family-base-regular;
-    color: $neutral-darkest;
-    text-decoration: none;
-  }
+  font-family: $font-family-base-regular;
+  color: $neutral-darkest;
+  text-decoration: none;
 
   &:hover
   {
