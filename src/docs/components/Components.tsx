@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import Preview from './Preview';
+import Preview from './variations/Preview';
 import NavSecondary, { NavItem } from '../shared/navSecondary/NavSecondary';
 import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
