@@ -160,6 +160,11 @@ button
   font-family: $font-family-base-heavy;
   text-decoration: underline;
 
+  &:visited
+  {
+    color: $accent-plum-30;
+  }
+
   &:hover
   {
     color: $neutral-darkest;
@@ -174,11 +179,6 @@ button
   &:focus
   {
     @include focus-default;
-  }
-
-  &:visited
-  {
-    color: $accent-plum-30;
   }
 }
 
@@ -188,6 +188,11 @@ button
   font-family: $font-family-base-heavy;
   text-decoration: underline;
 
+  &:visited
+  {
+    color: $accent-plum-30;
+  }
+
   &:hover
   {
     color: $action-primary-dark;
@@ -203,11 +208,6 @@ button
   {
     @include focus-default;
   }
-
-  &:visited
-  {
-    color: $accent-plum-30;
-  }
 }
 
 @mixin link-ghost
@@ -215,6 +215,11 @@ button
   color: $neutral-lightest;
   font-family: $font-family-base-heavy;
   text-decoration: underline;
+
+  &:visited
+  {
+    color: $neutral-light;
+  }
 
   &:hover
   {
@@ -231,11 +236,6 @@ button
   {
     @include focus-ghost;
   }
-
-  &:visited
-  {
-    color: $neutral-light;
-  }
 }
 
 @mixin link-navigation
@@ -243,6 +243,11 @@ button
   font-family: $font-family-base-regular;
   color: $neutral-darkest;
   text-decoration: none;
+
+  &:visited
+  {
+    color: $neutral-darkest;
+  }
 
   &:hover
   {
@@ -254,11 +259,6 @@ button
   {
     color: $neutral-darkest;
     text-decoration: underline;
-  }
-
-  &:visited
-  {
-    color: $neutral-darkest;
   }
 
   &.active
