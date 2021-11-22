@@ -1,0 +1,67 @@
+.ads-input-text
+{
+  width: 100%;
+}
+
+.ads-input-text-input
+{
+  margin-top: space(sm);
+  border: space(xxs) solid $neutral-dark;
+  padding: space(lg) space(2x);
+  width: 100%;
+
+  &:not(:disabled):not(:read-only)
+  {
+    &:hover,
+    &:focus
+    {
+      border-color: $action-primary-dark;
+    }
+  }
+
+  &:focus
+  {
+    @include focus-default;
+  }
+
+  &::placeholder
+  {
+    color: $neutral-dark;
+  }
+
+  &:disabled
+  {
+    border-color: $neutral-light;
+  }
+
+  &:read-only
+  {
+    &:focus
+    {
+      @include focus-disabled;
+    }
+  }
+
+  &:disabled,
+  &:read-only
+  {
+    background: $neutral-lighter;
+
+    &:hover
+    {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.ads-input-text-label
+{
+  margin-bottom: space(sm);
+}
+
+.ads-input-text-helpText
+{
+  margin: space(sm) 0 0 0;
+  @include font-size($fs-body-subtle);
+  color: $neutral-dark;
+}

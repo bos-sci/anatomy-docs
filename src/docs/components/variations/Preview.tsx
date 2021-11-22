@@ -33,6 +33,15 @@ const Preview = ( props: Props ) => {
       );
       break;
 
+    case 'text-input':
+      const InputTextVariants = lazy(() => import('./inputTexts/InputTextVariants'));
+      RenderedComponent = (
+        <Suspense fallback={<Fallback />}>
+          <InputTextVariants variant={props.variant} />
+        </Suspense>
+      );
+      break;
+
       case 'link':
         const LinkVariants = lazy(() => import('./links/LinkVariants'));
         RenderedComponent = (
