@@ -86,15 +86,15 @@ const Components = (props: Props) => {
       <NavSecondary navItems={ navItems } />
       </aside>
       <main>
-        <PageHeader name={ componentData?.name || '' } publishedAt={ componentData?.sys?.publishedAt } />
+        <PageHeader name={ componentData?.name as string } publishedAt={ componentData?.sys?.publishedAt } />
         { componentData.description && <Markdown markdown={ componentData.description} /> }
         {(componentData?.variantsCollection?.items && componentData.variantsCollection.items.length > 0) ? <>
           <h2>Variants</h2>
             { componentData.variantsCollection.items.map(variant => (
               <div key={ variant?.name } className="component-variant">
                 <h3>{ variant?.name }</h3>
-                <p>{ variant?.description }</p>
-                <Preview component={ component } variant={ variant?.name || '' } isDarkTheme={ variant?.isPreviewDarkThemed || false } />
+                <Markdown markdown={variant?.description || ''} />
+                <Preview component={ component } variant={ variant?.name as string } isDarkTheme={ variant?.isPreviewDarkThemed || false } />
               </div>
             ))}
           </> : <Preview component={ component } variant='Default' />
