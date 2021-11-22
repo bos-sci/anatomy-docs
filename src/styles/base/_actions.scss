@@ -168,12 +168,14 @@ button
   &:hover
   {
     color: $neutral-darkest;
+    text-decoration-thickness: space(xs);
     cursor: pointer;
   }
 
   &:active
   {
     color: $neutral-darkest;
+    text-decoration-thickness: space(xs);
   }
 
   &:focus
@@ -196,12 +198,14 @@ button
   &:hover
   {
     color: $action-primary-dark;
+    text-decoration-thickness: space(xs);
     cursor: pointer;
   }
 
   &:active
   {
     color: $action-primary-dark;
+    text-decoration-thickness: space(xs);
   }
 
   &:focus
@@ -225,11 +229,13 @@ button
   {
     color: $neutral;
     cursor: pointer;
+    text-decoration-thickness: space(xs);
   }
 
   &:active
   {
     color: $neutral;
+    text-decoration-thickness: space(xs);
   }
 
   &:focus
