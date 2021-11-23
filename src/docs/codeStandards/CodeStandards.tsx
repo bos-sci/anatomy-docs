@@ -10,7 +10,7 @@ import { IdLookup } from '../../types/docs';
 
 interface ComponentMatch extends match {
   params: {
-    codeStandard: string;
+    standardName: string;
   }
 }
 
@@ -26,7 +26,7 @@ interface ContentfulData {
 }
 
 const CodeStandards = (props:  Props) => {
-  const codeStandard = props.match.params.codeStandard;
+  const standardName = props.match.params.standardName;
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
   let [codeStandardData, setCodeStandardData] = useState<CodeStandard>({} as CodeStandard);
 
@@ -45,7 +45,7 @@ const CodeStandards = (props:  Props) => {
     }`;
 
   const queryVariables = {
-    id: idLookup.codeStandards[codeStandard].id
+    id: idLookup.codeStandards[standardName].id
   };
 
   const data: ContentfulData = useContentful(query, queryVariables);
@@ -56,10 +56,41 @@ const CodeStandards = (props:  Props) => {
       setCodeStandardData(data.response.codeStandard);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
-    const navItems = Object.keys(idLookup.codeStandards).map(entry => ({
+    /* const navItems = Object.keys(idLookup.codeStandards).map(entry => ({
       text: idLookup.codeStandards[entry].name,
       slug: basePath + '/' + entry
-    }));
+    })); */
+    const pathPrefix = basePath + '/';
+    const navItems = [
+      {
+        text: 'General',
+        slug: pathPrefix + 'general'
+      },
+      {
+        text: 'Accessibility',
+        slug: pathPrefix + 'accessibility'
+      },
+      {
+        text: 'HTML',
+        slug: pathPrefix + 'html'
+      },
+      {
+        text: 'CSS',
+        slug: pathPrefix + 'css'
+      },
+      {
+        text: 'Javascript',
+        slug: pathPrefix + 'javascript'
+      },
+      {
+        text: 'DevOps',
+        slug: pathPrefix + 'devops'
+      },
+      {
+        text: 'Automated code quality tools',
+        slug: pathPrefix + 'automated-code-quality-tools'
+      },
+    ];
     setNavItems(navItems);
   }, [data.response, idLookup, props.match.path]);
 

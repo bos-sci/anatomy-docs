@@ -39,6 +39,11 @@ const NavPrimary = () => {
           <nav className="navbar-nav-primary" aria-label="primary">
             <ul className="navbar-nav">
               <li className="nav-item">
+                <NavLink to='/content-guidelines' className="nav-link" activeClassName="active">
+                  Content Guidelines
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink to='/components' className="nav-link" activeClassName="active">
                   Components
                 </NavLink>

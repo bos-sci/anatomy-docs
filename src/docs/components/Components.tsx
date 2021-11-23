@@ -12,7 +12,7 @@ import './Components.scss';
 
 interface ComponentMatch extends match {
   params: {
-    component: string;
+    componentName: string;
   }
 }
 
@@ -28,7 +28,7 @@ interface ContentfulData {
 }
 
 const Components = (props: Props) => {
-  const component = props.match.params.component;
+  const componentName = props.match.params.componentName;
   const idLookup: IdLookup = useContext(IdLookupContext);
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
   let [componentData, setComponentData] = useState<Component>({} as Component);
@@ -62,7 +62,7 @@ const Components = (props: Props) => {
     }`;
 
   const queryVariables = {
-    id: idLookup.components[component].id
+    id: idLookup.components[componentName].id
   };
 
   const data: ContentfulData = useContentful(query, queryVariables);
@@ -82,9 +82,7 @@ const Components = (props: Props) => {
 
   return (
     <div className="app-content">
-      <aside className="aside-nav">
       <NavSecondary navItems={ navItems } />
-      </aside>
       <main>
         <PageHeader name={ componentData?.name as string } publishedAt={ componentData?.sys?.publishedAt } />
         { componentData.description && <Markdown markdown={ componentData.description} /> }
@@ -94,10 +92,10 @@ const Components = (props: Props) => {
               <div key={ variant?.name } className="component-variant">
                 <h3>{ variant?.name }</h3>
                 <Markdown markdown={variant?.description || ''} />
-                <Preview component={ component } variant={ variant?.name as string } isDarkTheme={ variant?.isPreviewDarkThemed || false } />
+                <Preview component={ componentName } variant={ variant?.name as string } isDarkTheme={ variant?.isPreviewDarkThemed || false } />
               </div>
             ))}
-          </> : <Preview component={ component } variant='Default' />
+          </> : <Preview component={ componentName } variant='Default' />
         }
         {(componentData.usage
           || componentData.usageDo

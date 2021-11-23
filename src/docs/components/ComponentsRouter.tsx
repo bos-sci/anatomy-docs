@@ -9,7 +9,7 @@ const ComponentsRouter = () => {
       <Route exact path={path}>
         <Redirect to={`${path}/breadcrumbs`} />
       </Route>
-      <Route path={`${path}/:component`} component={Components} />
+      <Route path={`${path}/:componentName`} component={Components} />
     </Switch>
   );
 }
