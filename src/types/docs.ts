@@ -6,6 +6,7 @@ interface IdLookupEntry {
 }
 
 export interface IdLookup {
-  components: IdLookupEntry;
+  contentGuidelines: IdLookupEntry;
   codeStandards: IdLookupEntry;
+  components: IdLookupEntry;
 }

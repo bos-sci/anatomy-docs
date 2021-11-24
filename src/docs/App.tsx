@@ -8,19 +8,22 @@ import {
 import { slugify } from './helpers';
 import useContentful from '../hooks/useContentful';
 import NavPrimary from './shared/navPrimary/NavPrimary';
-import { CodeStandardCollection, ComponentCollection } from '../types/contentful';
+import { CodeStandardCollection, ComponentCollection, ContentGuidelineCollection } from '../types/contentful';
 import { IdLookup } from '../types/docs';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
+const ContentGuidelinesRouter = lazy(() => import('./contentGuidelines/ContentGuidelinesRouter'));
 
 export const IdLookupContext = createContext({
+  contentGuidelines: {},
   components: {},
   codeStandards: {}
 });
 
 interface IData {
   response?: {
+    contentGuidelineCollection: ContentGuidelineCollection;
     codeStandardCollection: CodeStandardCollection;
     componentCollection: ComponentCollection;
   };
@@ -33,7 +36,15 @@ function App() {
 
   const query = `
     {
-      codeStandardCollection(, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
+      contentGuidelineCollection(order: name_ASC, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
+        items {
+          name
+          sys {
+            id
+          }
+        }
+      }
+      codeStandardCollection(preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
         items {
           name
           sys {
@@ -57,9 +68,16 @@ function App() {
   useEffect(() => {
     if (data.response) {
       const idMap: IdLookup = {
+        contentGuidelines: {},
         codeStandards: {},
         components: {}
       };
+      data.response.contentGuidelineCollection.items.forEach((item) => (
+        idMap.contentGuidelines[slugify(item?.name as string)] = {
+          id: item?.sys.id as string,
+          name: item?.name as string
+        })
+      );
       data.response.codeStandardCollection.items.forEach((item) => (
         idMap.codeStandards[slugify(item?.name as string)] = {
           id: item?.sys.id as string,
@@ -93,6 +111,7 @@ function App() {
                       </Route>
                       <Route path="/components" component={ComponentsRouter} />
                       <Route path="/code-standards" component={CodeStandardsRouter} />
+                      <Route path="/content" component={ContentGuidelinesRouter} />
                     </Switch>
                   </Suspense>
                 </div>

@@ -1,4 +1,4 @@
-import CodeStandards from './CodeStandards';
+import ContentGuidelines from './ContentGuidelines';
 import { Redirect, Switch, Route, useRouteMatch } from 'react-router-dom';
 
 const CodeStandardsRouter = () => {
@@ -7,9 +7,9 @@ const CodeStandardsRouter = () => {
   return (
     <Switch>
       <Route exact path={path}>
-        <Redirect to={`${path}/general`} />
+        <Redirect to={`${path}/audiences`} />
       </Route>
-      <Route path={`${path}/:standardName`} component={CodeStandards} />
+      <Route path={`${path}/:contentName`} component={ContentGuidelines} />
     </Switch>
   );
 }

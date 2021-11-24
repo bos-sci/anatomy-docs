@@ -39,13 +39,18 @@ const NavPrimary = () => {
           <nav className="navbar-nav-primary" aria-label="primary">
             <ul className="navbar-nav">
               <li className="nav-item">
+                <NavLink to='/content' className="nav-link" activeClassName="active">
+                  Content
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink to='/components' className="nav-link" activeClassName="active">
                   Components
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink to='/code-standards' className="nav-link" activeClassName="active">
-                  Code Standards
+                  Code standards
                 </NavLink>
               </li>
             </ul>
