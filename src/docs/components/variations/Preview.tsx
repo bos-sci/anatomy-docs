@@ -33,6 +33,15 @@ const Preview = ( props: Props ) => {
       );
       break;
 
+    case 'radio-button':
+      const InputRadioVariants = lazy(() => import('./inputRadio/InputRadioVariants'));
+      RenderedComponent = (
+        <Suspense fallback={<Fallback />}>
+          <InputRadioVariants variant={props.variant} />
+        </Suspense>
+      );
+      break;
+
     case 'text-input':
       const InputTextVariants = lazy(() => import('./inputTexts/InputTextVariants'));
       RenderedComponent = (
@@ -42,15 +51,14 @@ const Preview = ( props: Props ) => {
       );
       break;
 
-      case 'link':
-        const LinkVariants = lazy(() => import('./links/LinkVariants'));
-        RenderedComponent = (
-          <Suspense fallback={<Fallback />}>
-            <LinkVariants variant={props.variant} />
-          </Suspense>
-        );
-        break;
-
+    case 'link':
+      const LinkVariants = lazy(() => import('./links/LinkVariants'));
+      RenderedComponent = (
+        <Suspense fallback={<Fallback />}>
+          <LinkVariants variant={props.variant} />
+        </Suspense>
+      );
+      break;
 
     default:
       RenderedComponent = <p>Failed to load component!</p>;
