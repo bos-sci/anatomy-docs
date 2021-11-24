@@ -677,103 +677,6 @@ export enum ContentGuidelineOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** Content Guidelines documentation. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuidelines) */
-export type ContentGuidelines = Entry & {
-  __typename?: 'ContentGuidelines';
-  content?: Maybe<Scalars['String']>;
-  contentfulMetadata: ContentfulMetadata;
-  description?: Maybe<Scalars['String']>;
-  linkedFrom?: Maybe<ContentGuidelinesLinkingCollections>;
-  name?: Maybe<Scalars['String']>;
-  sys: Sys;
-};
-
-
-/** Content Guidelines documentation. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuidelines) */
-export type ContentGuidelinesContentArgs = {
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-/** Content Guidelines documentation. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuidelines) */
-export type ContentGuidelinesDescriptionArgs = {
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-/** Content Guidelines documentation. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuidelines) */
-export type ContentGuidelinesLinkedFromArgs = {
-  allowedLocales?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-
-/** Content Guidelines documentation. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuidelines) */
-export type ContentGuidelinesNameArgs = {
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type ContentGuidelinesCollection = {
-  __typename?: 'ContentGuidelinesCollection';
-  items: Array<Maybe<ContentGuidelines>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export type ContentGuidelinesFilter = {
-  AND?: Maybe<Array<Maybe<ContentGuidelinesFilter>>>;
-  OR?: Maybe<Array<Maybe<ContentGuidelinesFilter>>>;
-  content?: Maybe<Scalars['String']>;
-  content_contains?: Maybe<Scalars['String']>;
-  content_exists?: Maybe<Scalars['Boolean']>;
-  content_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  content_not?: Maybe<Scalars['String']>;
-  content_not_contains?: Maybe<Scalars['String']>;
-  content_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  contentfulMetadata?: Maybe<ContentfulMetadataFilter>;
-  description?: Maybe<Scalars['String']>;
-  description_contains?: Maybe<Scalars['String']>;
-  description_exists?: Maybe<Scalars['Boolean']>;
-  description_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  description_not?: Maybe<Scalars['String']>;
-  description_not_contains?: Maybe<Scalars['String']>;
-  description_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  name?: Maybe<Scalars['String']>;
-  name_contains?: Maybe<Scalars['String']>;
-  name_exists?: Maybe<Scalars['Boolean']>;
-  name_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  name_not?: Maybe<Scalars['String']>;
-  name_not_contains?: Maybe<Scalars['String']>;
-  name_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  sys?: Maybe<SysFilter>;
-};
-
-export type ContentGuidelinesLinkingCollections = {
-  __typename?: 'ContentGuidelinesLinkingCollections';
-  entryCollection?: Maybe<EntryCollection>;
-};
-
-
-export type ContentGuidelinesLinkingCollectionsEntryCollectionArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  locale?: Maybe<Scalars['String']>;
-  preview?: Maybe<Scalars['Boolean']>;
-  skip?: Maybe<Scalars['Int']>;
-};
-
-export enum ContentGuidelinesOrder {
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 export type ContentfulMetadata = {
   __typename?: 'ContentfulMetadata';
   tags: Array<Maybe<ContentfulTag>>;
@@ -938,8 +841,6 @@ export type Query = {
   componentVariantCollection?: Maybe<ComponentVariantCollection>;
   contentGuideline?: Maybe<ContentGuideline>;
   contentGuidelineCollection?: Maybe<ContentGuidelineCollection>;
-  contentGuidelines?: Maybe<ContentGuidelines>;
-  contentGuidelinesCollection?: Maybe<ContentGuidelinesCollection>;
   entryCollection?: Maybe<EntryCollection>;
 };
 
@@ -1026,23 +927,6 @@ export type QueryContentGuidelineCollectionArgs = {
   preview?: Maybe<Scalars['Boolean']>;
   skip?: Maybe<Scalars['Int']>;
   where?: Maybe<ContentGuidelineFilter>;
-};
-
-
-export type QueryContentGuidelinesArgs = {
-  id: Scalars['String'];
-  locale?: Maybe<Scalars['String']>;
-  preview?: Maybe<Scalars['Boolean']>;
-};
-
-
-export type QueryContentGuidelinesCollectionArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  locale?: Maybe<Scalars['String']>;
-  order?: Maybe<Array<Maybe<ContentGuidelinesOrder>>>;
-  preview?: Maybe<Scalars['Boolean']>;
-  skip?: Maybe<Scalars['Int']>;
-  where?: Maybe<ContentGuidelinesFilter>;
 };
 
 
