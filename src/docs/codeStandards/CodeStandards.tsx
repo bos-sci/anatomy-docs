@@ -56,10 +56,6 @@ const CodeStandards = (props:  Props) => {
       setCodeStandardData(data.response.codeStandard);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
-    /* const navItems = Object.keys(idLookup.codeStandards).map(entry => ({
-      text: idLookup.codeStandards[entry].name,
-      slug: basePath + '/' + entry
-    })); */
     const pathPrefix = basePath + '/';
     const navItems = [
       {
