@@ -111,7 +111,7 @@ function App() {
                       </Route>
                       <Route path="/components" component={ComponentsRouter} />
                       <Route path="/code-standards" component={CodeStandardsRouter} />
-                      <Route path="/content-guidelines" component={ContentGuidelinesRouter} />
+                      <Route path="/content" component={ContentGuidelinesRouter} />
                     </Switch>
                   </Suspense>
                 </div>
