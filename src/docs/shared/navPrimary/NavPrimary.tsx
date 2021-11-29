@@ -58,6 +58,11 @@ const NavPrimary = () => {
                   Code standards
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink to='/resources' className="nav-link" activeClassName="active">
+                  Resources
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </div>

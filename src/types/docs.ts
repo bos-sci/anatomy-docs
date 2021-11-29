@@ -10,4 +10,5 @@ export interface IdLookup {
   contentGuidelines: IdLookupEntry;
   codeStandards: IdLookupEntry;
   components: IdLookupEntry;
+  resources: IdLookupEntry;
 }
