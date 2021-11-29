@@ -8,17 +8,19 @@ import {
 import { slugify } from './helpers';
 import useContentful from '../hooks/useContentful';
 import NavPrimary from './shared/navPrimary/NavPrimary';
-import { CodeStandardCollection, ComponentCollection, ContentGuidelineCollection } from '../types/contentful';
+import { CodeStandardCollection, ComponentCollection, ContentGuidelineCollection, FoundationCollection } from '../types/contentful';
 import { IdLookup } from '../types/docs';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
 const ContentGuidelinesRouter = lazy(() => import('./contentGuidelines/ContentGuidelinesRouter'));
+const FoundationsRouter = lazy(() => import('./foundations/FoundationsRouter'));
 
 export const IdLookupContext = createContext({
   contentGuidelines: {},
   components: {},
-  codeStandards: {}
+  codeStandards: {},
+  foundations: {}
 });
 
 interface IData {
@@ -26,6 +28,7 @@ interface IData {
     contentGuidelineCollection: ContentGuidelineCollection;
     codeStandardCollection: CodeStandardCollection;
     componentCollection: ComponentCollection;
+    foundationCollection: FoundationCollection;
   };
   error?: unknown
 }
@@ -36,6 +39,14 @@ function App() {
 
   const query = `
     {
+      foundationCollection(order: name_ASC, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
+        items {
+          name
+          sys {
+            id
+          }
+        }
+      }
       contentGuidelineCollection(order: name_ASC, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
         items {
           name
@@ -68,10 +79,17 @@ function App() {
   useEffect(() => {
     if (data.response) {
       const idMap: IdLookup = {
+        foundations: {},
         contentGuidelines: {},
         codeStandards: {},
         components: {}
       };
+      data.response.foundationCollection.items.forEach((item) => (
+        idMap.foundations[slugify(item?.name as string)] = {
+          id: item?.sys.id as string,
+          name: item?.name as string
+        })
+      );
       data.response.contentGuidelineCollection.items.forEach((item) => (
         idMap.contentGuidelines[slugify(item?.name as string)] = {
           id: item?.sys.id as string,
@@ -112,6 +130,7 @@ function App() {
                       <Route path="/components" component={ComponentsRouter} />
                       <Route path="/code-standards" component={CodeStandardsRouter} />
                       <Route path="/content" component={ContentGuidelinesRouter} />
+                      <Route path="/foundations" component={FoundationsRouter} />
                     </Switch>
                   </Suspense>
                 </div>
