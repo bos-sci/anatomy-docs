@@ -51,6 +51,15 @@ const Preview = ( props: Props ) => {
       );
       break;
 
+    case 'checkbox':
+      const InputCheckboxVariants = lazy(() => import('./inputCheckboxes/inputCheckboxVariants'));
+      RenderedComponent = (
+        <Suspense fallback={<Fallback />}>
+          <InputCheckboxVariants variant={props.variant} />
+        </Suspense>
+      );
+      break;
+
     case 'link':
       const LinkVariants = lazy(() => import('./links/LinkVariants'));
       RenderedComponent = (
@@ -59,6 +68,7 @@ const Preview = ( props: Props ) => {
         </Suspense>
       );
       break;
+
 
     default:
       RenderedComponent = <p>Failed to load component!</p>;

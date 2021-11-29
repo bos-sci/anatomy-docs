@@ -8,3 +8,8 @@ export const slugify = (text: string): string => {
     .replace(/^-+/, "")
     .replace(/-+$/, "");
 }
+
+let i = 0;
+export const incrementInt = (): number => {
+  return i++;
+}

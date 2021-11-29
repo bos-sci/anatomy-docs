@@ -80,6 +80,15 @@ footer
   padding: space(sm);
 }
 
+.clear-storage
+{
+  position: fixed;
+  bottom: space(md);
+  right: space(md);
+  z-index: 1000;
+
+}
+
 @media (min-width: 576px)
 {
   .grid-container

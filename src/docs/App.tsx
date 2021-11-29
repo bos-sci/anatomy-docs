@@ -98,6 +98,9 @@ function App() {
   return (
     <Router>
       <div className="grid-container">
+        {process.env.REACT_APP_CONTENTFUL_PREVIEW &&
+          <button className="ads-button-subtle clear-storage" onClick={() => sessionStorage.clear()}>Clear Session</button>
+        }
         <IdLookupContext.Provider value={idLookup}>
           <NavPrimary />
           {isLookupReady &&

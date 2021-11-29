@@ -88,8 +88,8 @@ const Components = (props: Props) => {
         { componentData.description && <Markdown markdown={ componentData.description} /> }
         {(componentData?.variantsCollection?.items && componentData.variantsCollection.items.length > 0) ? <>
           <h2>Variants</h2>
-            { componentData.variantsCollection.items.map(variant => (
-              <div key={ variant?.name } className="component-variant">
+            { componentData.variantsCollection.items.map((variant, i) => (
+              <div key={ variant?.name + '' + i } className="component-variant">
                 <h3>{ variant?.name }</h3>
                 <Markdown markdown={variant?.description || ''} />
                 <Preview component={ componentName } variant={ variant?.name as string } isDarkTheme={ variant?.isPreviewDarkThemed || false } />
