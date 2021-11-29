@@ -36,6 +36,7 @@ const Foundations = (props:  Props) => {
     query FoundationData($id: String!) {
       foundation(id: $id, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
         name
+        description
         content
         sys {
           id
@@ -80,6 +81,7 @@ const Foundations = (props:  Props) => {
         <main>
           {foundationData.sys && <>
             <PageHeader name={ foundationData.name || '' } publishedAt={ foundationData.sys.publishedAt } />
+            <Markdown markdown={ foundationData.description || ''} className="body-assertive" />
             <Markdown markdown={ foundationData.content || ''} />
           </>}
         </main>
