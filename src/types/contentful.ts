@@ -734,6 +734,103 @@ export enum EntryOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type Foundation = Entry & {
+  __typename?: 'Foundation';
+  content?: Maybe<Scalars['String']>;
+  contentfulMetadata: ContentfulMetadata;
+  description?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<FoundationLinkingCollections>;
+  name?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationContentArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationDescriptionArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationLinkedFromArgs = {
+  allowedLocales?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationNameArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type FoundationCollection = {
+  __typename?: 'FoundationCollection';
+  items: Array<Maybe<Foundation>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type FoundationFilter = {
+  AND?: Maybe<Array<Maybe<FoundationFilter>>>;
+  OR?: Maybe<Array<Maybe<FoundationFilter>>>;
+  content?: Maybe<Scalars['String']>;
+  content_contains?: Maybe<Scalars['String']>;
+  content_exists?: Maybe<Scalars['Boolean']>;
+  content_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  content_not?: Maybe<Scalars['String']>;
+  content_not_contains?: Maybe<Scalars['String']>;
+  content_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  contentfulMetadata?: Maybe<ContentfulMetadataFilter>;
+  description?: Maybe<Scalars['String']>;
+  description_contains?: Maybe<Scalars['String']>;
+  description_exists?: Maybe<Scalars['Boolean']>;
+  description_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  description_not?: Maybe<Scalars['String']>;
+  description_not_contains?: Maybe<Scalars['String']>;
+  description_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name?: Maybe<Scalars['String']>;
+  name_contains?: Maybe<Scalars['String']>;
+  name_exists?: Maybe<Scalars['Boolean']>;
+  name_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name_not?: Maybe<Scalars['String']>;
+  name_not_contains?: Maybe<Scalars['String']>;
+  name_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sys?: Maybe<SysFilter>;
+};
+
+export type FoundationLinkingCollections = {
+  __typename?: 'FoundationLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type FoundationLinkingCollectionsEntryCollectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+};
+
+export enum FoundationOrder {
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
 export enum ImageFormat {
   Avif = 'AVIF',
   /** JPG image format. */
@@ -842,6 +939,8 @@ export type Query = {
   contentGuideline?: Maybe<ContentGuideline>;
   contentGuidelineCollection?: Maybe<ContentGuidelineCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  foundation?: Maybe<Foundation>;
+  foundationCollection?: Maybe<FoundationCollection>;
 };
 
 
@@ -937,6 +1036,23 @@ export type QueryEntryCollectionArgs = {
   preview?: Maybe<Scalars['Boolean']>;
   skip?: Maybe<Scalars['Int']>;
   where?: Maybe<EntryFilter>;
+};
+
+
+export type QueryFoundationArgs = {
+  id: Scalars['String'];
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type QueryFoundationCollectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  order?: Maybe<Array<Maybe<FoundationOrder>>>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<FoundationFilter>;
 };
 
 export type Sys = {
