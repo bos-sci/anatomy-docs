@@ -143,7 +143,7 @@ function App() {
                   <Suspense fallback={<p>Loading...</p>}>
                     <Switch>
                       <Route exact path="/">
-                        <Redirect to="/components" />
+                        <Redirect to="/content" />
                       </Route>
                       <Route path="/components" component={ComponentsRouter} />
                       <Route path="/code-standards" component={CodeStandardsRouter} />
