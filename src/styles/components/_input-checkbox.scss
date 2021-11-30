@@ -43,6 +43,11 @@
   }
 }
 
+.ads-input-checkbox
+{
+  display: flex;
+}
+
  .ads-input-checkbox-input
 {
   position: absolute;
@@ -57,11 +62,8 @@
 
   + .ads-input-checkbox-label
   {
-    display: inline;
     position: relative;
-    vertical-align: middle;
     padding-left: space(3x) + space(xs);
-    // line-height: space(2x) + space(xxs);
     cursor: pointer;
 
     &::before
@@ -150,11 +152,4 @@
       }
     }
   }
-}
-
-.ads-input-checkbox-helpText
-{
-  margin-top: 0;
-  @include font-size($fs-body-subtle);
-  color: $neutral-dark;
 }

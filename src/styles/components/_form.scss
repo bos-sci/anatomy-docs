@@ -23,12 +23,3 @@
   @include font-size($fs-body-subtle);
   color: $neutral-dark;
 }
-
-.ads-fieldset
-{
-   & > .ads-checkbox:not(:first-child),
-   & > .ads-input-radio:not(:first-child)
-  {
-    margin-top: space(2x);
-  }
-}
