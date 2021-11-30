@@ -78,7 +78,7 @@ const Resources = (props:  Props) => {
           {resourceData.sys && <>
             <PageHeader name={ resourceData.name || '' } publishedAt={ resourceData.sys.publishedAt } />
             <Markdown markdown={ resourceData.description || ''} className="body-assertive" />
-            <Markdown markdown={ resourceData.content || ''} />
+            <Markdown markdown={ resourceData.content || ''}  headingOffset={1} />
           </>}
         </main>
     </div>

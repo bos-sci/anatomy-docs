@@ -55,11 +55,6 @@ header.navbar
   grid-area: header;
 }
 
-main
-{
-  overflow-y: auto;
-}
-
 .app-body
 {
   grid-area: main;
@@ -71,6 +66,17 @@ main
 {
   display: flex;
   flex-direction: column;
+}
+
+main
+{
+  overflow-y: auto;
+
+  & img // TODO: find a better place for this
+  {
+    width: 100%;
+    margin-top: space(3x);
+  }
 }
 
 footer
