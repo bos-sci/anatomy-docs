@@ -8,19 +8,21 @@ import {
 import { slugify } from './helpers';
 import useContentful from '../hooks/useContentful';
 import NavPrimary from './shared/navPrimary/NavPrimary';
-import { CodeStandardCollection, ComponentCollection, ContentGuidelineCollection, FoundationCollection } from '../types/contentful';
+import { CodeStandardCollection, ComponentCollection, ContentGuidelineCollection, FoundationCollection, ResourceCollection } from '../types/contentful';
 import { IdLookup } from '../types/docs';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
 const ContentGuidelinesRouter = lazy(() => import('./contentGuidelines/ContentGuidelinesRouter'));
 const FoundationsRouter = lazy(() => import('./foundations/FoundationsRouter'));
+const ResourcesRouter = lazy(() => import('./resources/ResourcesRouter'));
 
 export const IdLookupContext = createContext({
   contentGuidelines: {},
   components: {},
   codeStandards: {},
-  foundations: {}
+  foundations: {},
+  resources: {}
 });
 
 interface IData {
@@ -29,6 +31,7 @@ interface IData {
     codeStandardCollection: CodeStandardCollection;
     componentCollection: ComponentCollection;
     foundationCollection: FoundationCollection;
+    resourceCollection: ResourceCollection;
   };
   error?: unknown
 }
@@ -71,6 +74,14 @@ function App() {
           }
         }
       }
+      resourceCollection(order: name_ASC, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
+        items {
+          name
+          sys {
+            id
+          }
+        }
+      }
     }
   `;
 
@@ -82,7 +93,8 @@ function App() {
         foundations: {},
         contentGuidelines: {},
         codeStandards: {},
-        components: {}
+        components: {},
+        resources: {}
       };
       data.response.foundationCollection.items.forEach((item) => (
         idMap.foundations[slugify(item?.name as string)] = {
@@ -108,6 +120,12 @@ function App() {
           name: item?.name as string
         })
       );
+      data.response.resourceCollection.items.forEach((item) => (
+        idMap.resources[slugify(item?.name as string)] = {
+          id: item?.sys.id as string,
+          name: item?.name as string
+        })
+      );
       setIdLookup(idMap);
       setIsLookupReady(true);
     }
@@ -125,12 +143,13 @@ function App() {
                   <Suspense fallback={<p>Loading...</p>}>
                     <Switch>
                       <Route exact path="/">
-                        <Redirect to="/components" />
+                        <Redirect to="/content" />
                       </Route>
                       <Route path="/components" component={ComponentsRouter} />
                       <Route path="/code-standards" component={CodeStandardsRouter} />
                       <Route path="/content" component={ContentGuidelinesRouter} />
                       <Route path="/foundations" component={FoundationsRouter} />
+                      <Route path="/resources" component={ResourcesRouter} />
                     </Switch>
                   </Suspense>
                 </div>
