@@ -82,7 +82,7 @@ const Foundations = (props:  Props) => {
           {foundationData.sys && <>
             <PageHeader name={ foundationData.name || '' } publishedAt={ foundationData.sys.publishedAt } />
             <Markdown markdown={ foundationData.description || ''} className="body-assertive" />
-            <Markdown markdown={ foundationData.content || ''} />
+            <Markdown markdown={ foundationData.content || ''} headingOffset={1} />
           </>}
         </main>
     </div>

@@ -71,5 +71,8 @@ $feedback-error-lighter: #fce9ea;
 
 // Gradients
 
-$gradient-primary: linear-gradient(270deg, $action-primary-dark 0%, #35e0f7 100%);
-$gradient-secondary: linear-gradient(270deg, $action-primary-lighter 0%, $action-primary-light 100%);
+$gradient-brand: linear-gradient(90deg, $brand-primary, $accent-plum, $accent-caribbean);
+$gradient-primary: linear-gradient(270deg, $action-primary-dark 0%, $accent-caribbean 100%);
+$gradient-secondary: linear-gradient(270deg, $action-primary-darker 0%, $accent-plum 100%);
+$gradient-assertive: linear-gradient(36deg, $neutral-darkest 0%, $action-primary-darker 100%);
+$gradient-subtle: linear-gradient(322deg, $neutral-lightest, $neutral-lighter);

@@ -1,0 +1,46 @@
+table
+{
+  width: 100%;
+  margin: space(3x) 0 0;
+  border: 0;
+
+  caption
+  {
+    margin-top: space(md);
+    padding: 0;
+    color: $text-color-primary;
+    @include font-size($fs-small);
+  }
+
+  tr
+  {
+    border-bottom: space(xxs) solid $neutral-light;
+
+    th
+    {
+      font-family: $font-family-base-heavy;
+    }
+
+    th,
+    td
+    {
+      border: 0;
+      padding: space(2x);
+    }
+
+    & > *:first-child
+    {
+      padding-left: 0;
+    }
+
+    & > *:last-child
+    {
+      padding-right: 0;
+    }
+
+    td *:first-of-type // NOTE: this is used to remove the top margin from the previews in the type scale table, we may want to rethink eventually
+    {
+      margin-top: 0;
+    }
+  }
+}
