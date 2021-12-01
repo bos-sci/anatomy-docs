@@ -23,14 +23,43 @@ Detailed below is a brief map of the application detailing the important files a
       - **variations/** All the different implementations of component variations e.g. primary button and secondary button
   - **hooks/** Custom hooks
   - **styles/** Global stylesheets
+
 ### Process
+
+#### Local Setup
+1. Clone this repository.
+2. Get the environment variables from Contentful or a team member.<br />
+*See [environemnt variables](#environment-variables) below*
+3. Run `npm install`.
+4. Run `npm start`.
+5. Navigate to `localhost:3000`.
+
+##### Environment Variables
+```
+REACT_APP_CONTENTFUL_SPACE_ID={contentful-space-id}
+REACT_APP_CONTENTFUL_TOKEN={contentful-preview-api-key}
+REACT_APP_CONTENTFUL_MANAGMENT_TOKEN={contentful-management-api-key}
+REACT_APP_CONTENTFUL_ENVIRONMENT=master
+REACT_APP_CONTENTFUL_PREVIEW=true
+REACT_EDITOR=code
+```
+
+#### Development
 1. Ensure you have the latest from develop.
-2. Branch off of develop. See naming conventions below on how to name your branch.
+2. Branch off of develop.<br />
+*See [naming conventions](#naming-conventions) below on how to name your branch.*
 3. Reference Abstract for latest mockups then implement changes.
-4. Push your branch to origin and create a pull request (PR). See PR naming guidelines below.
+4. Push your branch to origin and create a pull request (PR).<br />
+*See [PR naming](#branches) guidelines below.*
 5. PR can only be merged after it has been reviewed and all tests pass.
 
-### Naming Convention
+#### Deploy to Production
+1. Create pull request from develop into master.
+2. Once all tests have passed and the preview is built and reviewed, the PR can be merged.<br />
+*The deploy preview will pull draft data from Contentful. This is due to a limitation in Netlify's deploy contexts. Production will only use published data.*
+3. Once merged, publish relevant content in Contentful.
+
+### Naming Conventions
 
 #### Git Naming
 

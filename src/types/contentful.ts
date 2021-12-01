@@ -580,6 +580,103 @@ export type ComponentVariantsCollection = {
   total: Scalars['Int'];
 };
 
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuideline = Entry & {
+  __typename?: 'ContentGuideline';
+  content?: Maybe<Scalars['String']>;
+  contentfulMetadata: ContentfulMetadata;
+  description?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<ContentGuidelineLinkingCollections>;
+  name?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuidelineContentArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuidelineDescriptionArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuidelineLinkedFromArgs = {
+  allowedLocales?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuidelineNameArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type ContentGuidelineCollection = {
+  __typename?: 'ContentGuidelineCollection';
+  items: Array<Maybe<ContentGuideline>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ContentGuidelineFilter = {
+  AND?: Maybe<Array<Maybe<ContentGuidelineFilter>>>;
+  OR?: Maybe<Array<Maybe<ContentGuidelineFilter>>>;
+  content?: Maybe<Scalars['String']>;
+  content_contains?: Maybe<Scalars['String']>;
+  content_exists?: Maybe<Scalars['Boolean']>;
+  content_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  content_not?: Maybe<Scalars['String']>;
+  content_not_contains?: Maybe<Scalars['String']>;
+  content_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  contentfulMetadata?: Maybe<ContentfulMetadataFilter>;
+  description?: Maybe<Scalars['String']>;
+  description_contains?: Maybe<Scalars['String']>;
+  description_exists?: Maybe<Scalars['Boolean']>;
+  description_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  description_not?: Maybe<Scalars['String']>;
+  description_not_contains?: Maybe<Scalars['String']>;
+  description_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name?: Maybe<Scalars['String']>;
+  name_contains?: Maybe<Scalars['String']>;
+  name_exists?: Maybe<Scalars['Boolean']>;
+  name_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name_not?: Maybe<Scalars['String']>;
+  name_not_contains?: Maybe<Scalars['String']>;
+  name_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sys?: Maybe<SysFilter>;
+};
+
+export type ContentGuidelineLinkingCollections = {
+  __typename?: 'ContentGuidelineLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ContentGuidelineLinkingCollectionsEntryCollectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+};
+
+export enum ContentGuidelineOrder {
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
 export type ContentfulMetadata = {
   __typename?: 'ContentfulMetadata';
   tags: Array<Maybe<ContentfulTag>>;
@@ -627,6 +724,103 @@ export type EntryFilter = {
 };
 
 export enum EntryOrder {
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type Foundation = Entry & {
+  __typename?: 'Foundation';
+  content?: Maybe<Scalars['String']>;
+  contentfulMetadata: ContentfulMetadata;
+  description?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<FoundationLinkingCollections>;
+  name?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationContentArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationDescriptionArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationLinkedFromArgs = {
+  allowedLocales?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationNameArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type FoundationCollection = {
+  __typename?: 'FoundationCollection';
+  items: Array<Maybe<Foundation>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type FoundationFilter = {
+  AND?: Maybe<Array<Maybe<FoundationFilter>>>;
+  OR?: Maybe<Array<Maybe<FoundationFilter>>>;
+  content?: Maybe<Scalars['String']>;
+  content_contains?: Maybe<Scalars['String']>;
+  content_exists?: Maybe<Scalars['Boolean']>;
+  content_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  content_not?: Maybe<Scalars['String']>;
+  content_not_contains?: Maybe<Scalars['String']>;
+  content_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  contentfulMetadata?: Maybe<ContentfulMetadataFilter>;
+  description?: Maybe<Scalars['String']>;
+  description_contains?: Maybe<Scalars['String']>;
+  description_exists?: Maybe<Scalars['Boolean']>;
+  description_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  description_not?: Maybe<Scalars['String']>;
+  description_not_contains?: Maybe<Scalars['String']>;
+  description_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name?: Maybe<Scalars['String']>;
+  name_contains?: Maybe<Scalars['String']>;
+  name_exists?: Maybe<Scalars['Boolean']>;
+  name_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name_not?: Maybe<Scalars['String']>;
+  name_not_contains?: Maybe<Scalars['String']>;
+  name_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sys?: Maybe<SysFilter>;
+};
+
+export type FoundationLinkingCollections = {
+  __typename?: 'FoundationLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type FoundationLinkingCollectionsEntryCollectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+};
+
+export enum FoundationOrder {
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -742,7 +936,13 @@ export type Query = {
   componentCollection?: Maybe<ComponentCollection>;
   componentVariant?: Maybe<ComponentVariant>;
   componentVariantCollection?: Maybe<ComponentVariantCollection>;
+  contentGuideline?: Maybe<ContentGuideline>;
+  contentGuidelineCollection?: Maybe<ContentGuidelineCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  foundation?: Maybe<Foundation>;
+  foundationCollection?: Maybe<FoundationCollection>;
+  resource?: Maybe<Resource>;
+  resourceCollection?: Maybe<ResourceCollection>;
 };
 
 
@@ -814,6 +1014,23 @@ export type QueryComponentVariantCollectionArgs = {
 };
 
 
+export type QueryContentGuidelineArgs = {
+  id: Scalars['String'];
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type QueryContentGuidelineCollectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  order?: Maybe<Array<Maybe<ContentGuidelineOrder>>>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<ContentGuidelineFilter>;
+};
+
+
 export type QueryEntryCollectionArgs = {
   limit?: Maybe<Scalars['Int']>;
   locale?: Maybe<Scalars['String']>;
@@ -822,6 +1039,137 @@ export type QueryEntryCollectionArgs = {
   skip?: Maybe<Scalars['Int']>;
   where?: Maybe<EntryFilter>;
 };
+
+
+export type QueryFoundationArgs = {
+  id: Scalars['String'];
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type QueryFoundationCollectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  order?: Maybe<Array<Maybe<FoundationOrder>>>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<FoundationFilter>;
+};
+
+
+export type QueryResourceArgs = {
+  id: Scalars['String'];
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type QueryResourceCollectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  order?: Maybe<Array<Maybe<ResourceOrder>>>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+  where?: Maybe<ResourceFilter>;
+};
+
+/** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
+export type Resource = Entry & {
+  __typename?: 'Resource';
+  content?: Maybe<Scalars['String']>;
+  contentfulMetadata: ContentfulMetadata;
+  description?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<ResourceLinkingCollections>;
+  name?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
+export type ResourceContentArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
+export type ResourceDescriptionArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
+export type ResourceLinkedFromArgs = {
+  allowedLocales?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+
+/** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
+export type ResourceNameArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type ResourceCollection = {
+  __typename?: 'ResourceCollection';
+  items: Array<Maybe<Resource>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ResourceFilter = {
+  AND?: Maybe<Array<Maybe<ResourceFilter>>>;
+  OR?: Maybe<Array<Maybe<ResourceFilter>>>;
+  content?: Maybe<Scalars['String']>;
+  content_contains?: Maybe<Scalars['String']>;
+  content_exists?: Maybe<Scalars['Boolean']>;
+  content_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  content_not?: Maybe<Scalars['String']>;
+  content_not_contains?: Maybe<Scalars['String']>;
+  content_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  contentfulMetadata?: Maybe<ContentfulMetadataFilter>;
+  description?: Maybe<Scalars['String']>;
+  description_contains?: Maybe<Scalars['String']>;
+  description_exists?: Maybe<Scalars['Boolean']>;
+  description_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  description_not?: Maybe<Scalars['String']>;
+  description_not_contains?: Maybe<Scalars['String']>;
+  description_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name?: Maybe<Scalars['String']>;
+  name_contains?: Maybe<Scalars['String']>;
+  name_exists?: Maybe<Scalars['Boolean']>;
+  name_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name_not?: Maybe<Scalars['String']>;
+  name_not_contains?: Maybe<Scalars['String']>;
+  name_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sys?: Maybe<SysFilter>;
+};
+
+export type ResourceLinkingCollections = {
+  __typename?: 'ResourceLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ResourceLinkingCollectionsEntryCollectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  preview?: Maybe<Scalars['Boolean']>;
+  skip?: Maybe<Scalars['Int']>;
+};
+
+export enum ResourceOrder {
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 export type Sys = {
   __typename?: 'Sys';

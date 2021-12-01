@@ -1,0 +1,25 @@
+.ads-fieldset
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.ads-legend
+{
+  margin: 0; // TODO: look at this after we rip out bootstrap
+  font-family: $font-family-base-heavy;
+  @include font-size($fs-base);
+}
+
+.ads-input-error
+{
+  margin: space(md) 0 0 0;
+  color: $feedback-error-dark;
+}
+
+.ads-input-help-text
+{
+  margin: space(sm) 0 0 0;
+  @include font-size($fs-body-subtle);
+  color: $neutral-dark;
+}

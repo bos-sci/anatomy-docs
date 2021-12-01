@@ -1,0 +1,157 @@
+.ads-fieldset
+{
+  &[aria-invalid="true"]
+  {
+    .ads-input-radio-input
+    {
+      + .ads-input-radio-label
+      {
+        &::before
+        {
+          border: space(xs) solid $feedback-error-dark;
+          background: $neutral-lightest;
+        }
+      }
+
+      &:checked,
+      &[aria-checked="true"]
+      {
+        + .ads-input-radio-label
+        {
+          &::before
+          {
+            border: transparent;
+            background: $feedback-error-dark;
+          }
+
+          &::after
+          {
+            background: $neutral-lightest;
+          }
+        }
+      }
+
+      &:focus,
+      &:focus:checked
+      {
+        + .ads-input-radio-label
+        {
+          &::before
+          {
+            @include focus-invalid;
+          }
+        }
+      }
+    }
+  }
+
+  & > .ads-input-radio:not(:first-child)
+  {
+    margin-top: space(2x);
+  }
+}
+
+.ads-input-radio
+{
+  display: flex;
+}
+
+.ads-input-radio-input
+{
+  position: absolute;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  clip: rect(0,0,0,0);
+  overflow: hidden;
+  opacity: 0;
+  -webkit-appearance: none;
+  pointer-events: none;
+
+  + .ads-input-radio-label
+  {
+    position: relative;
+    vertical-align: middle;
+    padding-left: space(3x) + space(xs);
+    cursor: pointer;
+
+    &::before
+    {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: $ffs-body-assertive;
+      height: $ffs-body-assertive;
+      border: space(xxs) solid $neutral-darkest;
+      border-radius: 50%;
+      background: $neutral-lightest;
+    }
+  }
+
+  &:checked,
+  &[aria-checked="true"]
+  {
+    + .ads-input-radio-label
+    {
+      &::before
+      {
+        border: transparent;
+        background: $neutral-darkest;
+      }
+
+      &::after
+      {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: space(md);
+        height: space(md);
+        border-radius: 50%;
+        background: $neutral-lightest;
+        transform: translate(calc(space(xxs) + space(sm)), -50%);
+      }
+    }
+  }
+
+  &:focus,
+  &:focus:checked
+  {
+    + .ads-input-radio-label
+    {
+      &::before
+      {
+        @include focus-default;
+      }
+    }
+  }
+
+  &:disabled
+  {
+    + .ads-input-radio-label.ads-input-radio-label // TODO: lower specificity after we refactor for form groups & validation
+    {
+      cursor: not-allowed;
+
+      &::before
+      {
+        border: space(xxs) solid $neutral-light;
+        background: $neutral-lighter;
+        opacity: 1;
+      }
+    }
+
+    &:checked,
+    &[aria-checked="true"]
+    {
+      + .ads-input-radio-label.ads-input-radio-label // TODO: lower specificity after we refactor for form groups & validation
+      {
+        &::after
+        {
+          background: $neutral;
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import Preview from './Preview';
+import Preview from './variations/Preview';
 import NavSecondary, { NavItem } from '../shared/navSecondary/NavSecondary';
 import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
@@ -12,7 +12,7 @@ import './Components.scss';
 
 interface ComponentMatch extends match {
   params: {
-    component: string;
+    componentName: string;
   }
 }
 
@@ -28,7 +28,7 @@ interface ContentfulData {
 }
 
 const Components = (props: Props) => {
-  const component = props.match.params.component;
+  const componentName = props.match.params.componentName;
   const idLookup: IdLookup = useContext(IdLookupContext);
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
   let [componentData, setComponentData] = useState<Component>({} as Component);
@@ -62,7 +62,7 @@ const Components = (props: Props) => {
     }`;
 
   const queryVariables = {
-    id: idLookup.components[component].id
+    id: idLookup.components[componentName].id
   };
 
   const data: ContentfulData = useContentful(query, queryVariables);
@@ -82,22 +82,20 @@ const Components = (props: Props) => {
 
   return (
     <div className="app-content">
-      <aside className="aside-nav">
       <NavSecondary navItems={ navItems } />
-      </aside>
       <main>
-        <PageHeader name={ componentData?.name || '' } publishedAt={ componentData?.sys?.publishedAt } />
+        <PageHeader name={ componentData?.name as string } publishedAt={ componentData?.sys?.publishedAt } />
         { componentData.description && <Markdown markdown={ componentData.description} /> }
         {(componentData?.variantsCollection?.items && componentData.variantsCollection.items.length > 0) ? <>
           <h2>Variants</h2>
-            { componentData.variantsCollection.items.map(variant => (
-              <div key={ variant?.name } className="component-variant">
+            { componentData.variantsCollection.items.map((variant, i) => (
+              <div key={ variant?.name + '' + i } className="component-variant">
                 <h3>{ variant?.name }</h3>
-                <p>{ variant?.description }</p>
-                <Preview component={ component } variant={ variant?.name || '' } isDarkTheme={ variant?.isPreviewDarkThemed || false } />
+                <Markdown markdown={variant?.description || ''} />
+                <Preview component={ componentName } variant={ variant?.name as string } isDarkTheme={ variant?.isPreviewDarkThemed || false } />
               </div>
             ))}
-          </> : <Preview component={ component } variant='Default' />
+          </> : <Preview component={ componentName } variant='Default' />
         }
         {(componentData.usage
           || componentData.usageDo

@@ -35,12 +35,10 @@
 
 .navbar-toggler
 {
-  display: flex;
-  align-items: center;
+  @include button-subtle;
   margin: space(md) space(4x);
-  border-radius: 0;
-  padding: space(lg) space(md);
-  @include font-size($fs-body-subtle);
+  padding: space(lg) space(md); // TODO: override button-subtle
+  @include font-size($fs-body-subtle); // TODO: override button-subtle
 
   &[aria-expanded="false"]
   {
@@ -58,16 +56,6 @@
     }
   }
 
-  &:hover
-  {
-    background: $action-primary-lighter;
-  }
-
-  &:focus
-  {
-    @include focus-default;
-  }
-
   .navbar-toggler-wrapper
   {
     display: flex;
@@ -75,8 +63,7 @@
 
     .navbar-toggler-icon
     {
-      margin-left: space(md);
-      width: auto;
+      width: space(2x);
     }
   }
 }
@@ -86,7 +73,7 @@
   .navbar-nav
   {
     margin-top: 0;
-    border-top: 1px solid $neutral-light;
+    border-top: space(xxs) solid $neutral-light;
     padding: space(md) 0;
   }
 
@@ -99,8 +86,7 @@
   {
     position: relative;
     padding: space(2x) space(4x) space(2x) space(6x);
-    color: $neutral-darkest;
-    font-family: $font-family-base-regular;
+    @include link-navigation;
 
     &.active
     {
@@ -111,10 +97,9 @@
       }
     }
 
-    &:hover,
-    &.active:hover
+    &:hover
     {
-      text-decoration: none;
+      text-decoration: none; // TODO: override link-navigation
 
       &::before
       {
@@ -123,11 +108,8 @@
       }
     }
 
-    &:active,
-    &.active:active
+    &:active
     {
-      color: $neutral-darkest;
-
       &::before
       {
         @include nav-indicator-sm;
@@ -161,24 +143,19 @@
           padding: space(sm);
           @include font-size($fs-body-subtle);
 
-          &:hover::before
-          {
-            @include nav-indicator-lg;
-          }
-
+          &.active,
+          &:hover,
           &:focus
           {
-            @include focus-default;
-
             &::before
             {
               @include nav-indicator-lg;
             }
           }
 
-          &.active::before
+          &:focus
           {
-            @include nav-indicator-lg;
+            @include focus-default;
           }
         }
       }

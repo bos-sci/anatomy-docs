@@ -6,11 +6,11 @@
 
 .ads-icon-base // use for icon-only buttons
 {
-  width: 1rem;
+  width: space(2x);
 
   @media (min-width: 992px)
   {
-    width: 1.125rem;
+    width: 1.125rem; // NOTE: this is a one-off size
   }
 }
 

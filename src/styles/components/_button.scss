@@ -1,24 +1,60 @@
 .ads-button
 {
   @include button-default;
+
+  &-assertive
+  {
+    @include button-assertive;
+  }
+
+  &-subtle
+  {
+    @include button-subtle;
+  }
+
+  &-ghost
+  {
+    @include button-ghost;
+  }
+
+  &-icon
+  {
+    @include button-icon;
+  }
 }
 
-.ads-button-assertive
+//
+// Link buttons
+// This is not recommended -- we should use button styles on button elements, and link styles on link elements
+// NOTE: these will need to be updated if we modify the link mixins
+//
+
+a[class*="ads-button"]
 {
-  @include button-assertive;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active
+  {
+    text-decoration: none;
+  }
 }
 
-.ads-button-subtle
+a.ads-button,
+a.ads-button-subtle
 {
-  @include button-subtle;
+  &:visited
+  {
+    color: $action-primary-dark;
+  }
 }
 
-.ads-button-ghost
+a.ads-button-assertive,
+a.ads-button-ghost
 {
-  @include button-ghost;
-}
-
-.ads-button-icon
-{
-  @include button-icon;
+  &:visited
+  {
+    color: $neutral-lightest;
+  }
 }

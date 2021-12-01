@@ -1,16 +1,17 @@
 import Button from '../../../../library/components/Button';
-import Icon from '../../../../library/components/icon/Icon';
 
 const Ghost = () => {
   return <>
-    <Button type="button" variant="ghost">Ghost button</Button>
-    <Button type="button" variant="ghost" disabled>Disabled button</Button>
-    <Button type="button" variant="ghost">
-      <Icon name="plus" className="u-icon-left" size="2x"/>
+    <Button variant="ghost" type="button">Default button</Button>
+    <Button variant="ghost" type="button" disabled>Disabled button</Button>
+    <Button variant="ghost" type="button" icon="plus">
       Icon left
     </Button>
-    <Button type="button" variant="ghost" icon="plus" aria-label="icon button"/>
-    <Button type="button" variant="ghost" icon="plus" aria-label="icon button" disabled/>
+    <Button variant="ghost" type="button" icon="chevronRight" iconAlignment="right">
+      Icon right
+    </Button>
+    <Button variant="ghost" type="button" icon="plus" aria-label="icon button"/>
+    <Button variant="ghost" type="button" icon="plus" aria-label="icon button" disabled/>
   </>;
 }
 

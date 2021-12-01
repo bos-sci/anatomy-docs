@@ -9,7 +9,7 @@ const CodeStandardsRouter = () => {
       <Route exact path={path}>
         <Redirect to={`${path}/general`} />
       </Route>
-      <Route path={`${path}/:codeStandard`} component={CodeStandards} />
+      <Route path={`${path}/:standardName`} component={CodeStandards} />
     </Switch>
   );
 }

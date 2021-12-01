@@ -1,7 +1,11 @@
 // TODO: fix imports so only global component styles are always loaded, and other components styles are loaded when used
 
 @import "skip-link";
-@import "demo";
+@import "./docs/docs";
 @import "breadcrumbs";
 @import "button";
 @import "link";
+@import "form";
+@import "input-text";
+@import "input-radio";
+@import "input-checkbox";

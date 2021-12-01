@@ -1,14 +1,68 @@
 .ads-link
 {
   @include link-default;
+
+  &-subtle
+  {
+    @include link-subtle;
+  }
+
+  &-ghost
+  {
+    @include link-ghost;
+  }
 }
 
-.ads-link-subtle
+//
+// Button links
+// This is not recommended -- we should use button styles on button elements, and link styles on link elements
+// NOTE: these will need to be updated if we modify the link mixins
+//
+
+button[class*="ads-link"]
 {
-  @include link-subtle;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  text-decoration: underline;
+
+  &:not([disabled]):hover,
+  &:not([disabled]):focus,
+  &:not([disabled]):active
+  {
+    background: transparent;
+    text-decoration: underline;
+  }
 }
 
-.ads-link-ghost
+button.ads-link
 {
-  @include link-ghost;
+  &:not([disabled]):hover,
+  &:not([disabled]):active
+  {
+    color: $neutral-darkest;
+  }
+}
+
+button.ads-link-subtle
+{
+  &:not([disabled]):hover,
+  &:not([disabled]):active
+  {
+    color: $action-primary-dark;
+  }
+}
+
+button.ads-link-ghost
+{
+  &:not([disabled]):hover,
+  &:not([disabled]):active
+  {
+    color: $neutral;
+  }
+
+  &:not([disabled]):focus
+  {
+    @include focus-ghost;
+  }
 }

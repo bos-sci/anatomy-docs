@@ -1,12 +1,4 @@
-// TODO:
-// map a to link-default
-// figure out text wrapping (center default, left with icon + text or text + icon)
-// figure out responsive padding for text buttons vs icon-only buttons
-// do we want to wrap button text in a span to help with visual vertical alignment and text wrapping?
-// figure out button-links and link-buttons
-//// do we want to write special code for a.ads-button and button.ads-link so we're not loading link resets on buttons, etc.
-//// do we want to pull apart link-button vs button-link specific styles, e.g.: :visited in button-default
-//// test button-links and link-buttons
+// NOTE: if we update button/link mixins, we'll also need to modify button-link and link-button overrides in _button.scss and _link.scss
 
 @mixin button-hover
 {
@@ -62,11 +54,20 @@
 {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   border-width: space(xs);
   border-style: solid;
   border-radius: 0;
-  padding: space(lg) space(3x); // TODO: figure out responsive padding
+  padding: space(lg) space(3x) 0.6875rem; // NOTE: this is a one-off size because space(lg) - space(xxs) was rounding up
   font-family: $font-family-base-heavy;
+  font-size: $ffs-body-assertive;
+  text-align: center;
+
+  .ads-button-text
+  {
+    flex: 1;
+    text-align: left;
+  }
 
   @include button-hover;
   @include button-active;
@@ -79,14 +80,7 @@
   background: $neutral-lightest;
   color: $action-primary-dark;
   font-family: $font-family-base-heavy;
-
   @include button-focus;
-
-  &:visited
-  {
-    color: $action-primary-dark;
-  }
-
   @include button-disabled;
 }
 
@@ -95,7 +89,6 @@
   @include button-default;
   border-color: transparent;
   background: transparent;
-
   @include button-focus;
   @include button-disabled;
 }
@@ -106,14 +99,7 @@
   border-color: transparent;
   background: $action-primary-dark;
   color: $neutral-lightest;
-
   @include button-focus;
-
-  &:visited
-  {
-    color: $neutral-lightest;
-  }
-
   @include button-disabled;
 }
 
@@ -139,11 +125,6 @@
     }
   }
 
-  &:visited
-  {
-    color: $neutral-lightest;
-  }
-
   &[disabled]
   {
     border-color: $neutral;
@@ -157,7 +138,7 @@
 @mixin button-icon
 {
   border-radius: 50%;
-  padding: space(2x); // TODO: figure out responsive padding
+  padding: space(2x) + space(xxs);
 }
 
 //
@@ -179,25 +160,27 @@ button
   font-family: $font-family-base-heavy;
   text-decoration: underline;
 
+  &:visited
+  {
+    color: $accent-plum-30;
+  }
+
   &:hover
   {
     color: $neutral-darkest;
+    text-decoration-thickness: space(xs);
     cursor: pointer;
   }
 
   &:active
   {
     color: $neutral-darkest;
+    text-decoration-thickness: space(xs);
   }
 
   &:focus
   {
     @include focus-default;
-  }
-
-  &:visited
-  {
-    color: $accent-plum-30;
   }
 }
 
@@ -207,25 +190,27 @@ button
   font-family: $font-family-base-heavy;
   text-decoration: underline;
 
+  &:visited
+  {
+    color: $accent-plum-30;
+  }
+
   &:hover
   {
     color: $action-primary-dark;
+    text-decoration-thickness: space(xs);
     cursor: pointer;
   }
 
   &:active
   {
     color: $action-primary-dark;
+    text-decoration-thickness: space(xs);
   }
 
   &:focus
   {
     @include focus-default;
-  }
-
-  &:visited
-  {
-    color: $accent-plum-30;
   }
 }
 
@@ -235,25 +220,27 @@ button
   font-family: $font-family-base-heavy;
   text-decoration: underline;
 
+  &:visited
+  {
+    color: $neutral-light;
+  }
+
   &:hover
   {
     color: $neutral;
     cursor: pointer;
+    text-decoration-thickness: space(xs);
   }
 
   &:active
   {
     color: $neutral;
+    text-decoration-thickness: space(xs);
   }
 
   &:focus
   {
     @include focus-ghost;
-  }
-
-  &:visited
-  {
-    color: $neutral-light;
   }
 }
 
@@ -261,6 +248,12 @@ button
 {
   font-family: $font-family-base-regular;
   color: $neutral-darkest;
+  text-decoration: none;
+
+  &:visited
+  {
+    color: $neutral-darkest;
+  }
 
   &:hover
   {
@@ -284,32 +277,7 @@ button
 // Default Link Styles
 //
 
-// TODO: test what happens if we map this to link-default
 a
 {
-  color: $action-primary-dark;
-  font-family: $font-family-base-heavy;
-  text-decoration: none;
-
-  &:hover
-  {
-    color: $action-primary-dark;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  &:active
-  {
-    color: $action-primary-darker;
-  }
-
-  &:focus
-  {
-    @include focus-default;
-  }
-
-  &:visited
-  {
-    color: $accent-plum-30;
-  }
+  @include link-default;
 }
