@@ -13,11 +13,16 @@ interface Props {
   [keys: string]: any; // Used to pass along native attribute to input
 }
 
+let radioId = 0;
+
 const InputRadio = ({ label, groupName, value = '', helpText, onChange, ...inputAttrs }: Props) => {
 
   const [inputValue, setInputValue] = useState('');
+  const [isChecked, setisChecked] = useState(false);
+  const [helpTextId, setHelpTextId] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setisChecked(!isChecked);
     setInputValue(e.target.value);
     if (onChange) {
       onChange(e);
@@ -28,13 +33,24 @@ const InputRadio = ({ label, groupName, value = '', helpText, onChange, ...input
     setInputValue(value);
   }, [value]);
 
+  useEffect(() => {
+    const idNum = ++radioId;
+    setHelpTextId('radioHelpText' + idNum);
+  }, []);
+
   return (
     <>
       <label className="ads-input-radio">
-        <input type="radio" className="ads-input-radio-input" {...inputAttrs} value={ inputValue } onChange={ handleChange } />
+        <input
+          type="radio"
+          className="ads-input-radio-input"
+          value={inputValue}
+          onChange={handleChange}
+          aria-describedby={helpTextId}
+          {...inputAttrs} />
         <div className="ads-input-radio-label">{ label }</div>
       </label>
-      { helpText && <p className="ads-input-help-text">{ helpText }</p> }
+      { helpText && <p id={helpTextId} className="ads-input-help-text">{ helpText }</p> }
     </>
   );
 }
