@@ -52,16 +52,33 @@
       cursor: not-allowed;
     }
   }
+
+  &:not(:disabled):not(:read-only)
+  {
+    &[aria-invalid="true"],
+    &[aria-invalid="true"]:hover,
+    &[aria-invalid="true"]:focus
+    {
+      border: space(xxs) solid $feedback-error-dark;
+    }
+
+    &[aria-invalid="true"]:focus
+    {
+      @include focus-invalid;
+    }
+  }
 }
 
 .ads-input-text-label
 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   margin-bottom: space(sm);
-}
 
-.ads-input-text-helpText
-{
-  margin: space(sm) 0 0 0;
-  @include font-size($fs-body-subtle);
-  color: $neutral-dark;
+  .ads-input-text-label-required
+  {
+    @include font-size($fs-body-subtle);
+    color: $neutral-dark;
+  }
 }
