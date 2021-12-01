@@ -35,7 +35,7 @@ const InputCheckbox = ({ label, helpText, errorText, checked = false, onChange, 
   }, []);
 
   return (
-    <div className="ads-checkbox">
+    <div className="ads-input">
       <label className="ads-input-checkbox">
         <input
           type="checkbox"

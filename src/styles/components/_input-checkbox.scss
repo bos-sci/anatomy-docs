@@ -37,9 +37,12 @@
 
 .ads-fieldset
 {
-   > .ads-checkbox:not(:first-child)
+   > .ads-input:not(:first-child)
   {
-    margin-top: space(2x);
+    .ads-input-checkbox
+    {
+      margin-top: space(2x);
+    }
   }
 }
 
