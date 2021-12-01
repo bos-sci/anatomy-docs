@@ -39,7 +39,7 @@ const InputText = ({ label, value = '', helpText, errorText, onChange, ...inputA
       <label className="ads-input-text">
         <div className="ads-input-text-label">
           { label }
-          { inputAttrs.required && <span className="ads-input-text-label-required">required</span> }
+          { inputAttrs.required && <span className="ads-input-help-text">required</span> }
         </div>
         <input
           className="ads-input-text-input"

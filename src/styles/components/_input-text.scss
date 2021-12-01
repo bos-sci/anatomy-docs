@@ -5,7 +5,7 @@
 
 .ads-input-text-input
 {
-  margin-top: space(sm);
+  margin-top: space(md);
   border: space(xxs) solid $neutral-dark;
   padding: space(lg) space(2x);
   width: 100%;
@@ -74,11 +74,4 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: space(sm);
-
-  .ads-input-text-label-required
-  {
-    @include font-size($fs-body-subtle);
-    color: $neutral-dark;
-  }
 }
