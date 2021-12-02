@@ -3,19 +3,18 @@
 // TODO: programmatically associate helpText with input (aria-describedby = uniqueHelpTextId)
 // TODO: programmatically associate errors with input (aria-describedby = uniqueErrorMessageId)
 
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, InputHTMLAttributes, useEffect, useState } from 'react';
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   value?: string;
   helpText?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => any | void;
-  [keys: string]: any; // Used to pass along native attribute to input
 }
 
 let radioId = 0;
 
-const InputRadio = ({ label, groupName, value = '', helpText, onChange, ...inputAttrs }: Props) => {
+const InputRadio = ({ label, value = '', helpText, onChange, ...inputAttrs }: Props) => {
 
   const [inputValue, setInputValue] = useState('');
   const [isChecked, setisChecked] = useState(false);
