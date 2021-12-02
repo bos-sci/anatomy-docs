@@ -1,32 +1,24 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, InputHTMLAttributes, useEffect, useState } from 'react';
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   helpText?: string;
   errorText?: string;
-  checked?: boolean;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => any | void;
-  [keys: string]: any; // Used to pass along native attribute to input
 }
 
 let checkboxId = 0;
 
-const InputCheckbox = ({ label, helpText, errorText, checked = false, onChange, ...inputAttrs }: Props) => {
+const InputCheckbox = ({ label, helpText, errorText, onChange, ...inputAttrs }: Props) => {
 
-  const [isChecked, setisChecked] = useState(checked);
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setisChecked(!isChecked);
     if (onChange) {
       onChange(e);
     }
   }
-
-  useEffect(() => {
-    setisChecked(checked);
-  }, [checked]);
 
   useEffect(() => {
     const idNum = ++checkboxId;
@@ -41,7 +33,6 @@ const InputCheckbox = ({ label, helpText, errorText, checked = false, onChange, 
           type="checkbox"
           className="ads-input-checkbox-input"
           onChange={handleChange}
-          checked={isChecked}
           aria-invalid={!!errorText}
           aria-describedby={`${errorText ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
           {...inputAttrs} />

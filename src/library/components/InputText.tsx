@@ -1,32 +1,25 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, InputHTMLAttributes, useEffect, useState } from 'react';
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  value?: string;
   helpText?: string;
   errorText?: string;
+  requiredText?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => any | void;
-  [keys: string]: any; // Used to pass along native attribute to input
 }
 
 let inputId = 0;
 
-const InputText = ({ label, value = '', helpText, errorText, onChange, ...inputAttrs }: Props) => {
+const InputText = ({ label, helpText, errorText, requiredText = 'required', onChange, ...inputAttrs }: Props) => {
 
-  const [inputValue, setInputValue] = useState('');
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
     if (onChange) {
       onChange(e);
     }
   }
-
-  useEffect(() => {
-    setInputValue(value);
-  }, [value]);
 
   useEffect(() => {
     const idNum = ++inputId;
@@ -39,11 +32,10 @@ const InputText = ({ label, value = '', helpText, errorText, onChange, ...inputA
       <label className="ads-input-text">
         <div className="ads-input-text-label">
           { label }
-          { inputAttrs.required && <span className="ads-input-help-text">required</span> }
+          { inputAttrs.required && <span className="ads-input-help-text">{ requiredText }</span> }
         </div>
         <input
           className="ads-input-text-input"
-          value={inputValue}
           onChange={handleChange}
           aria-invalid={!!errorText}
           aria-describedby={`${errorText ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
