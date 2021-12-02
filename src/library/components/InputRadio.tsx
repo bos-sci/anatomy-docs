@@ -1,7 +1,4 @@
-// TODO: fix checkedness (on click focuses unchecked, on second click checks, on click of unchecked rechecks default checked)
 // TODO: create RadioGroup component that includes fieldset, legend, name, default selection, invalid/required
-// TODO: programmatically associate helpText with input (aria-describedby = uniqueHelpTextId)
-// TODO: programmatically associate errors with input (aria-describedby = uniqueErrorMessageId)
 
 import { ChangeEvent, InputHTMLAttributes, useEffect, useState } from 'react';
 
