@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Fieldset from '../../../../library/components/Fieldset';
 import InputCheckbox from '../../../../library/components/InputCheckbox';
 
 const CheckboxListError = () => {
@@ -9,13 +10,11 @@ const CheckboxListError = () => {
   };
 
   return (
-    <fieldset className="ads-fieldset" aria-describedby="listErrorMessage" aria-invalid={errorText ? 'true' : 'false'}>
-      <legend className="ads-legend">Legend</legend>
-      <p id="listErrorMessage" className="ads-input-error">{ errorText }</p>
-      <InputCheckbox label="Checkbox 1" onChange={removeError} checked />
-      <InputCheckbox label="Checkbox 2" onChange={removeError} />
-      <InputCheckbox label="Checkbox 3" onChange={removeError} />
-    </fieldset>
+    <Fieldset legend="Legend" errorText={errorText} errorTextId="listErrorText">
+      <InputCheckbox label="Checkbox 1" aria-describedby="listErrorText" onChange={removeError} aria-invalid={!!errorText} defaultChecked />
+      <InputCheckbox label="Checkbox 2" aria-describedby="listErrorText" onChange={removeError} aria-invalid={!!errorText} />
+      <InputCheckbox label="Checkbox 3" aria-describedby="listErrorText" onChange={removeError} aria-invalid={!!errorText} />
+    </Fieldset>
   );
 }
 
