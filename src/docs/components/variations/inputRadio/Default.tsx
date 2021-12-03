@@ -9,16 +9,14 @@ const Default = () => {
     setSelectedRadio(e.target.value);
   }
 
-  return <>
-    <form>
-      <Fieldset legend="Legend">
-        <InputRadio label="Radio 1" name="groupDefault" value="defaultRadio1" onChange={handleChange} checked={selectedRadio === 'defaultRadio1'} />
-        <InputRadio label="Radio 2" name="groupDefault" value="defaultRadio2" onChange={handleChange} checked={selectedRadio === 'defaultRadio2'} />
-        <InputRadio label="Radio 3" name="groupDefault" value="defaultRadio3" onChange={handleChange} checked={selectedRadio === 'defaultRadio3'} />
-        <InputRadio label="Radio 4" name="groupDefault" value="defaultRadio4" onChange={handleChange} checked={selectedRadio === 'defaultRadio4'} />
-      </Fieldset>
-    </form>
-  </>;
+  return (
+    <Fieldset legend="Legend">
+      <InputRadio label="Radio 1" name="groupDefault" value="defaultRadio1" onChange={handleChange} checked={selectedRadio === 'defaultRadio1'} />
+      <InputRadio label="Radio 2" name="groupDefault" value="defaultRadio2" onChange={handleChange} checked={selectedRadio === 'defaultRadio2'} />
+      <InputRadio label="Radio 3" name="groupDefault" value="defaultRadio3" onChange={handleChange} checked={selectedRadio === 'defaultRadio3'} />
+      <InputRadio label="Radio 4" name="groupDefault" value="defaultRadio4" onChange={handleChange} checked={selectedRadio === 'defaultRadio4'} />
+    </Fieldset>
+  );
 }
 
 export default Default;
