@@ -6,17 +6,7 @@ interface Props {
 }
 
 const TabPanel = ({ children }: Props) => {
-  return (
-    <div 
-      id="tabPanel1"
-      className="ads-tab-panel" 
-      role="tabpanel" 
-      aria-labelledby="tab1" 
-      tabIndex={0}
-    >
-      {children}
-    </div>
-  );
+  return <>{children}</>;
 }
 
 export default TabPanel;

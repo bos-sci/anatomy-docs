@@ -5,20 +5,22 @@ interface Props {
   index: number;
   setSelectedTab: (index: number) => void;
   isActive?: boolean;
+  tabPanelId: string;
 }
 
-const Tab = ({ tabName, setSelectedTab, index, isActive }: Props) => {
+const Tab = ({ tabName, setSelectedTab, index, isActive, tabPanelId }: Props) => {
 
   const onClick = useCallback(() => {
     setSelectedTab(index)
   }, [setSelectedTab, index])
 
   return (
-    <button 
-      className="ads-tab" 
-      role="tab" 
-      aria-controls="tabPanel1"
-      aria-selected={`${isActive ? 'true' : 'false'}`}
+    <button
+      id={`${tabPanelId}Tab`}
+      className="ads-tab"
+      role="tab"
+      aria-controls={tabPanelId}
+      aria-selected={isActive}
       onClick={onClick}
     >
       { tabName }
