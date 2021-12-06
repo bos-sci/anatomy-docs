@@ -1,4 +1,5 @@
 // TODO: create RadioGroup component that includes fieldset, legend, name, default selection, invalid/required
+// TODO: look at how we handle ids
 
 import { ChangeEvent, InputHTMLAttributes, useEffect, useState } from 'react';
 
@@ -13,6 +14,7 @@ let radioId = 0;
 
 const InputRadio = ({ label, value = '', helpText, onChange, ...inputAttrs }: Props) => {
 
+  const [inputId, setInputId] = useState('');
   const [inputValue, setInputValue] = useState('');
   const [isChecked, setisChecked] = useState(false);
   const [helpTextId, setHelpTextId] = useState('');
@@ -31,21 +33,23 @@ const InputRadio = ({ label, value = '', helpText, onChange, ...inputAttrs }: Pr
 
   useEffect(() => {
     const idNum = ++radioId;
+    setInputId('radio' + idNum);
     setHelpTextId('radioHelpText' + idNum);
   }, []);
 
   return (
     <>
-      <label className="ads-input-radio">
+      <div className="ads-input-radio">
         <input
           type="radio"
+          id={inputId}
           className="ads-input-radio-input"
           value={inputValue}
           onChange={handleChange}
           aria-describedby={helpTextId}
           {...inputAttrs} />
-        <div className="ads-input-radio-label">{ label }</div>
-      </label>
+        <label htmlFor={inputId} className="ads-input-radio-label">{ label }</label>
+      </div>
       { helpText && <p id={helpTextId} className="ads-input-help-text">{ helpText }</p> }
     </>
   );
