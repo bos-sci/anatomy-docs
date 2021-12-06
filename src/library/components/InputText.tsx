@@ -39,7 +39,7 @@ const InputText = ({ label, helpText, errorText, requiredText = 'required', forc
     if (!validity.valid) {
       switch (true) {
         case validity.valueMissing:
-          setValidationMessage('Please fill out this field!');
+          setValidationMessage('Please fill out this field');
           break;
 
         default:
@@ -83,6 +83,10 @@ const InputText = ({ label, helpText, errorText, requiredText = 'required', forc
     const idNum = ++inputId;
     setHelpTextId('inputHelpText' + idNum);
     setErrorTextId('inputErrorText' + idNum);
+
+    if (inputEl?.current?.defaultValue) {
+      setIsDirty(true);
+    }
   }, []);
 
   return (
