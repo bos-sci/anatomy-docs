@@ -69,6 +69,15 @@ const Preview = ( props: Props ) => {
       );
       break;
 
+      case 'tabs':
+        const DefaultTabs = lazy(() => import('./tabs/DefaultTabs'));
+        RenderedComponent = (
+          <Suspense fallback={<Fallback />}>
+            <DefaultTabs />
+          </Suspense>
+        );
+        break;
+
 
     default:
       RenderedComponent = <p>Failed to load component!</p>;
