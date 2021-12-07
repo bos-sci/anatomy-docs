@@ -1,0 +1,96 @@
+.ads-tabs
+{
+  width: 100%;
+}
+
+.ads-tab-list
+{
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  &::after
+  {
+    // NOTE: this is a temporary solution for MVP overflow that depends on a white page background
+    position: sticky;
+    right: - space(xxs);
+    display: block;
+    width: space(xxs);
+    height: space(6x);
+    box-shadow: - space(sm) 0 space(lg) space(md) $neutral-lightest;
+    border-width: 0;
+    content: '';
+    pointer-events: none;
+  }
+}
+
+.ads-tab
+{
+  position: relative;
+  margin-right: space(2x);
+  border: 0;
+  padding: space(lg) space(2x);
+  background: transparent;
+  color: $neutral-dark;
+  font-family: $font-family-base-regular;
+
+  &::after
+  {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: space(xs);
+    background: transparent;
+    content: '';
+  }
+
+  &:not([disabled]):hover,
+  &:not([disabled]):active
+  {
+    background: transparent;
+    color: $action-primary-dark;
+
+    &::after
+    {
+      background: $action-primary-dark;
+    }
+  }
+
+  &:not([disabled]):focus
+  {
+    @include focus-default-inset;
+  }
+
+  &[aria-selected="true"]
+  {
+    color: $neutral-darkest;
+    font-family: $font-family-base-heavy;
+
+    &::after
+    {
+      height: space(sm);
+      background: $neutral-darkest;
+    }
+  }
+
+  &[disabled]
+  {
+    background: transparent;
+    color: $neutral;
+    font-family: $font-family-base-regular;
+    cursor: not-allowed;
+  }
+}
+
+.ads-tab-panels
+{
+  border-top: space(xxs) solid $neutral-light;
+  padding-top: space(3x);
+}
+
+.ads-tab-panel:not([disabled]):focus
+{
+  @include focus-default;
+}

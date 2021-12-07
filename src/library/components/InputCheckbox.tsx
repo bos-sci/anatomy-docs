@@ -1,52 +1,48 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+// TODO: look at how we handle ids
 
-interface Props {
+import { ChangeEvent, InputHTMLAttributes, useEffect, useState } from 'react';
+
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   helpText?: string;
   errorText?: string;
-  checked?: boolean;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => any | void;
-  [keys: string]: any; // Used to pass along native attribute to input
 }
 
 let checkboxId = 0;
 
-const InputCheckbox = ({ label, helpText, errorText, checked = false, onChange, ...inputAttrs }: Props) => {
+const InputCheckbox = ({ label, helpText, errorText, onChange, ...inputAttrs }: Props) => {
 
-  const [isChecked, setisChecked] = useState(checked);
+  const [inputId, setInputId] = useState('');
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setisChecked(!isChecked);
     if (onChange) {
       onChange(e);
     }
   }
 
   useEffect(() => {
-    setisChecked(checked);
-  }, [checked]);
-
-  useEffect(() => {
     const idNum = ++checkboxId;
+    setInputId('checkbox' + idNum);
     setHelpTextId('checkboxHelpText' + idNum);
     setErrorTextId('checkboxErrorText' + idNum);
   }, []);
 
   return (
     <div className="ads-input">
-      <label className="ads-input-checkbox">
+      <div className="ads-input-checkbox">
         <input
           type="checkbox"
+          id={inputId}
           className="ads-input-checkbox-input"
           onChange={handleChange}
-          checked={isChecked}
           aria-invalid={!!errorText}
           aria-describedby={`${errorText ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
           {...inputAttrs} />
-        <div className="ads-input-checkbox-label">{label}</div>
-      </label>
+        <label htmlFor={inputId} className="ads-input-checkbox-label">{label}</label>
+      </div>
       {errorText && <p id={errorTextId} className="ads-input-error">{ errorText }</p>}
       {helpText && <p id={helpTextId} className="ads-input-help-text">{ helpText }</p>}
     </div>
