@@ -7,7 +7,7 @@ const FoundationsRouter = () => {
   return (
     <Switch>
       <Route exact path={path}>
-        <Redirect to={`${path}/color`} />
+        <Redirect to={`${path}/accessibility`} />
       </Route>
       <Route path={`${path}/:foundationName`} component={Foundations} />
     </Switch>
