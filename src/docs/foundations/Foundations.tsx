@@ -60,6 +60,10 @@ const Foundations = (props:  Props) => {
     const pathPrefix = basePath + '/';
     const navItems = [
       {
+        text: 'Accessibility',
+        slug: pathPrefix + 'accessibility'
+      },
+      {
         text: 'Color',
         slug: pathPrefix + 'color'
       },
