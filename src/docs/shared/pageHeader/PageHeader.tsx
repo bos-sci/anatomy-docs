@@ -11,7 +11,7 @@ const PageHeader = (props: Props) => {
       <h1 className="page-title">{props.name}</h1>
       <dl className="page-publish-date body-subtle">
         <dt>Last Updated:</dt>
-        <dd>{new Date(props.publishedAt).toLocaleDateString()}</dd>
+        <dd>{props.publishedAt ? new Date(props.publishedAt).toLocaleDateString() : 'Draft'}</dd>
       </dl>
     </div>
   );
