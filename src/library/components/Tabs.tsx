@@ -9,7 +9,7 @@
 // https://dev.to/eevajonnapanula/keyboard-accessible-tabs-with-react-5ch4
 // https://accessible-react.eevis.codes/components/tabs#source-code
 
-import { FC, ReactElement, useEffect, useState } from 'react';
+import { createRef, FC, KeyboardEvent, ReactElement, RefObject, useEffect, useState } from 'react';
 import Tab from './Tab';
 
 type Props = {
@@ -18,11 +18,56 @@ type Props = {
 
 let tabsId = 0;
 
-const Tabs: FC<Props> = ({ children }) => {
+const Tabs: FC<Props> = ({ children }): JSX.Element => {
 
   const [selectedTab, setSelectedTab] = useState(0);
   const [tabPanelId, setTabPanelId] = useState('');
   const [tabPanels, setTabPanels] = useState<ReactElement[]>([]);
+  const [tabRefs, setTabRefs] = useState<RefObject<HTMLButtonElement>[]>([]);
+
+  const selectTab = (index: number) => {
+    const tabRef = tabRefs[index];
+    setSelectedTab(index);
+    tabRef.current?.focus();
+  }
+
+  const keyManager = (e: KeyboardEvent<HTMLDivElement>) => {
+    let nextTab = 0;
+    switch (e.key) {
+      case 'ArrowLeft':
+        e.preventDefault();
+        if (selectedTab === 0) {
+          nextTab = tabPanels.length - 1;
+        } else {
+          nextTab = selectedTab - 1;
+        }
+        selectTab(nextTab);
+        break;
+
+      case 'ArrowRight':
+        e.preventDefault();
+        if (selectedTab === tabPanels.length - 1) {
+          nextTab = 0;
+        } else {
+          nextTab = selectedTab + 1;
+        }
+        selectTab(nextTab);
+        break;
+
+      case 'Home':
+        e.preventDefault();
+        selectTab(0);
+        break;
+
+      case 'End':
+        e.preventDefault();
+        selectTab(tabPanels.length - 1);
+        break;
+
+      default:
+        break;
+    }
+  }
 
   useEffect(() => {
     const idNum = ++tabsId;
@@ -35,11 +80,16 @@ const Tabs: FC<Props> = ({ children }) => {
     } else {
       setTabPanels([children]);
     }
-  }, [children]);
+    let refs: RefObject<HTMLButtonElement>[] = [];
+    for (let i = 0; i < tabPanels.length; i++) {
+      refs.push(createRef());
+    }
+    setTabRefs(refs);
+  }, [children, tabPanels.length]);
 
   return (
     <div className="ads-tabs">
-      <div className="ads-tab-list" role="tablist">
+      <div className="ads-tab-list" role="tablist" onKeyDown={keyManager}>
         {tabPanels.map((tabPanel, index) => (
           <Tab
             key={`${tabPanelId + index}Tab`}
@@ -48,6 +98,7 @@ const Tabs: FC<Props> = ({ children }) => {
             setSelectedTab={setSelectedTab}
             isActive={index === selectedTab}
             tabPanelId={tabPanelId + index}
+            tabRef={tabRefs[index]}
           />
         ))}
       </div>
@@ -70,66 +121,3 @@ const Tabs: FC<Props> = ({ children }) => {
 }
 
 export default Tabs;
-
-// <div className="ads-tabs">
-//   <div className="ads-tab-list" role="tablist">
-//     <button
-//     id="tab1"
-//     className="ads-tab"
-//     role="tab"
-//     aria-controls="tabPanel1"
-//     aria-selected="true"
-//     >
-//       Product details
-//     </button>
-//     <button
-//       id="tab2"
-//       className="ads-tab"
-//       aria-controls="tabPanel2"
-//       aria-selected="false"
-//       tabIndex={-1}
-//     >
-//       Ordering information
-//     </button>
-//     <button
-//       id="tab3"
-//       className="ads-tab"
-//       aria-controls="tabPanel3"
-//       aria-selected="false"
-//       tabIndex={-1}
-//     >
-//       Reimbursement
-//     </button>
-//   </div>
-//   <div className="ads-tab-panels">
-//     <div
-//       id="tabPanel1"
-//       className="ads-tab-panel"
-//       role="tabpanel"
-//       aria-labelledby="tab1"
-//       tabIndex={0}
-//     >
-//       tab panel content
-//     </div>
-//     <div
-//       id="tabPanel2"
-//       className="ads-tab-panel"
-//       role="tabpanel"
-//       aria-labelledby="tab2"
-//       tabIndex={0}
-//       hidden
-//     >
-//       Tab panel 2
-//     </div>
-//     <div
-//       id="tabPanel3"
-//       className="ads-tab-panel"
-//       role="tabpanel"
-//       aria-labelledby="tab3"
-//       tabIndex={0}
-//       hidden
-//     >
-//       Tab panel 3
-//     </div>
-//   </div>
-// </div>
