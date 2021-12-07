@@ -1,13 +1,4 @@
-// TODO:
-// - figure out if we want to add aria-label or aria-labelledby on the tablist
-// - Hook up keyboard arrow navigation for tab buttons
-
-// resources
-// https://www.w3.org/TR/wai-aria-practices/#tabpanel
-// https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html
-// https://www.w3.org/TR/wai-aria-practices/#kbd_selection_follows_focus
-// https://dev.to/eevajonnapanula/keyboard-accessible-tabs-with-react-5ch4
-// https://accessible-react.eevis.codes/components/tabs#source-code
+// TODO: figure out if we want to add aria-label or aria-labelledby on the tablist
 
 import { createRef, FC, KeyboardEvent, ReactElement, RefObject, useEffect, useState } from 'react';
 import Tab from './Tab';
