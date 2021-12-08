@@ -4,8 +4,8 @@ import InputCheckbox from '../../../../library/components/InputCheckbox';
 
 const CheckboxListError = () => {
 
-  const errorMesage = 'Please check at least two options.';
-  const [errorText, setErrorText] = useState(errorMesage);
+  const errorMessage = 'Please check at least two options.';
+  const [errorText, setErrorText] = useState(errorMessage);
   const [checkboxes, setCheckboxes] = useState([
     {
       text: 'Checkbox 1',
@@ -29,7 +29,7 @@ const CheckboxListError = () => {
 
   useEffect(() => {
     if (checkboxes.filter(c => c.isChecked === true).length < 2) {
-      setErrorText(errorMesage);
+      setErrorText(errorMessage);
     } else {
       setErrorText('');
     }

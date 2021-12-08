@@ -23,11 +23,9 @@ const InputCheckbox = ({ label, helpText, errorText, forceInvalid, onBlur, onCha
 
   const validate = useCallback(() => {
     if (inputEl.current) {
-      if (inputEl.current) {
-        inputEl.current.setCustomValidity(errorText ? errorText : '');
-        const isValid = inputEl.current.checkValidity();
-        if (isValid) setValidationMessage('');
-      }
+      inputEl.current.setCustomValidity(errorText ? errorText : '');
+      const isValid = inputEl.current.checkValidity();
+      if (isValid) setValidationMessage('');
     }
   }, [errorText, inputEl]);
 
