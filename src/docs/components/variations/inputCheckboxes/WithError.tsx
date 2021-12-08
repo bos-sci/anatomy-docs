@@ -1,15 +1,7 @@
-import { useState } from 'react';
 import InputCheckbox from '../../../../library/components/InputCheckbox';
 
 const WithError = () => {
-
-  const [errorText, setErrorText] = useState('Error message');
-
-  const removeError = () => {
-    setErrorText('');
-  };
-
-  return <InputCheckbox label="Error checkbox" errorText={errorText} onChange={removeError} />;
+  return <InputCheckbox label="Error checkbox" required />;
 }
 
 export default WithError;
