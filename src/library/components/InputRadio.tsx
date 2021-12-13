@@ -1,35 +1,54 @@
 // TODO: create RadioGroup component that includes fieldset, legend, name, default selection, invalid/required
 // TODO: look at how we handle ids
 
-import { ChangeEvent, InputHTMLAttributes, useEffect, useState } from 'react';
+import { ChangeEvent, FocusEvent, InputHTMLAttributes, InvalidEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { getValidationMessage } from '../helpers/validation';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   value?: string;
   helpText?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => any | void;
+  setFieldsetError?: (text: string) => void;
 }
 
 let radioId = 0;
 
-const InputRadio = ({ label, value = '', helpText, onChange, ...inputAttrs }: Props) => {
+const InputRadio = ({ label, helpText, setFieldsetError, onBlur, onChange, onInvalid, ...inputAttrs }: Props) => {
 
   const [inputId, setInputId] = useState('');
-  const [inputValue, setInputValue] = useState('');
-  const [isChecked, setisChecked] = useState(false);
   const [helpTextId, setHelpTextId] = useState('');
 
+  const inputEl = useRef<HTMLInputElement>(null);
+
+  const validate = useCallback(() => {
+    if (inputEl.current) {
+      const isValid = inputEl.current.checkValidity();
+      if (isValid && setFieldsetError) setFieldsetError('');
+    }
+  }, [inputEl, setFieldsetError]);
+
+  const handleInvalid = (e: InvalidEvent<HTMLInputElement>) => {
+    if (setFieldsetError) {
+      setFieldsetError(getValidationMessage(e.target));
+    }
+    if (onInvalid) {
+      onInvalid(e);
+    }
+  }
+
+  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+    validate();
+    if (onBlur) {
+      onBlur(e);
+    }
+  }
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setisChecked(!isChecked);
-    setInputValue(e.target.value);
+    validate();
     if (onChange) {
       onChange(e);
     }
   }
-
-  useEffect(() => {
-    setInputValue(value);
-  }, [value]);
 
   useEffect(() => {
     const idNum = ++radioId;
@@ -38,20 +57,22 @@ const InputRadio = ({ label, value = '', helpText, onChange, ...inputAttrs }: Pr
   }, []);
 
   return (
-    <>
+    <div className="ads-input">
       <div className="ads-input-radio">
         <input
+          ref={inputEl}
           type="radio"
           id={inputId}
           className="ads-input-radio-input"
-          value={inputValue}
+          onInvalid={handleInvalid}
+          onBlur={handleBlur}
           onChange={handleChange}
           aria-describedby={helpTextId}
           {...inputAttrs} />
         <label htmlFor={inputId} className="ads-input-radio-label">{ label }</label>
       </div>
       { helpText && <p id={helpTextId} className="ads-input-help-text">{ helpText }</p> }
-    </>
+    </div>
   );
 }
 
