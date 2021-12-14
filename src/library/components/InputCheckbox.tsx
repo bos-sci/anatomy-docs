@@ -7,12 +7,12 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   helpText?: string;
   errorText?: string;
-  forceInvalid?: boolean;
+  forceValidation?: boolean;
 }
 
 let checkboxId = 0;
 
-const InputCheckbox = ({ label, helpText, errorText, forceInvalid, onBlur, onChange, onInvalid, ...inputAttrs }: Props) => {
+const InputCheckbox = ({ label, helpText, errorText, forceValidation, onBlur, onChange, onInvalid, ...inputAttrs }: Props) => {
 
   const [inputId, setInputId] = useState('');
   const [helpTextId, setHelpTextId] = useState('');

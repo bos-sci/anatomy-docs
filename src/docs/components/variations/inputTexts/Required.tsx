@@ -13,7 +13,7 @@ const Required = () => {
 
   return (
     <form onSubmit={handleSubmit} noValidate>
-      <InputText label="Required input" placeholder="Placeholder text" forceInvalid={didSubmit} required />
+      <InputText label="Required input" placeholder="Placeholder text" forceValidation={didSubmit} required />
     </form>
   );
 }

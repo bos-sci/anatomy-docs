@@ -7,12 +7,13 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   value?: string;
   helpText?: string;
+  forceValidation?: boolean;
   setFieldsetError?: (text: string) => void;
 }
 
 let radioId = 0;
 
-const InputRadio = ({ label, helpText, setFieldsetError, onBlur, onChange, onInvalid, ...inputAttrs }: Props) => {
+const InputRadio = ({ label, helpText, forceValidation, setFieldsetError, onBlur, onChange, onInvalid, ...inputAttrs }: Props) => {
 
   const [inputId, setInputId] = useState('');
   const [helpTextId, setHelpTextId] = useState('');
@@ -54,6 +55,12 @@ const InputRadio = ({ label, helpText, setFieldsetError, onBlur, onChange, onInv
     setInputId('radio' + idNum);
     setHelpTextId('radioHelpText' + idNum);
   }, []);
+
+  useEffect(() => {
+    if (forceValidation) {
+      validate();
+    }
+  }, [forceValidation, validate]);
 
   return (
     <div className="ads-input">

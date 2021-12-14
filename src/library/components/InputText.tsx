@@ -6,12 +6,12 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   helpText?: string;
   errorText?: string;
   requiredText?: string;
-  forceInvalid?: boolean;
+  forceValidation?: boolean;
 }
 
 let inputId = 0;
 
-const InputText = ({ label, helpText, errorText, requiredText = 'required', forceInvalid, onInvalid, onBlur, onChange, ...inputAttrs }: Props) => {
+const InputText = ({ label, helpText, errorText, requiredText = 'required', forceValidation, onInvalid, onBlur, onChange, ...inputAttrs }: Props) => {
 
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
@@ -55,15 +55,21 @@ const InputText = ({ label, helpText, errorText, requiredText = 'required', forc
 
   // Sets input to dirty
   useEffect(() => {
-    if (forceInvalid && !isDirty) {
+    if (forceValidation && !isDirty) {
       validate();
-    } else if (isDirty || forceInvalid) {
+    } else if (isDirty || forceValidation) {
       const whenDone = setTimeout(() => {
         validate();
       }, 1000);
       return () => clearTimeout(whenDone);
     }
-  }, [value, isDirty, validate, forceInvalid]);
+  }, [value, isDirty, validate, forceValidation]);
+
+  useEffect(() => {
+    if (forceValidation) {
+      validate();
+    }
+  }, [forceValidation, validate]);
 
   // On component mount
   useEffect(() => {
