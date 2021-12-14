@@ -42,6 +42,7 @@ const Components = (props: Props) => {
           items {
             name
             description
+            variantId
             isPreviewDarkThemed
           }
         }
@@ -92,7 +93,7 @@ const Components = (props: Props) => {
               <div key={ variant?.name + '' + i } className="component-variant">
                 <h3>{ variant?.name }</h3>
                 <Markdown markdown={variant?.description || ''} />
-                <Preview component={ componentName } variant={ variant?.name as string } isDarkTheme={ variant?.isPreviewDarkThemed || false } />
+                <Preview component={ componentName } variant={ variant?.name as string } variantId={variant?.variantId || ''} isDarkTheme={ variant?.isPreviewDarkThemed || false } />
               </div>
             ))}
           </> : <Preview component={ componentName } variant='Default' />
