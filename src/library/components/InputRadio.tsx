@@ -1,4 +1,3 @@
-// TODO: create RadioGroup component that includes fieldset, legend, name, default selection, invalid/required
 // TODO: look at how we handle ids
 
 import { ChangeEvent, FocusEvent, InputHTMLAttributes, InvalidEvent, useCallback, useEffect, useRef, useState } from 'react';

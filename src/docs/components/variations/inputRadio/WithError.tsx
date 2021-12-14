@@ -15,7 +15,7 @@ const WithError = () => {
 
   useEffect(() => {
     if (selectedRadio === 'errorRadio1') {
-      setErrorText('Please select a different option that before.');
+      setErrorText('Please select a different option than before.');
     } else {
       setErrorText('');
     }

@@ -1,5 +1,3 @@
-// TODO: programmatically associate helpText with input (aria-describedby = uniqueHelpTextId)
-
 import Fieldset from '../../../../library/components/Fieldset';
 import InputRadio from '../../../../library/components/InputRadio';
 

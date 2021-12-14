@@ -37,7 +37,7 @@ const Fieldset: FC<Props> = ({ legend, errorText, helpText, children, ...fieldse
         }
 
         // If child is a native or ADS form control
-        const inputTypesNative = ['select', 'input'];
+        const inputTypesNative = ['select', 'input', 'textarea'];
         const inputTypesFn = ['InputRadio', 'InputText'];
         if (
           (typeof child.type === 'function' && inputTypesFn.includes(child.type.name))
