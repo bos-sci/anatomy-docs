@@ -4,13 +4,13 @@ import WithError from './WithError';
 import WithHelpText from './WithHelpText';
 import WithGroupHelpText from './WithGroupHelpText';
 
-const InputRadioVariants = ({ variant }: VariantProps) => {
-  switch (variant.toLowerCase()) {
-    case 'with radio button help text':
+const InputRadioVariants = ({ variantId }: VariantProps) => {
+  switch (variantId) {
+    case 'inputRadioHelpText':
       return <WithHelpText />;
-    case 'with an error':
+    case 'inputRadioGroupError':
       return <WithError />;
-    case 'with group help text':
+    case 'inputRadioGroupHelpText':
       return <WithGroupHelpText />;
     default:
       return <Default />;

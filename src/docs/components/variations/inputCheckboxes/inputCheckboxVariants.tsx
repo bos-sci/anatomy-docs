@@ -7,17 +7,17 @@ import WithError from './WithError';
 import WithHelpText from './WithHelpText';
 
 
-const InputCheckboxVariants = ({ variant }: VariantProps) => {
-  switch (variant.toLowerCase()) {
-    case 'with help text':
+const InputCheckboxVariants = ({ variantId }: VariantProps) => {
+  switch (variantId) {
+    case 'inputCheckboxHelpText':
       return <WithHelpText />;
-    case 'with an error':
+    case 'inputCheckboxError':
       return <WithError />;
-    case 'checkbox list':
+    case 'inputCheckboxList':
       return <CheckboxList />;
-    case 'checkbox list with help text':
+    case 'inputCheckboxListHelpText':
       return <CheckboxListHelpText />;
-    case 'checkbox list with an error':
+    case 'inputCheckboxListError':
       return <CheckboxListError />;
     default:
       return <Default />;
