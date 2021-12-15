@@ -58,6 +58,12 @@ const InputCheckbox = ({ label, helpText, errorText, forceValidation, onBlur, on
     setErrorTextId('checkboxErrorText' + idNum);
   }, []);
 
+  useEffect(() => {
+    if (forceValidation) {
+      validate();
+    }
+  }, [forceValidation, validate]);
+
   return (
     <div className="ads-input">
       <div className="ads-input-checkbox">
