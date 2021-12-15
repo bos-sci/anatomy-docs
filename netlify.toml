@@ -4,10 +4,10 @@
   status = 200
 
 [context.production.environment]
-  REACT_APP_CONTENTFUL_PREVIEW = "false"
+  REACT_APP_CONTENTFUL_ENVIRONMENT = "master"
 
 [context.branch-deploy.environment]
-  REACT_APP_CONTENTFUL_PREVIEW = "true"
+  REACT_APP_CONTENTFUL_ENVIRONMENT = "beta-1" # Update to new working env
 
 [context.deploy-preview.environment]
-  REACT_APP_CONTENTFUL_PREVIEW = "true"
+  REACT_APP_CONTENTFUL_ENVIRONMENT = "beta-1" # Update to new working env
