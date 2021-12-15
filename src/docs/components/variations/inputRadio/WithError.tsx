@@ -7,9 +7,9 @@ const WithError = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Fieldset legend="Legend" >
+      <Fieldset legend="Legend">
         <InputRadio label="Yes" name="groupError" value="errorRadio1" forceValidation={true} required />
-        <InputRadio label="No" name="groupError" value="errorRadio2" required />
+        <InputRadio label="No" name="groupError" value="errorRadio2" forceValidation={true} required />
       </Fieldset>
     </form>
   );

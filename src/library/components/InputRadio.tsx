@@ -74,6 +74,7 @@ const InputRadio = ({ label, helpText, forceValidation, setFieldsetError, onBlur
           onBlur={handleBlur}
           onChange={handleChange}
           aria-describedby={helpTextId}
+          formNoValidate
           {...inputAttrs} />
         <label htmlFor={inputId} className="ads-input-radio-label">{ label }</label>
       </div>
