@@ -39,7 +39,7 @@ Detailed below is a brief map of the application detailing the important files a
 REACT_APP_CONTENTFUL_SPACE_ID={contentful-space-id}
 REACT_APP_CONTENTFUL_TOKEN={contentful-preview-api-key}
 REACT_APP_CONTENTFUL_MANAGMENT_TOKEN={contentful-management-api-key}
-REACT_APP_CONTENTFUL_ENVIRONMENT={current-dev-env-from-contentful}
+REACT_APP_CONTENTFUL_ENVIRONMENT={current-working-environment-from-contentful}
 REACT_APP_CONTENTFUL_PREVIEW=false // Set this to true if you want to see draft content from contentful
 REACT_EDITOR=code
 ```
