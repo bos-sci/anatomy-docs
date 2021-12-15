@@ -10,7 +10,7 @@ function useContentful(query: string, variables?: {[key: string]: any}) {
   }
 
   useEffect(() => {
-    let endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}?access_token=${process.env.REACT_APP_CONTENTFUL_TOKEN}`
+    let endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}/environments/${process.env.REACT_APP_CONTENTFUL_ENVIRONMENT}?access_token=${process.env.REACT_APP_CONTENTFUL_TOKEN}`
 
     // Build query params string
     let params = '';

@@ -39,8 +39,8 @@ Detailed below is a brief map of the application detailing the important files a
 REACT_APP_CONTENTFUL_SPACE_ID={contentful-space-id}
 REACT_APP_CONTENTFUL_TOKEN={contentful-preview-api-key}
 REACT_APP_CONTENTFUL_MANAGMENT_TOKEN={contentful-management-api-key}
-REACT_APP_CONTENTFUL_ENVIRONMENT=master
-REACT_APP_CONTENTFUL_PREVIEW=true
+REACT_APP_CONTENTFUL_ENVIRONMENT={current-dev-env-from-contentful}
+REACT_APP_CONTENTFUL_PREVIEW=false // Set this to true if you want to see draft content from contentful
 REACT_EDITOR=code
 ```
 
@@ -55,9 +55,16 @@ REACT_EDITOR=code
 
 #### Deploy to Production
 1. Create pull request from develop into master.
-2. Once all tests have passed and the preview is built and reviewed, the PR can be merged.<br />
-*The deploy preview will pull draft data from Contentful. This is due to a limitation in Netlify's deploy contexts. Production will only use published data.*
-3. Once merged, publish relevant content in Contentful.
+2. Once all tests have passed and the preview is built and reviewed, the PR can be merged.
+3. Once merged, go to Contentful and point the master alias environment at the working environment.
+This environment is now the production environment.
+4. Delete the oldest backup environment.
+5. Create a new environment off of master. This is the new working environment.
+6. Go to the master environment then `Settings > API Keys > Anatomy Docs > Environments` and give the API access to the
+new working environment.
+7. Update local .env files with the new working environment name.
+
+In the end we should be 4 environments including master, working env, and the past 2 versions of master.
 
 ### Naming Conventions
 

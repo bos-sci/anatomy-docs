@@ -2,12 +2,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-[context.production.environment]
-  REACT_APP_CONTENTFUL_PREVIEW = "false"
-
-[context.branch-deploy.environment]
-  REACT_APP_CONTENTFUL_PREVIEW = "true"
-
-[context.deploy-preview.environment]
-  REACT_APP_CONTENTFUL_PREVIEW = "true"
