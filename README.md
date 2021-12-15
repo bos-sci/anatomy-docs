@@ -54,28 +54,30 @@ REACT_EDITOR=code
 5. PR can only be merged after it has been reviewed and all tests pass.
 
 #### Deploy to Production
-1. Create pull request from develop into master.
-2. Once all tests have passed and the preview is built and reviewed, the PR can be merged.
-3. Once merged, go to Contentful and point the master alias environment at the working environment.
+1. In Contentful, point the master alias environment at the working environment.
 This environment is now the production environment.
-4. Delete the oldest backup environment.
-5. Create a new environment off of master. This is the new working environment.
-6. Go to the master environment then `Settings > API Keys > Anatomy Docs > Environments` and give the API access to the
+2. Delete the oldest backup environment.
+3. Create a new environment off of master. This is the new working environment.
+4. Go to the master environment then `Settings > API Keys > Anatomy Docs > Environments` and give the API access to the
 new working environment.
-7. Update local .env files with the new working environment name.
+5. Update local .env files with the new working environment name.
+6. Update netlify.toml with new working environment name in a branch i.e. `deploy/{environment-name}`. Commit/push changes nad create/merge branch into develop.
+7. Create pull request from develop into master.
+8. Once all tests have passed and the preview is built and reviewed, the PR can be merged.
 
-In the end we should be 4 environments including master, working env, and the past 2 versions of master.
+In the end we should have 4 environments including master, working environment, and the past 2 versions of master.
 
 ### Naming Conventions
 
 #### Git Naming
 
 ##### Branches
-If the work is tied to a ticket, the branch should be named using the pattern feature/xdc-### or bug/xdc-###.
+If the work is tied to a ticket, the branch should be named using the pattern `feature/xdc-###` or `bug/xdc-###`.
 In any case where the work doesn't have a ticket, the ticket name can be replaced with a brief kebab-cased description.
+If the changes are part of the deploy process, the branch should be named `deploy/{working-contentful-envrionment-name}`
 
 ##### Pull Requests
-Pull requests should start with the branch name, followed by a brief description of the work e.g. "feature/xcd-### Buttons".
+Pull requests should start with the branch name, followed by a brief description of the work e.g. `feature/xcd-### Buttons`.
 
 #### Filesystem Naming
 
