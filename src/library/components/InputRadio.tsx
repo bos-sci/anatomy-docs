@@ -1,54 +1,64 @@
+/* eslint-disable jsx-a11y/role-supports-aria-props */
 // TODO: look at how we handle ids
 
-import { ChangeEvent, FocusEvent, InputHTMLAttributes, InvalidEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FocusEvent, InputHTMLAttributes, InvalidEvent, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { getValidationMessage } from '../helpers/validation';
+import { AddonProps, InputRadioAddonPropsContext } from './InputRadioGroup';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   value?: string;
   helpText?: string;
   forceValidation?: boolean;
-  setFieldsetError?: (text: string) => void;
 }
 
 let radioId = 0;
 
-const InputRadio = ({ label, helpText, forceValidation, setFieldsetError, onBlur, onChange, onInvalid, ...inputAttrs }: Props) => {
+const InputRadio = ({ label, helpText, forceValidation, onBlur, onInput, onInvalid, ...inputAttrs }: Props) => {
 
   const [inputId, setInputId] = useState('');
   const [helpTextId, setHelpTextId] = useState('');
+  const [errorText, setErrorText] = useState('');
+  const addonProps: AddonProps = useContext(InputRadioAddonPropsContext);
 
   const inputEl = useRef<HTMLInputElement>(null);
 
   const validate = useCallback(() => {
     if (inputEl.current) {
+      inputEl.current.setCustomValidity(errorText);
       const isValid = inputEl.current.checkValidity();
-      if (isValid && setFieldsetError) setFieldsetError('');
+      if (isValid) addonProps.setFieldsetError('');
     }
-  }, [inputEl, setFieldsetError]);
+  }, [inputEl, addonProps, errorText]);
 
   const handleInvalid = (e: InvalidEvent<HTMLInputElement>) => {
-    if (setFieldsetError) {
-      setFieldsetError(getValidationMessage(e.target));
-    }
+    addonProps.setFieldsetError(getValidationMessage(e.target));
     if (onInvalid) {
       onInvalid(e);
     }
   }
 
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-    validate();
+    addonProps.setIsDirty(true);
     if (onBlur) {
       onBlur(e);
     }
+    validate();
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    validate();
-    if (onChange) {
-      onChange(e);
+    addonProps.setIsDirty(true);
+    if (onInput) {
+      onInput(e);
     }
+    validate();
   }
+
+  useEffect(() => {
+    if (addonProps.isDirty) {
+      setErrorText(addonProps.errorText);
+    }
+  }, [validate, addonProps]);
 
   useEffect(() => {
     const idNum = ++radioId;
@@ -57,10 +67,11 @@ const InputRadio = ({ label, helpText, forceValidation, setFieldsetError, onBlur
   }, []);
 
   useEffect(() => {
-    if (forceValidation) {
+    if (forceValidation && addonProps.setIsDirty) {
+      addonProps.setIsDirty(true);
       validate();
     }
-  }, [forceValidation, validate]);
+  }, [forceValidation, validate, addonProps]);
 
   return (
     <div className="ads-input">
@@ -72,8 +83,9 @@ const InputRadio = ({ label, helpText, forceValidation, setFieldsetError, onBlur
           className="ads-input-radio-input"
           onInvalid={handleInvalid}
           onBlur={handleBlur}
-          onChange={handleChange}
-          aria-describedby={helpTextId}
+          onInput={handleChange}
+          aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
+          aria-invalid={addonProps.ariaInvalid && addonProps.isDirty}
           formNoValidate
           {...inputAttrs} />
         <label htmlFor={inputId} className="ads-input-radio-label">{ label }</label>

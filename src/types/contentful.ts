@@ -477,6 +477,7 @@ export type ComponentVariant = Entry & {
   linkedFrom?: Maybe<ComponentVariantLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   sys: Sys;
+  variantId?: Maybe<Scalars['String']>;
 };
 
 
@@ -500,6 +501,12 @@ export type ComponentVariantLinkedFromArgs = {
 
 /** Variations of components e.g. Default vs assertive button. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentVariant) */
 export type ComponentVariantNameArgs = {
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+/** Variations of components e.g. Default vs assertive button. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentVariant) */
+export type ComponentVariantVariantIdArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
@@ -533,6 +540,13 @@ export type ComponentVariantFilter = {
   name_not_contains?: Maybe<Scalars['String']>;
   name_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
   sys?: Maybe<SysFilter>;
+  variantId?: Maybe<Scalars['String']>;
+  variantId_contains?: Maybe<Scalars['String']>;
+  variantId_exists?: Maybe<Scalars['Boolean']>;
+  variantId_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  variantId_not?: Maybe<Scalars['String']>;
+  variantId_not_contains?: Maybe<Scalars['String']>;
+  variantId_not_in?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type ComponentVariantLinkingCollections = {
@@ -569,7 +583,9 @@ export enum ComponentVariantOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  VariantIdAsc = 'variantId_ASC',
+  VariantIdDesc = 'variantId_DESC'
 }
 
 export type ComponentVariantsCollection = {
