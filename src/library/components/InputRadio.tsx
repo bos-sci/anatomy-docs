@@ -3,7 +3,7 @@
 
 import { ChangeEvent, FocusEvent, InputHTMLAttributes, InvalidEvent, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { getValidationMessage } from '../helpers/validation';
-import { AddonProps, InputRadioAddonPropsContext } from './InputRadioGroup';
+import { AddonProps, RadioAddonPropsContext } from './RadioGroup';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -19,7 +19,7 @@ const InputRadio = ({ label, helpText, forceValidation, onBlur, onInput, onInval
   const [inputId, setInputId] = useState('');
   const [helpTextId, setHelpTextId] = useState('');
   const [errorText, setErrorText] = useState('');
-  const addonProps: AddonProps = useContext(InputRadioAddonPropsContext);
+  const addonProps: AddonProps = useContext(RadioAddonPropsContext);
 
   const inputEl = useRef<HTMLInputElement>(null);
 

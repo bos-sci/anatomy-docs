@@ -1,16 +1,16 @@
 import { FormEvent } from 'react';
 import InputRadio from '../../../../library/components/InputRadio';
-import InputRadioGroup from '../../../../library/components/InputRadioGroup';
+import RadioGroup from '../../../../library/components/RadioGroup';
 
 const WithError = () => {
   const handleSubmit = (e: FormEvent) => e.preventDefault();
 
   return (
     <form onSubmit={handleSubmit}>
-      <InputRadioGroup legend="Legend" >
+      <RadioGroup legend="Legend" >
         <InputRadio label="Yes" name="groupRequired" value="errorRequired1" required forceValidation={true}/>
         <InputRadio label="No" name="groupRequired" value="errorRequired2" required />
-      </InputRadioGroup>
+      </RadioGroup>
     </form>
   );
 }

@@ -3,7 +3,7 @@
 
 import { createContext, FC, FieldsetHTMLAttributes, useEffect, useState } from 'react';
 
-export const InputRadioAddonPropsContext = createContext({
+export const RadioAddonPropsContext = createContext({
   ariaInvalid: false,
   ariaDescribedby: '',
   errorText: '',
@@ -29,7 +29,7 @@ export interface AddonProps {
 
 let radioGroupId = 0;
 
-const InputRadioGroup: FC<Props> = ({ legend, errorText = '', helpText, children, ...fieldsetAttrs }) => {
+const RadioGroup: FC<Props> = ({ legend, errorText = '', helpText, children, ...fieldsetAttrs }) => {
 
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
@@ -67,11 +67,11 @@ const InputRadioGroup: FC<Props> = ({ legend, errorText = '', helpText, children
       { helpText &&
         <p id={helpTextId} className="ads-input-help-text">{ helpText }</p>
       }
-      <InputRadioAddonPropsContext.Provider value={addonProps}>
+      <RadioAddonPropsContext.Provider value={addonProps}>
         { children }
-      </InputRadioAddonPropsContext.Provider>
+      </RadioAddonPropsContext.Provider>
     </fieldset>
   );
 }
 
-export default InputRadioGroup;
+export default RadioGroup;
