@@ -11,7 +11,7 @@ interface Props extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
 
 let fieldsetId = 0;
 
-const Fieldset = ({ legend, errorText, helpText, children, ...fieldsetAttrs }: Props) => {
+const Fieldset = ({ legend, errorText, helpText, children, ...fieldsetAttrs }: Props): JSX.Element => {
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
 

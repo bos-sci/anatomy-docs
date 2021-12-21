@@ -1,7 +1,7 @@
 import InputRadio from '../../../../library/components/InputRadio';
 import RadioGroup from '../../../../library/components/RadioGroup';
 
-const WithGroupHelpText = () => {
+const WithGroupHelpText = (): JSX.Element => {
   return (
     <RadioGroup legend="Legend" helpText="Radio group help text is programmatically associated with the fieldset.">
       <InputRadio label="Radio 1" name="groupGroupHelp" value="groupHelpRadio1" defaultChecked />

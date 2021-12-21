@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import InputText from '../../../../library/components/InputText';
 
-const Default = () => {
+const Default = (): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -29,7 +29,7 @@ export interface AddonProps {
 
 let radioGroupId = 0;
 
-const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAttrs }: Props) => {
+const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAttrs }: Props): JSX.Element => {
 
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');

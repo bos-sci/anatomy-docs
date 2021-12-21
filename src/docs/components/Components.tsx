@@ -27,7 +27,7 @@ interface ContentfulData {
   error?: any
 }
 
-const Components = (props: Props) => {
+const Components = (props: Props): JSX.Element => {
   const componentName = props.match.params.componentName;
   const idLookup: IdLookup = useContext(IdLookupContext);
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);

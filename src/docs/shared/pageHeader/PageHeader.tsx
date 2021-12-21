@@ -5,7 +5,7 @@ interface Props {
   publishedAt: string;
 }
 
-const PageHeader = (props: Props) => {
+const PageHeader = (props: Props): JSX.Element => {
   return (
     <div className="page-header">
       <h1 className="page-title">{props.name}</h1>

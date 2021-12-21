@@ -1,7 +1,7 @@
 import Foundations from './Foundations';
 import { Redirect, Switch, Route, useRouteMatch } from 'react-router-dom';
 
-const FoundationsRouter = () => {
+const FoundationsRouter = (): JSX.Element => {
   const { path } = useRouteMatch();
 
   return (

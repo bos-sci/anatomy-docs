@@ -25,7 +25,7 @@ interface ContentfulData {
   error?: any
 }
 
-const Resources = (props:  Props) => {
+const Resources = (props:  Props): JSX.Element => {
   const resourceName = props.match.params.resourceName;
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
   let [resourceData, setResourceData] = useState<Resource>({} as Resource);

@@ -1,6 +1,6 @@
 import Button from '../../../../library/components/Button';
 
-const Subtle = () => {
+const Subtle = (): JSX.Element => {
   return <>
     <Button variant="subtle" type="button">Default button</Button>
     <Button variant="subtle" type="button" disabled>Disabled button</Button>

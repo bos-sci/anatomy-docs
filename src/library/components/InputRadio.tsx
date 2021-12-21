@@ -14,7 +14,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 let radioId = 0;
 
-const InputRadio = ({ label, helpText, forceValidation, onBlur, onInput, onInvalid, ...inputAttrs }: Props) => {
+const InputRadio = ({ label, helpText, forceValidation, onBlur, onInput, onInvalid, ...inputAttrs }: Props): JSX.Element => {
 
   const [inputId, setInputId] = useState('');
   const [helpTextId, setHelpTextId] = useState('');

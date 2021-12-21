@@ -8,7 +8,7 @@ interface Props {
   className?: string;
 }
 
-const Markdown = ({ markdown, headingOffset = 0, className }: Props) => {
+const Markdown = ({ markdown, headingOffset = 0, className }: Props): JSX.Element | null => {
   const [cleanMarkdown, setCleanMarkdown] = useState('');
 
   useEffect(() => {

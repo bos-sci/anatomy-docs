@@ -5,7 +5,7 @@ interface Props {
   children: ReactNode;
 }
 
-const TabPanel = ({ children }: Props) => {
+const TabPanel = ({ children }: Props): JSX.Element => {
   return <>{children}</>;
 }
 

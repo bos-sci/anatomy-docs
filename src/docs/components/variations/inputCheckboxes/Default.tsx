@@ -1,6 +1,6 @@
 import InputCheckbox from '../../../../library/components/InputCheckbox';
 
-const Default = () => {
+const Default = (): JSX.Element => {
   return <>
     <InputCheckbox label="Default checkbox" />
     <InputCheckbox label="Disabled checkbox" disabled />

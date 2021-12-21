@@ -12,7 +12,7 @@ export interface VariantProps {
   variantId: string;
 }
 
-const Preview = ( props: Props ) => {
+const Preview = ( props: Props ): JSX.Element => {
   let RenderedComponent;
 
   switch (props.component) {

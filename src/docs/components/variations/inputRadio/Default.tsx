@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import InputRadio from '../../../../library/components/InputRadio';
 import RadioGroup from '../../../../library/components/RadioGroup';
 
-const Default = () => {
+const Default = (): JSX.Element => {
   const [selectedRadio, setSelectedRadio] = useState('defaultRadio1');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

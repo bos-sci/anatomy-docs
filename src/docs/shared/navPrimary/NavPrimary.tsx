@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo-bsc-anatomy.svg";
 
-const NavPrimary = () => {
+const NavPrimary = (): JSX.Element => {
 
   let [isNavOpen, setIsNavOpen] = useState(false);
 

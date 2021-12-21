@@ -1,6 +1,6 @@
 import Button from '../../../../library/components/Button';
 
-const Assertive = () => {
+const Assertive = (): JSX.Element => {
   return <>
     <Button variant="assertive" type="button">Default button</Button>
     <Button variant="assertive" type="button" disabled>Disabled button</Button>

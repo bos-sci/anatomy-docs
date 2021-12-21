@@ -1,7 +1,7 @@
 import Components from './Components';
 import { Redirect, Switch, Route, useRouteMatch } from 'react-router-dom';
 
-const ComponentsRouter = () => {
+const ComponentsRouter = (): JSX.Element => {
   const { path } = useRouteMatch();
 
   return (

@@ -3,7 +3,7 @@
 import InputRadio from '../../../../library/components/InputRadio';
 import RadioGroup from '../../../../library/components/RadioGroup';
 
-const WithHelpText = () => {
+const WithHelpText = (): JSX.Element => {
   return (
     <RadioGroup legend="Legend">
       <InputRadio label="Radio 1" name="groupHelp" value="helpRadio1" disabled />
