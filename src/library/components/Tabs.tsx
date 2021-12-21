@@ -1,6 +1,6 @@
 // TODO: figure out if we want to add aria-label or aria-labelledby on the tablist
 
-import { createRef, FC, KeyboardEvent, ReactElement, RefObject, useEffect, useState } from 'react';
+import { createRef, KeyboardEvent, ReactElement, RefObject, useEffect, useState } from 'react';
 import Tab from './Tab';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 
 let tabsId = 0;
 
-const Tabs: FC<Props> = ({ children }): JSX.Element => {
+const Tabs = ({ children }: Props): JSX.Element => {
 
   const [selectedTab, setSelectedTab] = useState(0);
   const [tabPanelId, setTabPanelId] = useState('');

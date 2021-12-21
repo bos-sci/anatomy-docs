@@ -1,7 +1,7 @@
 // TODO:
 // - Revisit what to relate help and error text to
 
-import { createContext, FC, FieldsetHTMLAttributes, useEffect, useState } from 'react';
+import { createContext, FieldsetHTMLAttributes, useEffect, useState } from 'react';
 
 export const RadioAddonPropsContext = createContext({
   ariaInvalid: false,
@@ -29,7 +29,7 @@ export interface AddonProps {
 
 let radioGroupId = 0;
 
-const RadioGroup: FC<Props> = ({ legend, errorText = '', helpText, children, ...fieldsetAttrs }) => {
+const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAttrs }: Props) => {
 
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
