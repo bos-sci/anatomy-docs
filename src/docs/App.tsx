@@ -36,7 +36,7 @@ interface IData {
   error?: unknown
 }
 
-function App() {
+const App = (): JSX.Element => {
   const [idLookup, setIdLookup] = useState<IdLookup>({} as IdLookup);
   const [isLookupReady, setIsLookupReady] = useState(false);
 

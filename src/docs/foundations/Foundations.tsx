@@ -25,7 +25,7 @@ interface ContentfulData {
   error?: any
 }
 
-const Foundations = (props:  Props) => {
+const Foundations = (props:  Props): JSX.Element => {
   const foundationName = props.match.params.foundationName;
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
   let [foundationData, setFoundationData] = useState<Foundation>({} as Foundation);

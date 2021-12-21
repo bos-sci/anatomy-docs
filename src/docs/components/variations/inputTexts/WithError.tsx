@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import InputText from '../../../../library/components/InputText';
 
-const WithError = () => {
+const WithError = (): JSX.Element => {
 
   const errorMessage = 'Don\'t use spaces';
   const [errorText, setErrorText] = useState(errorMessage);

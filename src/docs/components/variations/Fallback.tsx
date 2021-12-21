@@ -1,4 +1,4 @@
-const Fallback = () => {
+const Fallback = (): JSX.Element => {
   return (
     <p>Loading component...</p>
   );

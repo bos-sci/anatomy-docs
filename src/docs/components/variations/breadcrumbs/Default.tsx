@@ -1,6 +1,6 @@
 import Breadcrumb from '../../../../library/components/Breadcrumb';
 
-const Default = () => {
+const Default = (): JSX.Element => {
   const crumbs = [
     {
       name: 'Grandparent Page',

@@ -25,7 +25,7 @@ interface ContentfulData {
   error?: any
 }
 
-const ContentGuidelines = (props:  Props) => {
+const ContentGuidelines = (props:  Props): JSX.Element => {
   const contentName = props.match.params.contentName;
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
   let [contentGuidelineData, setContentGuidelineData] = useState<ContentGuideline>({} as ContentGuideline);

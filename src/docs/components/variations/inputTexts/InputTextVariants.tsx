@@ -6,7 +6,7 @@ import Required from './Required';
 import WithError from './WithError';
 import WithHelpText from './WithHelpText';
 
-const InputTextVariants = ({ variantId }: VariantProps) => {
+const InputTextVariants = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     case 'inputTextDisabled':
       return <Disabled />;

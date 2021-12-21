@@ -1,9 +1,7 @@
 import Link from '../../../../library/components/Link';
 
-const Default = () => {
-  return <>
-    <Link href="#">Default Link</Link>
-  </>;
+const Default = (): JSX.Element => {
+  return <Link href="#">Default Link</Link>;
 }
 
 export default Default;

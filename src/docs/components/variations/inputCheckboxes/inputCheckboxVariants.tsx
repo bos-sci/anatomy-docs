@@ -7,7 +7,7 @@ import WithError from './WithError';
 import WithHelpText from './WithHelpText';
 
 
-const InputCheckboxVariants = ({ variantId }: VariantProps) => {
+const InputCheckboxVariants = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     case 'inputCheckboxHelpText':
       return <WithHelpText />;

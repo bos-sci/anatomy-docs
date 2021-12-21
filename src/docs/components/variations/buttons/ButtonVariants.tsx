@@ -4,7 +4,7 @@ import Assertive from './Assertive';
 import Ghost from './Ghost';
 import Subtle from './Subtle';
 
-const ButtonVariants = ({ variantId }: VariantProps) => {
+const ButtonVariants = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     case 'buttonAssertive':
       return <Assertive />;

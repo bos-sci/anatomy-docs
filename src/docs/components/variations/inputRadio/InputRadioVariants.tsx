@@ -4,7 +4,7 @@ import WithError from './WithError';
 import WithHelpText from './WithHelpText';
 import WithGroupHelpText from './WithGroupHelpText';
 
-const InputRadioVariants = ({ variantId }: VariantProps) => {
+const InputRadioVariants = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     case 'inputRadioHelpText':
       return <WithHelpText />;

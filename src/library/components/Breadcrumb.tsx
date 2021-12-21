@@ -12,7 +12,7 @@ interface Props {
   currentPage: string;
 }
 
-const Breadcrumb = ({ crumbs, currentPage }: Props) => {
+const Breadcrumb = ({ crumbs, currentPage }: Props): JSX.Element => {
   return (
     <nav aria-label="breadcrumb">
       <ol className="ads-breadcrumbs">

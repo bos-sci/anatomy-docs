@@ -1,6 +1,6 @@
 import InputCheckbox from '../../../../library/components/InputCheckbox';
 
-const WithError = () => {
+const WithError = (): JSX.Element => {
   return <InputCheckbox label="Error checkbox" required forceValidation={true} />;
 }
 

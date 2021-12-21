@@ -1,7 +1,7 @@
 import CodeStandards from './CodeStandards';
 import { Redirect, Switch, Route, useRouteMatch } from 'react-router-dom';
 
-const CodeStandardsRouter = () => {
+const CodeStandardsRouter = (): JSX.Element => {
   const { path } = useRouteMatch();
 
   return (

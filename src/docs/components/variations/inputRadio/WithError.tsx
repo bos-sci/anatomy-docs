@@ -2,7 +2,7 @@ import { FormEvent } from 'react';
 import InputRadio from '../../../../library/components/InputRadio';
 import RadioGroup from '../../../../library/components/RadioGroup';
 
-const WithError = () => {
+const WithError = (): JSX.Element => {
   const handleSubmit = (e: FormEvent) => e.preventDefault();
 
   return (

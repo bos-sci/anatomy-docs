@@ -25,7 +25,7 @@ interface ContentfulData {
   error?: any
 }
 
-const CodeStandards = (props:  Props) => {
+const CodeStandards = (props:  Props): JSX.Element => {
   const standardName = props.match.params.standardName;
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
   let [codeStandardData, setCodeStandardData] = useState<CodeStandard>({} as CodeStandard);

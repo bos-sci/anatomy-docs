@@ -1,6 +1,6 @@
 import Button from '../../../../library/components/Button';
 
-const Ghost = () => {
+const Ghost = (): JSX.Element => {
   return <>
     <Button variant="ghost" type="button">Default button</Button>
     <Button variant="ghost" type="button" disabled>Disabled button</Button>

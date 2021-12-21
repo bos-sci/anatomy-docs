@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 
-function useContentful(query: string, variables?: {[key: string]: any}) {
+interface Res {
+  response?: any;
+  error?: any;
+}
+
+function useContentful(query: string, variables?: {[key: string]: any}): Res {
 
   const [response, setResponse] = useState(undefined);
   const [error, setError] = useState(undefined);

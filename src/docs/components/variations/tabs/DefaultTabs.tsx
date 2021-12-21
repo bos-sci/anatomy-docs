@@ -1,7 +1,7 @@
 import Tabs from '../../../../library/components/Tabs';
 import TabPanel from '../../../../library/components/TabPanel';
 
-const DefaultTabs = () => {
+const DefaultTabs = (): JSX.Element => {
   return (
     <Tabs>
       <TabPanel tabName="Product details">Tab panel 1</TabPanel>

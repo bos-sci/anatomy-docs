@@ -1,7 +1,7 @@
 // TODO:
 // - Revisit what to relate help and error text to
 
-import { FC, FieldsetHTMLAttributes, useEffect, useState } from 'react';
+import { FieldsetHTMLAttributes, useEffect, useState } from 'react';
 
 interface Props extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
   legend: string;
@@ -11,7 +11,7 @@ interface Props extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
 
 let fieldsetId = 0;
 
-const Fieldset: FC<Props> = ({ legend, errorText, helpText, children, ...fieldsetAttrs }) => {
+const Fieldset = ({ legend, errorText, helpText, children, ...fieldsetAttrs }: Props): JSX.Element => {
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
 

@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import InputText from '../../../../library/components/InputText';
 
-const Required = () => {
+const Required = (): JSX.Element => {
 
   // TODO: Handle on submit valdiation within a form component
   const [didSubmit, setDidSubmit] = useState(false);

@@ -11,7 +11,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 let inputId = 0;
 
-const InputText = ({ label, helpText, errorText, requiredText = 'required', forceValidation, onInvalid, onBlur, onChange, ...inputAttrs }: Props) => {
+const InputText = ({ label, helpText, errorText, requiredText = 'required', forceValidation, onInvalid, onBlur, onChange, ...inputAttrs }: Props): JSX.Element => {
 
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
