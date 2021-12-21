@@ -36,7 +36,7 @@ const CheckboxListError = () => {
   }, [checkboxes]);
 
   return (
-    <Fieldset legend="Legend" errorText={errorText} errorTextId="listErrorText">
+    <Fieldset legend="Legend" errorText={errorText}>
       {checkboxes.map((checkbox, i) => (
         <InputCheckbox
           key={'checkboxListWithError' + i}

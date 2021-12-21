@@ -1,16 +1,17 @@
-// TODO: programmatically add aria-invalid="true" to fieldset / radio group when a radio group is in an invalid state
-
-import Fieldset from '../../../../library/components/Fieldset';
+import { FormEvent } from 'react';
 import InputRadio from '../../../../library/components/InputRadio';
+import RadioGroup from '../../../../library/components/RadioGroup';
 
 const WithError = () => {
+  const handleSubmit = (e: FormEvent) => e.preventDefault();
+
   return (
-    <Fieldset legend="Legend" errorText="Error message" errorTextId="groupErrorErrorMessage">
-      <InputRadio label="Radio 1" name="groupError" value="errorRadio1" aria-invalid="true" aria-describedby="groupErrorErrorMessage" />
-      <InputRadio label="Radio 2" name="groupError" value="errorRadio2" aria-invalid="true" aria-describedby="groupErrorErrorMessage" />
-      <InputRadio label="Radio 3" name="groupError" value="errorRadio3" aria-invalid="true" aria-describedby="groupErrorErrorMessage" />
-      <InputRadio label="Radio 4" name="groupError" value="errorRadio4" aria-invalid="true" aria-describedby="groupErrorErrorMessage" disabled />
-    </Fieldset>
+    <form onSubmit={handleSubmit}>
+      <RadioGroup legend="Legend" >
+        <InputRadio label="Yes" name="groupRequired" value="errorRequired1" required forceValidation={true}/>
+        <InputRadio label="No" name="groupRequired" value="errorRequired2" required />
+      </RadioGroup>
+    </form>
   );
 }
 
