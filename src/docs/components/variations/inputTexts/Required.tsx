@@ -12,7 +12,7 @@ const Required = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate>
+    <form className="ads-form" onSubmit={handleSubmit} noValidate>
       <InputText label="Required input" placeholder="Placeholder text" forceValidation={didSubmit} required />
     </form>
   );
