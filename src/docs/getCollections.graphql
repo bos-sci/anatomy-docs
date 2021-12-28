@@ -1,0 +1,50 @@
+query getCollections($preview: Boolean) {
+  foundationCollection(order: name_ASC, preview: $preview) {
+    items {
+      name
+      sys {
+        id
+      }
+    }
+  }
+  contentGuidelineCollection(order: name_ASC, preview: $preview) {
+    items {
+      name
+      sys {
+        id
+      }
+    }
+  }
+  contentGuidelineCollection(order: name_ASC, preview: $preview) {
+    items {
+      name
+      sys {
+        id
+      }
+    }
+  }
+  codeStandardCollection(preview: $preview) {
+    items {
+      name
+      sys {
+        id
+      }
+    }
+  }
+  componentCollection(order: name_ASC, preview: $preview) {
+    items {
+      name
+      sys {
+        id
+      }
+    }
+  }
+  resourceCollection(order: name_ASC, preview: $preview) {
+    items {
+      name
+      sys {
+        id
+      }
+    }
+  }
+}

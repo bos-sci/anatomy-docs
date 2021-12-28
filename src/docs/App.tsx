@@ -6,9 +6,8 @@ import {
   Redirect
 } from "react-router-dom";
 import { slugify } from './helpers';
-import useContentful from '../hooks/useContentful';
 import NavPrimary from './shared/navPrimary/NavPrimary';
-import { CodeStandardCollection, ComponentCollection, ContentGuidelineCollection, FoundationCollection, ResourceCollection } from '../types/contentful';
+import {  useGetCollectionsQuery } from '../types/contentful';
 import { IdLookup } from '../types/docs';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
@@ -25,70 +24,21 @@ export const IdLookupContext = createContext({
   resources: {}
 });
 
-interface IData {
-  response?: {
-    contentGuidelineCollection: ContentGuidelineCollection;
-    codeStandardCollection: CodeStandardCollection;
-    componentCollection: ComponentCollection;
-    foundationCollection: FoundationCollection;
-    resourceCollection: ResourceCollection;
-  };
-  error?: unknown
-}
-
 const App = (): JSX.Element => {
   const [idLookup, setIdLookup] = useState<IdLookup>({} as IdLookup);
   const [isLookupReady, setIsLookupReady] = useState(false);
-
-  const query = `
-    {
-      foundationCollection(order: name_ASC, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
-        items {
-          name
-          sys {
-            id
-          }
-        }
-      }
-      contentGuidelineCollection(order: name_ASC, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
-        items {
-          name
-          sys {
-            id
-          }
-        }
-      }
-      codeStandardCollection(preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
-        items {
-          name
-          sys {
-            id
-          }
-        }
-      }
-      componentCollection(order: name_ASC, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
-        items {
-          name
-          sys {
-            id
-          }
-        }
-      }
-      resourceCollection(order: name_ASC, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
-        items {
-          name
-          sys {
-            id
-          }
-        }
-      }
+  const {data, error} = useGetCollectionsQuery({
+    variables: {
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
     }
-  `;
+  });
 
-  const data: IData = useContentful(query);
+  if (error) {
+    console.error(error);
+  }
 
   useEffect(() => {
-    if (data.response) {
+    if (data) {
       const idMap: IdLookup = {
         foundations: {},
         contentGuidelines: {},
@@ -96,31 +46,31 @@ const App = (): JSX.Element => {
         components: {},
         resources: {}
       };
-      data.response.foundationCollection.items.forEach((item) => (
+      data.foundationCollection?.items.forEach((item) => (
         idMap.foundations[slugify(item?.name as string)] = {
           id: item?.sys.id as string,
           name: item?.name as string
         })
       );
-      data.response.contentGuidelineCollection.items.forEach((item) => (
+      data.contentGuidelineCollection?.items.forEach((item) => (
         idMap.contentGuidelines[slugify(item?.name as string)] = {
           id: item?.sys.id as string,
           name: item?.name as string
         })
       );
-      data.response.codeStandardCollection.items.forEach((item) => (
+      data.codeStandardCollection?.items.forEach((item) => (
         idMap.codeStandards[slugify(item?.name as string)] = {
           id: item?.sys.id as string,
           name: item?.name as string
         })
       );
-      data.response.componentCollection.items.forEach((item) => (
+      data.componentCollection?.items.forEach((item) => (
         idMap.components[slugify(item?.name as string)] = {
           id: item?.sys.id as string,
           name: item?.name as string
         })
       );
-      data.response.resourceCollection.items.forEach((item) => (
+      data.resourceCollection?.items.forEach((item) => (
         idMap.resources[slugify(item?.name as string)] = {
           id: item?.sys.id as string,
           name: item?.name as string
@@ -129,7 +79,7 @@ const App = (): JSX.Element => {
       setIdLookup(idMap);
       setIsLookupReady(true);
     }
-  }, [data.response]);
+  }, [data]);
 
   const clearSession = () => {
     sessionStorage.clear();

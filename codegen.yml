@@ -3,7 +3,17 @@ schema:
   - https://graphql.contentful.com/content/v1/spaces/${REACT_APP_CONTENTFUL_SPACE_ID}/environments/${REACT_APP_CONTENTFUL_ENVIRONMENT}:
       headers:
         Authorization: "Bearer ${REACT_APP_CONTENTFUL_TOKEN}"
+documents:
+  - "src/**/!(*.d).{ts,tsx}"
+  - "src/**/*.graphql"
 generates:
   src/types/contentful.ts:
     plugins:
       - typescript
+      - typescript-operations
+      - typescript-react-apollo
+
+  # Save the remote ast schema to a file for a better IDE experience
+  schema.graphql:
+    plugins:
+      - schema-ast
