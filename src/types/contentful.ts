@@ -1238,6 +1238,14 @@ export type SysFilter = {
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
+export type GetComponentQueryVariables = Exact<{
+  id: Scalars['String'];
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null | undefined, description?: string | null | undefined, usage?: string | null | undefined, usageDo?: string | null | undefined, usageDont?: string | null | undefined, interactions?: string | null | undefined, contentGuidelines?: string | null | undefined, contentGuidelinesDo?: string | null | undefined, contentGuidelinesDont?: string | null | undefined, userResearch?: string | null | undefined, accessibility?: string | null | undefined, variantsCollection?: { __typename?: 'ComponentVariantsCollection', items: Array<{ __typename?: 'ComponentVariant', name?: string | null | undefined, description?: string | null | undefined, variantId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+
 export type GetCollectionsQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
@@ -1246,6 +1254,64 @@ export type GetCollectionsQueryVariables = Exact<{
 export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
 
 
+export const GetComponentDocument = gql`
+    query getComponent($id: String!, $preview: Boolean) {
+  component(id: $id, preview: $preview) {
+    name
+    description
+    variantsCollection {
+      items {
+        name
+        description
+        variantId
+        isPreviewDarkThemed
+      }
+    }
+    usage
+    usageDo
+    usageDont
+    interactions
+    contentGuidelines
+    contentGuidelinesDo
+    contentGuidelinesDont
+    userResearch
+    accessibility
+    sys {
+      id
+      publishedAt
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetComponentQuery__
+ *
+ * To run a query within a React component, call `useGetComponentQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetComponentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetComponentQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      preview: // value for 'preview'
+ *   },
+ * });
+ */
+export function useGetComponentQuery(baseOptions: Apollo.QueryHookOptions<GetComponentQuery, GetComponentQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetComponentQuery, GetComponentQueryVariables>(GetComponentDocument, options);
+      }
+export function useGetComponentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetComponentQuery, GetComponentQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetComponentQuery, GetComponentQueryVariables>(GetComponentDocument, options);
+        }
+export type GetComponentQueryHookResult = ReturnType<typeof useGetComponentQuery>;
+export type GetComponentLazyQueryHookResult = ReturnType<typeof useGetComponentLazyQuery>;
+export type GetComponentQueryResult = Apollo.QueryResult<GetComponentQuery, GetComponentQueryVariables>;
 export const GetCollectionsDocument = gql`
     query getCollections($preview: Boolean) {
   foundationCollection(order: name_ASC, preview: $preview) {
