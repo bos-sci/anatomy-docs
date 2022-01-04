@@ -1277,6 +1277,14 @@ export type GetCollectionsQueryVariables = Exact<{
 
 export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
 
+export type GetResourceQueryVariables = Exact<{
+  id: Scalars['String'];
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null | undefined, description?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+
 
 export const GetCodeStandardDocument = gql`
     query getCodeStandard($id: String!, $preview: Boolean) {
@@ -1541,3 +1549,45 @@ export function useGetCollectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetCollectionsQueryHookResult = ReturnType<typeof useGetCollectionsQuery>;
 export type GetCollectionsLazyQueryHookResult = ReturnType<typeof useGetCollectionsLazyQuery>;
 export type GetCollectionsQueryResult = Apollo.QueryResult<GetCollectionsQuery, GetCollectionsQueryVariables>;
+export const GetResourceDocument = gql`
+    query getResource($id: String!, $preview: Boolean) {
+  resource(id: $id, preview: $preview) {
+    name
+    description
+    content
+    sys {
+      id
+      publishedAt
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetResourceQuery__
+ *
+ * To run a query within a React component, call `useGetResourceQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetResourceQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetResourceQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      preview: // value for 'preview'
+ *   },
+ * });
+ */
+export function useGetResourceQuery(baseOptions: Apollo.QueryHookOptions<GetResourceQuery, GetResourceQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetResourceQuery, GetResourceQueryVariables>(GetResourceDocument, options);
+      }
+export function useGetResourceLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetResourceQuery, GetResourceQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetResourceQuery, GetResourceQueryVariables>(GetResourceDocument, options);
+        }
+export type GetResourceQueryHookResult = ReturnType<typeof useGetResourceQuery>;
+export type GetResourceLazyQueryHookResult = ReturnType<typeof useGetResourceLazyQuery>;
+export type GetResourceQueryResult = Apollo.QueryResult<GetResourceQuery, GetResourceQueryVariables>;

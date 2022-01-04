@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
 import NavSecondary, { NavItem } from '../shared/navSecondary/NavSecondary';
-import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/pageHeader/PageHeader';
 import Markdown from '../shared/Markdown';
 import { match } from 'react-router';
-import { Resource } from '../../types/contentful';
+import { Resource, useGetResourceQuery } from '../../types/contentful';
 import { IdLookup } from '../../types/docs';
 
 interface ComponentMatch extends match {
@@ -18,13 +17,6 @@ interface Props {
   match: ComponentMatch;
 }
 
-interface ContentfulData {
-  response?: {
-    resource: Resource;
-  };
-  error?: any
-}
-
 const Resources = (props:  Props): JSX.Element => {
   const resourceName = props.match.params.resourceName;
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
@@ -32,29 +24,20 @@ const Resources = (props:  Props): JSX.Element => {
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
-  const query = `
-    query ResourceData($id: String!) {
-      resource(id: $id, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
-        name
-        description
-        content
-        sys {
-          id
-          publishedAt
-        }
-      }
-    }`;
+  const {data, error} = useGetResourceQuery({
+    variables: {
+      id: idLookup.resources[resourceName].id,
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
+    }
+  });
 
-  const queryVariables = {
-    id: idLookup.resources[resourceName].id
-  };
-
-  const data: ContentfulData = useContentful(query, queryVariables);
-  if (data.error) console.error(data.error);
+  if (error) {
+    console.error(error);
+  }
 
   useEffect(() => {
-    if (data.response) {
-      setResourceData(data.response.resource);
+    if (data?.resource) {
+      setResourceData(data.resource as Resource);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
     const pathPrefix = basePath + '/';
@@ -73,7 +56,7 @@ const Resources = (props:  Props): JSX.Element => {
       },
     ];
     setNavItems(navItems);
-  }, [data.response, idLookup, props.match.path]);
+  }, [data, idLookup, props.match.path]);
 
   return (
     <div className="app-content">
