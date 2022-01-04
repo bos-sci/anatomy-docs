@@ -31,6 +31,7 @@ const Foundations = (props:  Props): JSX.Element => {
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
     }
   });
+
   if (error) {
     console.error(error);
   }
