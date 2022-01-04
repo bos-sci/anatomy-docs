@@ -1254,6 +1254,14 @@ export type GetComponentQueryVariables = Exact<{
 
 export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null | undefined, description?: string | null | undefined, usage?: string | null | undefined, usageDo?: string | null | undefined, usageDont?: string | null | undefined, interactions?: string | null | undefined, contentGuidelines?: string | null | undefined, contentGuidelinesDo?: string | null | undefined, contentGuidelinesDont?: string | null | undefined, userResearch?: string | null | undefined, accessibility?: string | null | undefined, variantsCollection?: { __typename?: 'ComponentVariantsCollection', items: Array<{ __typename?: 'ComponentVariant', name?: string | null | undefined, description?: string | null | undefined, variantId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
 
+export type GetContentGuidelineQueryVariables = Exact<{
+  id: Scalars['String'];
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null | undefined, description?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+
 export type GetCollectionsQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
@@ -1361,6 +1369,48 @@ export function useGetComponentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type GetComponentQueryHookResult = ReturnType<typeof useGetComponentQuery>;
 export type GetComponentLazyQueryHookResult = ReturnType<typeof useGetComponentLazyQuery>;
 export type GetComponentQueryResult = Apollo.QueryResult<GetComponentQuery, GetComponentQueryVariables>;
+export const GetContentGuidelineDocument = gql`
+    query getContentGuideline($id: String!, $preview: Boolean) {
+  contentGuideline(id: $id, preview: $preview) {
+    name
+    description
+    content
+    sys {
+      id
+      publishedAt
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetContentGuidelineQuery__
+ *
+ * To run a query within a React component, call `useGetContentGuidelineQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetContentGuidelineQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetContentGuidelineQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      preview: // value for 'preview'
+ *   },
+ * });
+ */
+export function useGetContentGuidelineQuery(baseOptions: Apollo.QueryHookOptions<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>(GetContentGuidelineDocument, options);
+      }
+export function useGetContentGuidelineLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>(GetContentGuidelineDocument, options);
+        }
+export type GetContentGuidelineQueryHookResult = ReturnType<typeof useGetContentGuidelineQuery>;
+export type GetContentGuidelineLazyQueryHookResult = ReturnType<typeof useGetContentGuidelineLazyQuery>;
+export type GetContentGuidelineQueryResult = Apollo.QueryResult<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>;
 export const GetCollectionsDocument = gql`
     query getCollections($preview: Boolean) {
   foundationCollection(order: name_ASC, preview: $preview) {
