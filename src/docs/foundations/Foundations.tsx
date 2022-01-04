@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
 import NavSecondary, { NavItem } from '../shared/navSecondary/NavSecondary';
-import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/pageHeader/PageHeader';
 import Markdown from '../shared/Markdown';
 import { match } from 'react-router';
-import { Foundation } from '../../types/contentful';
+import { Foundation, useGetFoundationQuery } from '../../types/contentful';
 import { IdLookup } from '../../types/docs';
 
 interface ComponentMatch extends match {
@@ -18,13 +17,6 @@ interface Props {
   match: ComponentMatch;
 }
 
-interface ContentfulData {
-  response?: {
-    foundation: Foundation;
-  };
-  error?: any
-}
-
 const Foundations = (props:  Props): JSX.Element => {
   const foundationName = props.match.params.foundationName;
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
@@ -32,29 +24,20 @@ const Foundations = (props:  Props): JSX.Element => {
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
-  const query = `
-    query FoundationData($id: String!) {
-      foundation(id: $id, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
-        name
-        description
-        content
-        sys {
-          id
-          publishedAt
-        }
-      }
-    }`;
 
-  const queryVariables = {
-    id: idLookup.foundations[foundationName].id
-  };
-
-  const data: ContentfulData = useContentful(query, queryVariables);
-  if (data.error) console.error(data.error);
+  const {data, error} = useGetFoundationQuery({
+    variables: {
+      id: idLookup.foundations[foundationName].id,
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
+    }
+  });
+  if (error) {
+    console.error(error);
+  }
 
   useEffect(() => {
-    if (data.response) {
-      setFoundationData(data.response.foundation);
+    if (data?.foundation) {
+      setFoundationData(data.foundation as Foundation);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
     const pathPrefix = basePath + '/';
@@ -77,7 +60,7 @@ const Foundations = (props:  Props): JSX.Element => {
       },
     ];
     setNavItems(navItems);
-  }, [data.response, idLookup, props.match.path]);
+  }, [data, idLookup, props.match.path]);
 
   return (
     <div className="app-content">

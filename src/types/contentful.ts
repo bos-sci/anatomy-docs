@@ -1262,6 +1262,14 @@ export type GetContentGuidelineQueryVariables = Exact<{
 
 export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null | undefined, description?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
 
+export type GetFoundationQueryVariables = Exact<{
+  id: Scalars['String'];
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null | undefined, description?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+
 export type GetCollectionsQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
@@ -1411,6 +1419,48 @@ export function useGetContentGuidelineLazyQuery(baseOptions?: Apollo.LazyQueryHo
 export type GetContentGuidelineQueryHookResult = ReturnType<typeof useGetContentGuidelineQuery>;
 export type GetContentGuidelineLazyQueryHookResult = ReturnType<typeof useGetContentGuidelineLazyQuery>;
 export type GetContentGuidelineQueryResult = Apollo.QueryResult<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>;
+export const GetFoundationDocument = gql`
+    query getFoundation($id: String!, $preview: Boolean) {
+  foundation(id: $id, preview: $preview) {
+    name
+    description
+    content
+    sys {
+      id
+      publishedAt
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetFoundationQuery__
+ *
+ * To run a query within a React component, call `useGetFoundationQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetFoundationQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetFoundationQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      preview: // value for 'preview'
+ *   },
+ * });
+ */
+export function useGetFoundationQuery(baseOptions: Apollo.QueryHookOptions<GetFoundationQuery, GetFoundationQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetFoundationQuery, GetFoundationQueryVariables>(GetFoundationDocument, options);
+      }
+export function useGetFoundationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFoundationQuery, GetFoundationQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetFoundationQuery, GetFoundationQueryVariables>(GetFoundationDocument, options);
+        }
+export type GetFoundationQueryHookResult = ReturnType<typeof useGetFoundationQuery>;
+export type GetFoundationLazyQueryHookResult = ReturnType<typeof useGetFoundationLazyQuery>;
+export type GetFoundationQueryResult = Apollo.QueryResult<GetFoundationQuery, GetFoundationQueryVariables>;
 export const GetCollectionsDocument = gql`
     query getCollections($preview: Boolean) {
   foundationCollection(order: name_ASC, preview: $preview) {
