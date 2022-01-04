@@ -1238,6 +1238,14 @@ export type SysFilter = {
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
+export type GetCodeStandardQueryVariables = Exact<{
+  id: Scalars['String'];
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type GetCodeStandardQuery = { __typename?: 'Query', codeStandard?: { __typename?: 'CodeStandard', name?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+
 export type GetComponentQueryVariables = Exact<{
   id: Scalars['String'];
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -1254,6 +1262,47 @@ export type GetCollectionsQueryVariables = Exact<{
 export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
 
 
+export const GetCodeStandardDocument = gql`
+    query getCodeStandard($id: String!, $preview: Boolean) {
+  codeStandard(id: $id, preview: $preview) {
+    name
+    content
+    sys {
+      id
+      publishedAt
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetCodeStandardQuery__
+ *
+ * To run a query within a React component, call `useGetCodeStandardQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCodeStandardQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCodeStandardQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      preview: // value for 'preview'
+ *   },
+ * });
+ */
+export function useGetCodeStandardQuery(baseOptions: Apollo.QueryHookOptions<GetCodeStandardQuery, GetCodeStandardQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCodeStandardQuery, GetCodeStandardQueryVariables>(GetCodeStandardDocument, options);
+      }
+export function useGetCodeStandardLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCodeStandardQuery, GetCodeStandardQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCodeStandardQuery, GetCodeStandardQueryVariables>(GetCodeStandardDocument, options);
+        }
+export type GetCodeStandardQueryHookResult = ReturnType<typeof useGetCodeStandardQuery>;
+export type GetCodeStandardLazyQueryHookResult = ReturnType<typeof useGetCodeStandardLazyQuery>;
+export type GetCodeStandardQueryResult = Apollo.QueryResult<GetCodeStandardQuery, GetCodeStandardQueryVariables>;
 export const GetComponentDocument = gql`
     query getComponent($id: String!, $preview: Boolean) {
   component(id: $id, preview: $preview) {
