@@ -1,0 +1,11 @@
+query getContentGuideline($id: String!, $preview: Boolean) {
+  contentGuideline(id: $id, preview: $preview) {
+    name
+    description
+    content
+    sys {
+      id
+      publishedAt
+    }
+  }
+}

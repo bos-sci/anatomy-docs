@@ -1,0 +1,10 @@
+query getCodeStandard($id: String!, $preview: Boolean) {
+  codeStandard(id: $id, preview: $preview) {
+    name
+    content
+    sys {
+      id
+      publishedAt
+    }
+  }
+}

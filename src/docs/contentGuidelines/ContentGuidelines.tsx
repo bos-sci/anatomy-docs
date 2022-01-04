@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
 import NavSecondary, { NavItem } from '../shared/navSecondary/NavSecondary';
-import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/pageHeader/PageHeader';
 import Markdown from '../shared/Markdown';
 import { match } from 'react-router';
-import { ContentGuideline } from '../../types/contentful';
+import { ContentGuideline, useGetContentGuidelineQuery } from '../../types/contentful';
 import { IdLookup } from '../../types/docs';
 
 interface ComponentMatch extends match {
@@ -18,13 +17,6 @@ interface Props {
   match: ComponentMatch;
 }
 
-interface ContentfulData {
-  response?: {
-    contentGuideline: ContentGuideline;
-  };
-  error?: any
-}
-
 const ContentGuidelines = (props:  Props): JSX.Element => {
   const contentName = props.match.params.contentName;
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
@@ -32,29 +24,20 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
-  const query = `
-    query ContentGuidelineData($id: String!) {
-      contentGuideline(id: $id, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
-        name
-        description
-        content
-        sys {
-          id
-          publishedAt
-        }
-      }
-    }`;
+  const {data, error} = useGetContentGuidelineQuery({
+    variables: {
+      id: idLookup.contentGuidelines[contentName].id,
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
+    }
+  });
 
-  const queryVariables = {
-    id: idLookup.contentGuidelines[contentName].id
-  };
-
-  const data: ContentfulData = useContentful(query, queryVariables);
-  if (data.error) console.error(data.error);
+  if (error) {
+    console.error(error);
+  }
 
   useEffect(() => {
-    if (data.response) {
-      setContentGuidelineData(data.response.contentGuideline);
+    if (data?.contentGuideline) {
+      setContentGuidelineData(data.contentGuideline as ContentGuideline);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
     const navItems = Object.keys(idLookup.contentGuidelines).map(entry => ({
@@ -62,7 +45,7 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
       slug: basePath + '/' + entry
     }));
     setNavItems(navItems);
-  }, [data.response, idLookup, props.match.path]);
+  }, [data, idLookup, props.match.path]);
 
   return (
     <div className="app-content">
