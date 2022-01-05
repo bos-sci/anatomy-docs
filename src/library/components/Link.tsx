@@ -9,7 +9,7 @@ interface Props {
   [key: string]: any;
 }
 
-const Link = (props: Props) => {
+const Link = (props: Props): JSX.Element => {
   const { variant, href, ...linkAttrs } = props;
 
   let classes = '';

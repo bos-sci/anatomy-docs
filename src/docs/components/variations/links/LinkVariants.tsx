@@ -3,11 +3,11 @@ import Default from './Default';
 import Ghost from './Ghost';
 import Subtle from './Subtle';
 
-const LinkVariants = ({ variant }: VariantProps) => {
-  switch (variant) {
-    case 'Ghost':
+const LinkVariants = ({ variantId }: VariantProps): JSX.Element => {
+  switch (variantId) {
+    case 'linkGhost':
       return <Ghost />;
-    case 'Subtle':
+    case 'linkSubtle':
       return <Subtle />;
     default:
       return <Default />;

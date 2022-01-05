@@ -1,13 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
 import Preview from './variations/Preview';
 import NavSecondary, { NavItem } from '../shared/navSecondary/NavSecondary';
-import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/pageHeader/PageHeader';
 import Markdown from '../shared/Markdown';
 import { match } from 'react-router';
 import { IdLookup } from '../../types/docs';
-import { Component } from '../../types/contentful';
+import { Component, useGetComponentQuery } from '../../types/contentful';
 import './Components.scss';
 
 interface ComponentMatch extends match {
@@ -20,57 +19,26 @@ interface Props {
   match: ComponentMatch;
 }
 
-interface ContentfulData {
-  response?: {
-    component: Component;
-  };
-  error?: any
-}
-
-const Components = (props: Props) => {
+const Components = (props: Props): JSX.Element => {
   const componentName = props.match.params.componentName;
   const idLookup: IdLookup = useContext(IdLookupContext);
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
   let [componentData, setComponentData] = useState<Component>({} as Component);
 
-  const query = `
-    query ComponentData($id: String!) {
-      component(id: $id, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
-        name
-        description
-        variantsCollection {
-          items {
-            name
-            description
-            isPreviewDarkThemed
-          }
-        }
-        usage
-        usageDo
-        usageDont
-        interactions
-        contentGuidelines
-        contentGuidelinesDo
-        contentGuidelinesDont
-        userResearch
-        accessibility
-        sys {
-          id
-          publishedAt
-        }
-      }
-    }`;
+  const {data, error} = useGetComponentQuery({
+    variables: {
+      id: idLookup.components[componentName].id,
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
+    }
+  });
 
-  const queryVariables = {
-    id: idLookup.components[componentName].id
-  };
-
-  const data: ContentfulData = useContentful(query, queryVariables);
-  if (data.error) console.error(data.error);
+  if (error) {
+    console.error(error);
+  }
 
   useEffect(() => {
-    if(data.response) {
-      setComponentData(data.response.component);
+    if(data?.component) {
+      setComponentData(data.component as Component);
       const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
       const navItems = Object.keys(idLookup.components).map(entry => ({
         text: idLookup.components[entry].name,
@@ -78,7 +46,7 @@ const Components = (props: Props) => {
       }));
       setNavItems(navItems);
     }
-  }, [data.response, idLookup, props.match.path]);
+  }, [data, idLookup, props.match.path]);
 
   return (
     <div className="app-content">
@@ -92,7 +60,7 @@ const Components = (props: Props) => {
               <div key={ variant?.name + '' + i } className="component-variant">
                 <h3>{ variant?.name }</h3>
                 <Markdown markdown={variant?.description || ''} />
-                <Preview component={ componentName } variant={ variant?.name as string } isDarkTheme={ variant?.isPreviewDarkThemed || false } />
+                <Preview component={ componentName } variant={ variant?.name as string } variantId={variant?.variantId || ''} isDarkTheme={ variant?.isPreviewDarkThemed || false } />
               </div>
             ))}
           </> : <Preview component={ componentName } variant='Default' />

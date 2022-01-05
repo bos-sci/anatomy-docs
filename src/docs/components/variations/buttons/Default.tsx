@@ -1,6 +1,6 @@
 import Button from '../../../../library/components/Button';
 
-const Default = () => {
+const Default = (): JSX.Element => {
 
   return <>
     <Button type="button">Default button</Button>

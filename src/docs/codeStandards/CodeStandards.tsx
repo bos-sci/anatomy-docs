@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
 import NavSecondary, { NavItem } from '../shared/navSecondary/NavSecondary';
-import useContentful from '../../hooks/useContentful';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/pageHeader/PageHeader';
 import Markdown from '../shared/Markdown';
 import { match } from 'react-router';
-import { CodeStandard } from '../../types/contentful';
+import { CodeStandard, useGetCodeStandardQuery } from '../../types/contentful';
 import { IdLookup } from '../../types/docs';
 
 interface ComponentMatch extends match {
@@ -18,42 +17,27 @@ interface Props {
   match: ComponentMatch;
 }
 
-interface ContentfulData {
-  response?: {
-    codeStandard: CodeStandard;
-  };
-  error?: any
-}
-
-const CodeStandards = (props:  Props) => {
+const CodeStandards = (props:  Props): JSX.Element => {
   const standardName = props.match.params.standardName;
   let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
   let [codeStandardData, setCodeStandardData] = useState<CodeStandard>({} as CodeStandard);
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
-  const query = `
-    query CodeStandardData($id: String!) {
-      codeStandard(id: $id, preview: ${process.env.REACT_APP_CONTENTFUL_PREVIEW}) {
-        name
-        content
-        sys {
-          id
-          publishedAt
-        }
-      }
-    }`;
+  const {data, error} = useGetCodeStandardQuery({
+    variables: {
+      id: idLookup.codeStandards[standardName].id,
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
+    }
+  });
 
-  const queryVariables = {
-    id: idLookup.codeStandards[standardName].id
-  };
-
-  const data: ContentfulData = useContentful(query, queryVariables);
-  if (data.error) console.error(data.error);
+  if (error) {
+    console.error(error);
+  }
 
   useEffect(() => {
-    if (data.response) {
-      setCodeStandardData(data.response.codeStandard);
+    if (data?.codeStandard) {
+      setCodeStandardData(data.codeStandard as CodeStandard);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
     const pathPrefix = basePath + '/';
@@ -88,7 +72,7 @@ const CodeStandards = (props:  Props) => {
       },
     ];
     setNavItems(navItems);
-  }, [data.response, idLookup, props.match.path]);
+  }, [data, idLookup, props.match.path]);
 
   return (
     <div className="app-content">

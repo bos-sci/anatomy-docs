@@ -20,7 +20,7 @@ const Fallback = () => {
   return <p>Loading Icon...</p>
 }
 
-const Icon = (props: Props) => {
+const Icon = (props: Props): JSX.Element => {
 
   const sizeClass = `ads-icon-${props.size ? props.size : '2x'}`;
 

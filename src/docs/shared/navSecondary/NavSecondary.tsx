@@ -10,7 +10,7 @@ interface Props {
   navItems: NavItem[];
 }
 
-const NavSecondary = ({ navItems }: Props) => {
+const NavSecondary = ({ navItems }: Props): JSX.Element => {
   return (
     <nav className="nav-secondary">
       <ul className="nav">

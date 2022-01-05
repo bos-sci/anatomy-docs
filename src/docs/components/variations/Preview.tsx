@@ -4,14 +4,15 @@ import Fallback from './Fallback';
 interface Props {
   component: string;
   variant: string;
+  variantId?: string;
   isDarkTheme?: boolean;
 }
 
 export interface VariantProps {
-  variant: string;
+  variantId: string;
 }
 
-const Preview = ( props: Props ) => {
+const Preview = ( props: Props ): JSX.Element => {
   let RenderedComponent;
 
   switch (props.component) {
@@ -28,7 +29,7 @@ const Preview = ( props: Props ) => {
       const ButtonVariants = lazy(() => import('./buttons/ButtonVariants'));
       RenderedComponent = (
         <Suspense fallback={<Fallback />}>
-          <ButtonVariants variant={props.variant} />
+          <ButtonVariants variantId={props.variantId as string} />
         </Suspense>
       );
       break;
@@ -37,7 +38,7 @@ const Preview = ( props: Props ) => {
       const InputRadioVariants = lazy(() => import('./inputRadio/InputRadioVariants'));
       RenderedComponent = (
         <Suspense fallback={<Fallback />}>
-          <InputRadioVariants variant={props.variant} />
+          <InputRadioVariants variantId={props.variantId as string} />
         </Suspense>
       );
       break;
@@ -46,7 +47,7 @@ const Preview = ( props: Props ) => {
       const InputTextVariants = lazy(() => import('./inputTexts/InputTextVariants'));
       RenderedComponent = (
         <Suspense fallback={<Fallback />}>
-          <InputTextVariants variant={props.variant} />
+          <InputTextVariants variantId={props.variantId as string} />
         </Suspense>
       );
       break;
@@ -55,7 +56,7 @@ const Preview = ( props: Props ) => {
       const InputCheckboxVariants = lazy(() => import('./inputCheckboxes/inputCheckboxVariants'));
       RenderedComponent = (
         <Suspense fallback={<Fallback />}>
-          <InputCheckboxVariants variant={props.variant} />
+          <InputCheckboxVariants variantId={props.variantId as string} />
         </Suspense>
       );
       break;
@@ -64,7 +65,7 @@ const Preview = ( props: Props ) => {
       const LinkVariants = lazy(() => import('./links/LinkVariants'));
       RenderedComponent = (
         <Suspense fallback={<Fallback />}>
-          <LinkVariants variant={props.variant} />
+          <LinkVariants variantId={props.variantId as string} />
         </Suspense>
       );
       break;

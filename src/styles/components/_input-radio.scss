@@ -1,53 +1,56 @@
-.ads-fieldset
+.ads-input-radio-input
 {
   &[aria-invalid="true"]
   {
-    .ads-input-radio-input
+    + .ads-input-radio-label
+    {
+      &::before
+      {
+        border: space(xs) solid $feedback-error-dark;
+        background: $neutral-lightest;
+      }
+    }
+
+    &:checked,
+    &[aria-checked="true"]
     {
       + .ads-input-radio-label
       {
         &::before
         {
-          border: space(xs) solid $feedback-error-dark;
+          border: transparent;
+          background: $feedback-error-dark;
+        }
+
+        &::after
+        {
           background: $neutral-lightest;
         }
       }
+    }
 
-      &:checked,
-      &[aria-checked="true"]
+    &:focus,
+    &:focus:checked
+    {
+      + .ads-input-radio-label
       {
-        + .ads-input-radio-label
+        &::before
         {
-          &::before
-          {
-            border: transparent;
-            background: $feedback-error-dark;
-          }
-
-          &::after
-          {
-            background: $neutral-lightest;
-          }
-        }
-      }
-
-      &:focus,
-      &:focus:checked
-      {
-        + .ads-input-radio-label
-        {
-          &::before
-          {
-            @include focus-invalid;
-          }
+          @include focus-invalid;
         }
       }
     }
   }
+}
 
-  & > .ads-input-radio:not(:first-child)
+.ads-fieldset
+{
+  > .ads-input:not(:first-child)
   {
-    margin-top: space(2x);
+    .ads-input-radio
+    {
+      margin-top: space(2x);
+    }
   }
 }
 

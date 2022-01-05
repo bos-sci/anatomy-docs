@@ -9,7 +9,7 @@ interface Props {
   tabRef: RefObject<HTMLButtonElement>;
 }
 
-const Tab = ({ tabName, setSelectedTab, index, isActive, tabPanelId, tabRef }: Props) => {
+const Tab = ({ tabName, setSelectedTab, index, isActive, tabPanelId, tabRef }: Props): JSX.Element => {
 
   const onClick = useCallback(() => {
     setSelectedTab(index)

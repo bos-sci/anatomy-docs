@@ -1,13 +1,14 @@
 import { ChangeEvent, useState } from 'react';
 import InputText from '../../../../library/components/InputText';
 
-const WithError = () => {
+const WithError = (): JSX.Element => {
 
-  const [errorText, setErrorText] = useState('Don\'t use spaces');
+  const errorMessage = 'Don\'t use spaces';
+  const [errorText, setErrorText] = useState(errorMessage);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.includes(' ')) {
-      setErrorText('Don\'t use spaces');
+      setErrorText(errorMessage);
     } else {
       setErrorText('');
     }

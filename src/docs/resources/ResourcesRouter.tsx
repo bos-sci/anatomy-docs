@@ -1,7 +1,7 @@
 import Resources from './Resources';
 import { Redirect, Switch, Route, useRouteMatch } from 'react-router-dom';
 
-const ResourcesRouter = () => {
+const ResourcesRouter = (): JSX.Element => {
   const { path } = useRouteMatch();
 
   return (

@@ -1,16 +1,17 @@
 import { ChangeEvent, FocusEvent, InputHTMLAttributes, InvalidEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { getValidationMessage } from '../helpers/validation';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   helpText?: string;
   errorText?: string;
   requiredText?: string;
-  forceInvalid?: boolean;
+  forceValidation?: boolean;
 }
 
 let inputId = 0;
 
-const InputText = ({ label, helpText, errorText, requiredText = 'required', forceInvalid, onInvalid, onBlur, onChange, ...inputAttrs }: Props) => {
+const InputText = ({ label, helpText, errorText, requiredText = 'required', forceValidation, onInvalid, onBlur, onChange, ...inputAttrs }: Props): JSX.Element => {
 
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
@@ -22,12 +23,9 @@ const InputText = ({ label, helpText, errorText, requiredText = 'required', forc
 
   const validate = useCallback(() => {
     if (inputEl.current) {
-      const isInputValid = inputEl.current.checkValidity();
-      if (errorText) {
-        setValidationMessage(errorText);
-      } else if (isInputValid) {
-        setValidationMessage('');
-      }
+      inputEl.current.setCustomValidity(errorText ? errorText : '');
+      const isValid = inputEl.current.checkValidity();
+      if (isValid) setValidationMessage('');
     }
   }, [errorText, inputEl]);
 
@@ -35,18 +33,7 @@ const InputText = ({ label, helpText, errorText, requiredText = 'required', forc
     if (onInvalid) {
       onInvalid(e);
     }
-    const validity = e.target.validity;
-    if (!validity.valid) {
-      switch (true) {
-        case validity.valueMissing:
-          setValidationMessage('Please fill out this field');
-          break;
-
-        default:
-          setValidationMessage(e.target.validationMessage);
-          break;
-      }
-    }
+    setValidationMessage(getValidationMessage(e.target));
   }
 
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
@@ -68,15 +55,21 @@ const InputText = ({ label, helpText, errorText, requiredText = 'required', forc
 
   // Sets input to dirty
   useEffect(() => {
-    if (forceInvalid && !isDirty) {
+    if (forceValidation && !isDirty) {
       validate();
-    } else if (isDirty || forceInvalid) {
+    } else if (isDirty || forceValidation) {
       const whenDone = setTimeout(() => {
         validate();
       }, 1000);
       return () => clearTimeout(whenDone);
     }
-  }, [value, isDirty, validate, forceInvalid]);
+  }, [value, isDirty, validate, forceValidation]);
+
+  useEffect(() => {
+    if (forceValidation) {
+      validate();
+    }
+  }, [forceValidation, validate]);
 
   // On component mount
   useEffect(() => {

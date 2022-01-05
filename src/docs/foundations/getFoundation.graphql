@@ -1,0 +1,11 @@
+query getFoundation($id: String!, $preview: Boolean) {
+  foundation(id: $id, preview: $preview) {
+    name
+    description
+    content
+    sys {
+      id
+      publishedAt
+    }
+  }
+}

@@ -9,7 +9,7 @@ interface Props {
   [key: string]: any;
 }
 
-const Button = ({ children, variant, icon, iconAlignment = 'left', ...buttonAttrs }: Props) => {
+const Button = ({ children, variant, icon, iconAlignment = 'left', ...buttonAttrs }: Props): JSX.Element => {
   let classes = '';
   switch (variant) {
     case 'assertive':

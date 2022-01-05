@@ -6,17 +6,17 @@ import Required from './Required';
 import WithError from './WithError';
 import WithHelpText from './WithHelpText';
 
-const InputTextVariants = ({ variant }: VariantProps) => {
-  switch (variant.toLowerCase()) {
-    case 'disabled field':
+const InputTextVariants = ({ variantId }: VariantProps): JSX.Element => {
+  switch (variantId) {
+    case 'inputTextDisabled':
       return <Disabled />;
-    case 'read-only field':
+    case 'inputTextReadonly':
       return <ReadOnly />;
-    case 'required field':
+    case 'inputTextRequired':
       return <Required />;
-    case 'with help text':
+    case 'inputTextHelpText':
       return <WithHelpText />;
-    case 'with an error message':
+    case 'inputTextError':
       return <WithError />;
     default:
       return <Default />;

@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import InputText from '../../../../library/components/InputText';
 
-const Required = () => {
+const Required = (): JSX.Element => {
 
   // TODO: Handle on submit valdiation within a form component
   const [didSubmit, setDidSubmit] = useState(false);
@@ -12,8 +12,8 @@ const Required = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate>
-      <InputText label="Required input" placeholder="Placeholder text" forceInvalid={didSubmit} required />
+    <form className="ads-form" onSubmit={handleSubmit} noValidate>
+      <InputText label="Required input" placeholder="Placeholder text" forceValidation={didSubmit} required />
     </form>
   );
 }

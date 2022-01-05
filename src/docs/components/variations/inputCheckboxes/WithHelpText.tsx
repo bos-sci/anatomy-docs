@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import InputCheckbox from '../../../../library/components/InputCheckbox';
 
-const WithHelpText = () => {
+const WithHelpText = (): JSX.Element => {
   const [isChecked, setIsChecked] = useState(true);
 
   return <InputCheckbox

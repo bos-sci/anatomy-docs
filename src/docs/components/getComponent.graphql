@@ -1,0 +1,27 @@
+query getComponent($id: String!, $preview: Boolean) {
+  component(id: $id, preview: $preview) {
+    name
+    description
+    variantsCollection {
+      items {
+        name
+        description
+        variantId
+        isPreviewDarkThemed
+      }
+    }
+    usage
+    usageDo
+    usageDont
+    interactions
+    contentGuidelines
+    contentGuidelinesDo
+    contentGuidelinesDont
+    userResearch
+    accessibility
+    sys {
+      id
+      publishedAt
+    }
+  }
+}

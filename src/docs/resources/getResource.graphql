@@ -1,0 +1,11 @@
+query getResource($id: String!, $preview: Boolean) {
+  resource(id: $id, preview: $preview) {
+    name
+    description
+    content
+    sys {
+      id
+      publishedAt
+    }
+  }
+}
