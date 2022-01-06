@@ -31,7 +31,7 @@ $action-primary-95: #e6f0ff;
 $accent-primary-20: #440066;
 $accent-primary-30: #660099; // visited links only
 $accent-primary-40: #8800cc;
-$accent-plum: #bb33ff;
+$accent-primary-60: #bb33ff;
 $accent-primary-80: #dd99ff;
 $accent-primary-95: #f7e6ff;
 
@@ -71,8 +71,8 @@ $feedback-error-lighter: #fce9ea;
 
 // Gradients
 
-$gradient-brand: linear-gradient(90deg, $brand-primary, $accent-plum, $accent-caribbean);
+$gradient-brand: linear-gradient(90deg, $brand-primary, $accent-primary-60, $accent-caribbean);
 $gradient-primary: linear-gradient(270deg, $action-primary-40 0%, $accent-caribbean 100%);
-$gradient-secondary: linear-gradient(270deg, $action-primary-20 0%, $accent-plum 100%);
+$gradient-secondary: linear-gradient(270deg, $action-primary-20 0%, $accent-primary-60 100%);
 $gradient-assertive: linear-gradient(36deg, $neutral-00 0%, $action-primary-20 100%);
 $gradient-subtle: linear-gradient(322deg, $neutral-100, $neutral-95);
