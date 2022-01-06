@@ -17,7 +17,7 @@ $neutral-100: #ffffff;
 // Action Color Range
 
 $action-primary-20: #012965;
-$action-primary-dark: #0153cc; // default value
+$action-primary-40: #0153cc; // default value
 $action-primary: #3485fe;
 $action-primary-light: #9ac2fe;
 $action-primary-lighter: #e6f0ff;
@@ -72,7 +72,7 @@ $feedback-error-lighter: #fce9ea;
 // Gradients
 
 $gradient-brand: linear-gradient(90deg, $brand-primary, $accent-plum, $accent-caribbean);
-$gradient-primary: linear-gradient(270deg, $action-primary-dark 0%, $accent-caribbean 100%);
+$gradient-primary: linear-gradient(270deg, $action-primary-40 0%, $accent-caribbean 100%);
 $gradient-secondary: linear-gradient(270deg, $action-primary-20 0%, $accent-plum 100%);
 $gradient-assertive: linear-gradient(36deg, $neutral-00 0%, $action-primary-20 100%);
 $gradient-subtle: linear-gradient(322deg, $neutral-100, $neutral-95);

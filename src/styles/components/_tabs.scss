@@ -50,11 +50,11 @@
   &:not([disabled]):active
   {
     background: transparent;
-    color: $action-primary-dark;
+    color: $action-primary-40;
 
     &::after
     {
-      background: $action-primary-dark;
+      background: $action-primary-40;
     }
   }
 

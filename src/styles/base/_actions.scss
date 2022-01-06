@@ -76,9 +76,9 @@
 @mixin button-default
 {
   @include button-base;
-  border-color: $action-primary-dark;
+  border-color: $action-primary-40;
   background: $neutral-100;
-  color: $action-primary-dark;
+  color: $action-primary-40;
   font-family: $font-family-base-heavy;
   @include button-focus;
   @include button-disabled;
@@ -97,7 +97,7 @@
 {
   @include button-base;
   border-color: transparent;
-  background: $action-primary-dark;
+  background: $action-primary-40;
   color: $neutral-100;
   @include button-focus;
   @include button-disabled;
@@ -156,7 +156,7 @@ button
 
 @mixin link-default
 {
-  color: $action-primary-dark;
+  color: $action-primary-40;
   font-family: $font-family-base-heavy;
   text-decoration: underline;
 
@@ -197,14 +197,14 @@ button
 
   &:hover
   {
-    color: $action-primary-dark;
+    color: $action-primary-40;
     text-decoration-thickness: space(xs);
     cursor: pointer;
   }
 
   &:active
   {
-    color: $action-primary-dark;
+    color: $action-primary-40;
     text-decoration-thickness: space(xs);
   }
 
