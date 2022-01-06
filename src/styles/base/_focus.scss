@@ -36,5 +36,5 @@
 @mixin focus-invalid
 {
   @include focus-default;
-  outline-color: $feedback-error-dark;
+  outline-color: $feedback-error-40;
 }

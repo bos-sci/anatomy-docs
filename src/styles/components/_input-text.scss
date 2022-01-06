@@ -59,7 +59,7 @@
     &[aria-invalid="true"]:hover,
     &[aria-invalid="true"]:focus
     {
-      border: space(xxs) solid $feedback-error-dark;
+      border: space(xxs) solid $feedback-error-40;
     }
 
     &[aria-invalid="true"]:focus

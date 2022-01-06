@@ -6,7 +6,7 @@
     {
       &::before
       {
-        border: space(xs) solid $feedback-error-dark;
+        border: space(xs) solid $feedback-error-40;
         background: $neutral-100;
       }
     }
@@ -19,7 +19,7 @@
         &::before
         {
           border: transparent;
-          background: $feedback-error-dark;
+          background: $feedback-error-40;
         }
 
         &::after
