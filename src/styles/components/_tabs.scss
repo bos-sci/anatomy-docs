@@ -65,13 +65,13 @@
 
   &[aria-selected="true"]
   {
-    color: $neutral-darkest;
+    color: $neutral-00;
     font-family: $font-family-base-heavy;
 
     &::after
     {
       height: space(sm);
-      background: $neutral-darkest;
+      background: $neutral-00;
     }
   }
 

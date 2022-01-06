@@ -78,7 +78,7 @@
       transform: translateY(-50%);
       width: $ffs-body-assertive;
       height: $ffs-body-assertive;
-      border: space(xxs) solid $neutral-darkest;
+      border: space(xxs) solid $neutral-00;
       background: $neutral-lightest;
     }
   }
@@ -92,7 +92,7 @@
       &::before
       {
         border: transparent;
-        background: $neutral-darkest;
+        background: $neutral-00;
       }
     }
   }
@@ -104,7 +104,7 @@
     {
       &::before
       {
-        background: $neutral-darkest;
+        background: $neutral-00;
       }
       &::after
       {

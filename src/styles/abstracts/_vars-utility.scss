@@ -1,12 +1,12 @@
 // Text Utility Variables
 
-$text-color-primary: $neutral-darkest;
+$text-color-primary: $neutral-00;
 $text-color-ghost: $neutral-lightest;
 
 
 // Border Utility Variables
 
-$border-color-primary: $neutral-darkest;
+$border-color-primary: $neutral-00;
 $border-color-ghost: $neutral-lightest;
 $border-color-accent: $action-primary-dark;
 $border-color-subtle: $neutral-light;
@@ -16,7 +16,7 @@ $border-radius: 0.25rem; // NOTE: this is a one-off size
 
 // Shadow Utility Variables
 
-$box-shadow-primary: 0 0 0.75rem 0 rgba($neutral-darkest, 0.2); // NOTE: this is a one-off size
+$box-shadow-primary: 0 0 0.75rem 0 rgba($neutral-00, 0.2); // NOTE: this is a one-off size
 
 
 // Breakpoint Utility Variables

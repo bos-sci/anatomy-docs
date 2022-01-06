@@ -167,14 +167,14 @@ button
 
   &:hover
   {
-    color: $neutral-darkest;
+    color: $neutral-00;
     text-decoration-thickness: space(xs);
     cursor: pointer;
   }
 
   &:active
   {
-    color: $neutral-darkest;
+    color: $neutral-00;
     text-decoration-thickness: space(xs);
   }
 
@@ -186,7 +186,7 @@ button
 
 @mixin link-subtle
 {
-  color: $neutral-darkest;
+  color: $neutral-00;
   font-family: $font-family-base-heavy;
   text-decoration: underline;
 
@@ -247,23 +247,23 @@ button
 @mixin link-navigation
 {
   font-family: $font-family-base-regular;
-  color: $neutral-darkest;
+  color: $neutral-00;
   text-decoration: none;
 
   &:visited
   {
-    color: $neutral-darkest;
+    color: $neutral-00;
   }
 
   &:hover
   {
-    color: $neutral-darkest;
+    color: $neutral-00;
     text-decoration: underline;
   }
 
   &:active
   {
-    color: $neutral-darkest;
+    color: $neutral-00;
     text-decoration: underline;
   }
 
