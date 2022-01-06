@@ -6,7 +6,7 @@
 .ads-input-text-input
 {
   margin-top: space(md);
-  border: space(xxs) solid $neutral-dark;
+  border: space(xxs) solid $neutral-40;
   padding: space(lg) space(2x);
   width: 100%;
 
@@ -26,7 +26,7 @@
 
   &::placeholder
   {
-    color: $neutral-dark;
+    color: $neutral-40;
   }
 
   &:disabled
