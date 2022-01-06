@@ -17,14 +17,14 @@
 {
   // Use for most interactive elements on a dark background
   @include focus-default;
-  outline-color: $neutral-lightest;
+  outline-color: $neutral-100;
 }
 
 @mixin focus-ghost-inset
 {
   // Use for interactive elements on a dark background that are contained in wrappers that would conceal the default focus indicator
   outline: 0;
-  box-shadow: inset 0 0 0 space(xs) $neutral-lightest;
+  box-shadow: inset 0 0 0 space(xs) $neutral-100;
 }
 
 @mixin focus-disabled

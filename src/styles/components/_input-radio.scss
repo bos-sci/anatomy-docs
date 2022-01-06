@@ -7,7 +7,7 @@
       &::before
       {
         border: space(xs) solid $feedback-error-dark;
-        background: $neutral-lightest;
+        background: $neutral-100;
       }
     }
 
@@ -24,7 +24,7 @@
 
         &::after
         {
-          background: $neutral-lightest;
+          background: $neutral-100;
         }
       }
     }
@@ -89,7 +89,7 @@
       height: $ffs-body-assertive;
       border: space(xxs) solid $neutral-00;
       border-radius: 50%;
-      background: $neutral-lightest;
+      background: $neutral-100;
     }
   }
 
@@ -113,7 +113,7 @@
         width: space(md);
         height: space(md);
         border-radius: 50%;
-        background: $neutral-lightest;
+        background: $neutral-100;
         transform: translate(calc(space(xxs) + space(sm)), -50%);
       }
     }

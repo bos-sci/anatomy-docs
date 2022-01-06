@@ -6,7 +6,7 @@
   border: space(xs) solid transparent;
   padding: space(lg) space(2x);
   background: $action-primary-dark;
-  color: $neutral-lightest;
+  color: $neutral-100;
   @include font-size($fs-body-subtle);
   text-decoration: none;
   transition: top 1s ease-out;
@@ -14,7 +14,7 @@
 
   &:hover
   {
-    color: $neutral-lightest;
+    color: $neutral-100;
     text-decoration: underline;
   }
 
@@ -28,7 +28,7 @@
   &.light
   {
     // Use for skip links positioned on top of dark headers
-    border-color: $neutral-lightest;
+    border-color: $neutral-100;
 
     &:focus
     {

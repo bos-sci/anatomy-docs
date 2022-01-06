@@ -11,7 +11,7 @@ $neutral-40: #666666;
 $neutral: #999999;
 $neutral-light: #cccccc;
 $neutral-lighter: #f2f2f2;
-$neutral-lightest: #ffffff;
+$neutral-100: #ffffff;
 
 
 // Action Color Range
@@ -75,4 +75,4 @@ $gradient-brand: linear-gradient(90deg, $brand-primary, $accent-plum, $accent-ca
 $gradient-primary: linear-gradient(270deg, $action-primary-dark 0%, $accent-caribbean 100%);
 $gradient-secondary: linear-gradient(270deg, $action-primary-darker 0%, $accent-plum 100%);
 $gradient-assertive: linear-gradient(36deg, $neutral-00 0%, $action-primary-darker 100%);
-$gradient-subtle: linear-gradient(322deg, $neutral-lightest, $neutral-lighter);
+$gradient-subtle: linear-gradient(322deg, $neutral-100, $neutral-lighter);
