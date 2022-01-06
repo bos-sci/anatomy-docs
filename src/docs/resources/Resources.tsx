@@ -59,7 +59,7 @@ const Resources = (props:  Props): JSX.Element => {
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
 
-  useTitle({titlePrefix: `Resources for ${resourceData.name}`});
+  useTitle({titlePrefix: `${resourceData.name} - Resources`});
 
   return (
     <div className="app-content">

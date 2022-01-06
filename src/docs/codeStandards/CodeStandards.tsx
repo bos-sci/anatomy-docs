@@ -75,7 +75,7 @@ const CodeStandards = (props:  Props): JSX.Element => {
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
 
-  useTitle({titlePrefix: `${codeStandardData.name} Code Standards`});
+  useTitle({titlePrefix: `${codeStandardData.name} - Code Standards`});
 
   return (
     <div className="app-content">

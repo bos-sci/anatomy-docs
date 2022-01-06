@@ -53,7 +53,7 @@ const Components = (props: Props): JSX.Element => {
     .split(' ')
     .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
     .join(' ');
-  useTitle({titlePrefix: `${nameForTitle} Component`});
+  useTitle({titlePrefix: `${nameForTitle} - Components`});
 
   return (
     <div className="app-content">

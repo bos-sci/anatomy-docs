@@ -48,7 +48,7 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
 
-  useTitle({titlePrefix: `Content for ${contentGuidelineData.name}`});
+  useTitle({titlePrefix: `${contentGuidelineData.name} - Content`});
 
   return (
     <div className="app-content">

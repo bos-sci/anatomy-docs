@@ -64,7 +64,7 @@ const Foundations = (props:  Props): JSX.Element => {
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
 
-  useTitle({titlePrefix: `${foundationData.name} Foundations`});
+  useTitle({titlePrefix: `${foundationData.name} - Foundations`});
 
   return (
     <div className="app-content">
