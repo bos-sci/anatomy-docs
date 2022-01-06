@@ -30,7 +30,7 @@
 @mixin focus-disabled
 {
   @include focus-default;
-  outline-color: $neutral;
+  outline-color: $neutral-60;
 }
 
 @mixin focus-invalid
