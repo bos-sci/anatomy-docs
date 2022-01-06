@@ -37,7 +37,7 @@ $accent-primary-95: #f7e6ff;
 
 $accent-secondary-20: #005f66;
 $accent-secondary-40: #00becc;
-$accent-caribbean: #00eeff;
+$accent-secondary-60: #00eeff;
 $accent-secondary-80: #99f8ff;
 $accent-secondary-95: #e6fdff;
 
@@ -71,8 +71,8 @@ $feedback-error-lighter: #fce9ea;
 
 // Gradients
 
-$gradient-brand: linear-gradient(90deg, $brand-primary, $accent-primary-60, $accent-caribbean);
-$gradient-primary: linear-gradient(270deg, $action-primary-40 0%, $accent-caribbean 100%);
+$gradient-brand: linear-gradient(90deg, $brand-primary, $accent-primary-60, $accent-secondary-60);
+$gradient-primary: linear-gradient(270deg, $action-primary-40 0%, $accent-secondary-60 100%);
 $gradient-secondary: linear-gradient(270deg, $action-primary-20 0%, $accent-primary-60 100%);
 $gradient-assertive: linear-gradient(36deg, $neutral-00 0%, $action-primary-20 100%);
 $gradient-subtle: linear-gradient(322deg, $neutral-100, $neutral-95);
