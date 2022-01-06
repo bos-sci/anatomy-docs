@@ -42,7 +42,7 @@
 {
   &[disabled]
   {
-    border-color: $neutral-light;
+    border-color: $neutral-80;
     background: $neutral-95;
     color: $neutral-40;
     font-family: $font-family-base-regular;
@@ -222,7 +222,7 @@ button
 
   &:visited
   {
-    color: $neutral-light;
+    color: $neutral-80;
   }
 
   &:hover
