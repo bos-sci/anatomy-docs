@@ -68,15 +68,15 @@ REACT_EDITOR=code
 5. PR can only be merged after it has been reviewed and all tests pass.
 
 ##### Adding a primary section to the docs site
-Steps for adding a top level site section that will be accessible from the primary navigation.
+Steps for adding a site section that will be accessible from the primary navigation.
 1. Create content model in Contentful (use singular name, e.g.: Content Guideline > Name, Description, Content).
 2. Get idLookup data working for query in App component.
-    1. Update getCollections.graphql following existing pattern.
+    1. Update `getCollections.graphql` following existing pattern.
     2. Update the TS interface IdLookup in `/types/docs.ts`.
     3. Update the following in `App.tsx`.
         1. `initialIdLookup` variable.
-        2. add another `createLookup` function call in `useEffect`.
-3. Update TS Interface in `/types/docs.ts`.
+        2. Add another `createLookup` function call in `useEffect`.
+3. Update TS interface in `/types/docs.ts`.
 4. Create site section folder in `/docs`.
     1. Create Router, redirect to default route.
 5. Add parent routing in `App.tsx`.
@@ -85,9 +85,9 @@ Steps for adding a top level site section that will be accessible from the prima
 
 ##### Adding a component to the library
 1. Add component in `/library`.
-2. Add subfolder in `/docs/components` with a variants controller e.g. `ButtonVariants.tsx`.
+2. Add subfolder in `/docs/components` with a variants controller, e.g. `ButtonVariants.tsx`.
 3. Add variants.
-    - Cases in switch case must match variant id's in Contentful (spacing and casing).
+    - Cases in switch case must match variant ids in Contentful (spacing and casing).
 4. Add component to `Preview.tsx`.
     - Case in switch case must match docs site route for that component.
 
