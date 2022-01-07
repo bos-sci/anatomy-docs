@@ -10,9 +10,9 @@ const useTitle = ({title, titlePrefix}: Props) => {
     if (title) {
       document.title = title;
     } else if (titlePrefix) {
-      document.title = titlePrefix + ' - Anatomy - Boston Scientific';
+      document.title = titlePrefix + ' - Anatomy';
     } else {
-      document.title = 'Anatomy - Boston Scientific'
+      document.title = 'Anatomy'
     }
   }, [title, titlePrefix]);
 }
