@@ -27,7 +27,7 @@
   {
     display: inline-flex;
     align-items: center;
-    border-bottom: space(xs) solid $neutral-light;
+    border-bottom: space(xs) solid $neutral-80;
     padding: space(md) space(2x);
     @include link-navigation;
     text-align: center;
@@ -67,7 +67,7 @@
     .nav-link
     {
       border-bottom: 0;
-      border-left: space(xs) solid $neutral-light;
+      border-left: space(xs) solid $neutral-80;
       padding: space(md) space(2x);
       text-align: left;
 

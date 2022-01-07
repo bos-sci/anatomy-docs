@@ -5,25 +5,25 @@
   align-items: center;
   gap: space(2x);
   margin-top: space(3x);
-  border: 1px solid $neutral-darkest; // one-off to match markdown's background color
+  border: 1px solid $neutral-00; // one-off to match markdown's background color
   padding: space(2x);
   background-image:
-    linear-gradient(45deg, rgba($neutral-lighter, 0.5) 25%, transparent 25%),
-    linear-gradient(135deg, rgba($neutral-lighter, 0.5) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, rgba($neutral-lighter, 0.5) 75%),
-    linear-gradient(135deg, transparent 75%, rgba($neutral-lighter, 0.5) 75%);
+    linear-gradient(45deg, rgba($neutral-95, 0.5) 25%, transparent 25%),
+    linear-gradient(135deg, rgba($neutral-95, 0.5) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba($neutral-95, 0.5) 75%),
+    linear-gradient(135deg, transparent 75%, rgba($neutral-95, 0.5) 75%);
   background-size: 20px 20px;
   background-position: 0 0, 10px 0, 10px -10px, 0 10px;
 
   &.dark
   {
-    border-bottom: 1px solid $neutral-darkest;
-    background-color: $neutral-darker;
+    border-bottom: 1px solid $neutral-00;
+    background-color: $neutral-20;
     background-image:
-      linear-gradient(45deg, rgba($neutral-darkest, 0.5) 25%, transparent 25%),
-      linear-gradient(135deg, rgba($neutral-darkest, 0.5) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, rgba($neutral-darkest, 0.5) 75%),
-      linear-gradient(135deg, transparent 75%, rgba($neutral-darkest, 0.5) 75%);
+      linear-gradient(45deg, rgba($neutral-00, 0.5) 25%, transparent 25%),
+      linear-gradient(135deg, rgba($neutral-00, 0.5) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba($neutral-00, 0.5) 75%),
+      linear-gradient(135deg, transparent 75%, rgba($neutral-00, 0.5) 75%);
   }
 }
 

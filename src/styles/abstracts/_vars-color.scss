@@ -5,22 +5,22 @@ $brand-primary: #003c71;
 
 // Neutral Range
 
-$neutral-darkest: #000000;
-$neutral-darker: #333333;
-$neutral-dark: #666666;
-$neutral: #999999;
-$neutral-light: #cccccc;
-$neutral-lighter: #f2f2f2;
-$neutral-lightest: #ffffff;
+$neutral-00: #000000;
+$neutral-20: #333333;
+$neutral-40: #666666;
+$neutral-60: #999999;
+$neutral-80: #cccccc;
+$neutral-95: #f2f2f2;
+$neutral-100: #ffffff;
 
 
 // Action Color Range
 
-$action-primary-darker: #012965;
-$action-primary-dark: #0153cc; // default value
-$action-primary: #3485fe;
-$action-primary-light: #9ac2fe;
-$action-primary-lighter: #e6f0ff;
+$action-primary-20: #012965;
+$action-primary-40: #0153cc; // default value
+$action-primary-60: #3485fe;
+$action-primary-80: #9ac2fe;
+$action-primary-95: #e6f0ff;
 
 
 // Accent Color Ranges
@@ -28,51 +28,51 @@ $action-primary-lighter: #e6f0ff;
 // change to plum to primary, caribbean to secondary, lime to tertiary
 // figure out naming, and what to call accent-plum-30
 
-$accent-plum-darker: #440066;
-$accent-plum-30: #660099; // visited links only
-$accent-plum-dark: #8800cc;
-$accent-plum: #bb33ff;
-$accent-plum-light: #dd99ff;
-$accent-plum-lighter: #f7e6ff;
+$accent-primary-20: #440066;
+$accent-primary-30: #660099; // visited links only
+$accent-primary-40: #8800cc;
+$accent-primary-60: #bb33ff;
+$accent-primary-80: #dd99ff;
+$accent-primary-95: #f7e6ff;
 
-$accent-caribbean-darker: #005f66;
-$accent-caribbean-dark: #00becc;
-$accent-caribbean: #00eeff;
-$accent-caribbean-light: #99f8ff;
-$accent-caribbean-lighter: #e6fdff;
+$accent-secondary-20: #005f66;
+$accent-secondary-40: #00becc;
+$accent-secondary-60: #00eeff;
+$accent-secondary-80: #99f8ff;
+$accent-secondary-95: #e6fdff;
 
-$accent-lime-darker: #356600;
-$accent-lime-dark: #69cc00;
-$accent-lime: #9cff33;
-$accent-lime-light: #ceff99;
-$accent-lime-lighter: #f3ffe6;
+$accent-tertiary-20: #356600;
+$accent-tertiary-40: #69cc00;
+$accent-tertiary-60: #9cff33;
+$accent-tertiary-80: #ceff99;
+$accent-tertiary-95: #f3ffe6;
 
 
 // Feedback Color Ranges
 
-$feedback-success-darker: #135325;
-$feedback-success-dark: #26a64a;
-$feedback-success: #59d97d;
-$feedback-success-light: #acecbe;
-$feedback-success-lighter: #eafaef;
+$feedback-success-20: #135325;
+$feedback-success-40: #26a64a;
+$feedback-success-60: #59d97d;
+$feedback-success-80: #acecbe;
+$feedback-success-95: #eafaef;
 
-$feedback-warning-darker: #644a02;
-$feedback-warning-dark: #c99403;
-$feedback-warning: #fcc736;
-$feedback-warning-light: #fde39b;
-$feedback-warning-lighter: #fff8e6;
+$feedback-warning-20: #644a02;
+$feedback-warning-40: #c99403;
+$feedback-warning-60: #fcc736;
+$feedback-warning-80: #fde39b;
+$feedback-warning-95: #fff8e6;
 
-$feedback-error-darker: #590d11;
-$feedback-error-dark: #b31921;
-$feedback-error: #e64d54;
-$feedback-error-light: #f2a6aa;
-$feedback-error-lighter: #fce9ea;
+$feedback-error-20: #590d11;
+$feedback-error-40: #b31921;
+$feedback-error-60: #e64d54;
+$feedback-error-80: #f2a6aa;
+$feedback-error-95: #fce9ea;
 
 
 // Gradients
 
-$gradient-brand: linear-gradient(90deg, $brand-primary, $accent-plum, $accent-caribbean);
-$gradient-primary: linear-gradient(270deg, $action-primary-dark 0%, $accent-caribbean 100%);
-$gradient-secondary: linear-gradient(270deg, $action-primary-darker 0%, $accent-plum 100%);
-$gradient-assertive: linear-gradient(36deg, $neutral-darkest 0%, $action-primary-darker 100%);
-$gradient-subtle: linear-gradient(322deg, $neutral-lightest, $neutral-lighter);
+$gradient-brand: linear-gradient(90deg, $brand-primary, $accent-primary-60, $accent-secondary-60);
+$gradient-primary: linear-gradient(270deg, $action-primary-40 0%, $accent-secondary-60 100%);
+$gradient-secondary: linear-gradient(270deg, $action-primary-20 0%, $accent-primary-60 100%);
+$gradient-assertive: linear-gradient(36deg, $neutral-00 0%, $action-primary-20 100%);
+$gradient-subtle: linear-gradient(322deg, $neutral-100, $neutral-95);

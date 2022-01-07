@@ -20,150 +20,150 @@
   &-neutral-00
   {
     @include swatch;
-    background: $neutral-darkest;
+    background: $neutral-00;
   }
   &-neutral-20
   {
     @include swatch;
-    background: $neutral-darker;
+    background: $neutral-20;
   }
   &-neutral-40
   {
     @include swatch;
-    background: $neutral-dark;
+    background: $neutral-40;
   }
   &-neutral-60
   {
     @include swatch;
-    background: $neutral;
+    background: $neutral-60;
   }
   &-neutral-80
   {
     @include swatch;
-    background: $neutral-light;
+    background: $neutral-80;
   }
   &-neutral-95
   {
     @include swatch;
-    background: $neutral-lighter;
+    background: $neutral-95;
   }
   &-neutral-100
   {
     @include swatch;
     border: 1px solid black;
-    background: $neutral-lightest;
+    background: $neutral-100;
   }
 
   // action color range
   &-action-primary-20
   {
     @include swatch;
-    background: $action-primary-darker;
+    background: $action-primary-20;
   }
   &-action-primary-40
   {
     @include swatch;
-    background: $action-primary-dark;
+    background: $action-primary-40;
   }
   &-action-primary-60
   {
     @include swatch;
-    background: $action-primary;
+    background: $action-primary-60;
   }
   &-action-primary-80
   {
     @include swatch;
-    background: $action-primary-light;
+    background: $action-primary-80;
   }
   &-action-primary-95
   {
     @include swatch;
-    background: $action-primary-lighter;
+    background: $action-primary-95;
   }
 
   // accent color ranges
   &-accent-primary-20
   {
     @include swatch;
-    background: $accent-plum-darker;
+    background: $accent-primary-20;
   }
   &-accent-primary-30
   {
     @include swatch;
-    background: $accent-plum-30;
+    background: $accent-primary-30;
   }
   &-accent-primary-40
   {
     @include swatch;
-    background: $accent-plum-dark;
+    background: $accent-primary-40;
   }
   &-accent-primary-60
   {
     @include swatch;
-    background: $accent-plum;
+    background: $accent-primary-60;
   }
   &-accent-primary-80
   {
     @include swatch;
-    background: $accent-plum-light;
+    background: $accent-primary-80;
   }
   &-accent-primary-95
   {
     @include swatch;
-    background: $accent-plum-lighter;
+    background: $accent-primary-95;
   }
 
   &-accent-secondary-20
   {
     @include swatch;
-    background: $accent-caribbean-darker;
+    background: $accent-secondary-20;
   }
   &-accent-secondary-40
   {
     @include swatch;
-    background: $accent-caribbean-dark;
+    background: $accent-secondary-40;
   }
   &-accent-secondary-60
   {
     @include swatch;
-    background: $accent-caribbean;
+    background: $accent-secondary-60;
   }
   &-accent-secondary-80
   {
     @include swatch;
-    background: $accent-caribbean-light;
+    background: $accent-secondary-80;
   }
   &-accent-secondary-95
   {
     @include swatch;
-    background: $accent-caribbean-lighter;
+    background: $accent-secondary-95;
   }
 
   // feedback color ranges
   &-feedback-error-20
   {
     @include swatch;
-    background: $feedback-error-darker;
+    background: $feedback-error-20;
   }
   &-feedback-error-40
   {
     @include swatch;
-    background: $feedback-error-dark;
+    background: $feedback-error-40;
   }
   &-feedback-error-60
   {
     @include swatch;
-    background: $feedback-error;
+    background: $feedback-error-60;
   }
   &-feedback-error-80
   {
     @include swatch;
-    background: $feedback-error-light;
+    background: $feedback-error-80;
   }
   &-feedback-error-95
   {
     @include swatch;
-    background: $feedback-error-lighter;
+    background: $feedback-error-95;
   }
 
   // gradients

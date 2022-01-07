@@ -23,7 +23,7 @@
 {
   z-index: 20;
   padding: 0;
-  background: $neutral-lightest;
+  background: $neutral-100;
   box-shadow: $box-shadow-primary;
 }
 
@@ -73,7 +73,7 @@
   .navbar-nav
   {
     margin-top: 0;
-    border-top: space(xxs) solid $neutral-light;
+    border-top: space(xxs) solid $neutral-80;
     padding: space(md) 0;
   }
 
@@ -93,7 +93,7 @@
       &::before
       {
         @include nav-indicator-sm;
-        background: $neutral-darkest;
+        background: $neutral-00;
       }
     }
 
@@ -104,7 +104,7 @@
       &::before
       {
         @include nav-indicator-sm;
-        background: $action-primary-dark;
+        background: $action-primary-40;
       }
     }
 
@@ -113,7 +113,7 @@
       &::before
       {
         @include nav-indicator-sm;
-        background: $neutral-darkest;
+        background: $neutral-00;
       }
     }
 
