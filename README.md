@@ -2,6 +2,22 @@
 
 Anatomy is Boston Scientific's design system. It's goal is to create a unified look and feel accross Boston Scientific applications. It also promotes design and development best practices and accessibility standards.
 
+## Table of Contents
+
+- [Environments](#environments)
+- [Contributing](#contributing)
+  - [Architecture](#architecture)
+  - [Process](#process)
+    - [Local Setup](#local-setup)
+    - [Development](#development)
+    - [Deploy to Production](#deploy-to-production)
+  - [Naming Conventions](#naming-conventions)
+    - [Git Naming](#git-naming)
+    - [Filesystem Naming](#filesystem-naming)
+  - [GraphQL](#graphql)
+- [Scripts](#scripts)
+
+
 ## Environments
 
 Name | Link | Status
@@ -95,7 +111,7 @@ https://graphql.contentful.com/content/v1/spaces/{spaceID}/explore?access_token=
 
 spaceID and accessToken can be found in your .env file or through the contentful dashboard.
 
-## Available Scripts
+## Scripts
 
 In the project directory, you can run:
 
