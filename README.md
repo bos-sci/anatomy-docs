@@ -17,7 +17,6 @@ Anatomy is Boston Scientific's design system. It's goal is to create a unified l
   - [GraphQL](#graphql)
 - [Scripts](#scripts)
 
-
 ## Environments
 
 Name | Link | Status
@@ -37,7 +36,7 @@ Detailed below is a brief map of the application detailing the important files a
     - **codeStandards/** Code Standards documentation
     - **components/** Component documentation
       - **variations/** All the different implementations of component variations e.g. primary button and secondary button
-  - **styles/** Global stylesheets used both in docus and library
+  - **styles/** Global stylesheets used both in docs and library
 
 ### Process
 
