@@ -22,7 +22,8 @@ $box-shadow-primary: 0 0 0.75rem 0 rgba($neutral-00, 0.2); // NOTE: this is a on
 // Breakpoint Utility Variables
 // TODO: set up mixins for media queries
 
-$sm: 576px;
-$md: 768px;
-$lg: 992px;
-$xl: 1200px;
+$sm: 36rem; // 576px
+$md: 48rem; // 768px
+$lg: 62rem; // 992px
+$xl: 75rem; // 1200px
+$xxl: 87.5rem; // 1400px

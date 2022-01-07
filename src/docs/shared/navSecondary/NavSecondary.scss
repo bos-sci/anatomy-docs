@@ -6,7 +6,7 @@
   margin-bottom: space(3x);
   z-index: 10;
   overflow-x: auto;
-  background: #fff;
+  background: $neutral-100;
   white-space: nowrap;
   transition: width .25s ease-out;
 
@@ -49,7 +49,6 @@
 {
   .nav-secondary
   {
-    width: 18rem; // NOTE: this is a one-off size
     height: 100%;
     overflow-y: auto;
     white-space: initial;

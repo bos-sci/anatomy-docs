@@ -27,6 +27,17 @@
   box-shadow: $box-shadow-primary;
 }
 
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl
+{
+  padding: 0 space(4x); // override bootstrap's grid container padding
+}
+
 .navbar-brand
 {
   margin: space(2x) space(4x);
