@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
-import NavSecondary, { NavItem } from '../shared/navSecondary/NavSecondary';
+import NavSecondary, { NavItem } from '../shared/components/navSecondary/NavSecondary';
 import { IdLookupContext } from '../App';
-import PageHeader from '../shared/pageHeader/PageHeader';
-import Markdown from '../shared/Markdown';
+import PageHeader from '../shared/components/pageHeader/PageHeader';
+import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
-import { ContentGuideline, useGetContentGuidelineQuery } from '../../types/contentful';
-import { IdLookup } from '../../types/docs';
+import { ContentGuideline, useGetContentGuidelineQuery } from '../shared/types/contentful';
+import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
 
 interface ComponentMatch extends match {

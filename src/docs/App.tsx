@@ -6,9 +6,9 @@ import {
   Redirect
 } from "react-router-dom";
 import { slugify } from './helpers';
-import NavPrimary from './shared/navPrimary/NavPrimary';
-import { useGetCollectionsQuery } from '../types/contentful';
-import { IdLookup, IdLookupEntry } from '../types/docs';
+import NavPrimary from './shared/components/navPrimary/NavPrimary';
+import { useGetCollectionsQuery } from './shared/types/contentful';
+import { IdLookup, IdLookupEntry } from './shared/types/docs';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
