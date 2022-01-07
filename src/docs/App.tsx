@@ -95,23 +95,19 @@ const App = (): JSX.Element => {
         <IdLookupContext.Provider value={idLookup}>
           <NavPrimary />
           {isLookupReady &&
-            <div className="container-fluid container-lg app-body">
-              <div className="row">
-                <div className="col-12 col-lg-9 col-xl-10">
-                  <Suspense fallback={<p>Loading...</p>}>
-                    <Switch>
-                      <Route exact path="/">
-                        <Redirect to="/content" />
-                      </Route>
-                      <Route path="/components" component={ComponentsRouter} />
-                      <Route path="/code-standards" component={CodeStandardsRouter} />
-                      <Route path="/content" component={ContentGuidelinesRouter} />
-                      <Route path="/foundations" component={FoundationsRouter} />
-                      <Route path="/resources" component={ResourcesRouter} />
-                    </Switch>
-                  </Suspense>
-                </div>
-              </div>
+            <div className="app-body">
+              <Suspense fallback={<p>Loading...</p>}>
+                <Switch>
+                  <Route exact path="/">
+                    <Redirect to="/content" />
+                  </Route>
+                  <Route path="/components" component={ComponentsRouter} />
+                  <Route path="/code-standards" component={CodeStandardsRouter} />
+                  <Route path="/content" component={ContentGuidelinesRouter} />
+                  <Route path="/foundations" component={FoundationsRouter} />
+                  <Route path="/resources" component={ResourcesRouter} />
+                </Switch>
+              </Suspense>
             </div>
           }
         </IdLookupContext.Provider>

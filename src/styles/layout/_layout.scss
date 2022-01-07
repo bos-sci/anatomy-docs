@@ -8,47 +8,17 @@
   box-sizing: border-box;
 }
 
-.baseline-grid
-{
-  // For testing vertical rhythm
-  background-image: linear-gradient(to bottom, $accent-secondary-60 0, $neutral-100 1px);
-  background-repeat: repeat-y;
-  background-size: 100% space(sm);
-}
-
-.container,
-.container-fluid,
-.container-lg,
-.container-md,
-.container-sm,
-.container-xl,
-.container-xxl
-{
-  padding: 0 space(4x); // override bootstrap's grid container padding
-}
-
 .grid-container
 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto 1fr;
   grid-template-areas:
     "header header header header"
     "main main main main";
-  column-gap: 0;
-  row-gap: 0;
-
-  &.with-footer
-  {
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-      "header header header header"
-      "main main main main"
-      "footer footer footer footer";
-  }
+  grid-gap: 0;
 }
 
-header.navbar
+header
 {
   grid-area: header;
 }
@@ -56,14 +26,12 @@ header.navbar
 .app-body
 {
   grid-area: main;
-  padding-top: space(4x);
-  padding-bottom: space(4x);
+  padding: space(4x);
 }
 
 .app-content
 {
-  display: flex;
-  flex-direction: column;
+  display: grid;
 }
 
 main
@@ -77,55 +45,49 @@ main
   }
 }
 
-footer
-{
-  grid-area: footer;
-  border-top: 1px solid var(--raven-grey-20);
-  padding: space(sm);
-}
-
 .clear-storage
 {
   position: fixed;
   bottom: space(md);
   right: space(md);
   z-index: 1000;
-
 }
 
-@media (min-width: 576px)
+@media (min-width: $lg)
 {
-  .grid-container
+  .app-body
   {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-      "header header header header"
-      "main main main main";
-    column-gap: 0;
-    row-gap: 0;
-  }
-}
-
-@media (min-width: 992px) {
-  .main
-  {
-    flex-direction: row;
+    max-width: 60rem;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .app-content
   {
-    flex-direction: row;
+    grid-template-columns: minmax(6.25rem, 12.5rem) 1fr;
+    grid-column-gap: space(4x);
+    justify-content: start;
+    justify-items: start;
+  }
+}
 
-    .nav-secondary
-    {
-      flex: 1;
-    }
+@media (min-width: $xl)
+{
+  .app-body
+  {
+    max-width: 71.25rem;
+  }
 
-    main
-    {
-      flex: 3;
-    }
+  .app-content
+  {
+    grid-template-columns: minmax(6.25rem, 12.5rem) 1fr 12.5rem; // TODO: fix this when we add jump link nav
+  }
+}
+
+@media (min-width: $xxl)
+{
+  .app-body
+  {
+    max-width: 82.5rem;
   }
 }
