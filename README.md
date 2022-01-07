@@ -33,12 +33,11 @@ Detailed below is a brief map of the application detailing the important files a
   - **assets/** Fonts & images
   - **components/** Where all the docs code lives. Sub folders break app into sections based on the primary nav routes
     - **App.js** Handles routing, base layout, and setting idMap context
-    - **shared/** Components used multiple times throughout the application
+    - **shared/** Components, custom hooks, and types used multiple times throughout the application
     - **codeStandards/** Code Standards documentation
     - **components/** Component documentation
       - **variations/** All the different implementations of component variations e.g. primary button and secondary button
-  - **hooks/** Custom hooks
-  - **styles/** Global stylesheets
+  - **styles/** Global stylesheets used both in docus and library
 
 ### Process
 
@@ -69,6 +68,30 @@ REACT_EDITOR=code
 *See [PR naming](#branches) guidelines below.*
 5. PR can only be merged after it has been reviewed and all tests pass.
 
+##### Adding a primary section to the docs site
+Steps for adding a top level site section that will be accessible from the primary navigation.
+1. Create content model in Contentful (use singular name, e.g.: Content Guideline > Name, Description, Content).
+2. Get idLookup data working for query in App component.
+    1. Update getCollections.graphql following existing pattern.
+    2. Update the TS interface IdLookup in `/types/docs.ts`.
+    3. Update the following in `App.tsx`.
+        1. `initialIdLookup` variable.
+        2. add another `createLookup` function call in `useEffect`.
+3. Update TS Interface in `/types/docs.ts`.
+4. Create site section folder in `/docs`.
+    1. Create Router, redirect to default route.
+5. Add parent routing in `App.tsx`.
+6. Add site section link in `navPrimary.tsx`.
+7. Be sure to restart your local server to regen Contentful types and clear errors.
+
+##### Adding a component to the library
+1. Add component in `/library`.
+2. Add subfolder in `/docs/components` with a variants controller e.g. `ButtonVariants.tsx`.
+3. Add variants.
+    - Cases in switch case must match variant id's in Contentful (spacing and casing).
+4. Add component to `Preview.tsx`.
+    - Case in switch case must match docs site route for that component.
+
 #### Deploy to Production
 1. In Contentful, point the master alias environment at the working environment.
 This environment is now the production environment.
@@ -77,7 +100,7 @@ This environment is now the production environment.
 4. Go to the master environment then `Settings > API Keys > Anatomy Docs > Environments` and give the API access to the
 new working environment.
 5. Update local .env files with the new working environment name.
-6. Update netlify.toml with new working environment name in a branch i.e. `deploy/{environment-name}`. Commit/push changes and create/merge branch into develop.
+6. Update `netlify.toml` with new working environment name in a branch i.e. `deploy/{environment-name}`. Commit/push changes and create/merge branch into develop.
 7. Create pull request from develop into master.
 8. Once all tests have passed and the preview is built and reviewed, the PR can be merged.
 
