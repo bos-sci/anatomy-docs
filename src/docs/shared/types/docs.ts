@@ -1,4 +1,4 @@
-interface IdLookupEntry {
+export interface IdLookupEntry {
   [key: string]: {
     id: string;
     name: string;
