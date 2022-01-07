@@ -6,6 +6,7 @@ import Markdown from '../shared/Markdown';
 import { match } from 'react-router';
 import { CodeStandard, useGetCodeStandardQuery } from '../../types/contentful';
 import { IdLookup } from '../../types/docs';
+import useTitle from '../shared/hooks/useTitle';
 
 interface ComponentMatch extends match {
   params: {
@@ -73,6 +74,8 @@ const CodeStandards = (props:  Props): JSX.Element => {
     ];
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
+
+  useTitle({titlePrefix: `${codeStandardData.name} - Code Standards`});
 
   return (
     <div className="app-content">

@@ -6,6 +6,7 @@ import Markdown from '../shared/Markdown';
 import { match } from 'react-router';
 import { ContentGuideline, useGetContentGuidelineQuery } from '../../types/contentful';
 import { IdLookup } from '../../types/docs';
+import useTitle from '../shared/hooks/useTitle';
 
 interface ComponentMatch extends match {
   params: {
@@ -46,6 +47,8 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
     }));
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
+
+  useTitle({titlePrefix: `${contentGuidelineData.name} - Content`});
 
   return (
     <div className="app-content">

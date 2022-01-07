@@ -8,6 +8,7 @@ import { match } from 'react-router';
 import { IdLookup } from '../../types/docs';
 import { Component, useGetComponentQuery } from '../../types/contentful';
 import './Components.scss';
+import useTitle from '../shared/hooks/useTitle';
 
 interface ComponentMatch extends match {
   params: {
@@ -47,6 +48,12 @@ const Components = (props: Props): JSX.Element => {
       setNavItems(navItems);
     }
   }, [data, idLookup, props.match.path]);
+
+  const nameForTitle = (componentData.name || '')
+    .split(' ')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ');
+  useTitle({titlePrefix: `${nameForTitle} - Components`});
 
   return (
     <div className="app-content">
