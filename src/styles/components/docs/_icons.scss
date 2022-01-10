@@ -1,0 +1,36 @@
+.code-do,
+.code-dont
+{
+  position: relative;
+  display: block;
+  padding-left: space(2x) + space(sm);
+  font-family: $font-family-base-heavy;
+  text-transform: uppercase;
+
+  code {
+    text-transform: none;
+  }
+
+  &::before
+  {
+    content: '';
+    position: absolute;
+    width: space(2x);
+    height: space(3x);
+    top: 0;
+    left: 0;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+.code-do::before
+{
+  background-image: url("../../../assets/images/check-circle-solid.svg");
+}
+
+.code-dont::before
+{
+  background-image: url("../../../assets/images/times-circle-solid.svg");
+}
