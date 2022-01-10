@@ -113,7 +113,6 @@ In the end we should have 4 environments including master, working environment, 
 If the work is tied to a ticket, the branch should be named using the pattern `feature/xdc-###` or `bug/xdc-###`.
 In any case where the work doesn't have a ticket, the ticket name can be replaced with a brief kebab-cased description.
 If the changes are part of the deploy process, the branch should be named `deploy/{working-contentful-environment-name}`.
-If the changes are updating Contentful environments, the branch should be named `env/{working-contentful-environment-name}`.
 
 ##### Pull Requests
 Pull requests should start with the branch name, followed by a brief description of the work e.g. `feature/xcd-### Buttons`.
