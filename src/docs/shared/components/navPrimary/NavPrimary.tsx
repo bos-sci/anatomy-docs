@@ -39,27 +39,30 @@ const NavPrimary = (): JSX.Element => {
           <nav className="navbar-nav-primary" aria-label="primary">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink to='/content' className="nav-link" activeClassName="active">
+                <NavLink to='/content' className="nav-link">
                   Content
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to='/foundations' className="nav-link" activeClassName="active">
+                <NavLink to='/foundations' className="nav-link">
                   Foundations
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to='/components' className="nav-link" activeClassName="active">
+                <NavLink to='/components' className="nav-link">
                   Components
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to='/code-standards' className="nav-link" activeClassName="active">
+                <NavLink to='/resources/developers/code-standards' className="nav-link">
                   Code standards
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to='/resources' className="nav-link" activeClassName="active">
+                {/* TODO: Remove isActive function once code standards has moved under dev resources */}
+                <NavLink to='/resources' className={isActive => 'nav-link ' + (isActive ? 'active' : '')} isActive={
+                  (match, location) => match! && location.pathname !== '/resources/developers/code-standards/general'
+                }>
                   Resources
                 </NavLink>
               </li>

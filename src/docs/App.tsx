@@ -92,7 +92,7 @@ const App = (): JSX.Element => {
                     <Redirect to="/content" />
                   </Route>
                   <Route path="/components" component={ComponentsRouter} />
-                  <Route path="/code-standards" component={CodeStandardsRouter} />
+                  <Route path="/resources/developers/code-standards" component={CodeStandardsRouter} />
                   <Route path="/content" component={ContentGuidelinesRouter} />
                   <Route path="/foundations" component={FoundationsRouter} />
                   <Route path="/resources" component={ResourcesRouter} />
