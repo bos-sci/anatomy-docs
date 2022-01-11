@@ -71,17 +71,9 @@ const App = (): JSX.Element => {
     }
   }, [data, createLookup]);
 
-  const clearSession = () => {
-    sessionStorage.clear();
-    window.location.reload();
-  }
-
   return (
     <Router>
       <div className="grid-container">
-        {process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true' &&
-          <button className="ads-button-subtle clear-storage" onClick={clearSession}>Clear Session</button>
-        }
         <IdLookupContext.Provider value={idLookup}>
           <NavPrimary />
           {isLookupReady &&
