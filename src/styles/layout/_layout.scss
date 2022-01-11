@@ -45,14 +45,6 @@ main
   }
 }
 
-.clear-storage
-{
-  position: fixed;
-  bottom: space(md);
-  right: space(md);
-  z-index: 1000;
-}
-
 @media (min-width: $lg)
 {
   .app-body
