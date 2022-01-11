@@ -20,7 +20,6 @@ const NavSecondary = ({ navItems }: Props): JSX.Element => {
             <NavLink
               to={navItem.slug}
               className="nav-link"
-              activeClassName="active"
             >
               {navItem.text}
             </NavLink>
