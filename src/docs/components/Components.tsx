@@ -54,8 +54,8 @@ const Components = (props: Props): JSX.Element => {
     .split(' ')
     .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
     .join(' ');
-  useTitle({titlePrefix: `${nameForTitle} - Components`});
 
+  useTitle({titlePrefix: `${nameForTitle} - Components`});
   useHashScroll(!!componentData);
 
   return (
