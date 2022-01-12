@@ -61,7 +61,7 @@ const NavPrimary = (): JSX.Element => {
               <li className="nav-item">
                 {/* TODO: Remove isActive function once code standards has moved under dev resources */}
                 <NavLink to='/resources' className={isActive => 'nav-link ' + (isActive ? 'active' : '')} isActive={
-                  (match, location) => match! && location.pathname !== '/resources/developers/code-standards/general'
+                  (match, location) => match! && !location.pathname.startsWith('/resources/developers/code-standards/')
                 }>
                   Resources
                 </NavLink>
