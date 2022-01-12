@@ -7,6 +7,7 @@ import { match } from 'react-router';
 import { ContentGuideline, useGetContentGuidelineQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
+import useHashScroll from '../shared/hooks/useHashScroll';
 
 interface ComponentMatch extends match {
   params: {
@@ -49,6 +50,7 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
   }, [data, idLookup, props.match.path]);
 
   useTitle({titlePrefix: `${contentGuidelineData.name} - Content`});
+  useHashScroll(!!contentGuidelineData.content);
 
   return (
     <div className="app-content">

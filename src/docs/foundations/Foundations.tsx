@@ -7,6 +7,7 @@ import { match } from 'react-router';
 import { Foundation, useGetFoundationQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
+import useHashScroll from '../shared/hooks/useHashScroll';
 
 interface ComponentMatch extends match {
   params: {
@@ -65,6 +66,7 @@ const Foundations = (props:  Props): JSX.Element => {
   }, [data, idLookup, props.match.path]);
 
   useTitle({titlePrefix: `${foundationData.name} - Foundations`});
+  useHashScroll(!!foundationData.content);
 
   return (
     <div className="app-content">

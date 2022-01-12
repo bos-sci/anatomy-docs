@@ -7,6 +7,7 @@ import { match } from 'react-router';
 import { Resource, useGetResourceQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
+import useHashScroll from '../shared/hooks/useHashScroll';
 
 interface ComponentMatch extends match {
   params: {
@@ -60,6 +61,7 @@ const Resources = (props:  Props): JSX.Element => {
   }, [data, idLookup, props.match.path]);
 
   useTitle({titlePrefix: `${resourceData.name} - Resources`});
+  useHashScroll(!!resourceData.content);
 
   return (
     <div className="app-content">
