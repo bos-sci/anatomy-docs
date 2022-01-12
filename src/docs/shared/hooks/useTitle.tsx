@@ -5,7 +5,7 @@ interface Props {
   titlePrefix?: string;
 }
 
-const useTitle = ({title, titlePrefix}: Props) => {
+const useTitle = ({title, titlePrefix}: Props): void => {
   useEffect(() => {
     if (title) {
       document.title = title;

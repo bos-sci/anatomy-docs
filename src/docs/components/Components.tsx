@@ -9,6 +9,7 @@ import { IdLookup } from '../shared/types/docs';
 import { Component, useGetComponentQuery } from '../shared/types/contentful';
 import './Components.scss';
 import useTitle from '../shared/hooks/useTitle';
+import useHashScroll from '../shared/hooks/useHashScroll';
 
 interface ComponentMatch extends match {
   params: {
@@ -54,6 +55,8 @@ const Components = (props: Props): JSX.Element => {
     .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
     .join(' ');
   useTitle({titlePrefix: `${nameForTitle} - Components`});
+
+  useHashScroll(!!componentData);
 
   return (
     <div className="app-content">

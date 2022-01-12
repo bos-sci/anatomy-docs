@@ -7,6 +7,8 @@ import { match } from 'react-router';
 import { CodeStandard, useGetCodeStandardQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
+import { useLocation } from 'react-router-dom';
+import useHashScroll from '../shared/hooks/useHashScroll';
 
 interface ComponentMatch extends match {
   params: {
@@ -60,7 +62,7 @@ const CodeStandards = (props:  Props): JSX.Element => {
         slug: pathPrefix + 'css'
       },
       {
-        text: 'Javascript',
+        text: 'JavaScript',
         slug: pathPrefix + 'javascript'
       },
       {
@@ -76,6 +78,7 @@ const CodeStandards = (props:  Props): JSX.Element => {
   }, [data, idLookup, props.match.path]);
 
   useTitle({titlePrefix: `${codeStandardData.name} - Code Standards`});
+  useHashScroll(!!codeStandardData.content);
 
   return (
     <div className="app-content">
