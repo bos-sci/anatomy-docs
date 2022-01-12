@@ -7,7 +7,6 @@ import { match } from 'react-router';
 import { CodeStandard, useGetCodeStandardQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
-import { useLocation } from 'react-router-dom';
 import useHashScroll from '../shared/hooks/useHashScroll';
 
 interface ComponentMatch extends match {
