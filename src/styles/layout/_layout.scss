@@ -11,10 +11,10 @@
 .grid-container
 {
   display: grid;
-  grid-template-rows: auto 1fr;
   grid-template-areas:
-    "header header header header"
-    "main main main main";
+    "header"
+    "main";
+  grid-template-rows: auto 1fr;
   grid-gap: 0;
 }
 
@@ -32,17 +32,39 @@ header
 .app-content
 {
   display: grid;
+  grid-template-areas:
+    "nav-secondary"
+    "intro"
+    "nav-tertiary"
+    "page-content";
+  grid-template-columns: 1fr;
+  grid-gap: space(4x);
+  justify-content: start;
+  justify-items: start;
+  overflow-y: auto;
 }
 
 main
 {
-  overflow-y: auto;
+  display: contents;
 
   & img // TODO: find a better place for this
   {
     width: 100%;
     margin-top: space(3x);
   }
+}
+
+.intro // TODO: rename this .page-header after we refactor the existing .page-header
+{
+  grid-area: intro;
+}
+
+.page-content
+{
+  grid-area: page-content;
+  width: 100%;
+  overflow-y: auto;
 }
 
 @media (min-width: $lg)
@@ -53,11 +75,14 @@ main
     margin-right: auto;
     margin-left: auto;
   }
-
   .app-content
   {
-    grid-template-columns: minmax(6.25rem, 12.5rem) 1fr;
-    grid-column-gap: space(4x);
+    display: grid;
+    grid-template-areas:
+      "nav-secondary intro nav-tertiary"
+      "nav-secondary page-content nav-tertiary";
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-row-gap: 0;
     justify-content: start;
     justify-items: start;
   }
@@ -68,11 +93,6 @@ main
   .app-body
   {
     max-width: 71.25rem;
-  }
-
-  .app-content
-  {
-    grid-template-columns: minmax(6.25rem, 12.5rem) 1fr 12.5rem; // TODO: fix this when we add jump link nav
   }
 }
 

@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import NavSecondary, { NavItem } from '../shared/components/navSecondary/NavSecondary';
+import NavTertiary from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
@@ -79,13 +80,29 @@ const CodeStandards = (props:  Props): JSX.Element => {
   useTitle({titlePrefix: `${codeStandardData.name} - Code Standards`});
   useHashScroll(!!codeStandardData.content);
 
+  const navTertiaryItems = [
+    {
+      id: '#responsive',
+      text: 'Responsive'
+    },
+    {
+      id: '#third-party-libraries',
+      text: 'Third-party libraries'
+    }
+  ];
+
   return (
     <div className="app-content">
       { navItems && <NavSecondary navItems={ navItems } /> }
         <main>
           {codeStandardData.sys && <>
-            <PageHeader name={ codeStandardData.name || '' } publishedAt={ codeStandardData.sys.publishedAt } />
-            <Markdown markdown={ codeStandardData.content || ''} />
+            <div className="intro">
+              <PageHeader name={ codeStandardData.name || '' } publishedAt={ codeStandardData.sys.publishedAt } />
+            </div>
+            <NavTertiary navTertiaryItems={ navTertiaryItems } />
+            <div className="page-content">
+              <Markdown markdown={ codeStandardData.content || ''} />
+            </div>
           </>}
         </main>
     </div>

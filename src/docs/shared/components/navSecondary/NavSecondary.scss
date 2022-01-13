@@ -3,7 +3,7 @@
 
 .nav-secondary
 {
-  margin-bottom: space(3x);
+  grid-area: nav-secondary;
   z-index: 10;
   overflow-x: auto;
   background: $neutral-100;
@@ -76,5 +76,4 @@
       }
     }
   }
-
 }

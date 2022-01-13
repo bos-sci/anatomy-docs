@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import NavSecondary, { NavItem } from '../shared/components/navSecondary/NavSecondary';
+import NavTertiary from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
@@ -68,14 +69,30 @@ const Foundations = (props:  Props): JSX.Element => {
   useTitle({titlePrefix: `${foundationData.name} - Foundations`});
   useHashScroll(!!foundationData.content);
 
+  const navTertiaryItems = [
+    {
+      id: 'h2Id',
+      text: 'Foundations h2 text'
+    },
+    {
+      id: 'h2Id',
+      text: 'H2 text'
+    }
+  ];
+
   return (
     <div className="app-content">
       { navItems && <NavSecondary navItems={ navItems } /> }
         <main>
           {foundationData.sys && <>
+          <div className="intro">
             <PageHeader name={ foundationData.name || '' } publishedAt={ foundationData.sys.publishedAt } />
             <Markdown markdown={ foundationData.description || ''} className="body-assertive" />
+          </div>
+          <NavTertiary navTertiaryItems={ navTertiaryItems } />
+          <div className="page-content">
             <Markdown markdown={ foundationData.content || ''} headingOffset={1} />
+          </div>
           </>}
         </main>
     </div>
