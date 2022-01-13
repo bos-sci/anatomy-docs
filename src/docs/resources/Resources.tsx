@@ -45,6 +45,10 @@ const Resources = (props:  Props): JSX.Element => {
     const pathPrefix = basePath + '/';
     const navItems = [
       {
+        text: 'Community',
+        slug: pathPrefix + 'community'
+      },
+      {
         text: 'Designers',
         slug: pathPrefix + 'designers'
       },
