@@ -8,7 +8,7 @@ const Default = (): JSX.Element => {
     setInputValue(e.target.value);
   }
 
-  return <InputText label="Default input" placeholder="Placeholder text" value={inputValue} onChange={handleChange} />;
+  return <InputText label="Default input" value={inputValue} onChange={handleChange} />;
 }
 
 export default Default;

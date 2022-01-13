@@ -5,10 +5,12 @@ import Subtle from './Subtle';
 
 const LinkVariants = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
+    // Styles
     case 'linkGhost':
       return <Ghost />;
     case 'linkSubtle':
       return <Subtle />;
+
     default:
       return <Default />;
   }

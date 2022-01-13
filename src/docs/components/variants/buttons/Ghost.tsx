@@ -3,7 +3,6 @@ import Button from '../../../../library/components/Button';
 const Ghost = (): JSX.Element => {
   return <>
     <Button variant="ghost" type="button">Default button</Button>
-    <Button variant="ghost" type="button" disabled>Disabled button</Button>
     <Button variant="ghost" type="button" icon="plus">
       Icon left
     </Button>
@@ -11,7 +10,6 @@ const Ghost = (): JSX.Element => {
       Icon right
     </Button>
     <Button variant="ghost" type="button" icon="plus" aria-label="icon button"/>
-    <Button variant="ghost" type="button" icon="plus" aria-label="icon button" disabled/>
   </>;
 }
 

@@ -46,14 +46,57 @@ export type Asset = {
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
+export type AssetContentTypeArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Represents a binary file in a space. An asset can be any file type. */
+export type AssetDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Represents a binary file in a space. An asset can be any file type. */
+export type AssetFileNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Represents a binary file in a space. An asset can be any file type. */
+export type AssetHeightArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Represents a binary file in a space. An asset can be any file type. */
 export type AssetLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
 /** Represents a binary file in a space. An asset can be any file type. */
+export type AssetSizeArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Represents a binary file in a space. An asset can be any file type. */
+export type AssetTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Represents a binary file in a space. An asset can be any file type. */
 export type AssetUrlArgs = {
+  locale?: InputMaybe<Scalars['String']>;
   transform?: InputMaybe<ImageTransformOptions>;
+};
+
+
+/** Represents a binary file in a space. An asset can be any file type. */
+export type AssetWidthArgs = {
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 export type AssetCollection = {
@@ -263,7 +306,10 @@ export type Component = Entry & {
   description?: Maybe<Scalars['String']>;
   interactions?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ComponentLinkingCollections>;
+  modifiersCollection?: Maybe<ComponentModifiersCollection>;
   name?: Maybe<Scalars['String']>;
+  statesCollection?: Maybe<ComponentStatesCollection>;
+  stylesCollection?: Maybe<ComponentStylesCollection>;
   sys: Sys;
   usage?: Maybe<Scalars['String']>;
   usageDo?: Maybe<Scalars['String']>;
@@ -316,8 +362,35 @@ export type ComponentLinkedFromArgs = {
 
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
+export type ComponentModifiersCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
+export type ComponentStatesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
+export type ComponentStylesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -407,6 +480,7 @@ export type ComponentFilter = {
   interactions_not?: InputMaybe<Scalars['String']>;
   interactions_not_contains?: InputMaybe<Scalars['String']>;
   interactions_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  modifiersCollection_exists?: InputMaybe<Scalars['Boolean']>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
   name_exists?: InputMaybe<Scalars['Boolean']>;
@@ -414,6 +488,8 @@ export type ComponentFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  statesCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  stylesCollection_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
   usage?: InputMaybe<Scalars['String']>;
   usageDo?: InputMaybe<Scalars['String']>;
@@ -459,6 +535,134 @@ export type ComponentLinkingCollectionsEntryCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+/** Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier) */
+export type ComponentModifier = Entry & {
+  __typename?: 'ComponentModifier';
+  contentfulMetadata: ContentfulMetadata;
+  description?: Maybe<Scalars['String']>;
+  isPreviewDarkThemed?: Maybe<Scalars['Boolean']>;
+  linkedFrom?: Maybe<ComponentModifierLinkingCollections>;
+  modifierId?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier) */
+export type ComponentModifierDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier) */
+export type ComponentModifierIsPreviewDarkThemedArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier) */
+export type ComponentModifierLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier) */
+export type ComponentModifierModifierIdArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier) */
+export type ComponentModifierNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentModifierCollection = {
+  __typename?: 'ComponentModifierCollection';
+  items: Array<Maybe<ComponentModifier>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentModifierFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentModifierFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentModifierFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  description?: InputMaybe<Scalars['String']>;
+  description_contains?: InputMaybe<Scalars['String']>;
+  description_exists?: InputMaybe<Scalars['Boolean']>;
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  description_not?: InputMaybe<Scalars['String']>;
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  isPreviewDarkThemed?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_exists?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_not?: InputMaybe<Scalars['Boolean']>;
+  modifierId?: InputMaybe<Scalars['String']>;
+  modifierId_contains?: InputMaybe<Scalars['String']>;
+  modifierId_exists?: InputMaybe<Scalars['Boolean']>;
+  modifierId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  modifierId_not?: InputMaybe<Scalars['String']>;
+  modifierId_not_contains?: InputMaybe<Scalars['String']>;
+  modifierId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_exists?: InputMaybe<Scalars['Boolean']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ComponentModifierLinkingCollections = {
+  __typename?: 'ComponentModifierLinkingCollections';
+  componentCollection?: Maybe<ComponentCollection>;
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ComponentModifierLinkingCollectionsComponentCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentModifierLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentModifierOrder {
+  IsPreviewDarkThemedAsc = 'isPreviewDarkThemed_ASC',
+  IsPreviewDarkThemedDesc = 'isPreviewDarkThemed_DESC',
+  ModifierIdAsc = 'modifierId_ASC',
+  ModifierIdDesc = 'modifierId_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export type ComponentModifiersCollection = {
+  __typename?: 'ComponentModifiersCollection';
+  items: Array<Maybe<ComponentModifier>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
 export enum ComponentOrder {
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
@@ -471,6 +675,262 @@ export enum ComponentOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
+
+/** States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState) */
+export type ComponentState = Entry & {
+  __typename?: 'ComponentState';
+  contentfulMetadata: ContentfulMetadata;
+  description?: Maybe<Scalars['String']>;
+  isPreviewDarkThemed?: Maybe<Scalars['Boolean']>;
+  linkedFrom?: Maybe<ComponentStateLinkingCollections>;
+  name?: Maybe<Scalars['String']>;
+  stateId?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState) */
+export type ComponentStateDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState) */
+export type ComponentStateIsPreviewDarkThemedArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState) */
+export type ComponentStateLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState) */
+export type ComponentStateNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState) */
+export type ComponentStateStateIdArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentStateCollection = {
+  __typename?: 'ComponentStateCollection';
+  items: Array<Maybe<ComponentState>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentStateFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentStateFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentStateFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  description?: InputMaybe<Scalars['String']>;
+  description_contains?: InputMaybe<Scalars['String']>;
+  description_exists?: InputMaybe<Scalars['Boolean']>;
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  description_not?: InputMaybe<Scalars['String']>;
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  isPreviewDarkThemed?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_exists?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_not?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_exists?: InputMaybe<Scalars['Boolean']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  stateId?: InputMaybe<Scalars['String']>;
+  stateId_contains?: InputMaybe<Scalars['String']>;
+  stateId_exists?: InputMaybe<Scalars['Boolean']>;
+  stateId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  stateId_not?: InputMaybe<Scalars['String']>;
+  stateId_not_contains?: InputMaybe<Scalars['String']>;
+  stateId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ComponentStateLinkingCollections = {
+  __typename?: 'ComponentStateLinkingCollections';
+  componentCollection?: Maybe<ComponentCollection>;
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ComponentStateLinkingCollectionsComponentCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentStateLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentStateOrder {
+  IsPreviewDarkThemedAsc = 'isPreviewDarkThemed_ASC',
+  IsPreviewDarkThemedDesc = 'isPreviewDarkThemed_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  StateIdAsc = 'stateId_ASC',
+  StateIdDesc = 'stateId_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export type ComponentStatesCollection = {
+  __typename?: 'ComponentStatesCollection';
+  items: Array<Maybe<ComponentState>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+/** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
+export type ComponentStyle = Entry & {
+  __typename?: 'ComponentStyle';
+  contentfulMetadata: ContentfulMetadata;
+  description?: Maybe<Scalars['String']>;
+  isPreviewDarkThemed?: Maybe<Scalars['Boolean']>;
+  linkedFrom?: Maybe<ComponentStyleLinkingCollections>;
+  name?: Maybe<Scalars['String']>;
+  styleId?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
+export type ComponentStyleDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
+export type ComponentStyleIsPreviewDarkThemedArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
+export type ComponentStyleLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
+export type ComponentStyleNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
+export type ComponentStyleStyleIdArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentStyleCollection = {
+  __typename?: 'ComponentStyleCollection';
+  items: Array<Maybe<ComponentStyle>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentStyleFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentStyleFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentStyleFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  description?: InputMaybe<Scalars['String']>;
+  description_contains?: InputMaybe<Scalars['String']>;
+  description_exists?: InputMaybe<Scalars['Boolean']>;
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  description_not?: InputMaybe<Scalars['String']>;
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  isPreviewDarkThemed?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_exists?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_not?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_exists?: InputMaybe<Scalars['Boolean']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  styleId?: InputMaybe<Scalars['String']>;
+  styleId_contains?: InputMaybe<Scalars['String']>;
+  styleId_exists?: InputMaybe<Scalars['Boolean']>;
+  styleId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  styleId_not?: InputMaybe<Scalars['String']>;
+  styleId_not_contains?: InputMaybe<Scalars['String']>;
+  styleId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ComponentStyleLinkingCollections = {
+  __typename?: 'ComponentStyleLinkingCollections';
+  componentCollection?: Maybe<ComponentCollection>;
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ComponentStyleLinkingCollectionsComponentCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentStyleLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentStyleOrder {
+  IsPreviewDarkThemedAsc = 'isPreviewDarkThemed_ASC',
+  IsPreviewDarkThemedDesc = 'isPreviewDarkThemed_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  StyleIdAsc = 'styleId_ASC',
+  StyleIdDesc = 'styleId_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export type ComponentStylesCollection = {
+  __typename?: 'ComponentStylesCollection';
+  items: Array<Maybe<ComponentStyle>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
 
 /** Variations of components e.g. Default vs assertive button. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentVariant) */
 export type ComponentVariant = Entry & {
@@ -954,6 +1414,12 @@ export type Query = {
   codeStandardCollection?: Maybe<CodeStandardCollection>;
   component?: Maybe<Component>;
   componentCollection?: Maybe<ComponentCollection>;
+  componentModifier?: Maybe<ComponentModifier>;
+  componentModifierCollection?: Maybe<ComponentModifierCollection>;
+  componentState?: Maybe<ComponentState>;
+  componentStateCollection?: Maybe<ComponentStateCollection>;
+  componentStyle?: Maybe<ComponentStyle>;
+  componentStyleCollection?: Maybe<ComponentStyleCollection>;
   componentVariant?: Maybe<ComponentVariant>;
   componentVariantCollection?: Maybe<ComponentVariantCollection>;
   contentGuideline?: Maybe<ContentGuideline>;
@@ -1014,6 +1480,57 @@ export type QueryComponentCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ComponentFilter>;
+};
+
+
+export type QueryComponentModifierArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentModifierCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentModifierOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentModifierFilter>;
+};
+
+
+export type QueryComponentStateArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentStateCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentStateOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentStateFilter>;
+};
+
+
+export type QueryComponentStyleArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentStyleCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentStyleOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentStyleFilter>;
 };
 
 
@@ -1252,7 +1769,7 @@ export type GetComponentQueryVariables = Exact<{
 }>;
 
 
-export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null | undefined, description?: string | null | undefined, usage?: string | null | undefined, usageDo?: string | null | undefined, usageDont?: string | null | undefined, interactions?: string | null | undefined, contentGuidelines?: string | null | undefined, contentGuidelinesDo?: string | null | undefined, contentGuidelinesDont?: string | null | undefined, userResearch?: string | null | undefined, accessibility?: string | null | undefined, variantsCollection?: { __typename?: 'ComponentVariantsCollection', items: Array<{ __typename?: 'ComponentVariant', name?: string | null | undefined, description?: string | null | undefined, variantId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null | undefined, description?: string | null | undefined, usage?: string | null | undefined, usageDo?: string | null | undefined, usageDont?: string | null | undefined, interactions?: string | null | undefined, contentGuidelines?: string | null | undefined, contentGuidelinesDo?: string | null | undefined, contentGuidelinesDont?: string | null | undefined, userResearch?: string | null | undefined, accessibility?: string | null | undefined, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null | undefined, description?: string | null | undefined, modifierId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null | undefined, description?: string | null | undefined, styleId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null | undefined, description?: string | null | undefined, stateId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
 
 export type GetContentGuidelineQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1332,11 +1849,27 @@ export const GetComponentDocument = gql`
   component(id: $id, preview: $preview) {
     name
     description
-    variantsCollection {
+    modifiersCollection {
       items {
         name
         description
-        variantId
+        modifierId
+        isPreviewDarkThemed
+      }
+    }
+    stylesCollection {
+      items {
+        name
+        description
+        styleId
+        isPreviewDarkThemed
+      }
+    }
+    statesCollection {
+      items {
+        name
+        description
+        stateId
         isPreviewDarkThemed
       }
     }

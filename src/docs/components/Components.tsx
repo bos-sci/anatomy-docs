@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import Preview from './variations/Preview';
+import Preview from './variants/Preview';
 import NavSecondary, { NavItem } from '../shared/components/navSecondary/NavSecondary';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/components/pageHeader/PageHeader';
@@ -64,17 +64,44 @@ const Components = (props: Props): JSX.Element => {
       <main>
         <PageHeader name={ componentData?.name as string } publishedAt={ componentData?.sys?.publishedAt } />
         { componentData.description && <Markdown markdown={ componentData.description} /> }
-        {(componentData?.variantsCollection?.items && componentData.variantsCollection.items.length > 0) ? <>
-          <h2>Variants</h2>
-            { componentData.variantsCollection.items.map((variant, i) => (
-              <div key={ variant?.name + '' + i } className="component-variant">
-                <h3>{ variant?.name }</h3>
-                <Markdown markdown={variant?.description || ''} />
-                <Preview component={ componentName } variant={ variant?.name as string } variantId={variant?.variantId || ''} isDarkTheme={ variant?.isPreviewDarkThemed || false } />
+        <Preview component={ componentName } variant='Default' />
+
+        {(componentData?.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>
+          <h2>Modifiers</h2>
+            { componentData.modifiersCollection.items.map((modifier) => (
+              <div key={ modifier?.modifierId } className="component-variant">
+                <h3>{ modifier?.name }</h3>
+                <Markdown markdown={modifier?.description || ''} />
+                <Preview component={ componentName } variant={ modifier?.name as string } variantId={modifier?.modifierId || ''} isDarkTheme={ modifier?.isPreviewDarkThemed || false } />
               </div>
             ))}
-          </> : <Preview component={ componentName } variant='Default' />
+          </>
         }
+
+        {(componentData?.stylesCollection?.items && componentData.stylesCollection.items.length > 0) && <>
+          <h2>Styles</h2>
+            { componentData.stylesCollection.items.map((style) => (
+              <div key={ style?.styleId } className="component-variant">
+                <h3>{ style?.name }</h3>
+                <Markdown markdown={style?.description || ''} />
+                <Preview component={ componentName } variant={ style?.name as string } variantId={style?.styleId || ''} isDarkTheme={ style?.isPreviewDarkThemed || false } />
+              </div>
+            ))}
+          </>
+        }
+
+        {(componentData?.statesCollection?.items && componentData.statesCollection.items.length > 0) && <>
+          <h2>States</h2>
+            { componentData.statesCollection.items.map((state) => (
+              <div key={ state?.stateId } className="component-variant">
+                <h3>{ state?.name }</h3>
+                <Markdown markdown={state?.description || ''} />
+                <Preview component={ componentName } variant={ state?.name as string } variantId={state?.stateId || ''} isDarkTheme={ state?.isPreviewDarkThemed || false } />
+              </div>
+            ))}
+          </>
+        }
+
         {(componentData.usage
           || componentData.usageDo
           || componentData.usageDont) &&
