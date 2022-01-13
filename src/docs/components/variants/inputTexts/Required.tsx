@@ -13,7 +13,7 @@ const Required = (): JSX.Element => {
 
   return (
     <form className="ads-form" onSubmit={handleSubmit} noValidate>
-      <InputText label="Required input" placeholder="Placeholder text" forceValidation={didSubmit} required />
+      <InputText label="Required input" forceValidation={didSubmit} required />
     </form>
   );
 }
