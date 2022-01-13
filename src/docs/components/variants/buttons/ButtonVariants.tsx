@@ -5,7 +5,7 @@ import Ghost from './Ghost';
 import Subtle from './Subtle';
 import IconLeft from './IconLeft';
 import IconRight from './IconRight';
-import IconOnly from './IconOnly';
+import Icon from './Icon';
 import Disabled from './Disabled';
 
 const ButtonVariants = ({ variantId }: VariantProps): JSX.Element => {
@@ -15,8 +15,8 @@ const ButtonVariants = ({ variantId }: VariantProps): JSX.Element => {
       return <IconLeft />;
     case 'buttonIconRight':
       return <IconRight />;
-    case 'buttonIconOnly':
-      return <IconOnly />;
+    case 'buttonIcon':
+      return <Icon />;
 
     // Styles
     case 'buttonAssertive':
