@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import Fieldset from '../../../../library/components/Fieldset';
 import InputCheckbox from '../../../../library/components/InputCheckbox';
 
-const CheckboxListError = (): JSX.Element => {
+const CheckboxListErrorText = (): JSX.Element => {
 
   const errorMessage = 'Please check at least two options.';
   const [errorText, setErrorText] = useState(errorMessage);
@@ -36,7 +36,7 @@ const CheckboxListError = (): JSX.Element => {
   }, [checkboxes]);
 
   return (
-    <Fieldset legend="Legend" errorText={errorText}>
+    <Fieldset legend="Legend" helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three." errorText={errorText}>
       {checkboxes.map((checkbox, i) => (
         <InputCheckbox
           key={'checkboxListWithError' + i}
@@ -50,4 +50,4 @@ const CheckboxListError = (): JSX.Element => {
   );
 }
 
-export default CheckboxListError;
+export default CheckboxListErrorText;
