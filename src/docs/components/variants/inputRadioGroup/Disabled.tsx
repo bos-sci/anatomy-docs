@@ -7,7 +7,6 @@ const Disabled = (): JSX.Element => {
       <InputRadio label="Radio 1" name="groupDisabled" value="defaultRadio1" defaultChecked />
       <InputRadio label="Radio 2" name="groupDisabled" value="defaultRadio2" />
       <InputRadio label="Radio 3" name="groupDisabled" value="defaultRadio3" />
-      <InputRadio label="Radio 4" name="groupDisabled" value="defaultRadio4" />
     </RadioGroup>
   );
 }
