@@ -4,8 +4,6 @@ import WithError from './WithErrorText';
 import WithHelpText from './WithHelpText';
 import WithHelpErrorText from './WithHelpErrorText';
 import Disabled from './Disabled';
-import Readonly from './Readonly';
-
 
 const InputCheckboxVariants = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
@@ -20,9 +18,6 @@ const InputCheckboxVariants = ({ variantId }: VariantProps): JSX.Element => {
     // States
     case 'inputCheckboxDisabled':
       return <Disabled />;
-    case 'inputCheckboxReadonly':
-      return <Readonly />;
-
 
     default:
       return <Default />;
