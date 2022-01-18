@@ -34,11 +34,11 @@ const Preview = ( props: Props ): JSX.Element => {
       );
       break;
 
-    case 'radio-button':
-      const InputRadioVariants = lazy(() => import('./inputRadio/InputRadioVariants'));
+    case 'radio-group':
+      const InputRadioGroupVariants = lazy(() => import('./inputRadioGroup/InputRadioGroupVariants'));
       RenderedComponent = (
         <Suspense fallback={<Fallback />}>
-          <InputRadioVariants variantId={props.variantId as string} />
+          <InputRadioGroupVariants variantId={props.variantId as string} />
         </Suspense>
       );
       break;
