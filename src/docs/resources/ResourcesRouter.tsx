@@ -7,7 +7,7 @@ const ResourcesRouter = (): JSX.Element => {
   return (
     <Switch>
       <Route exact path={path}>
-        <Redirect to={`${path}/designers`} />
+        <Redirect to={`${path}/community`} />
       </Route>
       <Route path={`${path}/:resourceName`} component={Resources} />
     </Switch>
