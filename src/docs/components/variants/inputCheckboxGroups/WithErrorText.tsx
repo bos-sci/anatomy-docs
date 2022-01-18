@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import Fieldset from '../../../../library/components/Fieldset';
 import InputCheckbox from '../../../../library/components/InputCheckbox';
 
-const CheckboxListErrorText = (): JSX.Element => {
+const WithErrorText = (): JSX.Element => {
 
   const errorMessage = 'Please check at least two options.';
   const [errorText, setErrorText] = useState(errorMessage);
@@ -50,4 +50,4 @@ const CheckboxListErrorText = (): JSX.Element => {
   );
 }
 
-export default CheckboxListErrorText;
+export default WithErrorText;
