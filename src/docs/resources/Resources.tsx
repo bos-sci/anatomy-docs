@@ -89,7 +89,7 @@ const Resources = (props:  Props): JSX.Element => {
           {resourceData.sys && <>
             <div className="intro">
               <PageHeader name={ resourceData.name || '' } publishedAt={ resourceData.sys.publishedAt } />
-              <Markdown markdown={ resourceData.description || ''} className="body-assertive" />
+              <Markdown markdown={ resourceData.leadParagraph || ''} className="body-assertive" />
             </div>
             <NavTertiary navTertiaryItems={ headings } />
             <div className="page-content">

@@ -79,7 +79,7 @@ const Components = (props: Props): JSX.Element => {
       <main>
         <div className="intro">
           <PageHeader name={ componentData?.name as string } publishedAt={ componentData?.sys?.publishedAt } />
-          { componentData.description && <Markdown markdown={ componentData.description} /> }
+          <Markdown markdown={ componentData.leadParagraph || '' } className="body-assertive" />
           <Preview component={ componentName } variant='Default' />
         </div>
         <NavTertiary navTertiaryItems={ headings } />
@@ -145,7 +145,7 @@ const Components = (props: Props): JSX.Element => {
           {(componentData.contentGuidelines
             || componentData.contentGuidelinesDo
             || componentData.contentGuidelinesDont) &&
-            <h2 id="content-guidelines">Content Guidelines</h2>
+            <h2 id="content-guidelines">Content guidelines</h2>
           }
           { componentData.contentGuidelines && <Markdown markdown={ componentData.contentGuidelines } />}
           {(componentData.contentGuidelinesDo || componentData.contentGuidelinesDont) &&
@@ -161,7 +161,7 @@ const Components = (props: Props): JSX.Element => {
             </div>
           }
           {componentData.userResearch && <>
-            <h2 id="user-research">User Research</h2>
+            <h2 id="user-research">User research</h2>
             <Markdown markdown={ componentData.userResearch } headingOffset={ 2 } />
           </>}
           {componentData.accessibility && <>

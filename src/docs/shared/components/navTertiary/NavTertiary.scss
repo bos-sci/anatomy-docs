@@ -5,7 +5,7 @@
 {
   grid-area: nav-tertiary;
   width: 100%;
-  margin: 0;
+  margin: space(4x) 0 0;
 
   .nav-tertiary-title
   {
@@ -36,5 +36,13 @@
     display: inline-flex;
     padding: 0;
     @include link-navigation;
+  }
+}
+
+@media (min-width: $lg)
+{
+  .nav-tertiary
+  {
+    margin-top: 0;
   }
 }

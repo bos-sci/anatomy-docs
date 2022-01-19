@@ -319,6 +319,7 @@ export type Component = Entry & {
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<Scalars['String']>;
   interactions?: Maybe<Scalars['String']>;
+  leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ComponentLinkingCollections>;
   modifiersCollection?: Maybe<ComponentModifiersCollection>;
   name?: Maybe<Scalars['String']>;
@@ -365,6 +366,12 @@ export type ComponentDescriptionArgs = {
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentInteractionsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
+export type ComponentLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -494,6 +501,13 @@ export type ComponentFilter = {
   interactions_not?: InputMaybe<Scalars['String']>;
   interactions_not_contains?: InputMaybe<Scalars['String']>;
   interactions_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph?: InputMaybe<Scalars['String']>;
+  leadParagraph_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
+  leadParagraph_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph_not?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   modifiersCollection_exists?: InputMaybe<Scalars['Boolean']>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
@@ -1080,6 +1094,7 @@ export type ContentGuideline = Entry & {
   content?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<Scalars['String']>;
+  leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ContentGuidelineLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   sys: Sys;
@@ -1094,6 +1109,12 @@ export type ContentGuidelineContentArgs = {
 
 /** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
 export type ContentGuidelineDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuidelineLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1135,6 +1156,13 @@ export type ContentGuidelineFilter = {
   description_not?: InputMaybe<Scalars['String']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
   description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph?: InputMaybe<Scalars['String']>;
+  leadParagraph_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
+  leadParagraph_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph_not?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
   name_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1234,6 +1262,7 @@ export type Foundation = Entry & {
   content?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<Scalars['String']>;
+  leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<FoundationLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   sys: Sys;
@@ -1248,6 +1277,12 @@ export type FoundationContentArgs = {
 
 /** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
 export type FoundationDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1289,6 +1324,13 @@ export type FoundationFilter = {
   description_not?: InputMaybe<Scalars['String']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
   description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph?: InputMaybe<Scalars['String']>;
+  leadParagraph_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
+  leadParagraph_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph_not?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
   name_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1631,6 +1673,7 @@ export type Resource = Entry & {
   content?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<Scalars['String']>;
+  leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ResourceLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   sys: Sys;
@@ -1645,6 +1688,12 @@ export type ResourceContentArgs = {
 
 /** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
 export type ResourceDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
+export type ResourceLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1686,6 +1735,13 @@ export type ResourceFilter = {
   description_not?: InputMaybe<Scalars['String']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
   description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph?: InputMaybe<Scalars['String']>;
+  leadParagraph_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
+  leadParagraph_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph_not?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
   name_exists?: InputMaybe<Scalars['Boolean']>;
