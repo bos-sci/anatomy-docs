@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import NavSecondary, { NavItem } from '../shared/components/navSecondary/NavSecondary';
+import NavTertiary, { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
@@ -8,6 +9,7 @@ import { ContentGuideline, useGetContentGuidelineQuery } from '../shared/types/c
 import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
+import useHeadings from '../shared/hooks/useHeadings';
 
 interface ComponentMatch extends match {
   params: {
@@ -21,8 +23,9 @@ interface Props {
 
 const ContentGuidelines = (props:  Props): JSX.Element => {
   const contentName = props.match.params.contentName;
-  let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
-  let [contentGuidelineData, setContentGuidelineData] = useState<ContentGuideline>({} as ContentGuideline);
+  const [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
+  const [contentGuidelineData, setContentGuidelineData] = useState<ContentGuideline>({} as ContentGuideline);
+  const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
@@ -52,14 +55,31 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
   useTitle({titlePrefix: `${contentGuidelineData.name} - Content`});
   useHashScroll(!!contentGuidelineData.content);
 
+  const pageHeadings = useHeadings(contentGuidelineData.name);
+  useEffect(() => {
+    if (contentGuidelineData.name) {
+      setHeadings(pageHeadings.map(heading => {
+        return {
+          id: heading.id as string,
+          text: heading.textContent as string
+        };
+      }));
+    }
+  }, [contentGuidelineData.name, pageHeadings]);
+
   return (
     <div className="app-content">
       { navItems && <NavSecondary navItems={ navItems } /> }
         <main>
           {contentGuidelineData.sys && <>
-            <PageHeader name={ contentGuidelineData.name || '' } publishedAt={ contentGuidelineData.sys.publishedAt } />
-            <Markdown markdown={ contentGuidelineData.description || ''} className="body-assertive" />
-            <Markdown markdown={ contentGuidelineData.content || ''} headingOffset={1} />
+            <div className="intro">
+              <PageHeader name={ contentGuidelineData.name || '' } publishedAt={ contentGuidelineData.sys.publishedAt } />
+              <Markdown markdown={ contentGuidelineData.description || ''} className="body-assertive" />
+            </div>
+            <NavTertiary navTertiaryItems={ headings } />
+            <div className="page-content">
+              <Markdown markdown={ contentGuidelineData.content || ''} headingOffset={1} />
+            </div>
           </>}
         </main>
     </div>

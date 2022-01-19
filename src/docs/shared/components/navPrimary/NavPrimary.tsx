@@ -6,7 +6,7 @@ import logo from "../../../../assets/images/logo-bsc-anatomy.svg";
 
 const NavPrimary = (): JSX.Element => {
 
-  let [isNavOpen, setIsNavOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
     <header className="navbar navbar-expand-lg">

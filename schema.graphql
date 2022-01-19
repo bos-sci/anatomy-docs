@@ -122,6 +122,7 @@ Documentation regarding code standards. [See type definition](https://app.conten
 type CodeStandard implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
+  leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): CodeStandardLinkingCollections
   name(locale: String): String
   sys: Sys!
@@ -145,6 +146,13 @@ input CodeStandardFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  leadParagraph: String
+  leadParagraph_contains: String
+  leadParagraph_exists: Boolean
+  leadParagraph_in: [String]
+  leadParagraph_not: String
+  leadParagraph_not_contains: String
+  leadParagraph_not_in: [String]
   name: String
   name_contains: String
   name_exists: Boolean

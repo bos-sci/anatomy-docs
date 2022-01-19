@@ -217,6 +217,7 @@ export type CodeStandard = Entry & {
   __typename?: 'CodeStandard';
   content?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
+  leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<CodeStandardLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   sys: Sys;
@@ -225,6 +226,12 @@ export type CodeStandard = Entry & {
 
 /** Documentation regarding code standards. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/codeStandard) */
 export type CodeStandardContentArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation regarding code standards. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/codeStandard) */
+export type CodeStandardLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -259,6 +266,13 @@ export type CodeStandardFilter = {
   content_not_contains?: InputMaybe<Scalars['String']>;
   content_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  leadParagraph?: InputMaybe<Scalars['String']>;
+  leadParagraph_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
+  leadParagraph_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph_not?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
   name_exists?: InputMaybe<Scalars['Boolean']>;

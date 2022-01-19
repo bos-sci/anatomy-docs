@@ -1,0 +1,40 @@
+@import "/src/styles/abstracts/abstracts";
+@import "/src/styles/base/base";
+
+.nav-tertiary
+{
+  grid-area: nav-tertiary;
+  width: 100%;
+  margin: 0;
+
+  .nav-tertiary-title
+  {
+    margin: 0;
+    border-bottom: space(xxs) solid $neutral-80;
+    padding-bottom: space(lg);
+    color: $neutral-40;
+    font-family: $font-family-base-regular;
+    @include font-size($fs-small);
+    line-height: 1.5; // NOTE: overriding h2's default line height
+  }
+
+  .nav
+  {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    @include font-size($fs-small);
+  }
+
+  .nav-item
+  {
+    margin-top: space(lg);
+  }
+
+  .nav-link
+  {
+    display: inline-flex;
+    padding: 0;
+    @include link-navigation;
+  }
+}
