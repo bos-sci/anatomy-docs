@@ -83,6 +83,12 @@ Steps for adding a site section that will be accessible from the primary navigat
 6. Add site section link in `navPrimary.tsx`.
 7. Be sure to restart your local server to regen Contentful types and clear errors.
 
+##### Adding a new field to an existing section
+Steps for adding a new field to an existing section.
+1. Add field to content model in Contentful, following naming conventions as outlined in [adding a primary section to the docs site](#adding-a-primary-section-to-the-docs-site).
+2. Update `get{Collection}.graphql`.
+3. Be sure to restart your local server to regen Contentful types and clear errors.
+
 ##### Adding a component to the library
 1. Add component in `/library`.
 2. Add subfolder in `/docs/components` with a variants controller, e.g. `ButtonVariants.tsx`.
