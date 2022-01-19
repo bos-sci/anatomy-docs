@@ -15,12 +15,10 @@ const Markdown = ({ markdown, headingOffset = 0, className }: Props): JSX.Elemen
     // Offest heading levels based on prop
     const md = markdown.replaceAll(/^#+/gm, match => match.padEnd(match.length + headingOffset, '#'));
 
-    // Convert md to an html string and wrap tables in div.table-responsive
-    const HTMLString = DOMPurify.sanitize(marked(md))
-      .replaceAll(/<table/gm, () => '<div class="table-responsive"><table')
-      .replaceAll(/<\/table>/gm, () => '</table></div>');
+    const mdDom = new DOMParser().parseFromString(DOMPurify.sanitize(marked(md)), "text/html");
+    mdDom.querySelectorAll('table').forEach(table => table.classList.add('table-responsive'));
 
-    setCleanMarkdown(HTMLString ? HTMLString : '');
+    setCleanMarkdown(mdDom.body.innerHTML);
   }, [markdown, headingOffset]);
 
 
