@@ -61,6 +61,15 @@ const Preview = ( props: Props ): JSX.Element => {
       );
       break;
 
+    case 'checkbox-group':
+      const InputCheckboxGroupVariants = lazy(() => import('./inputCheckboxGroups/InputCheckboxGroupVariants'));
+      RenderedComponent = (
+        <Suspense fallback={<Fallback />}>
+          <InputCheckboxGroupVariants variantId={props.variantId as string} />
+        </Suspense>
+      );
+      break;
+
     case 'link':
       const LinkVariants = lazy(() => import('./links/LinkVariants'));
       RenderedComponent = (

@@ -1,7 +1,7 @@
 import Fieldset from '../../../../library/components/Fieldset';
 import InputCheckbox from '../../../../library/components/InputCheckbox';
 
-const CheckboxList = (): JSX.Element => {
+const Default = (): JSX.Element => {
   return (
     <Fieldset legend="Legend">
       <InputCheckbox label="Checkbox 1" />
@@ -11,4 +11,4 @@ const CheckboxList = (): JSX.Element => {
   );
 }
 
-export default CheckboxList;
+export default Default;

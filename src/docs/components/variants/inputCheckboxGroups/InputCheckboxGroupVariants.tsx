@@ -1,22 +1,23 @@
 import { VariantProps } from '../Preview';
-import Default from './Default';
-import WithError from './WithErrorText';
 import WithHelpText from './WithHelpText';
 import WithHelpErrorText from './WithHelpErrorText';
+import Default from './Default';
+import WithErrorText from './WithErrorText';
 import Disabled from './Disabled';
+
 
 const InputCheckboxVariants = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
-    case 'inputCheckboxWithHelpText':
+    case 'inputCheckboxGroupWithHelpText':
       return <WithHelpText />;
-    case 'inputCheckboxWithErrorText':
-      return <WithError />;
-    case 'inputCheckboxWithHelpAndErrorText':
+    case 'inputCheckboxGroupWithErrorText':
+      return <WithErrorText />;
+    case 'inputCheckboxGroupWithHelpAndErrorText':
       return <WithHelpErrorText />;
 
     // States
-    case 'inputCheckboxDisabled':
+    case 'inputCheckboxGroupDisabled':
       return <Disabled />;
 
     default:
