@@ -57,6 +57,7 @@ main
 .intro // TODO: rename this .page-header after we refactor the existing .page-header
 {
   grid-area: intro;
+  width: 100%;
   margin-top: space(4x);
 }
 
@@ -91,7 +92,6 @@ main
 
   .intro
   {
-    width: 100%;
     margin-top: 0;
   }
 }
