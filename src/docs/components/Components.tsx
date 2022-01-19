@@ -80,10 +80,10 @@ const Components = (props: Props): JSX.Element => {
         <div className="intro">
           <PageHeader name={ componentData?.name as string } publishedAt={ componentData?.sys?.publishedAt } />
           <Markdown markdown={ componentData.leadParagraph || '' } className="body-assertive" />
-          <Preview component={ componentName } variant='Default' />
         </div>
         <NavTertiary navTertiaryItems={ headings } />
         <div className="page-content">
+          <Preview component={ componentName } variant='Default' />
           {(componentData?.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>
             <h2 id="modifiers">Modifiers</h2>
               { componentData.modifiersCollection.items.map((modifier) => (
