@@ -1,7 +1,7 @@
 query getResource($id: String!, $preview: Boolean) {
   resource(id: $id, preview: $preview) {
     name
-    description
+    leadParagraph
     content
     sys {
       id

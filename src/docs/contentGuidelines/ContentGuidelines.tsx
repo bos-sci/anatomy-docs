@@ -74,7 +74,7 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
           {contentGuidelineData.sys && <>
             <div className="intro">
               <PageHeader name={ contentGuidelineData.name || '' } publishedAt={ contentGuidelineData.sys.publishedAt } />
-              <Markdown markdown={ contentGuidelineData.description || ''} className="body-assertive" />
+              <Markdown markdown={ contentGuidelineData.leadParagraph || ''} className="body-assertive" />
             </div>
             <NavTertiary navTertiaryItems={ headings } />
             <div className="page-content">

@@ -97,6 +97,7 @@ const CodeStandards = (props:  Props): JSX.Element => {
           {codeStandardData.sys && <>
             <div className="intro">
               <PageHeader name={ codeStandardData.name || '' } publishedAt={ codeStandardData.sys.publishedAt } />
+              <Markdown markdown={ codeStandardData.leadParagraph || '' } className="body-assertive" />
             </div>
             <NavTertiary navTertiaryItems={ headings } />
             <div className="page-content">

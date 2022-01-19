@@ -79,11 +79,11 @@ const Components = (props: Props): JSX.Element => {
       <main>
         <div className="intro">
           <PageHeader name={ componentData?.name as string } publishedAt={ componentData?.sys?.publishedAt } />
-          { componentData.description && <Markdown markdown={ componentData.description} /> }
-          <Preview component={ componentName } variant='Default' />
+          <Markdown markdown={ componentData.leadParagraph || '' } className="body-assertive" />
         </div>
         <NavTertiary navTertiaryItems={ headings } />
         <div className="page-content">
+          <Preview component={ componentName } variant='Default' />
           {(componentData?.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>
             <h2 id="modifiers">Modifiers</h2>
               { componentData.modifiersCollection.items.map((modifier) => (
@@ -145,7 +145,7 @@ const Components = (props: Props): JSX.Element => {
           {(componentData.contentGuidelines
             || componentData.contentGuidelinesDo
             || componentData.contentGuidelinesDont) &&
-            <h2 id="content-guidelines">Content Guidelines</h2>
+            <h2 id="content-guidelines">Content guidelines</h2>
           }
           { componentData.contentGuidelines && <Markdown markdown={ componentData.contentGuidelines } />}
           {(componentData.contentGuidelinesDo || componentData.contentGuidelinesDont) &&
@@ -161,7 +161,7 @@ const Components = (props: Props): JSX.Element => {
             </div>
           }
           {componentData.userResearch && <>
-            <h2 id="user-research">User Research</h2>
+            <h2 id="user-research">User research</h2>
             <Markdown markdown={ componentData.userResearch } headingOffset={ 2 } />
           </>}
           {componentData.accessibility && <>

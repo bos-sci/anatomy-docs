@@ -319,6 +319,7 @@ export type Component = Entry & {
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<Scalars['String']>;
   interactions?: Maybe<Scalars['String']>;
+  leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ComponentLinkingCollections>;
   modifiersCollection?: Maybe<ComponentModifiersCollection>;
   name?: Maybe<Scalars['String']>;
@@ -365,6 +366,12 @@ export type ComponentDescriptionArgs = {
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentInteractionsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
+export type ComponentLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -494,6 +501,13 @@ export type ComponentFilter = {
   interactions_not?: InputMaybe<Scalars['String']>;
   interactions_not_contains?: InputMaybe<Scalars['String']>;
   interactions_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph?: InputMaybe<Scalars['String']>;
+  leadParagraph_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
+  leadParagraph_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph_not?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   modifiersCollection_exists?: InputMaybe<Scalars['Boolean']>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
@@ -1080,6 +1094,7 @@ export type ContentGuideline = Entry & {
   content?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<Scalars['String']>;
+  leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ContentGuidelineLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   sys: Sys;
@@ -1094,6 +1109,12 @@ export type ContentGuidelineContentArgs = {
 
 /** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
 export type ContentGuidelineDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuidelineLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1135,6 +1156,13 @@ export type ContentGuidelineFilter = {
   description_not?: InputMaybe<Scalars['String']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
   description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph?: InputMaybe<Scalars['String']>;
+  leadParagraph_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
+  leadParagraph_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph_not?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
   name_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1234,6 +1262,7 @@ export type Foundation = Entry & {
   content?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<Scalars['String']>;
+  leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<FoundationLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   sys: Sys;
@@ -1248,6 +1277,12 @@ export type FoundationContentArgs = {
 
 /** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
 export type FoundationDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1289,6 +1324,13 @@ export type FoundationFilter = {
   description_not?: InputMaybe<Scalars['String']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
   description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph?: InputMaybe<Scalars['String']>;
+  leadParagraph_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
+  leadParagraph_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph_not?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
   name_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1631,6 +1673,7 @@ export type Resource = Entry & {
   content?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
   description?: Maybe<Scalars['String']>;
+  leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ResourceLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   sys: Sys;
@@ -1645,6 +1688,12 @@ export type ResourceContentArgs = {
 
 /** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
 export type ResourceDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
+export type ResourceLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1686,6 +1735,13 @@ export type ResourceFilter = {
   description_not?: InputMaybe<Scalars['String']>;
   description_not_contains?: InputMaybe<Scalars['String']>;
   description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph?: InputMaybe<Scalars['String']>;
+  leadParagraph_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
+  leadParagraph_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  leadParagraph_not?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_contains?: InputMaybe<Scalars['String']>;
+  leadParagraph_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
   name_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1775,7 +1831,7 @@ export type GetCodeStandardQueryVariables = Exact<{
 }>;
 
 
-export type GetCodeStandardQuery = { __typename?: 'Query', codeStandard?: { __typename?: 'CodeStandard', name?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetCodeStandardQuery = { __typename?: 'Query', codeStandard?: { __typename?: 'CodeStandard', name?: string | null | undefined, leadParagraph?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
 
 export type GetComponentQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1783,7 +1839,7 @@ export type GetComponentQueryVariables = Exact<{
 }>;
 
 
-export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null | undefined, description?: string | null | undefined, usage?: string | null | undefined, usageDo?: string | null | undefined, usageDont?: string | null | undefined, interactions?: string | null | undefined, contentGuidelines?: string | null | undefined, contentGuidelinesDo?: string | null | undefined, contentGuidelinesDont?: string | null | undefined, userResearch?: string | null | undefined, accessibility?: string | null | undefined, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null | undefined, description?: string | null | undefined, modifierId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null | undefined, description?: string | null | undefined, styleId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null | undefined, description?: string | null | undefined, stateId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null | undefined, leadParagraph?: string | null | undefined, usage?: string | null | undefined, usageDo?: string | null | undefined, usageDont?: string | null | undefined, interactions?: string | null | undefined, contentGuidelines?: string | null | undefined, contentGuidelinesDo?: string | null | undefined, contentGuidelinesDont?: string | null | undefined, userResearch?: string | null | undefined, accessibility?: string | null | undefined, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null | undefined, description?: string | null | undefined, modifierId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null | undefined, description?: string | null | undefined, styleId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null | undefined, description?: string | null | undefined, stateId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
 
 export type GetContentGuidelineQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1791,7 +1847,7 @@ export type GetContentGuidelineQueryVariables = Exact<{
 }>;
 
 
-export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null | undefined, description?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null | undefined, leadParagraph?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
 
 export type GetFoundationQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1799,7 +1855,7 @@ export type GetFoundationQueryVariables = Exact<{
 }>;
 
 
-export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null | undefined, description?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null | undefined, leadParagraph?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
 
 export type GetCollectionsQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -1814,13 +1870,14 @@ export type GetResourceQueryVariables = Exact<{
 }>;
 
 
-export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null | undefined, description?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null | undefined, leadParagraph?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
 
 
 export const GetCodeStandardDocument = gql`
     query getCodeStandard($id: String!, $preview: Boolean) {
   codeStandard(id: $id, preview: $preview) {
     name
+    leadParagraph
     content
     sys {
       id
@@ -1862,7 +1919,7 @@ export const GetComponentDocument = gql`
     query getComponent($id: String!, $preview: Boolean) {
   component(id: $id, preview: $preview) {
     name
-    description
+    leadParagraph
     modifiersCollection {
       items {
         name
@@ -1936,7 +1993,7 @@ export const GetContentGuidelineDocument = gql`
     query getContentGuideline($id: String!, $preview: Boolean) {
   contentGuideline(id: $id, preview: $preview) {
     name
-    description
+    leadParagraph
     content
     sys {
       id
@@ -1978,7 +2035,7 @@ export const GetFoundationDocument = gql`
     query getFoundation($id: String!, $preview: Boolean) {
   foundation(id: $id, preview: $preview) {
     name
-    description
+    leadParagraph
     content
     sys {
       id
@@ -2100,7 +2157,7 @@ export const GetResourceDocument = gql`
     query getResource($id: String!, $preview: Boolean) {
   resource(id: $id, preview: $preview) {
     name
-    description
+    leadParagraph
     content
     sys {
       id

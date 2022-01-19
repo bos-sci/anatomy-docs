@@ -90,7 +90,7 @@ const Foundations = (props:  Props): JSX.Element => {
           {foundationData.sys && <>
           <div className="intro">
             <PageHeader name={ foundationData.name || '' } publishedAt={ foundationData.sys.publishedAt } />
-            <Markdown markdown={ foundationData.description || ''} className="body-assertive" />
+            <Markdown markdown={ foundationData.leadParagraph || ''} className="body-assertive" />
           </div>
           <NavTertiary navTertiaryItems={headings}/>
           <div className="page-content">

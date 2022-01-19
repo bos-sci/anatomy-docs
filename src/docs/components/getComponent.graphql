@@ -1,7 +1,7 @@
 query getComponent($id: String!, $preview: Boolean) {
   component(id: $id, preview: $preview) {
     name
-    description
+    leadParagraph
     modifiersCollection {
       items {
         name
