@@ -1,6 +1,7 @@
 query getCodeStandard($id: String!, $preview: Boolean) {
   codeStandard(id: $id, preview: $preview) {
     name
+    leadParagraph
     content
     sys {
       id
