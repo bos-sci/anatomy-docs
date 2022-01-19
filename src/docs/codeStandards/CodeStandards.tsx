@@ -71,10 +71,6 @@ const CodeStandards = (props:  Props): JSX.Element => {
         text: 'DevOps',
         slug: pathPrefix + 'devops'
       },
-      {
-        text: 'Automated code quality tools',
-        slug: pathPrefix + 'automated-code-quality-tools'
-      },
     ];
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);

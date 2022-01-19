@@ -2,11 +2,27 @@ query getComponent($id: String!, $preview: Boolean) {
   component(id: $id, preview: $preview) {
     name
     description
-    variantsCollection {
+    modifiersCollection {
       items {
         name
         description
-        variantId
+        modifierId
+        isPreviewDarkThemed
+      }
+    }
+    stylesCollection {
+      items {
+        name
+        description
+        styleId
+        isPreviewDarkThemed
+      }
+    }
+    statesCollection {
+      items {
+        name
+        description
+        stateId
         isPreviewDarkThemed
       }
     }

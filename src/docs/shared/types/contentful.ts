@@ -1783,7 +1783,7 @@ export type GetComponentQueryVariables = Exact<{
 }>;
 
 
-export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null | undefined, description?: string | null | undefined, usage?: string | null | undefined, usageDo?: string | null | undefined, usageDont?: string | null | undefined, interactions?: string | null | undefined, contentGuidelines?: string | null | undefined, contentGuidelinesDo?: string | null | undefined, contentGuidelinesDont?: string | null | undefined, userResearch?: string | null | undefined, accessibility?: string | null | undefined, variantsCollection?: { __typename?: 'ComponentVariantsCollection', items: Array<{ __typename?: 'ComponentVariant', name?: string | null | undefined, description?: string | null | undefined, variantId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null | undefined, description?: string | null | undefined, usage?: string | null | undefined, usageDo?: string | null | undefined, usageDont?: string | null | undefined, interactions?: string | null | undefined, contentGuidelines?: string | null | undefined, contentGuidelinesDo?: string | null | undefined, contentGuidelinesDont?: string | null | undefined, userResearch?: string | null | undefined, accessibility?: string | null | undefined, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null | undefined, description?: string | null | undefined, modifierId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null | undefined, description?: string | null | undefined, styleId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null | undefined, description?: string | null | undefined, stateId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
 
 export type GetContentGuidelineQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1863,11 +1863,27 @@ export const GetComponentDocument = gql`
   component(id: $id, preview: $preview) {
     name
     description
-    variantsCollection {
+    modifiersCollection {
       items {
         name
         description
-        variantId
+        modifierId
+        isPreviewDarkThemed
+      }
+    }
+    stylesCollection {
+      items {
+        name
+        description
+        styleId
+        isPreviewDarkThemed
+      }
+    }
+    statesCollection {
+      items {
+        name
+        description
+        stateId
         isPreviewDarkThemed
       }
     }
