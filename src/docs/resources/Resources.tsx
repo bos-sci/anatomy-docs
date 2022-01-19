@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import NavSecondary, { NavItem } from '../shared/components/navSecondary/NavSecondary';
-import NavTertiary from '../shared/components/navTertiary/NavTertiary';
+import NavTertiary, { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
@@ -9,6 +9,7 @@ import { Resource, useGetResourceQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
+import useHeadings from '../shared/hooks/useHeadings';
 
 interface ComponentMatch extends match {
   params: {
@@ -22,8 +23,9 @@ interface Props {
 
 const Resources = (props:  Props): JSX.Element => {
   const resourceName = props.match.params.resourceName;
-  let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
-  let [resourceData, setResourceData] = useState<Resource>({} as Resource);
+  const [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
+  const [resourceData, setResourceData] = useState<Resource>({} as Resource);
+  const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
@@ -64,16 +66,17 @@ const Resources = (props:  Props): JSX.Element => {
   useTitle({titlePrefix: `${resourceData.name} - Resources`});
   useHashScroll(!!resourceData.content);
 
-  const navTertiaryItems = [
-    {
-      id: 'h2Id',
-      text: 'Resources h2 text'
-    },
-    {
-      id: 'h2Id',
-      text: 'H2 text'
+  const pageHeadings = useHeadings(resourceData.name);
+  useEffect(() => {
+    if (resourceData.name) {
+      setHeadings(pageHeadings.map(heading => {
+        return {
+          id: heading.id as string,
+          text: heading.textContent as string
+        };
+      }));
     }
-  ];
+  }, [resourceData.name, pageHeadings]);
 
   return (
     <div className="app-content">
@@ -84,7 +87,7 @@ const Resources = (props:  Props): JSX.Element => {
               <PageHeader name={ resourceData.name || '' } publishedAt={ resourceData.sys.publishedAt } />
               <Markdown markdown={ resourceData.description || ''} className="body-assertive" />
             </div>
-            <NavTertiary navTertiaryItems={ navTertiaryItems } />
+            <NavTertiary navTertiaryItems={ headings } />
             <div className="page-content">
               <Markdown markdown={ resourceData.content || ''}  headingOffset={1} />
             </div>

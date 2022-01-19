@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import NavSecondary, { NavItem } from '../shared/components/navSecondary/NavSecondary';
-import NavTertiary from '../shared/components/navTertiary/NavTertiary';
+import NavTertiary, { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
@@ -9,6 +9,7 @@ import { Foundation, useGetFoundationQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
+import useHeadings from '../shared/hooks/useHeadings';
 
 interface ComponentMatch extends match {
   params: {
@@ -22,8 +23,9 @@ interface Props {
 
 const Foundations = (props:  Props): JSX.Element => {
   const foundationName = props.match.params.foundationName;
-  let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
-  let [foundationData, setFoundationData] = useState<Foundation>({} as Foundation);
+  const [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
+  const [foundationData, setFoundationData] = useState<Foundation>({} as Foundation);
+  const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
@@ -69,16 +71,17 @@ const Foundations = (props:  Props): JSX.Element => {
   useTitle({titlePrefix: `${foundationData.name} - Foundations`});
   useHashScroll(!!foundationData.content);
 
-  const navTertiaryItems = [
-    {
-      id: 'h2Id',
-      text: 'Foundations h2 text'
-    },
-    {
-      id: 'h2Id',
-      text: 'H2 text'
+  const pageHeadings = useHeadings(foundationData.name);
+  useEffect(() => {
+    if (foundationData.name) {
+      setHeadings(pageHeadings.map(heading => {
+        return {
+          id: heading.id as string,
+          text: heading.textContent as string
+        };
+      }));
     }
-  ];
+  }, [foundationData.name, pageHeadings]);
 
   return (
     <div className="app-content">
@@ -89,7 +92,7 @@ const Foundations = (props:  Props): JSX.Element => {
             <PageHeader name={ foundationData.name || '' } publishedAt={ foundationData.sys.publishedAt } />
             <Markdown markdown={ foundationData.description || ''} className="body-assertive" />
           </div>
-          <NavTertiary navTertiaryItems={ navTertiaryItems } />
+          <NavTertiary navTertiaryItems={headings}/>
           <div className="page-content">
             <Markdown markdown={ foundationData.content || ''} headingOffset={1} />
           </div>

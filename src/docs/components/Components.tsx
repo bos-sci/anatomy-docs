@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import Preview from './variations/Preview';
 import NavSecondary, { NavItem } from '../shared/components/navSecondary/NavSecondary';
-import NavTertiary from '../shared/components/navTertiary/NavTertiary';
+import NavTertiary, { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
@@ -11,6 +11,7 @@ import { Component, useGetComponentQuery } from '../shared/types/contentful';
 import './Components.scss';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
+import useHeadings from '../shared/hooks/useHeadings';
 
 interface ComponentMatch extends match {
   params: {
@@ -25,8 +26,9 @@ interface Props {
 const Components = (props: Props): JSX.Element => {
   const componentName = props.match.params.componentName;
   const idLookup: IdLookup = useContext(IdLookupContext);
-  let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
-  let [componentData, setComponentData] = useState<Component>({} as Component);
+  const [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
+  const [componentData, setComponentData] = useState<Component>({} as Component);
+  const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const {data, error} = useGetComponentQuery({
     variables: {
@@ -59,16 +61,17 @@ const Components = (props: Props): JSX.Element => {
   useTitle({titlePrefix: `${nameForTitle} - Components`});
   useHashScroll(!!componentData);
 
-  const navTertiaryItems = [
-    {
-      id: 'h2Id',
-      text: 'Components h2 text'
-    },
-    {
-      id: 'h2Id',
-      text: 'H2 text'
+  const pageHeadings = useHeadings(componentData.name);
+  useEffect(() => {
+    if (componentData.name) {
+      setHeadings(pageHeadings.map(heading => {
+        return {
+          id: heading.id as string,
+          text: heading.textContent as string
+        };
+      }));
     }
-  ];
+  }, [componentData.name, pageHeadings]);
 
   return (
     <div className="app-content">
@@ -78,10 +81,10 @@ const Components = (props: Props): JSX.Element => {
           <PageHeader name={ componentData?.name as string } publishedAt={ componentData?.sys?.publishedAt } />
           { componentData.description && <Markdown markdown={ componentData.description} /> }
         </div>
-        <NavTertiary navTertiaryItems={ navTertiaryItems } />
+        <NavTertiary navTertiaryItems={ headings } />
         <div className="page-content">
           {(componentData?.variantsCollection?.items && componentData.variantsCollection.items.length > 0) ? <>
-            <h2>Variants</h2>
+            <h2 id="variants">Variants</h2>
               { componentData.variantsCollection.items.map((variant, i) => (
                 <div key={ variant?.name + '' + i } className="component-variant">
                   <h3>{ variant?.name }</h3>
@@ -94,7 +97,7 @@ const Components = (props: Props): JSX.Element => {
           {(componentData.usage
             || componentData.usageDo
             || componentData.usageDont) &&
-            <h2>Usage</h2>
+            <h2 id="usage">Usage</h2>
           }
           { componentData.usage && <Markdown markdown={ componentData.usage } />}
           {(componentData.usageDo || componentData.usageDont) &&
@@ -110,13 +113,13 @@ const Components = (props: Props): JSX.Element => {
             </div>
           }
           {componentData.interactions && <>
-            <h2>Interactions</h2>
+            <h2 id="interactions">Interactions</h2>
             <Markdown markdown={ componentData.interactions } headingOffset={ 2 } />
           </>}
           {(componentData.contentGuidelines
             || componentData.contentGuidelinesDo
             || componentData.contentGuidelinesDont) &&
-            <h2>Content Guidelines</h2>
+            <h2 id="content-guidelines">Content Guidelines</h2>
           }
           { componentData.contentGuidelines && <Markdown markdown={ componentData.contentGuidelines } />}
           {(componentData.contentGuidelinesDo || componentData.contentGuidelinesDont) &&
@@ -132,11 +135,11 @@ const Components = (props: Props): JSX.Element => {
             </div>
           }
           {componentData.userResearch && <>
-            <h2>User Research</h2>
+            <h2 id="user-research">User Research</h2>
             <Markdown markdown={ componentData.userResearch } headingOffset={ 2 } />
           </>}
           {componentData.accessibility && <>
-            <h2>Accessibility</h2>
+            <h2 id="accessibility">Accessibility</h2>
             <Markdown markdown={ componentData.accessibility } headingOffset={ 2 } />
           </>}
         </div>
