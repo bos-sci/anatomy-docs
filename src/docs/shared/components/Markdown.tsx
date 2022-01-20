@@ -1,6 +1,7 @@
 import DOMPurify from 'dompurify';
 import marked from 'marked';
 import { useEffect, useState } from 'react';
+import { slugify } from '../../helpers';
 
 interface Props {
   markdown: string;
@@ -15,8 +16,14 @@ const Markdown = ({ markdown, headingOffset = 0, className }: Props): JSX.Elemen
     // Offest heading levels based on prop
     const md = markdown.replaceAll(/^#+/gm, match => match.padEnd(match.length + headingOffset, '#'));
 
+    // Covnert md to DOM instance and make additional alterations
     const mdDom = new DOMParser().parseFromString(DOMPurify.sanitize(marked(md)), "text/html");
     mdDom.querySelectorAll('table').forEach(table => table.classList.add('table-responsive'));
+    mdDom.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
+      if (!heading.id) {
+        heading.id = slugify(heading.textContent || '');
+      }
+    });
 
     setCleanMarkdown(mdDom.body.innerHTML);
   }, [markdown, headingOffset]);
