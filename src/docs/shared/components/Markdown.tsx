@@ -13,10 +13,10 @@ const Markdown = ({ markdown, headingOffset = 0, className }: Props): JSX.Elemen
   const [cleanMarkdown, setCleanMarkdown] = useState('');
 
   useEffect(() => {
-    // Offest heading levels based on prop
+    // Offset heading levels based on prop
     const md = markdown.replaceAll(/^#+/gm, match => match.padEnd(match.length + headingOffset, '#'));
 
-    // Covnert md to DOM instance and make additional alterations
+    // Convert md to DOM instance and make additional alterations
     const mdDom = new DOMParser().parseFromString(DOMPurify.sanitize(marked(md)), "text/html");
     mdDom.querySelectorAll('table').forEach(table => table.classList.add('table-responsive'));
     mdDom.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
