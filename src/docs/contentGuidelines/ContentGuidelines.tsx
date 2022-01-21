@@ -5,7 +5,7 @@ import { IdLookupContext } from '../App';
 import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
-import { ContentGuideline, useGetContentGuidelineQuery } from '../shared/types/contentful';
+import { ContentGuideline, GetContentGuidelineQuery, useGetContentGuidelineQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
@@ -24,7 +24,7 @@ interface Props {
 const ContentGuidelines = (props:  Props): JSX.Element => {
   const contentName = props.match.params.contentName;
   const [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
-  const [contentGuidelineData, setContentGuidelineData] = useState<ContentGuideline>({} as ContentGuideline);
+  const [contentGuidelineData, setContentGuidelineData] = useState<GetContentGuidelineQuery['contentGuideline']>({} as GetContentGuidelineQuery['contentGuideline']);
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const idLookup: IdLookup = useContext(IdLookupContext);
@@ -42,7 +42,7 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
 
   useEffect(() => {
     if (data?.contentGuideline) {
-      setContentGuidelineData(data.contentGuideline as ContentGuideline);
+      setContentGuidelineData(data.contentGuideline);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
     const navItems = Object.keys(idLookup.contentGuidelines).map(entry => ({
@@ -52,12 +52,12 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
 
-  useTitle({titlePrefix: `${contentGuidelineData.name} - Content`});
-  useHashScroll(!!contentGuidelineData.content);
+  useTitle({titlePrefix: `${contentGuidelineData?.name} - Content`});
+  useHashScroll(!!contentGuidelineData?.content);
 
-  const pageHeadings = useHeadings(contentGuidelineData.name);
+  const pageHeadings = useHeadings(contentGuidelineData?.name);
   useEffect(() => {
-    if (contentGuidelineData.name) {
+    if (contentGuidelineData?.name) {
       setHeadings(pageHeadings.map(heading => {
         return {
           id: heading.id as string,
@@ -65,13 +65,13 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
         };
       }));
     }
-  }, [contentGuidelineData.name, pageHeadings]);
+  }, [contentGuidelineData?.name, pageHeadings]);
 
   return (
     <div className="app-content">
       { navItems && <NavSecondary navItems={ navItems } /> }
         <main>
-          {contentGuidelineData.sys && <>
+          {contentGuidelineData?.sys && <>
             <div className="intro">
               <PageHeader name={ contentGuidelineData.name || '' } publishedAt={ contentGuidelineData.sys.publishedAt } />
               <Markdown markdown={ contentGuidelineData.leadParagraph || ''} className="body-assertive" />
