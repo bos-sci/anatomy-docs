@@ -189,7 +189,6 @@ type Component implements Entry {
   contentGuidelinesDo(locale: String): String
   contentGuidelinesDont(locale: String): String
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
   interactions(locale: String): String
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentLinkingCollections
@@ -244,13 +243,6 @@ input ComponentFilter {
   contentGuidelines_not_contains: String
   contentGuidelines_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  description: String
-  description_contains: String
-  description_exists: Boolean
-  description_in: [String]
-  description_not: String
-  description_not_contains: String
-  description_not_in: [String]
   interactions: String
   interactions_contains: String
   interactions_exists: Boolean
@@ -650,7 +642,6 @@ Documentation for content guidelines. [See type definition](https://app.contentf
 type ContentGuideline implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ContentGuidelineLinkingCollections
   name(locale: String): String
@@ -675,13 +666,6 @@ input ContentGuidelineFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  description: String
-  description_contains: String
-  description_exists: Boolean
-  description_in: [String]
-  description_not: String
-  description_not_contains: String
-  description_not_in: [String]
   leadParagraph: String
   leadParagraph_contains: String
   leadParagraph_exists: Boolean
@@ -789,7 +773,6 @@ Documentation for foundations. [See type definition](https://app.contentful.com/
 type Foundation implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): FoundationLinkingCollections
   name(locale: String): String
@@ -814,13 +797,6 @@ input FoundationFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  description: String
-  description_contains: String
-  description_exists: Boolean
-  description_in: [String]
-  description_not: String
-  description_not_contains: String
-  description_not_in: [String]
   leadParagraph: String
   leadParagraph_contains: String
   leadParagraph_exists: Boolean
@@ -1021,7 +997,6 @@ Documentation for resources. [See type definition](https://app.contentful.com/sp
 type Resource implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ResourceLinkingCollections
   name(locale: String): String
@@ -1046,13 +1021,6 @@ input ResourceFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  description: String
-  description_contains: String
-  description_exists: Boolean
-  description_in: [String]
-  description_not: String
-  description_not_contains: String
-  description_not_in: [String]
   leadParagraph: String
   leadParagraph_contains: String
   leadParagraph_exists: Boolean

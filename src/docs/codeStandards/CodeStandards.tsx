@@ -5,7 +5,7 @@ import { IdLookupContext } from '../App';
 import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
-import { CodeStandard, useGetCodeStandardQuery } from '../shared/types/contentful';
+import { GetCodeStandardQuery, useGetCodeStandardQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
@@ -24,7 +24,7 @@ interface Props {
 const CodeStandards = (props:  Props): JSX.Element => {
   const standardName = props.match.params.standardName;
   const [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
-  const [codeStandardData, setCodeStandardData] = useState<CodeStandard>({} as CodeStandard);
+  const [codeStandardData, setCodeStandardData] = useState<GetCodeStandardQuery['codeStandard']>({} as GetCodeStandardQuery['codeStandard']);
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const idLookup: IdLookup = useContext(IdLookupContext);
@@ -42,7 +42,7 @@ const CodeStandards = (props:  Props): JSX.Element => {
 
   useEffect(() => {
     if (data?.codeStandard) {
-      setCodeStandardData(data.codeStandard as CodeStandard);
+      setCodeStandardData(data.codeStandard);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
     const pathPrefix = basePath + '/';
@@ -75,12 +75,12 @@ const CodeStandards = (props:  Props): JSX.Element => {
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
 
-  useTitle({titlePrefix: `${codeStandardData.name} - Code Standards`});
-  useHashScroll(!!codeStandardData.content);
+  useTitle({titlePrefix: `${codeStandardData?.name} - Code Standards`});
+  useHashScroll(!!codeStandardData?.content);
 
-  const pageHeadings = useHeadings(codeStandardData.name);
+  const pageHeadings = useHeadings(codeStandardData?.name);
   useEffect(() => {
-    if (codeStandardData.name) {
+    if (codeStandardData?.name) {
       setHeadings(pageHeadings.map(heading => {
         return {
           id: heading.id as string,
@@ -88,20 +88,20 @@ const CodeStandards = (props:  Props): JSX.Element => {
         };
       }));
     }
-  }, [codeStandardData.name, pageHeadings]);
+  }, [codeStandardData?.name, pageHeadings]);
 
   return (
     <div className="app-content">
       { navItems && <NavSecondary navItems={ navItems } /> }
         <main>
-          {codeStandardData.sys && <>
+          {codeStandardData?.sys && <>
             <div className="intro">
               <PageHeader name={ codeStandardData.name || '' } publishedAt={ codeStandardData.sys.publishedAt } />
               <Markdown markdown={ codeStandardData.leadParagraph || '' } className="body-assertive" />
             </div>
             <NavTertiary navTertiaryItems={ headings } />
             <div className="page-content">
-              <Markdown markdown={ codeStandardData.content || ''} />
+              <Markdown markdown={ codeStandardData.content || '' } />
             </div>
           </>}
         </main>
