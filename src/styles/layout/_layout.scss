@@ -26,7 +26,7 @@ header
 .app-body
 {
   grid-area: main;
-  padding: space(4x);
+  padding: space(4x) - space(sm); // NOTE: the second value in this calc is the same as the padding on .app-content to prevent the left edge of focus indicators from being chopped off
 }
 
 .app-content
@@ -41,6 +41,7 @@ header
   justify-content: start;
   justify-items: start;
   overflow-y: auto;
+  padding: space(sm); // NOTE: this value is the same as the second padding value on .app-content to prevent the left edge of focus indicators from being chopped off
 }
 
 main
