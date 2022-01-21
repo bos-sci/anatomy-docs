@@ -7,7 +7,7 @@ import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
 import { IdLookup } from '../shared/types/docs';
-import { Component, GetComponentQuery, useGetComponentQuery } from '../shared/types/contentful';
+import { GetComponentQuery, useGetComponentQuery } from '../shared/types/contentful';
 import './Components.scss';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
