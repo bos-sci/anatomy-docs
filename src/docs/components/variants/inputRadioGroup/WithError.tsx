@@ -8,8 +8,8 @@ const WithError = (): JSX.Element => {
   return (
     <form onSubmit={handleSubmit}>
       <RadioGroup legend="Legend" >
-        <InputRadio label="Yes" name="groupRequired" value="errorRequired1" required forceValidation={true}/>
-        <InputRadio label="No" name="groupRequired" value="errorRequired2" required />
+        <InputRadio label="Radio 1" name="groupRequired" value="errorRequired1" required forceValidation={true}/>
+        <InputRadio label="Radio 2" name="groupRequired" value="errorRequired2" required />
       </RadioGroup>
     </form>
   );
