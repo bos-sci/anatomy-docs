@@ -17,10 +17,10 @@ const Preview = ( props: Props ): JSX.Element => {
 
   switch (props.component) {
     case 'breadcrumbs':
-      const Default = lazy(() => import('./breadcrumbs/Default'));
+      const DefaultBreadcrumbs = lazy(() => import('./breadcrumbs/DefaultBreadcrumbs'));
       RenderedComponent = (
         <Suspense fallback={<Fallback />}>
-          <Default />
+          <DefaultBreadcrumbs />
         </Suspense>
       );
       break;
@@ -34,6 +34,33 @@ const Preview = ( props: Props ): JSX.Element => {
       );
       break;
 
+    case 'checkbox':
+      const InputCheckboxVariants = lazy(() => import('./inputCheckbox/inputCheckboxVariants'));
+      RenderedComponent = (
+        <Suspense fallback={<Fallback />}>
+          <InputCheckboxVariants variantId={props.variantId as string} />
+        </Suspense>
+      );
+      break;
+
+    case 'checkbox-group':
+      const InputCheckboxGroupVariants = lazy(() => import('./inputCheckboxGroup/InputCheckboxGroupVariants'));
+      RenderedComponent = (
+        <Suspense fallback={<Fallback />}>
+          <InputCheckboxGroupVariants variantId={props.variantId as string} />
+        </Suspense>
+      );
+      break;
+
+    case 'link':
+      const LinkVariants = lazy(() => import('./link/LinkVariants'));
+      RenderedComponent = (
+        <Suspense fallback={<Fallback />}>
+          <LinkVariants variantId={props.variantId as string} />
+        </Suspense>
+      );
+      break;
+
     case 'radio-group':
       const InputRadioGroupVariants = lazy(() => import('./inputRadioGroup/InputRadioGroupVariants'));
       RenderedComponent = (
@@ -43,50 +70,23 @@ const Preview = ( props: Props ): JSX.Element => {
       );
       break;
 
+    case 'tabs':
+      const DefaultTabs = lazy(() => import('./tabs/DefaultTabs'));
+      RenderedComponent = (
+        <Suspense fallback={<Fallback />}>
+          <DefaultTabs />
+        </Suspense>
+      );
+      break;
+
     case 'text-input':
-      const InputTextVariants = lazy(() => import('./inputTexts/InputTextVariants'));
+      const InputTextVariants = lazy(() => import('./inputText/InputTextVariants'));
       RenderedComponent = (
         <Suspense fallback={<Fallback />}>
           <InputTextVariants variantId={props.variantId as string} />
         </Suspense>
       );
       break;
-
-    case 'checkbox':
-      const InputCheckboxVariants = lazy(() => import('./inputCheckboxes/inputCheckboxVariants'));
-      RenderedComponent = (
-        <Suspense fallback={<Fallback />}>
-          <InputCheckboxVariants variantId={props.variantId as string} />
-        </Suspense>
-      );
-      break;
-
-    case 'checkbox-group':
-      const InputCheckboxGroupVariants = lazy(() => import('./inputCheckboxGroups/InputCheckboxGroupVariants'));
-      RenderedComponent = (
-        <Suspense fallback={<Fallback />}>
-          <InputCheckboxGroupVariants variantId={props.variantId as string} />
-        </Suspense>
-      );
-      break;
-
-    case 'link':
-      const LinkVariants = lazy(() => import('./links/LinkVariants'));
-      RenderedComponent = (
-        <Suspense fallback={<Fallback />}>
-          <LinkVariants variantId={props.variantId as string} />
-        </Suspense>
-      );
-      break;
-
-      case 'tabs':
-        const DefaultTabs = lazy(() => import('./tabs/DefaultTabs'));
-        RenderedComponent = (
-          <Suspense fallback={<Fallback />}>
-            <DefaultTabs />
-          </Suspense>
-        );
-        break;
 
 
     default:

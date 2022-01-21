@@ -1,11 +1,12 @@
 import { VariantProps } from '../Preview';
-import Default from './Default';
-import Assertive from './Assertive';
-import Ghost from './Ghost';
-import Subtle from './Subtle';
+import DefaultButton from './DefaultButton';
 import IconLeft from './IconLeft';
 import IconRight from './IconRight';
 import Icon from './Icon';
+import DefaultStyle from './DefaultStyle';
+import AssertiveStyle from './AssertiveStyle';
+import GhostStyle from './GhostStyle';
+import SubtleStyle from './SubtleStyle';
 import Disabled from './Disabled';
 
 const ButtonVariants = ({ variantId }: VariantProps): JSX.Element => {
@@ -19,19 +20,21 @@ const ButtonVariants = ({ variantId }: VariantProps): JSX.Element => {
       return <Icon />;
 
     // Styles
+    case 'buttonDefault':
+      return <DefaultStyle />;
     case 'buttonAssertive':
-      return <Assertive />;
+      return <AssertiveStyle />;
     case 'buttonGhost':
-      return <Ghost />;
+      return <GhostStyle />;
     case 'buttonSubtle':
-      return <Subtle />;
+      return <SubtleStyle />;
 
     // States
     case 'buttonDisabled':
       return <Disabled />;
 
     default:
-      return <Default />;
+      return <DefaultButton />;
   }
 }
 

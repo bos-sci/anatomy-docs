@@ -1,26 +1,26 @@
 import { VariantProps } from '../Preview';
-import Default from './Default';
+import DefaultInputRadioGroup from './DefaultInputRadioGroup';
+import WithHelp from './WithHelp';
 import WithError from './WithError';
-import WithHelpText from './WithHelpText';
+import WithHelpError from './WithHelpError';
 import Disabled from './Disabled';
-import WithHelpAndErrorText from './WithHelpAndErrorText';
 
 const InputRadioVariants = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
     case 'inputRadioGroupWithHelpText':
-      return <WithHelpText />;
-    case 'inputRadioGroupWithErrorText':
+      return <WithHelp />;
+    case 'inputRadioGroupWithErrorMessage':
       return <WithError />;
-    case 'inputRadioGroupWithHelpAndErrorText':
-      return <WithHelpAndErrorText />;
+    case 'inputRadioGroupWithHelpTextAndErrorMessage':
+      return <WithHelpError />;
 
     // States
     case 'inputRadioGroupDisabled':
       return <Disabled />;
 
     default:
-      return <Default />;
+      return <DefaultInputRadioGroup />;
   }
 }
 
