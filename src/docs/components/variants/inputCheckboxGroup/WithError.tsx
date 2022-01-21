@@ -4,7 +4,7 @@ import InputCheckbox from '../../../../library/components/InputCheckbox';
 
 const WithError = (): JSX.Element => {
 
-  const errorMessage = 'Please check at least two options.';
+  const errorMessage = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(errorMessage);
   const [checkboxes, setCheckboxes] = useState([
     {
