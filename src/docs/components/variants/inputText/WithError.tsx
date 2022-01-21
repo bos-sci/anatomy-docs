@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import InputText from '../../../../library/components/InputText';
+import Example from '../../../shared/components/Example';
 
 const WithError = (): JSX.Element => {
 
@@ -14,7 +15,11 @@ const WithError = (): JSX.Element => {
     }
   }
 
-  return <InputText label="Text input" errorText={errorText} onChange={handleChange} defaultValue="Invalid value" />;
+  return (
+    <Example>
+      <InputText label="Text input" errorText={errorText} onChange={handleChange} defaultValue="Invalid value" />
+    </Example>
+  );
 }
 
 export default WithError;
