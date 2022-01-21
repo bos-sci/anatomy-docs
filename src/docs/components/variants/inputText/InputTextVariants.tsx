@@ -14,8 +14,8 @@ const InputTextVariants = ({ variantId }: VariantProps): JSX.Element => {
     // Modifiers
     case 'inputTextWithPlaceholderText':
       return <WithPlaceholder />;
-      case 'inputTextWithHelpText':
-        return <WithHelp />;
+    case 'inputTextWithHelpText':
+      return <WithHelp />;
     case 'inputTextWithErrorMessage':
       return <WithError />;
     case 'inputTextWithHelpTextAndErrorMessage':

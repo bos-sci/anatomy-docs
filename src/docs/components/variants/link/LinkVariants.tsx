@@ -11,8 +11,8 @@ const LinkVariants = ({ variantId }: VariantProps): JSX.Element => {
       return <DefaultStyle />;
     case 'linkSubtle':
       return <SubtleStyle />;
-      case 'linkGhost':
-        return <GhostStyle />;
+    case 'linkGhost':
+      return <GhostStyle />;
 
     default:
       return <DefaultLink />;

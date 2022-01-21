@@ -11,6 +11,7 @@ const DefaultBreadcrumbs = (): JSX.Element => {
       href: '#'
     },
   ];
+
   return <Breadcrumb crumbs={crumbs} currentPage="Current Page" />;
 }
 

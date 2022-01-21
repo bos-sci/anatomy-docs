@@ -1,8 +1,7 @@
 import Button from '../../../../library/components/Button';
 
 const DefaultStyle = (): JSX.Element => {
-
-  return<>
+  return <>
     <Button type="button">Text button</Button>
       <Button type="button" icon="plus">
         Icon left
