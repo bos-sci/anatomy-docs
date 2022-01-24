@@ -9,7 +9,11 @@ const DefaultInputText = (): JSX.Element => {
     setInputValue(e.target.value);
   }
 
-  return <Example><InputText label="Text input" value={inputValue} onChange={handleChange} /></Example>;
+  return (
+    <Example>
+      <InputText label="Text input" value={inputValue} onChange={handleChange} />
+    </Example>
+  );
 }
 
 export default DefaultInputText;

@@ -11,7 +11,7 @@ const GhostStyle = (): JSX.Element => {
       <Button variant="ghost" type="button" icon="chevronRight" iconAlignment="right">
         Icon right
       </Button>
-      <Button variant="ghost" type="button" icon="plus" aria-label="icon button"/>
+      <Button variant="ghost" type="button" icon="plus" aria-label="icon button" />
     </Example>
   );
 }

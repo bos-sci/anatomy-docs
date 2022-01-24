@@ -11,7 +11,7 @@ const SubtleStyle = (): JSX.Element => {
       <Button variant="subtle" type="button" icon="chevronRight" iconAlignment="right">
         Icon right
       </Button>
-      <Button variant="subtle" type="button" icon="plus" aria-label="icon button"/>
+      <Button variant="subtle" type="button" icon="plus" aria-label="icon button" />
     </Example>
   );
 }

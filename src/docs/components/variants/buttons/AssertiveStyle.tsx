@@ -11,7 +11,7 @@ const AssertiveStyle = (): JSX.Element => {
       <Button variant="assertive" type="button" icon="chevronRight" iconAlignment="right">
         Icon right
       </Button>
-      <Button variant="assertive" type="button" icon="plus" aria-label="icon button"/>
+      <Button variant="assertive" type="button" icon="plus" aria-label="icon button" />
     </Example>
   );
 }

@@ -15,10 +15,30 @@ const WithHelpError = (): JSX.Element => {
 
   return (
     <Example>
-      <RadioGroup legend="Legend" helpText="This is an example help text. It can wrap to two lines, but try not to go longer than three." errorText={errorText} >
-        <InputRadio label="Radio 1" name="groupHelpError" value="groupHelpError1" onChange={handleChange} checked={selectedRadio === 'groupHelpError1'} forceValidation={true} />
-        <InputRadio label="Radio 2" name="groupHelpError" value="groupHelpError2" helpText="This is an example help text. It can wrap to two lines, but try not to go longer than three." onChange={handleChange} checked={selectedRadio === 'groupHelpError2'} />
-        <InputRadio label="Radio 3" name="groupHelpError" value="groupHelpError3" onChange={handleChange} checked={selectedRadio === 'groupHelpError3'} />
+      <RadioGroup
+        legend="Legend"
+        helpText="This is an example help text. It can wrap to two lines, but try not to go longer than three."
+        errorText={errorText}>
+        <InputRadio
+          label="Radio 1"
+          name="groupHelpError"
+          value="groupHelpError1"
+          onChange={handleChange}
+          checked={selectedRadio === 'groupHelpError1'}
+          forceValidation={true} />
+        <InputRadio
+          label="Radio 2"
+          name="groupHelpError"
+          value="groupHelpError2"
+          helpText="This is an example help text. It can wrap to two lines, but try not to go longer than three."
+          onChange={handleChange}
+          checked={selectedRadio === 'groupHelpError2'} />
+        <InputRadio
+          label="Radio 3"
+          name="groupHelpError"
+          value="groupHelpError3"
+          onChange={handleChange}
+          checked={selectedRadio === 'groupHelpError3'} />
       </RadioGroup>
     </Example>
   );

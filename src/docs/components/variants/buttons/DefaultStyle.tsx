@@ -11,7 +11,7 @@ const DefaultStyle = (): JSX.Element => {
         <Button type="button" icon="chevronRight" iconAlignment="right">
           Icon right
         </Button>
-        <Button type="button" icon="plus" aria-label="icon button"/>
+        <Button type="button" icon="plus" aria-label="icon button" />
     </Example>
   );
 }
