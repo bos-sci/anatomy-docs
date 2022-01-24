@@ -63,6 +63,10 @@ const Resources = (props:  Props): JSX.Element => {
         text: 'SEO',
         slug: pathPrefix + 'seo'
       },
+      {
+        text: 'Release notes',
+        slug: pathPrefix + 'release-notes'
+      },
     ];
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
