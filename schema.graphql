@@ -201,7 +201,6 @@ type Component implements Entry {
   usageDo(locale: String): String
   usageDont(locale: String): String
   userResearch(locale: String): String
-  variantsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentVariantsCollection
 }
 
 type ComponentCollection {
@@ -296,7 +295,6 @@ input ComponentFilter {
   userResearch_not: String
   userResearch_not_contains: String
   userResearch_not_in: [String]
-  variantsCollection_exists: Boolean
 }
 
 type ComponentLinkingCollections {
@@ -551,86 +549,6 @@ enum ComponentStyleOrder {
 
 type ComponentStylesCollection {
   items: [ComponentStyle]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-"""
-Variations of components e.g. Default vs assertive button. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentVariant)
-"""
-type ComponentVariant implements Entry {
-  contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
-  isPreviewDarkThemed(locale: String): Boolean
-  linkedFrom(allowedLocales: [String]): ComponentVariantLinkingCollections
-  name(locale: String): String
-  sys: Sys!
-  variantId(locale: String): String
-}
-
-type ComponentVariantCollection {
-  items: [ComponentVariant]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-input ComponentVariantFilter {
-  AND: [ComponentVariantFilter]
-  OR: [ComponentVariantFilter]
-  contentfulMetadata: ContentfulMetadataFilter
-  description: String
-  description_contains: String
-  description_exists: Boolean
-  description_in: [String]
-  description_not: String
-  description_not_contains: String
-  description_not_in: [String]
-  isPreviewDarkThemed: Boolean
-  isPreviewDarkThemed_exists: Boolean
-  isPreviewDarkThemed_not: Boolean
-  name: String
-  name_contains: String
-  name_exists: Boolean
-  name_in: [String]
-  name_not: String
-  name_not_contains: String
-  name_not_in: [String]
-  sys: SysFilter
-  variantId: String
-  variantId_contains: String
-  variantId_exists: Boolean
-  variantId_in: [String]
-  variantId_not: String
-  variantId_not_contains: String
-  variantId_not_in: [String]
-}
-
-type ComponentVariantLinkingCollections {
-  componentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-}
-
-enum ComponentVariantOrder {
-  isPreviewDarkThemed_ASC
-  isPreviewDarkThemed_DESC
-  name_ASC
-  name_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-  variantId_ASC
-  variantId_DESC
-}
-
-type ComponentVariantsCollection {
-  items: [ComponentVariant]!
   limit: Int!
   skip: Int!
   total: Int!
@@ -980,8 +898,6 @@ type Query {
   componentStateCollection(limit: Int = 100, locale: String, order: [ComponentStateOrder], preview: Boolean, skip: Int = 0, where: ComponentStateFilter): ComponentStateCollection
   componentStyle(id: String!, locale: String, preview: Boolean): ComponentStyle
   componentStyleCollection(limit: Int = 100, locale: String, order: [ComponentStyleOrder], preview: Boolean, skip: Int = 0, where: ComponentStyleFilter): ComponentStyleCollection
-  componentVariant(id: String!, locale: String, preview: Boolean): ComponentVariant
-  componentVariantCollection(limit: Int = 100, locale: String, order: [ComponentVariantOrder], preview: Boolean, skip: Int = 0, where: ComponentVariantFilter): ComponentVariantCollection
   contentGuideline(id: String!, locale: String, preview: Boolean): ContentGuideline
   contentGuidelineCollection(limit: Int = 100, locale: String, order: [ContentGuidelineOrder], preview: Boolean, skip: Int = 0, where: ContentGuidelineFilter): ContentGuidelineCollection
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
