@@ -87,8 +87,8 @@ main
   {
     display: grid;
     grid-template-areas:
-      "nav-secondary intro nav-tertiary"
-      "nav-secondary page-content nav-tertiary";
+      "nav-secondary intro intro intro intro nav-tertiary"
+      "nav-secondary page-content page-content page-content page-content nav-tertiary";
     grid-template-columns: 1fr 4fr 1fr;
     grid-column-gap: space(4x);
     grid-row-gap: 0;
