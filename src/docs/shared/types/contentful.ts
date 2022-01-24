@@ -329,7 +329,6 @@ export type Component = Entry & {
   usageDo?: Maybe<Scalars['String']>;
   usageDont?: Maybe<Scalars['String']>;
   userResearch?: Maybe<Scalars['String']>;
-  variantsCollection?: Maybe<ComponentVariantsCollection>;
 };
 
 
@@ -431,15 +430,6 @@ export type ComponentUserResearchArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
-
-/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
-export type ComponentVariantsCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
 export type ComponentCollection = {
   __typename?: 'ComponentCollection';
   items: Array<Maybe<Component>>;
@@ -533,7 +523,6 @@ export type ComponentFilter = {
   userResearch_not?: InputMaybe<Scalars['String']>;
   userResearch_not_contains?: InputMaybe<Scalars['String']>;
   userResearch_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  variantsCollection_exists?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type ComponentLinkingCollections = {
@@ -946,134 +935,6 @@ export type ComponentStylesCollection = {
   total: Scalars['Int'];
 };
 
-/** Variations of components e.g. Default vs assertive button. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentVariant) */
-export type ComponentVariant = Entry & {
-  __typename?: 'ComponentVariant';
-  contentfulMetadata: ContentfulMetadata;
-  description?: Maybe<Scalars['String']>;
-  isPreviewDarkThemed?: Maybe<Scalars['Boolean']>;
-  linkedFrom?: Maybe<ComponentVariantLinkingCollections>;
-  name?: Maybe<Scalars['String']>;
-  sys: Sys;
-  variantId?: Maybe<Scalars['String']>;
-};
-
-
-/** Variations of components e.g. Default vs assertive button. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentVariant) */
-export type ComponentVariantDescriptionArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Variations of components e.g. Default vs assertive button. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentVariant) */
-export type ComponentVariantIsPreviewDarkThemedArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Variations of components e.g. Default vs assertive button. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentVariant) */
-export type ComponentVariantLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-/** Variations of components e.g. Default vs assertive button. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentVariant) */
-export type ComponentVariantNameArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Variations of components e.g. Default vs assertive button. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentVariant) */
-export type ComponentVariantVariantIdArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-export type ComponentVariantCollection = {
-  __typename?: 'ComponentVariantCollection';
-  items: Array<Maybe<ComponentVariant>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export type ComponentVariantFilter = {
-  AND?: InputMaybe<Array<InputMaybe<ComponentVariantFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<ComponentVariantFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  description?: InputMaybe<Scalars['String']>;
-  description_contains?: InputMaybe<Scalars['String']>;
-  description_exists?: InputMaybe<Scalars['Boolean']>;
-  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  description_not?: InputMaybe<Scalars['String']>;
-  description_not_contains?: InputMaybe<Scalars['String']>;
-  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  isPreviewDarkThemed?: InputMaybe<Scalars['Boolean']>;
-  isPreviewDarkThemed_exists?: InputMaybe<Scalars['Boolean']>;
-  isPreviewDarkThemed_not?: InputMaybe<Scalars['Boolean']>;
-  name?: InputMaybe<Scalars['String']>;
-  name_contains?: InputMaybe<Scalars['String']>;
-  name_exists?: InputMaybe<Scalars['Boolean']>;
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  name_not?: InputMaybe<Scalars['String']>;
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  sys?: InputMaybe<SysFilter>;
-  variantId?: InputMaybe<Scalars['String']>;
-  variantId_contains?: InputMaybe<Scalars['String']>;
-  variantId_exists?: InputMaybe<Scalars['Boolean']>;
-  variantId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  variantId_not?: InputMaybe<Scalars['String']>;
-  variantId_not_contains?: InputMaybe<Scalars['String']>;
-  variantId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type ComponentVariantLinkingCollections = {
-  __typename?: 'ComponentVariantLinkingCollections';
-  componentCollection?: Maybe<ComponentCollection>;
-  entryCollection?: Maybe<EntryCollection>;
-};
-
-
-export type ComponentVariantLinkingCollectionsComponentCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type ComponentVariantLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-export enum ComponentVariantOrder {
-  IsPreviewDarkThemedAsc = 'isPreviewDarkThemed_ASC',
-  IsPreviewDarkThemedDesc = 'isPreviewDarkThemed_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  VariantIdAsc = 'variantId_ASC',
-  VariantIdDesc = 'variantId_DESC'
-}
-
-export type ComponentVariantsCollection = {
-  __typename?: 'ComponentVariantsCollection';
-  items: Array<Maybe<ComponentVariant>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
 /** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
 export type ContentGuideline = Entry & {
   __typename?: 'ContentGuideline';
@@ -1434,8 +1295,6 @@ export type Query = {
   componentStateCollection?: Maybe<ComponentStateCollection>;
   componentStyle?: Maybe<ComponentStyle>;
   componentStyleCollection?: Maybe<ComponentStyleCollection>;
-  componentVariant?: Maybe<ComponentVariant>;
-  componentVariantCollection?: Maybe<ComponentVariantCollection>;
   contentGuideline?: Maybe<ContentGuideline>;
   contentGuidelineCollection?: Maybe<ContentGuidelineCollection>;
   entryCollection?: Maybe<EntryCollection>;
@@ -1545,23 +1404,6 @@ export type QueryComponentStyleCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ComponentStyleFilter>;
-};
-
-
-export type QueryComponentVariantArgs = {
-  id: Scalars['String'];
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-export type QueryComponentVariantCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<ComponentVariantOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ComponentVariantFilter>;
 };
 
 

@@ -63,6 +63,10 @@ const Resources = (props:  Props): JSX.Element => {
         text: 'SEO',
         slug: pathPrefix + 'seo'
       },
+      {
+        text: 'Release notes',
+        slug: pathPrefix + 'release-notes'
+      }
     ];
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
@@ -93,7 +97,10 @@ const Resources = (props:  Props): JSX.Element => {
             </div>
             <NavTertiary navTertiaryItems={ headings } />
             <div className="page-content">
-              <Markdown markdown={ resourceData.content || ''}  headingOffset={1} />
+              <Markdown
+                markdown={ resourceData.content || ''}
+                headingOffset={1}
+                className={resourceData.name === 'Release notes' ? 'table-align-top' : ''} />
             </div>
           </>}
         </main>
