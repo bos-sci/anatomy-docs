@@ -1,7 +1,12 @@
 import InputCheckbox from '../../../../library/components/InputCheckbox';
+import Example from '../../../shared/components/Example';
 
 const WithError = (): JSX.Element => {
-  return <InputCheckbox label="Checkbox" required forceValidation={true} />;
+  return (
+    <Example>
+      <InputCheckbox label="Checkbox" required forceValidation={true} />
+    </Example>
+  );
 }
 
 export default WithError;

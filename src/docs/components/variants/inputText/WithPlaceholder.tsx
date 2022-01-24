@@ -1,7 +1,12 @@
 import InputText from '../../../../library/components/InputText';
+import Example from '../../../shared/components/Example';
 
 const WithPlaceholder = (): JSX.Element => {
-  return <InputText label="Text input" placeholder="Placeholder text" />;
+  return (
+    <Example>
+      <InputText label="Text input" placeholder="Placeholder text" />
+    </Example>
+  );
 }
 
 export default WithPlaceholder;

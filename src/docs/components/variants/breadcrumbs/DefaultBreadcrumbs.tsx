@@ -1,4 +1,5 @@
 import Breadcrumb from '../../../../library/components/Breadcrumb';
+import Example from '../../../shared/components/Example';
 
 const DefaultBreadcrumbs = (): JSX.Element => {
   const crumbs = [
@@ -12,7 +13,11 @@ const DefaultBreadcrumbs = (): JSX.Element => {
     },
   ];
 
-  return <Breadcrumb crumbs={crumbs} currentPage="Current Page" />;
+  return (
+    <Example>
+      <Breadcrumb crumbs={crumbs} currentPage="Current Page" />
+    </Example>
+  );
 }
 
 export default DefaultBreadcrumbs;

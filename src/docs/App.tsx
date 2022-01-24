@@ -78,7 +78,7 @@ const App = (): JSX.Element => {
           <NavPrimary />
           {isLookupReady &&
             <div className="app-body">
-              <Suspense fallback={<p>Loading...</p>}>
+              <Suspense fallback={<main><p>Loading...</p></main>}>
                 <Switch>
                   <Route exact path="/">
                     <Redirect to="/content" />

@@ -1,7 +1,12 @@
 import Button from '../../../../library/components/Button';
+import Example from '../../../shared/components/Example';
 
 const IconLeft = (): JSX.Element => {
-  return <Button type="button" icon="plus">Icon left</Button>;
+  return (
+    <Example>
+      <Button type="button" icon="plus">Icon left</Button>
+    </Example>
+  );
 }
 
 export default IconLeft;

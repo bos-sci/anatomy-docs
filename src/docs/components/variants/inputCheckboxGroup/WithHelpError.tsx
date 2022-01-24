@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import Fieldset from '../../../../library/components/Fieldset';
 import InputCheckbox from '../../../../library/components/InputCheckbox';
+import Example from '../../../shared/components/Example';
 
 const WithHelpError = (): JSX.Element => {
 
@@ -36,17 +37,22 @@ const WithHelpError = (): JSX.Element => {
   }, [checkboxes]);
 
   return (
-    <Fieldset legend="Legend" helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three." errorText={errorText}>
-      {checkboxes.map((checkbox, i) => (
-        <InputCheckbox
-          key={'checkboxListWithError' + i}
-          label={checkbox.text}
-          aria-describedby="listErrorText"
-          onChange={e => handleChange(e, i)}
-          aria-invalid={!!errorText}
-          defaultChecked={checkbox.isChecked} />
-      ))}
-    </Fieldset>
+    <Example>
+      <Fieldset
+        legend="Legend"
+        helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
+        errorText={errorText}>
+        {checkboxes.map((checkbox, i) => (
+          <InputCheckbox
+            key={'checkboxListWithError' + i}
+            label={checkbox.text}
+            aria-describedby="listErrorText"
+            onChange={e => handleChange(e, i)}
+            aria-invalid={!!errorText}
+            defaultChecked={checkbox.isChecked} />
+        ))}
+      </Fieldset>
+    </Example>
   );
 }
 
