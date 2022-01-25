@@ -78,7 +78,7 @@ main
 {
   .app-body
   {
-    max-width: 60rem;
+    width: 60rem;
     margin-right: auto;
     margin-left: auto;
   }
@@ -87,9 +87,9 @@ main
   {
     display: grid;
     grid-template-areas:
-      "nav-secondary intro intro intro intro nav-tertiary"
-      "nav-secondary page-content page-content page-content page-content nav-tertiary";
-    grid-template-columns: repeat(6, 1fr);
+      "nav-secondary intro nav-tertiary"
+      "nav-secondary page-content nav-tertiary";
+    grid-template-columns: 1fr 4fr 1fr;
     grid-column-gap: space(4x);
     grid-row-gap: 0;
     justify-content: start;
@@ -106,7 +106,7 @@ main
 {
   .app-body
   {
-    max-width: 71.25rem;
+    width: 71.25rem;
   }
 }
 
@@ -114,6 +114,6 @@ main
 {
   .app-body
   {
-    max-width: 82.5rem;
+    width: 82.5rem;
   }
 }
