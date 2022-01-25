@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom"
 import "./NavSecondary.scss"
 
-export interface NavItem {
+export interface NavItemSecondary {
   slug: string;
   text: string;
 }
 
 interface Props {
-  navItems: NavItem[];
+  navItems: NavItemSecondary[];
 }
 
 const NavSecondary = ({ navItems }: Props): JSX.Element => {

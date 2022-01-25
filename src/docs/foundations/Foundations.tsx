@@ -1,8 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
-import NavSecondary, { NavItem } from '../shared/components/navSecondary/NavSecondary';
-import NavTertiary, { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
+import { NavItemSecondary } from '../shared/components/navSecondary/NavSecondary';
+import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
-import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
 import { GetFoundationQuery, useGetFoundationQuery } from '../shared/types/contentful';
@@ -10,6 +9,7 @@ import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
+import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
 
 interface ComponentMatch extends match {
   params: {
@@ -23,7 +23,7 @@ interface Props {
 
 const Foundations = (props:  Props): JSX.Element => {
   const foundationName = props.match.params.foundationName;
-  const [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
+  const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [foundationData, setFoundationData] = useState<GetFoundationQuery['foundation']>({} as GetFoundationQuery['foundation']);
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
@@ -84,21 +84,14 @@ const Foundations = (props:  Props): JSX.Element => {
   }, [foundationData?.name, pageHeadings]);
 
   return (
-    <div className="app-content">
-      { navItems && <NavSecondary navItems={ navItems } /> }
-        <main>
-          {foundationData?.sys && <>
-          <div className="intro">
-            <PageHeader name={ foundationData.name || '' } publishedAt={ foundationData.sys.publishedAt } />
-            <Markdown markdown={ foundationData.leadParagraph|| '' } className="body-assertive" />
-          </div>
-          <NavTertiary navTertiaryItems={headings}/>
-          <div className="page-content">
-            <Markdown markdown={ foundationData.content || '' } headingOffset={1} />
-          </div>
-          </>}
-        </main>
-    </div>
+    <PageTemplate
+      name={foundationData?.name || ''}
+      lastUpdated={foundationData?.sys?.publishedAt}
+      leadParagraph={foundationData?.leadParagraph || ''}
+      navSecondaryItems={navItems}
+      navTertiaryItems={headings}>
+      <Markdown markdown={foundationData?.content || ''} headingOffset={1} />
+    </PageTemplate>
   );
 }
 
