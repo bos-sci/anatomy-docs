@@ -18,7 +18,12 @@ const Markdown = ({ markdown, headingOffset = 0, className }: Props): JSX.Elemen
 
     // Convert md to DOM instance and make additional alterations
     const mdDom = new DOMParser().parseFromString(DOMPurify.sanitize(marked(md)), "text/html");
-    mdDom.querySelectorAll('table').forEach(table => table.classList.add('table-responsive'));
+    mdDom.querySelectorAll('table').forEach(table => {
+      const wrapperDiv = document.createElement('div');
+      wrapperDiv.classList.add('table-responsive');
+      table.parentNode?.insertBefore(wrapperDiv, table);
+      wrapperDiv.appendChild(table);
+    });
     mdDom.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
       if (!heading.id) {
         heading.id = slugify(heading.textContent || '');
