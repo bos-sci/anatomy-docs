@@ -17,22 +17,22 @@ const PageTemplate = (props: Props) => {
   return (
     <div className="app-content">
       <NavSecondary navItems={ props.navSecondaryItems } />
-        <main>
-          <div className="intro">
-            <div className="page-header">
-              <h1 className="page-title">{ props.name }</h1>
-              <dl className="page-publish-date body-subtle">
-                <dt>Last Updated:</dt>
-                <dd>{ props.lastUpdated ? new Date(props.lastUpdated).toLocaleDateString() : 'Draft' }</dd>
-              </dl>
-            </div>
-            <Markdown markdown={ props.leadParagraph } className="body-assertive" />
+      <main>
+        <div className="intro">
+          <div className="page-header">
+            <h1 className="page-title">{ props.name }</h1>
+            <dl className="page-publish-date body-subtle">
+              <dt>Last Updated:</dt>
+              <dd>{ props.lastUpdated ? new Date(props.lastUpdated).toLocaleDateString() : 'Draft' }</dd>
+            </dl>
           </div>
-          <NavTertiary navTertiaryItems={ props.navTertiaryItems } />
-          <div className="page-content">
-            { props.children }
-          </div>
-        </main>
+          <Markdown markdown={ props.leadParagraph } className="body-assertive" />
+        </div>
+        <NavTertiary navTertiaryItems={ props.navTertiaryItems } />
+        <div className="page-content">
+          { props.children }
+        </div>
+      </main>
     </div>
   );
 }

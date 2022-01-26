@@ -73,27 +73,25 @@ const App = (): JSX.Element => {
 
   return (
     <Router>
-      <div className="grid-container">
-        <IdLookupContext.Provider value={idLookup}>
-          <NavPrimary />
-          {isLookupReady &&
-            <div className="app-body">
-              <Suspense fallback={<main><p>Loading...</p></main>}>
-                <Switch>
-                  <Route exact path="/">
-                    <Redirect to="/content" />
-                  </Route>
-                  <Route path="/components" component={ComponentsRouter} />
-                  <Route path="/resources/developers/code-standards" component={CodeStandardsRouter} />
-                  <Route path="/content" component={ContentGuidelinesRouter} />
-                  <Route path="/foundations" component={FoundationsRouter} />
-                  <Route path="/resources" component={ResourcesRouter} />
-                </Switch>
-              </Suspense>
-            </div>
-          }
-        </IdLookupContext.Provider>
-      </div>
+      <IdLookupContext.Provider value={idLookup}>
+        <NavPrimary />
+        {isLookupReady &&
+          <div className="app-body">
+            <Suspense fallback={<main><p>Loading...</p></main>}>
+              <Switch>
+                <Route exact path="/">
+                  <Redirect to="/content" />
+                </Route>
+                <Route path="/components" component={ComponentsRouter} />
+                <Route path="/resources/developers/code-standards" component={CodeStandardsRouter} />
+                <Route path="/content" component={ContentGuidelinesRouter} />
+                <Route path="/foundations" component={FoundationsRouter} />
+                <Route path="/resources" component={ResourcesRouter} />
+              </Switch>
+            </Suspense>
+          </div>
+        }
+      </IdLookupContext.Provider>
     </Router>
   );
 }
