@@ -1,8 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
-import NavSecondary, { NavItem } from '../shared/components/navSecondary/NavSecondary';
-import NavTertiary, { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
+import { NavItemSecondary } from '../shared/components/navSecondary/NavSecondary';
+import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
-import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
 import { GetCodeStandardQuery, useGetCodeStandardQuery } from '../shared/types/contentful';
@@ -10,6 +9,7 @@ import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
+import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
 
 interface ComponentMatch extends match {
   params: {
@@ -23,7 +23,7 @@ interface Props {
 
 const CodeStandards = (props:  Props): JSX.Element => {
   const standardName = props.match.params.standardName;
-  const [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
+  const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [codeStandardData, setCodeStandardData] = useState<GetCodeStandardQuery['codeStandard']>({} as GetCodeStandardQuery['codeStandard']);
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
@@ -90,23 +90,18 @@ const CodeStandards = (props:  Props): JSX.Element => {
     }
   }, [codeStandardData?.name, pageHeadings]);
 
-  return (
-    <div className="app-content">
-      { navItems && <NavSecondary navItems={ navItems } /> }
-        <main>
-          {codeStandardData?.sys && <>
-            <div className="intro">
-              <PageHeader name={ codeStandardData.name || '' } publishedAt={ codeStandardData.sys.publishedAt } />
-              <Markdown markdown={ codeStandardData.leadParagraph || '' } className="body-assertive" />
-            </div>
-            <NavTertiary navTertiaryItems={ headings } />
-            <div className="page-content">
-              <Markdown markdown={ codeStandardData.content || '' } />
-            </div>
-          </>}
-        </main>
-    </div>
-  );
+  if (codeStandardData) {
+    return (
+      <PageTemplate
+        name={codeStandardData?.name || ''}
+        lastUpdated={codeStandardData?.sys?.publishedAt}
+        leadParagraph={codeStandardData?.leadParagraph || ''}
+        navSecondaryItems={navItems}
+        navTertiaryItems={headings}>
+        <Markdown markdown={ codeStandardData?.content || '' } />
+      </PageTemplate>
+    );
+  } else return <></>;
 }
 
 export default CodeStandards;

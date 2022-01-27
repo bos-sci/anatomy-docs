@@ -1,8 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
-import NavSecondary, { NavItem } from '../shared/components/navSecondary/NavSecondary';
-import NavTertiary, { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
+import { NavItemSecondary } from '../shared/components/navSecondary/NavSecondary';
+import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
-import PageHeader from '../shared/components/pageHeader/PageHeader';
 import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
 import { GetResourceQuery, useGetResourceQuery } from '../shared/types/contentful';
@@ -10,6 +9,7 @@ import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
+import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
 
 interface ComponentMatch extends match {
   params: {
@@ -23,7 +23,7 @@ interface Props {
 
 const Resources = (props:  Props): JSX.Element => {
   const resourceName = props.match.params.resourceName;
-  const [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
+  const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [resourceData, setResourceData] = useState<GetResourceQuery['resource']>({} as GetResourceQuery['resource']);
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
@@ -87,24 +87,17 @@ const Resources = (props:  Props): JSX.Element => {
   }, [resourceData?.name, pageHeadings]);
 
   return (
-    <div className="app-content">
-      { navItems && <NavSecondary navItems={ navItems } /> }
-        <main>
-          {resourceData?.sys && <>
-            <div className="intro">
-              <PageHeader name={ resourceData.name || '' } publishedAt={ resourceData.sys.publishedAt } />
-              <Markdown markdown={ resourceData.leadParagraph || ''} className="body-assertive" />
-            </div>
-            <NavTertiary navTertiaryItems={ headings } />
-            <div className="page-content">
-              <Markdown
-                markdown={ resourceData.content || ''}
-                headingOffset={1}
-                className={resourceData.name === 'Release notes' ? 'table-align-top' : ''} />
-            </div>
-          </>}
-        </main>
-    </div>
+    <PageTemplate
+      name={resourceData?.name || ''}
+      lastUpdated={resourceData?.sys?.publishedAt}
+      leadParagraph={resourceData?.leadParagraph || ''}
+      navSecondaryItems={navItems}
+      navTertiaryItems={headings}>
+      <Markdown
+        markdown={resourceData?.content || ''}
+        headingOffset={1}
+        className={resourceData?.name === 'Release notes' ? 'table-align-top' : ''} />
+    </PageTemplate>
   );
 }
 

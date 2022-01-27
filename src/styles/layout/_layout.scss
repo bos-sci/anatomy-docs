@@ -8,16 +8,6 @@
   box-sizing: border-box;
 }
 
-.grid-container
-{
-  display: grid;
-  grid-template-areas:
-    "header"
-    "main";
-  grid-template-rows: auto 1fr;
-  grid-gap: 0;
-}
-
 header
 {
   grid-area: header;
@@ -31,23 +21,33 @@ header
 
 .app-content
 {
-  display: grid;
-  grid-template-areas:
-    "nav-secondary"
-    "intro"
-    "nav-tertiary"
-    "page-content";
-  grid-template-columns: 1fr;
-  justify-content: start;
-  justify-items: start;
-  overflow-y: auto;
-  padding: space(sm); // NOTE: this value is the same as the second padding value on .app-content to prevent the left edge of focus indicators from being chopped off
+  display: flex;
+  flex-direction: column;
+
+  .nav-secondary
+  {
+    flex: 1;
+    padding: space(sm); // NOTE: this value is the same as the second padding value on .app-content to prevent the left edge of focus indicators from being chopped off
+  }
+
+  main
+  {
+    flex: 5;
+    display: grid;
+    grid-template-areas:
+      "intro"
+      "nav-tertiary"
+      "page-content";
+    grid-template-columns: 1fr;
+    justify-content: start;
+    justify-items: start;
+    overflow-y: auto;
+    padding: space(sm); // NOTE: this value is the same as the second padding value on .app-content to prevent the left edge of focus indicators from being chopped off
+  }
 }
 
 main
 {
-  display: contents;
-
   & img // TODO: find a better place for this
   {
     width: 100%;
@@ -55,7 +55,7 @@ main
   }
 }
 
-.intro // TODO: rename this .page-header after we refactor the existing .page-header
+.page-headline
 {
   grid-area: intro;
   width: 100%;
@@ -85,18 +85,24 @@ main
 
   .app-content
   {
-    display: grid;
-    grid-template-areas:
-      "nav-secondary intro nav-tertiary"
-      "nav-secondary page-content nav-tertiary";
-    grid-template-columns: 1fr 4fr 1fr;
-    grid-column-gap: space(4x);
-    grid-row-gap: 0;
-    justify-content: start;
-    justify-items: start;
+    flex-direction: row;
+    gap: space(4x);
+
+    main
+    {
+      display: grid;
+      grid-template-areas:
+        "intro nav-tertiary"
+        "page-content nav-tertiary";
+      grid-template-columns: 4fr 1fr;
+      grid-column-gap: space(4x);
+      grid-row-gap: 0;
+      justify-content: start;
+      justify-items: start;
+    }
   }
 
-  .intro
+  .page-headline
   {
     margin-top: 0;
   }
