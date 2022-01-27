@@ -18,8 +18,8 @@ const PageTemplate = (props: Props) => {
     <div className="app-content">
       <NavSecondary navItems={ props.navSecondaryItems } />
       <main>
-        <div className="intro">
-          <div className="page-header">
+        <div className="page-headline">
+          <div className="page-metadata">
             <h1 className="page-title">{ props.name }</h1>
             <dl className="page-publish-date body-subtle">
               <dt>Last Updated:</dt>

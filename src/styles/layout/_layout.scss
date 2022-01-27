@@ -54,7 +54,7 @@ main
   }
 }
 
-.intro // TODO: rename this .page-header after we refactor the existing .page-header
+.page-headline
 {
   grid-area: intro;
   width: 100%;
@@ -101,7 +101,7 @@ main
     }
   }
 
-  .intro
+  .page-headline
   {
     margin-top: 0;
   }
@@ -120,16 +120,5 @@ main
   .app-body
   {
     width: 82.5rem;
-  }
-
-  .app-content
-  {
-    .nav-secondary,
-    .nav-tertiary
-    {
-      width: calc(82.5rem / 6);
-      min-width: calc(82.5rem / 6);
-      max-width: calc(82.5rem / 6);
-    }
   }
 }
