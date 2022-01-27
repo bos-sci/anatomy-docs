@@ -27,6 +27,7 @@ header
   .nav-secondary
   {
     flex: 1;
+    padding: space(sm); // NOTE: this value is the same as the second padding value on .app-content to prevent the left edge of focus indicators from being chopped off
   }
 
   main
