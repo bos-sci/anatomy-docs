@@ -6,7 +6,7 @@
 .ads-input-text-input
 {
   margin-top: space(md);
-  border: space(xxs) solid $neutral-dark;
+  border: space(xxs) solid $neutral-40;
   padding: space(lg) space(2x);
   width: 100%;
 
@@ -15,7 +15,7 @@
     &:hover,
     &:focus
     {
-      border-color: $action-primary-dark;
+      border-color: $action-primary-40;
     }
   }
 
@@ -26,12 +26,12 @@
 
   &::placeholder
   {
-    color: $neutral-dark;
+    color: $neutral-40;
   }
 
   &:disabled
   {
-    border-color: $neutral-light;
+    border-color: $neutral-80;
   }
 
   &:read-only
@@ -45,7 +45,7 @@
   &:disabled,
   &:read-only
   {
-    background: $neutral-lighter;
+    background: $neutral-95;
 
     &:hover
     {
@@ -59,7 +59,7 @@
     &[aria-invalid="true"]:hover,
     &[aria-invalid="true"]:focus
     {
-      border: space(xxs) solid $feedback-error-dark;
+      border: space(xxs) solid $feedback-error-40;
     }
 
     &[aria-invalid="true"]:focus

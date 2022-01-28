@@ -1,28 +1,29 @@
 // Text Utility Variables
 
-$text-color-primary: $neutral-darkest;
-$text-color-ghost: $neutral-lightest;
+$text-color-primary: $neutral-00;
+$text-color-ghost: $neutral-100;
 
 
 // Border Utility Variables
 
-$border-color-primary: $neutral-darkest;
-$border-color-ghost: $neutral-lightest;
-$border-color-accent: $action-primary-dark;
-$border-color-subtle: $neutral-light;
+$border-color-primary: $neutral-00;
+$border-color-ghost: $neutral-100;
+$border-color-accent: $action-primary-40;
+$border-color-subtle: $neutral-80;
 
 $border-radius: 0.25rem; // NOTE: this is a one-off size
 
 
 // Shadow Utility Variables
 
-$box-shadow-primary: 0 0 0.75rem 0 rgba($neutral-darkest, 0.2); // NOTE: this is a one-off size
+$box-shadow-primary: 0 0 0.75rem 0 rgba($neutral-00, 0.2); // NOTE: this is a one-off size
 
 
 // Breakpoint Utility Variables
 // TODO: set up mixins for media queries
 
-$sm: 576px;
-$md: 768px;
-$lg: 992px;
-$xl: 1200px;
+$sm: 36rem; // 576px
+$md: 48rem; // 768px
+$lg: 62rem; // 992px
+$xl: 75rem; // 1200px
+$xxl: 87.5rem; // 1400px

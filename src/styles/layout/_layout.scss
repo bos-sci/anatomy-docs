@@ -8,68 +8,41 @@
   box-sizing: border-box;
 }
 
-.baseline-grid
-{
-  // For testing vertical rhythm
-  background-image: linear-gradient(to bottom, $accent-caribbean 0, $neutral-lightest 1px);
-  background-repeat: repeat-y;
-  background-size: 100% space(sm);
-}
-
-.container,
-.container-fluid,
-.container-lg,
-.container-md,
-.container-sm,
-.container-xl,
-.container-xxl
-{
-  padding: 0 space(4x); // override bootstrap's grid container padding
-}
-
-.grid-container
-{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "header header header header"
-    "main main main main";
-  column-gap: 0;
-  row-gap: 0;
-
-  &.with-footer
-  {
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-      "header header header header"
-      "main main main main"
-      "footer footer footer footer";
-  }
-}
-
-header.navbar
-{
-  grid-area: header;
-}
-
 .app-body
 {
-  grid-area: main;
-  padding-top: space(4x);
-  padding-bottom: space(4x);
+  padding: space(4x) - space(sm); // NOTE: the second value in this calc is the same as the padding on .app-content to prevent the left edge of focus indicators from being chopped off
 }
 
 .app-content
 {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "nav-secondary" "main";
+
+  .nav-secondary
+  {
+    grid-area: nav-secondary;
+    padding: space(sm); // NOTE: this value is the same as the second padding value on .app-content to prevent the left edge of focus indicators from being chopped off
+  }
+
+  main
+  {
+    grid-area: main;
+    display: grid;
+    grid-template-areas:
+      "intro"
+      "nav-tertiary"
+      "page-content";
+    grid-template-columns: 1fr;
+    justify-content: start;
+    justify-items: start;
+    overflow-y: auto;
+    padding: space(sm); // NOTE: this value is the same as the second padding value on .app-content to prevent the left edge of focus indicators from being chopped off
+  }
 }
 
 main
 {
-  overflow-y: auto;
-
   & img // TODO: find a better place for this
   {
     width: 100%;
@@ -77,55 +50,77 @@ main
   }
 }
 
-footer
+.page-headline
 {
-  grid-area: footer;
-  border-top: 1px solid var(--raven-grey-20);
-  padding: space(sm);
+  grid-area: intro;
+  width: 100%;
+  margin-top: space(4x);
 }
 
-.clear-storage
+.page-content
 {
-  position: fixed;
-  bottom: space(md);
-  right: space(md);
-  z-index: 1000;
+  grid-area: page-content;
+  width: 100%;
+  overflow-y: auto;
 
-}
-
-@media (min-width: 576px)
-{
-  .grid-container
+  & > .demo-example:first-of-type
   {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-      "header header header header"
-      "main main main main";
-    column-gap: 0;
-    row-gap: 0;
+    margin-top: space(6x);
   }
 }
 
-@media (min-width: 992px) {
-  .main
+@media (min-width: $lg)
+{
+  .app-body
   {
-    flex-direction: row;
+    width: 60rem;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .app-content
   {
-    flex-direction: row;
-
-    .nav-secondary
-    {
-      flex: 1;
-    }
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: "nav-secondary main";
+    grid-column-gap: space(4x);
+    grid-row-gap: 0;
 
     main
     {
-      flex: 3;
+      display: grid;
+      grid-template-areas:
+        "intro nav-tertiary"
+        "page-content nav-tertiary";
+      grid-template-columns: 4fr 1fr;
+      grid-column-gap: space(4x);
+      grid-row-gap: 0;
+      justify-content: start;
+      justify-items: start;
     }
+  }
+
+  .page-headline
+  {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: $xl)
+{
+
+  .app-content{
+    grid-template-columns: 1fr 5fr;
+  }
+  .app-body
+  {
+    width: 71.25rem;
+  }
+}
+
+@media (min-width: $xxl)
+{
+  .app-body
+  {
+    width: 82.5rem;
   }
 }

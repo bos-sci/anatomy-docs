@@ -7,7 +7,7 @@ documents:
   - "src/**/!(*.d).{ts,tsx}"
   - "src/**/*.graphql"
 generates:
-  src/types/contentful.ts:
+  src/docs/shared/types/contentful.ts:
     plugins:
       - typescript
       - typescript-operations

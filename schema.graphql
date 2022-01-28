@@ -1,16 +1,16 @@
 """Represents a binary file in a space. An asset can be any file type."""
 type Asset {
-  contentType: String
+  contentType(locale: String): String
   contentfulMetadata: ContentfulMetadata!
-  description: String
-  fileName: String
-  height: Int
+  description(locale: String): String
+  fileName(locale: String): String
+  height(locale: String): Int
   linkedFrom(allowedLocales: [String]): AssetLinkingCollections
-  size: Int
+  size(locale: String): Int
   sys: Sys!
-  title: String
-  url(transform: ImageTransformOptions): String
-  width: Int
+  title(locale: String): String
+  url(locale: String, transform: ImageTransformOptions): String
+  width(locale: String): Int
 }
 
 type AssetCollection {
@@ -122,6 +122,7 @@ Documentation regarding code standards. [See type definition](https://app.conten
 type CodeStandard implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
+  leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): CodeStandardLinkingCollections
   name(locale: String): String
   sys: Sys!
@@ -145,6 +146,13 @@ input CodeStandardFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  leadParagraph: String
+  leadParagraph_contains: String
+  leadParagraph_exists: Boolean
+  leadParagraph_in: [String]
+  leadParagraph_not: String
+  leadParagraph_not_contains: String
+  leadParagraph_not_in: [String]
   name: String
   name_contains: String
   name_exists: Boolean
@@ -181,16 +189,18 @@ type Component implements Entry {
   contentGuidelinesDo(locale: String): String
   contentGuidelinesDont(locale: String): String
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
   interactions(locale: String): String
+  leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentLinkingCollections
+  modifiersCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentModifiersCollection
   name(locale: String): String
+  statesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentStatesCollection
+  stylesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentStylesCollection
   sys: Sys!
   usage(locale: String): String
   usageDo(locale: String): String
   usageDont(locale: String): String
   userResearch(locale: String): String
-  variantsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentVariantsCollection
 }
 
 type ComponentCollection {
@@ -232,13 +242,6 @@ input ComponentFilter {
   contentGuidelines_not_contains: String
   contentGuidelines_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  description: String
-  description_contains: String
-  description_exists: Boolean
-  description_in: [String]
-  description_not: String
-  description_not_contains: String
-  description_not_in: [String]
   interactions: String
   interactions_contains: String
   interactions_exists: Boolean
@@ -246,6 +249,14 @@ input ComponentFilter {
   interactions_not: String
   interactions_not_contains: String
   interactions_not_in: [String]
+  leadParagraph: String
+  leadParagraph_contains: String
+  leadParagraph_exists: Boolean
+  leadParagraph_in: [String]
+  leadParagraph_not: String
+  leadParagraph_not_contains: String
+  leadParagraph_not_in: [String]
+  modifiersCollection_exists: Boolean
   name: String
   name_contains: String
   name_exists: Boolean
@@ -253,6 +264,8 @@ input ComponentFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  statesCollection_exists: Boolean
+  stylesCollection_exists: Boolean
   sys: SysFilter
   usage: String
   usageDo: String
@@ -282,11 +295,90 @@ input ComponentFilter {
   userResearch_not: String
   userResearch_not_contains: String
   userResearch_not_in: [String]
-  variantsCollection_exists: Boolean
 }
 
 type ComponentLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+"""
+Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier)
+"""
+type ComponentModifier implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  isPreviewDarkThemed(locale: String): Boolean
+  linkedFrom(allowedLocales: [String]): ComponentModifierLinkingCollections
+  modifierId(locale: String): String
+  name(locale: String): String
+  sys: Sys!
+}
+
+type ComponentModifierCollection {
+  items: [ComponentModifier]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ComponentModifierFilter {
+  AND: [ComponentModifierFilter]
+  OR: [ComponentModifierFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  isPreviewDarkThemed: Boolean
+  isPreviewDarkThemed_exists: Boolean
+  isPreviewDarkThemed_not: Boolean
+  modifierId: String
+  modifierId_contains: String
+  modifierId_exists: Boolean
+  modifierId_in: [String]
+  modifierId_not: String
+  modifierId_not_contains: String
+  modifierId_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  sys: SysFilter
+}
+
+type ComponentModifierLinkingCollections {
+  componentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ComponentModifierOrder {
+  isPreviewDarkThemed_ASC
+  isPreviewDarkThemed_DESC
+  modifierId_ASC
+  modifierId_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type ComponentModifiersCollection {
+  items: [ComponentModifier]!
+  limit: Int!
+  skip: Int!
+  total: Int!
 }
 
 enum ComponentOrder {
@@ -303,28 +395,28 @@ enum ComponentOrder {
 }
 
 """
-Variations of components e.g. Default vs assertive button. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentVariant)
+States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState)
 """
-type ComponentVariant implements Entry {
+type ComponentState implements Entry {
   contentfulMetadata: ContentfulMetadata!
   description(locale: String): String
   isPreviewDarkThemed(locale: String): Boolean
-  linkedFrom(allowedLocales: [String]): ComponentVariantLinkingCollections
+  linkedFrom(allowedLocales: [String]): ComponentStateLinkingCollections
   name(locale: String): String
+  stateId(locale: String): String
   sys: Sys!
-  variantId(locale: String): String
 }
 
-type ComponentVariantCollection {
-  items: [ComponentVariant]!
+type ComponentStateCollection {
+  items: [ComponentState]!
   limit: Int!
   skip: Int!
   total: Int!
 }
 
-input ComponentVariantFilter {
-  AND: [ComponentVariantFilter]
-  OR: [ComponentVariantFilter]
+input ComponentStateFilter {
+  AND: [ComponentStateFilter]
+  OR: [ComponentStateFilter]
   contentfulMetadata: ContentfulMetadataFilter
   description: String
   description_contains: String
@@ -343,26 +435,28 @@ input ComponentVariantFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  stateId: String
+  stateId_contains: String
+  stateId_exists: Boolean
+  stateId_in: [String]
+  stateId_not: String
+  stateId_not_contains: String
+  stateId_not_in: [String]
   sys: SysFilter
-  variantId: String
-  variantId_contains: String
-  variantId_exists: Boolean
-  variantId_in: [String]
-  variantId_not: String
-  variantId_not_contains: String
-  variantId_not_in: [String]
 }
 
-type ComponentVariantLinkingCollections {
+type ComponentStateLinkingCollections {
   componentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
 }
 
-enum ComponentVariantOrder {
+enum ComponentStateOrder {
   isPreviewDarkThemed_ASC
   isPreviewDarkThemed_DESC
   name_ASC
   name_DESC
+  stateId_ASC
+  stateId_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -371,12 +465,90 @@ enum ComponentVariantOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
-  variantId_ASC
-  variantId_DESC
 }
 
-type ComponentVariantsCollection {
-  items: [ComponentVariant]!
+type ComponentStatesCollection {
+  items: [ComponentState]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+"""
+Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle)
+"""
+type ComponentStyle implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  isPreviewDarkThemed(locale: String): Boolean
+  linkedFrom(allowedLocales: [String]): ComponentStyleLinkingCollections
+  name(locale: String): String
+  styleId(locale: String): String
+  sys: Sys!
+}
+
+type ComponentStyleCollection {
+  items: [ComponentStyle]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ComponentStyleFilter {
+  AND: [ComponentStyleFilter]
+  OR: [ComponentStyleFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  isPreviewDarkThemed: Boolean
+  isPreviewDarkThemed_exists: Boolean
+  isPreviewDarkThemed_not: Boolean
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  styleId: String
+  styleId_contains: String
+  styleId_exists: Boolean
+  styleId_in: [String]
+  styleId_not: String
+  styleId_not_contains: String
+  styleId_not_in: [String]
+  sys: SysFilter
+}
+
+type ComponentStyleLinkingCollections {
+  componentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ComponentStyleOrder {
+  isPreviewDarkThemed_ASC
+  isPreviewDarkThemed_DESC
+  name_ASC
+  name_DESC
+  styleId_ASC
+  styleId_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type ComponentStylesCollection {
+  items: [ComponentStyle]!
   limit: Int!
   skip: Int!
   total: Int!
@@ -388,7 +560,7 @@ Documentation for content guidelines. [See type definition](https://app.contentf
 type ContentGuideline implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
+  leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ContentGuidelineLinkingCollections
   name(locale: String): String
   sys: Sys!
@@ -412,13 +584,13 @@ input ContentGuidelineFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  description: String
-  description_contains: String
-  description_exists: Boolean
-  description_in: [String]
-  description_not: String
-  description_not_contains: String
-  description_not_in: [String]
+  leadParagraph: String
+  leadParagraph_contains: String
+  leadParagraph_exists: Boolean
+  leadParagraph_in: [String]
+  leadParagraph_not: String
+  leadParagraph_not_contains: String
+  leadParagraph_not_in: [String]
   name: String
   name_contains: String
   name_exists: Boolean
@@ -519,7 +691,7 @@ Documentation for foundations. [See type definition](https://app.contentful.com/
 type Foundation implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
+  leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): FoundationLinkingCollections
   name(locale: String): String
   sys: Sys!
@@ -543,13 +715,13 @@ input FoundationFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  description: String
-  description_contains: String
-  description_exists: Boolean
-  description_in: [String]
-  description_not: String
-  description_not_contains: String
-  description_not_in: [String]
+  leadParagraph: String
+  leadParagraph_contains: String
+  leadParagraph_exists: Boolean
+  leadParagraph_in: [String]
+  leadParagraph_not: String
+  leadParagraph_not_contains: String
+  leadParagraph_not_in: [String]
   name: String
   name_contains: String
   name_exists: Boolean
@@ -720,8 +892,12 @@ type Query {
   codeStandardCollection(limit: Int = 100, locale: String, order: [CodeStandardOrder], preview: Boolean, skip: Int = 0, where: CodeStandardFilter): CodeStandardCollection
   component(id: String!, locale: String, preview: Boolean): Component
   componentCollection(limit: Int = 100, locale: String, order: [ComponentOrder], preview: Boolean, skip: Int = 0, where: ComponentFilter): ComponentCollection
-  componentVariant(id: String!, locale: String, preview: Boolean): ComponentVariant
-  componentVariantCollection(limit: Int = 100, locale: String, order: [ComponentVariantOrder], preview: Boolean, skip: Int = 0, where: ComponentVariantFilter): ComponentVariantCollection
+  componentModifier(id: String!, locale: String, preview: Boolean): ComponentModifier
+  componentModifierCollection(limit: Int = 100, locale: String, order: [ComponentModifierOrder], preview: Boolean, skip: Int = 0, where: ComponentModifierFilter): ComponentModifierCollection
+  componentState(id: String!, locale: String, preview: Boolean): ComponentState
+  componentStateCollection(limit: Int = 100, locale: String, order: [ComponentStateOrder], preview: Boolean, skip: Int = 0, where: ComponentStateFilter): ComponentStateCollection
+  componentStyle(id: String!, locale: String, preview: Boolean): ComponentStyle
+  componentStyleCollection(limit: Int = 100, locale: String, order: [ComponentStyleOrder], preview: Boolean, skip: Int = 0, where: ComponentStyleFilter): ComponentStyleCollection
   contentGuideline(id: String!, locale: String, preview: Boolean): ContentGuideline
   contentGuidelineCollection(limit: Int = 100, locale: String, order: [ContentGuidelineOrder], preview: Boolean, skip: Int = 0, where: ContentGuidelineFilter): ContentGuidelineCollection
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
@@ -737,7 +913,7 @@ Documentation for resources. [See type definition](https://app.contentful.com/sp
 type Resource implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
-  description(locale: String): String
+  leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ResourceLinkingCollections
   name(locale: String): String
   sys: Sys!
@@ -761,13 +937,13 @@ input ResourceFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
-  description: String
-  description_contains: String
-  description_exists: Boolean
-  description_in: [String]
-  description_not: String
-  description_not_contains: String
-  description_not_in: [String]
+  leadParagraph: String
+  leadParagraph_contains: String
+  leadParagraph_exists: Boolean
+  leadParagraph_in: [String]
+  leadParagraph_not: String
+  leadParagraph_not_contains: String
+  leadParagraph_not_in: [String]
   name: String
   name_contains: String
   name_exists: Boolean

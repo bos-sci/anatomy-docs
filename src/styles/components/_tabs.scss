@@ -19,7 +19,7 @@
     display: block;
     width: space(xxs);
     height: space(6x);
-    box-shadow: - space(sm) 0 space(lg) space(md) $neutral-lightest;
+    box-shadow: - space(sm) 0 space(lg) space(md) $neutral-100;
     border-width: 0;
     content: '';
     pointer-events: none;
@@ -33,7 +33,7 @@
   border: 0;
   padding: space(lg) space(2x);
   background: transparent;
-  color: $neutral-dark;
+  color: $neutral-40;
   font-family: $font-family-base-regular;
 
   &::after
@@ -50,11 +50,11 @@
   &:not([disabled]):active
   {
     background: transparent;
-    color: $action-primary-dark;
+    color: $action-primary-40;
 
     &::after
     {
-      background: $action-primary-dark;
+      background: $action-primary-40;
     }
   }
 
@@ -65,20 +65,20 @@
 
   &[aria-selected="true"]
   {
-    color: $neutral-darkest;
+    color: $neutral-00;
     font-family: $font-family-base-heavy;
 
     &::after
     {
       height: space(sm);
-      background: $neutral-darkest;
+      background: $neutral-00;
     }
   }
 
   &[disabled]
   {
     background: transparent;
-    color: $neutral;
+    color: $neutral-60;
     font-family: $font-family-base-regular;
     cursor: not-allowed;
   }
@@ -86,7 +86,7 @@
 
 .ads-tab-panels
 {
-  border-top: space(xxs) solid $neutral-light;
+  border-top: space(xxs) solid $neutral-80;
   padding-top: space(3x);
 }
 

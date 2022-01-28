@@ -1,11 +1,15 @@
 import { useState, useEffect, useContext } from 'react';
-import NavSecondary, { NavItem } from '../shared/navSecondary/NavSecondary';
+import { NavItemSecondary } from '../shared/components/navSecondary/NavSecondary';
+import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
-import PageHeader from '../shared/pageHeader/PageHeader';
-import Markdown from '../shared/Markdown';
+import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
-import { Foundation, useGetFoundationQuery } from '../../types/contentful';
-import { IdLookup } from '../../types/docs';
+import { GetFoundationQuery, useGetFoundationQuery } from '../shared/types/contentful';
+import { IdLookup } from '../shared/types/docs';
+import useTitle from '../shared/hooks/useTitle';
+import useHashScroll from '../shared/hooks/useHashScroll';
+import useHeadings from '../shared/hooks/useHeadings';
+import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
 
 interface ComponentMatch extends match {
   params: {
@@ -19,8 +23,9 @@ interface Props {
 
 const Foundations = (props:  Props): JSX.Element => {
   const foundationName = props.match.params.foundationName;
-  let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
-  let [foundationData, setFoundationData] = useState<Foundation>({} as Foundation);
+  const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
+  const [foundationData, setFoundationData] = useState<GetFoundationQuery['foundation']>({} as GetFoundationQuery['foundation']);
+  const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
@@ -38,7 +43,7 @@ const Foundations = (props:  Props): JSX.Element => {
 
   useEffect(() => {
     if (data?.foundation) {
-      setFoundationData(data.foundation as Foundation);
+      setFoundationData(data.foundation);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
     const pathPrefix = basePath + '/';
@@ -63,17 +68,30 @@ const Foundations = (props:  Props): JSX.Element => {
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
 
+  useTitle({titlePrefix: `${foundationData?.name} - Foundations`});
+  useHashScroll(!!foundationData?.content);
+
+  const pageHeadings = useHeadings(foundationData?.name);
+  useEffect(() => {
+    if (foundationData?.name) {
+      setHeadings(pageHeadings.map(heading => {
+        return {
+          id: heading.id as string,
+          text: heading.textContent as string
+        };
+      }));
+    }
+  }, [foundationData?.name, pageHeadings]);
+
   return (
-    <div className="app-content">
-      { navItems && <NavSecondary navItems={ navItems } /> }
-        <main>
-          {foundationData.sys && <>
-            <PageHeader name={ foundationData.name || '' } publishedAt={ foundationData.sys.publishedAt } />
-            <Markdown markdown={ foundationData.description || ''} className="body-assertive" />
-            <Markdown markdown={ foundationData.content || ''} headingOffset={1} />
-          </>}
-        </main>
-    </div>
+    <PageTemplate
+      name={foundationData?.name || ''}
+      lastUpdated={foundationData?.sys?.publishedAt}
+      leadParagraph={foundationData?.leadParagraph || ''}
+      navSecondaryItems={navItems}
+      navTertiaryItems={headings}>
+      <Markdown markdown={foundationData?.content || ''} headingOffset={1} />
+    </PageTemplate>
   );
 }
 

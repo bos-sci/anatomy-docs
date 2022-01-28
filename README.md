@@ -2,6 +2,21 @@
 
 Anatomy is Boston Scientific's design system. It's goal is to create a unified look and feel accross Boston Scientific applications. It also promotes design and development best practices and accessibility standards.
 
+## Table of Contents
+
+- [Environments](#environments)
+- [Contributing](#contributing)
+  - [Architecture](#architecture)
+  - [Process](#process)
+    - [Local Setup](#local-setup)
+    - [Development](#development)
+    - [Deploy to Production](#deploy-to-production)
+  - [Naming Conventions](#naming-conventions)
+    - [Git Naming](#git-naming)
+    - [Filesystem Naming](#filesystem-naming)
+  - [GraphQL](#graphql)
+- [Scripts](#scripts)
+
 ## Environments
 
 Name | Link | Status
@@ -17,12 +32,11 @@ Detailed below is a brief map of the application detailing the important files a
   - **assets/** Fonts & images
   - **components/** Where all the docs code lives. Sub folders break app into sections based on the primary nav routes
     - **App.js** Handles routing, base layout, and setting idMap context
-    - **shared/** Components used multiple times throughout the application
+    - **shared/** Components, custom hooks, and types used multiple times throughout the application
     - **codeStandards/** Code Standards documentation
     - **components/** Component documentation
       - **variations/** All the different implementations of component variations e.g. primary button and secondary button
-  - **hooks/** Custom hooks
-  - **styles/** Global stylesheets
+  - **styles/** Global stylesheets used both in docs and library
 
 ### Process
 
@@ -53,6 +67,36 @@ REACT_EDITOR=code
 *See [PR naming](#branches) guidelines below.*
 5. PR can only be merged after it has been reviewed and all tests pass.
 
+##### Adding a primary section to the docs site
+Steps for adding a site section that will be accessible from the primary navigation.
+1. Create content model in Contentful (use singular name, e.g.: Content Guideline > Name, Description, Content).
+2. Get idLookup data working for query in App component.
+    1. Update `getCollections.graphql` following existing pattern.
+    2. Update the TS interface IdLookup in `/types/docs.ts`.
+    3. Update the following in `App.tsx`.
+        1. `initialIdLookup` variable.
+        2. Add another `createLookup` function call in `useEffect`.
+3. Update TS interface in `/types/docs.ts`.
+4. Create site section folder in `/docs`.
+    1. Create Router, redirect to default route.
+5. Add parent routing in `App.tsx`.
+6. Add site section link in `navPrimary.tsx`.
+7. Be sure to restart your local server to regen Contentful types and clear errors.
+
+##### Adding a new field to an existing section
+Steps for adding a new field to an existing section.
+1. Add field to content model in Contentful, following naming conventions as outlined in [adding a primary section to the docs site](#adding-a-primary-section-to-the-docs-site).
+2. Update `get{Collection}.graphql`.
+3. Be sure to restart your local server to regen Contentful types and clear errors.
+
+##### Adding a component to the library
+1. Add component in `/library`.
+2. Add subfolder in `/docs/components` with a variants controller, e.g. `ButtonVariants.tsx`.
+3. Add variants.
+    - Cases in switch case must match variant ids in Contentful (spacing and casing).
+4. Add component to `Preview.tsx`.
+    - Case in switch case must match docs site route for that component.
+
 #### Deploy to Production
 1. In Contentful, point the master alias environment at the working environment.
 This environment is now the production environment.
@@ -61,7 +105,7 @@ This environment is now the production environment.
 4. Go to the master environment then `Settings > API Keys > Anatomy Docs > Environments` and give the API access to the
 new working environment.
 5. Update local .env files with the new working environment name.
-6. Update netlify.toml with new working environment name in a branch i.e. `deploy/{environment-name}`. Commit/push changes and create/merge branch into develop.
+6. Update `netlify.toml` with new working environment name in a branch i.e. `deploy/{environment-name}`. Commit/push changes and create/merge branch into develop.
 7. Create pull request from develop into master.
 8. Once all tests have passed and the preview is built and reviewed, the PR can be merged.
 
@@ -75,7 +119,6 @@ In the end we should have 4 environments including master, working environment, 
 If the work is tied to a ticket, the branch should be named using the pattern `feature/xdc-###` or `bug/xdc-###`.
 In any case where the work doesn't have a ticket, the ticket name can be replaced with a brief kebab-cased description.
 If the changes are part of the deploy process, the branch should be named `deploy/{working-contentful-environment-name}`.
-If the changes are updating Contentful environments, the branch should be named `env/{working-contentful-environment-name}`.
 
 ##### Pull Requests
 Pull requests should start with the branch name, followed by a brief description of the work e.g. `feature/xcd-### Buttons`.
@@ -95,7 +138,7 @@ https://graphql.contentful.com/content/v1/spaces/{spaceID}/explore?access_token=
 
 spaceID and accessToken can be found in your .env file or through the contentful dashboard.
 
-## Available Scripts
+## Scripts
 
 In the project directory, you can run:
 

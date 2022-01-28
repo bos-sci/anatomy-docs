@@ -24,12 +24,12 @@
 .ads-input-error
 {
   margin: space(md) 0 0 0;
-  color: $feedback-error-dark;
+  color: $feedback-error-40;
 }
 
 .ads-input-help-text
 {
   margin: space(sm) 0 0 0;
   @include font-size($fs-body-subtle);
-  color: $neutral-dark;
+  color: $neutral-40;
 }

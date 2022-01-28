@@ -1,11 +1,15 @@
 import { useState, useEffect, useContext } from 'react';
-import NavSecondary, { NavItem } from '../shared/navSecondary/NavSecondary';
+import { NavItemSecondary } from '../shared/components/navSecondary/NavSecondary';
+import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
-import PageHeader from '../shared/pageHeader/PageHeader';
-import Markdown from '../shared/Markdown';
+import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
-import { CodeStandard, useGetCodeStandardQuery } from '../../types/contentful';
-import { IdLookup } from '../../types/docs';
+import { GetCodeStandardQuery, useGetCodeStandardQuery } from '../shared/types/contentful';
+import { IdLookup } from '../shared/types/docs';
+import useTitle from '../shared/hooks/useTitle';
+import useHashScroll from '../shared/hooks/useHashScroll';
+import useHeadings from '../shared/hooks/useHeadings';
+import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
 
 interface ComponentMatch extends match {
   params: {
@@ -19,8 +23,9 @@ interface Props {
 
 const CodeStandards = (props:  Props): JSX.Element => {
   const standardName = props.match.params.standardName;
-  let [navItems, setNavItems] = useState<NavItem[]>([] as NavItem[]);
-  let [codeStandardData, setCodeStandardData] = useState<CodeStandard>({} as CodeStandard);
+  const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
+  const [codeStandardData, setCodeStandardData] = useState<GetCodeStandardQuery['codeStandard']>({} as GetCodeStandardQuery['codeStandard']);
+  const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
@@ -37,7 +42,7 @@ const CodeStandards = (props:  Props): JSX.Element => {
 
   useEffect(() => {
     if (data?.codeStandard) {
-      setCodeStandardData(data.codeStandard as CodeStandard);
+      setCodeStandardData(data.codeStandard);
     }
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
     const pathPrefix = basePath + '/';
@@ -59,32 +64,44 @@ const CodeStandards = (props:  Props): JSX.Element => {
         slug: pathPrefix + 'css'
       },
       {
-        text: 'Javascript',
+        text: 'JavaScript',
         slug: pathPrefix + 'javascript'
       },
       {
         text: 'DevOps',
         slug: pathPrefix + 'devops'
       },
-      {
-        text: 'Automated code quality tools',
-        slug: pathPrefix + 'automated-code-quality-tools'
-      },
     ];
     setNavItems(navItems);
   }, [data, idLookup, props.match.path]);
 
-  return (
-    <div className="app-content">
-      { navItems && <NavSecondary navItems={ navItems } /> }
-        <main>
-          {codeStandardData.sys && <>
-            <PageHeader name={ codeStandardData.name || '' } publishedAt={ codeStandardData.sys.publishedAt } />
-            <Markdown markdown={ codeStandardData.content || ''} />
-          </>}
-        </main>
-    </div>
-  );
+  useTitle({titlePrefix: `${codeStandardData?.name} - Code Standards`});
+  useHashScroll(!!codeStandardData?.content);
+
+  const pageHeadings = useHeadings(codeStandardData?.name);
+  useEffect(() => {
+    if (codeStandardData?.name) {
+      setHeadings(pageHeadings.map(heading => {
+        return {
+          id: heading.id as string,
+          text: heading.textContent as string
+        };
+      }));
+    }
+  }, [codeStandardData?.name, pageHeadings]);
+
+  if (codeStandardData) {
+    return (
+      <PageTemplate
+        name={codeStandardData?.name || ''}
+        lastUpdated={codeStandardData?.sys?.publishedAt}
+        leadParagraph={codeStandardData?.leadParagraph || ''}
+        navSecondaryItems={navItems}
+        navTertiaryItems={headings}>
+        <Markdown markdown={ codeStandardData?.content || '' } />
+      </PageTemplate>
+    );
+  } else return <></>;
 }
 
 export default CodeStandards;

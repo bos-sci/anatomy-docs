@@ -1,7 +1,7 @@
 query getContentGuideline($id: String!, $preview: Boolean) {
   contentGuideline(id: $id, preview: $preview) {
     name
-    description
+    leadParagraph
     content
     sys {
       id

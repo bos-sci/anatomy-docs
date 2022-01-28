@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, lazy, Suspense } from 'react';
+import { useState, useEffect, createContext, lazy, Suspense, useCallback } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,9 +6,9 @@ import {
   Redirect
 } from "react-router-dom";
 import { slugify } from './helpers';
-import NavPrimary from './shared/navPrimary/NavPrimary';
-import {  useGetCollectionsQuery } from '../types/contentful';
-import { IdLookup } from '../types/docs';
+import NavPrimary from './shared/components/navPrimary/NavPrimary';
+import { useGetCollectionsQuery } from './shared/types/contentful';
+import { IdLookup, IdLookupEntry } from './shared/types/docs';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
@@ -16,13 +16,24 @@ const ContentGuidelinesRouter = lazy(() => import('./contentGuidelines/ContentGu
 const FoundationsRouter = lazy(() => import('./foundations/FoundationsRouter'));
 const ResourcesRouter = lazy(() => import('./resources/ResourcesRouter'));
 
-export const IdLookupContext = createContext({
+interface Collection {
+  items: {
+    sys: {
+      id: string;
+    }
+    name: string;
+  }[];
+}
+
+const initialIdLookup: IdLookup = {
   contentGuidelines: {},
   components: {},
   codeStandards: {},
   foundations: {},
   resources: {}
-});
+};
+
+export const IdLookupContext = createContext<IdLookup>(initialIdLookup);
 
 const App = (): JSX.Element => {
   const [idLookup, setIdLookup] = useState<IdLookup>({} as IdLookup);
@@ -37,85 +48,50 @@ const App = (): JSX.Element => {
     console.error(error);
   }
 
+  const createLookup = useCallback((collection: Collection, destination: IdLookupEntry) => {
+    collection.items.forEach((item) => (
+      destination[slugify(item?.name as string)] = {
+        id: item?.sys.id,
+        name: item?.name
+      })
+    );
+  }, []);
+
   useEffect(() => {
     if (data) {
-      const idMap: IdLookup = {
-        foundations: {},
-        contentGuidelines: {},
-        codeStandards: {},
-        components: {},
-        resources: {}
-      };
-      data.foundationCollection?.items.forEach((item) => (
-        idMap.foundations[slugify(item?.name as string)] = {
-          id: item?.sys.id as string,
-          name: item?.name as string
-        })
-      );
-      data.contentGuidelineCollection?.items.forEach((item) => (
-        idMap.contentGuidelines[slugify(item?.name as string)] = {
-          id: item?.sys.id as string,
-          name: item?.name as string
-        })
-      );
-      data.codeStandardCollection?.items.forEach((item) => (
-        idMap.codeStandards[slugify(item?.name as string)] = {
-          id: item?.sys.id as string,
-          name: item?.name as string
-        })
-      );
-      data.componentCollection?.items.forEach((item) => (
-        idMap.components[slugify(item?.name as string)] = {
-          id: item?.sys.id as string,
-          name: item?.name as string
-        })
-      );
-      data.resourceCollection?.items.forEach((item) => (
-        idMap.resources[slugify(item?.name as string)] = {
-          id: item?.sys.id as string,
-          name: item?.name as string
-        })
-      );
+      const idMap: IdLookup = initialIdLookup;
+      createLookup(data.foundationCollection as Collection, idMap.foundations);
+      createLookup(data.contentGuidelineCollection as Collection, idMap.contentGuidelines);
+      createLookup(data.codeStandardCollection as Collection, idMap.codeStandards);
+      createLookup(data.componentCollection as Collection, idMap.components);
+      createLookup(data.resourceCollection as Collection, idMap.resources);
+
       setIdLookup(idMap);
       setIsLookupReady(true);
     }
-  }, [data]);
-
-  const clearSession = () => {
-    sessionStorage.clear();
-    window.location.reload();
-  }
+  }, [data, createLookup]);
 
   return (
     <Router>
-      <div className="grid-container">
-        {process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true' &&
-          <button className="ads-button-subtle clear-storage" onClick={clearSession}>Clear Session</button>
+      <IdLookupContext.Provider value={idLookup}>
+        <NavPrimary />
+        {isLookupReady &&
+          <div className="app-body">
+            <Suspense fallback={<main><p>Loading...</p></main>}>
+              <Switch>
+                <Route exact path="/">
+                  <Redirect to="/content" />
+                </Route>
+                <Route path="/components" component={ComponentsRouter} />
+                <Route path="/resources/developers/code-standards" component={CodeStandardsRouter} />
+                <Route path="/content" component={ContentGuidelinesRouter} />
+                <Route path="/foundations" component={FoundationsRouter} />
+                <Route path="/resources" component={ResourcesRouter} />
+              </Switch>
+            </Suspense>
+          </div>
         }
-        <IdLookupContext.Provider value={idLookup}>
-          <NavPrimary />
-          {isLookupReady &&
-            <div className="container-fluid container-lg app-body">
-              <div className="row">
-                <div className="col-12 col-lg-9 col-xl-10">
-                  <Suspense fallback={<p>Loading...</p>}>
-                    <Switch>
-                      <Route exact path="/">
-                        <Redirect to="/content" />
-                      </Route>
-                      <Route path="/components" component={ComponentsRouter} />
-                      <Route path="/code-standards" component={CodeStandardsRouter} />
-                      <Route path="/content" component={ContentGuidelinesRouter} />
-                      <Route path="/foundations" component={FoundationsRouter} />
-                      <Route path="/resources" component={ResourcesRouter} />
-                    </Switch>
-                  </Suspense>
-                </div>
-              </div>
-            </div>
-          }
-        </IdLookupContext.Provider>
-      </div>
+      </IdLookupContext.Provider>
     </Router>
   );
 }
