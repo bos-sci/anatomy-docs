@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/role-supports-aria-props */
 // TODO: look at how we handle ids
 
-import { ChangeEvent, FocusEvent, InputHTMLAttributes, InvalidEvent, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FocusEvent, ForwardedRef, forwardRef, InputHTMLAttributes, InvalidEvent, MutableRefObject, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { getValidationMessage } from '../helpers/validation';
 import { AddonProps, RadioAddonPropsContext } from './RadioGroup';
 
@@ -14,7 +14,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 let radioId = 0;
 
-const InputRadio = ({ label, helpText, forceValidation, onBlur, onInput, onInvalid, ...inputAttrs }: Props): JSX.Element => {
+const InputRadio = forwardRef(({ label, helpText, forceValidation, onBlur, onInput, onInvalid, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
 
   const [inputId, setInputId] = useState('');
   const [helpTextId, setHelpTextId] = useState('');
@@ -25,11 +25,10 @@ const InputRadio = ({ label, helpText, forceValidation, onBlur, onInput, onInval
 
   const validate = useCallback(() => {
     if (inputEl.current) {
-      inputEl.current.setCustomValidity(errorText);
       const isValid = inputEl.current.checkValidity();
       if (isValid) addonProps.setFieldsetError('');
     }
-  }, [inputEl, addonProps, errorText]);
+  }, [inputEl, addonProps]);
 
   const handleInvalid = (e: InvalidEvent<HTMLInputElement>) => {
     addonProps.setFieldsetError(getValidationMessage(e.target));
@@ -61,23 +60,36 @@ const InputRadio = ({ label, helpText, forceValidation, onBlur, onInput, onInval
   }, [validate, addonProps]);
 
   useEffect(() => {
-    const idNum = ++radioId;
-    setInputId('radio' + idNum);
-    setHelpTextId('radioHelpText' + idNum);
-  }, []);
-
-  useEffect(() => {
     if (forceValidation && addonProps.setIsDirty) {
       addonProps.setIsDirty(true);
       validate();
     }
   }, [forceValidation, validate, addonProps]);
 
+  useEffect(() => {
+    inputEl?.current?.setCustomValidity(errorText ? errorText : '');
+  }, [inputEl, errorText]);
+
+  useEffect(() => {
+    const idNum = ++radioId;
+    setInputId('radio' + idNum);
+    setHelpTextId('radioHelpText' + idNum);
+  }, []);
+
   return (
     <div className="ads-input">
       <div className="ads-input-radio">
         <input
-          ref={inputEl}
+          ref={node => {
+            if (node) {
+              (inputEl as MutableRefObject<HTMLInputElement>).current = node;
+              if (typeof ref === 'function') {
+                ref(node);
+              } else if (ref) {
+                (ref as MutableRefObject<HTMLInputElement>).current = node;
+              }
+            }
+          }}
           type="radio"
           id={inputId}
           className="ads-input-radio-input"
@@ -86,13 +98,12 @@ const InputRadio = ({ label, helpText, forceValidation, onBlur, onInput, onInval
           onInput={handleChange}
           aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
           aria-invalid={addonProps.ariaInvalid && addonProps.isDirty}
-          formNoValidate
           {...inputAttrs} />
         <label htmlFor={inputId} className="ads-input-radio-label">{ label }</label>
       </div>
       { helpText && <p id={helpTextId} className="ads-input-help-text">{ helpText }</p> }
     </div>
   );
-}
+});
 
 export default InputRadio;
