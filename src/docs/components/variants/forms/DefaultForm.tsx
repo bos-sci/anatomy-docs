@@ -34,6 +34,7 @@ const DefaultForm = () => {
   return (
     <Example>
       <h2>Form example</h2>
+      <p>Submit the form to see an example of validation.</p>
       <Form onSubmit={handleSubmit} onInvalid={handleInvalid}>
         <div className="ads-form-control">
           <InputText
