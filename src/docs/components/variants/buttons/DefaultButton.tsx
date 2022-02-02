@@ -3,7 +3,7 @@ import Example from '../../../shared/components/Example';
 
 const DefaultButton = (): JSX.Element => {
   return (
-    <Example>
+    <Example isFlex={true}>
       <Button type="button">Text button</Button>
     </Example>
   );

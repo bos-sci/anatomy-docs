@@ -3,7 +3,7 @@ import Example from '../../../shared/components/Example';
 
 const GhostStyle = (): JSX.Element => {
   return (
-    <Example isDarkTheme={true}>
+    <Example isFlex={true} isDarkTheme={true}>
       <Button variant="ghost" type="button">Text button</Button>
       <Button variant="ghost" type="button" icon="plus">
         Icon left

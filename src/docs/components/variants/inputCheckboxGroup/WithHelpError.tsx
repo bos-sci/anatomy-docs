@@ -38,20 +38,22 @@ const WithHelpError = (): JSX.Element => {
 
   return (
     <Example>
-      <Fieldset
-        legend="Legend"
-        helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
-        errorText={errorText}>
-        {checkboxes.map((checkbox, i) => (
-          <InputCheckbox
-            key={'checkboxListWithError' + i}
-            label={checkbox.text}
-            aria-describedby="listErrorText"
-            onChange={e => handleChange(e, i)}
-            aria-invalid={!!errorText}
-            defaultChecked={checkbox.isChecked} />
-        ))}
-      </Fieldset>
+      <div className="ads-form-control">
+        <Fieldset
+          legend="Legend"
+          helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
+          errorText={errorText}>
+          {checkboxes.map((checkbox, i) => (
+            <InputCheckbox
+              key={'checkboxListWithError' + i}
+              label={checkbox.text}
+              aria-describedby="listErrorText"
+              onChange={e => handleChange(e, i)}
+              aria-invalid={!!errorText}
+              defaultChecked={checkbox.isChecked} />
+          ))}
+        </Fieldset>
+      </div>
     </Example>
   );
 }

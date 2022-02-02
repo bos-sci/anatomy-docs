@@ -10,10 +10,12 @@ const WithError = (): JSX.Element => {
   return (
     <Example>
       <Form onSubmit={handleSubmit}>
-        <RadioGroup legend="Legend">
-          <InputRadio label="Radio 1" name="groupRequired" value="errorRequired1" required forceValidation={true} />
-          <InputRadio label="Radio 2" name="groupRequired" value="errorRequired2" required />
-        </RadioGroup>
+        <div className="ads-form-control u-clear-top">
+          <RadioGroup legend="Legend">
+            <InputRadio label="Radio 1" name="groupRequired" value="errorRequired1" required forceValidation={true} />
+            <InputRadio label="Radio 2" name="groupRequired" value="errorRequired2" required />
+          </RadioGroup>
+        </div>
       </Form>
     </Example>
   );

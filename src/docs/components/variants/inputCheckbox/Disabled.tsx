@@ -4,8 +4,12 @@ import Example from '../../../shared/components/Example';
 const Disabled = (): JSX.Element => {
   return (
     <Example>
-      <InputCheckbox label="Disabled checkbox" disabled/>
-      <InputCheckbox label="Disabled checked checkbox" disabled defaultChecked />
+      <div className="ads-form-control">
+        <InputCheckbox label="Disabled checkbox" disabled/>
+      </div>
+      <div className="ads-form-control">
+        <InputCheckbox label="Disabled checked checkbox" disabled defaultChecked />
+      </div>
     </Example>
   );
 }

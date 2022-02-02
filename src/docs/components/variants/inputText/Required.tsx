@@ -16,7 +16,9 @@ const Required = (): JSX.Element => {
   return (
     <Example>
       <Form onSubmit={handleSubmit}>
-        <InputText label="Required text input" forceValidation={didSubmit} required />
+        <div className="ads-form-control u-clear-top">
+          <InputText label="Required text input" forceValidation={didSubmit} required />
+        </div>
       </Form>
     </Example>
   );
