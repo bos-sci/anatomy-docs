@@ -12,7 +12,7 @@ interface ADSInputElement extends HTMLInputElement {
   validate: () => void;
 }
 
-const DefaultForms = () => {
+const DefaultForm = () => {
 
   const noSpacesError = 'This is an example of an error message. Delete the spaces to clear the error message.';
   const [noSpacesInputError, setNoSpacesInputError] = useState(noSpacesError);
@@ -76,4 +76,4 @@ const DefaultForms = () => {
   );
 }
 
-export default DefaultForms;
+export default DefaultForm;
