@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import Fallback from './Fallback';
 
 interface Props {
@@ -13,56 +13,65 @@ export interface VariantProps {
 }
 
 const Preview = ( props: Props ): JSX.Element => {
-  let RenderedComponent;
 
-  switch (props.component) {
-    case 'breadcrumbs':
-      const DefaultBreadcrumbs = lazy(() => import('./breadcrumbs/DefaultBreadcrumbs'));
-      RenderedComponent = <DefaultBreadcrumbs />;
-      break;
+  const [renderedComponent, setRenderedComponent] = useState<JSX.Element>(<></>);
 
-    case 'button':
-      const ButtonVariants = lazy(() => import('./buttons/ButtonVariants'));
-      RenderedComponent = <ButtonVariants variantId={props.variantId as string} />;
-      break;
+  useEffect(() => {
+    const variantId = props.variantId as string;
+    switch (props.component) {
+      case 'breadcrumbs':
+        const DefaultBreadcrumbs = lazy(() => import('./breadcrumbs/DefaultBreadcrumbs'));
+        setRenderedComponent(<DefaultBreadcrumbs />);
+        break;
 
-    case 'checkbox':
-      const InputCheckboxVariants = lazy(() => import('./inputCheckbox/inputCheckboxVariants'));
-      RenderedComponent = <InputCheckboxVariants variantId={props.variantId as string} />;
-      break;
+      case 'button':
+        const ButtonVariants = lazy(() => import('./buttons/ButtonVariants'));
+        setRenderedComponent(<ButtonVariants variantId={variantId} />);
+        break;
 
-    case 'checkbox-group':
-      const InputCheckboxGroupVariants = lazy(() => import('./inputCheckboxGroup/InputCheckboxGroupVariants'));
-      RenderedComponent = <InputCheckboxGroupVariants variantId={props.variantId as string} />;
-      break;
+      case 'checkbox':
+        const InputCheckboxVariants = lazy(() => import('./inputCheckbox/inputCheckboxVariants'));
+        setRenderedComponent(<InputCheckboxVariants variantId={variantId} />);
+        break;
 
-    case 'link':
-      const LinkVariants = lazy(() => import('./link/LinkVariants'));
-      RenderedComponent = <LinkVariants variantId={props.variantId as string} />;
-      break;
+      case 'checkbox-group':
+        const InputCheckboxGroupVariants = lazy(() => import('./inputCheckboxGroup/InputCheckboxGroupVariants'));
+        setRenderedComponent(<InputCheckboxGroupVariants variantId={variantId} />);
+        break;
 
-    case 'radio-group':
-      const InputRadioGroupVariants = lazy(() => import('./inputRadioGroup/InputRadioGroupVariants'));
-      RenderedComponent = <InputRadioGroupVariants variantId={props.variantId as string} />;
-      break;
+      case 'form':
+        const DefaultForm = lazy(() => import('./forms/DefaultForm'));
+        setRenderedComponent(<DefaultForm />);
+        break;
 
-    case 'tabs':
-      const DefaultTabs = lazy(() => import('./tabs/DefaultTabs'));
-      RenderedComponent = <DefaultTabs />;
-      break;
+      case 'link':
+        const LinkVariants = lazy(() => import('./link/LinkVariants'));
+        setRenderedComponent(<LinkVariants variantId={variantId} />);
+        break;
 
-    case 'text-input':
-      const InputTextVariants = lazy(() => import('./inputText/InputTextVariants'));
-      RenderedComponent = <InputTextVariants variantId={props.variantId as string} />;
-      break;
+      case 'radio-group':
+        const InputRadioGroupVariants = lazy(() => import('./inputRadioGroup/InputRadioGroupVariants'));
+        setRenderedComponent(<InputRadioGroupVariants variantId={variantId} />);
+        break;
 
-    default:
-      RenderedComponent = <p>Failed to load component!</p>;
-  }
+      case 'tabs':
+        const DefaultTabs = lazy(() => import('./tabs/DefaultTabs'));
+        setRenderedComponent(<DefaultTabs />);
+        break;
+
+      case 'text-input':
+        const InputTextVariants = lazy(() => import('./inputText/InputTextVariants'));
+        setRenderedComponent(<InputTextVariants variantId={variantId} />);
+        break;
+
+      default:
+        setRenderedComponent(<p>Failed to load component!</p>);
+    }
+  }, [props.variantId, props.component]);
 
   return (
     <Suspense fallback={<Fallback />}>
-      { RenderedComponent }
+      { renderedComponent }
     </Suspense>
   );
 }

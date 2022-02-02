@@ -7,11 +7,13 @@ const WithHelp = (): JSX.Element => {
 
   return (
     <Example>
-      <InputCheckbox
-        label="Checkbox"
-        helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
-        onChange={() => setIsChecked(!isChecked)}
-        checked={isChecked} />
+      <div className="ads-form-control">
+        <InputCheckbox
+          label="Checkbox"
+          helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
+          onChange={() => setIsChecked(!isChecked)}
+          checked={isChecked} />
+      </div>
     </Example>
   );
 }

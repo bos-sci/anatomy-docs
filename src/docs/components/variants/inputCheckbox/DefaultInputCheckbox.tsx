@@ -4,7 +4,9 @@ import Example from '../../../shared/components/Example';
 const DefaultInputCheckbox = (): JSX.Element => {
   return (
     <Example>
-      <InputCheckbox label="Checkbox" />
+      <div className="ads-form-control">
+        <InputCheckbox label="Checkbox" />
+      </div>
     </Example>
   );
 }

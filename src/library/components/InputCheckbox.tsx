@@ -1,6 +1,6 @@
 // TODO: look at how we handle ids
 
-import { ChangeEvent, FocusEvent, InputHTMLAttributes, InvalidEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FocusEvent, ForwardedRef, forwardRef, InputHTMLAttributes, InvalidEvent, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { getValidationMessage } from '../helpers/validation';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -12,7 +12,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 let checkboxId = 0;
 
-const InputCheckbox = ({ label, helpText, errorText, forceValidation, onBlur, onChange, onInvalid, ...inputAttrs }: Props): JSX.Element => {
+const InputCheckbox = forwardRef(({ label, helpText, errorText, forceValidation, onBlur, onChange, onInvalid, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
 
   const [inputId, setInputId] = useState('');
   const [helpTextId, setHelpTextId] = useState('');
@@ -23,11 +23,10 @@ const InputCheckbox = ({ label, helpText, errorText, forceValidation, onBlur, on
 
   const validate = useCallback(() => {
     if (inputEl.current) {
-      inputEl.current.setCustomValidity(errorText ? errorText : '');
       const isValid = inputEl.current.checkValidity();
       if (isValid) setValidationMessage('');
     }
-  }, [errorText, inputEl]);
+  }, [inputEl]);
 
   const handleInvalid = (e: InvalidEvent<HTMLInputElement>) => {
     if (onInvalid) {
@@ -50,6 +49,16 @@ const InputCheckbox = ({ label, helpText, errorText, forceValidation, onBlur, on
     }
   }
 
+  useEffect(() => {
+    if (forceValidation) {
+      validate();
+    }
+  }, [forceValidation, validate]);
+
+  useEffect(() => {
+    inputEl?.current?.setCustomValidity(errorText ? errorText : '');
+  }, [inputEl, errorText]);
+
   // Component mount
   useEffect(() => {
     const idNum = ++checkboxId;
@@ -58,17 +67,20 @@ const InputCheckbox = ({ label, helpText, errorText, forceValidation, onBlur, on
     setErrorTextId('checkboxErrorText' + idNum);
   }, []);
 
-  useEffect(() => {
-    if (forceValidation) {
-      validate();
-    }
-  }, [forceValidation, validate]);
-
   return (
     <div className="ads-input">
       <div className="ads-input-checkbox">
         <input
-          ref={inputEl}
+          ref={node => {
+            if (node) {
+              (inputEl as MutableRefObject<HTMLInputElement>).current = node;
+              if (typeof ref === 'function') {
+                ref(node);
+              } else if (ref) {
+                (ref as MutableRefObject<HTMLInputElement>).current = node;
+              }
+            }
+          }}
           type="checkbox"
           id={inputId}
           className="ads-input-checkbox-input"
@@ -77,7 +89,6 @@ const InputCheckbox = ({ label, helpText, errorText, forceValidation, onBlur, on
           onChange={handleChange}
           aria-invalid={!!validationMessage}
           aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
-          formNoValidate
           {...inputAttrs} />
         <label htmlFor={inputId} className="ads-input-checkbox-label">{label}</label>
       </div>
@@ -85,6 +96,6 @@ const InputCheckbox = ({ label, helpText, errorText, forceValidation, onBlur, on
       {helpText && <p id={helpTextId} className="ads-input-help-text">{ helpText }</p>}
     </div>
   );
-}
+});
 
 export default InputCheckbox;
