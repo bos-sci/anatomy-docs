@@ -9,6 +9,7 @@ import { slugify } from './helpers';
 import NavPrimary from './shared/components/navPrimary/NavPrimary';
 import { useGetCollectionsQuery } from './shared/types/contentful';
 import { IdLookup, IdLookupEntry } from './shared/types/docs';
+import logo from "../assets/images/logo-bsc.svg";
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
@@ -91,6 +92,9 @@ const App = (): JSX.Element => {
             </Suspense>
           </div>
         }
+        <footer className="app-footer">
+          <img src={logo} alt="Boston Scientific"/>
+        </footer>
       </IdLookupContext.Provider>
     </Router>
   );
