@@ -89,7 +89,7 @@ const App = (): JSX.Element => {
           </Suspense>
         }
         <footer className="app-footer">
-          <img src={logo} alt="Boston Scientific"/>
+          <img src={logo} className="footer-logo" alt="Boston Scientific"/>
         </footer>
       </IdLookupContext.Provider>
     </Router>
