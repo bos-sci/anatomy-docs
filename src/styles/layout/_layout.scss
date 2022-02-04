@@ -8,6 +8,13 @@
   box-sizing: border-box;
 }
 
+.app-root
+{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
 .app-body
 {
   padding: space(4x) - space(sm); // NOTE: the second value in this calc is the same as the padding on .app-content to prevent the left edge of focus indicators from being chopped off
@@ -67,6 +74,15 @@ main
   {
     margin-top: space(6x);
   }
+}
+
+.app-footer
+{
+  display: flex;
+  justify-content: center;
+  margin-top: space(8x);
+  border-top: space(xxs) solid $neutral-80;
+  padding: space(4x);
 }
 
 @media (min-width: $lg)
