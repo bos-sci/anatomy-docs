@@ -1,3 +1,27 @@
+.title
+{
+  margin-top: 0;
+}
+
+.datestamp
+{
+  margin-top: 0;
+  @include font-size($fs-body-subtle);
+
+  dt,
+  dd
+  {
+    display: inline;
+    font-weight: $font-weight-regular; // TODO: delete this when we rip out bootstrap
+  }
+
+  dd
+  {
+    margin-left: space(md);
+    margin-bottom: 0;
+  }
+}
+
 .table-align-top
 {
   table

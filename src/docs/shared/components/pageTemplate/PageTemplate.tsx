@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import Markdown from '../Markdown';
 import NavSecondary, { NavItemSecondary } from '../navSecondary/NavSecondary';
 import NavTertiary, { NavItemTertiary } from '../navTertiary/NavTertiary';
-import './PageTemplate.scss';
 
 interface Props {
   name: string;
@@ -19,10 +18,10 @@ const PageTemplate = (props: Props) => {
       <div className="app-content">
         <NavSecondary navItems={ props.navSecondaryItems } />
         <main id="mainContent">
-          <div className="page-headline">
-            <div className="page-metadata">
-              <h1 className="page-title">{ props.name }</h1>
-              <dl className="page-publish-date body-subtle">
+          <div className="page-header">
+            <div className="metadata">
+              <h1 className="title">{ props.name }</h1>
+              <dl className="datestamp">
                 <dt>Last Updated:</dt>
                 <dd>{ props.lastUpdated ? new Date(props.lastUpdated).toLocaleDateString() : 'Draft' }</dd>
               </dl>
