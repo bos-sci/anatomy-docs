@@ -18,7 +18,7 @@ const PageTemplate = (props: Props) => {
     <div className="app-body">
       <div className="app-content">
         <NavSecondary navItems={ props.navSecondaryItems } />
-        <main>
+        <main id="mainContent">
           <div className="page-headline">
             <div className="page-metadata">
               <h1 className="page-title">{ props.name }</h1>

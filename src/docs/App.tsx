@@ -77,7 +77,7 @@ const App = (): JSX.Element => {
       <IdLookupContext.Provider value={idLookup}>
         <NavPrimary />
         {isLookupReady &&
-          <Suspense fallback={<main><p>Loading...</p></main>}>
+          <Suspense fallback={<main id="mainContent"><p>Loading...</p></main>}>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/components" component={ComponentsRouter} />

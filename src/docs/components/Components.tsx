@@ -168,7 +168,7 @@ const Components = (props: Props): JSX.Element => {
         </>}
       </PageTemplate>
     );
-  } else return <main>Loading...</main>;
+  } else return <main id="mainContent">Loading...</main>;
 }
 
 export default Components;
