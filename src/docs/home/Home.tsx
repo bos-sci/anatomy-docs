@@ -5,7 +5,7 @@ const Home = (): JSX.Element => {
   useTitle({titlePrefix: `Home`});
 
   return (
-    <main className="app-home">
+    <main id="mainContent" className="app-home">
       <h1 className="page-title u-margin-top-remove">
         <span>Introducing</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 55" className="logo">

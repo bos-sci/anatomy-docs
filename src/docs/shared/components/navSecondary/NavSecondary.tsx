@@ -12,7 +12,7 @@ interface Props {
 
 const NavSecondary = ({ navItems }: Props): JSX.Element => {
   return (
-    <nav className="nav-secondary">
+    <nav className="nav-secondary" aria-label="secondary">
       <ul className="nav">
       {navItems.map((navItem, i) => {
         return (
