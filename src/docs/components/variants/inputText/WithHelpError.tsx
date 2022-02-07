@@ -17,12 +17,14 @@ const WithHelpAndError = (): JSX.Element => {
 
   return (
     <Example>
-      <InputText
-        label="Text input"
-        helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
-        errorText={errorText}
-        onChange={handleChange}
-        defaultValue="Invalid value" />
+      <div className="ads-form-control">
+        <InputText
+          label="Text input"
+          helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
+          errorText={errorText}
+          onChange={handleChange}
+          defaultValue="Invalid value" />
+      </div>
     </Example>
   );
 }

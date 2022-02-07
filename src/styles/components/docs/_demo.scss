@@ -1,9 +1,5 @@
 .demo-example
 {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: space(2x);
   margin-top: space(3x);
   border: 1px solid $neutral-00; // one-off to match markdown's background color
   padding: space(2x);
@@ -25,6 +21,24 @@
       linear-gradient(45deg, transparent 75%, rgba($neutral-00, 0.5) 75%),
       linear-gradient(135deg, transparent 75%, rgba($neutral-00, 0.5) 75%);
   }
+
+  &.demo-example-flex
+  {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: space(2x);
+  }
+
+  > :first-child
+  {
+    margin-top: 0;
+  }
+}
+
+.u-margin-top-remove
+{
+  margin-top: 0 !important; // Important is used here to ensure utility class overrides existing styles
 }
 
 .demo-code

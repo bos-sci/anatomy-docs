@@ -4,9 +4,11 @@ import Example from '../../../shared/components/Example';
 const WithHelpText = (): JSX.Element => {
   return (
     <Example>
-      <InputText
-        label="Text input"
-        helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three." />
+      <div className="ads-form-control">
+        <InputText
+          label="Text input"
+          helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three." />
+      </div>
     </Example>
   );
 }

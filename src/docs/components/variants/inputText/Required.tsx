@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import Form from '../../../../library/components/Form';
 import InputText from '../../../../library/components/InputText';
 import Example from '../../../shared/components/Example';
 
@@ -14,9 +15,11 @@ const Required = (): JSX.Element => {
 
   return (
     <Example>
-      <form className="ads-form" onSubmit={handleSubmit} noValidate>
-        <InputText label="Required text input" forceValidation={didSubmit} required />
-      </form>
+      <Form onSubmit={handleSubmit}>
+        <div className="ads-form-control u-margin-top-remove">
+          <InputText label="Required text input" forceValidation={didSubmit} required />
+        </div>
+      </Form>
     </Example>
   );
 }

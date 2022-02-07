@@ -46,21 +46,24 @@
     content: '';
   }
 
-  &:not([disabled]):hover,
-  &:not([disabled]):active
+  &:not([disabled])
   {
-    background: transparent;
-    color: $action-primary-40;
-
-    &::after
+    &:hover,
+    &:active
     {
-      background: $action-primary-40;
+      background: transparent;
+      color: $action-primary-40;
+  
+      &::after
+      {
+        background: $action-primary-40;
+      }
     }
-  }
-
-  &:not([disabled]):focus
-  {
-    @include focus-default-inset;
+  
+    &:focus
+    {
+      @include focus-default-inset;
+    }
   }
 
   &[aria-selected="true"]

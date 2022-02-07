@@ -2,13 +2,14 @@ import { useState, useEffect, createContext, lazy, Suspense, useCallback } from 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route
 } from "react-router-dom";
 import { slugify } from './helpers';
 import NavPrimary from './shared/components/navPrimary/NavPrimary';
 import { useGetCollectionsQuery } from './shared/types/contentful';
 import { IdLookup, IdLookupEntry } from './shared/types/docs';
+import logo from "../assets/images/logo-bsc.svg";
+import Home from './home/Home';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
@@ -76,21 +77,20 @@ const App = (): JSX.Element => {
       <IdLookupContext.Provider value={idLookup}>
         <NavPrimary />
         {isLookupReady &&
-          <div className="app-body">
-            <Suspense fallback={<main><p>Loading...</p></main>}>
-              <Switch>
-                <Route exact path="/">
-                  <Redirect to="/content" />
-                </Route>
-                <Route path="/components" component={ComponentsRouter} />
-                <Route path="/resources/developers/code-standards" component={CodeStandardsRouter} />
-                <Route path="/content" component={ContentGuidelinesRouter} />
-                <Route path="/foundations" component={FoundationsRouter} />
-                <Route path="/resources" component={ResourcesRouter} />
-              </Switch>
-            </Suspense>
-          </div>
+          <Suspense fallback={<main id="mainContent"><p>Loading...</p></main>}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/components" component={ComponentsRouter} />
+              <Route path="/resources/developers/code-standards" component={CodeStandardsRouter} />
+              <Route path="/content" component={ContentGuidelinesRouter} />
+              <Route path="/foundations" component={FoundationsRouter} />
+              <Route path="/resources" component={ResourcesRouter} />
+            </Switch>
+          </Suspense>
         }
+        <footer className="app-footer">
+          <img src={logo} className="footer-logo" alt="Boston Scientific"/>
+        </footer>
       </IdLookupContext.Provider>
     </Router>
   );

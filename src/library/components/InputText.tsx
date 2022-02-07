@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent, InputHTMLAttributes, InvalidEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FocusEvent, ForwardedRef, forwardRef, InputHTMLAttributes, InvalidEvent, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { getValidationMessage } from '../helpers/validation';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -11,7 +11,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 let inputId = 0;
 
-const InputText = ({ label, helpText, errorText, requiredText = 'required', forceValidation, onInvalid, onBlur, onChange, ...inputAttrs }: Props): JSX.Element => {
+const InputText = forwardRef(({ label, helpText, errorText, requiredText = 'required', forceValidation, onInvalid, onBlur, onChange, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
 
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
@@ -23,11 +23,10 @@ const InputText = ({ label, helpText, errorText, requiredText = 'required', forc
 
   const validate = useCallback(() => {
     if (inputEl.current) {
-      inputEl.current.setCustomValidity(errorText ? errorText : '');
       const isValid = inputEl.current.checkValidity();
       if (isValid) setValidationMessage('');
     }
-  }, [errorText, inputEl]);
+  }, [inputEl]);
 
   const handleInvalid = (e: InvalidEvent<HTMLInputElement>) => {
     if (onInvalid) {
@@ -71,15 +70,15 @@ const InputText = ({ label, helpText, errorText, requiredText = 'required', forc
     }
   }, [forceValidation, validate]);
 
+  useEffect(() => {
+    inputEl?.current?.setCustomValidity(errorText ? errorText : '');
+  }, [inputEl, errorText]);
+
   // On component mount
   useEffect(() => {
     const idNum = ++inputId;
     setHelpTextId('inputHelpText' + idNum);
     setErrorTextId('inputErrorText' + idNum);
-
-    if (inputEl?.current?.defaultValue) {
-      setIsDirty(true);
-    }
   }, []);
 
   return (
@@ -90,20 +89,28 @@ const InputText = ({ label, helpText, errorText, requiredText = 'required', forc
           { inputAttrs.required && <span className="ads-input-help-text">{ requiredText }</span> }
         </div>
         <input
-          ref={inputEl}
+          ref={node => {
+            if (node) {
+              (inputEl as MutableRefObject<HTMLInputElement>).current = node;
+              if (typeof ref === 'function') {
+                ref(node);
+              } else if (ref) {
+                (ref as MutableRefObject<HTMLInputElement>).current = node;
+              }
+            }
+          }}
           className="ads-input-text-input"
           onInvalid={handleInvalid}
           onBlur={handleBlur}
           onChange={handleChange}
           aria-invalid={!!validationMessage}
           aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
-          formNoValidate
           {...inputAttrs} />
       </label>
       {validationMessage && <p id={errorTextId} className="ads-input-error">{ validationMessage }</p>}
       {helpText && <p id={helpTextId} className="ads-input-help-text">{ helpText }</p>}
     </div>
   );
-}
+});
 
 export default InputText;

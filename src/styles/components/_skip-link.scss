@@ -2,37 +2,16 @@
 {
   position: absolute;
   top: -3.125rem; // NOTE: this is a one-off size that needs to change if the height of the skip link changes
-  left: space(sm);
-  border: space(xs) solid transparent;
-  padding: space(lg) space(2x);
-  background: $action-primary-40;
-  color: $neutral-100;
-  @include font-size($fs-body-subtle);
-  text-decoration: none;
-  transition: top 1s ease-out;
-  z-index: 100;
-
-  &:hover
-  {
-    color: $neutral-100;
-    text-decoration: underline;
-  }
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding: space(md);
+  background: $neutral-95;
 
   &:focus
   {
-    position: absolute;
-    top: space(sm);
-    transition: top 0.5s ease-in;
-  }
-
-  &.light
-  {
-    // Use for skip links positioned on top of dark headers
-    border-color: $neutral-100;
-
-    &:focus
-    {
-      @include focus-ghost;
-    }
+    position: relative;
+    top: 0;
+    @include focus-default-inset
   }
 }

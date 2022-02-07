@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { NavLink } from "react-router-dom";
-import logo from "../../../../assets/images/logo-bsc-anatomy.svg";
+import logo from "../../../../assets/images/logo-anatomy.svg";
 
 const NavPrimary = (): JSX.Element => {
 
@@ -11,7 +11,7 @@ const NavPrimary = (): JSX.Element => {
   return (
     <header className="navbar navbar-expand-lg">
       <div className="container-fluid container-lg p-0">
-        <img src={logo} className="navbar-brand" alt="Boston Scientific Design System"/>
+        <img src={logo} className="navbar-brand" alt="Anatomy Design System"/>
         <button
           type="button"
           className={`navbar-toggler ${ !isNavOpen ? 'collapsed' : '' }`}
@@ -38,6 +38,11 @@ const NavPrimary = (): JSX.Element => {
         <div className={`collapse navbar-collapse justify-content-end ${isNavOpen ? 'show' : ''}`} id="navPrimary">
           <nav className="navbar-nav-primary" aria-label="primary">
             <ul className="navbar-nav">
+              <li className="nav-item">
+                <NavLink exact to='/' className="nav-link">
+                  Home
+                </NavLink>
+              </li>
               <li className="nav-item">
                 <NavLink to='/content' className="nav-link">
                   Content
