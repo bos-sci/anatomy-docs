@@ -85,6 +85,11 @@ main
   padding: space(4x);
 }
 
+.footer-logo
+{
+  width: space(12x);
+}
+
 @media (min-width: $lg)
 {
   .app-body
