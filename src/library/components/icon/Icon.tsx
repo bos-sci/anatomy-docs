@@ -17,7 +17,7 @@ interface Props {
 }
 
 const Fallback = () => {
-  return <p>Loading Icon...</p>
+  return <></>
 }
 
 const Icon = (props: Props): JSX.Element => {
@@ -37,6 +37,20 @@ const Icon = (props: Props): JSX.Element => {
       return (
         <Suspense fallback={<Fallback />}>
           <IconChevronRight className={sizeClass + ' ' + props.className} />
+        </Suspense>
+      );
+    case 'arrowLeft':
+      const IconArrowLeft = lazy(() => import('../../icons/IconArrowLeft'));
+      return (
+        <Suspense fallback={<Fallback />}>
+          <IconArrowLeft className={sizeClass + ' ' + props.className} />
+        </Suspense>
+      );
+    case 'arrowRight':
+      const IconArrowRight = lazy(() => import('../../icons/IconArrowRight'));
+      return (
+        <Suspense fallback={<Fallback />}>
+          <IconArrowRight className={sizeClass + ' ' + props.className} />
         </Suspense>
       );
 

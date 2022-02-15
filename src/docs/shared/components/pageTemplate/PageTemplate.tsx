@@ -1,13 +1,16 @@
 import { ReactNode } from 'react';
 import Markdown from '../Markdown';
 import NavSecondary, { NavItemSecondary } from '../navSecondary/NavSecondary';
+import NewNav, { NavItemSecondary as newNavItems } from '../newNavSecondary/NavSecondary';
 import NavTertiary, { NavItemTertiary } from '../navTertiary/NavTertiary';
 
 interface Props {
   name: string;
   lastUpdated: string;
   leadParagraph: string;
-  navSecondaryItems: NavItemSecondary[];
+  navSecondaryItems?: NavItemSecondary[];
+  newNavSecondaryItems?: newNavItems[];
+  navSecondarySlug?: string;
   navTertiaryItems: NavItemTertiary[];
   children: ReactNode;
 }
@@ -16,7 +19,8 @@ const PageTemplate = (props: Props) => {
   return (
     <div className="app-body">
       <div className="app-content">
-        <NavSecondary navItems={ props.navSecondaryItems } />
+      { props.newNavSecondaryItems && <NewNav navItems={props.newNavSecondaryItems} currentSlug={props.navSecondarySlug} /> }
+      { props.navSecondaryItems && <NavSecondary navItems={ props.navSecondaryItems } /> }
         <main id="mainContent">
           <div className="page-header">
             <div className="metadata">

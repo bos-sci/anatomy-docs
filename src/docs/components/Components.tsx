@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import Preview from './variants/Preview';
-import { NavItemSecondary } from '../shared/components/navSecondary/NavSecondary';
+import { NavItemSecondary } from '../shared/components/newNavSecondary/NavSecondary';
 import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';
@@ -73,13 +73,58 @@ const Components = (props: Props): JSX.Element => {
     }
   }, [componentData?.name, pageHeadings]);
 
+  const newNavItems: NavItemSecondary[] = [
+    {
+      text: 'Breadcrumbs',
+      slug: '/components/breadcrumbs',
+    },
+    {
+      text: 'Button',
+      slug: '/components/button',
+    },
+    {
+      text: 'Form Controls',
+      children: [
+        {
+          text: 'Checkbox',
+          slug: '/components/checkbox'
+        },
+        {
+          text: 'Checkbox group',
+          slug: '/components/checkbox-group'
+        },
+        {
+          text: 'Form',
+          slug: '/components/form'
+        },
+        {
+          text: 'Radio Group',
+          slug: '/components/radio-group'
+        },
+        {
+          text: 'Text Input',
+          slug: '/components/text-input'
+        }
+      ]
+    },
+    {
+      text: 'Link',
+      slug: '/components/link',
+    },
+    {
+      text: 'Tabs',
+      slug: '/components/tabs',
+    },
+  ];
+
   if (componentData) {
     return (
       <PageTemplate
         name={componentData?.name || ''}
         lastUpdated={componentData?.sys?.publishedAt}
         leadParagraph={componentData?.leadParagraph || ''}
-        navSecondaryItems={navItems}
+        newNavSecondaryItems={newNavItems}
+        navSecondarySlug={props.match.url}
         navTertiaryItems={headings}>
         <Preview component={ componentName } variant='Default' />
         {(componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>

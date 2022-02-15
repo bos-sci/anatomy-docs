@@ -1,0 +1,130 @@
+@import "/src/styles/abstracts/abstracts";
+@import "/src/styles/base/base";
+@import "/src/styles/utilities/utilities";
+
+.nav-secondary
+{
+  grid-area: nav-secondary;
+  z-index: 10;
+  width: 100%;
+  overflow-x: auto;
+  background: $neutral-100;
+  white-space: nowrap;
+  transition: width .25s ease-out;
+
+  .nav
+  {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 0;
+
+    &:not(.nav-active-list) > .nav-item:not(.nav-item--parent),
+    &:not(.nav-active-list) > .nav-item--parent > .nav-item--parent-trigger
+    {
+      display: none;
+    }
+
+    /* &.nav-active-list > .nav-item:not(.nav-item--parent),
+    &.nav-active-list > .nav-item--parent > .nav-item--parent-trigger
+    {
+      display: block;
+    } */
+  }
+
+  .nav-item.nav-item,
+  .nav-item--parent
+  {
+    display: inline-flex;
+    margin-top: 0;
+  }
+
+  .nav-item--parent-trigger
+  {
+    &:hover
+    {
+      background: none;
+    }
+  }
+
+  .nav-link.nav-link,
+  .nav-link--back
+  {
+    display: inline-flex;
+    align-items: center;
+    padding: space(lg) space(2x);
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
+  }
+
+  .nav-link.nav-link
+  {
+    position: relative;
+    border-left: 0;
+    @include link-navigation;
+    @include font-size($fs-body-subtle);
+    text-align: center;
+
+    &.active
+    {
+      &::before
+      {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: space(3x);
+        border-left: space(sm) solid $neutral-00;
+      }
+    }
+  }
+
+  .nav-link--back
+  {
+    @include font-size($fs-small);
+    color: $action-primary-40;
+    fill: $action-primary-40;
+
+    &:hover{
+      color: $action-primary-40;
+      text-decoration: underline;
+      background: none;
+    }
+  }
+}
+
+
+@media (min-width: 992px)
+{
+  .nav-secondary
+  {
+    height: 100%;
+    overflow-y: auto;
+    white-space: initial;
+
+    .nav
+    {
+      flex-direction: column;
+
+      &.nav-active-list
+      {
+        width: 100%;
+      }
+    }
+
+    .nav-item
+    {
+      display: block;
+    }
+
+    .nav-link.nav-link
+    {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: space(lg) space(2x);
+      text-align: left;
+    }
+  }
+}
