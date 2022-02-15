@@ -4,18 +4,48 @@
 
 .nav-secondary
 {
+  position: relative;
   grid-area: nav-secondary;
   z-index: 10;
   width: 100%;
-  overflow-x: auto;
   background: $neutral-100;
-  white-space: nowrap;
   transition: width .25s ease-out;
+
+  .nav-secondary-menu-trigger
+  {
+    display: flex;
+    justify-content: space-between;
+    border: 0;
+    border-bottom: space(xxs) solid $neutral-80;
+    width: 100%;
+    color: $text-color-primary;
+
+    &:hover
+    {
+      background: initial;
+      color: initial;
+      border-color: $neutral-80;
+    }
+  }
+
+  .nav-secondary-menu
+  {
+    position: absolute;
+    display: none;
+    margin-top: space(2x);
+    border-bottom: space(xxs) solid $neutral-80;
+    width: 100%;
+    background: $neutral-100;
+
+    &.open
+    {
+      display: block;
+    }
+  }
 
   .nav
   {
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-direction: column;
     margin-top: 0;
 
     &:not(.nav-active-list) > .nav-item:not(.nav-item--parent),
@@ -24,17 +54,15 @@
       display: none;
     }
 
-    /* &.nav-active-list > .nav-item:not(.nav-item--parent),
-    &.nav-active-list > .nav-item--parent > .nav-item--parent-trigger
+    &.nav-active-list
     {
-      display: block;
-    } */
+      width: 100%;
+    }
   }
 
   .nav-item.nav-item,
   .nav-item--parent
   {
-    display: inline-flex;
     margin-top: 0;
   }
 
@@ -49,7 +77,6 @@
   .nav-link.nav-link,
   .nav-link--back
   {
-    display: inline-flex;
     align-items: center;
     padding: space(lg) space(2x);
 
@@ -65,7 +92,11 @@
     border-left: 0;
     @include link-navigation;
     @include font-size($fs-body-subtle);
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: space(lg) space(2x);
+    text-align: left;
 
     &.active
     {
@@ -97,34 +128,15 @@
 
 @media (min-width: 992px)
 {
-  .nav-secondary
-  {
-    height: 100%;
-    overflow-y: auto;
-    white-space: initial;
-
-    .nav
+  .nav-secondary{
+    .nav-secondary-menu-trigger
     {
-      flex-direction: column;
-
-      &.nav-active-list
-      {
-        width: 100%;
-      }
+      display: none;
     }
 
-    .nav-item
+    .nav-secondary-menu
     {
       display: block;
-    }
-
-    .nav-link.nav-link
-    {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      padding: space(lg) space(2x);
-      text-align: left;
     }
   }
 }

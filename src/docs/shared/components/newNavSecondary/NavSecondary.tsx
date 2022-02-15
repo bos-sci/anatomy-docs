@@ -4,6 +4,8 @@ import Button from '../../../../library/components/Button';
 import Icon from '../../../../library/components/icon/Icon';
 import IconArrowLeft from '../../../../library/icons/IconArrowLeft';
 import IconArrowRight from '../../../../library/icons/IconArrowRight';
+import IconChevronDown from '../../../../library/icons/IconChevronDown';
+import IconChevronUp from '../../../../library/icons/IconChevronUp';
 import "./NavSecondary.scss"
 
 type RequireOnlyOne<T, Keys extends keyof T = keyof T> =
@@ -38,6 +40,7 @@ const NavSecondary = ({ navItems, currentSlug }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [activeParent, setActiveParent] = useState<NavNode | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const tree = [...navItems] as NavNode[];
@@ -76,7 +79,14 @@ const NavSecondary = ({ navItems, currentSlug }: Props): JSX.Element => {
 
   return (
     <nav className="nav-secondary">
-      <NavList navItems={navTree} parent={null} activeParent={activeParent} setActiveParent={setActiveParent} />
+      <button className="nav-secondary-menu-trigger" aria-expanded={isOpen} aria-controls="navSecondaryMenu" onClick={() => setIsOpen(!isOpen)}>
+        Menu
+        { isOpen && <IconChevronUp className='ads-icon-lg' /> }
+        { !isOpen && <IconChevronDown className='ads-icon-lg' /> }
+      </button>
+      <div id="navSecondaryMenu" className={`nav-secondary-menu${isOpen ? ' open' : ''}`}>
+        <NavList navItems={navTree} parent={null} activeParent={activeParent} setActiveParent={setActiveParent} />
+      </div>
     </nav>
   );
 }
