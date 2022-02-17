@@ -161,7 +161,7 @@ const NavParent = ({ navItem, activeParent, setActiveParent }: NavParentProps) =
         onClick={() => setActiveParent(navItem)}
       >
         {navItem.text}
-        <IconArrowRight className="ads-icon-2x" />
+        <IconArrowRight className="ads-icon-lg" />
       </Button>
       <NavList navListId={navListId} navItems={navItem.children!} parent={navItem} activeParent={activeParent} setActiveParent={setActiveParent} />
     </li>

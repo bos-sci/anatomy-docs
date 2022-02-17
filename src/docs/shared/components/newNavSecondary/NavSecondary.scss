@@ -26,14 +26,19 @@
       color: initial;
       border-color: $neutral-80;
     }
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
   }
 
   .nav-secondary-menu
   {
     position: absolute;
     display: none;
-    margin-top: space(2x);
     border-bottom: space(xxs) solid $neutral-80;
+    padding: space(lg) space(3x);
     width: 100%;
     background: $neutral-100;
 
@@ -66,11 +71,16 @@
     margin-top: 0;
   }
 
-  .nav-item--parent-trigger
+  .nav-item--parent
   {
-    &:hover
+    .nav-link.nav-item--parent-trigger
     {
-      background: none;
+      padding-right: 0;
+
+      &:hover
+      {
+        background: none;
+      }
     }
   }
 
@@ -79,6 +89,8 @@
   {
     align-items: center;
     padding: space(lg) space(2x);
+    width: 100%;
+    text-align: left;
 
     &:focus
     {
@@ -94,9 +106,6 @@
     @include font-size($fs-body-subtle);
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    padding: space(lg) space(2x);
-    text-align: left;
 
     &.active
     {
@@ -113,6 +122,7 @@
 
   .nav-link--back
   {
+    justify-content: flex-start;
     @include font-size($fs-small);
     color: $action-primary-40;
     fill: $action-primary-40;
@@ -125,7 +135,6 @@
   }
 }
 
-
 @media (min-width: 992px)
 {
   .nav-secondary{
@@ -137,6 +146,9 @@
     .nav-secondary-menu
     {
       display: block;
+      margin-top: space(4x);
+      border-bottom: 0;
+      padding: 0;
     }
   }
 }

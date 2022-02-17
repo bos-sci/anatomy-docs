@@ -17,11 +17,6 @@
 
 .app-body
 {
-  padding: space(4x) - space(sm); // NOTE: the second value in this calc is the same as the padding on .app-content to prevent the left edge of focus indicators from being chopped off
-}
-
-.app-content
-{
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: "nav-secondary" "main";
@@ -29,7 +24,6 @@
   .nav-secondary
   {
     grid-area: nav-secondary;
-    padding: space(sm); // NOTE: this value is the same as the second padding value on .app-content to prevent the left edge of focus indicators from being chopped off
   }
 
   main
@@ -44,7 +38,7 @@
     justify-content: start;
     justify-items: start;
     overflow-y: auto;
-    padding: space(sm); // NOTE: this value is the same as the second padding value on .app-content to prevent the left edge of focus indicators from being chopped off
+    padding: space(4x);
   }
 }
 
@@ -61,7 +55,6 @@ main
 {
   grid-area: intro;
   width: 100%;
-  margin-top: space(4x);
 }
 
 .page-content
@@ -97,10 +90,6 @@ main
     width: 60rem;
     margin-right: auto;
     margin-left: auto;
-  }
-
-  .app-content
-  {
     grid-template-columns: 1fr 4fr;
     grid-template-areas: "nav-secondary main";
     grid-column-gap: space(4x);
@@ -117,23 +106,22 @@ main
       grid-row-gap: 0;
       justify-content: start;
       justify-items: start;
+      margin-top: space(4x);
+      padding: 0;
     }
-  }
 
-  .page-header
-  {
-    margin-top: 0;
+    .nav-tertiary
+    {
+      margin-top: space(lg);
+    }
   }
 }
 
 @media (min-width: $xl)
 {
-
-  .app-content{
-    grid-template-columns: 1fr 5fr;
-  }
   .app-body
   {
+    grid-template-columns: 1fr 5fr;
     width: 71.25rem;
   }
 }
