@@ -8,7 +8,7 @@ interface Props {
   lastUpdated: string;
   leadParagraph: string;
   navSecondaryItems?: NavItemSecondary[];
-  navSecondarySlug?: string;
+  navSecondaryActiveSlug?: string;
   navTertiaryItems: NavItemTertiary[];
   children: ReactNode;
 }
@@ -16,7 +16,7 @@ interface Props {
 const PageTemplate = (props: Props) => {
   return (
     <div className="app-body">
-    { props.navSecondaryItems && <NewNav navItems={props.navSecondaryItems} currentSlug={props.navSecondarySlug} /> }
+    { props.navSecondaryItems && <NewNav navItems={props.navSecondaryItems} activeSlug={props.navSecondaryActiveSlug} /> }
       <main id="mainContent">
         <div className="page-header">
           <div className="metadata">

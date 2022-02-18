@@ -121,7 +121,7 @@ const Components = (props: Props): JSX.Element => {
         lastUpdated={componentData?.sys?.publishedAt}
         leadParagraph={componentData?.leadParagraph || ''}
         navSecondaryItems={navItems}
-        navSecondarySlug={props.match.url}
+        navSecondaryActiveSlug={props.match.url}
         navTertiaryItems={headings}>
         <Preview component={ componentName } variant='Default' />
         {(componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>

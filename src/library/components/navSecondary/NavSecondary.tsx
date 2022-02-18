@@ -29,10 +29,10 @@ export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'children'>;
 
 interface Props {
   navItems: NavItemSecondary[];
-  currentSlug?: string;
+  activeSlug?: string;
 }
 
-const NavSecondary = ({ navItems, currentSlug }: Props): JSX.Element => {
+const NavSecondary = ({ navItems, activeSlug }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [activeParent, setActiveParent] = useState<NavNode | null>(null);
@@ -55,7 +55,7 @@ const NavSecondary = ({ navItems, currentSlug }: Props): JSX.Element => {
   }, [navItems]);
 
   useEffect(() => {
-    if (currentSlug) {
+    if (activeSlug) {
       const findNodeBySlug = (nodes: NavNode[], slug: string): NavNode | undefined => {
         for (let i = 0; i < nodes.length; i++) {
           const node= nodes[i];
@@ -66,12 +66,12 @@ const NavSecondary = ({ navItems, currentSlug }: Props): JSX.Element => {
           }
         }
       }
-      const currentNode = findNodeBySlug(navTree, currentSlug);
+      const currentNode = findNodeBySlug(navTree, activeSlug);
       if (currentNode) {
         setActiveParent(currentNode.parent);
       }
     }
-  }, [currentSlug, navTree]);
+  }, [activeSlug, navTree]);
 
   return (
     <nav className="nav-secondary">
