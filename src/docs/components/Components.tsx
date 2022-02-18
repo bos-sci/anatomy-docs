@@ -44,14 +44,55 @@ const Components = (props: Props): JSX.Element => {
   useEffect(() => {
     if(data?.component) {
       setComponentData(data.component);
-      const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
-      const navItems = Object.keys(idLookup.components).map(entry => ({
-        text: idLookup.components[entry].name,
-        slug: basePath + '/' + entry
-      }));
-      setNavItems(navItems);
     }
-  }, [data, idLookup, props.match.path]);
+  }, [data]);
+
+  useEffect(() => {
+    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
+      setNavItems([
+        {
+          text: 'Breadcrumbs',
+          slug: basePath + '/breadcrumbs',
+        },
+        {
+          text: 'Button',
+          slug: basePath + '/button',
+        },
+        {
+          text: 'Form Controls',
+          children: [
+            {
+              text: 'Form',
+              slug: basePath + '/form'
+            },
+            {
+              text: 'Checkbox',
+              slug: basePath + '/checkbox'
+            },
+            {
+              text: 'Checkbox group',
+              slug: basePath + '/checkbox-group'
+            },
+            {
+              text: 'Radio Group',
+              slug: basePath + '/radio-group'
+            },
+            {
+              text: 'Text Input',
+              slug: basePath + '/text-input'
+            }
+          ]
+        },
+        {
+          text: 'Link',
+          slug: basePath + '/link',
+        },
+        {
+          text: 'Tabs',
+          slug: basePath + '/tabs',
+        },
+      ]);
+  }, [props.match.path]);
 
   const nameForTitle = (componentData?.name || '')
     .split(' ')
@@ -73,57 +114,13 @@ const Components = (props: Props): JSX.Element => {
     }
   }, [componentData?.name, pageHeadings]);
 
-  const newNavItems: NavItemSecondary[] = [
-    {
-      text: 'Breadcrumbs',
-      slug: '/components/breadcrumbs',
-    },
-    {
-      text: 'Button',
-      slug: '/components/button',
-    },
-    {
-      text: 'Form Controls',
-      children: [
-        {
-          text: 'Form',
-          slug: '/components/form'
-        },
-        {
-          text: 'Checkbox',
-          slug: '/components/checkbox'
-        },
-        {
-          text: 'Checkbox group',
-          slug: '/components/checkbox-group'
-        },
-        {
-          text: 'Radio Group',
-          slug: '/components/radio-group'
-        },
-        {
-          text: 'Text Input',
-          slug: '/components/text-input'
-        }
-      ]
-    },
-    {
-      text: 'Link',
-      slug: '/components/link',
-    },
-    {
-      text: 'Tabs',
-      slug: '/components/tabs',
-    },
-  ];
-
   if (componentData) {
     return (
       <PageTemplate
         name={componentData?.name || ''}
         lastUpdated={componentData?.sys?.publishedAt}
         leadParagraph={componentData?.leadParagraph || ''}
-        navSecondaryItems={newNavItems}
+        navSecondaryItems={navItems}
         navSecondarySlug={props.match.url}
         navTertiaryItems={headings}>
         <Preview component={ componentName } variant='Default' />
