@@ -86,11 +86,19 @@
 
 @mixin button-subtle
 {
-  @include button-default;
+  @include link-default;
   border-color: transparent;
+  padding: 0;
   background: transparent;
   @include button-focus;
   @include button-disabled;
+
+  &:not([disabled]):hover
+  {
+    @include link-hover;
+    text-decoration: underline;
+    background: transparent;
+  }
 }
 
 @mixin button-assertive
@@ -154,6 +162,13 @@ button
 // Link Mixins
 //
 
+@mixin link-hover
+{
+  color: $neutral-00;
+  text-decoration-thickness: space(xs);
+  cursor: pointer;
+}
+
 @mixin link-default
 {
   color: $action-primary-40;
@@ -167,9 +182,7 @@ button
 
   &:hover
   {
-    color: $neutral-00;
-    text-decoration-thickness: space(xs);
-    cursor: pointer;
+    @include link-hover;
   }
 
   &:active

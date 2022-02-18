@@ -17,6 +17,8 @@
     justify-content: space-between;
     border: 0;
     border-bottom: space(xxs) solid $neutral-80;
+    padding-left: space(4x);
+    padding-right: space(4x);
     width: 100%;
     color: $text-color-primary;
 
@@ -38,7 +40,7 @@
     position: absolute;
     display: none;
     border-bottom: space(xxs) solid $neutral-80;
-    padding: space(lg) space(3x);
+    padding: space(lg) space(4x);
     width: 100%;
     background: $neutral-100;
 
@@ -123,21 +125,21 @@
   .nav-link--back
   {
     justify-content: flex-start;
+    padding-left: 0;
     @include font-size($fs-small);
-    color: $action-primary-40;
     fill: $action-primary-40;
 
-    &:hover{
-      color: $action-primary-40;
-      text-decoration: underline;
-      background: none;
+    &:hover
+    {
+      fill: $neutral-00;
     }
   }
 }
 
 @media (min-width: 992px)
 {
-  .nav-secondary{
+  .nav-secondary
+  {
     .nav-secondary-menu-trigger
     {
       display: none;

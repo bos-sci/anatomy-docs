@@ -9,6 +9,7 @@ const ComponentsRouter = (): JSX.Element => {
       <Route exact path={path}>
         <Redirect to={`${path}/breadcrumbs`} />
       </Route>
+      <Route path={`${path}/form-controls/:componentName`} component={Components} />
       <Route path={`${path}/:componentName`} component={Components} />
     </Switch>
   );

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { NavItemSecondary } from '../shared/components/navSecondary/NavSecondary';
+import { NavItemSecondary } from '../../library/components/navSecondary/NavSecondary';
 import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';

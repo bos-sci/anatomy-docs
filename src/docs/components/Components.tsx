@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import Preview from './variants/Preview';
-import { NavItemSecondary } from '../shared/components/newNavSecondary/NavSecondary';
+import { NavItemSecondary } from '../../library/components/navSecondary/NavSecondary';
 import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';
@@ -86,16 +86,16 @@ const Components = (props: Props): JSX.Element => {
       text: 'Form Controls',
       children: [
         {
+          text: 'Form',
+          slug: '/components/form'
+        },
+        {
           text: 'Checkbox',
           slug: '/components/checkbox'
         },
         {
           text: 'Checkbox group',
           slug: '/components/checkbox-group'
-        },
-        {
-          text: 'Form',
-          slug: '/components/form'
         },
         {
           text: 'Radio Group',
@@ -123,7 +123,7 @@ const Components = (props: Props): JSX.Element => {
         name={componentData?.name || ''}
         lastUpdated={componentData?.sys?.publishedAt}
         leadParagraph={componentData?.leadParagraph || ''}
-        newNavSecondaryItems={newNavItems}
+        navSecondaryItems={newNavItems}
         navSecondarySlug={props.match.url}
         navTertiaryItems={headings}>
         <Preview component={ componentName } variant='Default' />

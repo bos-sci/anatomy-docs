@@ -47,7 +47,7 @@
 .navbar-toggler
 {
   @include button-subtle;
-  margin: space(md) space(4x);
+  margin: space(md) space(3x);
   padding: space(lg) space(md); // TODO: override button-subtle
   @include font-size($fs-body-subtle); // TODO: override button-subtle
 
@@ -137,6 +137,11 @@
 
 @media (min-width: 992px)
 {
+  .navbar-brand
+  {
+    margin-left: 0;
+  }
+
   .navbar.navbar-expand-lg
   {
     .navbar-nav-primary
@@ -144,7 +149,6 @@
       .navbar-nav
       {
         margin-top: 0;
-        margin-right: space(4x);
         border: 0;
 
         .nav-link

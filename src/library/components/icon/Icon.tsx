@@ -26,28 +26,28 @@ const Icon = (props: Props): JSX.Element => {
 
   switch (props.name) {
     case 'plus':
-      const IconPlus = lazy(() => import('../../icons/IconPlus'));
+      const IconPlus = lazy(() => import('./icons/IconPlus'));
       return (
         <Suspense fallback={<Fallback />}>
           <IconPlus className={sizeClass + ' ' + props.className} />
         </Suspense>
       );
     case 'chevronRight':
-      const IconChevronRight = lazy(() => import('../../icons/IconChevronRight'));
+      const IconChevronRight = lazy(() => import('./icons/IconChevronRight'));
       return (
         <Suspense fallback={<Fallback />}>
           <IconChevronRight className={sizeClass + ' ' + props.className} />
         </Suspense>
       );
     case 'arrowLeft':
-      const IconArrowLeft = lazy(() => import('../../icons/IconArrowLeft'));
+      const IconArrowLeft = lazy(() => import('./icons/IconArrowLeft'));
       return (
         <Suspense fallback={<Fallback />}>
           <IconArrowLeft className={sizeClass + ' ' + props.className} />
         </Suspense>
       );
     case 'arrowRight':
-      const IconArrowRight = lazy(() => import('../../icons/IconArrowRight'));
+      const IconArrowRight = lazy(() => import('./icons/IconArrowRight'));
       return (
         <Suspense fallback={<Fallback />}>
           <IconArrowRight className={sizeClass + ' ' + props.className} />
