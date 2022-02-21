@@ -49,49 +49,49 @@ const Components = (props: Props): JSX.Element => {
 
   useEffect(() => {
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
-      setNavItems([
-        {
-          text: 'Breadcrumbs',
-          slug: basePath + '/breadcrumbs',
-        },
-        {
-          text: 'Button',
-          slug: basePath + '/button',
-        },
-        {
-          text: 'Form controls',
-          children: [
-            {
-              text: 'Form',
-              slug: basePath + '/form'
-            },
-            {
-              text: 'Checkbox',
-              slug: basePath + '/checkbox'
-            },
-            {
-              text: 'Checkbox group',
-              slug: basePath + '/checkbox-group'
-            },
-            {
-              text: 'Radio group',
-              slug: basePath + '/radio-group'
-            },
-            {
-              text: 'Text input',
-              slug: basePath + '/text-input'
-            }
-          ]
-        },
-        {
-          text: 'Link',
-          slug: basePath + '/link',
-        },
-        {
-          text: 'Tabs',
-          slug: basePath + '/tabs',
-        },
-      ]);
+    setNavItems([
+      {
+        text: 'Breadcrumbs',
+        slug: basePath + '/breadcrumbs',
+      },
+      {
+        text: 'Button',
+        slug: basePath + '/button',
+      },
+      {
+        text: 'Form controls',
+        children: [
+          {
+            text: 'Form',
+            slug: basePath + '/form-controls/form'
+          },
+          {
+            text: 'Checkbox',
+            slug: basePath + '/form-controls/checkbox'
+          },
+          {
+            text: 'Checkbox group',
+            slug: basePath + '/form-controls/checkbox-group'
+          },
+          {
+            text: 'Radio group',
+            slug: basePath + '/form-controls/radio-group'
+          },
+          {
+            text: 'Text input',
+            slug: basePath + '/form-controls/text-input'
+          }
+        ]
+      },
+      {
+        text: 'Link',
+        slug: basePath + '/link',
+      },
+      {
+        text: 'Tabs',
+        slug: basePath + '/tabs',
+      },
+    ]);
   }, [props.match.path]);
 
   const nameForTitle = (componentData?.name || '')

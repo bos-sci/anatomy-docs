@@ -96,19 +96,29 @@
 
   &:not([disabled])
   {
+    &:hover,
+    &:active
+    {
+      text-decoration: underline;
+      background: transparent;
+    }
+
     &:hover
     {
       @include link-hover;
       color: $action-primary-40;
-      fill: $action-primary-40; // Should we set this here (for icons)?
-      text-decoration: underline;
-      background: transparent;
     }
 
     &:active
     {
       color: $neutral-00;
     }
+  }
+
+  &:disabled
+  {
+    border: 0;
+    background: transparent;
   }
 }
 

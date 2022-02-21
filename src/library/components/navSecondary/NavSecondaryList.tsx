@@ -17,7 +17,7 @@ const NavSecondaryList = ({ navListId, navItems, parent, activeParent, setActive
     <ul id={navListId} className={`nav${parent?.text === activeParent?.text ? ' nav-active-list' : ''}`}>
       {activeParent && (
         <li className="nav-item">
-          <Button className="nav-link--back" variant="subtle" onClick={() => setActiveParent(parent?.parent || null)}>
+          <Button className="nav-link-back" variant="subtle" onClick={() => setActiveParent(parent?.parent || null)}>
             <IconChevronLeft className="ads-icon-md u-icon-left" />
             Back
           </Button>

@@ -57,8 +57,8 @@
 
     &:not(.nav-active-list)
     {
-      & > .nav-item:not(.nav-item--parent),
-      & > .nav-item--parent > .nav-item--parent-trigger
+      & > .nav-item:not(.nav-item-parent),
+      & > .nav-item-parent > .nav-link-parent-trigger
       {
         display: none;
       }
@@ -70,15 +70,15 @@
     }
   }
 
-  .nav-item.nav-item,
-  .nav-item--parent
+  .nav-item,
+  .nav-item-parent
   {
     margin-top: 0;
   }
 
-  .nav-item--parent
+  .nav-item-parent
   {
-    .nav-link.nav-item--parent-trigger
+    .nav-link.nav-link-parent-trigger
     {
       padding-right: 0;
 
@@ -90,7 +90,7 @@
   }
 
   .nav-link,
-  .nav-link--back
+  .nav-link-back
   {
     align-items: center;
     padding: space(lg) space(2x);
@@ -125,12 +125,12 @@
     }
   }
 
-  .nav-link--back
+  .nav-link-back
   {
     justify-content: flex-start;
     padding-left: 0;
     @include font-size($fs-small);
-    fill: $action-primary-40;
+    fill: $action-primary-40; // TODO: revisit in xdc-1892 (fill vs stroke here or in mixin)
 
     &:active
     {
