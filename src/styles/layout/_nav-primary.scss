@@ -48,6 +48,7 @@
 {
   @include button-subtle;
   margin: space(md) space(3x);
+  border-radius: 0;
   padding: space(lg) space(md); // TODO: override button-subtle
   @include font-size($fs-body-subtle); // TODO: override button-subtle
 
