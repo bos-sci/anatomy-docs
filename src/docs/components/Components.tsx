@@ -48,7 +48,8 @@ const Components = (props: Props): JSX.Element => {
   }, [data]);
 
   useEffect(() => {
-    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
+    // TODO: get rid of .replace() after fixing routing
+    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/')).replace('/form-controls', '');
     setNavItems([
       {
         text: 'Breadcrumbs',
