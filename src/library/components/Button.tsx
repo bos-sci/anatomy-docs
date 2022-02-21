@@ -34,7 +34,7 @@ const Button = ({ children, variant, icon, iconAlignment = 'left', iconSize, cla
   }
 
   if (icon && !children) {
-    return <button className={`ads-button-icon ${classes} ${className}`} {...buttonAttrs}><Icon name={icon} size={iconSize} /></button>;
+    return <button className={`ads-button-icon ${classes} ${className || ''}`} {...buttonAttrs}><Icon name={icon} size={iconSize} /></button>;
   }
 
   return (
