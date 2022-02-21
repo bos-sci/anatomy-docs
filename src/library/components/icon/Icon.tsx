@@ -39,18 +39,25 @@ const Icon = (props: Props): JSX.Element => {
           <IconChevronRight className={sizeClass + ' ' + props.className} />
         </Suspense>
       );
-    case 'arrowLeft':
-      const IconArrowLeft = lazy(() => import('./icons/IconArrowLeft'));
+    case 'chevronLeft':
+      const IconChevronLeft = lazy(() => import('./icons/IconChevronLeft'));
       return (
         <Suspense fallback={<Fallback />}>
-          <IconArrowLeft className={sizeClass + ' ' + props.className} />
+          <IconChevronLeft className={sizeClass + ' ' + props.className} />
         </Suspense>
       );
-    case 'arrowRight':
-      const IconArrowRight = lazy(() => import('./icons/IconArrowRight'));
+    case 'chevronDown':
+      const IconChevronDown = lazy(() => import('./icons/IconChevronDown'));
       return (
         <Suspense fallback={<Fallback />}>
-          <IconArrowRight className={sizeClass + ' ' + props.className} />
+         <IconChevronDown className={sizeClass + ' ' + props.className} />
+        </Suspense>
+      );
+    case 'chevronUp':
+      const IconChevronUp = lazy(() => import('./icons/IconChevronUp'));
+      return (
+        <Suspense fallback={<Fallback />}>
+          <IconChevronUp className={sizeClass + ' ' + props.className} />
         </Suspense>
       );
 

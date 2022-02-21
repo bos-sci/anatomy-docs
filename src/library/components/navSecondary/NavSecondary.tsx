@@ -74,11 +74,11 @@ const NavSecondary = ({ navItems, activeSlug }: Props): JSX.Element => {
   }, [activeSlug, navTree]);
 
   return (
-    <nav className="nav-secondary">
+    <nav className="nav-secondary" aria-label="secondary navigation">
       <button className="nav-secondary-menu-trigger" aria-expanded={isOpen} aria-controls="navSecondaryMenu" onClick={() => setIsOpen(!isOpen)}>
         Menu
-        { isOpen && <IconChevronUp className='ads-icon-lg' /> }
-        { !isOpen && <IconChevronDown className='ads-icon-lg' /> }
+        { isOpen && <IconChevronUp className="ads-icon-lg" /> }
+        { !isOpen && <IconChevronDown className="ads-icon-lg" /> }
       </button>
       <div id="navSecondaryMenu" className={`nav-secondary-menu${isOpen ? ' open' : ''}`}>
         <NavSecondaryList navItems={navTree} parent={null} activeParent={activeParent} setActiveParent={setActiveParent} />

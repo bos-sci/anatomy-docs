@@ -55,10 +55,13 @@
     flex-direction: column;
     margin-top: 0;
 
-    &:not(.nav-active-list) > .nav-item:not(.nav-item--parent),
-    &:not(.nav-active-list) > .nav-item--parent > .nav-item--parent-trigger
+    &:not(.nav-active-list)
     {
-      display: none;
+      & > .nav-item:not(.nav-item--parent),
+      & > .nav-item--parent > .nav-item--parent-trigger
+      {
+        display: none;
+      }
     }
 
     &.nav-active-list
@@ -86,7 +89,7 @@
     }
   }
 
-  .nav-link.nav-link,
+  .nav-link,
   .nav-link--back
   {
     align-items: center;
@@ -100,14 +103,14 @@
     }
   }
 
-  .nav-link.nav-link
+  .nav-link
   {
+    display: flex;
+    justify-content: space-between;
     position: relative;
     border-left: 0;
     @include link-navigation;
     @include font-size($fs-body-subtle);
-    display: flex;
-    justify-content: space-between;
 
     &.active
     {
@@ -129,7 +132,7 @@
     @include font-size($fs-small);
     fill: $action-primary-40;
 
-    &:hover
+    &:active
     {
       fill: $neutral-00;
     }

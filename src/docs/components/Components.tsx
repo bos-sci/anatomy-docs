@@ -59,7 +59,7 @@ const Components = (props: Props): JSX.Element => {
           slug: basePath + '/button',
         },
         {
-          text: 'Form Controls',
+          text: 'Form controls',
           children: [
             {
               text: 'Form',
@@ -74,11 +74,11 @@ const Components = (props: Props): JSX.Element => {
               slug: basePath + '/checkbox-group'
             },
             {
-              text: 'Radio Group',
+              text: 'Radio group',
               slug: basePath + '/radio-group'
             },
             {
-              text: 'Text Input',
+              text: 'Text input',
               slug: basePath + '/text-input'
             }
           ]

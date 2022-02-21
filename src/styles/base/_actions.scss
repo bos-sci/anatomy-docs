@@ -89,15 +89,26 @@
   @include link-default;
   border-color: transparent;
   padding: 0;
+  text-decoration: none;
   background: transparent;
   @include button-focus;
   @include button-disabled;
 
-  &:not([disabled]):hover
+  &:not([disabled])
   {
-    @include link-hover;
-    text-decoration: underline;
-    background: transparent;
+    &:hover
+    {
+      @include link-hover;
+      color: $action-primary-40;
+      fill: $action-primary-40; // Should we set this here (for icons)?
+      text-decoration: underline;
+      background: transparent;
+    }
+
+    &:active
+    {
+      color: $neutral-00;
+    }
   }
 }
 
@@ -164,7 +175,6 @@ button
 
 @mixin link-hover
 {
-  color: $neutral-00;
   text-decoration-thickness: space(xs);
   cursor: pointer;
 }
@@ -182,6 +192,7 @@ button
 
   &:hover
   {
+    color: $neutral-00;
     @include link-hover;
   }
 
@@ -211,8 +222,7 @@ button
   &:hover
   {
     color: $action-primary-40;
-    text-decoration-thickness: space(xs);
-    cursor: pointer;
+    @include link-hover;
   }
 
   &:active
@@ -241,8 +251,7 @@ button
   &:hover
   {
     color: $neutral-60;
-    cursor: pointer;
-    text-decoration-thickness: space(xs);
+    @include link-hover;
   }
 
   &:active

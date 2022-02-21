@@ -14,8 +14,8 @@ interface NavListProps {
 
 const NavSecondaryList = ({ navListId, navItems, parent, activeParent, setActiveParent }: NavListProps) => {
   return (
-  <ul id={navListId} className={`nav${parent?.text === activeParent?.text ? ' nav-active-list' : ''}`}>
-    {activeParent && (
+    <ul id={navListId} className={`nav${parent?.text === activeParent?.text ? ' nav-active-list' : ''}`}>
+      {activeParent && (
         <li className="nav-item">
           <Button className="nav-link--back" variant="subtle" onClick={() => setActiveParent(parent?.parent || null)}>
             <IconChevronLeft className="ads-icon-md u-icon-left" />
@@ -23,22 +23,22 @@ const NavSecondaryList = ({ navListId, navItems, parent, activeParent, setActive
           </Button>
         </li>
       )}
-    {navItems.map((navItem, i) => {
-      if (navItem.slug) {
-        return (
-          <li key={`secondaryNavItem${i}`} className="nav-item">
-            <NavLink
-              to={navItem.slug}
-              className="nav-link"
-            >
-              {navItem.text}
-            </NavLink>
-          </li>
-        )
-      } else {
-        return <NavSecondaryListParent key={`secondaryNavItem${i}`} navItem={navItem} activeParent={activeParent} setActiveParent={setActiveParent} />;
-      }
-    })}
+      {navItems.map((navItem, i) => {
+        if (navItem.slug) {
+          return (
+            <li key={`secondaryNavItem${i}`} className="nav-item">
+              <NavLink
+                to={navItem.slug}
+                className="nav-link"
+              >
+                {navItem.text}
+              </NavLink>
+            </li>
+          )
+        } else {
+          return <NavSecondaryListParent key={`secondaryNavItem${i}`} navItem={navItem} activeParent={activeParent} setActiveParent={setActiveParent} />;
+        }
+      })}
     </ul>
   );
 }

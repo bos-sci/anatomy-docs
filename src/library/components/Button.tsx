@@ -38,7 +38,7 @@ const Button = ({ children, variant, icon, iconAlignment = 'left', iconSize, cla
   }
 
   return (
-    <button className={`${classes} ${className}`} {...buttonAttrs}>
+    <button className={`${classes} ${className || ''}`} {...buttonAttrs}>
       { icon && iconAlignment === 'left' && <Icon name={icon} size={iconSize} className="u-icon-left" /> }
       { icon && children ? <span className="ads-button-text">{ children }</span> : children }
       { icon && iconAlignment === 'right' && <Icon name={icon} size={iconSize} className="u-icon-right" /> }

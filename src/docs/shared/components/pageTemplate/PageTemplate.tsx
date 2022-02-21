@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import Markdown from '../Markdown';
-import NewNav, { NavItemSecondary } from '../../../../library/components/navSecondary/NavSecondary';
+import NavSecondary, { NavItemSecondary } from '../../../../library/components/navSecondary/NavSecondary';
 import NavTertiary, { NavItemTertiary } from '../navTertiary/NavTertiary';
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 const PageTemplate = (props: Props) => {
   return (
     <div className="app-body">
-    { props.navSecondaryItems && <NewNav navItems={props.navSecondaryItems} activeSlug={props.navSecondaryActiveSlug} /> }
+    { props.navSecondaryItems && <NavSecondary navItems={props.navSecondaryItems} activeSlug={props.navSecondaryActiveSlug} /> }
       <main id="mainContent">
         <div className="page-header">
           <div className="metadata">
