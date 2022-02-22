@@ -1,5 +1,6 @@
 import Example from '../../../shared/components/Example';
 import NavSecondary, { NavItemSecondary } from '../../../../library/components/navSecondary/NavSecondary';
+import { useEffect } from 'react';
 
 const DefaultNavSecondary = (): JSX.Element => {
   const navItems: NavItemSecondary[] = [
@@ -42,6 +43,14 @@ const DefaultNavSecondary = (): JSX.Element => {
       slug: '#'
     },
   ];
+
+  useEffect(() => {
+    setTimeout(() => {
+      document.querySelectorAll('.demo-example .nav-link')
+        .forEach((link, i) => i !== 1 && link.classList.remove('active'));
+    }, 0)
+  }, []);
+
   return (
     <Example>
       <NavSecondary menuTriggerText="Menu" navItems={navItems} />
