@@ -110,9 +110,16 @@ main
       padding: 0;
     }
 
+    & > .nav-secondary
+    {
+      width: 12rem;
+      margin-top: space(4x);
+    }
+
     .nav-tertiary
     {
       margin-top: space(lg);
+      width: 12rem;
     }
   }
 }
