@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import NavSecondaryList from './NavSecondaryList';
 import IconChevronDown from '../icon/icons/IconChevronDown';
 import IconChevronUp from '../icon/icons/IconChevronUp';
@@ -38,6 +38,8 @@ const NavSecondary = ({ navItems, activeSlug }: Props): JSX.Element => {
   const [activeParent, setActiveParent] = useState<NavNode | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
+  const nav = useRef<HTMLElement>(null);
+
   useEffect(() => {
     const tree = [...navItems] as NavNode[];
 
@@ -73,8 +75,20 @@ const NavSecondary = ({ navItems, activeSlug }: Props): JSX.Element => {
     }
   }, [activeSlug, navTree]);
 
+  useEffect(() => {
+    const onFocusWithinOut = (e: FocusEvent) => {
+      if (!nav.current?.contains(e.target as Node) && isOpen) {
+        setIsOpen(false);
+      }
+    }
+    window.addEventListener('focusin', onFocusWithinOut);
+    return () => {
+      window.removeEventListener('focusin', onFocusWithinOut);
+    }
+  }, [isOpen]);
+
   return (
-    <nav className="nav-secondary" aria-label="secondary navigation">
+    <nav className="nav-secondary" aria-label="secondary navigation" ref={nav}>
       <button className="nav-secondary-menu-trigger" aria-expanded={isOpen} aria-controls="navSecondaryMenu" onClick={() => setIsOpen(!isOpen)}>
         Menu
         { isOpen && <IconChevronUp className="ads-icon-lg" /> }
