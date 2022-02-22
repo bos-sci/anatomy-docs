@@ -36,6 +36,7 @@
       "nav-tertiary"
       "page-content";
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
     justify-content: start;
     justify-items: start;
     overflow-y: auto;

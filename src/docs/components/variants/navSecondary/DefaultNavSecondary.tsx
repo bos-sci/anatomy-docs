@@ -5,33 +5,33 @@ import { useEffect } from 'react';
 const DefaultNavSecondary = (): JSX.Element => {
   const navItems: NavItemSecondary[] = [
     {
-      text: 'Nav item 1',
+      text: 'Page',
       slug: '#'
     },
     {
-      text: 'Nav item 2',
+      text: 'Active Page',
       slug: '#'
     },
     {
-      text: 'Nav parent',
+      text: 'Page group',
       children: [
         {
-          text: 'Sub nav item 1',
+          text: 'Child page',
           slug: '#'
         },
         {
-          text: 'Sub nav item 2',
+          text: 'Child page',
           slug: '#'
         },
         {
-          text: 'Sub nav parent',
+          text: 'Nested page group',
           children: [
             {
-              text: 'Sub nav item 1',
+              text: 'Nested child page',
               slug: '#'
             },
             {
-              text: 'Sub nav item 2',
+              text: 'Nested child page',
               slug: '#'
             },
           ]
@@ -39,7 +39,7 @@ const DefaultNavSecondary = (): JSX.Element => {
       ]
     },
     {
-      text: 'Nav item 4',
+      text: 'Page',
       slug: '#'
     },
   ];
@@ -53,7 +53,7 @@ const DefaultNavSecondary = (): JSX.Element => {
 
   return (
     <Example>
-      <NavSecondary menuTriggerText="Menu" navItems={navItems} />
+      <NavSecondary menuTriggerText="Section menu" navItems={navItems} />
     </Example>
   );
 }
