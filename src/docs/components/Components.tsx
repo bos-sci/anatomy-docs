@@ -89,7 +89,7 @@ const Components = (props: Props): JSX.Element => {
         slug: basePath + '/link',
       },
       {
-        text: 'Secondary Navigation',
+        text: 'Secondary navigation',
         slug: basePath + '/secondary-navigation',
       },
       {
