@@ -8,7 +8,6 @@
   grid-area: nav-secondary;
   z-index: 10;
   width: 100%;
-  background: $neutral-100;
   transition: width .25s ease-out;
 
   .nav-secondary-menu-trigger
@@ -42,7 +41,6 @@
     border-bottom: space(xxs) solid $neutral-80;
     padding: space(lg) space(4x);
     width: 100%;
-    background: $neutral-100;
 
     &.open
     {
@@ -84,7 +82,7 @@
 
       &:hover
       {
-        background: none;
+        background: transparent;
       }
     }
   }
