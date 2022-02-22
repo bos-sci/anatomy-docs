@@ -19,6 +19,7 @@
 {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
   grid-template-areas: "nav-secondary" "main";
 
   .nav-secondary
@@ -102,6 +103,7 @@ main
         "intro nav-tertiary"
         "page-content nav-tertiary";
       grid-template-columns: 4fr 1fr;
+      grid-template-rows: auto 1fr;
       grid-column-gap: space(4x);
       grid-row-gap: 0;
       justify-content: start;
