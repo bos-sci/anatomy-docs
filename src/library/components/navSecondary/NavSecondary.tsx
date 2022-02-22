@@ -83,8 +83,10 @@ const NavSecondary = ({ menuTriggerText, navItems, activeSlug }: Props): JSX.Ele
       }
     }
     window.addEventListener('focusin', onFocusWithinOut);
+    window.addEventListener('click', onFocusWithinOut);
     return () => {
       window.removeEventListener('focusin', onFocusWithinOut);
+      window.removeEventListener('click', onFocusWithinOut);
     }
   }, [isOpen]);
 
