@@ -125,6 +125,7 @@ const Components = (props: Props): JSX.Element => {
         name={componentData?.name || ''}
         lastUpdated={componentData?.sys?.publishedAt}
         leadParagraph={componentData?.leadParagraph || ''}
+        navSecondaryMenuTrigger="Components"
         navSecondaryItems={navItems}
         navSecondaryActiveSlug={props.match.url}
         navTertiaryItems={headings}>

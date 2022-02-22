@@ -28,11 +28,12 @@ interface NavTreeNode extends NavItem {
 export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'children'>;
 
 interface Props {
+  menuTriggerText: string;
   navItems: NavItemSecondary[];
   activeSlug?: string;
 }
 
-const NavSecondary = ({ navItems, activeSlug }: Props): JSX.Element => {
+const NavSecondary = ({ menuTriggerText, navItems, activeSlug }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [activeParent, setActiveParent] = useState<NavNode | null>(null);
@@ -90,7 +91,7 @@ const NavSecondary = ({ navItems, activeSlug }: Props): JSX.Element => {
   return (
     <nav className="nav-secondary" aria-label="secondary navigation" ref={nav}>
       <button className="nav-secondary-menu-trigger" aria-expanded={isOpen} aria-controls="navSecondaryMenu" onClick={() => setIsOpen(!isOpen)}>
-        Menu
+        { menuTriggerText }
         { isOpen && <IconChevronUp className="ads-icon-lg" /> }
         { !isOpen && <IconChevronDown className="ads-icon-lg" /> }
       </button>

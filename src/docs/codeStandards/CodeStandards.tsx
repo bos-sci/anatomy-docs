@@ -96,6 +96,7 @@ const CodeStandards = (props:  Props): JSX.Element => {
         name={codeStandardData?.name || ''}
         lastUpdated={codeStandardData?.sys?.publishedAt}
         leadParagraph={codeStandardData?.leadParagraph || ''}
+        navSecondaryMenuTrigger="Code standards"
         navSecondaryItems={navItems}
         navTertiaryItems={headings}>
         <Markdown markdown={ codeStandardData?.content || '' } />

@@ -12,8 +12,30 @@ const DefaultNavSecondary = (): JSX.Element => {
       slug: '#'
     },
     {
-      text: 'Nav item 3',
-      slug: '#'
+      text: 'Nav parent',
+      children: [
+        {
+          text: 'Sub nav item 1',
+          slug: '#'
+        },
+        {
+          text: 'Sub nav item 2',
+          slug: '#'
+        },
+        {
+          text: 'Sub nav parent',
+          children: [
+            {
+              text: 'Sub nav item 1',
+              slug: '#'
+            },
+            {
+              text: 'Sub nav item 2',
+              slug: '#'
+            },
+          ]
+        },
+      ]
     },
     {
       text: 'Nav item 4',
@@ -22,7 +44,7 @@ const DefaultNavSecondary = (): JSX.Element => {
   ];
   return (
     <Example>
-      <NavSecondary navItems={navItems} />
+      <NavSecondary menuTriggerText="Menu" navItems={navItems} />
     </Example>
   );
 }

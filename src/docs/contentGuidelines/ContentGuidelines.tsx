@@ -72,6 +72,7 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
       name={contentGuidelineData?.name || ''}
       lastUpdated={contentGuidelineData?.sys?.publishedAt}
       leadParagraph={contentGuidelineData?.leadParagraph || ''}
+      navSecondaryMenuTrigger="Content"
       navSecondaryItems={navItems}
       navTertiaryItems={headings}>
       <Markdown markdown={contentGuidelineData?.content || ''} headingOffset={1} />
