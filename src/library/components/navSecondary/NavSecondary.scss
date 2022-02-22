@@ -20,11 +20,10 @@
     padding-right: space(4x);
     width: 100%;
     color: $text-color-primary;
-    background: transparent;
 
     &:hover
     {
-      background: initial;
+      background: $neutral-100;
       color: initial;
       border-color: $neutral-80;
     }
@@ -154,7 +153,6 @@
       display: block;
       border-bottom: 0;
       padding: 0;
-      background: transparent;
     }
   }
 }
