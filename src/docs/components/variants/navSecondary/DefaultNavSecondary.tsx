@@ -9,7 +9,7 @@ const DefaultNavSecondary = (): JSX.Element => {
       slug: '#'
     },
     {
-      text: 'Active Page',
+      text: 'Active page',
       slug: '#'
     },
     {
