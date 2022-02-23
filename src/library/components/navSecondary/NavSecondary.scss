@@ -1,0 +1,158 @@
+@import "/src/styles/abstracts/abstracts";
+@import "/src/styles/base/base";
+@import "/src/styles/utilities/utilities";
+
+.nav-secondary
+{
+  position: relative;
+  grid-area: nav-secondary;
+  z-index: 10;
+  width: 100%;
+  transition: width .25s ease-out;
+
+  .nav-secondary-menu-trigger
+  {
+    display: flex;
+    justify-content: space-between;
+    border: 0;
+    border-bottom: space(xxs) solid $neutral-80;
+    padding-left: space(4x);
+    padding-right: space(4x);
+    width: 100%;
+    color: $text-color-primary;
+
+    &:hover
+    {
+      background: $neutral-100;
+      color: initial;
+      border-color: $neutral-80;
+    }
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
+  }
+
+  .nav-secondary-menu
+  {
+    position: absolute;
+    display: none;
+    border-bottom: space(xxs) solid $neutral-80;
+    padding: space(lg) space(4x);
+    width: 100%;
+    background: $neutral-100;
+
+    &.open
+    {
+      display: block;
+    }
+  }
+
+  .nav
+  {
+    flex-direction: column;
+    margin-top: 0;
+
+    &:not(.nav-active-list)
+    {
+      & > .nav-item:not(.nav-item-parent),
+      & > .nav-item-parent > .nav-link-parent-trigger
+      {
+        display: none;
+      }
+    }
+
+    &.nav-active-list
+    {
+      width: 100%;
+    }
+  }
+
+  .nav-item,
+  .nav-item-parent
+  {
+    margin-top: 0;
+  }
+
+  .nav-item-parent
+  {
+    .nav-link.nav-link-parent-trigger
+    {
+      padding-right: 0;
+
+      &:hover
+      {
+        background: transparent;
+      }
+    }
+  }
+
+  .nav-link,
+  .nav-link-back
+  {
+    align-items: center;
+    padding: space(lg) space(2x);
+    width: 100%;
+    text-align: left;
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
+  }
+
+  .nav-link
+  {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    border-left: 0;
+    @include link-navigation;
+    @include font-size($fs-body-subtle);
+
+    &.active
+    {
+      &::before
+      {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: space(3x);
+        border-left: space(sm) solid $neutral-00;
+      }
+    }
+  }
+
+  .nav-link-back
+  {
+    justify-content: flex-start;
+    padding-left: 0;
+    @include font-size($fs-small);
+    fill: $action-primary-40; // TODO: revisit in xdc-1892 (fill vs stroke here or in mixin)
+
+    &:active
+    {
+      fill: $neutral-00;
+    }
+  }
+}
+
+@media (min-width: 992px)
+{
+  .nav-secondary
+  {
+    .nav-secondary-menu-trigger
+    {
+      display: none;
+    }
+
+    .nav-secondary-menu
+    {
+      position: relative;
+      display: block;
+      border-bottom: 0;
+      padding: 0;
+    }
+  }
+}

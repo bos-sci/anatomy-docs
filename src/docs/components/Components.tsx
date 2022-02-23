@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import Preview from './variants/Preview';
-import { NavItemSecondary } from '../shared/components/navSecondary/NavSecondary';
+import { NavItemSecondary } from '../../library/components/navSecondary/NavSecondary';
 import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';
@@ -44,14 +44,60 @@ const Components = (props: Props): JSX.Element => {
   useEffect(() => {
     if(data?.component) {
       setComponentData(data.component);
-      const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
-      const navItems = Object.keys(idLookup.components).map(entry => ({
-        text: idLookup.components[entry].name,
-        slug: basePath + '/' + entry
-      }));
-      setNavItems(navItems);
     }
-  }, [data, idLookup, props.match.path]);
+  }, [data]);
+
+  useEffect(() => {
+    // TODO: get rid of .replace() after fixing routing
+    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/')).replace('/form-controls', '');
+    setNavItems([
+      {
+        text: 'Breadcrumbs',
+        slug: basePath + '/breadcrumbs',
+      },
+      {
+        text: 'Button',
+        slug: basePath + '/button',
+      },
+      {
+        text: 'Form controls',
+        children: [
+          {
+            text: 'Form',
+            slug: basePath + '/form-controls/form'
+          },
+          {
+            text: 'Checkbox',
+            slug: basePath + '/form-controls/checkbox'
+          },
+          {
+            text: 'Checkbox group',
+            slug: basePath + '/form-controls/checkbox-group'
+          },
+          {
+            text: 'Radio group',
+            slug: basePath + '/form-controls/radio-group'
+          },
+          {
+            text: 'Text input',
+            slug: basePath + '/form-controls/text-input'
+          }
+        ]
+      },
+      {
+        text: 'Link',
+        slug: basePath + '/link',
+      },
+      {
+        text: 'Secondary navigation',
+        slug: basePath + '/secondary-navigation',
+      },
+      {
+        text: 'Tabs',
+        slug: basePath + '/tabs',
+      },
+    ]);
+  }, [props.match.path]);
 
   const nameForTitle = (componentData?.name || '')
     .split(' ')
@@ -79,7 +125,9 @@ const Components = (props: Props): JSX.Element => {
         name={componentData?.name || ''}
         lastUpdated={componentData?.sys?.publishedAt}
         leadParagraph={componentData?.leadParagraph || ''}
+        navSecondaryMenuTrigger="Components"
         navSecondaryItems={navItems}
+        navSecondaryActiveSlug={props.match.url}
         navTertiaryItems={headings}>
         <Preview component={ componentName } variant='Default' />
         {(componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>
