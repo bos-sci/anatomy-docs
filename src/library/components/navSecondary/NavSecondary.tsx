@@ -77,16 +77,16 @@ const NavSecondary = ({ menuTriggerText, navItems, activeSlug }: Props): JSX.Ele
   }, [activeSlug, navTree]);
 
   useEffect(() => {
-    const onFocusWithinOut = (e: FocusEvent) => {
+    const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!nav.current?.contains(e.target as Node) && isOpen) {
         setIsOpen(false);
       }
     }
     window.addEventListener('focusin', onFocusWithinOut);
-    window.addEventListener('click', onFocusWithinOut);
+    window.addEventListener('pointerup', onFocusWithinOut);
     return () => {
       window.removeEventListener('focusin', onFocusWithinOut);
-      window.removeEventListener('click', onFocusWithinOut);
+      window.removeEventListener('pointerup', onFocusWithinOut);
     }
   }, [isOpen]);
 
