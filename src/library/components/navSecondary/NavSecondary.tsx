@@ -1,16 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
+import { RequireOnlyOne } from '../../types';
 import NavSecondaryList from './NavSecondaryList';
 import IconChevronDown from '../icon/icons/IconChevronDown';
 import IconChevronUp from '../icon/icons/IconChevronUp';
 import "./NavSecondary.scss"
-
-type RequireOnlyOne<T, Keys extends keyof T = keyof T> =
-    Pick<T, Exclude<keyof T, Keys>>
-    & {
-        [K in Keys]-?:
-            Required<Pick<T, K>>
-            & Partial<Record<Exclude<Keys, K>, undefined>>
-    }[Keys]
 
 interface NavItem {
   text: string;
