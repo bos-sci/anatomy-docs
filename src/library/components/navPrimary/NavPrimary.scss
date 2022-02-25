@@ -1,0 +1,175 @@
+@import '../../../styles/abstracts/abstracts';
+@import '../../../styles/base/base';
+
+
+.nav-utility,
+.nav-primary
+{
+  .nav
+  {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.nav-utility,
+.nav-primary-main
+{
+  border-bottom: space(xxs) solid $neutral-80;
+
+  .nav
+  {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .nav-link
+    {
+      @include link-navigation;
+      @include font-size($fs-body-subtle);
+    }
+  }
+}
+
+.nav-utility
+{
+  .nav
+  {
+    .nav-item
+    {
+      margin-top: 0;
+
+      .nav-link
+      {
+        color: $neutral-40;
+      }
+    }
+  }
+}
+
+.nav-primary
+{
+  .nav-primary-main
+  {
+    .nav
+    {
+      .nav-item
+      {
+        margin-top: 0;
+
+        &.push-left
+        {
+          margin-right: auto;
+        }
+
+        .nav-link
+        {
+          padding: space(3x) space(2x);
+          border-bottom: space(sm) solid transparent;
+
+          &.active
+          {
+            border-color: $neutral-00;
+          }
+        }
+      }
+    }
+  }
+
+  .nav-primary-menu
+  {
+    border-bottom: space(xxs) solid $neutral-80;
+    padding: space(2x) 0;
+
+    .nav-primary-menu-panels
+    {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: "one two three";
+
+      .nav-primary-menu-panel
+      {
+        display: block;
+        margin-top: 0;
+        padding-left: 0;
+      }
+
+      .nav-primary-menu-panel,
+      .nav-primary-menu-panel-custom
+      {
+        flex: 1;
+      }
+    }
+
+    .nav-item-parent
+    {
+      .nav-link
+      {
+        display: flex;
+        justify-content: space-between;
+        border: 0;
+        width: 100%;
+
+        &:hover
+        {
+          background: transparent;
+        }
+      }
+    }
+
+    .nav-item,
+    .nav-item-parent
+    {
+      margin-top: 0;
+    }
+
+    .nav-link
+    {
+      padding: space(lg) space(2x);
+      @include font-size($fs-body-subtle);
+      @include link-navigation;
+    }
+  }
+}
+
+@media (min-width: $lg)
+{
+  .nav-utility,
+  .nav-primary
+  {
+    &.nav-primary-main .nav,
+    .nav-primary-menu-panels
+    {
+      width: 60rem;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+}
+
+@media (min-width: $xl)
+{
+  .nav-utility,
+  .nav-primary
+  {
+    &.nav-primary-main .nav,
+    .nav-primary-menu-panels
+    {
+      width: 71.25rem;
+    }
+  }
+}
+
+@media (min-width: $xxl)
+{
+  .nav-utility,
+  .nav-primary
+  {
+    &.nav-primary-main .nav,
+    .nav-primary-menu-panels
+    {
+      width: 82.5rem;
+    }
+  }
+}

@@ -49,7 +49,9 @@ const Components = (props: Props): JSX.Element => {
 
   useEffect(() => {
     // TODO: get rid of .replace() after fixing routing
-    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/')).replace('/form-controls', '');
+    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'))
+      .replace('/form-controls', '')
+      .replace('/navigation', '');
     setNavItems([
       {
         text: 'Breadcrumbs',
@@ -89,8 +91,21 @@ const Components = (props: Props): JSX.Element => {
         slug: basePath + '/link',
       },
       {
-        text: 'Secondary navigation',
-        slug: basePath + '/secondary-navigation',
+        text: 'Navigation',
+        children: [
+          {
+            text: 'Primary navigation',
+            slug: basePath + '/navigation/primary-navigation',
+          },
+          {
+            text: 'Secondary navigation',
+            slug: basePath + '/navigation/secondary-navigation',
+          },
+          {
+            text: 'Tertiary navigation',
+            slug: basePath + '/navigation/tertiary-navigation',
+          }
+        ]
       },
       {
         text: 'Tabs',
