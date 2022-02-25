@@ -44,35 +44,39 @@ const NavPrimary = (): JSX.Element => {
         </div>
         <div className="nav-primary-menu">
           <div className="nav-primary-menu-panels">
-            <div className="nav-primary-menu-panel-custom">
+            <div className="nav-primary-panel nav-primary-menu-panel-custom">
               <h4>Navigation section</h4>
               <p className="body-subtle">Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.</p>
             </div>
-            <ul className="nav nav-primary-menu-panel">
-              <li className="nav-item">
-                <a href="#demo" className="nav-link">Nav item</a>
-              </li>
-              <li className="nav-item">
-                <a href="#demo" className="nav-link">Nav item</a>
-              </li>
-              <li className="nav-item-parent">
-                <Button variant="subtle" className="nav-link">Nav item parent <IconChevronRight className="ads-icon-lg"/></Button>
-                <ul className="nav nav-primary-menu-panel">
-                  <li className="nav-item">
-                    <a href="#demo" className="nav-link">Nested nav item</a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="#demo" className="nav-link">Nested nav item</a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="#demo" className="nav-link">Nested nav item</a>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-item">
-                <a href="#demo" className="nav-link">Nav item</a>
-              </li>
-            </ul>
+            <div className="nav-primary-panel">
+              <ul className="nav nav-primary-menu-panel">
+                <li className="nav-item">
+                  <a href="#demo" className="nav-link">Nav item</a>
+                </li>
+                <li className="nav-item">
+                  <a href="#demo" className="nav-link">Nav item</a>
+                </li>
+                <li className="nav-item-parent">
+                  <Button variant="subtle" className="nav-link" id="listParent">Nav item parent <IconChevronRight className="ads-icon-lg"/></Button>
+                </li>
+                <li className="nav-item">
+                  <a href="#demo" className="nav-link">Nav item</a>
+                </li>
+              </ul>
+            </div>
+            <div className="nav-primary-panel">
+              <ul className="nav nav-primary-menu-panel" aria-labelledby="listParent">
+                <li className="nav-item">
+                  <a href="#demo" className="nav-link">Nested nav item</a>
+                </li>
+                <li className="nav-item">
+                  <a href="#demo" className="nav-link">Nested nav item</a>
+                </li>
+                <li className="nav-item">
+                  <a href="#demo" className="nav-link">Nested nav item</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
