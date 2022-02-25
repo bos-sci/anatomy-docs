@@ -135,41 +135,32 @@
 
 @media (min-width: $lg)
 {
-  .nav-utility,
-  .nav-primary
+  .nav-utility .nav,
+  .nav-primary-main .nav,
+  .nav-primary-menu-panels
   {
-    .nav-primary-main .nav,
-    .nav-primary-menu-panels
-    {
-      width: 60rem;
-      margin-right: auto;
-      margin-left: auto;
-    }
+    width: 60rem;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
 @media (min-width: $xl)
 {
-  .nav-utility,
-  .nav-primary
+  .nav-utility .nav,
+  .nav-primary-main .nav,
+  .nav-primary-menu-panels
   {
-    .nav-primary-main .nav,
-    .nav-primary-menu-panels
-    {
-      width: 71.25rem;
-    }
+    width: 71.25rem;
   }
 }
 
 @media (min-width: $xxl)
 {
-  .nav-utility,
-  .nav-primary
+  .nav-utility .nav,
+  .nav-primary-main .nav,
+  .nav-primary-menu-panels
   {
-    .nav-primary-main .nav,
-    .nav-primary-menu-panels
-    {
-      width: 82.5rem;
-    }
+    width: 82.5rem;
   }
 }
