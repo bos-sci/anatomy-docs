@@ -20,7 +20,7 @@ const DefaultNavTertiary = (): JSX.Element => {
 
   return (
     <Example>
-      <NavTertiary navTertiaryItems={navTertiaryItems}></NavTertiary>
+      <NavTertiary navTertiaryItems={navTertiaryItems} />
     </Example>
   );
 }
