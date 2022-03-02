@@ -8,6 +8,7 @@ interface Props {
 
 const Layout = (props: Props): JSX.Element => {
   return <>
+    <a href="#mainContent" className="skip-link">Skip to main content</a>
     <NavPrimary />
     { props.children }
     <footer className="app-footer">
