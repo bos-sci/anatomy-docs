@@ -1,15 +1,11 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
 import logo from "../../../assets/images/logo-anatomy.svg";
 import { RequireOnlyOne } from '../../types';
 import Button from '../Button';
 import IconBars from '../icon/icons/IconBars';
-import IconChevronDown from '../icon/icons/IconChevronDown';
-import IconChevronRight from '../icon/icons/IconChevronRight';
-import IconChevronUp from '../icon/icons/IconChevronUp';
 import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
-import NavPrimaryRootItem from './NavPrimaryRootItem';
+import NavPrimaryItemRoot from './NavPrimaryItemRoot';
 import NavUtility from './NavUtility';
 
 interface NavItem {
@@ -62,7 +58,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
                 <img src={logo} alt="Anatomy logo" />
               </a>
             </li>
-            {navItems.map(navItem => <NavPrimaryRootItem navItem={navItem} updateMenu={updateMenu} />)}
+            {navItems.map(navItem => <NavPrimaryItemRoot navItem={navItem} updateMenu={updateMenu} />)}
             {/* <li className="nav-item nav-primary-search">
               Search will go here
             </li> */}

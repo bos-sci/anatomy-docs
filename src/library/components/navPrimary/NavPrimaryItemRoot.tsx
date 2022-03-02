@@ -10,7 +10,7 @@ interface Props {
   updateMenu: (navItem: NavItemPrimary | null) => void;
 }
 
-const NavPrimaryRootItem = ({ navItem, updateMenu }: Props): JSX.Element => {
+const NavPrimaryItemRoot = ({ navItem, updateMenu }: Props): JSX.Element => {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -41,4 +41,4 @@ const NavPrimaryRootItem = ({ navItem, updateMenu }: Props): JSX.Element => {
   );
 }
 
-export default NavPrimaryRootItem;
+export default NavPrimaryItemRoot;
