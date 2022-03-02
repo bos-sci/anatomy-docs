@@ -10,6 +10,7 @@ import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
+import Layout from '../shared/components/Layout';
 
 interface ComponentMatch extends match {
   params: {
@@ -84,15 +85,17 @@ const Foundations = (props:  Props): JSX.Element => {
   }, [foundationData?.name, pageHeadings]);
 
   return (
-    <PageTemplate
-      name={foundationData?.name || ''}
-      lastUpdated={foundationData?.sys?.publishedAt}
-      leadParagraph={foundationData?.leadParagraph || ''}
-      navSecondaryMenuTrigger="Foundations"
-      navSecondaryItems={navItems}
-      navTertiaryItems={headings}>
-      <Markdown markdown={foundationData?.content || ''} headingOffset={1} />
-    </PageTemplate>
+    <Layout>
+      <PageTemplate
+        name={foundationData?.name || ''}
+        lastUpdated={foundationData?.sys?.publishedAt}
+        leadParagraph={foundationData?.leadParagraph || ''}
+        navSecondaryMenuTrigger="Foundations"
+        navSecondaryItems={navItems}
+        navTertiaryItems={headings}>
+        <Markdown markdown={foundationData?.content || ''} headingOffset={1} />
+      </PageTemplate>
+    </Layout>
   );
 }
 

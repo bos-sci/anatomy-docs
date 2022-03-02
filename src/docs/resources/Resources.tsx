@@ -10,6 +10,7 @@ import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
+import Layout from '../shared/components/Layout';
 
 interface ComponentMatch extends match {
   params: {
@@ -87,18 +88,20 @@ const Resources = (props:  Props): JSX.Element => {
   }, [resourceData?.name, pageHeadings]);
 
   return (
-    <PageTemplate
-      name={resourceData?.name || ''}
-      lastUpdated={resourceData?.sys?.publishedAt}
-      leadParagraph={resourceData?.leadParagraph || ''}
-      navSecondaryMenuTrigger="Resources"
-      navSecondaryItems={navItems}
-      navTertiaryItems={headings}>
-      <Markdown
-        markdown={resourceData?.content || ''}
-        headingOffset={1}
-        className={resourceData?.name === 'Release notes' ? 'table-align-top' : ''} />
-    </PageTemplate>
+    <Layout>
+      <PageTemplate
+        name={resourceData?.name || ''}
+        lastUpdated={resourceData?.sys?.publishedAt}
+        leadParagraph={resourceData?.leadParagraph || ''}
+        navSecondaryMenuTrigger="Resources"
+        navSecondaryItems={navItems}
+        navTertiaryItems={headings}>
+        <Markdown
+          markdown={resourceData?.content || ''}
+          headingOffset={1}
+          className={resourceData?.name === 'Release notes' ? 'table-align-top' : ''} />
+      </PageTemplate>
+    </Layout>
   );
 }
 
