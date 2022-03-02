@@ -20,7 +20,7 @@ const NavPrimaryRootItem = ({ navItem, updateMenu }: Props): JSX.Element => {
   }
 
   return (
-    <li className="nav-item nav-primary-root-item">
+    <li className="nav-item nav-item-root">
       {navItem.children &&
         <Button
           type="button"

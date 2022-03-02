@@ -55,9 +55,9 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
       <a href="#mainContent" className="skip-link">Skip to main content</a>
       {utilityItems && <NavUtility utilityItems={utilityItems} />}
       <nav className="nav-primary" aria-label="primary">
-        <div className="nav-primary-main">
+        <div className="nav-header">
           <ul className="nav">
-            <li className="nav-item nav-primary-logo">
+            <li className="nav-item nav-item-logo">
               <a href="#demo" className="nav-link-logo" aria-label="Boston Scientific home page">
                 <img src={logo} alt="Anatomy logo" />
               </a>
@@ -66,7 +66,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
             {/* <li className="nav-item nav-primary-search">
               Search will go here
             </li> */}
-            <li className="nav-item nav-primary-menu-trigger">
+            <li className="nav-item nav-item-trigger">
               <Button variant="subtle" className="nav-link">
                 <IconBars className="ads-icon-lg u-icon-left"/>
                 Menu

@@ -10,15 +10,15 @@ interface Props {
 
 const NavPrimaryMenu = ({ navItems, title, description }: Props): JSX.Element => {
   return (
-    <div className="nav-primary-menu">
-      <div className="nav-primary-menu-panels">
-        <div className="nav-primary-panel nav-primary-menu-panel-custom">
+    <div className="nav-menu">
+      <div className="nav-menu-panels">
+        <div className="nav-menu-panel nav-menu-panel-custom">
           <h4>{ title }</h4>
           <p className="body-subtle">{ description }</p>
           <a href="#demo" className="body-subtle">All patients and caregivers information</a>
         </div>
         <div className="nav-primary-panel">
-          <ul className="nav nav-primary-menu-panel">
+          <ul className="nav nav-menu-panel">
             <li className="nav-item">
               <a href="#demo" className="nav-link">Nav item</a>
             </li>
@@ -33,8 +33,8 @@ const NavPrimaryMenu = ({ navItems, title, description }: Props): JSX.Element =>
             </li>
           </ul>
         </div>
-        <div className="nav-primary-panel">
-          <ul className="nav nav-primary-menu-panel" aria-labelledby="listParent">
+        <div className="nav-panel">
+          <ul className="nav nav-menu-panel" aria-labelledby="listParent">
             <li className="nav-item-parent">
               <Button variant="subtle" className="nav-link active" id="listParent2">Nav item parent <IconChevronRight className="ads-icon-lg"/></Button>
             </li>
@@ -46,8 +46,8 @@ const NavPrimaryMenu = ({ navItems, title, description }: Props): JSX.Element =>
             </li>
           </ul>
         </div>
-        <div className="nav-primary-panel">
-          <ul className="nav nav-primary-menu-panel" aria-labelledby="listParent2">
+        <div className="nav-panel">
+          <ul className="nav nav-menu-panel" aria-labelledby="listParent2">
             <li className="nav-item">
               <a href="#demo" className="nav-link">Nested nav item</a>
             </li>

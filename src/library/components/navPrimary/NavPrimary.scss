@@ -14,7 +14,7 @@
 }
 
 .nav-utility,
-.nav-primary-main
+.nav-header
 {
   border-bottom: space(xxs) solid $neutral-80;
 
@@ -52,7 +52,7 @@
 
 .nav-primary
 {
-  .nav-primary-main
+  .nav-header
   {
     .nav
     {
@@ -60,12 +60,12 @@
       {
         margin-top: 0;
 
-        &.nav-primary-root-item
+        &.nav-item-root
         {
           display: none;
         }
 
-        &.nav-primary-logo
+        &.nav-item-logo
         {
           margin-right: auto;
           padding: space(2x) space(3x);
@@ -76,7 +76,7 @@
           }
         }
 
-        &.nav-primary-menu-trigger
+        &.nav-item-trigger
         {
           .nav-link
           {
@@ -111,11 +111,11 @@
     }
   }
 
-  .nav-primary-menu
+  .nav-menu
   {
     border-bottom: space(xxs) solid $neutral-80;
 
-    .nav-primary-menu-panels
+    .nav-menu-panels
     {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -126,7 +126,7 @@
         border-left: 1px solid $neutral-80;
       }
 
-      .nav-primary-menu-panel
+      .nav-menu-panel
       {
         display: block;
         margin-top: 0;
@@ -134,8 +134,8 @@
         height: 100%;
       }
 
-      .nav-primary-menu-panel,
-      .nav-primary-menu-panel-custom
+      .nav-menu-panel,
+      .nav-menu-panel-custom
       {
         flex: 1;
       }
@@ -180,8 +180,8 @@
 @media (min-width: $lg)
 {
   .nav-utility .nav,
-  .nav-primary-main .nav,
-  .nav-primary-menu-panels
+  .nav-header .nav,
+  .nav-menu-panels
   {
     width: 60rem;
     margin-right: auto;
@@ -195,23 +195,23 @@
 
   .nav-primary
   {
-    .nav-primary-main
+    .nav-header
     {
       .nav
       {
         .nav-item
         {
-          &.nav-primary-root-item
+          &.nav-item-root
           {
             display: block;
           }
 
-          &.nav-primary-menu-trigger
+          &.nav-item-trigger
           {
             display: none;
           }
 
-          &.nav-primary-logo
+          &.nav-item-logo
           {
             padding: 0;
           }
@@ -224,8 +224,8 @@
 @media (min-width: $xl)
 {
   .nav-utility .nav,
-  .nav-primary-main .nav,
-  .nav-primary-menu-panels
+  .nav-header .nav,
+  .nav-menu-panels
   {
     width: 71.25rem;
   }
@@ -234,8 +234,8 @@
 @media (min-width: $xxl)
 {
   .nav-utility .nav,
-  .nav-primary-main .nav,
-  .nav-primary-menu-panels
+  .nav-header .nav,
+  .nav-menu-panels
   {
     width: 82.5rem;
   }
