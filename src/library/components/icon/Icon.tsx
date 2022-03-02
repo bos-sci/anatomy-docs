@@ -32,6 +32,13 @@ const Icon = (props: Props): JSX.Element => {
           <IconPlus className={sizeClass + ' ' + props.className} />
         </Suspense>
       );
+    case 'bars':
+      const IconBars = lazy(() => import('./icons/IconBars'));
+      return (
+        <Suspense fallback={<Fallback />}>
+          <IconBars className={sizeClass + ' ' + props.className} />
+        </Suspense>
+      );
     case 'chevronRight':
       const IconChevronRight = lazy(() => import('./icons/IconChevronRight'));
       return (

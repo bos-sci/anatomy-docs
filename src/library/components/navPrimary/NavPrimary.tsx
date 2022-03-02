@@ -1,92 +1,86 @@
+import { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import logo from "../../../assets/images/logo-anatomy.svg";
+import { RequireOnlyOne } from '../../types';
 import Button from '../Button';
+import IconBars from '../icon/icons/IconBars';
+import IconChevronDown from '../icon/icons/IconChevronDown';
 import IconChevronRight from '../icon/icons/IconChevronRight';
+import IconChevronUp from '../icon/icons/IconChevronUp';
 import './NavPrimary.scss';
+import NavPrimaryMenu from './NavPrimaryMenu';
+import NavPrimaryRootItem from './NavPrimaryRootItem';
+import NavUtility from './NavUtility';
 
-const NavPrimary = (): JSX.Element => {
+interface NavItem {
+  text: string;
+  slug: string;
+  href: string;
+}
+
+interface NavItemPrimaryBase extends NavItem {
+  children?: NavItemPrimary[];
+  description?: string;
+  title?: string;
+}
+
+export type NavItemPrimary = RequireOnlyOne<NavItemPrimaryBase, 'slug' | 'href' | 'children'>;
+
+export type NavItemUtility = RequireOnlyOne<NavItem, 'slug' | 'href'>;
+
+interface NavTreeNode extends NavItem {
+  parent: NavNode | null;
+  children?: NavNode[];
+}
+
+export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'children'>;
+
+interface Props {
+  navItems: NavItemPrimary[];
+  activeSlug?: string;
+  utilityItems?: NavItemUtility[];
+}
+
+const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
+
+  const [currentRootItem, setCurrentRootItem] = useState<NavItemPrimary | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const updateMenu = (navItem: NavItemPrimary | null): void => {
+    setCurrentRootItem(navItem);
+  }
+
   return (
     <header>
       <a href="#mainContent" className="skip-link">Skip to main content</a>
-      <nav className="nav-utility" aria-label="utility">
-        <ul className="nav">
-          <li className="nav-item">
-            <a href="#demo" className="nav-link">Utility link</a>
-          </li>
-          <li className="nav-item">
-            <a href="#demo" className="nav-link">Utility link</a>
-          </li>
-          <li className="nav-item">
-            <a href="#demo" className="nav-link">Utility link</a>
-          </li>
-          <li className="nav-item">
-            <a href="#demo" className="nav-link">Utility link</a>
-          </li>
-        </ul>
-      </nav>
+      {utilityItems && <NavUtility utilityItems={utilityItems} />}
       <nav className="nav-primary" aria-label="primary">
         <div className="nav-primary-main">
           <ul className="nav">
-            <li className="nav-item push-left">
-              <a href="#demo" aria-label="Boston Scientific home page">
+            <li className="nav-item nav-primary-logo">
+              <a href="#demo" className="nav-link-logo" aria-label="Boston Scientific home page">
                 <img src={logo} alt="Anatomy logo" />
               </a>
             </li>
-            <li className="nav-item">
-              <a href="#demo" className="nav-link">For healthcare professionals</a>
-            </li>
-            <li className="nav-item">
-              <a href="#demo" className="nav-link active">For patients & caregivers</a>
-            </li>
-            <li className="nav-item">
-              <a href="#demo" className="nav-link">About Boston Scientific</a>
+            {navItems.map(navItem => <NavPrimaryRootItem navItem={navItem} updateMenu={updateMenu} />)}
+            {/* <li className="nav-item nav-primary-search">
+              Search will go here
+            </li> */}
+            <li className="nav-item nav-primary-menu-trigger">
+              <Button variant="subtle" className="nav-link">
+                <IconBars className="ads-icon-lg u-icon-left"/>
+                Menu
+              </Button>
             </li>
           </ul>
         </div>
-        <div className="nav-primary-menu">
-          <div className="nav-primary-menu-panels">
-            <div className="nav-primary-panel nav-primary-menu-panel-custom">
-              <h4>Navigation section</h4>
-              <p className="body-subtle">Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.</p>
-            </div>
-            <div className="nav-primary-panel">
-              <ul className="nav nav-primary-menu-panel">
-                <li className="nav-item">
-                  <a href="#demo" className="nav-link">Nav item</a>
-                </li>
-                <li className="nav-item">
-                  <a href="#demo" className="nav-link">Nav item</a>
-                </li>
-                <li className="nav-item-parent">
-                  <Button variant="subtle" className="nav-link" id="listParent">Nav item parent <IconChevronRight className="ads-icon-lg"/></Button>
-                </li>
-                <li className="nav-item">
-                  <a href="#demo" className="nav-link">Nav item</a>
-                </li>
-              </ul>
-            </div>
-            <div className="nav-primary-panel">
-              <ul className="nav nav-primary-menu-panel" aria-labelledby="listParent">
-                <li className="nav-item">
-                  <a href="#demo" className="nav-link">Nested nav item</a>
-                </li>
-                <li className="nav-item">
-                  <a href="#demo" className="nav-link">Nested nav item</a>
-                </li>
-                <li className="nav-item">
-                  <a href="#demo" className="nav-link">Nested nav item</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        {currentRootItem?.children &&
+          <NavPrimaryMenu
+            navItems={currentRootItem.children}
+            title={currentRootItem.title || ''}
+            description={currentRootItem.description || ''} />
+        }
       </nav>
-        {/* <div className="search">
-          <input type="search" aria-label="Search" placeholder="Search" />
-          <button type="submit">
-            🔎
-          </button>
-        </div>
-      </div> */}
     </header>
   );
 }

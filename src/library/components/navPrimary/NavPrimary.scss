@@ -34,6 +34,8 @@
 
 .nav-utility
 {
+  display: none;
+
   .nav
   {
     .nav-item
@@ -58,19 +60,51 @@
       {
         margin-top: 0;
 
-        &.push-left
+        &.nav-primary-root-item
+        {
+          display: none;
+        }
+
+        &.nav-primary-logo
         {
           margin-right: auto;
+          padding: space(2x) space(3x);
+
+          .nav-link-logo
+          {
+            display: block;
+          }
+        }
+
+        &.nav-primary-menu-trigger
+        {
+          .nav-link
+          {
+            border: 0;
+            &:focus
+            {
+              @include focus-default-inset;
+            }
+          }
         }
 
         .nav-link
         {
+          position: relative;
           padding: space(3x) space(2x);
-          border-bottom: space(sm) solid transparent;
+          border: 0;
 
           &.active
           {
-            border-color: $neutral-00;
+            &::before
+            {
+              content: '';
+              position: absolute;
+              right: space(2x);
+              bottom: 0;
+              left: space(2x);
+              border-bottom: space(sm) solid $neutral-00;
+            }
           }
         }
       }
@@ -80,19 +114,24 @@
   .nav-primary-menu
   {
     border-bottom: space(xxs) solid $neutral-80;
-    padding: space(2x) 0;
 
     .nav-primary-menu-panels
     {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-areas: "one two three";
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas: "one two three four";
+
+      > :not(:first-child)
+      {
+        border-left: 1px solid $neutral-80;
+      }
 
       .nav-primary-menu-panel
       {
         display: block;
         margin-top: 0;
         padding-left: 0;
+        height: 100%;
       }
 
       .nav-primary-menu-panel,
@@ -114,6 +153,11 @@
         &:hover
         {
           background: transparent;
+        }
+
+        &.active
+        {
+          background: $neutral-95;
         }
       }
     }
@@ -142,6 +186,38 @@
     width: 60rem;
     margin-right: auto;
     margin-left: auto;
+  }
+
+  .nav-utility
+  {
+    display: block;
+  }
+
+  .nav-primary
+  {
+    .nav-primary-main
+    {
+      .nav
+      {
+        .nav-item
+        {
+          &.nav-primary-root-item
+          {
+            display: block;
+          }
+
+          &.nav-primary-menu-trigger
+          {
+            display: none;
+          }
+
+          &.nav-primary-logo
+          {
+            padding: 0;
+          }
+        }
+      }
+    }
   }
 }
 
