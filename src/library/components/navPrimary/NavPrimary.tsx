@@ -40,7 +40,6 @@ interface Props {
 const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
 
   const [currentRootItem, setCurrentRootItem] = useState<NavItemPrimary | null>(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const updateMenu = (navItem: NavItemPrimary | null): void => {
     setCurrentRootItem(navItem);
