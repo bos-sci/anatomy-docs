@@ -34,14 +34,14 @@ const DefaultNavSecondary = (): JSX.Element => {
               text: 'Nested child page',
               slug: '#'
             },
+            {
+              text: 'Nested child page',
+              slug: '#'
+            },
           ]
         },
       ]
-    },
-    {
-      text: 'Page',
-      slug: '#'
-    },
+    }
   ];
 
   useEffect(() => {

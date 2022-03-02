@@ -54,7 +54,7 @@ const Preview = ( props: Props ): JSX.Element => {
         setRenderedComponent(<InputRadioGroupVariants variantId={variantId} />);
         break;
 
-        case 'secondary-navigation':
+      case 'secondary-navigation':
         const DefaultNavSecondary = lazy(() => import('./navSecondary/DefaultNavSecondary'));
         setRenderedComponent(<DefaultNavSecondary />);
         break;
@@ -62,6 +62,11 @@ const Preview = ( props: Props ): JSX.Element => {
       case 'tabs':
         const DefaultTabs = lazy(() => import('./tabs/DefaultTabs'));
         setRenderedComponent(<DefaultTabs />);
+        break;
+
+      case 'tertiary-navigation':
+        const DefaultNavTertiary = lazy(() => import('./navTertiary/DefaultNavTertiary'));
+        setRenderedComponent(<DefaultNavTertiary />);
         break;
 
       case 'text-input':
