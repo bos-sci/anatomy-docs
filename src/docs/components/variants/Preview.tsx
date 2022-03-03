@@ -69,6 +69,11 @@ const Preview = ( props: Props ): JSX.Element => {
         setRenderedComponent(<DefaultTabs />);
         break;
 
+      case 'tertiary-navigation':
+        const DefaultNavTertiary = lazy(() => import('./navTertiary/DefaultNavTertiary'));
+        setRenderedComponent(<DefaultNavTertiary />);
+        break;
+
       case 'text-input':
         const InputTextVariants = lazy(() => import('./inputText/InputTextVariants'));
         setRenderedComponent(<InputTextVariants variantId={variantId} />);

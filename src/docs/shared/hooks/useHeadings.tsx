@@ -10,7 +10,7 @@ const useHeadings = (key: any, depth = 1): Element[] => {
   useEffect(() => {
     if (key) {
       setTimeout(() => {
-        const selector = Array.from(Array(depth)).map((_val, i) => '.page-content h' + (i + 2)).join(', ');
+        const selector = Array.from(Array(depth)).map((_val, i) => '.page-content h' + (i + 2) + ':not(.nav-tertiary-title)').join(', ');
         setHeadings(Array.from(document.querySelectorAll(selector)));
       }, 0);
     }

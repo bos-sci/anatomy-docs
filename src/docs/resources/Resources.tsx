@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { NavItemSecondary } from '../../library/components/navSecondary/NavSecondary';
-import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
+import { NavItemTertiary } from '../../library/components/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
