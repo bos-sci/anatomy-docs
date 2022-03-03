@@ -119,11 +119,10 @@
     {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-template-areas: "one two three four";
 
       > :not(:first-child)
       {
-        border-left: 1px solid $neutral-80;
+        border-left: space(xxs) solid $neutral-80;
       }
 
       .nav-menu-panel
@@ -183,7 +182,7 @@
   .nav-header .nav,
   .nav-menu-panels
   {
-    width: 60rem;
+    width: 60rem; // NOTE: This is a one off size to match the layout widths.
     margin-right: auto;
     margin-left: auto;
   }
@@ -227,7 +226,7 @@
   .nav-header .nav,
   .nav-menu-panels
   {
-    width: 71.25rem;
+    width: 71.25rem; // NOTE: This is a one off size to match the layout widths.
   }
 }
 
@@ -237,6 +236,6 @@
   .nav-header .nav,
   .nav-menu-panels
   {
-    width: 82.5rem;
+    width: 82.5rem; // NOTE: This is a one off size to match the layout widths.
   }
 }

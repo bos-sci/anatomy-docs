@@ -2,7 +2,7 @@ import { useState } from 'react';
 import logo from "../../../assets/images/logo-anatomy.svg";
 import { RequireOnlyOne } from '../../types';
 import Button from '../Button';
-import IconBars from '../icon/icons/IconBars';
+import IconMenu from '../icon/icons/IconMenu';
 import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavPrimaryItemRoot from './NavPrimaryItemRoot';
@@ -45,25 +45,25 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
     setCurrentRootItem(navItem);
   }
 
-  return (
+  return <>
+    <a href="#mainContent" className="skip-link">Skip to main content</a>
     <header>
-      <a href="#mainContent" className="skip-link">Skip to main content</a>
       {utilityItems && <NavUtility utilityItems={utilityItems} />}
       <nav className="nav-primary" aria-label="primary">
         <div className="nav-header">
           <ul className="nav">
             <li className="nav-item nav-item-logo">
-              <a href="#demo" className="nav-link-logo" aria-label="Boston Scientific home page">
+              <a href="/" className="nav-link-logo" aria-label="Anatomy home page">
                 <img src={logo} alt="Anatomy logo" />
               </a>
             </li>
-            {navItems.map(navItem => <NavPrimaryItemRoot navItem={navItem} updateMenu={updateMenu} />)}
+            {navItems.map((navItem, i) => <NavPrimaryItemRoot key={navItem.text + i} navItem={navItem} updateMenu={updateMenu} />)}
             {/* <li className="nav-item nav-primary-search">
               Search will go here
             </li> */}
             <li className="nav-item nav-item-trigger">
               <Button variant="subtle" className="nav-link">
-                <IconBars className="ads-icon-lg u-icon-left"/>
+                <IconMenu className="ads-icon-lg u-icon-left"/>
                 Menu
               </Button>
             </li>
@@ -77,7 +77,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
         }
       </nav>
     </header>
-  );
+  </>;
 }
 
 export default NavPrimary;
