@@ -1,13 +1,18 @@
 // TODO: do we want to use React's <Link> here? Will React's link mess with our link?
 
 import { ReactNode } from 'react';
+import { NavLink } from 'react-router-dom';
+import { RequireOnlyOne } from '../types';
 
 interface Props {
   children: ReactNode;
-  href: string;
+  href?: string;
+  to?: string;
   variant?: string;
   [key: string]: any;
 }
+
+//type Props = RequireOnlyOne<Inputs, 'href' | 'to'>;
 
 const Link = (props: Props): JSX.Element => {
   const { variant, href, ...linkAttrs } = props;
@@ -25,9 +30,12 @@ const Link = (props: Props): JSX.Element => {
       break;
   }
 
-  return (
-    <a href={props.href} className={classes} {...linkAttrs}>{props.children}</a>
-  );
+  if (props.to) {
+    return <NavLink to={props.to} className={classes} {...linkAttrs}>{props.children}</NavLink>;
+  } else {
+    return <a href={props.href} className={classes} {...linkAttrs}>{props.children}</a>;
+  }
+
 }
 
 export default Link;

@@ -5,7 +5,8 @@ const exampleData = [
   {
     text: 'For healthcare professionals',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
-    title: 'All healthcare professionals information',
+    altHref: '#demo',
+    altLinkText: 'All healthcare professionals information',
     children: [
       {
         text: 'Medical specialties',
@@ -106,7 +107,8 @@ const exampleData = [
   {
     text: 'For patients & caregivers',
     description: `Find the information you need, whether you've been diagnosed with a health condition, have an implated device, or need support.`,
-    title: 'All patients & caregivers information',
+    altTo: '#demo',
+    altLinkText: 'All patients & caregivers information',
     children: [
       {
         text: 'Treatments',
@@ -213,7 +215,7 @@ const exampleData = [
         description: 'Device setup, user manuals, and troubleshooting',
         children: [
           {
-            text: 'Child item',
+            text: 'Child item 1',
             slug: basePath + '/'
           }
         ]
@@ -223,7 +225,7 @@ const exampleData = [
         description: 'Call one of our dedicated customer service centers or send us and email',
         children: [
           {
-            text: 'Child item',
+            text: 'Child item 2',
             slug: basePath + '/'
           }
         ]
@@ -234,7 +236,8 @@ const exampleData = [
   {
     text: 'About Boston Scientific',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
-    title: 'All Boston Scientific information',
+    altHref: '#demo',
+    altLinkText: 'All Boston Scientific information',
     children: [
       {
         text: 'About',

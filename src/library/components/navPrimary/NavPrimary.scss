@@ -1,35 +1,43 @@
 @import '../../../styles/abstracts/abstracts';
 @import '../../../styles/base/base';
 
+.nav-header
+{
+  border-image-source: $gradient-brand;
+  border-image-slice: 1;
+  border-top-width: space(xs);
+  border-top-style: solid;
+}
 
 .nav-utility,
 .nav-primary
 {
   .nav
   {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     margin: 0;
     padding: 0;
     list-style: none;
   }
+
+  .nav-link
+  {
+    @include link-navigation;
+    @include font-size($fs-body-subtle);
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
+  }
 }
 
 .nav-utility,
-.nav-header
+.nav-primary .nav-bar
 {
   border-bottom: space(xxs) solid $neutral-80;
-
-  .nav
-  {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    .nav-link
-    {
-      @include link-navigation;
-      @include font-size($fs-body-subtle);
-    }
-  }
 }
 
 .nav-utility
@@ -52,7 +60,7 @@
 
 .nav-primary
 {
-  .nav-header
+  .nav-bar
   {
     .nav
     {
@@ -76,15 +84,11 @@
           }
         }
 
-        &.nav-item-trigger
+        &.nav-item-toggle
         {
           .nav-link
           {
             border: 0;
-            &:focus
-            {
-              @include focus-default-inset;
-            }
           }
         }
 
@@ -129,8 +133,19 @@
       {
         display: block;
         margin-top: 0;
-        padding-left: 0;
+        padding: space(4x) 0 space(3x) 0;
         height: 100%;
+      }
+
+      .nav-menu-panel-custom
+      {
+        display: none;
+        padding-right: space(3x);
+
+        :first-child
+        {
+          margin-top: 0;
+        }
       }
 
       .nav-menu-panel,
@@ -152,9 +167,11 @@
         &:hover
         {
           background: transparent;
+          text-decoration: none;
         }
 
-        &.active
+        &.active,
+        &:hover
         {
           background: $neutral-95;
         }
@@ -169,9 +186,28 @@
 
     .nav-link
     {
+      flex-wrap: wrap;
       padding: space(lg) space(2x);
       @include font-size($fs-body-subtle);
       @include link-navigation;
+
+      &:active
+      {
+        font-family: $font-family-base-heavy;
+      }
+
+      &.has-description
+      {
+        @include font-size($fs-base);
+      }
+    }
+
+    .nav-link-description
+    {
+      @include font-size($fs-body-subtle);
+      font-family: $font-family-base-regular;
+      width: 100%;
+      text-align: left;
     }
   }
 }
@@ -179,7 +215,7 @@
 @media (min-width: $lg)
 {
   .nav-utility .nav,
-  .nav-header .nav,
+  .nav-bar .nav,
   .nav-menu-panels
   {
     width: 60rem; // NOTE: This is a one off size to match the layout widths.
@@ -194,7 +230,7 @@
 
   .nav-primary
   {
-    .nav-header
+    .nav-bar
     {
       .nav
       {
@@ -205,7 +241,7 @@
             display: block;
           }
 
-          &.nav-item-trigger
+          &.nav-item-toggle
           {
             display: none;
           }
@@ -217,13 +253,30 @@
         }
       }
     }
+
+    .nav-menu
+    {
+      .nav-menu-panels
+      {
+        .nav-menu-panel-custom
+        {
+          display: block;
+        }
+
+        .nav-menu-panel:not(.nav-menu-panel-custom):first-of-type
+        {
+          display: none;
+        }
+      }
+    }
   }
+
 }
 
 @media (min-width: $xl)
 {
   .nav-utility .nav,
-  .nav-header .nav,
+  .nav-bar .nav,
   .nav-menu-panels
   {
     width: 71.25rem; // NOTE: This is a one off size to match the layout widths.
@@ -233,7 +286,7 @@
 @media (min-width: $xxl)
 {
   .nav-utility .nav,
-  .nav-header .nav,
+  .nav-bar .nav,
   .nav-menu-panels
   {
     width: 82.5rem; // NOTE: This is a one off size to match the layout widths.
