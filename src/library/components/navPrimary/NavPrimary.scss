@@ -119,39 +119,49 @@
   {
     border-bottom: space(xxs) solid $neutral-80;
 
+    .nav
+    {
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
     .nav-menu-panels
     {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 1fr;
 
-      > :not(:first-child)
+      > :not(:last-child)
       {
-        border-left: space(xxs) solid $neutral-80;
+        border-right: space(xxs) solid $neutral-80;
       }
 
       .nav-menu-panel
       {
-        display: block;
+        display: none;
         margin-top: 0;
-        padding: space(4x) 0 space(3x) 0;
         height: 100%;
+
+        .nav
+        {
+          padding: space(4x) 0 space(3x) 0;
+        }
+
+        &:last-of-type
+        {
+          display: flex;
+          flex-direction: column;
+        }
       }
 
-      .nav-menu-panel-custom
+      .nav-menu-panel-header
       {
-        display: none;
-        padding-right: space(3x);
+        padding-top: space(4x);
 
         :first-child
         {
           margin-top: 0;
         }
-      }
-
-      .nav-menu-panel,
-      .nav-menu-panel-custom
-      {
-        flex: 1;
       }
     }
 
@@ -202,10 +212,17 @@
       }
     }
 
+    .nav-link-see-all
+    {
+      @include link-default;
+    }
+
     .nav-link-description
     {
+      margin-top: space(md);
       @include font-size($fs-body-subtle);
       font-family: $font-family-base-regular;
+      color: $neutral-40;
       width: 100%;
       text-align: left;
     }
@@ -226,6 +243,11 @@
   .nav-utility
   {
     display: block;
+  }
+
+  .nav-menu-back
+  {
+    display: none;
   }
 
   .nav-primary
@@ -258,9 +280,29 @@
     {
       .nav-menu-panels
       {
-        .nav-menu-panel-custom
+        grid-template-columns: repeat(4, 1fr);
+
+        .nav-menu-panel-header
+        {
+          padding: space(4x) 0 space(3x) 0;
+          border-right: space(xxs) solid $neutral-80;
+        }
+
+        .nav-menu-panel
         {
           display: block;
+
+          &.has-header
+          {
+            display: flex;
+            flex-direction: row;
+            grid-column-end: span 2;
+
+            > *
+            {
+              flex: 1;
+            }
+          }
         }
 
         .nav-menu-panel:not(.nav-menu-panel-custom):first-of-type

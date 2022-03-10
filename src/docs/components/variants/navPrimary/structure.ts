@@ -1,7 +1,8 @@
+import { NavItemPrimary } from '../../../../library/components/navPrimary/NavPrimary';
 
 const basePath = '';
 
-const exampleData = [
+const exampleData: NavItemPrimary[] = [
   {
     text: 'For healthcare professionals',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
@@ -10,6 +11,8 @@ const exampleData = [
     children: [
       {
         text: 'Medical specialties',
+        altLinkText: 'See all treatments',
+        altTo: basePath + '/',
         children: [
           {
             text: 'Electrophysiology',
@@ -66,11 +69,6 @@ const exampleData = [
           {
             text: 'Vascular Surgery',
             slug: basePath + '/'
-          },
-          {
-            // we need to differentiate between non-parent nav item links and 'see all' links
-            text: 'See all treatments',
-            slug: basePath + '/'
           }
         ]
       },
@@ -113,6 +111,8 @@ const exampleData = [
       {
         text: 'Treatments',
         description: 'Devices, procedures, and therapies',
+        altLinkText: 'See all treatments',
+        altTo: basePath + '/',
         children: [
           {
             text: 'Airway & breathing',
@@ -202,11 +202,6 @@ const exampleData = [
                 slug: basePath + '/'
               }
             ]
-          },
-          {
-            // we need to differentiate between non-parent nav item links and 'see all' links
-            text: 'See all treatments',
-            slug: basePath + '/'
           }
         ]
       },
@@ -242,6 +237,8 @@ const exampleData = [
       {
         text: 'About',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all',
+        altTo: basePath + '/',
         children: [
           {
             text: 'Businesses',
@@ -261,11 +258,6 @@ const exampleData = [
           },
           {
             text: 'Ventures',
-            slug: basePath + '/'
-          },
-          {
-            // we need to differentiate between non-parent nav item links and 'see all' links
-            text: 'See all',
             slug: basePath + '/'
           }
         ]

@@ -12,8 +12,8 @@ import IconChevronUp from '../icon/icons/IconChevronUp';
 
 interface NavItem {
   text: string;
-  slug: string;
-  href: string;
+  slug?: string;
+  href?: string;
 }
 
 interface NavItemPrimaryBase extends NavItem {
@@ -29,12 +29,12 @@ export type NavItemPrimary = RequireOnlyOne<NavItemPrimaryBase, 'slug' | 'href' 
 
 export type NavItemUtility = RequireOnlyOne<NavItem, 'slug' | 'href'>;
 
-interface NavTreeNode extends NavItem {
+interface NavTreeNode extends NavItemPrimaryBase {
   parent: NavNode | null;
   children?: NavNode[];
 }
 
-export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'children'>;
+export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'href' | 'children'>;
 
 interface Props {
   navItems: NavItemPrimary[];
@@ -44,12 +44,13 @@ interface Props {
 
 const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
 
-  const [currentRootItem, setCurrentRootItem] = useState<NavItemPrimary | null>(null);
+  const [navTree, setNavTree] = useState<NavNode[]>([]);
+  const [currentRootItem, setCurrentRootItem] = useState<NavNode | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const nav = useRef<HTMLElement>(null);
 
-  const updateMenu = (navItem: NavItemPrimary | null): void => {
+  const updateMenu = (navItem: NavNode | null): void => {
     if (currentRootItem !== navItem) {
       setCurrentRootItem(navItem);
       setIsMenuOpen(true);
@@ -58,6 +59,22 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
       setIsMenuOpen(false);
     }
   }
+
+  useEffect(() => {
+    const tree = [...navItems] as NavNode[];
+
+    const populateParents = (nodes: NavNode[], parent: NavNode | null = null) => {
+      nodes.forEach(node => {
+        node.parent = parent;
+        if (node.children) {
+          populateParents(node.children as NavNode[], node);
+        }
+      });
+    }
+    populateParents(tree);
+    setNavTree(tree);
+
+  }, [navItems]);
 
   useEffect(() => {
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
@@ -87,7 +104,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
                 <img src={logo} alt="Anatomy logo" />
               </a>
             </li>
-            {navItems.map((navItem, i) => (
+            {navTree.map((navItem, i) => (
               <li key={navItem.text + i} className="nav-item nav-item-root">
                 {navItem.children &&
                   <Button
@@ -120,7 +137,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
         </div>
         {isMenuOpen &&
           <NavPrimaryMenu
-            navItems={navItems}
+            navItems={navTree}
             currentRootItem={currentRootItem}
             setCurrentRootItem={setCurrentRootItem} />
         }

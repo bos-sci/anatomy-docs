@@ -1,7 +1,7 @@
 // TODO: do we want to use React's <Link> here? Will React's link mess with our link?
 
 import { ReactNode } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link as RouterLink } from 'react-router-dom';
 import { RequireOnlyOne } from '../types';
 
 interface Props {
@@ -9,6 +9,7 @@ interface Props {
   href?: string;
   to?: string;
   variant?: string;
+  isNavLink?: boolean;
   [key: string]: any;
 }
 
@@ -31,7 +32,11 @@ const Link = (props: Props): JSX.Element => {
   }
 
   if (props.to) {
-    return <NavLink to={props.to} className={classes} {...linkAttrs}>{props.children}</NavLink>;
+    if (props.isNavLink) {
+      return <NavLink to={props.to} className={classes} {...linkAttrs}>{props.children}</NavLink>;
+    } else {
+      return <RouterLink to={props.to} className={classes} {...linkAttrs}>{props.children}</RouterLink>;
+    }
   } else {
     return <a href={props.href} className={classes} {...linkAttrs}>{props.children}</a>;
   }
