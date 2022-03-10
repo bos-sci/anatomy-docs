@@ -2,7 +2,6 @@
 
 import { ReactNode } from 'react';
 import { NavLink, Link as RouterLink } from 'react-router-dom';
-import { RequireOnlyOne } from '../types';
 
 interface Props {
   children: ReactNode;

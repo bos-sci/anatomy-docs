@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Button from '../Button';
 import IconChevronRight from '../icon/icons/IconChevronRight';
 import Link from '../Link';
-import { NavItemPrimary, NavNode } from './NavPrimary';
+import { NavNode } from './NavPrimary';
 
 interface Props {
   navItems: NavNode[];
