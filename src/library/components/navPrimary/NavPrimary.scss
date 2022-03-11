@@ -117,7 +117,18 @@
 
   .nav-menu
   {
+    $navLinkPadding: space(lg) space(2x);
+    overflow-y: hidden;
     border-bottom: space(xxs) solid $neutral-80;
+
+    .nav-menu-back
+    {
+      width: 100%;
+      justify-content: flex-start;
+      box-shadow: $box-shadow-secondary;
+      padding: $navLinkPadding;
+      @include font-size($fs-base);
+    }
 
     .nav
     {
@@ -156,7 +167,7 @@
 
       .nav-menu-panel-header
       {
-        padding-top: space(4x);
+        padding: space(4x) space(2x) 0;
 
         :first-child
         {
@@ -197,7 +208,7 @@
     .nav-link
     {
       flex-wrap: wrap;
-      padding: space(lg) space(2x);
+      padding: $navLinkPadding;
       @include font-size($fs-body-subtle);
       @include link-navigation;
 
@@ -284,7 +295,7 @@
 
         .nav-menu-panel-header
         {
-          padding: space(4x) 0 space(3x) 0;
+          padding-left: 0;
           border-right: space(xxs) solid $neutral-80;
         }
 

@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Button from '../Button';
+import IconChevronLeft from '../icon/icons/IconChevronLeft';
 import IconChevronRight from '../icon/icons/IconChevronRight';
 import Link from '../Link';
 import { NavNode } from './NavPrimary';
@@ -42,7 +43,7 @@ const NavPrimaryMenu = ({ navItems, currentRootItem, setCurrentRootItem }: Props
 
   return (
     <div className="nav-menu">
-      {panels.length > 1 && <Button type="button" className="nav-menu-back" onClick={() => setPanels(panels.slice(0, -1))}>⬅️Back</Button>}
+      {panels.length > 1 && <Button type="button" variant="subtle" className="nav-menu-back" onClick={() => setPanels(panels.slice(0, -1))}><IconChevronLeft className="ads-icon-lg u-icon-left" />Back to {panels[panels.length - 1][0].parent?.text.toLocaleLowerCase()}</Button>}
       <div className="nav-menu-panels">
         {panels.map((panel, panelIndex) => (
           <div key={'navPrimaryPanel' + panelIndex} className={'nav-menu-panel' + (panel[0].parent?.altLinkText && panelIndex === 1 ? ' has-header' : '')}>
