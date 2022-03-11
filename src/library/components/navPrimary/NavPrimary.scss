@@ -135,13 +135,6 @@
       }
     }
 
-    .nav
-    {
-      display: block;
-      margin: 0;
-      padding: 0;
-    }
-
     .nav-menu-panels
     {
       display: grid;
@@ -160,7 +153,9 @@
 
         .nav
         {
-          padding: space(4x) 0 space(3x) 0;
+          display: block;
+          margin: 0;
+          padding: space(3x) 0;
         }
 
         &:last-of-type
@@ -172,12 +167,19 @@
 
       .nav-menu-panel-header
       {
-        padding: space(4x) space(2x) 0;
+        padding: space(3x) space(2x) space(4x);
+        border-bottom: space(xxs) solid $neutral-80;
 
         :first-child
         {
           margin-top: 0;
         }
+      }
+
+      .nav-menu-panel-header-link
+      {
+        display: block;
+        margin-top: space(3x);
       }
     }
 
@@ -300,8 +302,9 @@
 
         .nav-menu-panel-header
         {
-          padding-left: 0;
+          padding: space(4x) space(2x) space(3x) 0;
           border-right: space(xxs) solid $neutral-80;
+          border-bottom: 0;
         }
 
         .nav-menu-panel
@@ -325,6 +328,11 @@
         {
           display: none;
         }
+      }
+
+      .nav
+      {
+        padding: space(4x) 0 space(3x);
       }
     }
   }

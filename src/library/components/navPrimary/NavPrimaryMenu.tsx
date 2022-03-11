@@ -51,7 +51,7 @@ const NavPrimaryMenu = ({ navItems, currentRootItem, setCurrentRootItem }: Props
               <div className="nav-menu-panel-header">
                 <h4>{ panel[0].parent.text }</h4>
                 <p className="body-subtle">{ panel[0].parent.description }</p>
-                <Link to={panel[0].parent.altTo} href={panel[0].parent.altHref} className="body-subtle">
+                <Link to={panel[0].parent.altTo} href={panel[0].parent.altHref} className="body-subtle nav-menu-panel-header-link">
                   {panel[0].parent.altLinkText}
                 </Link>
               </div>
