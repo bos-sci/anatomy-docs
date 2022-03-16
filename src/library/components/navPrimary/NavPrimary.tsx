@@ -113,7 +113,6 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
                     className={'nav-link' + (navItem === currentRootItem ? ' active' : '')}
                     onClick={() => updateMenu(navItem)}>
                     {navItem.text}
-                    {navItem === currentRootItem ? <IconChevronUp className="ads-icon-lg u-icon-right" /> : <IconChevronDown className="ads-icon-lg u-icon-right" />}
                   </Button>
                 }
                 {navItem.slug &&
@@ -128,8 +127,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
               Search will go here
             </li> */}
             <li className="nav-item nav-item-toggle">
-              <Button variant="subtle" className="nav-link" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <IconMenu className="ads-icon-lg u-icon-left"/>
+              <Button variant="subtle" className={'nav-link' + (isMenuOpen ? ' open' : '')} onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 Menu
               </Button>
             </li>

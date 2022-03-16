@@ -88,15 +88,48 @@
         {
           .nav-link
           {
+            $icon-size: 1em;
             border: 0;
+            padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
+            padding-right: space(2x);
+
+            &::after
+            {
+              content: url("../../../assets/images/icon-menu.svg");
+              position: absolute;
+              left: space(2x);
+              top: calc(50% - ($icon-size / 2));
+              width: $icon-size;
+              height: $icon-size;
+            }
+
+            &.open
+            {
+              &::after
+              {
+                content: url("../../../assets/images/icon-close.svg");
+              }
+            }
           }
         }
 
         .nav-link
         {
+          $icon-size: 1em;
           position: relative;
           padding: space(3x) space(2x);
+          padding-right: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
           border: 0;
+
+          &::after
+          {
+            content: url("../../../assets/images/icon-chevron-down.svg");
+            position: absolute;
+            right: space(2x);
+            top: calc(50% - ($icon-size / 2));
+            width: $icon-size;
+            height: $icon-size;
+          }
 
           &.active
           {
@@ -108,6 +141,11 @@
               bottom: 0;
               left: space(2x);
               border-bottom: space(sm) solid $neutral-00;
+            }
+
+            &::after
+            {
+              content: url("../../../assets/images/icon-chevron-up.svg");
             }
           }
         }
