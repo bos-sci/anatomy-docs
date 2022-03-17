@@ -238,13 +238,9 @@
     {
       .nav-link
       {
-        $icon-size: 1em;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
         border: 0;
         width: 100%;
+        text-align: left;
 
         &:hover
         {
@@ -258,19 +254,21 @@
           background: $neutral-95;
         }
 
-        &::after
-        {
-          content: url("../../../assets/images/icon-chevron-right.svg");
-          position: absolute;
-          top: space(lg);
-          right: space(2x);
-          width: $icon-size;
-          height: $icon-size;
-        }
-
         .nav-link-text
         {
+          $icon-size: 1em;
+          position: relative;
           padding-right: calc($icon-size + space(md)); // Padding + icon width + space between icon and text;
+
+          &::after
+          {
+            content: url("../../../assets/images/icon-chevron-right.svg");
+            position: absolute;
+            top: calc(50% - ($icon-size / 2));
+            right: 0;
+            width: $icon-size;
+            height: $icon-size;
+          }
         }
 
         .nav-link-description
