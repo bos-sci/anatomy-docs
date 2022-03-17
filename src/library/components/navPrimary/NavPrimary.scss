@@ -125,8 +125,8 @@
           {
             content: url("../../../assets/images/icon-chevron-down.svg");
             position: absolute;
-            right: space(2x);
             top: calc(50% - ($icon-size / 2));
+            right: space(2x);
             width: $icon-size;
             height: $icon-size;
           }
@@ -161,15 +161,28 @@
 
     .nav-menu-back
     {
+      $icon-size: 1em;
+      position: relative;
       width: 100%;
       justify-content: flex-start;
       box-shadow: $box-shadow-secondary;
       padding: $navLinkPadding;
+      padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
       @include font-size($fs-base);
 
       &:focus
       {
         @include focus-default-inset;
+      }
+
+      &::after
+      {
+        content: url("../../../assets/images/icon-chevron-left.svg");
+        position: absolute;
+        top: calc(50% - ($icon-size / 2));
+        left: space(2x);
+        width: $icon-size;
+        height: $icon-size;
       }
     }
 
@@ -225,8 +238,11 @@
     {
       .nav-link
       {
+        $icon-size: 1em;
+        position: relative;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
         border: 0;
         width: 100%;
 
@@ -240,6 +256,31 @@
         &:hover
         {
           background: $neutral-95;
+        }
+
+        &::after
+        {
+          content: url("../../../assets/images/icon-chevron-right.svg");
+          position: absolute;
+          top: space(lg);
+          right: space(2x);
+          width: $icon-size;
+          height: $icon-size;
+        }
+
+        .nav-link-text
+        {
+          padding-right: calc($icon-size + space(md)); // Padding + icon width + space between icon and text;
+        }
+
+        .nav-link-description
+        {
+          margin-top: space(md);
+          @include font-size($fs-body-subtle);
+          font-family: $font-family-base-regular;
+          color: $neutral-40;
+          width: 100%;
+          text-align: left;
         }
       }
     }
@@ -271,16 +312,6 @@
     .nav-link-see-all
     {
       @include link-default;
-    }
-
-    .nav-link-description
-    {
-      margin-top: space(md);
-      @include font-size($fs-body-subtle);
-      font-family: $font-family-base-regular;
-      color: $neutral-40;
-      width: 100%;
-      text-align: left;
     }
   }
 }
