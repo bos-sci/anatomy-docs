@@ -29,6 +29,7 @@ export type NavItemUtility = RequireOnlyOne<NavItem, 'slug' | 'href'>;
 interface NavTreeNode extends NavItemPrimaryBase {
   parent: NavNode | null;
   children?: NavNode[];
+  id: string;
 }
 
 export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'href' | 'children'>;
@@ -60,11 +61,12 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
   useEffect(() => {
     const tree = [...navItems] as NavNode[];
 
-    const populateParents = (nodes: NavNode[], parent: NavNode | null = null) => {
-      nodes.forEach(node => {
+    const populateParents = (nodes: NavNode[], parent: NavNode | null = null, index = 0) => {
+      nodes.forEach((node, i) => {
         node.parent = parent;
+        node.id = `navPrimaryNode${index}-${i}`;
         if (node.children) {
-          populateParents(node.children as NavNode[], node);
+          populateParents(node.children as NavNode[], node, ++index);
         }
       });
     }
@@ -105,9 +107,11 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
               <li key={navItem.text + i} className="nav-item nav-item-root">
                 {navItem.children &&
                   <Button
+                    id={navItem.id}
                     type="button"
                     variant="subtle"
                     className={'nav-link' + (navItem === currentRootItem ? ' active' : '')}
+                    aria-expanded={navItem === currentRootItem}
                     onClick={() => updateMenu(navItem)}>
                     {navItem.text}
                   </Button>
@@ -124,7 +128,11 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
               Search will go here
             </li> */}
             <li className="nav-item nav-item-toggle">
-              <Button variant="subtle" className={'nav-link' + (isMenuOpen ? ' open' : '')} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <Button
+                variant="subtle"
+                className={'nav-link' + (isMenuOpen ? ' open' : '')}
+                aria-expanded={isMenuOpen}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 Menu
               </Button>
             </li>

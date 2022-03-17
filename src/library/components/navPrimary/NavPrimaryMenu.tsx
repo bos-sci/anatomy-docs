@@ -56,19 +56,21 @@ const NavPrimaryMenu = ({ navItems, currentRootItem, setCurrentRootItem }: Props
                 </Link>
               </div>
             }
-            <ul className="nav">
+            <ul className="nav" aria-describedby={panel[0].parent?.id}>
               {panel.map((navItem, i) => {
                 if (navItem.children) {
+                  // Parent Button
                   return (
                     <li key={navItem.text + i} className="nav-item-parent">
                       <Button
+                        id={navItem.id}
                         variant="subtle"
                         className={
                           'nav-link'
                           + (isActive(navItem, panelIndex) ? ' active' : '')
                           + (navItem.description ? ' has-description' : '')
                         }
-                        id="listParent"
+                        aria-expanded={isActive(navItem, panelIndex)}
                         onClick={() => addPanel(panelIndex, navItem)}>
                         {navItem.text}
                         <IconChevronRight className="ads-icon-lg"/>
@@ -82,12 +84,15 @@ const NavPrimaryMenu = ({ navItems, currentRootItem, setCurrentRootItem }: Props
                   );
                 } else {
                   return (
+                    // Leaf Node
                     <li key={navItem.text + i} className="nav-item">
                       <Link href={navItem.href} to={navItem.slug} className="nav-link">{navItem.text}</Link>
                     </li>
                   );
                 }
               })}
+
+              {/* Bottom Link */}
               {panel[0].parent?.altLinkText && panelIndex !== 1  &&
                 <li key={panel[0].parent.altLinkText + panelIndex} className="nav-item">
                   <Link href={panel[0].parent.altHref} to={panel[0].parent.altTo} className="nav-link nav-link-see-all">{panel[0].parent.altLinkText}</Link>
@@ -96,17 +101,6 @@ const NavPrimaryMenu = ({ navItems, currentRootItem, setCurrentRootItem }: Props
             </ul>
           </div>
         ))}
-        {/* <ul className="nav nav-menu-panel" aria-labelledby="listParent2">
-          <li className="nav-item">
-            <a href="#demo" className="nav-link">Nested nav item</a>
-          </li>
-          <li className="nav-item">
-            <a href="#demo" className="nav-link">Nested nav item</a>
-          </li>
-          <li className="nav-item">
-            <a href="#demo" className="nav-link">Nested nav item</a>
-          </li>
-        </ul> */}
       </div>
     </div>
   );
