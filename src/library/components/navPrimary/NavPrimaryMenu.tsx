@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Button from '../Button';
-import IconChevronLeft from '../icon/icons/IconChevronLeft';
 import Link from '../Link';
 import { NavNode } from './NavPrimary';
 
