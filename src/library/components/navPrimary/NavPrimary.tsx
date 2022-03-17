@@ -2,13 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import logo from "../../../assets/images/logo-anatomy.svg";
 import { RequireOnlyOne } from '../../types';
 import Button from '../Button';
-import IconMenu from '../icon/icons/IconMenu';
 import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { NavLink } from 'react-router-dom';
-import IconChevronDown from '../icon/icons/IconChevronDown';
-import IconChevronUp from '../icon/icons/IconChevronUp';
 
 interface NavItem {
   text: string;
