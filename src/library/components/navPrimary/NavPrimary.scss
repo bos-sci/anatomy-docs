@@ -120,6 +120,7 @@
           padding: space(3x) space(2x);
           padding-right: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
           border: 0;
+          @include font-size($fs-body-subtle);
 
           &::after
           {
@@ -268,6 +269,7 @@
             right: 0;
             width: $icon-size;
             height: $icon-size;
+            @include font-size($fs-body-subtle);
           }
         }
 
