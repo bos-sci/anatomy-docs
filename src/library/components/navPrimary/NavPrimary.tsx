@@ -127,6 +127,15 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
             {/* <li className="nav-item nav-primary-search">
               Search will go here
             </li> */}
+            <li className="nav-item nav-item-search">
+              <Button
+                variant="subtle"
+                className="nav-link">
+                <span className="nav-link-search-text">
+                  Search
+                </span>
+              </Button>
+            </li>
             <li className="nav-item nav-item-toggle">
               <Button
                 variant="subtle"

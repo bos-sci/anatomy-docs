@@ -1,5 +1,8 @@
 @import '../../../styles/abstracts/abstracts';
 @import '../../../styles/base/base';
+@import '../../../styles/utilities/utilities';
+
+$icon-size: 1em;
 
 .nav-header
 {
@@ -84,38 +87,52 @@
           }
         }
 
-        &.nav-item-toggle
+        &.nav-item-toggle,
+        &.nav-item-search
         {
           .nav-link
           {
-            $icon-size: 1em;
             border: 0;
             padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
             padding-right: space(2x);
 
             &::after
             {
-              content: url("../../../assets/images/icon-menu.svg");
               position: absolute;
               left: space(2x);
               top: calc(50% - ($icon-size / 2));
               width: $icon-size;
               height: $icon-size;
             }
+          }
+        }
 
-            &.open
+        &.nav-item-search
+        {
+          .nav-link::after
+          {
+            content: url("../../../assets/images/icon-search.svg");
+          }
+        }
+
+        &.nav-item-toggle
+        {
+          .nav-link::after
+          {
+            content: url("../../../assets/images/icon-menu.svg");
+          }
+
+          &.open
+          {
+            &::after
             {
-              &::after
-              {
-                content: url("../../../assets/images/icon-close.svg");
-              }
+              content: url("../../../assets/images/icon-close.svg");
             }
           }
         }
 
         .nav-link
         {
-          $icon-size: 1em;
           position: relative;
           padding: space(3x) space(2x);
           padding-right: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
@@ -162,7 +179,6 @@
 
     .nav-menu-back
     {
-      $icon-size: 1em;
       position: relative;
       width: 100%;
       justify-content: flex-start;
@@ -184,6 +200,7 @@
         left: space(2x);
         width: $icon-size;
         height: $icon-size;
+        @include font-size($fs-body-subtle);
       }
     }
 
@@ -257,7 +274,6 @@
 
         .nav-link-text
         {
-          $icon-size: 1em;
           position: relative;
           padding-right: calc($icon-size + space(md)); // Padding + icon width + space between icon and text;
 
@@ -353,6 +369,14 @@
           &.nav-item-toggle
           {
             display: none;
+          }
+
+          &.nav-item-search
+          {
+            .nav-link-search-text
+            {
+              @include visually-hidden;
+            }
           }
 
           &.nav-item-logo
