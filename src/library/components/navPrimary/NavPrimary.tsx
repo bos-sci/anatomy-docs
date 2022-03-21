@@ -6,7 +6,6 @@ import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { NavLink } from 'react-router-dom';
-import InputText from '../InputText';
 
 interface NavItem {
   text: string;
