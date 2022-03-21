@@ -6,6 +6,7 @@ import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { NavLink } from 'react-router-dom';
+import InputText from '../InputText';
 
 interface NavItem {
   text: string;
@@ -45,6 +46,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [currentRootItem, setCurrentRootItem] = useState<NavNode | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const nav = useRef<HTMLElement>(null);
 
@@ -124,13 +126,11 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
                 }
               </li>
             ))}
-            {/* <li className="nav-item nav-primary-search">
-              Search will go here
-            </li> */}
             <li className="nav-item nav-item-search">
               <Button
                 variant="subtle"
-                className="nav-link">
+                className="nav-link"
+                onClick={() => setIsSearchOpen(!isSearchOpen)}>
                 <span className="nav-link-search-text">
                   Search
                 </span>
@@ -147,6 +147,18 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
             </li>
           </ul>
         </div>
+        {isSearchOpen &&
+          <div className="search-panel">
+            <form className="search" role="search">
+              <input
+                type="search"
+                className="ads-input-text-input search-input"
+                placeholder="Search"
+                aria-label="search" />
+              <Button variant="assertive">Search</Button>
+            </form>
+          </div>
+        }
         {isMenuOpen &&
           <NavPrimaryMenu
             navItems={navTree}

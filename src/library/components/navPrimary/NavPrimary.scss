@@ -2,7 +2,9 @@
 @import '../../../styles/base/base';
 @import '../../../styles/utilities/utilities';
 
+// These are one of sizes to get the icons to match the font sizes
 $icon-size: 1em;
+$icon-size-lg: 1.15rem;
 
 .nav-header
 {
@@ -330,13 +332,33 @@ $icon-size: 1em;
       @include link-default;
     }
   }
+
+  .search-panel
+  {
+    margin: auto;
+    border-bottom: space(xxs) solid $neutral-80;
+
+    .search
+    {
+      display: flex;
+      padding: space(2x) space(3x);
+    }
+
+    .search-input
+    {
+      flex: 1;
+      margin-top: 0;
+      margin-right: space(2x);
+    }
+  }
 }
 
 @media (min-width: $lg)
 {
   .nav-utility .nav,
   .nav-bar .nav,
-  .nav-menu-panels
+  .nav-menu-panels,
+  .search-panel .search
   {
     width: 60rem; // NOTE: This is a one off size to match the layout widths.
     margin-right: auto;
@@ -373,6 +395,14 @@ $icon-size: 1em;
 
           &.nav-item-search
           {
+            .nav-link
+            {
+              box-sizing: content-box;
+              padding-left: space(2x);
+              width: $icon-size-lg;
+              height: $icon-size-lg;
+            }
+
             .nav-link-search-text
             {
               @include visually-hidden;
@@ -436,7 +466,8 @@ $icon-size: 1em;
 {
   .nav-utility .nav,
   .nav-bar .nav,
-  .nav-menu-panels
+  .nav-menu-panels,
+  .search-panel .search
   {
     width: 71.25rem; // NOTE: This is a one off size to match the layout widths.
   }
@@ -446,7 +477,8 @@ $icon-size: 1em;
 {
   .nav-utility .nav,
   .nav-bar .nav,
-  .nav-menu-panels
+  .nav-menu-panels,
+  .search-panel .search
   {
     width: 82.5rem; // NOTE: This is a one off size to match the layout widths.
   }
