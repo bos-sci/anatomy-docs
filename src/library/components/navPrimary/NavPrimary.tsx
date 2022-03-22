@@ -53,6 +53,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
     if (currentRootItem !== navItem) {
       setCurrentRootItem(navItem);
       setIsMenuOpen(true);
+      setIsSearchOpen(false);
     } else {
       setCurrentRootItem(null);
       setIsMenuOpen(false);
@@ -90,6 +91,21 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
       window.removeEventListener('pointerup', onFocusWithinOut);
     }
   }, [currentRootItem]);
+
+  const toggleMenu = () => {
+    if (!isMenuOpen && isSearchOpen) {
+      setIsSearchOpen(false);
+    }
+    setIsMenuOpen(!isMenuOpen);
+  }
+
+  const toggleSearch = () => {
+    if (!isSearchOpen && isMenuOpen) {
+      setIsMenuOpen(false);
+      setCurrentRootItem(null);
+    }
+    setIsSearchOpen(!isSearchOpen);
+  }
 
 
   return <>
@@ -129,7 +145,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
               <Button
                 variant="subtle"
                 className="nav-link"
-                onClick={() => setIsSearchOpen(!isSearchOpen)}>
+                onClick={toggleSearch}>
                 <span className="nav-link-search-text">
                   Search
                 </span>
@@ -140,7 +156,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
                 variant="subtle"
                 className={'nav-link' + (isMenuOpen ? ' open' : '')}
                 aria-expanded={isMenuOpen}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                onClick={toggleMenu}>
                 Menu
               </Button>
             </li>
