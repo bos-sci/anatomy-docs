@@ -145,6 +145,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
               <Button
                 variant="subtle"
                 className="nav-link"
+                aria-expanded={isSearchOpen}
                 onClick={toggleSearch}>
                 <span className="nav-link-search-text">
                   Search
@@ -164,7 +165,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
         </div>
         {isSearchOpen &&
           <div className="search-panel">
-            <form className="search" role="search">
+            <form className="search" role="search" aria-label="site search">
               <input
                 type="search"
                 className="ads-input-text-input search-input"
