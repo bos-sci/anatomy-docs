@@ -1,7 +1,7 @@
 import { IconProps } from './iconTypes';
 
 const IconPlus = (props: IconProps): JSX.Element => {
-  return <svg aria-hidden="true" focusable="false" className={`${props.className}`} role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path fill="currentColor" d="M16.65,7.09H10.91V1.35A1.27,1.27,0,0,0,9.64.07H8.36A1.27,1.27,0,0,0,7.09,1.35V7.09H1.35A1.27,1.27,0,0,0,.07,8.36V9.64a1.27,1.27,0,0,0,1.28,1.27H7.09v5.74a1.27,1.27,0,0,0,1.27,1.28H9.64a1.27,1.27,0,0,0,1.27-1.28V10.91h5.74a1.27,1.27,0,0,0,1.28-1.27V8.36A1.27,1.27,0,0,0,16.65,7.09Z"/></svg>;
+  return <svg aria-hidden="true" focusable="false" className={`${props.className}`} role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path fill="currentColor" d="M16.71,7.07H10.93V1.29A1.29,1.29,0,0,0,9.64,0H8.36A1.29,1.29,0,0,0,7.07,1.29V7.07H1.29A1.29,1.29,0,0,0,0,8.36V9.64a1.29,1.29,0,0,0,1.29,1.29H7.07v5.78A1.29,1.29,0,0,0,8.36,18H9.64a1.29,1.29,0,0,0,1.29-1.29V10.93h5.78A1.29,1.29,0,0,0,18,9.64V8.36A1.29,1.29,0,0,0,16.71,7.07Z"/></svg>;
 }
 
 export default IconPlus;
