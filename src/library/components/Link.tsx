@@ -1,15 +1,14 @@
 // TODO: do we want to use React's <Link> here? Will React's link mess with our link?
 
-import { ReactNode } from 'react';
+import { AnchorHTMLAttributes, ReactNode } from 'react';
 import { NavLink, Link as RouterLink } from 'react-router-dom';
 
-interface Props {
+export interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: ReactNode;
   href?: string;
   to?: string;
   variant?: string;
   isNavLink?: boolean;
-  [key: string]: any;
 }
 
 //type Props = RequireOnlyOne<Inputs, 'href' | 'to'>;

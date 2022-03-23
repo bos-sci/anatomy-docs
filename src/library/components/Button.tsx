@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import Icon from './icon/Icon';
 
-interface Props {
+export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   variant?: string;
   icon?: string;
@@ -13,7 +13,6 @@ interface Props {
   | '3x'
   | '4x'
   | 'base';
-  [key: string]: any;
 }
 
 const Button = ({ children, variant, icon, iconAlignment = 'left', iconSize, className, ...buttonAttrs }: Props): JSX.Element => {

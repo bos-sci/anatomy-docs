@@ -1,0 +1,37 @@
+.ads-dropdown
+{
+  .ads-dropdown-menu
+  {
+    position: absolute;
+    background: $neutral-100;
+    box-shadow: $box-shadow-secondary;
+    z-index: 100;
+
+    .ads-button,
+    .ads-link
+    {
+      display: block;
+      border: 0;
+      padding: space(lg) space(2x);
+      font-family: $font-family-base-regular;
+      color: $text-color-primary;
+      text-decoration: none;
+
+      &:hover
+      {
+        color: $neutral-100;
+        background: $action-primary-40;
+      }
+
+      &:active
+      {
+        background: $action-primary-20;
+      }
+
+      &:focus
+      {
+        @include focus-default-inset;
+      }
+    }
+  }
+}

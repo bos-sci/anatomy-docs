@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+import Button from '../Button';
+import Dropdown from '../Dropdown';
+import Link from '../Link';
 import { NavItemUtility } from './NavPrimary';
 
 interface Props {
@@ -11,14 +13,15 @@ const NavUtility = ({utilityItems}: Props): JSX.Element => {
       <ul className="nav">
         {utilityItems.map((utilityItem, i) =>
           <li key={utilityItem.text + i} className="nav-item">
-            {utilityItem.slug &&
-              <Link to={utilityItem.slug} className="nav-link">{utilityItem.text}</Link>
-            }
-            {utilityItem.href &&
-              <a href={utilityItem.href} className="nav-link">{utilityItem.text}</a>
-            }
+            <Link to={utilityItem.slug} href={utilityItem.href} className="nav-link">{utilityItem.text}</Link>
           </li>
         )}
+        <li className="nav-item">
+          <Dropdown triggerText="Test" className="nav-link">
+            <Button type="button">Button item</Button>
+            <Link>Link item</Link>
+          </Dropdown>
+        </li>
       </ul>
     </nav>
   );
