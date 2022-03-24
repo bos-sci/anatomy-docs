@@ -1,6 +1,6 @@
 // TODO: do we want to use React's <Link> here? Will React's link mess with our link?
 
-import { AnchorHTMLAttributes, ReactNode } from 'react';
+import { AnchorHTMLAttributes, ForwardedRef, forwardRef, ReactNode } from 'react';
 import { NavLink, Link as RouterLink } from 'react-router-dom';
 
 export interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -13,7 +13,7 @@ export interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
 
 //type Props = RequireOnlyOne<Inputs, 'href' | 'to'>;
 
-const Link = (props: Props): JSX.Element => {
+const Link = forwardRef((props: Props, ref: ForwardedRef<HTMLAnchorElement>): JSX.Element => {
   const { variant, href, ...linkAttrs } = props;
 
   let classes = '';
@@ -31,14 +31,14 @@ const Link = (props: Props): JSX.Element => {
 
   if (props.to) {
     if (props.isNavLink) {
-      return <NavLink to={props.to} className={classes} {...linkAttrs}>{props.children}</NavLink>;
+      return <NavLink ref={ref} to={props.to} className={classes} {...linkAttrs}>{props.children}</NavLink>;
     } else {
-      return <RouterLink to={props.to} className={classes} {...linkAttrs}>{props.children}</RouterLink>;
+      return <RouterLink ref={ref} to={props.to} className={classes} {...linkAttrs}>{props.children}</RouterLink>;
     }
   } else {
-    return <a href={props.href} className={classes} {...linkAttrs}>{props.children}</a>;
+    return <a ref={ref} href={props.href} className={classes} {...linkAttrs}>{props.children}</a>;
   }
 
-}
+});
 
 export default Link;

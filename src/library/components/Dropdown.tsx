@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactElement, useEffect, useRef, useState } from 'react';
+import { Children, cloneElement, createRef, HTMLAttributes, ReactElement, useEffect, useRef, useState } from 'react';
 import Button from './Button';
 import { Props as ButtonProps } from './Button';
 import { Props as LinkProps } from './Link';
@@ -11,12 +11,79 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
   triggerText: string;
 }
 
-const Dropdown = ({triggerText, variant, children, className, ...buttonAttrs}: Props) => {
+let dropdownIndex = 0;
+
+// TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
+
+const Dropdown = ({triggerText, variant, children = [], className, ...buttonAttrs}: Props) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [dropdownItems, setDropdownItems] = useState<DropdownItem[]>([]);
+  const [dropdownId, setDropdownId] = useState('');
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownItemRefs = useRef(Children.map(children, () => createRef<HTMLElement>()));
 
+  const moveFocus = (distance: number) => {
+    let currentIndex = 0;
+    let isFocusInMenu = false;
+    dropdownItemRefs.current.forEach((item, i) => {
+      if (item.current === document.activeElement) {
+        currentIndex = i;
+        isFocusInMenu = true;
+      }
+    });
+    if (isFocusInMenu) {
+      let newIndex = currentIndex + distance;
+      if (newIndex > dropdownItemRefs.current.length - 1) {
+        newIndex = 0;
+      } else if (newIndex < 0) {
+        newIndex = dropdownItemRefs.current.length - 1;
+      }
+      dropdownItemRefs.current[newIndex].current?.focus();
+    } else {
+      dropdownItemRefs.current[0].current?.focus();
+    }
+  }
+
+  const updateFocus = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    switch (e.key) {
+      case 'ArrowUp':
+        moveFocus(-1);
+        break;
+
+      case 'ArrowDown':
+        moveFocus(1);
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  useEffect(() => {
+    if (children) {
+      if (Array.isArray(children)) {
+        const newChildren = Children.map(children, (child: ReactElement, i) => {
+          return cloneElement(child, {
+            id: `${dropdownId}Item${i}`,
+            ref: dropdownItemRefs.current[i]
+          });
+        });
+        setDropdownItems(newChildren as DropdownItem[]);
+      } else {
+        setDropdownItems([
+          cloneElement(children, {
+            id: `${dropdownId}Item`
+          })
+        ]);
+      }
+    }
+  }, [children, dropdownId]);
+
+  useEffect(() => {
+    setDropdownId('dropdown' + dropdownIndex++);
+  }, []);
 
   useEffect(() => {
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
@@ -33,7 +100,7 @@ const Dropdown = ({triggerText, variant, children, className, ...buttonAttrs}: P
   }, []);
 
   return (
-    <div ref={dropdownRef} className="ads-dropdown">
+    <div ref={dropdownRef} className="ads-dropdown" onKeyDown={updateFocus}>
       <Button
         variant={variant}
         className={'ads-dropdown-trigger ' + className}
@@ -45,7 +112,7 @@ const Dropdown = ({triggerText, variant, children, className, ...buttonAttrs}: P
       </Button>
       {isDropdownOpen &&
         <div className="ads-dropdown-menu">
-          {children}
+          {dropdownItems}
         </div>
       }
     </div>

@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactNode } from 'react';
 import Icon from './icon/Icon';
 
 export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -15,7 +15,7 @@ export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   | 'base';
 }
 
-const Button = ({ children, variant, icon, iconAlignment = 'left', iconSize, className, ...buttonAttrs }: Props): JSX.Element => {
+const Button = forwardRef(({ children, variant, icon, iconAlignment = 'left', iconSize, className, ...buttonAttrs }: Props, ref: ForwardedRef<HTMLButtonElement>): JSX.Element => {
   let classes = '';
   switch (variant) {
     case 'assertive':
@@ -33,17 +33,16 @@ const Button = ({ children, variant, icon, iconAlignment = 'left', iconSize, cla
   }
 
   if (icon && !children) {
-    return <button className={`ads-button-icon ${classes} ${className || ''}`} {...buttonAttrs}><Icon name={icon} size={iconSize} /></button>;
+    return <button ref={ref} className={`ads-button-icon ${classes} ${className || ''}`} {...buttonAttrs}><Icon name={icon} size={iconSize} /></button>;
   }
 
   return (
-    <button className={`${classes} ${className || ''}`} {...buttonAttrs}>
+    <button ref={ref} className={`${classes} ${className || ''}`} {...buttonAttrs}>
       { icon && iconAlignment === 'left' && <Icon name={icon} size={iconSize} className="u-icon-left" /> }
       { icon && children ? <span className="ads-button-text">{ children }</span> : children }
       { icon && iconAlignment === 'right' && <Icon name={icon} size={iconSize} className="u-icon-right" /> }
     </button>
   );
-
-}
+});
 
 export default Button;

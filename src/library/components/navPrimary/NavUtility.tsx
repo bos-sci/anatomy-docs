@@ -19,7 +19,7 @@ const NavUtility = ({utilityItems}: Props): JSX.Element => {
         <li className="nav-item">
           <Dropdown triggerText="Test" className="nav-link">
             <Button type="button">Button item</Button>
-            <Link>Link item</Link>
+            <Link href="#">Link item</Link>
           </Dropdown>
         </li>
       </ul>
