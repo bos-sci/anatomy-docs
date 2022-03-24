@@ -1,7 +1,7 @@
 import { IconProps } from './iconTypes';
 
 const IconMenu = (props: IconProps): JSX.Element => {
-  return <svg aria-hidden="true" focusable="false" className={`${props.className}`} role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>;
+  return <svg aria-hidden="true" focusable="false" className={`${props.className}`} role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M.64,4H17.36A.64.64,0,0,0,18,3.38V1.77a.65.65,0,0,0-.64-.65H.64A.65.65,0,0,0,0,1.77V3.38A.64.64,0,0,0,.64,4Zm0,6.43H17.36A.65.65,0,0,0,18,9.8V8.2a.65.65,0,0,0-.64-.65H.64A.65.65,0,0,0,0,8.2V9.8A.65.65,0,0,0,.64,10.45Zm0,6.43H17.36a.65.65,0,0,0,.64-.65V14.62a.64.64,0,0,0-.64-.64H.64a.64.64,0,0,0-.64.64v1.61A.65.65,0,0,0,.64,16.88Z"/></svg>;
 }
 
 export default IconMenu;
