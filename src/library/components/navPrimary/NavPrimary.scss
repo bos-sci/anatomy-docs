@@ -3,6 +3,7 @@
 @import '../../../styles/utilities/utilities';
 
 // These are one of sizes to get the icons to match the font sizes
+$icon-size-sm: 0.75rem;
 $icon-size: 1em;
 $icon-size-lg: 1.15rem;
 
@@ -12,6 +13,9 @@ $icon-size-lg: 1.15rem;
   border-image-slice: 1;
   border-top-width: space(xs);
   border-top-style: solid;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
 }
 
 .nav-utility,
@@ -64,10 +68,24 @@ $icon-size-lg: 1.15rem;
       .ads-dropdown
       {
 
-        .ads-dropdown-trigger:hover
+        .ads-dropdown-trigger
         {
-          background: transparent;
-          color: $text-color-primary;
+          position: relative;
+          padding: space(md) space(lg);
+          padding-right: calc(space(lg) + $icon-size-sm + space(md)); // Padding + icon width + space between icon and text
+
+          &:hover
+          {
+            background: transparent;
+            color: $text-color-primary;
+          }
+
+          &::after
+          {
+            right: space(lg);
+            width: $icon-size-sm;
+            height: $icon-size-sm;
+          }
         }
       }
     }

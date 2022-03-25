@@ -15,7 +15,7 @@ let dropdownIndex = 0;
 
 // TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
 
-const Dropdown = ({triggerText, variant, children = [], className, ...buttonAttrs}: Props) => {
+const Dropdown = ({triggerText, variant, children = [], className = '', ...buttonAttrs}: Props) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownItems, setDropdownItems] = useState<DropdownItem[]>([]);
@@ -103,7 +103,7 @@ const Dropdown = ({triggerText, variant, children = [], className, ...buttonAttr
     <div ref={dropdownRef} className="ads-dropdown" onKeyDown={updateFocus}>
       <Button
         variant={variant}
-        className={'ads-dropdown-trigger ' + className}
+        className={`ads-dropdown-trigger${isDropdownOpen ? ' open' : ''} ${className}`}
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
