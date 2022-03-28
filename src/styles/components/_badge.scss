@@ -1,0 +1,66 @@
+@mixin badge-default
+{
+  @include font-size($fs-small);
+  font-family: $font-family-base-heavy;
+  text-transform: uppercase;
+  letter-spacing: 0.075rem; // NOTE: this is a one-off size
+}
+
+@mixin badge-assertive
+{
+  @include badge-default;
+  display: inline;
+  padding: space(md) space(lg);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+@mixin badge-accent
+{
+  @include badge-default;
+  border-style: solid;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: space(sm);
+  padding: space(xs) 0 space(xs) space(md);
+}
+
+.ads-badge
+{
+  @include badge-default;
+
+  &-dark
+  {
+    @include badge-default;
+    color: $neutral-100;
+  }
+
+  &-accent
+  {
+    @include badge-accent;
+    border-image-source: $gradient-accent-vertical;
+    border-image-slice: 1;
+  }
+
+  &-accent-dark
+  {
+    @include badge-accent;
+    border-color: $accent-secondary-60;
+    color: $neutral-100;
+  }
+
+  &-assertive
+  {
+    @include badge-assertive;
+    background: $action-primary-20;
+    color: $neutral-100;
+  }
+
+  &-assertive-dark
+  {
+    @include badge-assertive;
+    background: $neutral-100;
+    color: $neutral-00;
+  }
+}
