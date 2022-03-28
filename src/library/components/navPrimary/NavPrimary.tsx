@@ -6,6 +6,7 @@ import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { NavLink } from 'react-router-dom';
+import IconClose from '../icon/icons/IconClose';
 
 interface NavItem {
   text: string;
@@ -46,8 +47,9 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
   const [currentRootItem, setCurrentRootItem] = useState<NavNode | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
-  const nav = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   const updateMenu = (navItem: NavNode | null): void => {
     if (currentRootItem !== navItem) {
@@ -79,7 +81,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
 
   useEffect(() => {
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
-      if (!nav.current?.contains(e.target as Node) && currentRootItem) {
+      if (!navRef.current?.contains(e.target as Node) && currentRootItem) {
         setIsMenuOpen(false);
         setCurrentRootItem(null);
       }
@@ -110,7 +112,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
 
   return <>
     <a href="#mainContent" className="skip-link">Skip to main content</a>
-    <header className="nav-header" ref={nav}>
+    <header className="nav-header" ref={navRef}>
       {utilityItems && <NavUtility utilityItems={utilityItems} />}
       <nav className="nav-primary" aria-label="primary">
         <div className="nav-bar">
@@ -166,11 +168,23 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
         {isSearchOpen &&
           <div className="search-panel">
             <form className="search" role="search" aria-label="site search">
-              <input
-                type="search"
-                className="ads-input-text-input search-input"
-                placeholder="Search"
-                aria-label="search" />
+              <div className="search-control">
+                <input
+                  type="search"
+                  className="ads-input-text-input search-input"
+                  placeholder="Search"
+                  aria-label="search"
+                  value={searchValue}
+                  onChange={e => setSearchValue(e.target.value)} />
+                {searchValue &&
+                  <button
+                    className="search-clear"
+                    aria-label="clear search text"
+                    onClick={() => setSearchValue('')}>
+                    <IconClose className="ads-icon-lg" />
+                  </button>
+                }
+              </div>
               <Button variant="assertive">Search</Button>
             </form>
           </div>

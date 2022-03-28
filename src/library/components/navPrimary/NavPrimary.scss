@@ -373,11 +373,38 @@ $icon-size-lg: 1.15rem;
       padding: space(2x) space(3x);
     }
 
+    .search-control
+    {
+      position: relative;
+      flex: 1;
+      margin-right: space(2x);
+    }
+
     .search-input
     {
-      flex: 1;
       margin-top: 0;
-      margin-right: space(2x);
+      height: 100%;
+    }
+
+    .search-clear
+    {
+      position: absolute;
+      right: 0;
+      border: 0;
+      padding: space(2x);
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      background: transparent;
+
+      &:focus
+      {
+        @include focus-default-inset;
+      }
+
+      &:hover:not(:active)
+      {
+        fill: $action-primary-40;
+      }
     }
   }
 }
