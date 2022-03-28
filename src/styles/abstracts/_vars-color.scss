@@ -16,11 +16,13 @@ $neutral-100: #ffffff;
 
 // Action Color Range
 
+$action-primary-10: #001433;
 $action-primary-20: #012965;
 $action-primary-40: #0153cc; // default value
 $action-primary-60: #3485fe;
 $action-primary-80: #9ac2fe;
 $action-primary-95: #e6f0ff;
+$action-primary-97: #f2f7ff;
 
 
 // Accent Color Ranges
@@ -74,6 +76,7 @@ $feedback-error-95: #fce9ea;
 $gradient-brand: linear-gradient(90deg, $brand-primary, $accent-primary-60, $accent-secondary-60);
 $gradient-primary: linear-gradient(270deg, $action-primary-40 0%, $accent-secondary-60 100%);
 $gradient-secondary: linear-gradient(270deg, $action-primary-20 0%, $accent-primary-60 100%);
+$gradient-accent: linear-gradient(270deg, $accent-primary-60 0%, $action-primary-60 100%);
 $gradient-accent-vertical: linear-gradient(180deg, $accent-primary-60 0%, $action-primary-60 100%);
 $gradient-assertive: linear-gradient(36deg, $neutral-00 0%, $action-primary-20 100%);
 $gradient-subtle: linear-gradient(322deg, $neutral-100, $neutral-95);
