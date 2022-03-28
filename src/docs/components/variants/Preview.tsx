@@ -19,6 +19,11 @@ const Preview = ( props: Props ): JSX.Element => {
   useEffect(() => {
     const variantId = props.variantId as string;
     switch (props.component) {
+      case 'badge':
+        const BadgeVariants = lazy(() => import('./badge/BadgeVariants'));
+        setRenderedComponent(<BadgeVariants variantId={variantId} />);
+        break;
+
       case 'breadcrumbs':
         const DefaultBreadcrumbs = lazy(() => import('./breadcrumbs/DefaultBreadcrumbs'));
         setRenderedComponent(<DefaultBreadcrumbs />);
