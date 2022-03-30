@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { FocusEvent as ReactFocusEvent, useEffect, useRef, useState } from 'react';
 import logo from "../../../assets/images/logo-anatomy.svg";
 import { RequireOnlyOne } from '../../types';
 import Button from '../Button';
@@ -50,6 +50,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
   const [searchValue, setSearchValue] = useState('');
 
   const navRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const updateMenu = (navItem: NavNode | null): void => {
     if (currentRootItem !== navItem) {
@@ -109,6 +110,13 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
     setIsSearchOpen(!isSearchOpen);
   }
 
+  const manageFocus = (e: ReactFocusEvent) => {
+    if (e.target.getAttribute('aria-expanded') === 'true') {
+      console.log(menuRef.current);
+      menuRef.current?.focus();
+    }
+  }
+
 
   return <>
     <a href="#mainContent" className="skip-link">Skip to main content</a>
@@ -131,7 +139,8 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
                     variant="subtle"
                     className={'nav-link' + (navItem === currentRootItem ? ' active' : '')}
                     aria-expanded={navItem === currentRootItem}
-                    onClick={() => updateMenu(navItem)}>
+                    onClick={() => updateMenu(navItem)}
+                    onBlur={manageFocus}>
                     {navItem.text}
                   </Button>
                 }
@@ -191,6 +200,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
         }
         {isMenuOpen &&
           <NavPrimaryMenu
+            ref={menuRef}
             navItems={navTree}
             currentRootItem={currentRootItem}
             setCurrentRootItem={setCurrentRootItem} />

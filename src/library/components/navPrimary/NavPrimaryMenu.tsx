@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, FocusEvent, ForwardedRef, forwardRef, SetStateAction, useEffect, useRef, useState } from 'react';
 import Button from '../Button';
 import Link from '../Link';
 import { NavNode } from './NavPrimary';
@@ -9,9 +9,21 @@ interface Props {
   setCurrentRootItem: Dispatch<SetStateAction<NavNode | null>>;
 }
 
-const NavPrimaryMenu = ({ navItems, currentRootItem, setCurrentRootItem }: Props): JSX.Element => {
+const NavPrimaryMenu = forwardRef(({ navItems, currentRootItem, setCurrentRootItem }: Props, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
 
   const [panels, setPanels] = useState<NavNode[][]>([navItems]);
+
+  const panelsRef = useRef<HTMLDivElement>(null);
+
+  /* interface PanelRefs {
+    [key: string]: HTMLUListElement;
+  }
+  const panelRefs = useRef([]);
+
+  useEffect(() => {
+    console.log('updating refs');
+    panelRefs.current = panels.map((_, i) => panelRefs.current[i] ?? createRef<HTMLUListElement>());
+  }, [panels]); */
 
   useEffect(() => {
     if (currentRootItem?.children) {
@@ -32,15 +44,34 @@ const NavPrimaryMenu = ({ navItems, currentRootItem, setCurrentRootItem }: Props
     }
   }
 
-  const isActive = (navItem: NavNode, i: number): boolean => {
-    if (i === panels.length - 1) {
-      return false;
-    }
-    return navItem.children === panels[i + 1];
+  const removePanel = (targetPanel: NavNode[]) => {
+    setPanels(panels.slice(0, panels.indexOf(targetPanel)));
   }
 
+  const updatePanels = (i: number, item: NavNode) => {
+    if (item.children && panels.includes(item.children)) {
+      removePanel(item.children);
+    } else {
+      addPanel(i, item);
+    }
+  }
+
+  const isActive = (navItem: NavNode, i: number): boolean => {
+    if (navItem.children) {
+      return panels.includes(navItem.children);
+    } else {
+      return false;
+    }
+  }
+
+  /* const manageFocus = (e: FocusEvent, currentIndex: number) => {
+    if (e.target.getAttribute('aria-expanded') === 'true') {
+      (panelsRef.current?.children[currentIndex + 1].children[0] as HTMLUListElement).focus();
+    }
+  } */
+
   return (
-    <div className="nav-menu">
+    <div ref={ref} className="nav-menu" tabIndex={-1}>
       {panels.length > 1 &&
         <Button
           type="button"
@@ -50,7 +81,7 @@ const NavPrimaryMenu = ({ navItems, currentRootItem, setCurrentRootItem }: Props
           Back to {panels[panels.length - 1][0].parent?.text.toLocaleLowerCase()}
         </Button>
       }
-      <div className="nav-menu-panels">
+      <div ref={panelsRef} className="nav-menu-panels">
         {panels.map((panel, panelIndex) => (
           <div key={'navPrimaryPanel' + panelIndex} className={'nav-menu-panel' + (panel[0].parent?.altLinkText && panelIndex === 1 ? ' has-header' : '')}>
             {panel[0].parent?.altLinkText && panelIndex === 1 &&
@@ -62,7 +93,7 @@ const NavPrimaryMenu = ({ navItems, currentRootItem, setCurrentRootItem }: Props
                 </Link>
               </div>
             }
-            <ul className="nav" aria-describedby={panel[0].parent?.id}>
+            <ul tabIndex={-1} className="nav" aria-describedby={panel[0].parent?.id}>
               {panel.map((navItem, i) => {
                 if (navItem.children) {
                   // Parent Button
@@ -77,7 +108,9 @@ const NavPrimaryMenu = ({ navItems, currentRootItem, setCurrentRootItem }: Props
                           + (navItem.description ? ' has-description' : '')
                         }
                         aria-expanded={isActive(navItem, panelIndex)}
-                        onClick={() => addPanel(panelIndex, navItem)}>
+                        aria-haspopup="menu" // Do we need/want this here? If we do, lets add to header items too.
+                        //onBlur={(e) => manageFocus(e, panelIndex)}
+                        onClick={() => updatePanels(panelIndex, navItem)}>
                         <div className="nav-link-text">
                           {navItem.text}
                         </div>
@@ -111,6 +144,6 @@ const NavPrimaryMenu = ({ navItems, currentRootItem, setCurrentRootItem }: Props
       </div>
     </div>
   );
-}
+});
 
 export default NavPrimaryMenu;
