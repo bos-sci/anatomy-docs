@@ -107,6 +107,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!navRef.current?.contains(e.target as Node)) {
         setIsMenuOpen(false);
+        setHistory([]);
       }
     }
     window.addEventListener('focusin', onFocusWithinOut);
