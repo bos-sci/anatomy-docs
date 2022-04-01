@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import IconChevronRight from '../icon/icons/IconChevronRight';
-import Button from '../Button';
+import IconChevronRight from '../../icon/icons/IconChevronRight';
+import Button from '../../Button';
 import NavSecondaryList from './NavSecondaryList';
 import { NavNode } from './NavSecondary';
 

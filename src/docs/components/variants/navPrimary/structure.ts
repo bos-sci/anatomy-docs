@@ -1,4 +1,4 @@
-import { NavItemPrimary } from '../../../../library/components/navPrimary/NavPrimary';
+import { NavItemPrimary } from '../../../../library/components/navigation/navPrimary/NavPrimary';
 
 const basePath = '';
 

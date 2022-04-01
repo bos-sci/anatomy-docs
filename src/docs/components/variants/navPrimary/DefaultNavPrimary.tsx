@@ -1,4 +1,4 @@
-import NavPrimary from '../../../../library/components/navPrimary/NavPrimary';
+import NavPrimary from '../../../../library/components/navigation/navPrimary/NavPrimary';
 
 import exampleData from './structure';
 

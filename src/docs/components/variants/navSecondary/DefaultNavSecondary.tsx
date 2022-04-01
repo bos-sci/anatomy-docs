@@ -1,5 +1,5 @@
 import Example from '../../../shared/components/Example';
-import NavSecondary, { NavItemSecondary } from '../../../../library/components/navSecondary/NavSecondary';
+import NavSecondary, { NavItemSecondary } from '../../../../library/components/navigation/navSecondary/NavSecondary';
 import { useEffect } from 'react';
 
 const DefaultNavSecondary = (): JSX.Element => {

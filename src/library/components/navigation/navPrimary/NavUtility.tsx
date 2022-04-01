@@ -1,6 +1,6 @@
-import Button from '../Button';
-import Dropdown from '../Dropdown';
-import Link from '../Link';
+import Button from '../../Button';
+import Dropdown from '../../Dropdown';
+import Link from '../../Link';
 import { NavItemUtility } from './NavPrimary';
 
 interface Props {

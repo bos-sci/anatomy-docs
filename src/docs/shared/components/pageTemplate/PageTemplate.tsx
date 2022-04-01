@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import Markdown from '../Markdown';
-import NavSecondary, { NavItemSecondary } from '../../../../library/components/navSecondary/NavSecondary';
-import NavTertiary, { NavItemTertiary } from '../../../../library/components/navTertiary/NavTertiary';
+import NavSecondary, { NavItemSecondary } from '../../../../library/components/navigation/navSecondary/NavSecondary';
+import NavTertiary, { NavItemTertiary } from '../../../../library/components/navigation/navTertiary/NavTertiary';
 
 interface Props {
   name: string;

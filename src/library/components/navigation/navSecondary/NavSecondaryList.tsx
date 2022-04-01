@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import IconChevronLeft from '../icon/icons/IconChevronLeft';
-import Button from '../Button';
+import IconChevronLeft from '../../icon/icons/IconChevronLeft';
+import Button from '../../Button';
 import NavSecondaryListParent from './NavSecondaryListParent';
 import { NavNode } from './NavSecondary';
 

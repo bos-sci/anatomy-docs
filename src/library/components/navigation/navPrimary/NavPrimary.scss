@@ -1,11 +1,14 @@
-@import '../../../styles/abstracts/abstracts';
-@import '../../../styles/base/base';
-@import '../../../styles/utilities/utilities';
+@import '../../../../styles/abstracts/abstracts';
+@import '../../../../styles/base/base';
+@import '../../../../styles/utilities/utilities';
 
 // These are one of sizes to get the icons to match the font sizes
 $icon-size-sm: 0.75rem;
 $icon-size: 1em;
 $icon-size-lg: 1.15rem;
+
+$panelsWidth: 100vw;
+$numPanels: 4;
 
 .nav-header
 {
@@ -142,7 +145,7 @@ $icon-size-lg: 1.15rem;
         {
           .nav-link::after
           {
-            content: url("../../../assets/images/icon-search.svg");
+            content: url("../../../../assets/images/icon-search.svg");
           }
         }
 
@@ -150,14 +153,14 @@ $icon-size-lg: 1.15rem;
         {
           .nav-link::after
           {
-            content: url("../../../assets/images/icon-menu.svg");
+            content: url("../../../../assets/images/icon-menu.svg");
           }
 
           &.open
           {
             &::after
             {
-              content: url("../../../assets/images/icon-close.svg");
+              content: url("../../../../assets/images/icon-close.svg");
             }
           }
         }
@@ -172,7 +175,7 @@ $icon-size-lg: 1.15rem;
 
           &::after
           {
-            content: url("../../../assets/images/icon-chevron-down.svg");
+            content: url("../../../../assets/images/icon-chevron-down.svg");
             position: absolute;
             top: calc(50% - ($icon-size / 2));
             right: space(2x);
@@ -180,7 +183,7 @@ $icon-size-lg: 1.15rem;
             height: $icon-size;
           }
 
-          &.active
+          &.open
           {
             &::before
             {
@@ -194,7 +197,7 @@ $icon-size-lg: 1.15rem;
 
             &::after
             {
-              content: url("../../../assets/images/icon-chevron-up.svg");
+              content: url("../../../../assets/images/icon-chevron-up.svg");
             }
           }
         }
@@ -205,7 +208,6 @@ $icon-size-lg: 1.15rem;
   .nav-menu
   {
     $navLinkPadding: space(lg) space(2x);
-    overflow-y: hidden;
     border-bottom: space(xxs) solid $neutral-80;
 
     .nav-menu-back
@@ -225,7 +227,7 @@ $icon-size-lg: 1.15rem;
 
       &::after
       {
-        content: url("../../../assets/images/icon-chevron-left.svg");
+        content: url("../../../../assets/images/icon-chevron-left.svg");
         position: absolute;
         top: calc(50% - ($icon-size / 2));
         left: space(2x);
@@ -237,8 +239,9 @@ $icon-size-lg: 1.15rem;
 
     .nav-menu-panels
     {
-      display: grid;
-      grid-template-columns: 1fr;
+      position: relative;
+      margin: auto;
+      width: $panelsWidth;
 
       > :not(:last-child)
       {
@@ -247,9 +250,33 @@ $icon-size-lg: 1.15rem;
 
       .nav-menu-panel
       {
+        position: absolute;
+        top: 0;
         display: none;
         margin-top: 0;
+        width: $panelsWidth;
         height: 100%;
+
+        .nav-menu-panel
+        {
+          left: 0;
+        }
+
+        &:not(.nav-active-list)
+        {
+          > .nav
+          {
+            padding: 0;
+          }
+
+          & > .nav > .nav-item:not(.nav-item-parent),
+          & > .nav > .nav-item-parent > .nav-link,
+          > .nav-menu-panel-header
+          {
+            display: none;
+          }
+
+        }
 
         .nav
         {
@@ -310,7 +337,7 @@ $icon-size-lg: 1.15rem;
 
           &::after
           {
-            content: url("../../../assets/images/icon-chevron-right.svg");
+            content: url("../../../../assets/images/icon-chevron-right.svg");
             position: absolute;
             top: calc(50% - ($icon-size / 2));
             right: 0;
@@ -411,12 +438,14 @@ $icon-size-lg: 1.15rem;
 
 @media (min-width: $lg)
 {
+  $panelsWidth: 60rem; // NOTE: This is a one off size to match the layout widths.
+
   .nav-utility .nav,
   .nav-bar .nav,
   .nav-menu-panels,
   .search-panel .search
   {
-    width: 60rem; // NOTE: This is a one off size to match the layout widths.
+    width: $panelsWidth;
     margin-right: auto;
     margin-left: auto;
   }
@@ -477,7 +506,17 @@ $icon-size-lg: 1.15rem;
     {
       .nav-menu-panels
       {
-        grid-template-columns: repeat(4, 1fr);
+        width: $panelsWidth;
+
+        .nav-menu-panel
+        {
+          width: calc($panelsWidth / $numPanels);
+
+          .nav-menu-panel
+          {
+            left: calc($panelsWidth / $numPanels);
+          }
+        }
 
         .nav-menu-panel-header
         {
@@ -494,19 +533,30 @@ $icon-size-lg: 1.15rem;
           {
             display: flex;
             flex-direction: row;
-            grid-column-end: span 2;
+            width: calc(($panelsWidth / $numPanels) * 2);
+            left: 0;
 
             > *
             {
               flex: 1;
             }
+
+            .nav-menu-panel
+            {
+              left: calc(($panelsWidth / $numPanels) * 2);
+
+              .nav-menu-panel
+              {
+                left: calc(($panelsWidth / $numPanels));
+              }
+            }
           }
         }
 
-        .nav-menu-panel:not(.nav-menu-panel-custom):first-of-type
+        /* .nav-menu-panel:not(.nav-menu-panel-custom):first-of-type
         {
           display: none;
-        }
+        } */
       }
 
       .nav
@@ -520,22 +570,66 @@ $icon-size-lg: 1.15rem;
 
 @media (min-width: $xl)
 {
+  $panelsWidth: 71.25rem; // NOTE: This is a one off size to match the layout widths.
+
   .nav-utility .nav,
   .nav-bar .nav,
-  .nav-menu-panels,
   .search-panel .search
   {
-    width: 71.25rem; // NOTE: This is a one off size to match the layout widths.
+    width: $panelsWidth;
+  }
+
+  .nav-primary
+  {
+    .nav-menu
+    {
+      .nav-menu-panels
+      {
+        width: $panelsWidth;
+
+        .nav-menu-panel
+        {
+          width: calc($panelsWidth / $numPanels);
+
+          .nav-menu-panel
+          {
+            left: calc($panelsWidth / $numPanels);
+          }
+        }
+      }
+    }
   }
 }
 
 @media (min-width: $xxl)
 {
+  $panelsWidth: 82.5rem; // NOTE: This is a one off size to match the layout widths.
+
   .nav-utility .nav,
   .nav-bar .nav,
-  .nav-menu-panels,
   .search-panel .search
   {
-    width: 82.5rem; // NOTE: This is a one off size to match the layout widths.
+    width: $panelsWidth;
+  }
+
+  .nav-primary
+  {
+    .nav-menu
+    {
+      .nav-menu-panels
+      {
+        width: $panelsWidth;
+
+        .nav-menu-panel
+        {
+          width: calc($panelsWidth / $numPanels);
+
+          .nav-menu-panel
+          {
+            left: calc($panelsWidth / $numPanels);
+          }
+        }
+      }
+    }
   }
 }

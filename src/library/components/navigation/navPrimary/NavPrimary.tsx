@@ -1,12 +1,12 @@
 import { FocusEvent as ReactFocusEvent, useEffect, useRef, useState } from 'react';
-import logo from "../../../assets/images/logo-anatomy.svg";
-import { RequireOnlyOne } from '../../types';
-import Button from '../Button';
+import logo from "../../../../assets/images/logo-anatomy.svg";
+import { RequireOnlyOne } from '../../../types';
+import Button from '../../Button';
 import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { NavLink } from 'react-router-dom';
-import IconClose from '../icon/icons/IconClose';
+import IconClose from '../../icon/icons/IconClose';
 
 interface NavItem {
   text: string;
@@ -35,6 +35,11 @@ interface NavTreeNode extends NavItemPrimaryBase {
 
 export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'href' | 'children'>;
 
+export interface HistoryNode {
+  node: NavNode;
+  depth: number;
+}
+
 interface Props {
   navItems: NavItemPrimary[];
   activeSlug?: string;
@@ -44,22 +49,40 @@ interface Props {
 const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
-  const [currentRootItem, setCurrentRootItem] = useState<NavNode | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  const [history, setHistory] = useState<HistoryNode[]>([]);
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const updateMenu = (navItem: NavNode | null): void => {
-    if (currentRootItem !== navItem) {
-      setCurrentRootItem(navItem);
+  const pushHistory = (navItem: NavNode, depth: number) => {
+    const newHistory = [...history];
+    if (newHistory.length > 0 && depth <= newHistory[newHistory.length - 1].depth) {
+      newHistory.splice(depth);
+    }
+    newHistory.push({
+      node: navItem,
+      depth: depth
+    });
+    setHistory(newHistory);
+  }
+
+  const popHistory = () => {
+    const newHistory = [...history];
+    newHistory.pop();
+    setHistory(newHistory);
+  }
+
+  const updateMenu = (navItem: NavNode): void => {
+    if (history.length && history[0].node === navItem) {
+      popHistory();
+      setIsMenuOpen(false);
+    } else {
+      pushHistory(navItem, 0);
       setIsMenuOpen(true);
       setIsSearchOpen(false);
-    } else {
-      setCurrentRootItem(null);
-      setIsMenuOpen(false);
     }
   }
 
@@ -82,9 +105,8 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
 
   useEffect(() => {
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
-      if (!navRef.current?.contains(e.target as Node) && currentRootItem) {
+      if (!navRef.current?.contains(e.target as Node)) {
         setIsMenuOpen(false);
-        setCurrentRootItem(null);
       }
     }
     window.addEventListener('focusin', onFocusWithinOut);
@@ -93,7 +115,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
       window.removeEventListener('focusin', onFocusWithinOut);
       window.removeEventListener('pointerup', onFocusWithinOut);
     }
-  }, [currentRootItem]);
+  }, []);
 
   const toggleMenu = () => {
     if (!isMenuOpen && isSearchOpen) {
@@ -105,7 +127,6 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
   const toggleSearch = () => {
     if (!isSearchOpen && isMenuOpen) {
       setIsMenuOpen(false);
-      setCurrentRootItem(null);
     }
     setIsSearchOpen(!isSearchOpen);
   }
@@ -137,8 +158,8 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className={'nav-link' + (navItem === currentRootItem ? ' active' : '')}
-                    aria-expanded={navItem === currentRootItem}
+                    className={'nav-link' + (history[0] && navItem === history[0].node ? ' open' : '')}
+                    aria-expanded={history[0] && navItem === history[0].node}
                     onClick={() => updateMenu(navItem)}
                     onBlur={manageFocus}>
                     {navItem.text}
@@ -202,8 +223,9 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
-            currentRootItem={currentRootItem}
-            setCurrentRootItem={setCurrentRootItem} />
+            history={history}
+            pushHistory={pushHistory}
+            popHistory={popHistory} />
         }
       </nav>
     </header>
