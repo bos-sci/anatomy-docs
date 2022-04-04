@@ -19,11 +19,6 @@ const Preview = ( props: Props ): JSX.Element => {
   useEffect(() => {
     const variantId = props.variantId as string;
     switch (props.component) {
-      case 'badge':
-        const BadgeVariants = lazy(() => import('./badge/BadgeVariants'));
-        setRenderedComponent(<BadgeVariants variantId={variantId} />);
-        break;
-
       case 'breadcrumbs':
         const DefaultBreadcrumbs = lazy(() => import('./breadcrumbs/DefaultBreadcrumbs'));
         setRenderedComponent(<DefaultBreadcrumbs />);
@@ -67,6 +62,11 @@ const Preview = ( props: Props ): JSX.Element => {
       case 'tabs':
         const DefaultTabs = lazy(() => import('./tabs/DefaultTabs'));
         setRenderedComponent(<DefaultTabs />);
+        break;
+
+      case 'tag':
+        const TagVariants = lazy(() => import('./tag/TagVariants'));
+        setRenderedComponent(<TagVariants variantId={variantId} />);
         break;
 
       case 'tertiary-navigation':

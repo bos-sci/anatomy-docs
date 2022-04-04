@@ -1,14 +1,14 @@
-import Badge from '../../../../library/components/Badge';
+import Tag from '../../../../library/components/Tag';
 import Example from '../../../shared/components/Example';
 
 const DefaultStyle = (): JSX.Element => {
   return (
     <>
       <Example>
-        <Badge>Default badge</Badge>
+        <Tag>Default tag</Tag>
       </Example>
       <Example isDarkTheme={true}>
-        <Badge variant="dark">Default badge</Badge>
+        <Tag variant="dark">Default tag</Tag>
       </Example>
     </>
   );

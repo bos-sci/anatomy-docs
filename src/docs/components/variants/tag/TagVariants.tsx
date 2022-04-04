@@ -1,22 +1,22 @@
 import { VariantProps } from '../Preview';
-import DefaultBadge from './DefaultBadge';
+import DefaultTag from './DefaultTag';
 import DefaultStyle from './DefaultStyle';
 import AccentStyle from './AccentStyle';
 import AssertiveStyle from './AssertiveStyle';
 
-const BadgeVariants = ({ variantId }: VariantProps): JSX.Element => {
+const TagVariants = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Styles
-    case 'badgeDefault':
+    case 'tagDefault':
       return <DefaultStyle />;
-    case 'badgeAccent':
+    case 'tagAccent':
       return <AccentStyle />;
-    case 'badgeAssertive':
+    case 'tagAssertive':
       return <AssertiveStyle />;
 
     default:
-      return <DefaultBadge />;
+      return <DefaultTag />;
   }
 }
 
-export default BadgeVariants;
+export default TagVariants;
