@@ -52,10 +52,6 @@ const Components = (props: Props): JSX.Element => {
     const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/')).replace('/form-controls', '');
     setNavItems([
       {
-        text: 'Badge',
-        slug: basePath + '/badge',
-      },
-      {
         text: 'Breadcrumbs',
         slug: basePath + '/breadcrumbs',
       },
@@ -108,6 +104,10 @@ const Components = (props: Props): JSX.Element => {
       {
         text: 'Tabs',
         slug: basePath + '/tabs',
+      },
+      {
+        text: 'Tag',
+        slug: basePath + '/tag',
       },
     ]);
   }, [props.match.path]);

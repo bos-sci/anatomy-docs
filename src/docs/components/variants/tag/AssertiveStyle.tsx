@@ -1,14 +1,14 @@
-import Badge from '../../../../library/components/Badge';
+import Tag from '../../../../library/components/Tag';
 import Example from '../../../shared/components/Example';
 
 const AssertiveStyle = (): JSX.Element => {
   return (
     <>
       <Example>
-        <Badge variant="assertive">Assertive badge</Badge>
+        <Tag variant="assertive">Assertive tag</Tag>
       </Example>
       <Example isDarkTheme={true}>
-        <Badge variant="assertive-dark">Assertive badge</Badge>
+        <Tag variant="assertive-dark">Assertive tag</Tag>
       </Example>
     </>
   );

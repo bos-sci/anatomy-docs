@@ -1,14 +1,14 @@
-import Badge from '../../../../library/components/Badge';
+import Tag from '../../../../library/components/Tag';
 import Example from '../../../shared/components/Example';
 
 const AccentStyle = (): JSX.Element => {
   return (
     <>
       <Example>
-        <Badge variant="accent">Accent badge</Badge>
+        <Tag variant="accent">Accent tag</Tag>
       </Example>
       <Example isDarkTheme={true}>
-        <Badge variant="accent-dark">Accent badge</Badge>
+        <Tag variant="accent-dark">Accent tag</Tag>
       </Example>
     </>
   );

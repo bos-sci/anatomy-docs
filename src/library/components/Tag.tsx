@@ -5,28 +5,28 @@ interface Props {
   variant?: string;
 }
 
-const Badge = (props: Props): JSX.Element => {
+const Tag = (props: Props): JSX.Element => {
   const { variant } = props;
 
   let classes = '';
   switch (variant) {
     case 'accent':
-      classes = 'ads-badge-accent'
+      classes = 'ads-tag-accent'
       break;
     case 'accent-dark':
-      classes = 'ads-badge-accent-dark'
+      classes = 'ads-tag-accent-dark'
       break;
     case 'assertive':
-      classes = 'ads-badge-assertive'
+      classes = 'ads-tag-assertive'
       break;
     case 'assertive-dark':
-      classes = 'ads-badge-assertive-dark'
+      classes = 'ads-tag-assertive-dark'
       break;
     case 'dark':
-      classes = 'ads-badge-dark'
+      classes = 'ads-tag-dark'
       break;
     default:
-      classes = 'ads-badge';
+      classes = 'ads-tag';
       break;
   }
 
@@ -35,4 +35,4 @@ const Badge = (props: Props): JSX.Element => {
   );
 }
 
-export default Badge;
+export default Tag;
