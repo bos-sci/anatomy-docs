@@ -10,6 +10,9 @@ $icon-size-lg: 1.15rem;
 $panelsWidth: 100vw;
 $numPanels: 4;
 
+// Used in nav-menu nav-links
+$navLinkPadding: space(lg) space(2x);
+
 .nav-header
 {
   border-image-source: $gradient-brand;
@@ -207,186 +210,186 @@ $numPanels: 4;
 
   .nav-menu
   {
-    $navLinkPadding: space(lg) space(2x);
+    border-bottom: space(xxs) solid $neutral-80;
+    overflow: hidden;
+  }
+
+  .nav-menu-back
+  {
+    position: relative;
+    width: 100%;
+    justify-content: flex-start;
+    box-shadow: $box-shadow-secondary;
+    padding: $navLinkPadding;
+    padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
+    @include font-size($fs-base);
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
+
+    &::after
+    {
+      content: url("../../../../assets/images/icon-chevron-left.svg");
+      position: absolute;
+      top: calc(50% - ($icon-size / 2));
+      left: space(2x);
+      width: $icon-size;
+      height: $icon-size;
+      @include font-size($fs-body-subtle);
+    }
+  }
+
+  .nav-menu-panels
+  {
+    position: relative;
+    margin: auto;
+    width: $panelsWidth;
+
+    > :not(:last-child)
+    {
+      border-right: space(xxs) solid $neutral-80;
+    }
+  }
+
+  .nav-menu-panel
+  {
+    position: relative;
+    top: 0;
+    display: none;
+    margin-top: 0;
+    width: $panelsWidth;
+    height: 100%;
+
+    .nav-menu-panel
+    {
+      left: 0;
+    }
+
+    &:not(.nav-active-list)
+    {
+      > .nav
+      {
+        padding: 0;
+      }
+
+      & > .nav > .nav-item:not(.nav-item-parent),
+      & > .nav > .nav-item-parent > .nav-link,
+      > .nav-menu-panel-header
+      {
+        display: none;
+      }
+
+    }
+
+    .nav
+    {
+      display: block;
+      margin: 0;
+      padding: space(3x) 0;
+    }
+
+    &:last-of-type
+    {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .nav-menu-panel-header
+  {
+    padding: space(3x) space(2x) space(4x);
     border-bottom: space(xxs) solid $neutral-80;
 
-    .nav-menu-back
-    {
-      position: relative;
-      width: 100%;
-      justify-content: flex-start;
-      box-shadow: $box-shadow-secondary;
-      padding: $navLinkPadding;
-      padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
-      @include font-size($fs-base);
-
-      &:focus
-      {
-        @include focus-default-inset;
-      }
-
-      &::after
-      {
-        content: url("../../../../assets/images/icon-chevron-left.svg");
-        position: absolute;
-        top: calc(50% - ($icon-size / 2));
-        left: space(2x);
-        width: $icon-size;
-        height: $icon-size;
-        @include font-size($fs-body-subtle);
-      }
-    }
-
-    .nav-menu-panels
-    {
-      position: relative;
-      margin: auto;
-      width: $panelsWidth;
-
-      > :not(:last-child)
-      {
-        border-right: space(xxs) solid $neutral-80;
-      }
-
-      .nav-menu-panel
-      {
-        position: relative;
-        top: 0;
-        display: none;
-        margin-top: 0;
-        width: $panelsWidth;
-        height: 100%;
-
-        .nav-menu-panel
-        {
-          left: 0;
-        }
-
-        &:not(.nav-active-list)
-        {
-          > .nav
-          {
-            padding: 0;
-          }
-
-          & > .nav > .nav-item:not(.nav-item-parent),
-          & > .nav > .nav-item-parent > .nav-link,
-          > .nav-menu-panel-header
-          {
-            display: none;
-          }
-
-        }
-
-        .nav
-        {
-          display: block;
-          margin: 0;
-          padding: space(3x) 0;
-        }
-
-        &:last-of-type
-        {
-          display: flex;
-          flex-direction: column;
-        }
-      }
-
-      .nav-menu-panel-header
-      {
-        padding: space(3x) space(2x) space(4x);
-        border-bottom: space(xxs) solid $neutral-80;
-
-        :first-child
-        {
-          margin-top: 0;
-        }
-      }
-
-      .nav-menu-panel-header-link
-      {
-        display: block;
-        margin-top: space(3x);
-      }
-    }
-
-    .nav-item-parent
-    {
-      .nav-link
-      {
-        border: 0;
-        width: 100%;
-        text-align: left;
-
-        &:hover
-        {
-          background: transparent;
-          text-decoration: none;
-        }
-
-        &.active,
-        &:hover
-        {
-          background: $neutral-95;
-        }
-
-        .nav-link-text
-        {
-          position: relative;
-          padding-right: calc($icon-size + space(md)); // Padding + icon width + space between icon and text;
-
-          &::after
-          {
-            content: url("../../../../assets/images/icon-chevron-right.svg");
-            position: absolute;
-            top: calc(50% - ($icon-size / 2));
-            right: 0;
-            width: $icon-size;
-            height: $icon-size;
-            @include font-size($fs-body-subtle);
-          }
-        }
-
-        .nav-link-description
-        {
-          margin-top: space(md);
-          @include font-size($fs-body-subtle);
-          font-family: $font-family-base-regular;
-          color: $neutral-40;
-          width: 100%;
-          text-align: left;
-        }
-      }
-    }
-
-    .nav-item,
-    .nav-item-parent
+    :first-child
     {
       margin-top: 0;
     }
+  }
 
+  .nav-menu-panel-header-link
+  {
+    display: block;
+    margin-top: space(3x);
+  }
+
+  .nav-item-parent
+  {
     .nav-link
     {
-      flex-wrap: wrap;
-      padding: $navLinkPadding;
-      @include font-size($fs-body-subtle);
-      @include link-navigation;
+      border: 0;
+      width: 100%;
+      text-align: left;
 
-      &:active
+      &:hover
       {
-        font-family: $font-family-base-heavy;
+        background: transparent;
+        text-decoration: none;
       }
 
-      &.has-description
+      &.active,
+      &:hover
       {
-        @include font-size($fs-base);
+        background: $neutral-95;
+      }
+
+      .nav-link-text
+      {
+        position: relative;
+        padding-right: calc($icon-size + space(md)); // Padding + icon width + space between icon and text;
+
+        &::after
+        {
+          content: url("../../../../assets/images/icon-chevron-right.svg");
+          position: absolute;
+          top: calc(50% - ($icon-size / 2));
+          right: 0;
+          width: $icon-size;
+          height: $icon-size;
+          @include font-size($fs-body-subtle);
+        }
+      }
+
+      .nav-link-description
+      {
+        margin-top: space(md);
+        @include font-size($fs-body-subtle);
+        font-family: $font-family-base-regular;
+        color: $neutral-40;
+        width: 100%;
+        text-align: left;
       }
     }
+  }
 
-    .nav-link-see-all
+  .nav-item,
+  .nav-item-parent
+  {
+    margin-top: 0;
+  }
+
+  .nav-link
+  {
+    flex-wrap: wrap;
+    padding: $navLinkPadding;
+    @include font-size($fs-body-subtle);
+    @include link-navigation;
+
+    &:active
     {
-      @include link-default;
+      font-family: $font-family-base-heavy;
     }
+
+    &.has-description
+    {
+      @include font-size($fs-base);
+    }
+  }
+
+  .nav-link-see-all
+  {
+    @include link-default;
   }
 
   .search-panel
@@ -431,6 +434,35 @@ $numPanels: 4;
       &:hover:not(:active)
       {
         fill: $action-primary-40;
+      }
+    }
+  }
+}
+
+@mixin panelSettings($menuWidth) {
+  .nav-menu-panel
+  {
+    width: calc($menuWidth / $numPanels);
+
+    .nav-menu-panel
+    {
+      left: calc($menuWidth / $numPanels);
+    }
+
+    &.has-header
+    {
+      width: calc(($menuWidth / $numPanels) * 2);
+      left: 0;
+
+      .nav-menu-panel
+      {
+        left: calc(($menuWidth / $numPanels) * 2);
+        width: calc($menuWidth / $numPanels);
+
+        .nav-menu-panel
+        {
+          left: calc(($menuWidth / $numPanels));
+        }
       }
     }
   }
@@ -504,64 +536,39 @@ $numPanels: 4;
 
     .nav-menu
     {
-      .nav-menu-panels
-      {
-        width: $panelsWidth;
-
-        .nav-menu-panel
-        {
-          width: calc($panelsWidth / $numPanels);
-
-          .nav-menu-panel
-          {
-            left: calc($panelsWidth / $numPanels);
-          }
-        }
-
-        .nav-menu-panel-header
-        {
-          padding: space(4x) space(2x) space(3x) 0;
-          border-right: space(xxs) solid $neutral-80;
-          border-bottom: 0;
-        }
-
-        .nav-menu-panel
-        {
-          display: block;
-
-          &.has-header
-          {
-            display: flex;
-            flex-direction: row;
-            width: calc(($panelsWidth / $numPanels) * 2);
-            left: 0;
-
-            > *
-            {
-              flex: 1;
-            }
-
-            .nav-menu-panel
-            {
-              left: calc(($panelsWidth / $numPanels) * 2);
-
-              .nav-menu-panel
-              {
-                left: calc(($panelsWidth / $numPanels));
-              }
-            }
-          }
-        }
-
-        /* .nav-menu-panel:not(.nav-menu-panel-custom):first-of-type
-        {
-          display: none;
-        } */
-      }
-
       .nav
       {
         padding: space(4x) 0 space(3x);
+      }
+    }
+
+    .nav-menu-panels
+    {
+      width: $panelsWidth;
+
+      @include panelSettings($panelsWidth);
+
+      .nav-menu-panel-header
+      {
+        padding: space(4x) space(2x) space(3x) 0;
+        border-right: space(xxs) solid $neutral-80;
+        border-bottom: 0;
+      }
+
+      .nav-menu-panel
+      {
+        display: block;
+
+        &.has-header
+        {
+          display: flex;
+          flex-direction: row;
+
+          > *
+          {
+            flex: 1;
+          }
+        }
       }
     }
   }
@@ -581,22 +588,10 @@ $numPanels: 4;
 
   .nav-primary
   {
-    .nav-menu
+    .nav-menu-panels
     {
-      .nav-menu-panels
-      {
-        width: $panelsWidth;
-
-        .nav-menu-panel
-        {
-          width: calc($panelsWidth / $numPanels);
-
-          .nav-menu-panel
-          {
-            left: calc($panelsWidth / $numPanels);
-          }
-        }
-      }
+      width: $panelsWidth;
+      @include panelSettings($panelsWidth);
     }
   }
 }
@@ -614,22 +609,10 @@ $numPanels: 4;
 
   .nav-primary
   {
-    .nav-menu
+    .nav-menu-panels
     {
-      .nav-menu-panels
-      {
-        width: $panelsWidth;
-
-        .nav-menu-panel
-        {
-          width: calc($panelsWidth / $numPanels);
-
-          .nav-menu-panel
-          {
-            left: calc($panelsWidth / $numPanels);
-          }
-        }
-      }
+      width: $panelsWidth;
+      @include panelSettings($panelsWidth);
     }
   }
 }

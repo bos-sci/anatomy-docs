@@ -35,7 +35,6 @@ const NavPrimaryListParent = (props: Props) => {
           + (props.navItem.description ? ' has-description' : '')
         }
         aria-expanded={isActive}
-        aria-haspopup="menu" // Do we need/want this here? If we do, lets add to header items too.
         onClick={updateHistory}
       >
         <div className="nav-link-text">
