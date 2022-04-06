@@ -94,10 +94,11 @@ const Components = (props: Props): JSX.Element => {
       {
         text: 'Navigation',
         children: [
+          /* TODO: Uncomment once primary nav is complete
           {
             text: 'Primary navigation',
             slug: basePath + '/navigation/primary-navigation',
-          },
+          }, */
           {
             text: 'Secondary navigation',
             slug: basePath + '/navigation/secondary-navigation',
