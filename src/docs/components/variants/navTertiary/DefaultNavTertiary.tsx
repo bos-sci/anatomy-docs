@@ -1,5 +1,5 @@
 import Example from '../../../shared/components/Example';
-import NavTertiary, { NavItemTertiary } from '../../../../library/components/navTertiary/NavTertiary';
+import NavTertiary, { NavItemTertiary } from '../../../../library/components/navigation/navTertiary/NavTertiary';
 
 const DefaultNavTertiary = (): JSX.Element => {
 

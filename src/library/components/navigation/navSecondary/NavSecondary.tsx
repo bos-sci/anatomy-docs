@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { RequireOnlyOne } from '../../types';
+import { RequireOnlyOne } from '../../../types';
 import NavSecondaryList from './NavSecondaryList';
-import IconChevronDown from '../icon/icons/IconChevronDown';
-import IconChevronUp from '../icon/icons/IconChevronUp';
+import IconChevronDown from '../../icon/icons/IconChevronDown';
+import IconChevronUp from '../../icon/icons/IconChevronUp';
 import "./NavSecondary.scss"
 
 interface NavItem {

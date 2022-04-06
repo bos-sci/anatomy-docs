@@ -5,10 +5,8 @@ import {
   Route
 } from "react-router-dom";
 import { slugify } from './helpers';
-import NavPrimary from './shared/components/navPrimary/NavPrimary';
 import { useGetCollectionsQuery } from './shared/types/contentful';
 import { IdLookup, IdLookupEntry } from './shared/types/docs';
-import logo from "../assets/images/logo-bsc.svg";
 import Home from './home/Home';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
@@ -75,7 +73,6 @@ const App = (): JSX.Element => {
   return (
     <Router>
       <IdLookupContext.Provider value={idLookup}>
-        <NavPrimary />
         {isLookupReady &&
           <Suspense fallback={<main id="mainContent"><p>Loading...</p></main>}>
             <Switch>
@@ -88,9 +85,6 @@ const App = (): JSX.Element => {
             </Switch>
           </Suspense>
         }
-        <footer className="app-footer">
-          <img src={logo} className="footer-logo" alt="Boston Scientific"/>
-        </footer>
       </IdLookupContext.Provider>
     </Router>
   );

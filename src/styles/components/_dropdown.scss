@@ -1,0 +1,70 @@
+$icon-size: 1em;
+
+.ads-dropdown
+{
+  .ads-dropdown-trigger
+  {
+    position: relative;
+    padding-right: calc(space(3x) + $icon-size + space(md));
+
+    &::after
+    {
+      content: url("../../assets/images/icon-chevron-down.svg");
+      position: absolute;
+      top: calc(50% - ($icon-size / 2));
+      right: space(3x);
+      width: $icon-size;
+      height: $icon-size;
+    }
+
+    &.open::after{
+      content: url("../../assets/images/icon-chevron-up.svg");
+    }
+  }
+
+  .ads-dropdown-menu
+  {
+    position: absolute;
+    background: $neutral-100;
+    box-shadow: $box-shadow-secondary;
+    z-index: 100;
+
+    .ads-button,
+    .ads-link
+    {
+      display: block;
+      border: 0;
+      padding: space(lg) space(2x);
+      font-family: $font-family-base-regular;
+      color: $text-color-primary;
+      text-decoration: none;
+
+      &:focus
+      {
+        @include focus-default-inset;
+      }
+    }
+
+    .ads-button
+    {
+      &:hover
+      {
+        color: $neutral-100;
+        background: $action-primary-40;
+      }
+
+      &:active
+      {
+        background: $action-primary-20;
+      }
+    }
+
+    .ads-link
+    {
+      &:hover
+      {
+        text-decoration: underline;
+      }
+    }
+  }
+}

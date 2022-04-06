@@ -1,15 +1,19 @@
 // TODO: do we want to use React's <Link> here? Will React's link mess with our link?
 
-import { ReactNode } from 'react';
+import { AnchorHTMLAttributes, ForwardedRef, forwardRef, ReactNode } from 'react';
+import { NavLink, Link as RouterLink } from 'react-router-dom';
 
-interface Props {
+export interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: ReactNode;
-  href: string;
+  href?: string;
+  to?: string;
   variant?: string;
-  [key: string]: any;
+  isNavLink?: boolean;
 }
 
-const Link = (props: Props): JSX.Element => {
+//type Props = RequireOnlyOne<Inputs, 'href' | 'to'>;
+
+const Link = forwardRef((props: Props, ref: ForwardedRef<HTMLAnchorElement>): JSX.Element => {
   const { variant, href, ...linkAttrs } = props;
 
   let classes = '';
@@ -25,9 +29,16 @@ const Link = (props: Props): JSX.Element => {
       break;
   }
 
-  return (
-    <a href={props.href} className={classes} {...linkAttrs}>{props.children}</a>
-  );
-}
+  if (props.to) {
+    if (props.isNavLink) {
+      return <NavLink ref={ref} to={props.to} className={classes} {...linkAttrs}>{props.children}</NavLink>;
+    } else {
+      return <RouterLink ref={ref} to={props.to} className={classes} {...linkAttrs}>{props.children}</RouterLink>;
+    }
+  } else {
+    return <a ref={ref} href={props.href} className={classes} {...linkAttrs}>{props.children}</a>;
+  }
+
+});
 
 export default Link;
