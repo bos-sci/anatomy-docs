@@ -1,3 +1,9 @@
+/* TODO
+  - Figure out what needs to be a prop
+  - Fix borders
+  - Keyboard nav for tabbing backwards from menu to nav bar
+*/
+
 import { FocusEvent as ReactFocusEvent, useEffect, useRef, useState } from 'react';
 import logo from "../../../../assets/images/logo-anatomy.svg";
 import { RequireOnlyOne } from '../../../types';
