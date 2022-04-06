@@ -20,8 +20,8 @@ const NavPrimaryList = (props: Props) => {
       className={
         'nav-menu-panel'
         + (parent?.altLinkText && props.depth === 1 ? ' has-header' : '')
-        //+ (((parent && Array.from(props.history, h => h.node).includes(parent)) || props.depth === 0) ? ' nav-active-list' : '')
         + ((props.history.length === 0 && props.depth === 0) || ((parent && props.history[props.history.length - 1]?.node === parent)) ? ' nav-active-list' : '')
+        + (parent && Array.from(props.history, h => h.node).includes(parent) ? ' nav-list-history' : '')
       }
     >
       {parent?.altLinkText && props.depth === 1 &&

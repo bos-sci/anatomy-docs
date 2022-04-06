@@ -55,6 +55,7 @@ $navLinkPadding: space(lg) space(2x);
   border-bottom: space(xxs) solid $neutral-80;
 }
 
+// Utility Nav
 .nav-utility
 {
   display: none;
@@ -98,8 +99,13 @@ $navLinkPadding: space(lg) space(2x);
   }
 }
 
+// Primary Nav
+
 .nav-primary
 {
+
+  // Primary Nav Top Bar
+
   .nav-bar
   {
     .nav
@@ -208,10 +214,12 @@ $navLinkPadding: space(lg) space(2x);
     }
   }
 
+  // Primary Nav Menu
+
   .nav-menu
   {
     border-bottom: space(xxs) solid $neutral-80;
-    overflow: hidden;
+    //overflow: hidden;
   }
 
   .nav-menu-back
@@ -255,7 +263,7 @@ $navLinkPadding: space(lg) space(2x);
 
   .nav-menu-panel
   {
-    position: relative;
+    position: absolute;
     top: 0;
     display: none;
     margin-top: 0;
@@ -280,7 +288,6 @@ $navLinkPadding: space(lg) space(2x);
       {
         display: none;
       }
-
     }
 
     .nav
@@ -558,6 +565,21 @@ $navLinkPadding: space(lg) space(2x);
       .nav-menu-panel
       {
         display: block;
+
+        &.nav-list-history
+        {
+          > .nav
+          {
+            padding: space(4x) 0 space(3x);
+          }
+
+          & > .nav > .nav-item:not(.nav-item-parent),
+          & > .nav > .nav-item-parent > .nav-link,
+          > .nav-menu-panel-header
+          {
+            display: block;
+          }
+        }
 
         &.has-header
         {
