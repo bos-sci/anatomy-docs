@@ -2,10 +2,18 @@
 // remove hardcoded english aria-label
 // add warning/error for href="#"
 
-interface Crumb {
+import { useEffect, useState } from 'react';
+import { RequireOnlyOne } from '../types';
+import Dropdown from './Dropdown';
+import Link from './Link';
+
+interface CrumbBase {
   name: string;
-  href: string;
+  href?: string;
+  to?: string;
 }
+
+export type Crumb = RequireOnlyOne<CrumbBase, 'href' | 'to'>;
 
 interface Props {
   crumbs: Crumb[];
@@ -13,12 +21,32 @@ interface Props {
 }
 
 const Breadcrumb = ({ crumbs, currentPage }: Props): JSX.Element => {
+
+  const [overflowCrumbs, setOverflowCrumbs] = useState<Crumb[]>([]);
+  const [visibleCrumbs, setVisibleCrumbs] = useState<Crumb[]>([]);
+
+  useEffect(() => {
+    if (crumbs) {
+      setVisibleCrumbs(crumbs.slice(-1));
+      setOverflowCrumbs(crumbs.slice(0, -1));
+    }
+  }, [crumbs]);
+
   return (
     <nav aria-label="breadcrumb">
       <ol className="ads-breadcrumbs">
-        {crumbs.map(crumb => (
+        <li className="ads-breadcrumb-overflow">
+          {overflowCrumbs.length &&
+            <Dropdown variant="subtle" icon="ellipsis" aria-label="toggle breadcrumb menu">
+              {overflowCrumbs.map(crumb => (
+                <Link key={`crumb${crumb.name}`} href={crumb.href} to={crumb.to}>{crumb.name}</Link>
+              ))}
+            </Dropdown>
+          }
+        </li>
+        {visibleCrumbs.map(crumb => (
           <li key={`crumb${crumb.name}`} className="ads-breadcrumb-item">
-            <a href={crumb.href} className="ads-breadcrumb-link">{crumb.name}</a>
+            <Link href={crumb.href} to={crumb.to} className="ads-breadcrumb-link">{crumb.name} </Link>
           </li>
         ))}
         <li className="ads-breadcrumb-item ads-breadcrumb-item-active" aria-current="page">{currentPage}</li>

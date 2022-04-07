@@ -17,8 +17,19 @@ $icon-size: 1em;
       height: $icon-size;
     }
 
-    &.open::after{
-      content: url("../../assets/images/icon-chevron-up.svg");
+    &:active,
+    &.open
+    {
+      color: $neutral-100;
+      fill: $neutral-100;
+      background-color: $action-primary-20;
+    }
+
+    &.open
+    {
+      &::after{
+        content: url("../../assets/images/icon-chevron-up.svg");
+      }
     }
   }
 

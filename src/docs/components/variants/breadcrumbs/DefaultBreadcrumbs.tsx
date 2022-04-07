@@ -1,8 +1,12 @@
-import Breadcrumb from '../../../../library/components/Breadcrumb';
+import Breadcrumb, { Crumb } from '../../../../library/components/Breadcrumb';
 import Example from '../../../shared/components/Example';
 
 const DefaultBreadcrumbs = (): JSX.Element => {
-  const crumbs = [
+  const crumbs: Crumb[] = [
+    {
+      name: 'Great Grandparent Page',
+      href: '#'
+    },
     {
       name: 'Grandparent Page',
       href: '#'

@@ -1,8 +1,10 @@
+@import "../utilities/_accessibility.scss";
 $ads-breadcrumb-divider: '/';
 
 .ads-breadcrumbs
 {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: space(sm) space(md);
   margin: 0;
@@ -34,6 +36,23 @@ $ads-breadcrumb-divider: '/';
 .ads-breadcrumb-link
 {
   @include link-navigation;
+}
+
+.ads-breadcrumb-overflow
+{
+  .ads-dropdown
+  {
+    .ads-dropdown-trigger
+    {
+      border-radius: 0;
+      padding: space(lg) space(sm);
+
+      &::after
+      {
+        display: none;
+      }
+    }
+  }
 }
 
 // DEVELOPER NOTE:

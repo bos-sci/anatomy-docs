@@ -8,14 +8,15 @@ type DropdownItem = ReactElement<ButtonProps | LinkProps>;
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   children?: DropdownItem[] | DropdownItem;
   variant?: string;
-  triggerText: string;
+  triggerText?: string;
+  icon?: string;
 }
 
 let dropdownIndex = 0;
 
 // TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
 
-const Dropdown = ({triggerText, variant, children = [], className = '', ...buttonAttrs}: Props) => {
+const Dropdown = ({triggerText, icon, variant, children = [], className = '', ...buttonAttrs}: Props) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownItems, setDropdownItems] = useState<DropdownItem[]>([]);
@@ -25,34 +26,38 @@ const Dropdown = ({triggerText, variant, children = [], className = '', ...butto
   const dropdownItemRefs = useRef(Children.map(children, () => createRef<HTMLElement>()));
 
   const moveFocus = (distance: number) => {
-    let currentIndex = 0;
-    let isFocusInMenu = false;
-    dropdownItemRefs.current.forEach((item, i) => {
-      if (item.current === document.activeElement) {
-        currentIndex = i;
-        isFocusInMenu = true;
+    if (dropdownItemRefs.current) {
+      let currentIndex = 0;
+      let isFocusInMenu = false;
+      dropdownItemRefs.current.forEach((item, i) => {
+        if (item.current === document.activeElement) {
+          currentIndex = i;
+          isFocusInMenu = true;
+        }
+      });
+      if (isFocusInMenu) {
+        let newIndex = currentIndex + distance;
+        if (newIndex > dropdownItemRefs.current.length - 1) {
+          newIndex = 0;
+        } else if (newIndex < 0) {
+          newIndex = dropdownItemRefs.current.length - 1;
+        }
+        dropdownItemRefs.current[newIndex].current?.focus();
+      } else {
+        dropdownItemRefs.current[0].current?.focus();
       }
-    });
-    if (isFocusInMenu) {
-      let newIndex = currentIndex + distance;
-      if (newIndex > dropdownItemRefs.current.length - 1) {
-        newIndex = 0;
-      } else if (newIndex < 0) {
-        newIndex = dropdownItemRefs.current.length - 1;
-      }
-      dropdownItemRefs.current[newIndex].current?.focus();
-    } else {
-      dropdownItemRefs.current[0].current?.focus();
     }
   }
 
   const updateFocus = (e: React.KeyboardEvent<HTMLDivElement>) => {
     switch (e.key) {
       case 'ArrowUp':
+        e.preventDefault();
         moveFocus(-1);
         break;
 
       case 'ArrowDown':
+        e.preventDefault();
         moveFocus(1);
         break;
 
@@ -62,6 +67,7 @@ const Dropdown = ({triggerText, variant, children = [], className = '', ...butto
   }
 
   useEffect(() => {
+    console.log(children);
     if (children) {
       if (Array.isArray(children)) {
         const newChildren = Children.map(children, (child: ReactElement, i) => {
@@ -103,6 +109,7 @@ const Dropdown = ({triggerText, variant, children = [], className = '', ...butto
     <div ref={dropdownRef} className="ads-dropdown" onKeyDown={updateFocus}>
       <Button
         variant={variant}
+        icon={icon}
         className={`ads-dropdown-trigger${isDropdownOpen ? ' open' : ''} ${className}`}
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}

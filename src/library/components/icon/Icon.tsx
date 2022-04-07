@@ -25,6 +25,13 @@ const Icon = (props: Props): JSX.Element => {
   const sizeClass = `ads-icon-${props.size ? props.size : '2x'}`;
 
   switch (props.name) {
+    case 'ellipsis':
+      const IconEllipsis = lazy(() => import('./icons/IconEllipsis'));
+      return (
+        <Suspense fallback={<Fallback />}>
+          <IconEllipsis className={sizeClass + ' ' + props.className} />
+        </Suspense>
+      );
     case 'plus':
       const IconPlus = lazy(() => import('./icons/IconPlus'));
       return (
