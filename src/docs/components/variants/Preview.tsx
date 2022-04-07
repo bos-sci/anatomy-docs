@@ -20,8 +20,8 @@ const Preview = ( props: Props ): JSX.Element => {
     const variantId = props.variantId as string;
     switch (props.component) {
       case 'breadcrumbs':
-        const DefaultBreadcrumbs = lazy(() => import('./breadcrumbs/DefaultBreadcrumbs'));
-        setRenderedComponent(<DefaultBreadcrumbs />);
+        const BreadcrumbVariants = lazy(() => import('./breadcrumbs/BreadcrumbVariants'));
+        setRenderedComponent(<BreadcrumbVariants variantId={variantId} />);
         break;
 
       case 'button':
