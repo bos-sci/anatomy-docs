@@ -1,7 +1,7 @@
 import Breadcrumb, { Crumb } from '../../../../library/components/Breadcrumb';
 import Example from '../../../shared/components/Example';
 
-const DefaultBreadcrumbs = (): JSX.Element => {
+const OverflowBreadcrumbs = (): JSX.Element => {
   const crumbs: Crumb[] = [
     {
       name: 'Great Grandparent Page',
@@ -19,9 +19,9 @@ const DefaultBreadcrumbs = (): JSX.Element => {
 
   return (
     <Example>
-      <Breadcrumb crumbs={crumbs} currentPage="Current Page" hasOverflow={false} />
+      <Breadcrumb crumbs={crumbs} currentPage="Current Page" />
     </Example>
   );
 }
 
-export default DefaultBreadcrumbs;
+export default OverflowBreadcrumbs;

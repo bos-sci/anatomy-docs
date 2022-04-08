@@ -17,17 +17,36 @@ $icon-size: 1em;
       height: $icon-size;
     }
 
-    &.open::after{
-      content: url("../../assets/images/icon-chevron-up.svg");
+    &:active,
+    &.open
+    {
+      color: $neutral-100;
+      fill: $neutral-100;
+      background-color: $action-primary-20;
+    }
+
+    &.open
+    {
+      &::after{
+        content: url("../../assets/images/icon-chevron-up.svg");
+      }
     }
   }
 
   .ads-dropdown-menu
   {
     position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
     background: $neutral-100;
     box-shadow: $box-shadow-secondary;
     z-index: 100;
+
+    .ads-dropdown-item
+    {
+      margin-top: 0;
+    }
 
     .ads-button,
     .ads-link

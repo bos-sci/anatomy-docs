@@ -6,16 +6,18 @@ import { Props as LinkProps } from './Link';
 type DropdownItem = ReactElement<ButtonProps | LinkProps>;
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
-  children?: DropdownItem[] | DropdownItem;
+  triggerText?: string;
+  listType?: 'ol' | 'ul';
+  icon?: string;
   variant?: string;
-  triggerText: string;
+  children?: DropdownItem[] | DropdownItem;
 }
 
 let dropdownIndex = 0;
 
 // TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
 
-const Dropdown = ({triggerText, variant, children = [], className = '', ...buttonAttrs}: Props) => {
+const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], className = '', ...buttonAttrs}: Props) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownItems, setDropdownItems] = useState<DropdownItem[]>([]);
@@ -25,35 +27,44 @@ const Dropdown = ({triggerText, variant, children = [], className = '', ...butto
   const dropdownItemRefs = useRef(Children.map(children, () => createRef<HTMLElement>()));
 
   const moveFocus = (distance: number) => {
-    let currentIndex = 0;
-    let isFocusInMenu = false;
-    dropdownItemRefs.current.forEach((item, i) => {
-      if (item.current === document.activeElement) {
-        currentIndex = i;
-        isFocusInMenu = true;
+    if (dropdownItemRefs.current) {
+      let currentIndex = 0;
+      let isFocusInMenu = false;
+      dropdownItemRefs.current.forEach((item, i) => {
+        if (item.current === document.activeElement) {
+          currentIndex = i;
+          isFocusInMenu = true;
+        }
+      });
+      if (isFocusInMenu) {
+        let newIndex = currentIndex + distance;
+        if (newIndex > dropdownItemRefs.current.length - 1) {
+          newIndex = 0;
+        } else if (newIndex < 0) {
+          newIndex = dropdownItemRefs.current.length - 1;
+        }
+        dropdownItemRefs.current[newIndex].current?.focus();
+      } else {
+        dropdownItemRefs.current[0].current?.focus();
       }
-    });
-    if (isFocusInMenu) {
-      let newIndex = currentIndex + distance;
-      if (newIndex > dropdownItemRefs.current.length - 1) {
-        newIndex = 0;
-      } else if (newIndex < 0) {
-        newIndex = dropdownItemRefs.current.length - 1;
-      }
-      dropdownItemRefs.current[newIndex].current?.focus();
-    } else {
-      dropdownItemRefs.current[0].current?.focus();
     }
   }
 
   const updateFocus = (e: React.KeyboardEvent<HTMLDivElement>) => {
     switch (e.key) {
       case 'ArrowUp':
+        e.preventDefault();
         moveFocus(-1);
         break;
 
       case 'ArrowDown':
+        e.preventDefault();
         moveFocus(1);
+        break;
+
+      case 'Escape':
+        e.preventDefault();
+        setIsDropdownOpen(false);
         break;
 
       default:
@@ -66,15 +77,16 @@ const Dropdown = ({triggerText, variant, children = [], className = '', ...butto
       if (Array.isArray(children)) {
         const newChildren = Children.map(children, (child: ReactElement, i) => {
           return cloneElement(child, {
-            id: `${dropdownId}Item${i}`,
-            ref: dropdownItemRefs.current[i]
+            ref: dropdownItemRefs.current[i],
+            role: 'menuitem'
           });
         });
         setDropdownItems(newChildren as DropdownItem[]);
       } else {
         setDropdownItems([
           cloneElement(children, {
-            id: `${dropdownId}Item`
+            id: `${dropdownId}Item`,
+            role: 'menuitem'
           })
         ]);
       }
@@ -99,10 +111,17 @@ const Dropdown = ({triggerText, variant, children = [], className = '', ...butto
     }
   }, []);
 
+  const listItems = dropdownItems.map((item, i) => (
+    <li key={dropdownId + 'item' + i} className="ads-dropdown-item" role="none">
+      {item}
+    </li>
+  ));
+
   return (
     <div ref={dropdownRef} className="ads-dropdown" onKeyDown={updateFocus}>
       <Button
         variant={variant}
+        icon={icon}
         className={`ads-dropdown-trigger${isDropdownOpen ? ' open' : ''} ${className}`}
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}
@@ -110,11 +129,18 @@ const Dropdown = ({triggerText, variant, children = [], className = '', ...butto
         {...buttonAttrs}>
           {triggerText}
       </Button>
-      {isDropdownOpen &&
-        <div className="ads-dropdown-menu">
-          {dropdownItems}
-        </div>
-      }
+      {isDropdownOpen && <>
+        {listType === 'ul' && (
+          <ul className="ads-dropdown-menu" role="menu">
+            {listItems}
+          </ul>
+        )}
+        {listType === 'ol' && (
+          <ol className="ads-dropdown-menu" role="menu">
+            {listItems}
+          </ol>
+        )}
+      </>}
     </div>
   );
 }
