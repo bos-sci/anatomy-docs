@@ -6,17 +6,18 @@ import { Props as LinkProps } from './Link';
 type DropdownItem = ReactElement<ButtonProps | LinkProps>;
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
-  children?: DropdownItem[] | DropdownItem;
-  variant?: string;
   triggerText?: string;
+  listType?: 'ol' | 'ul';
   icon?: string;
+  variant?: string;
+  children?: DropdownItem[] | DropdownItem;
 }
 
 let dropdownIndex = 0;
 
 // TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
 
-const Dropdown = ({triggerText, icon, variant, children = [], className = '', ...buttonAttrs}: Props) => {
+const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], className = '', ...buttonAttrs}: Props) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownItems, setDropdownItems] = useState<DropdownItem[]>([]);
@@ -61,26 +62,31 @@ const Dropdown = ({triggerText, icon, variant, children = [], className = '', ..
         moveFocus(1);
         break;
 
+      case 'Escape':
+        e.preventDefault();
+        setIsDropdownOpen(false);
+        break;
+
       default:
         break;
     }
   }
 
   useEffect(() => {
-    console.log(children);
     if (children) {
       if (Array.isArray(children)) {
         const newChildren = Children.map(children, (child: ReactElement, i) => {
           return cloneElement(child, {
-            id: `${dropdownId}Item${i}`,
-            ref: dropdownItemRefs.current[i]
+            ref: dropdownItemRefs.current[i],
+            role: 'menuitem'
           });
         });
         setDropdownItems(newChildren as DropdownItem[]);
       } else {
         setDropdownItems([
           cloneElement(children, {
-            id: `${dropdownId}Item`
+            id: `${dropdownId}Item`,
+            role: 'menuitem'
           })
         ]);
       }
@@ -105,6 +111,12 @@ const Dropdown = ({triggerText, icon, variant, children = [], className = '', ..
     }
   }, []);
 
+  const listItems = dropdownItems.map((item, i) => (
+    <li key={dropdownId + 'item' + i} className="ads-dropdown-item" role="none">
+      {item}
+    </li>
+  ));
+
   return (
     <div ref={dropdownRef} className="ads-dropdown" onKeyDown={updateFocus}>
       <Button
@@ -117,11 +129,18 @@ const Dropdown = ({triggerText, icon, variant, children = [], className = '', ..
         {...buttonAttrs}>
           {triggerText}
       </Button>
-      {isDropdownOpen &&
-        <div className="ads-dropdown-menu">
-          {dropdownItems}
-        </div>
-      }
+      {isDropdownOpen && <>
+        {listType === 'ul' && (
+          <ul className="ads-dropdown-menu" role="menu">
+            {listItems}
+          </ul>
+        )}
+        {listType === 'ol' && (
+          <ol className="ads-dropdown-menu" role="menu">
+            {listItems}
+          </ol>
+        )}
+      </>}
     </div>
   );
 }

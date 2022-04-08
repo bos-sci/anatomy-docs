@@ -44,7 +44,7 @@ const Breadcrumb = ({ crumbs, currentPage, hasOverflow = true }: Props): JSX.Ele
         {overflowCrumbs.length > 0 &&
           <li className="ads-breadcrumb-overflow">
             {overflowCrumbs.length > 0 &&
-              <Dropdown variant="subtle" icon="ellipsis" aria-label="toggle breadcrumb menu">
+              <Dropdown variant="subtle" icon="ellipsis" listType="ol" aria-label="previous pages">
                 {overflowCrumbs.map(crumb => (
                   <Link key={`crumb${crumb.name}`} href={crumb.href} to={crumb.to}>{crumb.name}</Link>
                 ))}
@@ -57,7 +57,7 @@ const Breadcrumb = ({ crumbs, currentPage, hasOverflow = true }: Props): JSX.Ele
             <Link href={crumb.href} to={crumb.to} className="ads-breadcrumb-link">{crumb.name} </Link>
           </li>
         ))}
-        <li className="ads-breadcrumb-item ads-breadcrumb-item-active" aria-current="page">{currentPage}</li>
+        <li className="ads-breadcrumb-item" aria-current="page">{currentPage}</li>
       </ol>
     </nav>
   );
