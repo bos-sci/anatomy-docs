@@ -44,7 +44,7 @@ const Accordion = ({ children }: Props): JSX.Element => {
   }, [children, accordionPanels.length]);
 
   return (
-    <div id="accordionGroup" className="ads-accordion">
+    <div className="ads-accordion">
       {accordionPanels.map((accordionPanel, index) => (
         <>
           <AccordionTitle
