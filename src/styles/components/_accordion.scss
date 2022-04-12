@@ -1,0 +1,95 @@
+.ads-accordion
+{
+  width: 100%;
+
+  &:last-child
+  {
+    border-bottom: space(xxs) solid $neutral-80;
+  }
+}
+
+.ads-accordion-title
+{
+  margin-top: 0;
+}
+
+.ads-accordion-trigger
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  border-top: space(xxs) solid $neutral-80;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  padding: space(3x);
+  background: transparent;
+  color: $neutral-40;
+  color: $neutral-00;
+  font-family: $font-family-base-regular;
+  @include font-size($fs-base);
+  text-align: left;
+
+  svg
+  {
+    width: space(2x);
+    margin-left: space(3x);
+  }
+
+  &[aria-expanded="true"]
+  {
+    color: $neutral-00;
+    font-family: $font-family-base-heavy;
+
+    svg
+    {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:not([disabled])
+  {
+    &:hover
+    {
+      border-color: $neutral-80;
+      background: transparent;
+      color: $action-primary-40;
+  
+      svg
+      {
+        color: $action-primary-40;
+      }
+    }
+
+    &:active
+    {
+      background: transparent;
+      color: $action-primary-40;
+  
+      svg
+      {
+        color: $action-primary-40;
+      }
+    }
+  
+    &:focus
+    {
+      background: transparent;
+      @include focus-default-inset;
+    }
+  }
+
+  &[disabled]
+  {
+    background: transparent;
+    color: $neutral-60;
+    cursor: not-allowed;
+  }
+}
+
+.ads-accordion-panel
+{
+  padding: space(3x);
+}

@@ -19,6 +19,11 @@ const Preview = ( props: Props ): JSX.Element => {
   useEffect(() => {
     const variantId = props.variantId as string;
     switch (props.component) {
+      case 'accordion':
+        const DefaultAccordion = lazy(() => import('./accordion/DefaultAccordion'));
+        setRenderedComponent(<DefaultAccordion />);
+        break;
+
       case 'breadcrumbs':
         const BreadcrumbVariants = lazy(() => import('./breadcrumbs/BreadcrumbVariants'));
         setRenderedComponent(<BreadcrumbVariants variantId={variantId} />);

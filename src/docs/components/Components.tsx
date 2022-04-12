@@ -55,6 +55,10 @@ const Components = (props: Props): JSX.Element => {
       .replace('/navigation', '');
     setNavItems([
       {
+        text: 'Accordion',
+        slug: basePath + '/accordion',
+      },
+      {
         text: 'Breadcrumbs',
         slug: basePath + '/breadcrumbs',
       },
