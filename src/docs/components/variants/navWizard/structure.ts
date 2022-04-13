@@ -10,6 +10,7 @@ const exampleData: NavItemWizard[] = [
     children: [
       {
         text: 'Medical specialties',
+        title: 'What treatments are you considering?',
         overflowLinkText: 'See all treatments',
         overflowTo: basePath + '/',
         children: [
@@ -47,26 +48,6 @@ const exampleData: NavItemWizard[] = [
           },
           {
             text: 'Orthopedic Surgery',
-            slug: basePath + '/'
-          },
-          {
-            text: 'Pain Medicine',
-            slug: basePath + '/'
-          },
-          {
-            text: 'Pulmonology',
-            slug: basePath + '/'
-          },
-          {
-            text: 'Structural Heart Valve',
-            slug: basePath + '/'
-          },
-          {
-            text: 'Urology',
-            slug: basePath + '/'
-          },
-          {
-            text: 'Vascular Surgery',
             slug: basePath + '/'
           }
         ]

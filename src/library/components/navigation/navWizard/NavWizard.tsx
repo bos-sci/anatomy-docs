@@ -100,12 +100,16 @@ const NavWizard = (props: Props) => {
 
   return (
     <nav className="ads-nav-wizard">
-      {history.length > 0 && <Button variant="subtle" type="button" onClick={popHistory}>Back</Button>}
-      {preTitle && <p>{preTitle}</p>}
-      {title && <h2>{title}</h2>}
-      {description && <p>{description}</p>}
+      <div className="ads-nav-wizard-header">
+        {history.length > 0 && <Button variant="subtle" type="button" className="nav-back" onClick={popHistory}>Back</Button>}
+        {preTitle && <p className="pre-title">{preTitle}</p>}
+        {title && <h2 className="title">{title}</h2>}
+        {description && <p className="description">{description}</p>}
+      </div>
       {navTree.length > 0 &&
-        <NavWizardList navItems={navTree} history={history} pushHistory={pushHistory} popHistory={popHistory} depth={0} />
+        <div className="nav-menu">
+          <NavWizardList navItems={navTree} history={history} pushHistory={pushHistory} popHistory={popHistory} depth={0} />
+        </div>
       }
     </nav>
   );

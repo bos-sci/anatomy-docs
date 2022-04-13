@@ -1,5 +1,5 @@
 import Example from '../../../shared/components/Example';
-import NavWizard, { NavItemWizard } from '../../../../library/components/navigation/navWizard/NavWizard';
+import NavWizard from '../../../../library/components/navigation/navWizard/NavWizard';
 import structure from './structure';
 
 const DefaultNavWizard = (): JSX.Element => {
