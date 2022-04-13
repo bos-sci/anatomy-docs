@@ -8,7 +8,7 @@
   }
 }
 
-.ads-accordion-title
+.ads-accordion-heading
 {
   margin-top: 0;
 }
@@ -28,7 +28,7 @@
   background: transparent;
   color: $neutral-40;
   color: $neutral-00;
-  font-family: $font-family-base-regular;
+  font-family: $font-family-base-heavy;
   @include font-size($fs-base);
   text-align: left;
 
@@ -41,7 +41,6 @@
   &[aria-expanded="true"]
   {
     color: $neutral-00;
-    font-family: $font-family-base-heavy;
 
     svg
     {
@@ -91,5 +90,5 @@
 
 .ads-accordion-panel
 {
-  padding: space(3x);
+  padding: space(2x) space(3x) space(4x);
 }

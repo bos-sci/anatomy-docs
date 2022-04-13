@@ -6,13 +6,13 @@ const DefaultAccordion = (): JSX.Element => {
   return (
     <Example>
       <Accordion>
-        <AccordionPanel accordionTitle="Accordion title 1">
+        <AccordionPanel accordionHeading="Accordion heading">
           Accordion panel 1
         </AccordionPanel>
-        <AccordionPanel accordionTitle="Accordion title 2">
+        <AccordionPanel accordionHeading="Accordion heading">
           Accordion panel 2
         </AccordionPanel>
-        <AccordionPanel accordionTitle="Accordion title 3">
+        <AccordionPanel accordionHeading="Accordion heading">
           Accordion panel 3
         </AccordionPanel>
       </Accordion>

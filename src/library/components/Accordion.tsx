@@ -1,10 +1,15 @@
-// TODO: consider swapping to details & summary elements
-// this implementation is based on the example from aria practices
-// https://www.w3.org/TR/wai-aria-practices-1.1/#accordion
-// https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html
+// TODO: make all panels collapsed on page load, allow multiple panels to be expanded at the same time
+
+// NOTE:
+// We could consider using <details> here
+// The current implementation is based on the example from aria practices
+// We did not include role="region" aria-labelledby="titleId" (optional) because we will likely have 6+ panels
+//   https://www.w3.org/TR/wai-aria-practices-1.1/#accordion
+//   https://www.w3.org/TR/wai-aria-practices-1.1/#wai-aria-roles-states-and-properties
+//   https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html
 
 import { createRef, ReactElement, RefObject, useEffect, useState } from 'react';
-import AccordionTitle from './AccordionTitle';
+import AccordionHeading from './AccordionHeading';
 
 type Props = {
   children: ReactElement[] | ReactElement;
@@ -41,9 +46,9 @@ const Accordion = ({ children }: Props): JSX.Element => {
     <div className="ads-accordion">
       {accordionPanels.map((accordionPanel, index) => (
         <>
-          <AccordionTitle
-            key={`${accordionPanelId + index}Title`}
-            accordionTitle={accordionPanel.props.accordionTitle}
+          <AccordionHeading
+            key={`${accordionPanelId + index}Heading`}
+            accordionHeading={accordionPanel.props.accordionHeading}
             index={index}
             setExpandedPanel={setExpandedPanel}
             isActive={index === expandedPanel}
@@ -54,8 +59,6 @@ const Accordion = ({ children }: Props): JSX.Element => {
             key={accordionPanelId + index}
             id={accordionPanelId + index}
             className="ads-accordion-panel"
-            role="region"
-            aria-labelledby={`${accordionPanelId + index}Title`}
             hidden={index !== expandedPanel}
           >
             { accordionPanel }

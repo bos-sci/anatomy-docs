@@ -1,12 +1,10 @@
-// TODO:
-// make heading level configurable
-// make option to collapse/expand on load
+// TODO: make heading level configurable
 
 import { RefObject, useCallback } from 'react';
-import IconChevronDown from "../../library/components/icon/icons/IconChevronDown";
+import IconChevronDown from "./icon/icons/IconChevronDown";
 
 interface Props {
-  accordionTitle: string;
+  accordionHeading: string;
   index: number;
   setExpandedPanel: (index: number) => void;
   isActive?: boolean;
@@ -14,24 +12,24 @@ interface Props {
   accordionRef: RefObject<HTMLButtonElement>;
 }
 
-const AccordionTitle = ({ accordionTitle, setExpandedPanel, index, isActive, accordionPanelId, accordionRef }: Props): JSX.Element => {
+const AccordionHeading = ({ accordionHeading, setExpandedPanel, index, isActive, accordionPanelId, accordionRef }: Props): JSX.Element => {
 
   const onClick = useCallback(() => {
     setExpandedPanel(index)
   }, [setExpandedPanel, index])
 
   return (
-    <h3 className="ads-accordion-title">
+    <h3 className="ads-accordion-heading">
       <button
         ref={accordionRef}
-        id={`${accordionPanelId}Title`}
+        id={`${accordionPanelId}Heading`}
         className="ads-accordion-trigger"
         aria-controls={accordionPanelId}
         aria-expanded={isActive}
         onClick={onClick}
       >
         <span className="ads-accordion-trigger-text">
-          { accordionTitle }
+          { accordionHeading }
         </span>
         <IconChevronDown />
       </button>
@@ -39,4 +37,4 @@ const AccordionTitle = ({ accordionTitle, setExpandedPanel, index, isActive, acc
   )
 }
 
-export default AccordionTitle;
+export default AccordionHeading;

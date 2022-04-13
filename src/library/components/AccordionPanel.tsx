@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 interface Props {
-  accordionTitle: string;
+  accordionHeading: string;
   children: ReactNode;
 }
 
