@@ -106,6 +106,10 @@ const Components = (props: Props): JSX.Element => {
           {
             text: 'Tertiary navigation',
             slug: basePath + '/navigation/tertiary-navigation',
+          },
+          {
+            text: 'Wizard navigation',
+            slug: basePath + '/navigation/wizard-navigation',
           }
         ]
       },

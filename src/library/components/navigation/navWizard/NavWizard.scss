@@ -1,0 +1,142 @@
+@import "/src/styles/abstracts/abstracts";
+@import "/src/styles/base/base";
+@import "/src/styles/utilities/utilities";
+
+.ads-nav-wizard
+{
+  position: relative;
+  background-color: $neutral-100;
+  box-shadow: $box-shadow-primary;
+
+  &::after
+  {
+    @include animated-brand-gradient;
+  }
+
+  .nav
+  {
+    display: block;
+    margin-top: 0;
+
+    &.nav-active-list
+    {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      grid-template-areas:
+        'list list list'
+        'list list list'
+        'list list list'
+        'overflow overflow overflow';
+      grid-auto-flow: row;
+    }
+
+    &:not(.nav-active-list)
+    {
+      & > .nav-item:not(.nav-item-parent),
+      & > .nav-item-parent > .nav-link
+      {
+        display: none;
+      }
+    }
+
+    &.nav-active-list
+    {
+      width: 100%;
+    }
+  }
+
+  .nav-item,
+  .nav-item-parent
+  {
+    margin-top: 0;
+  }
+
+  .nav-item-parent
+  {
+    .nav-link.nav-link-parent-trigger
+    {
+      padding-right: 0;
+
+      &:hover
+      {
+        background: transparent;
+      }
+    }
+  }
+
+  .nav-item-overflow
+  {
+    grid-column-start: 1;
+    grid-column-end: span 3;
+    justify-self: end;
+  }
+
+  .nav-link,
+  .nav-link-back
+  {
+    align-items: center;
+    padding: space(lg) space(2x);
+    width: 100%;
+    text-align: left;
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
+  }
+
+  .nav-link
+  {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    border-left: 0;
+    @include link-navigation;
+    @include font-size($fs-body-subtle);
+
+    &.active
+    {
+      &::before
+      {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: space(3x);
+        border-left: space(sm) solid $neutral-00;
+      }
+    }
+  }
+
+  .nav-link-back
+  {
+    justify-content: flex-start;
+    padding-left: 0;
+    @include font-size($fs-small);
+    fill: $action-primary-40; // TODO: revisit in xdc-1892 (fill vs stroke here or in mixin)
+
+    &:active
+    {
+      fill: $neutral-00;
+    }
+  }
+}
+
+@media (min-width: 992px)
+{
+  .ads-nav-wizard
+  {
+    .ads-nav-wizard-menu-trigger
+    {
+      display: none;
+    }
+
+    .ads-nav-wizard-menu
+    {
+      position: relative;
+      display: block;
+      border-bottom: 0;
+      padding: 0;
+    }
+  }
+}

@@ -84,6 +84,11 @@ const Preview = ( props: Props ): JSX.Element => {
         setRenderedComponent(<InputTextVariants variantId={variantId} />);
         break;
 
+        case 'wizard-navigation':
+        const DefaultNavWizard = lazy(() => import('./navWizard/DefaultNavWizard'));
+        setRenderedComponent(<DefaultNavWizard />);
+        break;
+
       default:
         setRenderedComponent(<p>Failed to load component!</p>);
     }
