@@ -19,12 +19,6 @@ const Accordion = ({ children }: Props): JSX.Element => {
   const [accordionPanels, setAccordionPanels] = useState<ReactElement[]>([]);
   const [accordionRefs, setAccordionRefs] = useState<RefObject<HTMLButtonElement>[]>([]);
 
-  const expandPanel = (index: number) => {
-    const accordionRef = accordionRefs[index];
-    setExpandedPanel(index);
-    accordionRef.current?.focus();
-  }
-
   useEffect(() => {
     const idNum = ++accordionId;
     setAccordionPanelId('accordionPanel' + idNum);
