@@ -5,7 +5,7 @@ import Example from '../../../shared/components/Example';
 const DefaultAccordion = (): JSX.Element => {
   return (
     <Example>
-      <Accordion>
+      <Accordion headingLevel="h2">
         <AccordionPanel accordionHeading="Accordion heading">
           Accordion panel 1
         </AccordionPanel>

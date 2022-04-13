@@ -9,15 +9,17 @@
 //   https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html
 
 import { createRef, ReactElement, RefObject, useEffect, useState } from 'react';
+import HeadingElement from './Heading';
 import AccordionHeading from './AccordionHeading';
 
 type Props = {
+  headingLevel: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   children: ReactElement[] | ReactElement;
 }
 
 let accordionId = 0;
 
-const Accordion = ({ children }: Props): JSX.Element => {
+const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
 
   const [expandedPanel, setExpandedPanel] = useState(0);
   const [accordionPanelId, setAccordionPanelId] = useState('');
@@ -46,15 +48,17 @@ const Accordion = ({ children }: Props): JSX.Element => {
     <div className="ads-accordion">
       {accordionPanels.map((accordionPanel, index) => (
         <>
-          <AccordionHeading
-            key={`${accordionPanelId + index}Heading`}
-            accordionHeading={accordionPanel.props.accordionHeading}
-            index={index}
-            setExpandedPanel={setExpandedPanel}
-            isActive={index === expandedPanel}
-            accordionPanelId={accordionPanelId + index}
-            accordionRef={accordionRefs[index]}
-          />
+          <HeadingElement headingLevel={headingLevel} className="ads-accordion-heading">
+            <AccordionHeading
+              key={`${accordionPanelId + index}Heading`}
+              accordionHeading={accordionPanel.props.accordionHeading}
+              index={index}
+              setExpandedPanel={setExpandedPanel}
+              isActive={index === expandedPanel}
+              accordionPanelId={accordionPanelId + index}
+              accordionRef={accordionRefs[index]}
+            />
+          </HeadingElement>
           <div
             key={accordionPanelId + index}
             id={accordionPanelId + index}

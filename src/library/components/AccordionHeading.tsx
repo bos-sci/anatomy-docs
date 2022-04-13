@@ -1,5 +1,3 @@
-// TODO: make heading level configurable
-
 import { RefObject, useCallback } from 'react';
 import IconChevronDown from "./icon/icons/IconChevronDown";
 
@@ -19,21 +17,19 @@ const AccordionHeading = ({ accordionHeading, setExpandedPanel, index, isActive,
   }, [setExpandedPanel, index])
 
   return (
-    <h3 className="ads-accordion-heading">
-      <button
-        ref={accordionRef}
-        id={`${accordionPanelId}Heading`}
-        className="ads-accordion-trigger"
-        aria-controls={accordionPanelId}
-        aria-expanded={isActive}
-        onClick={onClick}
-      >
-        <span className="ads-accordion-trigger-text">
-          { accordionHeading }
-        </span>
-        <IconChevronDown />
-      </button>
-    </h3>
+    <button
+      ref={accordionRef}
+      id={`${accordionPanelId}Heading`}
+      className="ads-accordion-trigger"
+      aria-controls={accordionPanelId}
+      aria-expanded={isActive}
+      onClick={onClick}
+    >
+      <span className="ads-accordion-trigger-text">
+        { accordionHeading }
+      </span>
+      <IconChevronDown />
+    </button>
   )
 }
 
