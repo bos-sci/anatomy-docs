@@ -1,20 +1,22 @@
+// TODO: finish refactoring
+
 import { RefObject, useCallback } from 'react';
 import IconChevronDown from "./icon/icons/IconChevronDown";
 
 interface Props {
   accordionHeading: string;
   index: number;
-  setExpandedPanel: (index: number) => void;
-  isActive?: boolean;
+  setIsPanelExpanded: (index: number) => void;
+  isPanelExpanded?: boolean;
   accordionPanelId: string;
   accordionRef: RefObject<HTMLButtonElement>;
 }
 
-const AccordionHeading = ({ accordionHeading, setExpandedPanel, index, isActive, accordionPanelId, accordionRef }: Props): JSX.Element => {
+const AccordionHeading = ({ accordionHeading, setIsPanelExpanded, index, isPanelExpanded, accordionPanelId, accordionRef }: Props): JSX.Element => {
 
   const onClick = useCallback(() => {
-    setExpandedPanel(index)
-  }, [setExpandedPanel, index])
+    setIsPanelExpanded(index)
+  }, [setIsPanelExpanded, index])
 
   return (
     <button
@@ -22,8 +24,9 @@ const AccordionHeading = ({ accordionHeading, setExpandedPanel, index, isActive,
       id={`${accordionPanelId}Heading`}
       className="ads-accordion-trigger"
       aria-controls={accordionPanelId}
-      aria-expanded={isActive}
+      aria-expanded={isPanelExpanded}
       onClick={onClick}
+      // onClick={() => setIsPanelExpanded(index)}
     >
       <span className="ads-accordion-trigger-text">
         { accordionHeading }

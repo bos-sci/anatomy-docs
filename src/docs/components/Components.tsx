@@ -54,10 +54,11 @@ const Components = (props: Props): JSX.Element => {
       .replace('/form-controls', '')
       .replace('/navigation', '');
     setNavItems([
-      {
-        text: 'Accordion',
-        slug: basePath + '/accordion',
-      },
+      // TODO: uncomment when accordion is finished
+      // {
+      //   text: 'Accordion',
+      //   slug: basePath + '/accordion',
+      // },
       {
         text: 'Breadcrumbs',
         slug: basePath + '/breadcrumbs',

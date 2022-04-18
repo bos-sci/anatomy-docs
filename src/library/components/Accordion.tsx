@@ -1,4 +1,6 @@
-// TODO: make all panels collapsed on page load, allow multiple panels to be expanded at the same time
+// TODO: 
+// make all panels collapsed on page load & allow multiple panels to be expanded at the same time
+// finish refactoring
 
 // NOTE:
 // We could consider using <details> here
@@ -21,7 +23,7 @@ let accordionId = 0;
 
 const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
 
-  const [expandedPanel, setExpandedPanel] = useState(0);
+  const [expandedPanel, setIsPanelExpanded] = useState(0);
   const [accordionPanelId, setAccordionPanelId] = useState('');
   const [accordionPanels, setAccordionPanels] = useState<ReactElement[]>([]);
   const [accordionRefs, setAccordionRefs] = useState<RefObject<HTMLButtonElement>[]>([]);
@@ -53,8 +55,8 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
               key={`${accordionPanelId + index}Heading`}
               accordionHeading={accordionPanel.props.accordionHeading}
               index={index}
-              setExpandedPanel={setExpandedPanel}
-              isActive={index === expandedPanel}
+              setIsPanelExpanded={setIsPanelExpanded}
+              isPanelExpanded={index === expandedPanel}
               accordionPanelId={accordionPanelId + index}
               accordionRef={accordionRefs[index]}
             />
