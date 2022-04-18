@@ -16,8 +16,8 @@ const NavWizardList = (props: Props) => {
   return (
     <ul
       className=
-        {'nav'
-        + ((props.history.length === 0 && props.depth === 0) || ((parent && props.history[props.history.length - 1]?.node === parent)) ? ' nav-active-list' : '')
+        {'ads-nav'
+        + ((props.history.length === 0 && props.depth === 0) || ((parent && props.history[props.history.length - 1]?.node === parent)) ? ' ads-nav-active-list' : '')
       }
       aria-describedby={parent?.id}>
       {props.navItems.map((navItem, i) => {
@@ -27,8 +27,8 @@ const NavWizardList = (props: Props) => {
         } else {
           return (
             // Leaf Node
-            <li key={navItem.text + i} className="nav-item">
-              <Link href={navItem.href} to={navItem.slug} className="nav-link">{navItem.text}</Link>
+            <li key={navItem.text + i} className="ads-nav-item">
+              <Link href={navItem.href} to={navItem.slug} className="ads-nav-link">{navItem.text}</Link>
             </li>
           );
         }
@@ -36,8 +36,8 @@ const NavWizardList = (props: Props) => {
 
       {/* Overflow Link */}
       {parent?.overflowLinkText &&
-        <li key={parent.overflowLinkText + props.depth} className="nav-item nav-item-overflow">
-          <Link href={parent.overflowHref} to={parent.overflowTo} className="nav-link-see-all">{parent.overflowLinkText}</Link>
+        <li key={parent.overflowLinkText + props.depth} className="ads-nav-item ads-nav-item-overflow">
+          <Link href={parent.overflowHref} to={parent.overflowTo}>{parent.overflowLinkText}</Link>
         </li>
       }
     </ul>

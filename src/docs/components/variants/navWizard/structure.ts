@@ -19,7 +19,7 @@ const exampleData: NavItemWizard[] = [
             slug: basePath + '/'
           },
           {
-            text: 'Female Pelvic Medicine',
+            text: 'Pelvic Medicine',
             slug: basePath + '/'
           },
           {

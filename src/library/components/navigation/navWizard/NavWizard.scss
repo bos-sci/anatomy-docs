@@ -20,27 +20,27 @@
     text-align: center;
   }
 
-  .nav-back
+  .ads-nav-back
   {
     grid-area: back;
     justify-self: start;
     @include font-size($fs-body-subtle);
   }
 
-  .pre-title
+  .ads-pre-title
   {
     grid-area: preTitle;
     margin-top: 0;
     @include font-size($fs-body-subtle);
   }
 
-  .title
+  .ads-title
   {
     grid-area: title;
     margin-top: space(2x);
   }
 
-  .description
+  .ads-description
   {
     grid-area: description;
     margin-top: space(3x);
@@ -52,60 +52,100 @@
     bottom: 0;
   }
 
-  .nav-menu
+  .ads-nav-menu
   {
     margin-top: space(6x);
   }
 
-  .nav
+  .ads-nav
   {
     display: block;
     margin-top: 0;
+    list-style: none;
+    padding: 0;
 
-    &.nav-active-list
+    &.ads-nav-active-list
     {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: 1fr;
       grid-auto-flow: row;
       gap: space(2x) space(4x);
     }
 
-    &:not(.nav-active-list)
+    &:not(.ads-nav-active-list)
     {
-      & > .nav-item:not(.nav-item-parent),
-      & > .nav-item-parent > .nav-link
+      & > .ads-nav-item:not(.ads-nav-item-parent),
+      & > .ads-nav-item-parent > .ads-nav-link
       {
         display: none;
       }
     }
 
-    &.nav-active-list
+    &.ads-nav-active-list
     {
       width: 100%;
     }
   }
 
-  .nav-item,
-  .nav-item-parent
+  .ads-nav-item,
+  .ads-nav-item-parent
   {
     margin-top: 0;
   }
 
-  .nav-item-parent
+  .ads-nav-item-parent
   {
-    .nav-link.nav-link-parent-trigger
+    & > .ads-nav-link
     {
-      padding-right: 0;
+      display: flex;
+      align-items: stretch;
+      padding: 0;
+
+      & > .ads-nav-link-text,
+      & > .ads-nav-link-addon
+      {
+        padding: space(3x);
+      }
+
+      & > .ads-nav-link-addon
+      {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $action-primary-40;
+      }
 
       &:hover
       {
-        background: transparent;
+        text-decoration: none;
+
+        & > .ads-nav-link-addon
+        {
+          color: $neutral-100;
+          background-color: $action-primary-40;
+        }
+      }
+
+      &:active
+      {
+        font-family: $font-family-base-heavy;
       }
     }
   }
 
-  .nav-item-overflow
+  .ads-nav-item
+  {
+    .ads-nav-link
+    {
+      &:hover
+      {
+        color: $action-primary-40;
+        font-family: $font-family-base-heavy;
+      }
+    }
+  }
+
+  .ads-nav-item-overflow
   {
     grid-column-start: 1;
     grid-column-end: span 3;
@@ -113,11 +153,10 @@
     align-self: end;
   }
 
-  .nav-link,
-  .nav-link-back
+  .ads-nav-link,
+  .ads-nav-link-back
   {
     align-items: center;
-    padding: space(lg) space(2x);
     width: 100%;
     text-align: left;
 
@@ -127,30 +166,24 @@
     }
   }
 
-  .nav-link
+  .ads-nav-link
   {
     display: flex;
     justify-content: space-between;
     position: relative;
-    height: 100%;
     border: 1px solid $border-color-subtle;
+    padding: space(3x);
+    height: 100%;
     @include link-navigation;
-    @include font-size($fs-body-subtle);
 
-    &.active
+    &:hover
     {
-      &::before
-      {
-        content: '';
-        position: absolute;
-        left: 0;
-        height: space(3x);
-        border-left: space(sm) solid $neutral-00;
-      }
+      border: 0;
+      box-shadow: 0 space(xxs) space(md) 0 rgba($neutral-00, 0.2);
     }
   }
 
-  .nav-link-back
+  .ads-nav-link-back
   {
     justify-content: flex-start;
     padding-left: 0;
@@ -160,25 +193,6 @@
     &:active
     {
       fill: $neutral-00;
-    }
-  }
-}
-
-@media (min-width: 992px)
-{
-  .ads-nav-wizard
-  {
-    .ads-nav-wizard-menu-trigger
-    {
-      display: none;
-    }
-
-    .ads-nav-wizard-menu
-    {
-      position: relative;
-      display: block;
-      border-bottom: 0;
-      padding: 0;
     }
   }
 }
