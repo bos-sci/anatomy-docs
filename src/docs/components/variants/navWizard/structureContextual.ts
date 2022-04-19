@@ -4,80 +4,77 @@ const basePath = '';
 
 const exampleData: NavItemWizard[] = [
   {
-    text: 'Option',
-    description: 'Optional description for this step',
-    title: 'Second step',
+    text: 'For healthcare professionals',
+    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    title: 'You\'ve come to the right place',
     children: [
       {
-        text: 'Option',
-        title: 'Third step',
-        overflowLinkText: 'See all links',
+        text: 'Medical specialties',
+        title: 'What treatments are you considering?',
+        overflowLinkText: 'See all treatments',
         overflowTo: basePath + '/',
         children: [
           {
-            text: 'Link',
+            text: 'Electrophysiology',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Pelvic Medicine',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Gastroenterology',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Gastrointestinal Surgery',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Gynecology',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Interventional Cardiology',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Interventional Radiology',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Neurological Surgery',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Orthopedic Surgery',
             slug: basePath + '/'
           }
         ]
       },
       {
-        text: 'Option',
-        title: 'Third step',
+        text: 'Healthcare solutions',
         children: [
           {
-            text: 'Link',
+            text: 'Child item',
             slug: basePath + '/'
           }
         ]
       },
       {
-        text: 'Option',
-        title: 'Third step',
+        text: 'Professional education',
         children: [
           {
-            text: 'Link',
+            text: 'Child item',
             slug: basePath + '/'
           }
         ]
       },
       {
-        text: 'Option',
-        title: 'Third step',
+        text: 'Customer support',
         children: [
           {
-            text: 'Link',
+            text: 'Child item',
             slug: basePath + '/'
           }
         ]
@@ -86,111 +83,100 @@ const exampleData: NavItemWizard[] = [
   },
   // PTC
   {
-    text: 'Option',
-    description: `Optional description for this step`,
-    title: 'Second step',
+    text: 'For patients & caregivers',
+    description: `Find the information you need, whether you've been diagnosed with a health condition, have an implated device, or need support.`,
     children: [
       {
-        text: 'Option',
-        description: 'Optional description for this step',
-        title: 'Third step',
+        text: 'Treatments',
+        description: 'Devices, procedures, and therapies',
         overflowLinkText: 'See all treatments',
         overflowTo: basePath + '/',
         children: [
           {
-            text: 'Option',
-            title: 'Fourth step',
+            text: 'Airway & breathing',
             children: [
               {
-                text: 'Link',
+                text: 'Asthma',
                 slug: basePath + '/'
               },
               {
-                text: 'Link',
+                text: 'Last level',
                 slug: basePath + '/'
               },
               {
-                text: 'Link',
+                text: 'Last level',
                 slug: basePath + '/'
               }
             ]
           },
           {
-            text: 'Option',
-            title: 'Fourth step',
+            text: 'Cancer',
             children: [
               {
-                text: 'Link',
+                text: 'Last level',
                 slug: basePath + '/'
               }
             ]
           },
           {
-            text: 'Option',
-            title: 'Fourth step',
+            text: 'Digestion & nutrition',
             children: [
               {
-                text: 'Link',
+                text: 'Last level',
                 slug: basePath + '/'
               }
             ]
           },
           {
-            text: 'Option',
-            title: 'Fourth step',
+            text: 'Heart & vascular',
             children: [
               {
-                text: 'Linkl',
+                text: 'Last level',
                 slug: basePath + '/'
               }
             ]
           },
           {
-            text: 'Option',
-            title: 'Fourth step',
+            text: 'Kidneys',
             children: [
               {
-                text: 'Link',
+                text: 'Last level',
                 slug: basePath + '/'
               }
             ]
           },
           {
-            text: `Option`,
-            title: 'Fourth step',
+            text: `Men's health`,
             children: [
               {
-                text: 'Link',
+                text: 'Last level',
                 slug: basePath + '/'
               }
             ]
           },
           {
-            text: `Option`,
-            title: 'Fourth step',
+            text: `Women's health`,
             children: [
               {
-                text: 'Link',
+                text: 'Last level',
                 slug: basePath + '/'
               }
             ]
           },
           {
-            text: 'Option',
-            title: 'Fourth step',
+            text: 'Neurological conditions',
             children: [
               {
-                text: 'Link',
+                text: 'Last level',
                 slug: basePath + '/'
               }
             ]
           },
           {
-            text: 'Option',
-            title: 'Fourth step',
+            text: 'Pain management',
             children: [
               {
-                text: 'Link',
+                text: 'Last level',
                 slug: basePath + '/'
               }
             ]
@@ -198,23 +184,21 @@ const exampleData: NavItemWizard[] = [
         ]
       },
       {
-        text: 'Option',
+        text: 'Device support',
         description: 'Device setup, user manuals, and troubleshooting',
-        title: 'Third step',
         children: [
           {
-            text: 'Link',
+            text: 'Child item 1',
             slug: basePath + '/'
           }
         ]
       },
       {
-        text: 'Option',
-        description: 'Optional description for this step',
-        title: 'Third step',
+        text: 'Contact us',
+        description: 'Call one of our dedicated customer service centers or send us and email',
         children: [
           {
-            text: 'Link',
+            text: 'Child item 2',
             slug: basePath + '/'
           }
         ]
@@ -223,74 +207,69 @@ const exampleData: NavItemWizard[] = [
   },
   // About BSC
   {
-    text: 'Option',
-    description: 'Optional description for this step',
-    title: 'Second step',
+    text: 'About Boston Scientific',
+    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     children: [
       {
-        text: 'Option',
-        description: 'Optional description for this step',
-        title: 'Third step',
+        text: 'About',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         overflowLinkText: 'See all',
         overflowTo: basePath + '/',
         children: [
           {
-            text: 'Link',
+            text: 'Businesses',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Leadership',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Locations',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Awards & recgonition',
             slug: basePath + '/'
           },
           {
-            text: 'Link',
+            text: 'Ventures',
             slug: basePath + '/'
           }
         ]
       },
       {
-        text: 'Option',
-        description: 'Optional description for this step',
-        title: 'Third step',
+        text: 'Citizenship',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         children: [
           {
-            text: 'Link',
+            text: 'Child item',
             slug: basePath + '/'
           }
         ]
       },
       {
-        text: 'Option',
-        description: 'Optional description for this step',
-        title: 'Third step',
+        text: 'Careers',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         children: [
           {
-            text: 'Link',
+            text: 'Child item',
             slug: basePath + '/'
           }
         ]
       },
       {
-        text: 'Option',
-        description: 'Optional description for this step',
-        title: 'Third step',
+        text: 'News',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         children: [
           {
-            text: 'Link',
+            text: 'Child item',
             slug: basePath + '/'
           }
         ]
       },
       {
-        text: 'Link',
+        text: 'Investors',
         href: 'external-url-here'
       }
     ]

@@ -85,8 +85,8 @@ const Preview = ( props: Props ): JSX.Element => {
         break;
 
         case 'wizard-navigation':
-        const DefaultNavWizard = lazy(() => import('./navWizard/DefaultNavWizard'));
-        setRenderedComponent(<DefaultNavWizard />);
+        const DefaultNavWizardLink = lazy(() => import('./navWizard/DefaultNavWizardLink'));
+        setRenderedComponent(<DefaultNavWizardLink />);
         break;
 
       default:
