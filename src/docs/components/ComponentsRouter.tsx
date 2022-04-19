@@ -8,6 +8,8 @@ const ComponentsRouter = (): JSX.Element => {
   return (
     <Switch>
       <Route exact path={path}>
+        {/* TODO: uncomment when accordion is finished */}
+        {/* <Redirect to={`${path}/accordion`} /> */}
         <Redirect to={`${path}/breadcrumbs`} />
       </Route>
       {/* TODO: figure out proper routing for form-controls */}
