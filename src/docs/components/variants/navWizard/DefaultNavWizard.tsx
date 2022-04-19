@@ -4,8 +4,8 @@ import structureContextual from './structureContextual';
 
 const DefaultNavWizard = (): JSX.Element => {
   return <div>
-    <NavWizard defaultTitle="First step title" navItems={structure} />
-    <NavWizard defaultTitle="How can we help you?" navItems={structureContextual} />
+    <NavWizard firstTitle="First step title" navItems={structure} />
+    <NavWizard firstTitle="How can we help you?" navItems={structureContextual} />
   </div>;
 }
 

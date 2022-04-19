@@ -39,8 +39,9 @@ export interface HistoryNode {
 
 interface Props {
   navItems: NavItemWizard[];
-  defaultTitle?: string;
-  defaultDescription?: string;
+  firstTitle?: string;
+  firstDescription?: string;
+  backButtonText?: string;
 }
 
 const NavWizard = (props: Props) => {
@@ -77,10 +78,10 @@ const NavWizard = (props: Props) => {
       setDescription(history[history.length - 1].node.description || '');
     } else {
       setPreTitle('');
-      setTitle(props.defaultTitle || '');
-      setDescription(props.defaultDescription || '');
+      setTitle(props.firstTitle || '');
+      setDescription(props.firstDescription || '');
     }
-  }, [history, props.defaultTitle, props.defaultDescription]);
+  }, [history, props.firstTitle, props.firstDescription]);
 
   useEffect(() => {
     const tree = [...props.navItems] as NavNode[];
@@ -109,7 +110,7 @@ const NavWizard = (props: Props) => {
             className="ads-nav-back"
             onClick={popHistory}>
             <IconChevronLeft className="ads-icon-lg u-icon-left" />
-            Back
+            {props.backButtonText ? props.backButtonText : 'Back'}
           </Button>}
         {preTitle && <p className="ads-pre-title">{preTitle}</p>}
         {title && <h2 className="ads-title">{title}</h2>}

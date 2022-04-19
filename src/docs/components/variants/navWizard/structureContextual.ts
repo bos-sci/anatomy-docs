@@ -67,6 +67,10 @@ const exampleData: NavItemWizard[] = [
           {
             text: 'Child item',
             slug: basePath + '/'
+          },
+          {
+            text: 'Child item',
+            slug: basePath + '/'
           }
         ]
       },
