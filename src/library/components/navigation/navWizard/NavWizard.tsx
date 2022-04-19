@@ -3,6 +3,7 @@ import NavWizardList from './NavWizardList';
 import './NavWizard.scss'
 import { useEffect, useState } from 'react';
 import Button from '../../Button';
+import IconChevronLeft from '../../icon/icons/IconChevronLeft';
 
 interface NavItem {
   text: string;
@@ -101,7 +102,15 @@ const NavWizard = (props: Props) => {
   return (
     <nav className="ads-nav-wizard">
       <div className="ads-nav-wizard-header">
-        {history.length > 0 && <Button variant="subtle" type="button" className="ads-nav-back" onClick={popHistory}>Back</Button>}
+        {history.length > 0 &&
+          <Button
+            variant="subtle"
+            type="button"
+            className="ads-nav-back"
+            onClick={popHistory}>
+            <IconChevronLeft className="ads-icon-lg u-icon-left" />
+            Back
+          </Button>}
         {preTitle && <p className="ads-pre-title">{preTitle}</p>}
         {title && <h2 className="ads-title">{title}</h2>}
         {description && <p className="ads-description">{description}</p>}

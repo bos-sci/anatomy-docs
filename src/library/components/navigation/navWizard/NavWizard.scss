@@ -7,7 +7,7 @@
   position: relative;
   padding: space(6x) space(8x);
   background-color: $neutral-100;
-  box-shadow: $box-shadow-primary;
+  box-shadow: 0 space(xs) 0.625rem 0 rgba($neutral-00, 0.2);
 
   .ads-nav-wizard-header
   {
@@ -54,7 +54,9 @@
 
   .ads-nav-menu
   {
-    margin-top: space(6x);
+    margin-top: space(4x);
+    border-top: space(xxs) solid $border-color-subtle;
+    padding-top: space(4x);
   }
 
   .ads-nav
@@ -67,7 +69,7 @@
     &.ads-nav-active-list
     {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       grid-auto-flow: row;
       gap: space(2x) space(4x);
     }
@@ -98,7 +100,6 @@
     & > .ads-nav-link
     {
       display: flex;
-      align-items: stretch;
       padding: 0;
 
       & > .ads-nav-link-text,
@@ -112,12 +113,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        align-self: stretch;
         color: $action-primary-40;
       }
 
       &:hover
       {
         text-decoration: none;
+
+        & > .ads-nav-link-text
+        {
+          border: space(xxs) solid transparent;
+          border-right: 0;
+        }
 
         & > .ads-nav-link-addon
         {
@@ -139,6 +147,7 @@
     {
       &:hover
       {
+        border: space(xxs) solid transparent;
         color: $action-primary-40;
         font-family: $font-family-base-heavy;
       }
@@ -153,33 +162,28 @@
     align-self: end;
   }
 
-  .ads-nav-link,
-  .ads-nav-link-back
-  {
-    align-items: center;
-    width: 100%;
-    text-align: left;
-
-    &:focus
-    {
-      @include focus-default-inset;
-    }
-  }
-
   .ads-nav-link
   {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: relative;
     border: 1px solid $border-color-subtle;
     padding: space(3x);
+    width: 100%;
     height: 100%;
+    text-align: left;
     @include link-navigation;
 
     &:hover
     {
       border: 0;
       box-shadow: 0 space(xxs) space(md) 0 rgba($neutral-00, 0.2);
+    }
+
+    &:focus
+    {
+      @include focus-default-inset;
     }
   }
 
@@ -193,6 +197,26 @@
     &:active
     {
       fill: $neutral-00;
+    }
+  }
+}
+
+@media (min-width: $lg)
+{
+  .ads-nav-wizard
+  {
+    .ads-nav-menu
+    {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .ads-nav
+    {
+      &.ads-nav-active-list
+      {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   }
 }
