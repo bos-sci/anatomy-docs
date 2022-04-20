@@ -8,11 +8,11 @@ const DefaultSkipLink = (): JSX.Element => {
       <SkipLink destinationId="mainContent" destination='main content'/>
       <header className="docs-wire-header">
         <p>Header area</p>
-        <a href="#">Example header link</a>
+        <a href="/">Example header link</a>
       </header>
       <main id="mainContent" className="docs-wire-main">
         <p>Main content area</p>
-        <a href="#">Example link</a>
+        <a href="/">Example link</a>
       </main>
     </>
   );
