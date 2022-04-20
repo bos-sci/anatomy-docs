@@ -1,4 +1,5 @@
 import NavPrimary from '../../../../library/components/navigation/navPrimary/NavPrimary';
+import useTitle from '../../../shared/hooks/useTitle';
 
 import exampleData from './structure';
 
@@ -18,6 +19,7 @@ const utilityItems = [
 ];
 
 const DefaultNavPrimary = (): JSX.Element => {
+  useTitle({titlePrefix: `Example Primary Navigation - Components`});
   return (
     <NavPrimary navItems={exampleData} utilityItems={utilityItems} />
   );
