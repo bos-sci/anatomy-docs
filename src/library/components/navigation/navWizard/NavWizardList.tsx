@@ -18,6 +18,8 @@ const NavWizardList = (props: Props) => {
       className=
         {'ads-nav'
         + ((props.history.length === 0 && props.depth === 0) || ((parent && props.history[props.history.length - 1]?.node === parent)) ? ' ads-nav-active-list' : '')
+        + (props.navItems.length === 1 ? ' has-one-col' : '')
+        + (props.navItems.length === 2 ? ' has-two-col' : '')
       }
       aria-describedby={parent?.id}>
       {props.navItems.map((navItem, i) => {

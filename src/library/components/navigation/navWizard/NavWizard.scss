@@ -216,6 +216,21 @@
       &.ads-nav-active-list
       {
         grid-template-columns: repeat(3, 1fr);
+
+        &.has-one-col
+        {
+          .ads-nav-item
+          {
+            grid-column-start: 2;
+          }
+        }
+
+        &.has-two-col
+        {
+          grid-template-columns: 1fr 1fr;
+          max-width: 66.66%;
+          margin: auto;
+        }
       }
     }
   }
