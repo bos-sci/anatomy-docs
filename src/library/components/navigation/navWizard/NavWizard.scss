@@ -147,14 +147,6 @@
     }
   }
 
-  .ads-nav-item-overflow
-  {
-    grid-column-start: 1;
-    grid-column-end: span 3;
-    justify-self: end;
-    align-self: end;
-  }
-
   .ads-nav-link
   {
     display: flex;
@@ -225,6 +217,14 @@
           margin: auto;
         }
       }
+    }
+
+    .ads-nav-item-overflow
+    {
+      grid-column-start: 1;
+      grid-column-end: span 3;
+      justify-self: end;
+      align-self: end;
     }
   }
 }
