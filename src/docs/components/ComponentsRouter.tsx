@@ -22,6 +22,7 @@ const ComponentsRouter = (): JSX.Element => {
       <Route path={`${path}/navigation/:componentName`} component={Components} />
       <Route path={`${path}/skip-link/example`} component={DefaultSkipLink} />
       <Route path={`${path}/:componentName`} component={Components} />
+      <Route path={`${path}/:componentName/example`} component={DefaultSkipLink} />
     </Switch>
   );
 }
