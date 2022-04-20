@@ -5,6 +5,7 @@
 */
 
 import { FocusEvent as ReactFocusEvent, useEffect, useRef, useState } from 'react';
+import SkipLink from '../../SkipLink';
 import logo from "../../../../assets/images/logo-anatomy.svg";
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
@@ -147,7 +148,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
 
 
   return <>
-    <a href="#mainContent" className="skip-link">Skip to main content</a>
+    <SkipLink destinationId="mainContent" destination='main content'/>
     <header className="nav-header" ref={navRef}>
       {utilityItems && <NavUtility utilityItems={utilityItems} />}
       <nav className="nav-primary" aria-label="primary">

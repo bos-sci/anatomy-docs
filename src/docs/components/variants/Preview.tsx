@@ -70,6 +70,10 @@ const Preview = ( props: Props ): JSX.Element => {
         setRenderedComponent(<DefaultNavSecondary />);
         break;
 
+      case 'skip-link':
+        setRenderedComponent(<Link className="demo-link" to="/components/skip-link/example" target="_blank">See example</Link>);
+        break;
+
       case 'tabs':
         const DefaultTabs = lazy(() => import('./tabs/DefaultTabs'));
         setRenderedComponent(<DefaultTabs />);
