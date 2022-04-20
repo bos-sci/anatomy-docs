@@ -14,7 +14,7 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     grid-template-areas:
-      'back pre-title .'
+      'back breadcrumb .'
       'title title title'
       'description description description';
     text-align: center;
@@ -29,7 +29,7 @@
 
   .ads-nav-breadcrumb
   {
-    grid-area: pre-title;
+    grid-area: breadcrumb;
     margin-top: 0;
     @include font-size($fs-body-subtle);
   }
