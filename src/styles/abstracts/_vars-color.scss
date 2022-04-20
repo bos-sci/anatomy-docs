@@ -26,7 +26,7 @@ $action-primary-97: #f2f7ff;
 
 
 // Accent Color Ranges
-// TODO: 
+// TODO:
 // change to plum to primary, caribbean to secondary, lime to tertiary
 // figure out naming, and what to call accent-plum-30
 
@@ -80,3 +80,51 @@ $gradient-accent: linear-gradient(270deg, $accent-primary-60 0%, $action-primary
 $gradient-accent-vertical: linear-gradient(180deg, $accent-primary-60 0%, $action-primary-60 100%);
 $gradient-assertive: linear-gradient(36deg, $neutral-00 0%, $action-primary-20 100%);
 $gradient-subtle: linear-gradient(322deg, $neutral-100, $neutral-95);
+
+// Animated Gradient
+
+@-webkit-keyframes animatedGradient
+{
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+@-moz-keyframes animatedGradient
+{
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+@-o-keyframes animatedGradient
+{
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+@keyframes animatedGradient
+{
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+@mixin animated-brand-gradient
+{
+  $gradient-brand-animated: linear-gradient(90deg, $brand-primary, $accent-primary-60, $accent-secondary-60, $brand-primary, $accent-primary-60);
+
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: space(sm);
+  background: $gradient-brand;
+  background-image: $gradient-brand-animated;
+  background-size: 400% 100%;
+  content: '';
+  -webkit-animation: animatedGradient 10s linear infinite;
+  -moz-animation: animatedGradient 10s linear infinite;
+  -o-animation: animatedGradient 10s linear infinite;
+  animation: animatedGradient 10s linear infinite;
+
+  @media (prefers-reduced-motion: reduce)
+  {
+    background-image: $gradient-brand;
+    background-size: 100% 100%;
+    animation: none;
+  }
+}

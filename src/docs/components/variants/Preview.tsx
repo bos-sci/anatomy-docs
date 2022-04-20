@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Fallback from './Fallback';
 
 interface Props {
@@ -87,6 +88,10 @@ const Preview = ( props: Props ): JSX.Element => {
       case 'text-input':
         const InputTextVariants = lazy(() => import('./inputText/InputTextVariants'));
         setRenderedComponent(<InputTextVariants variantId={variantId} />);
+        break;
+
+      case 'wizard-navigation':
+        setRenderedComponent(<Link className="demo-link" to="/components/navigation/wizard-navigation/example" target="_blank">See example</Link>);
         break;
 
       default:
