@@ -119,6 +119,10 @@ const Components = (props: Props): JSX.Element => {
         ]
       },
       {
+        text: 'Skip link',
+        slug: basePath + '/skip-link',
+      },
+      {
         text: 'Tabs',
         slug: basePath + '/tabs',
       },
