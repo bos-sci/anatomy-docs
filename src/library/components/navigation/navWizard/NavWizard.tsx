@@ -42,6 +42,7 @@ interface Props {
   firstTitle?: string;
   firstDescription?: string;
   backButtonText?: string;
+  backButtonAriaLabel?: string;
 }
 
 const NavWizard = (props: Props) => {
@@ -108,7 +109,7 @@ const NavWizard = (props: Props) => {
             variant="subtle"
             type="button"
             className="ads-nav-back"
-            aria-label="Back to previous step"
+            aria-label={props.backButtonAriaLabel ? props.backButtonAriaLabel : 'Back to previous step'}
             onClick={popHistory}>
             <IconChevronLeft className="ads-icon-lg u-icon-left" />
             {props.backButtonText ? props.backButtonText : 'Back'}
