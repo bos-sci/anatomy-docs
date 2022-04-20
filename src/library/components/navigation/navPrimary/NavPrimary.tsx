@@ -13,6 +13,7 @@ import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { NavLink } from 'react-router-dom';
 import IconClose from '../../icon/icons/IconClose';
+import SkipLink from '../../SkipLink';
 
 interface NavItem {
   text: string;
@@ -147,7 +148,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
 
 
   return <>
-    <a href="#mainContent" className="skip-link">Skip to main content</a>
+    <SkipLink destinationId="mainContent" destination='main content'/>
     <header className="nav-header" ref={navRef}>
       {utilityItems && <NavUtility utilityItems={utilityItems} />}
       <nav className="nav-primary" aria-label="primary">

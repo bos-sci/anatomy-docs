@@ -69,6 +69,11 @@ const Preview = ( props: Props ): JSX.Element => {
         setRenderedComponent(<DefaultNavSecondary />);
         break;
 
+      case 'skip-link':
+        const DefaultSkipLinkExample = lazy(() => import('./skipLink/DefaultSkipLinkExample'));
+        setRenderedComponent(<DefaultSkipLinkExample />);
+        break;
+
       case 'tabs':
         const DefaultTabs = lazy(() => import('./tabs/DefaultTabs'));
         setRenderedComponent(<DefaultTabs />);
