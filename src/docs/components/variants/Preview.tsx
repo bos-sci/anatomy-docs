@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Fallback from './Fallback';
 
 interface Props {
@@ -85,8 +86,7 @@ const Preview = ( props: Props ): JSX.Element => {
         break;
 
       case 'wizard-navigation':
-        const DefaultNavWizardLink = lazy(() => import('./navWizard/DefaultNavWizardLink'));
-        setRenderedComponent(<DefaultNavWizardLink />);
+        setRenderedComponent(<Link className="demo-link" to="/components/navigation/wizard-navigation/example" target="_blank">See example</Link>);
         break;
 
       default:
