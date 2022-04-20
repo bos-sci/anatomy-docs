@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import SkipLink from '../../../library/components/SkipLink';
 import NavPrimary from './navPrimary/NavPrimary'
 import logo from "../../../assets/images/logo-bsc.svg";
 
@@ -8,7 +9,7 @@ interface Props {
 
 const Layout = (props: Props): JSX.Element => {
   return <>
-    <a href="#mainContent" className="skip-link">Skip to main content</a>
+    <SkipLink destinationId="mainContent" destination="main content"/>
     <NavPrimary />
     { props.children }
     <footer className="app-footer">
