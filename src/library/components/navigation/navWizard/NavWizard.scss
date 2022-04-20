@@ -7,7 +7,7 @@
   position: relative;
   padding: space(6x) space(8x);
   background-color: $neutral-100;
-  box-shadow: 0 space(xs) 0.625rem 0 rgba($neutral-00, 0.2);
+  box-shadow: $box-shadow-tertiary;
 
   .ads-nav-wizard-header
   {
@@ -27,20 +27,20 @@
     @include font-size($fs-body-subtle);
   }
 
-  .ads-pre-title
+  .ads-nav-breadcrumb
   {
     grid-area: preTitle;
     margin-top: 0;
     @include font-size($fs-body-subtle);
   }
 
-  .ads-title
+  .ads-nav-title
   {
     grid-area: title;
     margin-top: space(2x);
   }
 
-  .ads-description
+  .ads-nav-description
   {
     grid-area: description;
     margin-top: space(3x);
@@ -52,7 +52,7 @@
     bottom: 0;
   }
 
-  .ads-nav-menu
+  .ads-nav-wizard-menu
   {
     margin-top: space(4x);
     border-top: space(xxs) solid $border-color-subtle;
@@ -81,11 +81,6 @@
       {
         display: none;
       }
-    }
-
-    &.ads-nav-active-list
-    {
-      width: 100%;
     }
   }
 
@@ -148,8 +143,6 @@
       &:hover
       {
         border: space(xxs) solid transparent;
-        color: $action-primary-40;
-        font-family: $font-family-base-heavy;
       }
     }
   }
@@ -168,7 +161,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    border: 1px solid $border-color-subtle;
+    border: space(xxs) solid $border-color-subtle;
     padding: space(3x);
     width: 100%;
     height: 100%;
@@ -178,7 +171,7 @@
     &:hover
     {
       border: 0;
-      box-shadow: 0 space(xxs) space(md) 0 rgba($neutral-00, 0.2);
+      box-shadow: $box-shadow-tertiary;
     }
 
     &:focus
@@ -205,7 +198,7 @@
 {
   .ads-nav-wizard
   {
-    .ads-nav-menu
+    .ads-nav-wizard-menu
     {
       border-top: 0;
       padding-top: 0;

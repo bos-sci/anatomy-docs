@@ -84,7 +84,7 @@ const Preview = ( props: Props ): JSX.Element => {
         setRenderedComponent(<InputTextVariants variantId={variantId} />);
         break;
 
-        case 'wizard-navigation':
+      case 'wizard-navigation':
         const DefaultNavWizardLink = lazy(() => import('./navWizard/DefaultNavWizardLink'));
         setRenderedComponent(<DefaultNavWizardLink />);
         break;

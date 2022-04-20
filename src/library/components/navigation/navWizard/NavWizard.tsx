@@ -49,7 +49,7 @@ const NavWizard = (props: Props) => {
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [history, setHistory] = useState<HistoryNode[]>([]);
 
-  const [preTitle, setPreTitle] = useState('');
+  const [breadcrumb, setBreadcrumb] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
@@ -73,11 +73,11 @@ const NavWizard = (props: Props) => {
 
   useEffect(() => {
     if (history.length > 0) {
-      setPreTitle(history[history.length - 1].node.text);
+      setBreadcrumb(history[history.length - 1].node.text);
       setTitle(history[history.length - 1].node.title || '');
       setDescription(history[history.length - 1].node.description || '');
     } else {
-      setPreTitle('');
+      setBreadcrumb('');
       setTitle(props.firstTitle || '');
       setDescription(props.firstDescription || '');
     }
@@ -108,16 +108,17 @@ const NavWizard = (props: Props) => {
             variant="subtle"
             type="button"
             className="ads-nav-back"
+            aria-label="Back to previous step"
             onClick={popHistory}>
             <IconChevronLeft className="ads-icon-lg u-icon-left" />
             {props.backButtonText ? props.backButtonText : 'Back'}
           </Button>}
-        {preTitle && <p className="ads-pre-title">{preTitle}</p>}
-        {title && <h2 className="ads-title">{title}</h2>}
-        {description && <p className="ads-description">{description}</p>}
+        {breadcrumb && <p className="ads-nav-breadcrumb">{breadcrumb}</p>}
+        {title && <h2 className="ads-nav-title">{title}</h2>}
+        {description && <p className="ads-nav-description">{description}</p>}
       </div>
       {navTree.length > 0 &&
-        <div className="ads-nav-menu">
+        <div className="ads-nav-wizard-menu">
           <NavWizardList navItems={navTree} history={history} pushHistory={pushHistory} popHistory={popHistory} depth={0} />
         </div>
       }

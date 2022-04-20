@@ -4,60 +4,60 @@ const basePath = '';
 
 const exampleData: NavItemWizard[] = [
   {
-    text: 'Page group 1',
+    title: 'Second step title',
     description: 'Optional description for this step',
-    title: 'Second step',
+    text: 'Page group 1',
     children: [
       {
+        title: 'Third step title',
         text: 'Nested page group 1',
-        title: 'Third step',
         overflowLinkText: 'See all pages',
         overflowTo: basePath + '/',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 2',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 3',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 4',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 5',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 6',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 7',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 8',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 9',
             slug: basePath + '/'
           }
         ]
       },
       {
         text: 'Nested page group 2',
-        title: 'Third step',
+        title: 'Third step title',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: basePath + '/'
           }
         ]
@@ -65,98 +65,97 @@ const exampleData: NavItemWizard[] = [
     ]
   },
   {
-    text: 'Page group 2',
+    title: 'Second step title',
     description: `Optional description for this step`,
-    title: 'Second step',
+    text: 'Page group 2',
     children: [
       {
-        text: 'Nested page group 1',
+        title: 'Third step title',
         description: 'Optional description for this step',
-        title: 'Third step',
+        text: 'Nested page group 1',
         overflowTo: basePath + '/',
         children: [
           {
-            text: 'Option',
+            text: 'Page 1',
             href: '#'
           }
         ]
       },
       {
+        title: 'Third step title',
+        description: 'Optional description for this step',
         text: 'Nested page group 2',
-        description: 'Device setup, user manuals, and troubleshooting',
-        title: 'Third step',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: basePath + '/'
           }
         ]
       },
       {
-        text: 'Nested page group 3',
+        title: 'Third step title',
         description: 'Optional description for this step',
-        title: 'Third step',
+        text: 'Nested page group 3',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: basePath + '/'
           }
         ]
       }
     ]
   },
-  // About BSC
   {
-    text: 'Page group 3',
+    title: 'Second step title',
     description: 'Optional description for this step',
-    title: 'Second step',
+    text: 'Page group 3',
     children: [
       {
-        text: 'Nested page group 1',
+        title: 'Third step title',
         description: 'Optional description for this step',
-        title: 'Third step',
+        text: 'Nested page group 1',
         overflowTo: basePath + '/',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 2',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 3',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 4',
             slug: basePath + '/'
           },
           {
-            text: 'Page',
+            text: 'Page 5',
             slug: basePath + '/'
           }
         ]
       },
       {
+        title: 'Third step title',
+        description: 'Optional description for this step',
         text: 'Nested page group 2',
-        description: 'Optional description for this step',
-        title: 'Third step',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: basePath + '/'
           }
         ]
       },
       {
-        text: 'Nested page group 3',
+        title: 'Third step title',
         description: 'Optional description for this step',
-        title: 'Third step',
+        text: 'Nested page group 3',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: basePath + '/'
           }
         ]
