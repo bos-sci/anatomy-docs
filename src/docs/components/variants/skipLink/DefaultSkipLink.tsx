@@ -2,7 +2,7 @@ import SkipLink from '../../../../library/components/SkipLink';
 import useTitle from '../../../shared/hooks/useTitle';
 
 const DefaultSkipLink = (): JSX.Element => {
-  useTitle({titlePrefix: `Skip link example - Components`});
+  useTitle({titlePrefix: `Example Skip Link - Components`});
   return (
     <>
       <SkipLink destinationId="mainContent" destination='main content'/>
