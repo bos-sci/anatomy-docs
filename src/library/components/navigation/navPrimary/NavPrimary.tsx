@@ -148,7 +148,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
 
 
   return <>
-    <SkipLink destinationId="mainContent" destination='main content'/>
+    <SkipLink destinationId="mainContent" destination="main content"/>
     <header className="nav-header" ref={navRef}>
       {utilityItems && <NavUtility utilityItems={utilityItems} />}
       <nav className="nav-primary" aria-label="primary">

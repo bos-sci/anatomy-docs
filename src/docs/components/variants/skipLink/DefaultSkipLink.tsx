@@ -5,7 +5,7 @@ const DefaultSkipLink = (): JSX.Element => {
   useTitle({titlePrefix: `Example Skip Link - Components`});
   return (
     <>
-      <SkipLink destinationId="mainContent" destination='main content'/>
+      <SkipLink destinationId="mainContent" destination="main content"/>
       <header className="docs-wire-header">
         <p>Header area</p>
         <a href="/">Example header link</a>

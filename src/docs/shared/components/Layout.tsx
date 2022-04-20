@@ -9,7 +9,7 @@ interface Props {
 
 const Layout = (props: Props): JSX.Element => {
   return <>
-    <SkipLink destinationId="mainContent" destination='main content'/>
+    <SkipLink destinationId="mainContent" destination="main content"/>
     <NavPrimary />
     { props.children }
     <footer className="app-footer">
