@@ -18,11 +18,9 @@ const ComponentsRouter = (): JSX.Element => {
       <Route path={`${path}/form-controls/:componentName`} component={Components} />
       <Route path={`${path}/navigation/primary-navigation/example`} component={DefaultNavPrimary} />
       <Route path={`${path}/navigation/wizard-navigation/example`} component={DefaultNavWizard} />
-      <Route path={`${path}/navigation/:componentName/example`} component={DefaultNavPrimary} />
       <Route path={`${path}/navigation/:componentName`} component={Components} />
       <Route path={`${path}/skip-link/example`} component={DefaultSkipLink} />
       <Route path={`${path}/:componentName`} component={Components} />
-      <Route path={`${path}/:componentName/example`} component={DefaultSkipLink} />
     </Switch>
   );
 }
