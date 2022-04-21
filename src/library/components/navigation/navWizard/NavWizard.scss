@@ -118,7 +118,6 @@
 
         & > .ads-nav-link-text
         {
-          border: space(xxs) solid transparent;
           border-right: 0;
         }
 
@@ -131,19 +130,7 @@
 
       &:active
       {
-        font-family: $font-family-base-heavy;
         text-decoration: none;
-      }
-    }
-  }
-
-  .ads-nav-item
-  {
-    .ads-nav-link
-    {
-      &:hover
-      {
-        border: space(xxs) solid transparent;
       }
     }
   }
@@ -163,13 +150,17 @@
 
     &:hover
     {
-      border: 0;
-      box-shadow: $box-shadow-tertiary;
+      border: space(xxs) solid $action-primary-40;
+    }
+
+    &:active
+    {
+      border-color: $action-primary-40;
     }
 
     &:focus
     {
-      @include focus-default-inset;
+      @include focus-default;
     }
   }
 
