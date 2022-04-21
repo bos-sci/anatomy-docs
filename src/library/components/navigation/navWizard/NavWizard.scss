@@ -112,7 +112,8 @@
         color: $action-primary-40;
       }
 
-      &:hover
+      &:hover,
+      &:active
       {
         text-decoration: none;
 
@@ -126,11 +127,6 @@
           color: $neutral-100;
           background-color: $action-primary-40;
         }
-      }
-
-      &:active
-      {
-        text-decoration: none;
       }
     }
   }
@@ -148,14 +144,10 @@
     text-align: left;
     @include link-navigation;
 
-    &:hover
-    {
-      border: space(xxs) solid $action-primary-40;
-    }
-
+    &:hover,
     &:active
     {
-      border-color: $action-primary-40;
+      border: space(xxs) solid $action-primary-40;
     }
 
     &:focus
