@@ -51,15 +51,17 @@ interface Props {
   navItems: NavItemPrimary[];
   activeSlug?: string;
   utilityItems?: NavItemUtility[];
+  hasSearch?: boolean;
 }
 
-const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
+const NavPrimary = ({ utilityItems, navItems, hasSearch = true }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [history, setHistory] = useState<HistoryNode[]>([]);
+  const [activeNode, setActiveNode] = useState<NavNode | null>(null);
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -91,6 +93,14 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
       setIsMenuOpen(true);
       setIsSearchOpen(false);
     }
+  }
+
+  const getActiveRoot = (): NavNode | null => {
+    let node = activeNode;
+    while (node?.parent) {
+      node = node.parent;
+    }
+    return node;
   }
 
   useEffect(() => {
@@ -146,7 +156,6 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
     }
   }
 
-
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>
     <header className="nav-header" ref={navRef}>
@@ -166,7 +175,7 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className={'nav-link' + (history[0] && navItem === history[0].node ? ' open' : '')}
+                    className={"nav-link" + (navItem === getActiveRoot() ? ' active' : '')}
                     aria-expanded={history[0] && navItem === history[0].node}
                     onClick={() => updateMenu(navItem)}
                     onBlur={manageFocus}>
@@ -181,21 +190,23 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
                 }
               </li>
             ))}
-            <li className="nav-item nav-item-search">
-              <Button
-                variant="subtle"
-                className="nav-link"
-                aria-expanded={isSearchOpen}
-                onClick={toggleSearch}>
-                <span className="nav-link-search-text">
-                  Search
-                </span>
-              </Button>
-            </li>
+            {hasSearch &&
+              <li className="nav-item nav-item-search">
+                <Button
+                  variant="subtle"
+                  className="nav-link"
+                  aria-expanded={isSearchOpen}
+                  onClick={toggleSearch}>
+                  <span className="nav-link-search-text">
+                    Search {activeNode?.text}
+                  </span>
+                </Button>
+              </li>
+            }
             <li className="nav-item nav-item-toggle">
               <Button
                 variant="subtle"
-                className={'nav-link' + (isMenuOpen ? ' open' : '')}
+                className="nav-link"
                 aria-expanded={isMenuOpen}
                 onClick={toggleMenu}>
                 Menu
@@ -227,10 +238,12 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
             </form>
           </div>
         }
-        {isMenuOpen &&
+        {navTree.length > 0 &&
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
+            setActiveNode={setActiveNode}
+            isMenuOpen={isMenuOpen}
             history={history}
             pushHistory={pushHistory}
             popHistory={popHistory} />

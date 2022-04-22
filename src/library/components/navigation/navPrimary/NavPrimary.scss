@@ -70,6 +70,11 @@ $navLinkPadding: space(lg) space(2x);
       {
         border: 0;
         color: $neutral-40;
+
+        &:hover
+        {
+          color: $text-color-primary;
+        }
       }
 
       .ads-dropdown
@@ -81,6 +86,7 @@ $navLinkPadding: space(lg) space(2x);
           padding: space(md) space(lg);
           padding-right: calc(space(lg) + $icon-size-sm + space(md)); // Padding + icon width + space between icon and text
 
+          &[aria-expanded="true"],
           &:hover
           {
             background: transparent;
@@ -152,7 +158,8 @@ $navLinkPadding: space(lg) space(2x);
 
         &.nav-item-search
         {
-          .nav-link::after
+          .nav-link::after,
+          .nav-link[aria-expanded="true"]::after
           {
             content: url("../../../../assets/images/icon-search.svg");
           }
@@ -160,14 +167,14 @@ $navLinkPadding: space(lg) space(2x);
 
         &.nav-item-toggle
         {
-          .nav-link::after
-          {
-            content: url("../../../../assets/images/icon-menu.svg");
-          }
-
-          &.open
+          .nav-link
           {
             &::after
+            {
+              content: url("../../../../assets/images/icon-menu.svg");
+            }
+
+            &[aria-expanded="true"]::after
             {
               content: url("../../../../assets/images/icon-close.svg");
             }
@@ -178,9 +185,12 @@ $navLinkPadding: space(lg) space(2x);
         {
           position: relative;
           padding: space(3x) space(2x);
-          padding-right: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
           border: 0;
-          @include font-size($fs-body-subtle);
+        }
+
+        button.nav-link
+        {
+          padding-right: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
 
           &::after
           {
@@ -192,8 +202,26 @@ $navLinkPadding: space(lg) space(2x);
             height: $icon-size;
           }
 
-          &.open
+          &[aria-expanded="true"]
           {
+            &::after
+            {
+              content: url("../../../../assets/images/icon-chevron-up.svg");
+            }
+          }
+        }
+      }
+
+      .nav-item-root
+      {
+        .nav-link
+        {
+          &.active,
+          &:hover,
+          &[aria-expanded="true"]
+          {
+            text-decoration: none;
+
             &::before
             {
               content: '';
@@ -203,11 +231,11 @@ $navLinkPadding: space(lg) space(2x);
               left: space(2x);
               border-bottom: space(sm) solid $neutral-00;
             }
+          }
 
-            &::after
-            {
-              content: url("../../../../assets/images/icon-chevron-up.svg");
-            }
+          &.active
+          {
+            font-family: $font-family-base-heavy;
           }
         }
       }
@@ -220,6 +248,11 @@ $navLinkPadding: space(lg) space(2x);
   {
     border-bottom: space(xxs) solid $neutral-80;
     //overflow: hidden;
+
+    &:not(.open)
+    {
+      display: none;
+    }
   }
 
   .nav-menu-back
@@ -268,11 +301,16 @@ $navLinkPadding: space(lg) space(2x);
     display: none;
     margin-top: 0;
     width: $panelsWidth;
-    height: 100%;
 
     .nav-menu-panel
     {
       left: 0;
+    }
+
+    &.nav-active-list
+    {
+      background-color: $neutral-100;
+      z-index: 500;
     }
 
     &:not(.nav-active-list)
@@ -382,11 +420,6 @@ $navLinkPadding: space(lg) space(2x);
     padding: $navLinkPadding;
     @include font-size($fs-body-subtle);
     @include link-navigation;
-
-    &:active
-    {
-      font-family: $font-family-base-heavy;
-    }
 
     &.has-description
     {

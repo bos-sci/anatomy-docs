@@ -5,6 +5,7 @@ import { HistoryNode } from './NavPrimary';
 
 interface Props {
   navItem: NavNode;
+  setActiveNode: (node: NavNode) => void;
   depth: number;
   activeDepth: number;
   setActiveDepth: (activeDepth: number) => void;
@@ -46,7 +47,15 @@ const NavPrimaryListParent = (props: Props) => {
           </div>
         }
       </Button>
-      <NavPrimaryList navItems={ props.navItem.children! } depth={props.depth + 1} activeDepth={props.activeDepth} setActiveDepth={props.setActiveDepth} history={props.history} pushHistory={props.pushHistory} popHistory={props.popHistory} />
+      <NavPrimaryList
+        navItems={props.navItem.children!}
+        setActiveNode={props.setActiveNode}
+        depth={props.depth + 1}
+        activeDepth={props.activeDepth}
+        setActiveDepth={props.setActiveDepth}
+        history={props.history}
+        pushHistory={props.pushHistory}
+        popHistory={props.popHistory} />
     </li>
   );
 }

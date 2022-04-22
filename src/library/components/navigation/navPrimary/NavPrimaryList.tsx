@@ -2,9 +2,11 @@ import Link from '../../Link';
 import { NavNode } from './NavPrimary';
 import NavPrimaryListParent from './NavPrimaryListParent';
 import { HistoryNode } from './NavPrimary';
+import NavPrimaryLeaf from './NavPrimaryLeaf';
 
 interface Props {
   navItems: NavNode[];
+  setActiveNode: (node: NavNode) => void;
   depth: number;
   activeDepth: number;
   setActiveDepth: (activeDepth: number) => void;
@@ -37,13 +39,20 @@ const NavPrimaryList = (props: Props) => {
         {props.navItems.map((navItem, i) => {
           if (navItem.children) {
             // Parent Button
-            return <NavPrimaryListParent key={navItem.text + i} navItem={navItem} depth={props.depth} activeDepth={props.activeDepth} setActiveDepth={props.setActiveDepth} history={props.history} pushHistory={props.pushHistory} popHistory={props.popHistory} />;
+            return <NavPrimaryListParent
+              key={navItem.text + i}
+              navItem={navItem}
+              setActiveNode={props.setActiveNode}
+              depth={props.depth}
+              activeDepth={props.activeDepth}
+              setActiveDepth={props.setActiveDepth}
+              history={props.history}
+              pushHistory={props.pushHistory}
+              popHistory={props.popHistory} />;
           } else {
             return (
               // Leaf Node
-              <li key={navItem.text + i} className="nav-item">
-                <Link href={navItem.href} to={navItem.slug} className="nav-link">{navItem.text}</Link>
-              </li>
+              <NavPrimaryLeaf key={navItem.text + i} navItem={navItem} setActiveNode={props.setActiveNode} />
             );
           }
         })}

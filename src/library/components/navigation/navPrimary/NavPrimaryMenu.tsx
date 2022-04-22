@@ -5,6 +5,8 @@ import NavPrimaryList from './NavPrimaryList';
 
 interface Props {
   navItems: NavNode[];
+  setActiveNode: (node: NavNode) => void;
+  isMenuOpen: boolean;
   history: HistoryNode[];
   pushHistory: (navItem: NavNode, depth: number) => void;
   popHistory: () => void;
@@ -15,7 +17,7 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
   const [activeDepth, setActiveDepth] = useState(0);
 
   return (
-    <div ref={ref} className="nav-menu" tabIndex={-1}>
+    <div ref={ref} className={"nav-menu" + (props.isMenuOpen ? ' open' : '')} tabIndex={-1}>
       {props.history.length > 0 &&
         <Button
           type="button"
@@ -26,7 +28,15 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
         </Button>
       }
       <div className="nav-menu-panels">
-        <NavPrimaryList navItems={ props.navItems } depth={0} activeDepth={activeDepth} setActiveDepth={setActiveDepth} history={props.history} pushHistory={props.pushHistory} popHistory={props.popHistory} />
+        <NavPrimaryList
+          navItems={ props.navItems }
+          setActiveNode={props.setActiveNode}
+          depth={0}
+          activeDepth={activeDepth}
+          setActiveDepth={setActiveDepth}
+          history={props.history}
+          pushHistory={props.pushHistory}
+          popHistory={props.popHistory} />
       </div>
     </div>
   );

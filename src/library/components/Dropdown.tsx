@@ -122,7 +122,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
       <Button
         variant={variant}
         icon={icon}
-        className={`ads-dropdown-trigger${isDropdownOpen ? ' open' : ''} ${className}`}
+        className={`ads-dropdown-trigger${className ? ' ' + className : ''}`}
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}

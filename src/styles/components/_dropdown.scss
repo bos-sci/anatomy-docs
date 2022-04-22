@@ -18,14 +18,14 @@ $icon-size: 1em;
     }
 
     &:active,
-    &.open
+    &[aria-expanded="true"]
     {
       color: $neutral-100;
       fill: $neutral-100;
       background-color: $action-primary-20;
     }
 
-    &.open
+    &[aria-expanded="true"]
     {
       &::after{
         content: url("../../assets/images/icon-chevron-up.svg");
