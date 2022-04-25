@@ -85,8 +85,9 @@ const NavPrimary = ({ utilityItems, navItems, hasSearch = true }: Props): JSX.El
   }
 
   const updateMenu = (navItem: NavNode): void => {
+
     if (history.length && history[0].node === navItem) {
-      popHistory();
+      setHistory([]);
       setIsMenuOpen(false);
     } else {
       pushHistory(navItem, 0);
