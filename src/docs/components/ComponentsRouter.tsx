@@ -12,7 +12,7 @@ const ComponentsRouter = (): JSX.Element => {
       <Route exact path={path}>
         {/* TODO: uncomment when accordion is finished */}
         {/* <Redirect to={`${path}/accordion`} /> */}
-        <Redirect to={`${path}/breadcrumbs`} />
+        <Redirect to={`${path}/button`} />
       </Route>
       {/* TODO: figure out proper routing for form-controls */}
       <Route path={`${path}/form-controls/:componentName`} component={Components} />

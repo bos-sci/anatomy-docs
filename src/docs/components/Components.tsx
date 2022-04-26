@@ -60,10 +60,6 @@ const Components = (props: Props): JSX.Element => {
       //   slug: basePath + '/accordion',
       // },
       {
-        text: 'Breadcrumbs',
-        slug: basePath + '/breadcrumbs',
-      },
-      {
         text: 'Button',
         slug: basePath + '/button',
       },
@@ -99,6 +95,10 @@ const Components = (props: Props): JSX.Element => {
       {
         text: 'Navigation',
         children: [
+          {
+            text: 'Breadcrumbs',
+            slug: basePath + '/navigation/breadcrumbs',
+          },
           {
             text: 'Navigation link',
             slug: basePath + '/navigation/navigation-link',
