@@ -99,6 +99,10 @@ const Components = (props: Props): JSX.Element => {
       {
         text: 'Navigation',
         children: [
+          {
+            text: 'Navigation link',
+            slug: basePath + '/navigation/navigation-link',
+          },
           /* TODO: Uncomment once primary nav is complete
           {
             text: 'Primary navigation',
