@@ -576,16 +576,20 @@ $navLinkPadding: space(lg) space(2x);
 
     .nav-menu
     {
+      height: 50vh;
+
       .nav
       {
         padding: space(4x) 0 space(3x);
+        height: 100%;
+        overflow-y: auto;
       }
     }
 
     .nav-menu-panels
     {
       width: $panelsWidth;
-
+      height: 100%;
       @include panelSettings($panelsWidth);
 
       .nav-menu-panel-header
@@ -598,9 +602,17 @@ $navLinkPadding: space(lg) space(2x);
       .nav-menu-panel
       {
         display: block;
+        height: 100%;
+
+        &:not(:first-child)
+        {
+          border-right: space(xxs) solid $neutral-80;
+        }
 
         &.nav-list-history
         {
+          z-index: 1000;
+
           > .nav
           {
             padding: space(4x) 0 space(3x);
