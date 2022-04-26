@@ -11,6 +11,11 @@
   {
     @include link-ghost;
   }
+
+  &-nav
+  {
+    @include link-navigation;
+  }
 }
 
 //
