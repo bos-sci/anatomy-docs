@@ -11,7 +11,7 @@ $panelsWidth: 100vw;
 $numPanels: 4;
 
 // Used in nav-menu nav-links
-$navLinkPadding: space(lg) space(2x);
+$navLinkPadding: space(lg) space(3x);
 
 .nav-header
 {
@@ -594,7 +594,7 @@ $navLinkPadding: space(lg) space(2x);
 
       .nav-menu-panel-header
       {
-        padding: space(4x) space(2x) space(3x) 0;
+        padding: space(4x) space(4x) space(3x);
         border-right: space(xxs) solid $neutral-80;
         border-bottom: 0;
       }
@@ -603,6 +603,11 @@ $navLinkPadding: space(lg) space(2x);
       {
         display: block;
         height: 100%;
+
+        &:first-child
+        {
+          border-left: space(xxs) solid $neutral-80;
+        }
 
         &:not(:first-child)
         {
