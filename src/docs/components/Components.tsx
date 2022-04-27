@@ -60,10 +60,6 @@ const Components = (props: Props): JSX.Element => {
       //   slug: basePath + '/accordion',
       // },
       {
-        text: 'Breadcrumbs',
-        slug: basePath + '/breadcrumbs',
-      },
-      {
         text: 'Button',
         slug: basePath + '/button',
       },
@@ -100,8 +96,8 @@ const Components = (props: Props): JSX.Element => {
         text: 'Navigation',
         children: [
           {
-            text: 'Navigation link',
-            slug: basePath + '/navigation/navigation-link',
+            text: 'Breadcrumbs',
+            slug: basePath + '/navigation/breadcrumbs',
           },
           /* TODO: Uncomment once primary nav is complete
           {
@@ -119,12 +115,16 @@ const Components = (props: Props): JSX.Element => {
           {
             text: 'Wizard navigation',
             slug: basePath + '/navigation/wizard-navigation',
+          },
+          {
+            text: 'Navigation link',
+            slug: basePath + '/navigation/navigation-link',
+          },
+          {
+            text: 'Skip link',
+            slug: basePath + '/navigation/skip-link',
           }
         ]
-      },
-      {
-        text: 'Skip link',
-        slug: basePath + '/skip-link',
       },
       {
         text: 'Tabs',
