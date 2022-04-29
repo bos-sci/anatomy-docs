@@ -114,6 +114,10 @@ $navLinkPadding: space(lg) space(3x);
 
   .nav-bar
   {
+    position: relative;
+    background-color: $neutral-100;
+    z-index: 700;
+
     .nav
     {
       .nav-item
@@ -253,6 +257,26 @@ $navLinkPadding: space(lg) space(3x);
     {
       display: none;
     }
+
+    .nav-item,
+    .nav-item-parent
+    {
+      margin-top: 0;
+    }
+
+    .nav-link
+    {
+      flex-wrap: wrap;
+      border-bottom: space(xxs) solid $neutral-80;
+      padding: $navLinkPadding;
+      @include font-size($fs-body-subtle);
+      @include link-navigation;
+
+      &.has-description
+      {
+        @include font-size($fs-base);
+      }
+    }
   }
 
   .nav-menu-back
@@ -260,10 +284,12 @@ $navLinkPadding: space(lg) space(3x);
     position: relative;
     width: 100%;
     justify-content: flex-start;
-    box-shadow: $box-shadow-secondary;
+    border: 0;
     padding: $navLinkPadding;
     padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
     @include font-size($fs-base);
+    box-shadow: $box-shadow-secondary;
+    z-index: 600;
 
     &:focus
     {
@@ -309,6 +335,7 @@ $navLinkPadding: space(lg) space(3x);
 
     &.nav-active-list
     {
+      border-bottom: space(xxs) solid $neutral-80;
       background-color: $neutral-100;
       z-index: 500;
     }
@@ -332,7 +359,7 @@ $navLinkPadding: space(lg) space(3x);
     {
       display: block;
       margin: 0;
-      padding: space(3x) 0;
+      padding-bottom: space(3x);
     }
 
     &:last-of-type
@@ -361,9 +388,8 @@ $navLinkPadding: space(lg) space(3x);
 
   .nav-item-parent
   {
-    .nav-link
+    > .nav-link
     {
-      border: 0;
       width: 100%;
       text-align: left;
 
@@ -408,28 +434,12 @@ $navLinkPadding: space(lg) space(3x);
     }
   }
 
-  .nav-item,
-  .nav-item-parent
-  {
-    margin-top: 0;
-  }
-
-  .nav-link
-  {
-    flex-wrap: wrap;
-    padding: $navLinkPadding;
-    @include font-size($fs-body-subtle);
-    @include link-navigation;
-
-    &.has-description
-    {
-      @include font-size($fs-base);
-    }
-  }
-
   .nav-link-see-all
   {
     @include link-default;
+    display: block;
+    border-bottom: 0;
+    padding: $navLinkPadding;
   }
 
   .search-panel
@@ -576,13 +586,18 @@ $navLinkPadding: space(lg) space(3x);
 
     .nav-menu
     {
-      height: 50vh;
+      height: 60vh;
 
       .nav
       {
         padding: space(4x) 0 space(3x);
         height: 100%;
         overflow-y: auto;
+      }
+
+      .nav-link
+      {
+        border: 0;
       }
     }
 
@@ -602,6 +617,7 @@ $navLinkPadding: space(lg) space(3x);
       .nav-menu-panel
       {
         display: block;
+        border-bottom: 0;
         height: 100%;
 
         &:first-child

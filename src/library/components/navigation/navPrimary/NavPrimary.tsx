@@ -152,7 +152,6 @@ const NavPrimary = ({ utilityItems, navItems, hasSearch = true }: Props): JSX.El
 
   const manageFocus = (e: ReactFocusEvent) => {
     if (e.target.getAttribute('aria-expanded') === 'true') {
-      console.log(menuRef.current);
       menuRef.current?.focus();
     }
   }
@@ -199,7 +198,7 @@ const NavPrimary = ({ utilityItems, navItems, hasSearch = true }: Props): JSX.El
                   aria-expanded={isSearchOpen}
                   onClick={toggleSearch}>
                   <span className="nav-link-search-text">
-                    Search {activeNode?.text}
+                    Search
                   </span>
                 </Button>
               </li>

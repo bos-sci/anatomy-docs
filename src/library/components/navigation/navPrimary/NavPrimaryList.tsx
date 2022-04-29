@@ -60,7 +60,7 @@ const NavPrimaryList = (props: Props) => {
         {/* Bottom Link */}
         {parent?.altLinkText && props.depth !== 1  &&
           <li key={parent.altLinkText + props.depth} className="nav-item">
-            <Link href={parent.altHref} to={parent.altTo} className="nav-link nav-link-see-all">{parent.altLinkText}</Link>
+            <Link href={parent.altHref} to={parent.altTo} className="nav-link-see-all">{parent.altLinkText}</Link>
           </li>
         }
       </ul>
