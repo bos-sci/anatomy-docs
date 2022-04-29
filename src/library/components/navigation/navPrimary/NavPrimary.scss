@@ -330,7 +330,6 @@ $navLinkPadding: space(lg) space(3x);
     {
       border-bottom: space(xxs) solid $neutral-80;
       background-color: $neutral-100;
-      z-index: 500;
     }
 
     &:not(.nav-active-list)
@@ -631,7 +630,7 @@ $navLinkPadding: space(lg) space(3x);
 
         &.nav-list-history
         {
-          z-index: 1000;
+          z-index: 500;
 
           > .nav
           {
