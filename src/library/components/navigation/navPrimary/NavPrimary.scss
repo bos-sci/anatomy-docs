@@ -39,8 +39,8 @@ $navLinkPadding: space(lg) space(3x);
 
   .nav-link
   {
-    @include link-navigation;
     @include font-size($fs-body-subtle);
+    @include link-navigation;
 
     &:focus
     {
@@ -250,8 +250,8 @@ $navLinkPadding: space(lg) space(3x);
 
   .nav-menu
   {
+    @include font-size($fs-body-subtle);
     border-bottom: space(xxs) solid $neutral-80;
-    //overflow: hidden;
 
     &:not(.open)
     {
@@ -269,13 +269,7 @@ $navLinkPadding: space(lg) space(3x);
       flex-wrap: wrap;
       border-bottom: space(xxs) solid $neutral-80;
       padding: $navLinkPadding;
-      @include font-size($fs-body-subtle);
       @include link-navigation;
-
-      &.has-description
-      {
-        @include font-size($fs-base);
-      }
     }
   }
 
@@ -304,7 +298,6 @@ $navLinkPadding: space(lg) space(3x);
       left: space(2x);
       width: $icon-size;
       height: $icon-size;
-      @include font-size($fs-body-subtle);
     }
   }
 
@@ -405,6 +398,14 @@ $navLinkPadding: space(lg) space(3x);
         background: $neutral-95;
       }
 
+      &.has-description
+      {
+        .nav-link-text
+        {
+          @include font-size($fs-base);
+        }
+      }
+
       .nav-link-text
       {
         position: relative;
@@ -418,14 +419,12 @@ $navLinkPadding: space(lg) space(3x);
           right: 0;
           width: $icon-size;
           height: $icon-size;
-          @include font-size($fs-body-subtle);
         }
       }
 
       .nav-link-description
       {
         margin-top: space(md);
-        @include font-size($fs-body-subtle);
         font-family: $font-family-base-regular;
         color: $neutral-40;
         width: 100%;
