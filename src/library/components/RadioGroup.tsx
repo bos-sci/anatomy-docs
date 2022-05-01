@@ -57,7 +57,7 @@ const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAtt
     setHelpTextId('radioGroupHelpText' + idNum);
     setErrorTextId('radioGroupErrorText' + idNum);
   }, []);
-  
+
   return (
     <fieldset className="ads-fieldset" aria-describedby={helpTextId ? helpTextId : ''} {...fieldsetAttrs} >
       <legend className="ads-legend">{ legend }</legend>

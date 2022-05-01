@@ -12,7 +12,7 @@ const WithHelpError = (): JSX.Element => {
     setSelectedRadio(e.target.value);
     setErrorText(e.target.value === 'groupHelpError1' ? error : '');
   }
-  
+
   return (
     <Example>
       <div className="ads-form-control">
