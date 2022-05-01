@@ -11,7 +11,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 let inputId = 0;
 
-const InputText = forwardRef(({ label, helpText, errorText, requiredText = 'required', forceValidation, onInvalid, onBlur, onChange, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
+const InputText = forwardRef(({ label, helpText, errorText, requiredText = 'required', forceValidation = true, onInvalid, onBlur, onChange, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
 
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
@@ -52,6 +52,10 @@ const InputText = forwardRef(({ label, helpText, errorText, requiredText = 'requ
     }
   }
 
+  useEffect(() => {
+    inputEl?.current?.setCustomValidity(errorText ? errorText : "");
+  }, [inputEl, errorText]);
+
   // Sets input to dirty
   useEffect(() => {
     if (forceValidation && !isDirty) {
@@ -69,10 +73,6 @@ const InputText = forwardRef(({ label, helpText, errorText, requiredText = 'requ
       validate();
     }
   }, [forceValidation, validate]);
-
-  useEffect(() => {
-    inputEl?.current?.setCustomValidity(errorText ? errorText : '');
-  }, [inputEl, errorText]);
 
   // On component mount
   useEffect(() => {
