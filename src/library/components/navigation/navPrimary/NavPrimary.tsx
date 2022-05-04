@@ -6,7 +6,6 @@
 
 import { FocusEvent as ReactFocusEvent, useEffect, useRef, useState } from 'react';
 import SkipLink from '../../SkipLink';
-import logo from "../../../../assets/images/logo-bsc.svg";
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
@@ -14,6 +13,7 @@ import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { NavLink } from 'react-router-dom';
 import IconClose from '../../icon/icons/IconClose';
+import Link from '../../Link';
 
 interface NavItem {
   text: string;
@@ -28,6 +28,7 @@ interface NavItemPrimaryBase extends NavItem {
   altTo?: string;
   altHref?: string;
   altLinkText?: string;
+  isExactMatch?: boolean;
 }
 
 export type NavItemPrimary = RequireOnlyOne<NavItemPrimaryBase, 'slug' | 'href' | 'children'>;
@@ -48,6 +49,13 @@ export interface HistoryNode {
 }
 
 interface Props {
+  logo: {
+    src: string;
+    alt: string;
+    href?: string;
+    to?: string;
+    ariaLabel: string;
+  };
   navItems: NavItemPrimary[];
   activeSlug?: string;
   utilityItems?: NavItemUtility[];
@@ -55,7 +63,7 @@ interface Props {
   hasSearch?: boolean;
 }
 
-const NavPrimary = ({ utilityItems, footerItems, navItems, hasSearch = true }: Props): JSX.Element => {
+const NavPrimary = ({ logo, utilityItems, footerItems, navItems, hasSearch = true }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -165,9 +173,9 @@ const NavPrimary = ({ utilityItems, footerItems, navItems, hasSearch = true }: P
         <div className="nav-bar">
           <ul className="nav">
             <li className="nav-item nav-item-logo">
-              <a href="/" className="nav-link-logo" aria-label="Anatomy home page">
-                <img src={logo} alt="Anatomy logo" />
-              </a>
+              <Link to={logo.to} href={logo.href} className="nav-link-logo" aria-label={logo.ariaLabel}>
+                <img src={logo.src} alt={logo.alt} />
+              </Link>
             </li>
             {navTree.map((navItem, i) => (
               <li key={navItem.text + i} className="nav-item nav-item-root">
@@ -183,12 +191,9 @@ const NavPrimary = ({ utilityItems, footerItems, navItems, hasSearch = true }: P
                     {navItem.text}
                   </Button>
                 }
-                {navItem.slug &&
-                  <NavLink to={navItem.slug} className="nav-link">{navItem.text}</NavLink>
-                }
-                {navItem.href &&
-                  <a href={navItem.href} className="nav-link">{navItem.text}</a>
-                }
+                  {(navItem.slug || navItem.href) &&
+                    <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="nav-link">{navItem.text}</NavLink>
+                  }
               </li>
             ))}
             {hasSearch &&

@@ -1,16 +1,18 @@
 import { ReactNode } from 'react';
 import SkipLink from '../../../library/components/SkipLink';
-import logo from "../../../assets/images/logo-bsc.svg";
-import NavPrimary from '../../../library/components/navigation/navPrimary/NavPrimary';
+import logoADS from "../../../assets/images/logo-anatomy.svg";
+import logoBSC from "../../../assets/images/logo-bsc.svg";
+import NavPrimary, { NavItemPrimary } from '../../../library/components/navigation/navPrimary/NavPrimary';
 
 interface Props {
   children: ReactNode;
 }
 
-const navItems = [
+const navItems: NavItemPrimary[] = [
   {
     text: 'Home',
-    slug: '/'
+    slug: '/',
+    isExactMatch: true
   },
   {
     text: 'Content',
@@ -34,13 +36,20 @@ const navItems = [
   }
 ];
 
+const logo = {
+  src: logoADS,
+  alt: 'Anatomy design system logo',
+  to: '',
+  ariaLabel: 'Anatomy design system home'
+};
+
 const Layout = (props: Props): JSX.Element => {
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>
-    <NavPrimary navItems={navItems} hasSearch={false} />
+    <NavPrimary logo={logo} navItems={navItems} hasSearch={false} />
     { props.children }
     <footer className="app-footer">
-      <img src={logo} className="footer-logo" alt="Boston Scientific"/>
+      <img src={logoBSC} className="footer-logo" alt="Boston Scientific"/>
     </footer>
   </>;
 }

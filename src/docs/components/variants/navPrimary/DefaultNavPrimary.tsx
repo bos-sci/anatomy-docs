@@ -1,6 +1,7 @@
 import NavPrimary from '../../../../library/components/navigation/navPrimary/NavPrimary';
 import useTitle from '../../../shared/hooks/useTitle';
 
+import logoBSC from '../../../../assets/images/logo-bsc.svg';
 import navPrimaryData from './navPrimaryData';
 
 const utilityItems = [
@@ -37,10 +38,17 @@ const footerItems = [
   }
 ];
 
+const logo = {
+  src: logoBSC,
+  alt: 'Boston scientific logo',
+  to: '/',
+  ariaLabel: 'Boston scientific home'
+}
+
 const DefaultNavPrimary = (): JSX.Element => {
   useTitle({titlePrefix: `Example Primary Navigation - Components`});
   return (
-    <NavPrimary navItems={navPrimaryData} utilityItems={utilityItems} footerItems={footerItems} />
+    <NavPrimary logo={logo} navItems={navPrimaryData} utilityItems={utilityItems} footerItems={footerItems} />
   );
 }
 
