@@ -155,6 +155,7 @@ const NavPrimary = ({ logo, utilityItems, footerItems, navItems, hasSearch = tru
   const toggleSearch = () => {
     if (!isSearchOpen && isMenuOpen) {
       setIsMenuOpen(false);
+      setHistory([]);
     }
     setIsSearchOpen(!isSearchOpen);
   }
