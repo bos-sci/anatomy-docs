@@ -1,10 +1,14 @@
 import { ForwardedRef, forwardRef, useState } from 'react';
 import Button from '../../Button';
-import { HistoryNode, NavNode } from './NavPrimary';
+import Dropdown from '../../Dropdown';
+import Link from '../../Link';
+import { HistoryNode, NavItemUtility, NavNode } from './NavPrimary';
 import NavPrimaryList from './NavPrimaryList';
 
 interface Props {
   navItems: NavNode[];
+  utilityItems?: NavItemUtility[];
+  footerItems?: NavItemUtility[];
   setActiveNode: (node: NavNode) => void;
   isMenuOpen: boolean;
   history: HistoryNode[];
@@ -38,6 +42,30 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
           pushHistory={props.pushHistory}
           popHistory={props.popHistory} />
       </div>
+      {(props.history.length === 0 && props.utilityItems) &&
+        <ul className="nav nav-block">
+          {props.utilityItems.map((item, i) => (
+            <li key={'utilityItem' + i} className="nav-item">
+              <Link to={item.slug} href={item.href} className="nav-link">{item.text}</Link>
+            </li>
+          ))}
+          <li className="nav-item">
+            <Dropdown triggerText="Region selector" className="nav-link">
+              <Button type="button">Button item</Button>
+              <Link href="#">Link item</Link>
+            </Dropdown>
+          </li>
+        </ul>
+      }
+      {(props.history.length === 0 && props.footerItems) &&
+        <ul className="nav nav-block">
+          {props.footerItems.map((item, i) => (
+            <li key={'footerItem' + i} className="nav-item">
+              <Link to={item.slug} href={item.href} className="nav-link">{item.text}</Link>
+            </li>
+          ))}
+        </ul>
+      }
     </div>
   );
 });

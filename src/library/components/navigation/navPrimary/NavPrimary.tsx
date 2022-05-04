@@ -6,7 +6,7 @@
 
 import { FocusEvent as ReactFocusEvent, useEffect, useRef, useState } from 'react';
 import SkipLink from '../../SkipLink';
-import logo from "../../../../assets/images/logo-anatomy.svg";
+import logo from "../../../../assets/images/logo-bsc.svg";
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
@@ -51,10 +51,11 @@ interface Props {
   navItems: NavItemPrimary[];
   activeSlug?: string;
   utilityItems?: NavItemUtility[];
+  footerItems?: NavItemUtility[];
   hasSearch?: boolean;
 }
 
-const NavPrimary = ({ utilityItems, navItems, hasSearch = true }: Props): JSX.Element => {
+const NavPrimary = ({ utilityItems, footerItems, navItems, hasSearch = true }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -234,7 +235,7 @@ const NavPrimary = ({ utilityItems, navItems, hasSearch = true }: Props): JSX.El
                   </button>
                 }
               </div>
-              <Button variant="assertive">Search</Button>
+              <Button variant="assertive" disabled={!searchValue}>Search</Button>
             </form>
           </div>
         }
@@ -242,6 +243,8 @@ const NavPrimary = ({ utilityItems, navItems, hasSearch = true }: Props): JSX.El
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
+            utilityItems={utilityItems}
+            footerItems={footerItems}
             setActiveNode={setActiveNode}
             isMenuOpen={isMenuOpen}
             history={history}

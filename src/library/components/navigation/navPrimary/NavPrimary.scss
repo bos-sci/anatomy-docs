@@ -79,7 +79,6 @@ $navLinkPadding: space(lg) space(3x);
 
       .ads-dropdown
       {
-
         .ads-dropdown-trigger
         {
           position: relative;
@@ -216,31 +215,28 @@ $navLinkPadding: space(lg) space(3x);
         }
       }
 
-      .nav-item-root
+      .nav-link
       {
-        .nav-link
+        &.active,
+        &:hover,
+        &[aria-expanded="true"]
         {
-          &.active,
-          &:hover,
-          &[aria-expanded="true"]
-          {
-            text-decoration: none;
+          text-decoration: none;
 
-            &::before
-            {
-              content: '';
-              position: absolute;
-              right: space(2x);
-              bottom: 0;
-              left: space(2x);
-              border-bottom: space(sm) solid $neutral-00;
-            }
-          }
-
-          &.active
+          &::before
           {
-            font-family: $font-family-base-heavy;
+            content: '';
+            position: absolute;
+            right: space(2x);
+            bottom: 0;
+            left: space(2x);
+            border-bottom: space(sm) solid $neutral-00;
           }
+        }
+
+        &.active
+        {
+          font-family: $font-family-base-heavy;
         }
       }
     }
@@ -250,8 +246,11 @@ $navLinkPadding: space(lg) space(3x);
 
   .nav-menu
   {
-    @include font-size($fs-body-subtle);
+    position: absolute;
     border-bottom: space(xxs) solid $neutral-80;
+    width: 100%;
+    @include font-size($fs-body-subtle);
+    background-color: $neutral-100;
 
     &:not(.open)
     {
@@ -262,6 +261,14 @@ $navLinkPadding: space(lg) space(3x);
     .nav-item-parent
     {
       margin-top: 0;
+
+      &:last-of-type
+      {
+        .nav-link
+        {
+          border-bottom: 0;
+        }
+      }
     }
 
     .nav-link
@@ -315,8 +322,6 @@ $navLinkPadding: space(lg) space(3x);
 
   .nav-menu-panel
   {
-    position: absolute;
-    top: 0;
     display: none;
     margin-top: 0;
     width: $panelsWidth;
@@ -326,11 +331,6 @@ $navLinkPadding: space(lg) space(3x);
       left: 0;
     }
 
-    &.nav-active-list
-    {
-      border-bottom: space(xxs) solid $neutral-80;
-      background-color: $neutral-100;
-    }
 
     &:not(.nav-active-list)
     {
@@ -351,7 +351,6 @@ $navLinkPadding: space(lg) space(3x);
     {
       display: block;
       margin: 0;
-      padding-bottom: space(3x);
     }
 
     &:last-of-type
@@ -438,6 +437,35 @@ $navLinkPadding: space(lg) space(3x);
     display: block;
     border-bottom: 0;
     padding: $navLinkPadding;
+  }
+
+  .nav-block
+  {
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start;
+    border-top: space(xxs) solid $neutral-80;
+
+    .nav-link
+    {
+      border: 0;
+      @include font-size($fs-base);
+    }
+
+    .ads-dropdown-trigger
+    {
+      &[aria-expanded="true"],
+      &:hover
+      {
+        background: transparent;
+        color: $text-color-primary;
+      }
+
+      &::after
+      {
+        display: none;
+      }
+    }
   }
 
   .search-panel
@@ -563,9 +591,25 @@ $navLinkPadding: space(lg) space(3x);
             .nav-link
             {
               box-sizing: content-box;
-              padding-left: space(2x);
-              width: $icon-size-lg;
-              height: $icon-size-lg;
+              padding: space(2x);
+              width: $icon-size;
+              height: $icon-size;
+              background-image: url("../../../../assets/images/icon-search.svg");
+              background-position: center;
+              background-size: $icon-size;
+              background-repeat: no-repeat;
+
+              &::after,
+              &::before
+              {
+                display: none;
+              }
+
+              &:hover,
+              &:focus
+              {
+                background-color: $action-primary-95;
+              }
             }
 
             .nav-link-search-text
@@ -614,6 +658,8 @@ $navLinkPadding: space(lg) space(3x);
 
       .nav-menu-panel
       {
+        position: absolute;
+        top: 0;
         display: block;
         border-bottom: 0;
         height: 100%;
@@ -656,6 +702,11 @@ $navLinkPadding: space(lg) space(3x);
           }
         }
       }
+    }
+
+    .nav-utilities
+    {
+      display: none;
     }
   }
 

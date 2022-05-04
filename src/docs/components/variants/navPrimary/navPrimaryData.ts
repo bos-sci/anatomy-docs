@@ -11,6 +11,7 @@ const exampleData: NavItemPrimary[] = [
     children: [
       {
         text: 'Medical specialties',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all treatments',
         altTo: basePath + '/some-path',
         children: [
@@ -104,7 +105,7 @@ const exampleData: NavItemPrimary[] = [
   // PTC
   {
     text: 'For patients & caregivers',
-    description: `Find the information you need, whether you've been diagnosed with a health condition, have an implated device, or need support.`,
+    description: `Find the information you need, whether you've been diagnosed with a health condition, have an implanted device, or need support.`,
     altTo: '#demo',
     altLinkText: 'All patients & caregivers information',
     children: [

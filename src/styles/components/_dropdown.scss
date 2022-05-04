@@ -55,6 +55,7 @@ $icon-size: 1em;
       border: 0;
       padding: space(lg) space(2x);
       font-family: $font-family-base-regular;
+      @include font-size($fs-base);
       color: $text-color-primary;
       text-decoration: none;
 
