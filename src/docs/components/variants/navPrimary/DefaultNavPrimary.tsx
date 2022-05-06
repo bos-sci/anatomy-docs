@@ -16,6 +16,19 @@ const utilityItems = [
   {
     text: 'Investors',
     slug: '/'
+  },
+  {
+    text: 'Region Selector',
+    children: [
+      {
+        text: 'USA',
+        slug: '/'
+      },
+      {
+        text: 'FRA',
+        slug: '/'
+      },
+    ]
   }
 ];
 

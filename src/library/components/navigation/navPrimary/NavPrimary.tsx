@@ -31,9 +31,13 @@ interface NavItemPrimaryBase extends NavItem {
   isExactMatch?: boolean;
 }
 
+interface NavItemUtilityBase extends NavItem {
+  children?: NavItemUtility[];
+}
+
 export type NavItemPrimary = RequireOnlyOne<NavItemPrimaryBase, 'slug' | 'href' | 'children'>;
 
-export type NavItemUtility = RequireOnlyOne<NavItem, 'slug' | 'href'>;
+export type NavItemUtility = RequireOnlyOne<NavItemUtilityBase, 'slug' | 'href' | 'children'>;
 
 interface NavTreeNode extends NavItemPrimaryBase {
   parent: NavNode | null;
@@ -56,6 +60,16 @@ interface Props {
     to?: string;
     ariaLabel: string;
   };
+  texts?: {
+    menuToggleAriaLabel?: string;
+    menuToggleText?: string;
+    searchToggleAriaLabel?: string;
+    searchToggleText?: string;
+    searchButtonText?: string;
+    searchButtonAriaLabel?: string;
+    utilityNavAriaLabel?: string;
+    primaryNavAriaLabel?: string;
+  }
   navItems: NavItemPrimary[];
   activeSlug?: string;
   utilityItems?: NavItemUtility[];
@@ -63,7 +77,7 @@ interface Props {
   hasSearch?: boolean;
 }
 
-const NavPrimary = ({ logo, utilityItems, footerItems, navItems, hasSearch = true }: Props): JSX.Element => {
+const NavPrimary = ({ logo, texts, utilityItems, footerItems, navItems, hasSearch = true }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -169,8 +183,8 @@ const NavPrimary = ({ logo, utilityItems, footerItems, navItems, hasSearch = tru
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>
     <header className="nav-header" ref={navRef}>
-      {utilityItems && <NavUtility utilityItems={utilityItems} />}
-      <nav className="nav-primary" aria-label="primary">
+      {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
+      <nav className="nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="nav-bar">
           <ul className="nav">
             <li className="nav-item nav-item-logo">
@@ -202,10 +216,11 @@ const NavPrimary = ({ logo, utilityItems, footerItems, navItems, hasSearch = tru
                 <Button
                   variant="subtle"
                   className="nav-link"
+                  aria-label={texts?.searchToggleAriaLabel || 'Toggle search'}
                   aria-expanded={isSearchOpen}
                   onClick={toggleSearch}>
                   <span className="nav-link-search-text">
-                    Search
+                    {texts?.searchToggleText || 'Search'}
                   </span>
                 </Button>
               </li>
@@ -214,9 +229,10 @@ const NavPrimary = ({ logo, utilityItems, footerItems, navItems, hasSearch = tru
               <Button
                 variant="subtle"
                 className="nav-link"
+                aria-label={texts?.menuToggleAriaLabel || 'Toggle menu'}
                 aria-expanded={isMenuOpen}
                 onClick={toggleMenu}>
-                Menu
+                {texts?.menuToggleText || 'Menu'}
               </Button>
             </li>
           </ul>
@@ -241,7 +257,9 @@ const NavPrimary = ({ logo, utilityItems, footerItems, navItems, hasSearch = tru
                   </button>
                 }
               </div>
-              <Button variant="assertive" disabled={!searchValue}>Search</Button>
+              <Button variant="assertive" disabled={!searchValue} aria-label={texts?.searchButtonAriaLabel || 'Search'}>
+                {texts?.searchButtonText || 'Search'}
+              </Button>
             </form>
           </div>
         }

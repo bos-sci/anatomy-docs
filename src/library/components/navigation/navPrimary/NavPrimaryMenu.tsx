@@ -45,16 +45,18 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
       {(props.history.length === 0 && props.utilityItems) &&
         <ul className="nav nav-block">
           {props.utilityItems.map((item, i) => (
+            // TODO: Should this be a select instead of a dropdown?
             <li key={'utilityItem' + i} className="nav-item">
-              <Link to={item.slug} href={item.href} className="nav-link">{item.text}</Link>
+              {item.children ?
+                <Dropdown key={'utilityItem' + item.text + i} triggerText={item.text} className="nav-link">
+                  {item.children.map((child, childI) => (
+                    <Link key={child.text + childI} href={child.href} to={child.slug}>{child.text}</Link>
+                  ))}
+                </Dropdown>
+                : <Link to={item.slug} href={item.href} className="nav-link">{item.text}</Link>
+              }
             </li>
           ))}
-          <li className="nav-item">
-            <Dropdown triggerText="Region selector" className="nav-link">
-              <Button type="button">Button item</Button>
-              <Link href="#">Link item</Link>
-            </Dropdown>
-          </li>
         </ul>
       }
       {(props.history.length === 0 && props.footerItems) &&
