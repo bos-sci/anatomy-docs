@@ -12,12 +12,12 @@
   .ads-nav-wizard-header
   {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr;
     grid-template-areas:
-      'back breadcrumb .'
-      'title title title'
-      'description description description';
-    text-align: center;
+      'back'
+      'breadcrumb'
+      'title'
+      'description';
   }
 
   .ads-nav-back
@@ -30,7 +30,7 @@
   .ads-nav-breadcrumb
   {
     grid-area: breadcrumb;
-    margin-top: 0;
+    margin-top: space(4x);
     @include font-size($fs-body-subtle);
   }
 
@@ -55,7 +55,7 @@
   .ads-nav-wizard-menu
   {
     margin-top: space(4x);
-    border-top: space(xxs) solid $border-color-subtle;
+    border-top: space(xs) solid $border-color-subtle;
     padding-top: space(4x);
   }
 
@@ -112,13 +112,13 @@
         color: $action-primary-40;
       }
 
-      &:hover
+      &:hover,
+      &:active
       {
         text-decoration: none;
 
         & > .ads-nav-link-text
         {
-          border: space(xxs) solid transparent;
           border-right: 0;
         }
 
@@ -128,31 +128,7 @@
           background-color: $action-primary-40;
         }
       }
-
-      &:active
-      {
-        font-family: $font-family-base-heavy;
-      }
     }
-  }
-
-  .ads-nav-item
-  {
-    .ads-nav-link
-    {
-      &:hover
-      {
-        border: space(xxs) solid transparent;
-      }
-    }
-  }
-
-  .ads-nav-item-overflow
-  {
-    grid-column-start: 1;
-    grid-column-end: span 3;
-    justify-self: end;
-    align-self: end;
   }
 
   .ads-nav-link
@@ -168,15 +144,15 @@
     text-align: left;
     @include link-navigation;
 
-    &:hover
+    &:hover,
+    &:active
     {
-      border: 0;
-      box-shadow: $box-shadow-tertiary;
+      border: space(xxs) solid $action-primary-40;
     }
 
     &:focus
     {
-      @include focus-default-inset;
+      @include focus-default;
     }
   }
 
@@ -198,6 +174,22 @@
 {
   .ads-nav-wizard
   {
+    .ads-nav-wizard-header
+    {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      grid-template-areas:
+        'back breadcrumb .'
+        'title title title'
+        'description description description';
+      text-align: center;
+    }
+
+    .ads-nav-breadcrumb
+    {
+      margin-top: 0;
+    }
+
     .ads-nav-wizard-menu
     {
       border-top: 0;
@@ -225,6 +217,14 @@
           margin: auto;
         }
       }
+    }
+
+    .ads-nav-item-overflow
+    {
+      grid-column-start: 1;
+      grid-column-end: span 3;
+      justify-self: end;
+      align-self: end;
     }
   }
 }

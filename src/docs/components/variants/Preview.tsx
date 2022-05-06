@@ -55,6 +55,11 @@ const Preview = ( props: Props ): JSX.Element => {
         setRenderedComponent(<LinkVariants variantId={variantId} />);
         break;
 
+      case 'navigation-link':
+        const DefaultNavLink = lazy(() => import('./navLink/DefaultNavLink'));
+        setRenderedComponent(<DefaultNavLink />);
+        break;
+
       case 'primary-navigation':
         setRenderedComponent(<Link className="demo-link" to="/components/navigation/primary-navigation/example" target="_blank">See example</Link>);
         break;
