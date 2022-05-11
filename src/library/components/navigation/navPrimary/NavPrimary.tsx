@@ -73,11 +73,10 @@ interface Props {
   navItems: NavItemPrimary[];
   activeSlug?: string;
   utilityItems?: NavItemUtility[];
-  footerItems?: NavItemUtility[];
   hasSearch?: boolean;
 }
 
-const NavPrimary = ({ logo, texts, utilityItems, footerItems, navItems, hasSearch = true }: Props): JSX.Element => {
+const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -268,7 +267,6 @@ const NavPrimary = ({ logo, texts, utilityItems, footerItems, navItems, hasSearc
             ref={menuRef}
             navItems={navTree}
             utilityItems={utilityItems}
-            footerItems={footerItems}
             setActiveNode={setActiveNode}
             isMenuOpen={isMenuOpen}
             history={history}

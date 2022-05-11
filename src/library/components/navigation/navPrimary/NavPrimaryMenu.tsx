@@ -8,7 +8,6 @@ import NavPrimaryList from './NavPrimaryList';
 interface Props {
   navItems: NavNode[];
   utilityItems?: NavItemUtility[];
-  footerItems?: NavItemUtility[];
   setActiveNode: (node: NavNode) => void;
   isMenuOpen: boolean;
   history: HistoryNode[];
@@ -55,15 +54,6 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
                 </Dropdown>
                 : <Link to={item.slug} href={item.href} className="nav-link">{item.text}</Link>
               }
-            </li>
-          ))}
-        </ul>
-      }
-      {(props.history.length === 0 && props.footerItems) &&
-        <ul className="nav nav-block">
-          {props.footerItems.map((item, i) => (
-            <li key={'footerItem' + i} className="nav-item">
-              <Link to={item.slug} href={item.href} className="nav-link">{item.text}</Link>
             </li>
           ))}
         </ul>
