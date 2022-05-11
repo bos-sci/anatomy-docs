@@ -32,25 +32,6 @@ const utilityItems = [
   }
 ];
 
-const footerItems = [
-  {
-    text: 'Privacy policy',
-    slug: '/'
-  },
-  {
-    text: 'Terms of use',
-    slug: '/'
-  },
-  {
-    text: 'Copyright notice',
-    slug: '/'
-  },
-  {
-    text: 'Social media guidelines',
-    slug: '/'
-  }
-];
-
 const logo = {
   src: logoBSC,
   alt: 'Boston scientific logo',
@@ -61,7 +42,7 @@ const logo = {
 const DefaultNavPrimary = (): JSX.Element => {
   useTitle({titlePrefix: `Example Primary Navigation - Components`});
   return (
-    <NavPrimary logo={logo} navItems={navPrimaryData} utilityItems={utilityItems} footerItems={footerItems} />
+    <NavPrimary logo={logo} navItems={navPrimaryData} utilityItems={utilityItems} />
   );
 }
 
