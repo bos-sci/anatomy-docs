@@ -6,7 +6,6 @@
 
 import { FocusEvent as ReactFocusEvent, useEffect, useRef, useState } from 'react';
 import SkipLink from '../../SkipLink';
-import logo from "../../../../assets/images/logo-anatomy.svg";
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
@@ -14,6 +13,7 @@ import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { NavLink } from 'react-router-dom';
 import IconClose from '../../icon/icons/IconClose';
+import Link from '../../Link';
 
 interface NavItem {
   text: string;
@@ -28,11 +28,16 @@ interface NavItemPrimaryBase extends NavItem {
   altTo?: string;
   altHref?: string;
   altLinkText?: string;
+  isExactMatch?: boolean;
+}
+
+interface NavItemUtilityBase extends NavItem {
+  children?: NavItemUtility[];
 }
 
 export type NavItemPrimary = RequireOnlyOne<NavItemPrimaryBase, 'slug' | 'href' | 'children'>;
 
-export type NavItemUtility = RequireOnlyOne<NavItem, 'slug' | 'href'>;
+export type NavItemUtility = RequireOnlyOne<NavItemUtilityBase, 'slug' | 'href' | 'children'>;
 
 interface NavTreeNode extends NavItemPrimaryBase {
   parent: NavNode | null;
@@ -48,18 +53,37 @@ export interface HistoryNode {
 }
 
 interface Props {
+  logo: {
+    src: string;
+    alt: string;
+    href?: string;
+    to?: string;
+    ariaLabel: string;
+  };
+  texts?: {
+    menuToggleAriaLabel?: string;
+    menuToggleText?: string;
+    searchToggleAriaLabel?: string;
+    searchToggleText?: string;
+    searchButtonText?: string;
+    searchButtonAriaLabel?: string;
+    utilityNavAriaLabel?: string;
+    primaryNavAriaLabel?: string;
+  }
   navItems: NavItemPrimary[];
   activeSlug?: string;
   utilityItems?: NavItemUtility[];
+  hasSearch?: boolean;
 }
 
-const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
+const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [history, setHistory] = useState<HistoryNode[]>([]);
+  const [activeNode, setActiveNode] = useState<NavNode | null>(null);
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -83,14 +107,23 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
   }
 
   const updateMenu = (navItem: NavNode): void => {
+
     if (history.length && history[0].node === navItem) {
-      popHistory();
+      setHistory([]);
       setIsMenuOpen(false);
     } else {
       pushHistory(navItem, 0);
       setIsMenuOpen(true);
       setIsSearchOpen(false);
     }
+  }
+
+  const getActiveRoot = (): NavNode | null => {
+    let node = activeNode;
+    while (node?.parent) {
+      node = node.parent;
+    }
+    return node;
   }
 
   useEffect(() => {
@@ -135,29 +168,28 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
   const toggleSearch = () => {
     if (!isSearchOpen && isMenuOpen) {
       setIsMenuOpen(false);
+      setHistory([]);
     }
     setIsSearchOpen(!isSearchOpen);
   }
 
   const manageFocus = (e: ReactFocusEvent) => {
     if (e.target.getAttribute('aria-expanded') === 'true') {
-      console.log(menuRef.current);
       menuRef.current?.focus();
     }
   }
 
-
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>
     <header className="nav-header" ref={navRef}>
-      {utilityItems && <NavUtility utilityItems={utilityItems} />}
-      <nav className="nav-primary" aria-label="primary">
+      {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
+      <nav className="nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="nav-bar">
           <ul className="nav">
             <li className="nav-item nav-item-logo">
-              <a href="/" className="nav-link-logo" aria-label="Anatomy home page">
-                <img src={logo} alt="Anatomy logo" />
-              </a>
+              <Link to={logo.to} href={logo.href} className="nav-link-logo" aria-label={logo.ariaLabel}>
+                <img src={logo.src} alt={logo.alt} />
+              </Link>
             </li>
             {navTree.map((navItem, i) => (
               <li key={navItem.text + i} className="nav-item nav-item-root">
@@ -166,39 +198,40 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className={'nav-link' + (history[0] && navItem === history[0].node ? ' open' : '')}
+                    className={"nav-link" + (navItem === getActiveRoot() ? ' active' : '')}
                     aria-expanded={history[0] && navItem === history[0].node}
                     onClick={() => updateMenu(navItem)}
                     onBlur={manageFocus}>
                     {navItem.text}
                   </Button>
                 }
-                {navItem.slug &&
-                  <NavLink to={navItem.slug} className="nav-link">{navItem.text}</NavLink>
-                }
-                {navItem.href &&
-                  <a href={navItem.href} className="nav-link">{navItem.text}</a>
-                }
+                  {(navItem.slug || navItem.href) &&
+                    <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="nav-link">{navItem.text}</NavLink>
+                  }
               </li>
             ))}
-            <li className="nav-item nav-item-search">
-              <Button
-                variant="subtle"
-                className="nav-link"
-                aria-expanded={isSearchOpen}
-                onClick={toggleSearch}>
-                <span className="nav-link-search-text">
-                  Search
-                </span>
-              </Button>
-            </li>
+            {hasSearch &&
+              <li className="nav-item nav-item-search">
+                <Button
+                  variant="subtle"
+                  className="nav-link"
+                  aria-label={texts?.searchToggleAriaLabel || 'Toggle search'}
+                  aria-expanded={isSearchOpen}
+                  onClick={toggleSearch}>
+                  <span className="nav-link-search-text">
+                    {texts?.searchToggleText || 'Search'}
+                  </span>
+                </Button>
+              </li>
+            }
             <li className="nav-item nav-item-toggle">
               <Button
                 variant="subtle"
-                className={'nav-link' + (isMenuOpen ? ' open' : '')}
+                className="nav-link"
+                aria-label={texts?.menuToggleAriaLabel || 'Toggle menu'}
                 aria-expanded={isMenuOpen}
                 onClick={toggleMenu}>
-                Menu
+                {texts?.menuToggleText || 'Menu'}
               </Button>
             </li>
           </ul>
@@ -223,14 +256,19 @@ const NavPrimary = ({ utilityItems, navItems }: Props): JSX.Element => {
                   </button>
                 }
               </div>
-              <Button variant="assertive">Search</Button>
+              <Button variant="assertive" disabled={!searchValue} aria-label={texts?.searchButtonAriaLabel || 'Search'}>
+                {texts?.searchButtonText || 'Search'}
+              </Button>
             </form>
           </div>
         }
-        {isMenuOpen &&
+        {navTree.length > 0 &&
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
+            utilityItems={utilityItems}
+            setActiveNode={setActiveNode}
+            isMenuOpen={isMenuOpen}
             history={history}
             pushHistory={pushHistory}
             popHistory={popHistory} />

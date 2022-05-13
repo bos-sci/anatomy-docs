@@ -99,11 +99,10 @@ const Components = (props: Props): JSX.Element => {
             text: 'Breadcrumbs',
             slug: basePath + '/navigation/breadcrumbs',
           },
-          /* TODO: Uncomment once primary nav is complete
           {
             text: 'Primary navigation',
             slug: basePath + '/navigation/primary-navigation',
-          }, */
+          },
           {
             text: 'Secondary navigation',
             slug: basePath + '/navigation/secondary-navigation',

@@ -11,64 +11,65 @@ const exampleData: NavItemPrimary[] = [
     children: [
       {
         text: 'Medical specialties',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all treatments',
-        altTo: basePath + '/',
+        altTo: basePath + '/some-path',
         children: [
           {
             text: 'Electrophysiology',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Female Pelvic Medicine',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Gastroenterology',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Gastrointestinal Surgery',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Gynecology',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Interventional Cardiology',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Interventional Radiology',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Neurological Surgery',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Orthopedic Surgery',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Pain Medicine',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Pulmonology',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Structural Heart Valve',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Urology',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Vascular Surgery',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           }
         ]
       },
@@ -77,7 +78,7 @@ const exampleData: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           }
         ]
       },
@@ -86,7 +87,7 @@ const exampleData: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           }
         ]
       },
@@ -95,7 +96,7 @@ const exampleData: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           }
         ]
       }
@@ -104,7 +105,7 @@ const exampleData: NavItemPrimary[] = [
   // PTC
   {
     text: 'For patients & caregivers',
-    description: `Find the information you need, whether you've been diagnosed with a health condition, have an implated device, or need support.`,
+    description: `Find the information you need, whether you've been diagnosed with a health condition, have an implanted device, or need support.`,
     altTo: '#demo',
     altLinkText: 'All patients & caregivers information',
     children: [
@@ -112,22 +113,22 @@ const exampleData: NavItemPrimary[] = [
         text: 'Treatments',
         description: 'Devices, procedures, and therapies',
         altLinkText: 'See all treatments',
-        altTo: basePath + '/',
+        altTo: basePath + '/some-path',
         children: [
           {
             text: 'Airway & breathing',
             children: [
               {
                 text: 'Asthma',
-                slug: basePath + '/'
+                slug: basePath + '/' // Used to demo the active style
               },
               {
                 text: 'Last level',
-                slug: basePath + '/'
+                slug: basePath + '/some-path'
               },
               {
                 text: 'Last level',
-                slug: basePath + '/'
+                slug: basePath + '/some-path'
               }
             ]
           },
@@ -136,7 +137,7 @@ const exampleData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/'
+                slug: basePath + '/some-path'
               }
             ]
           },
@@ -145,7 +146,7 @@ const exampleData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/'
+                slug: basePath + '/some-path'
               }
             ]
           },
@@ -154,7 +155,7 @@ const exampleData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/'
+                slug: basePath + '/some-path'
               }
             ]
           },
@@ -163,7 +164,7 @@ const exampleData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/'
+                slug: basePath + '/some-path'
               }
             ]
           },
@@ -172,7 +173,7 @@ const exampleData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/'
+                slug: basePath + '/some-path'
               }
             ]
           },
@@ -181,7 +182,7 @@ const exampleData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/'
+                slug: basePath + '/some-path'
               }
             ]
           },
@@ -190,7 +191,7 @@ const exampleData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/'
+                slug: basePath + '/some-path'
               }
             ]
           },
@@ -199,7 +200,7 @@ const exampleData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/'
+                slug: basePath + '/some-path'
               }
             ]
           }
@@ -211,7 +212,7 @@ const exampleData: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item 1',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           }
         ]
       },
@@ -221,7 +222,7 @@ const exampleData: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item 2',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           }
         ]
       }
@@ -238,27 +239,27 @@ const exampleData: NavItemPrimary[] = [
         text: 'About',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all',
-        altTo: basePath + '/',
+        altTo: basePath + '/some-path',
         children: [
           {
             text: 'Businesses',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Leadership',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
             text: 'Locations',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           },
           {
-            text: 'Awards & recgonition',
-            slug: basePath + '/'
+            text: 'Awards & recognition',
+            slug: basePath + '/some-path'
           },
           {
             text: 'Ventures',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           }
         ]
       },
@@ -268,7 +269,7 @@ const exampleData: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           }
         ]
       },
@@ -278,7 +279,7 @@ const exampleData: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           }
         ]
       },
@@ -288,7 +289,7 @@ const exampleData: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/'
+            slug: basePath + '/some-path'
           }
         ]
       },
