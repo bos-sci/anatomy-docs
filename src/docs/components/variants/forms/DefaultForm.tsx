@@ -48,7 +48,7 @@ const DefaultForm = () => {
             helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."/>
         </div>
         <div className="ads-form-control">
-          <InputText label="Required text input" required />
+          <InputText label="Required text input" required forceValidation={false} />
         </div>
         <div className="ads-form-control">
           <InputText label="Disabled text input" disabled />
