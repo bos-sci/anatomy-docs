@@ -13,17 +13,17 @@ const Tag = (props: Props): JSX.Element => {
     case 'accent':
       classes = 'ads-tag-accent'
       break;
-    case 'accent-dark':
-      classes = 'ads-tag-accent-dark'
+    case 'accent-ghost':
+      classes = 'ads-tag-accent-ghost'
       break;
     case 'assertive':
       classes = 'ads-tag-assertive'
       break;
-    case 'assertive-dark':
-      classes = 'ads-tag-assertive-dark'
+    case 'assertive-ghost':
+      classes = 'ads-tag-assertive-ghost'
       break;
-    case 'dark':
-      classes = 'ads-tag-dark'
+    case 'ghost':
+      classes = 'ads-tag-ghost'
       break;
     default:
       classes = 'ads-tag';
