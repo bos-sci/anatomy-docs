@@ -18,7 +18,7 @@ const WithError = (): JSX.Element => {
   return (
     <Example>
       <div className="ads-form-control">
-        <InputText label="Text input" errorText={errorText} onChange={handleChange} defaultValue="Invalid value" />
+        <InputText label="Text input" errorText={errorText} onChange={handleChange} defaultValue="Invalid value" forceValidation />
       </div>
     </Example>
   );

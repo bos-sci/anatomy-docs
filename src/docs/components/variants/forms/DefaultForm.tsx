@@ -44,11 +44,10 @@ const DefaultForm = () => {
             errorText={noSpacesInputError}
             onBlur={validateTextInput}
             onChange={validateTextInput}
-            forceValidation={false}
             helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."/>
         </div>
         <div className="ads-form-control">
-          <InputText label="Required text input" required forceValidation={false} />
+          <InputText label="Required text input" required />
         </div>
         <div className="ads-form-control">
           <InputText label="Disabled text input" disabled />
