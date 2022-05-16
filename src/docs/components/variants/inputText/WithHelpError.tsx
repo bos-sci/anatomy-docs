@@ -23,7 +23,8 @@ const WithHelpAndError = (): JSX.Element => {
           helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
           errorText={errorText}
           onChange={handleChange}
-          defaultValue="Invalid value" />
+          defaultValue="Invalid value"
+          forceValidation />
       </div>
     </Example>
   );
