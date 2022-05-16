@@ -30,7 +30,7 @@
 {
   @include tag-default;
 
-  &-dark
+  &-ghost
   {
     @include tag-default;
     color: $neutral-100;
@@ -43,7 +43,7 @@
     border-image-slice: 1;
   }
 
-  &-accent-dark
+  &-accent-ghost
   {
     @include tag-accent;
     border-color: $accent-secondary-60;
@@ -57,7 +57,7 @@
     color: $neutral-100;
   }
 
-  &-assertive-dark
+  &-assertive-ghost
   {
     @include tag-assertive;
     background: $neutral-100;

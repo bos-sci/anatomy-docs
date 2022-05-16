@@ -8,7 +8,7 @@ const AssertiveStyle = (): JSX.Element => {
         <Tag variant="assertive">Assertive tag</Tag>
       </Example>
       <Example isDarkTheme={true}>
-        <Tag variant="assertive-dark">Assertive tag</Tag>
+        <Tag variant="assertive-ghost">Assertive tag</Tag>
       </Example>
     </>
   );
