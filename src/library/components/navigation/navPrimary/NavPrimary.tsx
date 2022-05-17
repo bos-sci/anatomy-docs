@@ -5,13 +5,12 @@
 */
 
 import { FocusEvent as ReactFocusEvent, useEffect, useRef, useState } from 'react';
-import SkipLink from '../../SkipLink';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
-import { NavLink } from 'react-router-dom';
+import { NavLink, NavLinkProps } from 'react-router-dom';
 import IconClose from '../../icon/icons/IconClose';
 import Link from '../../Link';
 
@@ -29,6 +28,7 @@ interface NavItemPrimaryBase extends NavItem {
   altHref?: string;
   altLinkText?: string;
   isExactMatch?: boolean;
+  isActive?: NavLinkProps['isActive'];
 }
 
 interface NavItemUtilityBase extends NavItem {
@@ -179,17 +179,20 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
     }
   }
 
-  return <>
-    <SkipLink destinationId="mainContent" destination="main content"/>
+  return (
     <header className="nav-header" ref={navRef}>
       {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
       <nav className="nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="nav-bar">
           <ul className="nav">
             <li className="nav-item nav-item-logo">
-              <Link to={logo.to} href={logo.href} className="nav-link-logo" aria-label={logo.ariaLabel}>
+              {(logo.to || logo.href) ?
+                <Link to={logo.to} href={logo.href} className="nav-link-logo" aria-label={logo.ariaLabel}>
+                  <img src={logo.src} alt={logo.alt} />
+                </Link>
+                :
                 <img src={logo.src} alt={logo.alt} />
-              </Link>
+              }
             </li>
             {navTree.map((navItem, i) => (
               <li key={navItem.text + i} className="nav-item nav-item-root">
@@ -206,7 +209,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
                   </Button>
                 }
                   {(navItem.slug || navItem.href) &&
-                    <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="nav-link">{navItem.text}</NavLink>
+                    <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="nav-link" isActive={navItem.isActive}>{navItem.text}</NavLink>
                   }
               </li>
             ))}
@@ -275,7 +278,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
         }
       </nav>
     </header>
-  </>;
+  );
 }
 
 export default NavPrimary;

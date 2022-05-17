@@ -10,6 +10,11 @@ $icon-size-lg: 1.15rem;
 $panelsWidth: 100vw;
 $numPanels: 4;
 
+$navBarZIndex: 700;
+$navBackZIndex: 600;
+$navMenuZIndex: 550;
+$navListZIndex: 500;
+
 // Used in nav-menu nav-links
 $navLinkPadding: space(lg) space(3x);
 
@@ -115,10 +120,13 @@ $navLinkPadding: space(lg) space(3x);
   {
     position: relative;
     background-color: $neutral-100;
-    z-index: 700;
+    z-index: $navBarZIndex;
 
     .nav
     {
+      flex-direction: column;
+      align-content: center;
+
       .nav-item
       {
         margin-top: 0;
@@ -251,6 +259,7 @@ $navLinkPadding: space(lg) space(3x);
     width: 100%;
     @include font-size($fs-body-subtle);
     background-color: $neutral-100;
+    z-index: $navMenuZIndex;
 
     &:not(.open)
     {
@@ -290,7 +299,7 @@ $navLinkPadding: space(lg) space(3x);
     padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
     @include font-size($fs-base);
     box-shadow: $box-shadow-secondary;
-    z-index: 600;
+    z-index: $navBackZIndex;
 
     &:focus
     {
@@ -476,6 +485,8 @@ $navLinkPadding: space(lg) space(3x);
     .search
     {
       display: flex;
+      flex-direction: column;
+      gap: space(2x);
       padding: space(2x) space(3x);
     }
 
@@ -483,7 +494,6 @@ $navLinkPadding: space(lg) space(3x);
     {
       position: relative;
       flex: 1;
-      margin-right: space(2x);
     }
 
     .search-input
@@ -539,6 +549,28 @@ $navLinkPadding: space(lg) space(3x);
         {
           left: calc(($menuWidth / $numPanels));
         }
+      }
+    }
+  }
+}
+
+@media (min-width: $sm)
+{
+  .nav-primary
+  {
+    .nav-bar
+    {
+      .nav
+      {
+        flex-direction: row;
+      }
+    }
+
+    .search-panel
+    {
+      .search
+      {
+        flex-direction: row;
       }
     }
   }
@@ -676,7 +708,7 @@ $navLinkPadding: space(lg) space(3x);
 
         &.nav-list-history
         {
-          z-index: 500;
+          z-index: $navListZIndex;
 
           > .nav
           {
@@ -753,3 +785,12 @@ $navLinkPadding: space(lg) space(3x);
     }
   }
 }
+
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
