@@ -482,45 +482,9 @@ $navLinkPadding: space(lg) space(3x);
     margin: auto;
     border-bottom: space(xxs) solid $neutral-80;
 
-    .search
+    .ads-form-search
     {
-      display: flex;
-      flex-direction: column;
-      gap: space(2x);
       padding: space(2x) space(3x);
-    }
-
-    .search-control
-    {
-      position: relative;
-      flex: 1;
-    }
-
-    .search-input
-    {
-      margin-top: 0;
-      height: 100%;
-    }
-
-    .search-clear
-    {
-      position: absolute;
-      right: 0;
-      border: 0;
-      padding: space(2x);
-      height: 100%;
-      aspect-ratio: 1 / 1;
-      background: transparent;
-
-      &:focus
-      {
-        @include focus-default-inset;
-      }
-
-      &:hover:not(:active)
-      {
-        fill: $action-primary-40;
-      }
     }
   }
 }
@@ -565,14 +529,6 @@ $navLinkPadding: space(lg) space(3x);
         flex-direction: row;
       }
     }
-
-    .search-panel
-    {
-      .search
-      {
-        flex-direction: row;
-      }
-    }
   }
 }
 
@@ -583,7 +539,7 @@ $navLinkPadding: space(lg) space(3x);
   .nav-utility .nav,
   .nav-bar .nav,
   .nav-menu-panels,
-  .search-panel .search
+  .search-panel .ads-form-search
   {
     width: $panelsWidth;
     margin-right: auto;
@@ -750,7 +706,7 @@ $navLinkPadding: space(lg) space(3x);
 
   .nav-utility .nav,
   .nav-bar .nav,
-  .search-panel .search
+  .search-panel .ads-form-search
   {
     width: $panelsWidth;
   }
@@ -771,7 +727,7 @@ $navLinkPadding: space(lg) space(3x);
 
   .nav-utility .nav,
   .nav-bar .nav,
-  .search-panel .search
+  .search-panel .ads-form-search
   {
     width: $panelsWidth;
   }
@@ -785,12 +741,3 @@ $navLinkPadding: space(lg) space(3x);
     }
   }
 }
-
-/* clears the ‘X’ from Internet Explorer */
-input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
-/* clears the ‘X’ from Chrome */
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }

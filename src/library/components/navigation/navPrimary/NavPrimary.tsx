@@ -13,6 +13,7 @@ import NavUtility from './NavUtility';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 import IconClose from '../../icon/icons/IconClose';
 import Link from '../../Link';
+import Search from '../../Search';
 
 interface NavItem {
   text: string;
@@ -241,28 +242,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
         </div>
         {isSearchOpen &&
           <div className="search-panel">
-            <form className="search" role="search" aria-label="site search">
-              <div className="search-control">
-                <input
-                  type="search"
-                  className="ads-input-text-input search-input"
-                  placeholder="Search"
-                  aria-label="search"
-                  value={searchValue}
-                  onChange={e => setSearchValue(e.target.value)} />
-                {searchValue &&
-                  <button
-                    className="search-clear"
-                    aria-label="clear search text"
-                    onClick={() => setSearchValue('')}>
-                    <IconClose className="ads-icon-lg" />
-                  </button>
-                }
-              </div>
-              <Button variant="assertive" disabled={!searchValue} aria-label={texts?.searchButtonAriaLabel || 'Search'}>
-                {texts?.searchButtonText || 'Search'}
-              </Button>
-            </form>
+            <Search label="Search" buttonText={texts?.searchButtonText} buttonAriaLabel={texts?.searchButtonAriaLabel} />
           </div>
         }
         {navTree.length > 0 &&
