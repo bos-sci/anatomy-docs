@@ -43,7 +43,7 @@ Detailed below is a brief map of the application detailing the important files a
 #### Local Setup
 1. Clone this repository.
 2. Get the environment variables from Contentful or a team member.<br />
-*See [environemnt variables](#environment-variables) below*
+*See [environment variables](#environment-variables) below*
 3. Run `npm install`.
 4. Run `npm start`.
 5. Navigate to `localhost:3000`.
