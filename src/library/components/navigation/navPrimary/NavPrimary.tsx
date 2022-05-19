@@ -11,7 +11,6 @@ import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { NavLink, NavLinkProps } from 'react-router-dom';
-import IconClose from '../../icon/icons/IconClose';
 import Link from '../../Link';
 import Search from '../../Search';
 
@@ -82,7 +81,6 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
   const [history, setHistory] = useState<HistoryNode[]>([]);
   const [activeNode, setActiveNode] = useState<NavNode | null>(null);
 
