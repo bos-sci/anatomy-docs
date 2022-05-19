@@ -59,14 +59,14 @@ const Foundations = (props:  Props): JSX.Element => {
         slug: basePath + '/color'
       },
       {
-        text: 'Iconography',
+        text: 'Icons',
         children: [
           {
-            text: 'Decorative',
+            text: 'Decorative icons',
             slug: basePath + '/iconography/decorative'
           },
           {
-            text: 'System',
+            text: 'System icons',
             slug: basePath + '/iconography/system'
           }
         ]
