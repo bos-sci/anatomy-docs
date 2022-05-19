@@ -39,6 +39,11 @@
   {
     width: 100%; // TODO: remove this when we remove the fixed widths from the page layout
   }
+
+  & .icon-decorative > *
+  {
+    margin-top: 0;
+  }
 }
 
 .u-margin-top-remove
