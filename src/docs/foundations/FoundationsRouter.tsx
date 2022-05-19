@@ -9,6 +9,7 @@ const FoundationsRouter = (): JSX.Element => {
       <Route exact path={path}>
         <Redirect to={`${path}/accessibility`} />
       </Route>
+      <Route path={`${path}/iconography/:foundationName`} component={Foundations} />
       <Route path={`${path}/:foundationName`} component={Foundations} />
     </Switch>
   );
