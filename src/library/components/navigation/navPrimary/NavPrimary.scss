@@ -35,7 +35,6 @@ $navLinkPadding: space(lg) space(3x);
   .nav
   {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     margin: 0;
     padding: 0;
@@ -54,19 +53,16 @@ $navLinkPadding: space(lg) space(3x);
   }
 }
 
-.nav-utility,
-.nav-primary .nav-bar
-{
-  border-bottom: space(xxs) solid $neutral-80;
-}
-
 // Utility Nav
 .nav-utility
 {
   display: none;
+  border-bottom: space(xxs) solid $neutral-80;
 
   .nav
   {
+    justify-content: flex-end;
+
     .nav-item
     {
       margin-top: 0;
@@ -113,19 +109,30 @@ $navLinkPadding: space(lg) space(3x);
 
 .nav-primary
 {
+  box-shadow: inset 0 calc(0rem - space(xxs)) $border-color-subtle;
+  background-color: $neutral-100;
 
   // Primary Nav Top Bar
 
   .nav-bar
   {
     position: relative;
-    background-color: $neutral-100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
     z-index: $navBarZIndex;
+
+    .nav-link-logo
+    {
+      display: block;
+      padding: space(2x) space(3x);
+    }
 
     .nav
     {
-      flex-direction: column;
-      align-content: center;
+      justify-content: center;
 
       .nav-item
       {
@@ -134,17 +141,6 @@ $navLinkPadding: space(lg) space(3x);
         &.nav-item-root
         {
           display: none;
-        }
-
-        &.nav-item-logo
-        {
-          margin-right: auto;
-          padding: space(2x) space(3x);
-
-          .nav-link-logo
-          {
-            display: block;
-          }
         }
 
         &.nav-item-toggle,
@@ -480,7 +476,7 @@ $navLinkPadding: space(lg) space(3x);
   .search-panel
   {
     margin: auto;
-    border-bottom: space(xxs) solid $neutral-80;
+    border-top: space(xxs) solid $neutral-80;
 
     .ads-form-search
     {
@@ -524,10 +520,7 @@ $navLinkPadding: space(lg) space(3x);
   {
     .nav-bar
     {
-      .nav
-      {
-        flex-direction: row;
-      }
+      flex-direction: row;
     }
   }
 }
@@ -537,7 +530,7 @@ $navLinkPadding: space(lg) space(3x);
   $panelsWidth: 60rem; // NOTE: This is a one off size to match the layout widths.
 
   .nav-utility .nav,
-  .nav-bar .nav,
+  .nav-bar,
   .nav-menu-panels,
   .search-panel .ads-form-search
   {
@@ -560,6 +553,11 @@ $navLinkPadding: space(lg) space(3x);
   {
     .nav-bar
     {
+      .nav-link-logo
+      {
+        padding: 0;
+      }
+
       .nav
       {
         .nav-item
@@ -604,11 +602,6 @@ $navLinkPadding: space(lg) space(3x);
             {
               @include visually-hidden;
             }
-          }
-
-          &.nav-item-logo
-          {
-            padding: 0;
           }
         }
       }
@@ -705,7 +698,7 @@ $navLinkPadding: space(lg) space(3x);
   $panelsWidth: 71.25rem; // NOTE: This is a one off size to match the layout widths.
 
   .nav-utility .nav,
-  .nav-bar .nav,
+  .nav-bar,
   .search-panel .ads-form-search
   {
     width: $panelsWidth;
@@ -726,7 +719,7 @@ $navLinkPadding: space(lg) space(3x);
   $panelsWidth: 82.5rem; // NOTE: This is a one off size to match the layout widths.
 
   .nav-utility .nav,
-  .nav-bar .nav,
+  .nav-bar,
   .search-panel .ads-form-search
   {
     width: $panelsWidth;

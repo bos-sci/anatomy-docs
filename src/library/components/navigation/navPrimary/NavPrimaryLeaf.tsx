@@ -19,7 +19,7 @@ const NavPrimaryLeaf = (props: Props) => {
 
   return (
     <li className="nav-item">
-      <Link href={props.navItem.href} to={props.navItem.slug} className="nav-link">{props.navItem.text}</Link>
+      <Link href={props.navItem.href} to={props.navItem.slug} className="nav-link" isNavLink={true}>{props.navItem.text}</Link>
     </li>
   );
 }

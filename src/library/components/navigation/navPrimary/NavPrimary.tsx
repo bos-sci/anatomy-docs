@@ -183,16 +183,14 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
       {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
       <nav className="nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="nav-bar">
+          {(logo.to || logo.href) ?
+            <Link to={logo.to} href={logo.href} isNavLink={true} className="nav-link-logo" aria-label={logo.ariaLabel}>
+              <img src={logo.src} alt={logo.alt} />
+            </Link>
+            :
+            <img src={logo.src} alt={logo.alt} />
+          }
           <ul className="nav">
-            <li className="nav-item nav-item-logo">
-              {(logo.to || logo.href) ?
-                <Link to={logo.to} href={logo.href} className="nav-link-logo" aria-label={logo.ariaLabel}>
-                  <img src={logo.src} alt={logo.alt} />
-                </Link>
-                :
-                <img src={logo.src} alt={logo.alt} />
-              }
-            </li>
             {navTree.map((navItem, i) => (
               <li key={navItem.text + i} className="nav-item nav-item-root">
                 {navItem.children &&
