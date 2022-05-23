@@ -630,6 +630,14 @@ $navLinkPadding: space(lg) space(3x);
       height: 100%;
       @include panelSettings($panelsWidth);
 
+      & > .nav-active-list
+      {
+        .nav-menu-panel
+        {
+          z-index: -1;
+        }
+      }
+
       .nav-menu-panel-header
       {
         padding: space(4x) space(4x) space(3x);
@@ -685,7 +693,7 @@ $navLinkPadding: space(lg) space(3x);
       }
     }
 
-    .nav-utilities
+    .nav-block
     {
       display: none;
     }
