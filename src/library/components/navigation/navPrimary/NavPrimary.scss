@@ -43,7 +43,7 @@ $navLinkPadding: space(lg) space(3x);
 
   .nav-link
   {
-    @include font-size($fs-body-subtle);
+    @include font-size($fs-base);
     @include link-navigation;
 
     &:focus
@@ -70,6 +70,7 @@ $navLinkPadding: space(lg) space(3x);
       .nav-link
       {
         border: 0;
+        padding: space(md) space(lg);
         color: $neutral-40;
 
         &:hover
@@ -252,7 +253,7 @@ $navLinkPadding: space(lg) space(3x);
     position: absolute;
     border-bottom: space(xxs) solid $neutral-80;
     width: 100%;
-    @include font-size($fs-body-subtle);
+    @include font-size($fs-base);
     background-color: $neutral-100;
     z-index: $navMenuZIndex;
 
@@ -400,12 +401,9 @@ $navLinkPadding: space(lg) space(3x);
         background: $neutral-95;
       }
 
-      &.has-description
+      .nav-link-description
       {
-        .nav-link-text
-        {
-          @include font-size($fs-base);
-        }
+        @include font-size($fs-body-subtle);
       }
 
       .nav-link-text
@@ -543,6 +541,12 @@ $navLinkPadding: space(lg) space(3x);
     display: block;
   }
 
+  .nav-utility .nav-link,
+  .nav-primary .nav-bar .nav-link
+  {
+    @include font-size($fs-body-subtle);
+  }
+
   .nav-menu-back
   {
     display: none;
@@ -591,7 +595,8 @@ $navLinkPadding: space(lg) space(3x);
               }
 
               &:hover,
-              &:focus
+              &:focus,
+              &[aria-expanded="true"]
               {
                 background-color: $action-primary-95;
               }
@@ -642,6 +647,14 @@ $navLinkPadding: space(lg) space(3x);
         padding: space(4x) space(4x) space(3x);
         border-right: space(xxs) solid $neutral-80;
         border-bottom: 0;
+      }
+
+      & > .nav-menu-panel .nav-menu-panel .nav-menu-panel
+      {
+        .nav-link
+        {
+          @include font-size($fs-body-subtle);
+        }
       }
 
       .nav-menu-panel

@@ -33,7 +33,6 @@ const NavPrimaryListParent = (props: Props) => {
         className={
           'nav-link'
           + (isActive ? ' active' : '')
-          + (props.navItem.description ? ' has-description' : '')
         }
         aria-expanded={isActive}
         onClick={updateHistory}
