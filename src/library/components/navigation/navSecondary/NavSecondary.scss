@@ -2,7 +2,29 @@
 @import "/src/styles/base/base";
 @import "/src/styles/utilities/utilities";
 
-$icon-size: 0.75rem;
+$icon-size-sm: space(lg);
+
+@mixin icon-background($icon-size, $alignment: right) {
+  content: '';
+  box-sizing: content-box;
+  position: absolute;
+  right: 0;
+  // These are one offs for sizing/aligning icons
+  width: 1em;
+  height: 1em;
+  background-position: center;
+  background-size: $icon-size;
+  background-repeat: no-repeat;
+
+  @if $alignment == left
+  {
+    left: 0;
+  }
+  @else if $alignment == right
+  {
+    right: 0;
+  }
+}
 
 .nav-secondary
 {
@@ -38,18 +60,10 @@ $icon-size: 0.75rem;
 
     &::after
     {
-      content: '';
-      box-sizing: content-box;
-      position: absolute;
+      @include icon-background($icon-size-sm);
       top: 0;
-      right: 0;
       padding: space(2x) space(4x);
-      width: 1em;
-      height: 1em;
       background-image: url('../../../../assets/images/icon-chevron-down.svg');
-      background-position: center;
-      background-size: $icon-size;
-      background-repeat: no-repeat;
     }
 
     &[aria-expanded="true"]::after
@@ -112,17 +126,9 @@ $icon-size: 0.75rem;
 
       &::after
       {
-        content: '';
-        position: absolute;
-        box-sizing: content-box;
-        right: 0;
+        @include icon-background($icon-size-sm);
         padding: space(lg);
-        width: 1em;
-        height: 1em;
         background-image: url('../../../../assets/images/icon-chevron-right.svg');
-        background-position: center;
-        background-size: $icon-size;
-        background-repeat: no-repeat;
       }
     }
   }
