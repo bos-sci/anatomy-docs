@@ -89,8 +89,6 @@ const NavSecondary = ({ menuTriggerText, navItems, activeSlug }: Props): JSX.Ele
     <nav className="nav-secondary" aria-label="secondary navigation" ref={nav}>
       <button className="nav-secondary-menu-trigger" aria-expanded={isOpen} aria-controls="navSecondaryMenu" onClick={() => setIsOpen(!isOpen)}>
         { menuTriggerText }
-        { isOpen && <IconChevronUp className="ads-icon-lg" /> }
-        { !isOpen && <IconChevronDown className="ads-icon-lg" /> }
       </button>
       <div id="navSecondaryMenu" className={`nav-secondary-menu${isOpen ? ' open' : ''}`}>
         {activeParent &&
