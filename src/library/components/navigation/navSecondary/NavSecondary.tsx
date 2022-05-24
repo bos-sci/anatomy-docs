@@ -4,6 +4,8 @@ import NavSecondaryList from './NavSecondaryList';
 import IconChevronDown from '../../icon/icons/IconChevronDown';
 import IconChevronUp from '../../icon/icons/IconChevronUp';
 import "./NavSecondary.scss"
+import Button from '../../Button';
+import IconChevronLeft from '../../icon/icons/IconChevronLeft';
 
 interface NavItem {
   text: string;
@@ -91,6 +93,12 @@ const NavSecondary = ({ menuTriggerText, navItems, activeSlug }: Props): JSX.Ele
         { !isOpen && <IconChevronDown className="ads-icon-lg" /> }
       </button>
       <div id="navSecondaryMenu" className={`nav-secondary-menu${isOpen ? ' open' : ''}`}>
+        {activeParent &&
+          <Button className="nav-link-back" variant="subtle" onClick={() => setActiveParent(activeParent?.parent || null)}>
+            <IconChevronLeft className="ads-icon-md u-icon-left" />
+            Back
+          </Button>
+        }
         <NavSecondaryList navItems={navTree} parent={null} activeParent={activeParent} setActiveParent={setActiveParent} />
       </div>
     </nav>

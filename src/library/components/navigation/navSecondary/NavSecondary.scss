@@ -2,6 +2,8 @@
 @import "/src/styles/base/base";
 @import "/src/styles/utilities/utilities";
 
+$icon-size: 1em;
+
 .nav-secondary
 {
   position: relative;
@@ -39,7 +41,7 @@
     position: absolute;
     display: none;
     border-bottom: space(xxs) solid $neutral-80;
-    padding: space(lg) space(4x);
+    padding: space(lg) space(2x);
     width: 100%;
     background: $neutral-100;
 
@@ -79,11 +81,26 @@
   {
     .nav-link.nav-link-parent-trigger
     {
-      padding-right: 0;
+      position: relative;
 
       &:hover
       {
         background: transparent;
+      }
+
+      &::after
+      {
+        content: '';
+        position: absolute;
+        box-sizing: content-box;
+        right: 0;
+        padding: space(lg);
+        width: $icon-size;
+        height: $icon-size;
+        background: url('../../../../assets/images/icon-chevron-right.svg');
+        background-position: center;
+        background-size: $icon-size;
+        background-repeat: no-repeat;
       }
     }
   }
@@ -127,7 +144,6 @@
   .nav-link-back
   {
     justify-content: flex-start;
-    padding-left: 0;
     @include font-size($fs-small);
     fill: $action-primary-40; // TODO: revisit in xdc-1892 (fill vs stroke here or in mixin)
 

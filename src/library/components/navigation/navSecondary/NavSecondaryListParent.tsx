@@ -31,7 +31,6 @@ const NavSecondaryListParent = ({ navItem, activeParent, setActiveParent }: NavP
         onClick={() => setActiveParent(navItem)}
       >
         {navItem.text}
-        <IconChevronRight className="ads-icon-lg" />
       </Button>
       <NavSecondaryList navListId={navListId} navItems={navItem.children!} parent={navItem} activeParent={activeParent} setActiveParent={setActiveParent} />
     </li>
