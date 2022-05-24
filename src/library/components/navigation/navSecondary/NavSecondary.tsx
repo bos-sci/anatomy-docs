@@ -21,16 +21,24 @@ interface NavTreeNode extends NavItem {
 export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'children'>;
 
 interface Props {
-  menuTriggerText: string;
   navItems: NavItemSecondary[];
   activeSlug?: string;
+  texts?: {
+    menuToggleAriaLabel?: string;
+    menuToggleText?: string;
+    navAriaLabel?: string;
+    backButtonText?: string;
+  }
 }
 
-const NavSecondary = ({ menuTriggerText, navItems, activeSlug }: Props): JSX.Element => {
+let navSecondaryIndex = 0;
+
+const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [activeParent, setActiveParent] = useState<NavNode | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [navSecondaryId, setNavSecondaryId] = useState('');
 
   const nav = useRef<HTMLElement>(null);
 
@@ -70,6 +78,10 @@ const NavSecondary = ({ menuTriggerText, navItems, activeSlug }: Props): JSX.Ele
   }, [activeSlug, navTree]);
 
   useEffect(() => {
+    setNavSecondaryId('navSecondary' + navSecondaryIndex++);
+  }, []);
+
+  useEffect(() => {
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!nav.current?.contains(e.target as Node) && isOpen) {
         setIsOpen(false);
@@ -84,15 +96,15 @@ const NavSecondary = ({ menuTriggerText, navItems, activeSlug }: Props): JSX.Ele
   }, [isOpen]);
 
   return (
-    <nav className="nav-secondary" aria-label="secondary navigation" ref={nav}>
-      <button className="nav-secondary-menu-trigger" aria-expanded={isOpen} aria-controls="navSecondaryMenu" onClick={() => setIsOpen(!isOpen)}>
-        { menuTriggerText }
+    <nav className="nav-secondary" aria-label={texts?.navAriaLabel || 'secondary navigation'} ref={nav}>
+      <button className="nav-secondary-menu-trigger" aria-expanded={isOpen} aria-controls={navSecondaryId} aria-label={texts?.menuToggleAriaLabel || 'Menu'} onClick={() => setIsOpen(!isOpen)}>
+        { texts?.menuToggleText || 'Menu' }
       </button>
-      <div id="navSecondaryMenu" className={`nav-secondary-menu${isOpen ? ' open' : ''}`}>
+      <div id={navSecondaryId} className={`nav-secondary-menu${isOpen ? ' open' : ''}`}>
         {activeParent &&
           <Button className="nav-link-back" variant="subtle" onClick={() => setActiveParent(activeParent?.parent || null)}>
             <IconChevronLeft className="ads-icon-md u-icon-left" />
-            Back
+            {texts?.backButtonText || 'Back'}
           </Button>
         }
         <NavSecondaryList navItems={navTree} parent={null} activeParent={activeParent} setActiveParent={setActiveParent} />
