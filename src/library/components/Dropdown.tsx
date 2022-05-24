@@ -1,6 +1,7 @@
 import { Children, cloneElement, createRef, HTMLAttributes, ReactElement, useEffect, useRef, useState } from 'react';
 import Button from './Button';
 import { Props as ButtonProps } from './Button';
+import IconChevronDown from './icon/icons/IconChevronDown';
 import { Props as LinkProps } from './Link';
 
 type DropdownItem = ReactElement<ButtonProps | LinkProps>;
@@ -128,6 +129,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         {...buttonAttrs}>
           {triggerText}
+          <IconChevronDown className="ads-icon-lg u-icon-right ads-dropdown-trigger-chevron" />
       </Button>
       {isDropdownOpen && <>
         {listType === 'ul' && (

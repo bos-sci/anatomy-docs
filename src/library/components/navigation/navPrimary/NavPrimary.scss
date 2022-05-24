@@ -84,7 +84,6 @@ $navLinkPadding: space(lg) space(3x);
         {
           position: relative;
           padding: space(md) space(lg);
-          padding-right: calc(space(lg) + $icon-size-sm + space(md)); // Padding + icon width + space between icon and text
 
           &[aria-expanded="true"],
           &:hover

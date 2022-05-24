@@ -7,16 +7,6 @@ $icon-size: 1em;
     position: relative;
     padding-right: calc(space(3x) + $icon-size + space(md));
 
-    &::after
-    {
-      content: url("../../assets/images/icon-chevron-down.svg");
-      position: absolute;
-      top: calc(50% - ($icon-size / 2));
-      right: space(3x);
-      width: $icon-size;
-      height: $icon-size;
-    }
-
     &:active,
     &[aria-expanded="true"]
     {
@@ -27,8 +17,9 @@ $icon-size: 1em;
 
     &[aria-expanded="true"]
     {
-      &::after{
-        content: url("../../assets/images/icon-chevron-up.svg");
+      .ads-dropdown-trigger-chevron
+      {
+        transform: rotate(180deg);
       }
     }
   }

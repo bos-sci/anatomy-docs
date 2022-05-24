@@ -188,7 +188,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
               <img src={logo.src} alt={logo.alt} />
             </Link>
             :
-            <img src={logo.src} alt={logo.alt} />
+            <img className="nav-link-logo" src={logo.src} alt={logo.alt} />
           }
           <ul className="nav">
             {navTree.map((navItem, i) => (
