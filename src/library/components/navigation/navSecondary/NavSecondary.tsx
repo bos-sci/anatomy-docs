@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { RequireOnlyOne } from '../../../types';
 import NavSecondaryList from './NavSecondaryList';
-import IconChevronDown from '../../icon/icons/IconChevronDown';
-import IconChevronUp from '../../icon/icons/IconChevronUp';
 import "./NavSecondary.scss"
 import Button from '../../Button';
 import IconChevronLeft from '../../icon/icons/IconChevronLeft';
