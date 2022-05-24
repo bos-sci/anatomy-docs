@@ -44,6 +44,10 @@ const DefaultNavSecondary = (): JSX.Element => {
     }
   ];
 
+  const navSecondaryTexts = {
+    menuToggleText: 'Section menu'
+  };
+
   useEffect(() => {
     setTimeout(() => {
       document.querySelectorAll('.demo-example .nav-link')
@@ -53,7 +57,7 @@ const DefaultNavSecondary = (): JSX.Element => {
 
   return (
     <Example>
-      <NavSecondary menuTriggerText="Section menu" navItems={navItems} />
+      <NavSecondary texts={navSecondaryTexts} navItems={navItems} />
     </Example>
   );
 }
