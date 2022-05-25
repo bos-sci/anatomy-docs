@@ -4,8 +4,8 @@ import { NavItemTertiary } from '../../library/components/navigation/navTertiary
 import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
-import { GetResourceQuery, useGetResourceQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
+import { GetResourceQuery, useGetResourceQuery } from '../shared/types/contentful';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
@@ -24,11 +24,10 @@ interface Props {
 
 const Resources = (props:  Props): JSX.Element => {
   const resourceName = props.match.params.resourceName;
+  const idLookup: IdLookup = useContext(IdLookupContext);
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [resourceData, setResourceData] = useState<GetResourceQuery['resource']>({} as GetResourceQuery['resource']);
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
-
-  const idLookup: IdLookup = useContext(IdLookupContext);
 
   const {data, error} = useGetResourceQuery({
     variables: {
@@ -42,35 +41,49 @@ const Resources = (props:  Props): JSX.Element => {
   }
 
   useEffect(() => {
-    if (data?.resource) {
+    if(data?.resource) {
       setResourceData(data.resource);
     }
-    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
-    const pathPrefix = basePath + '/';
-    const navItems = [
+  }, [data]);
+
+  useEffect(() => {
+    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/')).replace('/designers', '');
+    setNavItems([
       {
         text: 'Community',
-        slug: pathPrefix + 'community'
+        slug: basePath + 'community'
       },
       {
         text: 'Designers',
-        slug: pathPrefix + 'designers'
+        children: [
+          {
+            text: 'Libraries',
+            slug: basePath + '/designers/libraries'
+          },
+          {
+            text: 'Icon guidelines',
+            slug: basePath + '/designers/icon-guidelines'
+          },
+          {
+            text: 'Tools and links',
+            slug: basePath + '/designers/tools-and-links'
+          }
+        ]
       },
       {
         text: 'Developers',
-        slug: pathPrefix + 'developers'
+        slug: basePath + 'developers'
       },
       {
         text: 'SEO',
-        slug: pathPrefix + 'seo'
+        slug: basePath + 'seo'
       },
       {
         text: 'Release notes',
-        slug: pathPrefix + 'release-notes'
-      }
-    ];
-    setNavItems(navItems);
-  }, [data, idLookup, props.match.path]);
+        slug: basePath + 'release-notes'
+      },
+    ]);
+  }, [props.match.path]);
 
   useTitle({titlePrefix: `${resourceData?.name} - Resources`});
   useHashScroll(!!resourceData?.content);
