@@ -65,8 +65,8 @@ const Resources = (props:  Props): JSX.Element => {
             slug: basePath + '/designers/icon-guidelines'
           },
           {
-            text: 'Helpful tools and links',
-            slug: basePath + '/designers/helpful-tools-and-links'
+            text: 'Tools and links',
+            slug: basePath + '/designers/tools-and-links'
           }
         ]
       },
