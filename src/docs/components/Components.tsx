@@ -7,12 +7,12 @@ import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
 import { IdLookup } from '../shared/types/docs';
 import { GetComponentQuery, useGetComponentQuery } from '../shared/types/contentful';
-import './Components.scss';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
 import Layout from '../shared/components/Layout';
+import './Components.scss';
 
 interface ComponentMatch extends match {
   params: {
@@ -124,6 +124,10 @@ const Components = (props: Props): JSX.Element => {
             slug: basePath + '/navigation/skip-link',
           }
         ]
+      },
+      {
+        text: 'Stoplight',
+        slug: basePath + '/stoplight',
       },
       {
         text: 'Tabs',
