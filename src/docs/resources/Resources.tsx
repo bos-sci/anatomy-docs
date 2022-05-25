@@ -55,7 +55,6 @@ const Resources = (props:  Props): JSX.Element => {
       },
       {
         text: 'Designers',
-        // slug: pathPrefix + 'designers'
         children: [
           {
             text: 'Libraries',
