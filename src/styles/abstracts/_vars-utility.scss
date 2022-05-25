@@ -13,7 +13,7 @@ $border-color-subtle: $neutral-80;
 
 @mixin border-gradient-accent
 {
-  border-width: space(xs);
+  border-width: space(sm);
   border-style: solid;
   border-image-slice: 1;
   border-image-source: $gradient-accent;
