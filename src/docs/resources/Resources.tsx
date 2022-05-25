@@ -51,7 +51,7 @@ const Resources = (props:  Props): JSX.Element => {
     setNavItems([
       {
         text: 'Community',
-        slug: basePath + 'community'
+        slug: basePath + '/community'
       },
       {
         text: 'Designers',
@@ -72,15 +72,15 @@ const Resources = (props:  Props): JSX.Element => {
       },
       {
         text: 'Developers',
-        slug: basePath + 'developers'
+        slug: basePath + '/developers'
       },
       {
         text: 'SEO',
-        slug: basePath + 'seo'
+        slug: basePath + '/seo'
       },
       {
         text: 'Release notes',
-        slug: basePath + 'release-notes'
+        slug: basePath + '/release-notes'
       },
     ]);
   }, [props.match.path]);
