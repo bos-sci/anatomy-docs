@@ -31,6 +31,7 @@
   &::before
   {
     content: '';
+    flex-shrink: 0;
     display: inline-block;
     width: space(3x);
     height: space(3x);
