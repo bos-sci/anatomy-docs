@@ -32,6 +32,7 @@
   {
     content: '';
     flex-shrink: 0;
+    align-self: flex-start;
     display: inline-block;
     width: space(3x);
     height: space(3x);
@@ -52,4 +53,15 @@
 .ads-form-control
 {
   margin-top: space(4x);
+}
+
+@media (min-width: 992px)
+{
+  .ads-input-error
+  {
+    &::before
+    {
+      transform: translateY(space(xs));
+    }
+  }
 }
