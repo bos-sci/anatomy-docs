@@ -23,8 +23,21 @@
 
 .ads-input-error
 {
+  display: flex;
+  align-items: center;
   margin: space(md) 0 0 0;
   color: $feedback-error-40;
+
+  &::before
+  {
+    content: '';
+    display: inline-block;
+    width: space(3x);
+    height: space(3x);
+    margin-right: space(md);
+    background-image: url("../../assets/images/icon-error.svg");
+    background-size: 100%;
+  }
 }
 
 .ads-input-help-text
