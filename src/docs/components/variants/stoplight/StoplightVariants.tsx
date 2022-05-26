@@ -11,8 +11,8 @@ const StoplightVariants = ({ variantId }: VariantProps): JSX.Element => {
       return <RedLightStyle />;
     case 'stoplightYellow':
       return <YellowLightStyle />;
-      case 'stoplightGreen':
-        return <GreenLightStyle />;
+    case 'stoplightGreen':
+      return <GreenLightStyle />;
 
     default:
       return <DefaultStoplight />;

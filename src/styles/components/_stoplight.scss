@@ -5,20 +5,20 @@
 
   &::before
   {
+    content: '';
     display: inline-block;
     width: space(3x);
     height: space(3x);
     margin-right: space(md);
+    background-size: 100%;
   }
 
   &.body-subtle
   {
     &::before
     {
-      display: inline-block;
       width: space(2x);
       height: space(2x);
-      margin-right: space(md);
       transform: translateY(-1px);
     }
   }
@@ -30,14 +30,14 @@
   {
     &::before
     {
-      content: url("../../assets/images/icon-stoplight-red.svg");
+      background-image: url("../../assets/images/icon-stoplight-red.svg");
     }
 
     &.ads-stoplight-ghost
     {
       &::before
       {
-        content: url("../../assets/images/icon-stoplight-red-ghost.svg");
+        background-image: url("../../assets/images/icon-stoplight-red-ghost.svg");
       }
     }
   }
@@ -46,7 +46,7 @@
   {
     &::before
     {
-      content: url("../../assets/images/icon-stoplight-yellow.svg");
+      background-image: url("../../assets/images/icon-stoplight-yellow.svg");
     }
   }
 
@@ -54,7 +54,7 @@
   {
     &::before
     {
-      content: url("../../assets/images/icon-stoplight-green.svg");
+      background-image: url("../../assets/images/icon-stoplight-green.svg");
     }
   }
 
