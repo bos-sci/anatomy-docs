@@ -50,7 +50,7 @@
   &-neutral-100
   {
     @include swatch;
-    border: 1px solid black;
+    border: space(xxs) solid $neutral-00;
     background: $neutral-100;
   }
 
@@ -206,6 +206,33 @@
   {
     @include swatch;
     background: $gradient-subtle;
+  }
+
+  // shadows
+  &-shadow-primary
+  {
+    @include swatch;
+    margin-left: space(2x);
+    box-shadow: $box-shadow-primary;
+  }
+  &-shadow-secondary
+  {
+    @include swatch;
+    margin-left: space(2x);
+    box-shadow: $box-shadow-secondary;
+  }
+  &-shadow-tertiary
+  {
+    @include swatch;
+    margin-left: space(2x);
+    box-shadow: $box-shadow-tertiary;
+  }
+
+  // borders
+  &-border-gradient-accent
+  {
+    @include swatch;
+    @include border-gradient-accent;
   }
 
   // backgrounds

@@ -11,6 +11,14 @@ $border-color-ghost: $neutral-100;
 $border-color-accent: $action-primary-40;
 $border-color-subtle: $neutral-80;
 
+@mixin border-gradient-accent
+{
+  border-width: space(sm);
+  border-style: solid;
+  border-image-slice: 1;
+  border-image-source: $gradient-accent;
+}
+
 $border-radius: 0.25rem; // NOTE: this is a one-off size
 
 
