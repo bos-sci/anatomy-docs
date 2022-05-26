@@ -76,6 +76,8 @@ interface Props {
   hasSearch?: boolean;
 }
 
+let navPrimaryMenuIndex = 0;
+
 const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
@@ -83,9 +85,14 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [history, setHistory] = useState<HistoryNode[]>([]);
   const [activeNode, setActiveNode] = useState<NavNode | null>(null);
+  const [menuId, setMenuId] = useState('');
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMenuId('navPrimaryMenu' + navPrimaryMenuIndex++);
+  }, []);
 
   const pushHistory = (navItem: NavNode, depth: number) => {
     const newHistory = [...history];
@@ -199,7 +206,9 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
                     type="button"
                     variant="subtle"
                     className={"nav-link" + (navItem === getActiveRoot() ? ' active' : '')}
+                    aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
+                    aria-controls={menuId}
                     onClick={() => updateMenu(navItem)}
                     onBlur={manageFocus}>
                     {navItem.text}
@@ -247,6 +256,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
             navItems={navTree}
             utilityItems={utilityItems}
             setActiveNode={setActiveNode}
+            menuId={menuId}
             isMenuOpen={isMenuOpen}
             history={history}
             pushHistory={pushHistory}
