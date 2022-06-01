@@ -142,7 +142,31 @@ $menuPadding: space(md) 0;
         &.nav-item-root
         {
           display: none;
+
+          button.nav-link
+          {
+            padding-right: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
+
+            &::after
+            {
+              content: url("../../../../assets/images/icon-chevron-down.svg");
+              position: absolute;
+              top: calc(50% - ($icon-size / 2));
+              right: space(2x);
+              width: $icon-size;
+              height: $icon-size;
+            }
+
+            &[aria-expanded="true"]
+            {
+              &::after
+              {
+                content: url("../../../../assets/images/icon-chevron-up.svg");
+              }
+            }
+          }
         }
+
 
         &.nav-item-toggle,
         &.nav-item-search
@@ -173,6 +197,7 @@ $menuPadding: space(md) 0;
           .nav-link::after,
           .nav-link[aria-expanded="true"]::after
           {
+            content: '';
             background-image: url("../../../../assets/images/icon-search.svg");
           }
         }
@@ -192,40 +217,14 @@ $menuPadding: space(md) 0;
             }
           }
         }
-
-        .nav-link
-        {
-          position: relative;
-          padding: space(3x) space(2x);
-          border: 0;
-        }
-
-        button.nav-link
-        {
-          padding-right: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
-
-          &::after
-          {
-            content: url("../../../../assets/images/icon-chevron-down.svg");
-            position: absolute;
-            top: calc(50% - ($icon-size / 2));
-            right: space(2x);
-            width: $icon-size;
-            height: $icon-size;
-          }
-
-          &[aria-expanded="true"]
-          {
-            &::after
-            {
-              content: url("../../../../assets/images/icon-chevron-up.svg");
-            }
-          }
-        }
       }
 
       .nav-link
       {
+        position: relative;
+        padding: space(3x) space(2x);
+        border: 0;
+
         &.active,
         &:hover,
         &[aria-expanded="true"]
