@@ -155,11 +155,15 @@ $menuPadding: space(md) 0;
 
             &::after
             {
+              content: '';
               position: absolute;
               left: space(2x);
               top: calc(50% - ($icon-size / 2));
               width: $icon-size;
               height: $icon-size;
+              background-position: center;
+              background-size: cover;
+              background-repeat: no-repeat;
             }
           }
         }
@@ -169,7 +173,7 @@ $menuPadding: space(md) 0;
           .nav-link::after,
           .nav-link[aria-expanded="true"]::after
           {
-            content: url("../../../../assets/images/icon-search.svg");
+            background-image: url("../../../../assets/images/icon-search.svg");
           }
         }
 
@@ -179,12 +183,12 @@ $menuPadding: space(md) 0;
           {
             &::after
             {
-              content: url("../../../../assets/images/icon-menu.svg");
+              background-image: url("../../../../assets/images/icon-menu.svg");
             }
 
             &[aria-expanded="true"]::after
             {
-              content: url("../../../../assets/images/icon-close.svg");
+              background-image: url("../../../../assets/images/icon-close.svg");
             }
           }
         }
