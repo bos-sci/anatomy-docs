@@ -106,7 +106,6 @@ const Foundations = (props:  Props): JSX.Element => {
           leadParagraph={foundationData?.leadParagraph || ''}
           navSecondaryMenuTrigger="Foundations"
           navSecondaryItems={navItems}
-          navSecondaryActiveSlug={props.match.url}
           navTertiaryItems={headings}>
           <Markdown markdown={foundationData?.content || ''} headingOffset={1} />
         </PageTemplate>

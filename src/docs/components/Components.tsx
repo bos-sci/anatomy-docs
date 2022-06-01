@@ -165,7 +165,6 @@ const Components = (props: Props): JSX.Element => {
           leadParagraph={componentData?.leadParagraph || ''}
           navSecondaryMenuTrigger="Components"
           navSecondaryItems={navItems}
-          navSecondaryActiveSlug={props.match.url}
           navTertiaryItems={headings}>
           <Preview component={ componentName } variant='Default' />
           {(componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>
