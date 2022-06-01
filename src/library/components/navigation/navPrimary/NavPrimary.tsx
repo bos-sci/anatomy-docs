@@ -167,6 +167,9 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
     if (!isMenuOpen && isSearchOpen) {
       setIsSearchOpen(false);
     }
+    if (isMenuOpen) {
+      setHistory([]);
+    }
     setIsMenuOpen(!isMenuOpen);
   }
 

@@ -727,6 +727,11 @@ $menuPadding: space(md) 0;
       }
     }
 
+    .nav-link-see-all
+    {
+      @include font-size($fs-body-subtle);
+    }
+
     .nav-block
     {
       display: none;
