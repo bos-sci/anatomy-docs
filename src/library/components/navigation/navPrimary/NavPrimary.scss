@@ -3,9 +3,9 @@
 @import '../../../../styles/utilities/utilities';
 
 // These are one of sizes to get the icons to match the font sizes
-$icon-size-sm: 0.75rem;
+$icon-size-sm: space(lg);
 $icon-size: 1em;
-$icon-size-lg: 1.15rem;
+$icon-size-lg: space(2x);
 
 $panelsWidth: 100vw;
 $numPanels: 4;
@@ -312,10 +312,10 @@ $menuPadding: space(md) 0;
       mask-size: cover;
       background-color: $action-primary-40;
       position: absolute;
-      top: calc(50% - ($icon-size / 2));
+      top: calc(50% - ($icon-size-sm / 2));
       left: space(2x);
-      width: $icon-size;
-      height: $icon-size;
+      width: $icon-size-sm;
+      height: $icon-size-sm;
 
     }
     &:active::after
@@ -430,16 +430,20 @@ $menuPadding: space(md) 0;
       .nav-link-text
       {
         position: relative;
-        padding-right: calc($icon-size + space(md)); // Padding + icon width + space between icon and text;
+        padding-right: calc($icon-size-sm + space(md)); // Padding + icon width + space between icon and text;
 
         &::after
         {
-          content: url("../../../../assets/images/icon-chevron-right.svg");
+          content: '';
           position: absolute;
-          top: calc(50% - ($icon-size / 2));
+          top: calc(50% - ($icon-size-sm / 2));
           right: 0;
-          width: $icon-size;
-          height: $icon-size;
+          width: $icon-size-sm;
+          height: $icon-size-sm;
+          background-image: url("../../../../assets/images/icon-chevron-right.svg");
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
         }
       }
 
