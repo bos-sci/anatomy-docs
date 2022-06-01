@@ -16,7 +16,8 @@ $navMenuZIndex: 550;
 $navListZIndex: 500;
 
 // Used in nav-menu nav-links
-$navLinkPadding: space(lg) space(3x);
+$navLinkPadding: space(2x) space(3x);
+$menuPadding: space(md) 0;
 
 .nav-header
 {
@@ -279,7 +280,7 @@ $navLinkPadding: space(lg) space(3x);
     .nav-link
     {
       flex-wrap: wrap;
-      border-bottom: space(xxs) solid $neutral-80;
+      border: 0;
       padding: $navLinkPadding;
       @include link-navigation;
     }
@@ -304,12 +305,22 @@ $navLinkPadding: space(lg) space(3x);
 
     &::after
     {
-      content: url("../../../../assets/images/icon-chevron-left.svg");
+      content: '';
+      -webkit-mask: url("../../../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
+      mask: url("../../../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
+      -webkit-mask-size: cover;
+      mask-size: cover;
+      background-color: $action-primary-40;
       position: absolute;
       top: calc(50% - ($icon-size / 2));
       left: space(2x);
       width: $icon-size;
       height: $icon-size;
+
+    }
+    &:active::after
+    {
+      background-color: $text-color-primary;
     }
   }
 
@@ -317,6 +328,7 @@ $navLinkPadding: space(lg) space(3x);
   {
     position: relative;
     margin: auto;
+    padding: $menuPadding;
     width: $panelsWidth;
 
     > :not(:last-child)
@@ -367,12 +379,12 @@ $navLinkPadding: space(lg) space(3x);
 
   .nav-menu-panel-header
   {
-    padding: space(3x) space(2x) space(4x);
-    border-bottom: space(xxs) solid $neutral-80;
+    padding: space(lg) space(3x) space(4x);
 
     :first-child
     {
       margin-top: 0;
+      @include font-size($fs-h3);
     }
   }
 
@@ -380,6 +392,7 @@ $navLinkPadding: space(lg) space(3x);
   {
     display: block;
     margin-top: space(3x);
+    @include font-size($fs-base);
   }
 
   .nav-item-parent
@@ -399,6 +412,14 @@ $navLinkPadding: space(lg) space(3x);
       &:hover
       {
         background: $neutral-95;
+      }
+
+      &[aria-expanded="true"]
+      {
+        .nav-link-description
+        {
+          color: $text-color-primary;
+        }
       }
 
       .nav-link-description
@@ -447,6 +468,7 @@ $navLinkPadding: space(lg) space(3x);
     align-content: flex-start;
     align-items: flex-start;
     border-top: space(xxs) solid $neutral-80;
+    padding: $menuPadding;
 
     .nav-link
     {

@@ -71,7 +71,6 @@ interface Props {
     primaryNavAriaLabel?: string;
   }
   navItems: NavItemPrimary[];
-  activeSlug?: string;
   utilityItems?: NavItemUtility[];
   hasSearch?: boolean;
 }

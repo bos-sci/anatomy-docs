@@ -1,7 +1,7 @@
 import NavPrimary from '../../../../library/components/navigation/navPrimary/NavPrimary';
 import useTitle from '../../../shared/hooks/useTitle';
 
-import logoBSC from '../../../../assets/images/logo-bsc.svg';
+import logoBSC from '../../../../assets/images/logo-bsc-tagline.svg';
 import navPrimaryData from './navPrimaryData';
 
 const utilityItems = [

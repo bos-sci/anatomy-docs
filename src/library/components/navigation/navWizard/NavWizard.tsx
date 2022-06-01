@@ -114,7 +114,7 @@ const NavWizard = (props: Props) => {
             <IconChevronLeft className="ads-icon-lg u-icon-left" />
             {props.backButtonText ? props.backButtonText : 'Back'}
           </Button>}
-        {breadcrumb && <p className="ads-nav-breadcrumb">{breadcrumb}</p>}
+        {breadcrumb && <p className="ads-nav-breadcrumb" aria-current="step">{breadcrumb}</p>}
         {title && <h2 className="ads-nav-title">{title}</h2>}
         {description && <p className="ads-nav-description">{description}</p>}
       </div>
