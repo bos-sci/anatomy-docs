@@ -24,7 +24,7 @@ const NavSecondaryListParent = ({ navItem, activeParent, setActiveParent }: NavP
     <li className="nav-item-parent">
       <Button
         variant="subtle"
-        className="nav-link-parent-trigger nav-link"
+        className="nav-link"
         aria-expanded={navItem === activeParent}
         aria-controls={navListId}
         onClick={() => setActiveParent(navItem)}

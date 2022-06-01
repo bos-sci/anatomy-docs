@@ -4,6 +4,7 @@ import NavSecondaryList from './NavSecondaryList';
 import "./NavSecondary.scss"
 import Button from '../../Button';
 import IconChevronLeft from '../../icon/icons/IconChevronLeft';
+import { useLocation } from 'react-router-dom';
 
 interface NavItem {
   text: string;
@@ -58,24 +59,39 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
 
   }, [navItems]);
 
+  const location = useLocation();
+
   useEffect(() => {
-    if (activeSlug) {
-      const findNodeBySlug = (nodes: NavNode[], slug: string): NavNode | undefined => {
-        for (let i = 0; i < nodes.length; i++) {
-          const node= nodes[i];
-          if (node.slug === slug) {
-            return node;
-          } else if (node.children) {
-            return findNodeBySlug(node.children, slug);
+    const findNodeBySlug = (nodes: NavNode[], slug: string): NavNode | undefined => {
+
+      function findInTree(node: NavNode, slug: string): NavNode | null {
+        if (node.slug && slug.includes(node.slug)) {
+          return node;
+        } else if (node.children) {
+          for (let i = 0; i < node.children.length; i++) {
+            let found: NavNode | null = findInTree(node.children[i], slug);
+            if (found) {
+              return found;
+            }
           }
+          return null;
+        } else {
+          return null;
         }
       }
-      const currentNode = findNodeBySlug(navTree, activeSlug);
-      if (currentNode) {
-        setActiveParent(currentNode.parent);
+
+      for (let i = 0; i < nodes.length; i++) {
+        const foundNode = findInTree(nodes[i], slug);
+        if (foundNode) {
+          return foundNode;
+        }
       }
     }
-  }, [activeSlug, navTree]);
+    const currentNode = findNodeBySlug(navTree, activeSlug ? activeSlug : location.pathname);
+    if (currentNode) {
+      setActiveParent(currentNode.parent);
+    }
+  }, [activeSlug, location, navTree]);
 
   useEffect(() => {
     setNavSecondaryId('navSecondary' + navSecondaryIndex++);

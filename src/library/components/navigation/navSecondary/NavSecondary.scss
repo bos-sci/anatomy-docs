@@ -94,7 +94,7 @@ $icon-size-sm: space(lg);
     &:not(.nav-active-list)
     {
       & > .nav-item:not(.nav-item-parent),
-      & > .nav-item-parent > .nav-link-parent-trigger
+      & > .nav-item-parent > .nav-link
       {
         display: none;
       }
@@ -114,7 +114,7 @@ $icon-size-sm: space(lg);
 
   .nav-item-parent
   {
-    .nav-link.nav-link-parent-trigger
+    & > .nav-link
     {
       position: relative;
 
