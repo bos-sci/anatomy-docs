@@ -111,8 +111,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
     setHistory(newHistory);
   }
 
+  // Open menu to right place or close menu on click of root item
   const updateMenu = (navItem: NavNode): void => {
-
     if (history.length && history[0].node === navItem) {
       setHistory([]);
       setIsMenuOpen(false);
@@ -123,6 +123,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
     }
   }
 
+  // Travels up the tree from the active node to get the root item
   const getActiveRoot = (): NavNode | null => {
     let node = activeNode;
     while (node?.parent) {
@@ -134,6 +135,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   useEffect(() => {
     const tree = [...navItems] as NavNode[];
 
+    // Add 'parent' property to each nav item that points to the items parent
     const populateParents = (nodes: NavNode[], parent: NavNode | null = null, index = 0) => {
       nodes.forEach((node, i) => {
         node.parent = parent;
@@ -149,19 +151,31 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   }, [navItems]);
 
   useEffect(() => {
+    // Close menu on focus out or click out
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!navRef.current?.contains(e.target as Node)) {
         setIsMenuOpen(false);
         setHistory([]);
       }
     }
+
+    // Close menu when viewport goes from small to large before making a root item selection
+    const onResize = (e: UIEvent) => {
+      const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      if (window.innerWidth >= fontSize * 62 && history.length === 0) {
+        setIsMenuOpen(false);
+      }
+    }
+
     window.addEventListener('focusin', onFocusWithinOut);
     window.addEventListener('pointerup', onFocusWithinOut);
+    window.addEventListener('resize', onResize);
     return () => {
       window.removeEventListener('focusin', onFocusWithinOut);
       window.removeEventListener('pointerup', onFocusWithinOut);
+      window.removeEventListener('resize', onResize);
     }
-  }, []);
+  }, [history]);
 
   const toggleMenu = () => {
     if (!isMenuOpen && isSearchOpen) {

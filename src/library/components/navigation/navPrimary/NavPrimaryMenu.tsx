@@ -28,7 +28,7 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
           variant="subtle"
           className="nav-menu-back"
           onClick={() => props.popHistory()}>
-          Back {/* to {panels[panels.length - 1][0].parent?.text.toLocaleLowerCase()} */}
+          Back
         </Button>
       }
       <div className="nav-menu-panels">
