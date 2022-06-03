@@ -112,13 +112,13 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
   }, [isOpen]);
 
   return (
-    <nav className="nav-secondary" aria-label={texts?.navAriaLabel || 'secondary navigation'} ref={nav}>
-      <button className="nav-secondary-menu-trigger" aria-expanded={isOpen} aria-controls={navSecondaryId} aria-label={texts?.menuToggleAriaLabel || 'Menu'} onClick={() => setIsOpen(!isOpen)}>
+    <nav className="ads-nav-secondary" aria-label={texts?.navAriaLabel || 'secondary navigation'} ref={nav}>
+      <button className="ads-nav-secondary-menu-trigger" aria-expanded={isOpen} aria-controls={navSecondaryId} aria-label={texts?.menuToggleAriaLabel || 'Menu'} onClick={() => setIsOpen(!isOpen)}>
         { texts?.menuToggleText || 'Menu' }
       </button>
-      <div id={navSecondaryId} className={`nav-secondary-menu${isOpen ? ' open' : ''}`}>
+      <div id={navSecondaryId} className={`ads-nav-secondary-menu${isOpen ? ' open' : ''}`}>
         {activeParent &&
-          <Button className="nav-link-back" variant="subtle" onClick={() => setActiveParent(activeParent?.parent || null)}>
+          <Button className="ads-nav-link-back" variant="subtle" onClick={() => setActiveParent(activeParent?.parent || null)}>
             <IconChevronLeft className="ads-icon-md u-icon-left" />
             {texts?.backButtonText || 'Back'}
           </Button>

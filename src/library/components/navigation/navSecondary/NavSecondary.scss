@@ -25,7 +25,7 @@ $icon-size-sm: space(lg);
   }
 }
 
-.nav-secondary
+.ads-nav-secondary
 {
   position: relative;
   grid-area: nav-secondary;
@@ -33,7 +33,7 @@ $icon-size-sm: space(lg);
   width: 100%;
   transition: width .25s ease-out;
 
-  .nav-secondary-menu-trigger
+  .ads-nav-secondary-menu-trigger
   {
     position: relative;
     display: block;
@@ -71,7 +71,7 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .nav-secondary-menu
+  .ads-nav-secondary-menu
   {
     position: absolute;
     display: none;
@@ -86,35 +86,37 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .nav
+  .ads-nav
   {
     flex-direction: column;
-    margin-top: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
-    &:not(.nav-active-list)
+    &:not(.ads-nav-active-list)
     {
-      & > .nav-item:not(.nav-item-parent),
-      & > .nav-item-parent > .nav-link
+      & > .ads-nav-item:not(.ads-nav-item-parent),
+      & > .ads-nav-item-parent > .ads-nav-link
       {
         display: none;
       }
     }
 
-    &.nav-active-list
+    &.ads-nav-active-list
     {
       width: 100%;
     }
   }
 
-  .nav-item,
-  .nav-item-parent
+  .ads-nav-item,
+  .ads-nav-item-parent
   {
     margin-top: 0;
   }
 
-  .nav-item-parent
+  .ads-nav-item-parent
   {
-    & > .nav-link
+    & > .ads-nav-link
     {
       position: relative;
 
@@ -132,8 +134,8 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .nav-link,
-  .nav-link-back
+  .ads-nav-link,
+  .ads-nav-link-back
   {
     align-items: center;
     padding: space(lg) space(2x);
@@ -146,7 +148,7 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .nav-link
+  .ads-nav-link
   {
     display: flex;
     justify-content: space-between;
@@ -168,7 +170,7 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .nav-link-back
+  .ads-nav-link-back
   {
     justify-content: flex-start;
     @include font-size($fs-small);
@@ -183,14 +185,14 @@ $icon-size-sm: space(lg);
 
 @media (min-width: 992px)
 {
-  .nav-secondary
+  .ads-nav-secondary
   {
-    .nav-secondary-menu-trigger
+    .ads-nav-secondary-menu-trigger
     {
       display: none;
     }
 
-    .nav-secondary-menu
+    .ads-nav-secondary-menu
     {
       position: relative;
       display: block;
