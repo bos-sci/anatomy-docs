@@ -10,16 +10,14 @@ interface Props {
   history: HistoryNode[];
   pushHistory: (navItem: NavNode, depth: number) => void;
   popHistory: () => void;
+  focusBackBtn: () => void;
 }
 
 const NavWizardListParent = (props: Props) => {
 
   const updateHistory = () => {
-    if (props.history.length && props.navItem === props.history[props.history.length - 1].node) {
-      props.popHistory();
-    } else {
-      props.pushHistory(props.navItem, props.depth);
-    }
+    props.pushHistory(props.navItem, props.depth);
+    props.focusBackBtn();
   }
 
   const isActive = Array.from(props.history, h => h.node).includes(props.navItem);
@@ -41,7 +39,7 @@ const NavWizardListParent = (props: Props) => {
           <IconChevronRight className="ads-icon-2x"/>
         </div>
       </Button>
-      <NavWizardList navItems={ props.navItem.children! } depth={props.depth + 1} history={props.history} pushHistory={props.pushHistory} popHistory={props.popHistory} />
+      <NavWizardList navItems={ props.navItem.children! } depth={props.depth + 1} history={props.history} pushHistory={props.pushHistory} popHistory={props.popHistory} focusBackBtn={props.focusBackBtn} />
     </li>
   );
 }

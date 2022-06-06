@@ -1,7 +1,7 @@
 import { RequireOnlyOne } from '../../../types';
 import NavWizardList from './NavWizardList';
 import './NavWizard.scss'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Button from '../../Button';
 import IconChevronLeft from '../../icon/icons/IconChevronLeft';
 
@@ -54,6 +54,8 @@ const NavWizard = (props: Props) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
+  const backBtnRef = useRef<HTMLButtonElement>(null);
+
   const pushHistory = (navItem: NavNode, depth: number) => {
     const newHistory = [...history];
     if (newHistory.length > 0 && depth <= newHistory[newHistory.length - 1].depth) {
@@ -70,6 +72,10 @@ const NavWizard = (props: Props) => {
     const newHistory = [...history];
     newHistory.pop();
     setHistory(newHistory);
+  }
+
+  const focusBackBtn = () => {
+    backBtnRef.current?.focus();
   }
 
   useEffect(() => {
@@ -106,6 +112,8 @@ const NavWizard = (props: Props) => {
       <div className="ads-nav-wizard-header">
         {history.length > 0 &&
           <Button
+            ref={backBtnRef}
+            autoFocus
             variant="subtle"
             type="button"
             className="ads-nav-back"
@@ -114,13 +122,13 @@ const NavWizard = (props: Props) => {
             <IconChevronLeft className="ads-icon-lg u-icon-left" />
             {props.backButtonText ? props.backButtonText : 'Back'}
           </Button>}
-        {breadcrumb && <p className="ads-nav-breadcrumb">{breadcrumb}</p>}
+        {breadcrumb && <p className="ads-nav-breadcrumb" aria-current="step">{breadcrumb}</p>}
         {title && <h2 className="ads-nav-title">{title}</h2>}
         {description && <p className="ads-nav-description">{description}</p>}
       </div>
       {navTree.length > 0 &&
         <div className="ads-nav-wizard-menu">
-          <NavWizardList navItems={navTree} history={history} pushHistory={pushHistory} popHistory={popHistory} depth={0} />
+          <NavWizardList navItems={navTree} history={history} pushHistory={pushHistory} popHistory={popHistory} depth={0} focusBackBtn={focusBackBtn} />
         </div>
       }
     </nav>
