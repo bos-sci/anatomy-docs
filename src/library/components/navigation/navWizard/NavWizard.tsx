@@ -1,7 +1,7 @@
 import { RequireOnlyOne } from '../../../types';
 import NavWizardList from './NavWizardList';
 import './NavWizard.scss'
-import { useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useState, useRef } from 'react';
 import Button from '../../Button';
 import IconChevronLeft from '../../icon/icons/IconChevronLeft';
 
@@ -35,6 +35,7 @@ export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'href' | 'children'>;
 export interface HistoryNode {
   node: NavNode;
   depth: number;
+  ref: RefObject<HTMLButtonElement>;
 }
 
 interface Props {
@@ -56,14 +57,15 @@ const NavWizard = (props: Props) => {
 
   const backBtnRef = useRef<HTMLButtonElement>(null);
 
-  const pushHistory = (navItem: NavNode, depth: number) => {
+  const pushHistory = (navItem: NavNode, depth: number, ref: RefObject<HTMLButtonElement>) => {
     const newHistory = [...history];
     if (newHistory.length > 0 && depth <= newHistory[newHistory.length - 1].depth) {
       newHistory.splice(depth);
     }
     newHistory.push({
       node: navItem,
-      depth: depth
+      depth,
+      ref
     });
     setHistory(newHistory);
   }
@@ -75,7 +77,12 @@ const NavWizard = (props: Props) => {
   }
 
   const focusBackBtn = () => {
-    backBtnRef.current?.focus();
+    setTimeout(() => backBtnRef.current?.focus(), 0);
+  }
+
+  const backStep = () => {
+    popHistory();
+    setTimeout(() => history[history.length - 1].ref.current?.focus(), 0);
   }
 
   useEffect(() => {
@@ -113,12 +120,11 @@ const NavWizard = (props: Props) => {
         {history.length > 0 &&
           <Button
             ref={backBtnRef}
-            autoFocus
             variant="subtle"
             type="button"
             className="ads-nav-back"
             aria-label={props.backButtonAriaLabel ? props.backButtonAriaLabel : 'Back to previous step'}
-            onClick={popHistory}>
+            onClick={backStep}>
             <IconChevronLeft className="ads-icon-lg u-icon-left" />
             {props.backButtonText ? props.backButtonText : 'Back'}
           </Button>}

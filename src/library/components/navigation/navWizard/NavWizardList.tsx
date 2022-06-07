@@ -2,12 +2,13 @@ import Link from '../../Link';
 import { NavNode } from './NavWizard';
 import NavWizardListParent from './NavWizardListParent';
 import { HistoryNode } from './NavWizard';
+import { RefObject } from 'react';
 
 interface Props {
   navItems: NavNode[];
   depth: number;
   history: HistoryNode[];
-  pushHistory: (navItem: NavNode, depth: number) => void;
+  pushHistory: (navItem: NavNode, depth: number, ref: RefObject<HTMLButtonElement>) => void;
   popHistory: () => void;
   focusBackBtn: () => void;
 }
