@@ -1,6 +1,4 @@
 /* TODO
-  - Figure out what needs to be a prop
-  - Fix borders
   - Keyboard nav for tabbing backwards from menu to nav bar
 */
 
@@ -261,11 +259,9 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
             </li>
           </ul>
         </div>
-        {isSearchOpen &&
-          <div className="search-panel">
-            <Search label="Search" buttonText={texts?.searchButtonText} buttonAriaLabel={texts?.searchButtonAriaLabel} />
-          </div>
-        }
+        <div className={'search-panel' + (isSearchOpen ? ' open' : '')}>
+          <Search label="Search" buttonText={texts?.searchButtonText} buttonAriaLabel={texts?.searchButtonAriaLabel} />
+        </div>
         {navTree.length > 0 &&
           <NavPrimaryMenu
             ref={menuRef}

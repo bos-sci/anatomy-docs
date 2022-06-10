@@ -5,7 +5,21 @@ $icon-size: 1em;
   .ads-dropdown-trigger
   {
     position: relative;
-    padding-right: calc(space(3x) + $icon-size + space(md));
+    padding-right: calc(space(lg) + $icon-size + space(3x)); // gap + icon width + padding
+
+    &::after
+    {
+      content: '';
+      -webkit-mask: url("../../assets/images/icon-chevron-down.svg") no-repeat 50% 50%;
+      mask: url("../../assets/images/icon-chevron-down.svg") no-repeat 50% 50%;
+      -webkit-mask-size: cover;
+      mask-size: cover;
+      background-color: $text-color-primary;
+      position: absolute;
+      right: space(3x);
+      width: $icon-size;
+      height: $icon-size;
+    }
 
     &:active,
     &[aria-expanded="true"]
@@ -15,12 +29,9 @@ $icon-size: 1em;
       background-color: $action-primary-20;
     }
 
-    &[aria-expanded="true"]
+    &[aria-expanded="true"]::after
     {
-      .ads-dropdown-trigger-chevron
-      {
-        transform: rotate(180deg);
-      }
+      transform: rotate(180deg);
     }
   }
 

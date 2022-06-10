@@ -129,7 +129,6 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         {...buttonAttrs}>
           {triggerText}
-          <IconChevronDown className="ads-icon-lg u-icon-right ads-dropdown-trigger-chevron" />
       </Button>
       {isDropdownOpen && <>
         {listType === 'ul' && (

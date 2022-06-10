@@ -71,7 +71,7 @@ $menuPadding: space(md) 0;
       .nav-link
       {
         border: 0;
-        padding: space(md) space(lg);
+        //padding: space(md) space(lg);
         color: $neutral-40;
 
         &:hover
@@ -84,14 +84,13 @@ $menuPadding: space(md) 0;
       {
         .ads-dropdown-trigger
         {
-          position: relative;
           padding: space(md) space(lg);
+          padding-right: calc(space(md) + $icon-size-sm + space(lg));
 
           &[aria-expanded="true"],
           &:hover
           {
             background: transparent;
-            color: $text-color-primary;
           }
 
           &::after
@@ -99,6 +98,7 @@ $menuPadding: space(md) 0;
             right: space(lg);
             width: $icon-size-sm;
             height: $icon-size-sm;
+            background-color: $neutral-40;
           }
         }
       }
@@ -120,7 +120,7 @@ $menuPadding: space(md) 0;
     position: relative;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     align-content: center;
     flex-direction: column;
     z-index: $navBarZIndex;
@@ -128,7 +128,12 @@ $menuPadding: space(md) 0;
     .nav-link-logo
     {
       display: block;
-      padding: space(2x) space(3x);
+      margin: auto;
+      padding: space(2x);
+
+      img {
+        display: block;
+      }
     }
 
     .nav
@@ -319,7 +324,6 @@ $menuPadding: space(md) 0;
       left: space(2x);
       width: $icon-size-sm;
       height: $icon-size-sm;
-
     }
     &:active::after
     {
@@ -395,7 +399,6 @@ $menuPadding: space(md) 0;
   {
     display: block;
     margin-top: space(3x);
-    @include font-size($fs-base);
   }
 
   .nav-item-parent
@@ -501,8 +504,16 @@ $menuPadding: space(md) 0;
 
   .search-panel
   {
+    display: none;
+    position: absolute;
     margin: auto;
-    border-top: space(xxs) solid $neutral-80;
+    border-bottom: space(xxs) solid $neutral-80;
+    width: 100%;
+
+    &.open
+    {
+      display: block;
+    }
 
     .ads-form-search
     {
@@ -547,6 +558,11 @@ $menuPadding: space(md) 0;
     .nav-bar
     {
       flex-direction: row;
+
+      .nav-link-logo
+      {
+        margin: 0;
+      }
     }
   }
 }
@@ -587,7 +603,7 @@ $menuPadding: space(md) 0;
     {
       .nav-link-logo
       {
-        padding: 0;
+        padding-left: 0;
       }
 
       .nav
