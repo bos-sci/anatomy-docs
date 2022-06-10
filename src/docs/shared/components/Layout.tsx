@@ -36,7 +36,7 @@ const navItems: NavItemPrimary[] = [
     }
   },
   {
-    text: 'Code Standards',
+    text: 'Code standards',
     slug: '/resources/developers/code-standards/general',
     isActive: (_match, location) => {
       return location.pathname.split('/')[1] === 'code-standards';
