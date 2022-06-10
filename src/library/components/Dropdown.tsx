@@ -1,7 +1,6 @@
 import { Children, cloneElement, createRef, HTMLAttributes, ReactElement, useEffect, useRef, useState } from 'react';
 import Button from './Button';
 import { Props as ButtonProps } from './Button';
-import IconChevronDown from './icon/icons/IconChevronDown';
 import { Props as LinkProps } from './Link';
 
 type DropdownItem = ReactElement<ButtonProps | LinkProps>;
