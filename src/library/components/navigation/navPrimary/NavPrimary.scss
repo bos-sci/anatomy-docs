@@ -90,7 +90,8 @@ $menuPadding: space(md) 0;
           padding-right: calc(space(md) + $icon-size-sm + space(lg));
 
           &[aria-expanded="true"],
-          &:hover
+          &:hover,
+          &:active
           {
             background: transparent;
           }
@@ -488,10 +489,11 @@ $menuPadding: space(md) 0;
       @include font-size($fs-base);
     }
 
-    .ads-ads-dropdown-trigger
+    .ads-dropdown-trigger
     {
       &[aria-expanded="true"],
-      &:hover
+      &:hover,
+      &:active
       {
         background: transparent;
         color: $text-color-primary;
