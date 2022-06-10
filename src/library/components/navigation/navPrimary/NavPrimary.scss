@@ -85,6 +85,7 @@ $menuPadding: space(md) 0;
       {
         .ads-dropdown-trigger
         {
+          display: inline-flex;
           padding: space(md) space(lg);
           padding-right: calc(space(md) + $icon-size-sm + space(lg));
 
