@@ -21,17 +21,17 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
   const [activeDepth, setActiveDepth] = useState(0);
 
   return (
-    <div ref={ref} id={props.menuId} className={"nav-menu" + (props.isMenuOpen ? ' open' : '')} tabIndex={-1}>
+    <div ref={ref} id={props.menuId} className={"ads-nav-menu" + (props.isMenuOpen ? ' open' : '')} tabIndex={-1}>
       {props.history.length > 0 &&
         <Button
           type="button"
           variant="subtle"
-          className="nav-menu-back"
+          className="ads-nav-menu-back"
           onClick={() => props.popHistory()}>
           Back
         </Button>
       }
-      <div className="nav-menu-panels">
+      <div className="ads-nav-menu-panels">
         <NavPrimaryList
           navItems={ props.navItems }
           setActiveNode={props.setActiveNode}
@@ -43,17 +43,17 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
           popHistory={props.popHistory} />
       </div>
       {(props.history.length === 0 && props.utilityItems) &&
-        <ul className="nav nav-block">
+        <ul className="ads-nav ads-nav-block">
           {props.utilityItems.map((item, i) => (
             // TODO: Should this be a select instead of a dropdown?
-            <li key={'utilityItem' + i} className="nav-item">
+            <li key={'utilityItem' + i} className="ads-nav-item">
               {item.children ?
-                <Dropdown key={'utilityItem' + item.text + i} triggerText={item.text} className="nav-link">
+                <Dropdown key={'utilityItem' + item.text + i} triggerText={item.text} className="ads-nav-link">
                   {item.children.map((child, childI) => (
                     <Link key={child.text + childI} href={child.href} to={child.slug}>{child.text}</Link>
                   ))}
                 </Dropdown>
-                : <Link to={item.slug} href={item.href} className="nav-link">{item.text}</Link>
+                : <Link to={item.slug} href={item.href} className="ads-nav-link">{item.text}</Link>
               }
             </li>
           ))}

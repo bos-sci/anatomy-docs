@@ -19,7 +19,7 @@ $navListZIndex: 500;
 $navLinkPadding: space(2x) space(3x);
 $menuPadding: space(md) 0;
 
-.nav-header
+.ads-nav-header
 {
   border-image-source: $gradient-brand;
   border-image-slice: 1;
@@ -30,10 +30,10 @@ $menuPadding: space(md) 0;
   border-bottom: 0;
 }
 
-.nav-utility,
-.nav-primary
+.ads-nav-utility,
+.ads-nav-primary
 {
-  .nav
+  .ads-nav
   {
     display: flex;
     align-items: center;
@@ -42,8 +42,9 @@ $menuPadding: space(md) 0;
     list-style: none;
   }
 
-  .nav-link
+  .ads-nav-link
   {
+    display: block;
     @include font-size($fs-base);
     @include link-navigation;
 
@@ -55,23 +56,23 @@ $menuPadding: space(md) 0;
 }
 
 // Utility Nav
-.nav-utility
+.ads-nav-utility
 {
   display: none;
   border-bottom: space(xxs) solid $neutral-80;
 
-  .nav
+  .ads-nav
   {
     justify-content: flex-end;
 
-    .nav-item
+    .ads-nav-item
     {
       margin-top: 0;
 
-      .nav-link
+      .ads-nav-link
       {
         border: 0;
-        //padding: space(md) space(lg);
+        padding: space(md) space(lg);
         color: $neutral-40;
 
         &:hover
@@ -108,14 +109,14 @@ $menuPadding: space(md) 0;
 
 // Primary Nav
 
-.nav-primary
+.ads-nav-primary
 {
   box-shadow: inset 0 calc(0rem - space(xxs)) $border-color-subtle;
   background-color: $neutral-100;
 
   // Primary Nav Top Bar
 
-  .nav-bar
+  .ads-nav-bar
   {
     position: relative;
     display: flex;
@@ -125,7 +126,7 @@ $menuPadding: space(md) 0;
     flex-direction: column;
     z-index: $navBarZIndex;
 
-    .nav-link-logo
+    .ads-nav-link-logo
     {
       display: block;
       margin: auto;
@@ -136,19 +137,19 @@ $menuPadding: space(md) 0;
       }
     }
 
-    .nav
+    .ads-nav
     {
       justify-content: center;
 
-      .nav-item
+      .ads-nav-item
       {
         margin-top: 0;
 
-        &.nav-item-root
+        &.ads-nav-item-root
         {
           display: none;
 
-          button.nav-link
+          button.ads-nav-link
           {
             padding-right: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
 
@@ -173,10 +174,10 @@ $menuPadding: space(md) 0;
         }
 
 
-        &.nav-item-toggle,
-        &.nav-item-search
+        &.ads-nav-item-toggle,
+        &.ads-nav-item-search
         {
-          .nav-link
+          .ads-nav-link
           {
             border: 0;
             padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
@@ -197,19 +198,19 @@ $menuPadding: space(md) 0;
           }
         }
 
-        &.nav-item-search
+        &.ads-nav-item-search
         {
-          .nav-link::after,
-          .nav-link[aria-expanded="true"]::after
+          .ads-nav-link::after,
+          .ads-nav-link[aria-expanded="true"]::after
           {
             content: '';
             background-image: url("../../../../assets/images/icon-search.svg");
           }
         }
 
-        &.nav-item-toggle
+        &.ads-nav-item-toggle
         {
-          .nav-link
+          .ads-nav-link
           {
             &::after
             {
@@ -224,7 +225,7 @@ $menuPadding: space(md) 0;
         }
       }
 
-      .nav-link
+      .ads-nav-link
       {
         position: relative;
         padding: space(3x) space(2x);
@@ -257,7 +258,7 @@ $menuPadding: space(md) 0;
 
   // Primary Nav Menu
 
-  .nav-menu
+  .ads-nav-menu
   {
     position: absolute;
     border-bottom: space(xxs) solid $neutral-80;
@@ -271,21 +272,21 @@ $menuPadding: space(md) 0;
       display: none;
     }
 
-    .nav-item,
-    .nav-item-parent
+    .ads-nav-item,
+    .ads-nav-item-parent
     {
       margin-top: 0;
 
       &:last-of-type
       {
-        .nav-link
+        .ads-nav-link
         {
           border-bottom: 0;
         }
       }
     }
 
-    .nav-link
+    .ads-nav-link
     {
       flex-wrap: wrap;
       border: 0;
@@ -294,7 +295,7 @@ $menuPadding: space(md) 0;
     }
   }
 
-  .nav-menu-back
+  .ads-nav-menu-back
   {
     position: relative;
     width: 100%;
@@ -331,7 +332,7 @@ $menuPadding: space(md) 0;
     }
   }
 
-  .nav-menu-panels
+  .ads-nav-menu-panels
   {
     position: relative;
     margin: auto;
@@ -344,34 +345,34 @@ $menuPadding: space(md) 0;
     }
   }
 
-  .nav-menu-panel
+  .ads-nav-menu-panel
   {
     display: none;
     margin-top: 0;
     width: $panelsWidth;
 
-    .nav-menu-panel
+    .ads-nav-menu-panel
     {
       left: 0;
     }
 
 
-    &:not(.nav-active-list)
+    &:not(.ads-nav-active-list)
     {
-      > .nav
+      > .ads-nav
       {
         padding: 0;
       }
 
-      & > .nav > .nav-item:not(.nav-item-parent),
-      & > .nav > .nav-item-parent > .nav-link,
-      > .nav-menu-panel-header
+      & > .ads-nav > .ads-nav-item:not(.ads-nav-item-parent),
+      & > .ads-nav > .ads-nav-item-parent > .ads-nav-link,
+      > .ads-nav-menu-panel-header
       {
         display: none;
       }
     }
 
-    .nav
+    .ads-nav
     {
       display: block;
       margin: 0;
@@ -384,7 +385,7 @@ $menuPadding: space(md) 0;
     }
   }
 
-  .nav-menu-panel-header
+  .ads-nav-menu-panel-header
   {
     padding: space(lg) space(3x) space(4x);
 
@@ -395,15 +396,15 @@ $menuPadding: space(md) 0;
     }
   }
 
-  .nav-menu-panel-header-link
+  .ads-nav-menu-panel-header-link
   {
     display: block;
     margin-top: space(3x);
   }
 
-  .nav-item-parent
+  .ads-nav-item-parent
   {
-    > .nav-link
+    > .ads-nav-link
     {
       width: 100%;
       text-align: left;
@@ -422,18 +423,18 @@ $menuPadding: space(md) 0;
 
       &[aria-expanded="true"]
       {
-        .nav-link-description
+        .ads-nav-link-description
         {
           color: $text-color-primary;
         }
       }
 
-      .nav-link-description
+      .ads-nav-link-description
       {
         @include font-size($fs-body-subtle);
       }
 
-      .nav-link-text
+      .ads-nav-link-text
       {
         position: relative;
         padding-right: calc($icon-size-sm + space(md)); // Padding + icon width + space between icon and text;
@@ -453,7 +454,7 @@ $menuPadding: space(md) 0;
         }
       }
 
-      .nav-link-description
+      .ads-nav-link-description
       {
         margin-top: space(md);
         font-family: $font-family-base-regular;
@@ -464,7 +465,7 @@ $menuPadding: space(md) 0;
     }
   }
 
-  .nav-link-see-all
+  .ads-nav-link-see-all
   {
     @include link-default;
     display: block;
@@ -472,7 +473,7 @@ $menuPadding: space(md) 0;
     padding: $navLinkPadding;
   }
 
-  .nav-block
+  .ads-nav-block
   {
     flex-direction: column;
     align-content: flex-start;
@@ -480,13 +481,13 @@ $menuPadding: space(md) 0;
     border-top: space(xxs) solid $neutral-80;
     padding: $menuPadding;
 
-    .nav-link
+    .ads-nav-link
     {
       border: 0;
       @include font-size($fs-base);
     }
 
-    .ads-dropdown-trigger
+    .ads-ads-dropdown-trigger
     {
       &[aria-expanded="true"],
       &:hover
@@ -502,7 +503,7 @@ $menuPadding: space(md) 0;
     }
   }
 
-  .search-panel
+  .ads-search-panel
   {
     display: none;
     position: absolute;
@@ -523,11 +524,11 @@ $menuPadding: space(md) 0;
 }
 
 @mixin panelSettings($menuWidth) {
-  .nav-menu-panel
+  .ads-nav-menu-panel
   {
     width: calc($menuWidth / $numPanels);
 
-    .nav-menu-panel
+    .ads-nav-menu-panel
     {
       left: calc($menuWidth / $numPanels);
     }
@@ -537,12 +538,12 @@ $menuPadding: space(md) 0;
       width: calc(($menuWidth / $numPanels) * 2);
       left: 0;
 
-      .nav-menu-panel
+      .ads-nav-menu-panel
       {
         left: calc(($menuWidth / $numPanels) * 2);
         width: calc($menuWidth / $numPanels);
 
-        .nav-menu-panel
+        .ads-nav-menu-panel
         {
           left: calc(($menuWidth / $numPanels));
         }
@@ -553,13 +554,13 @@ $menuPadding: space(md) 0;
 
 @media (min-width: $sm)
 {
-  .nav-primary
+  .ads-nav-primary
   {
-    .nav-bar
+    .ads-nav-bar
     {
       flex-direction: row;
 
-      .nav-link-logo
+      .ads-nav-link-logo
       {
         margin: 0;
       }
@@ -571,58 +572,58 @@ $menuPadding: space(md) 0;
 {
   $panelsWidth: 60rem; // NOTE: This is a one off size to match the layout widths.
 
-  .nav-utility .nav,
-  .nav-bar,
-  .nav-menu-panels,
-  .search-panel .ads-form-search
+  .ads-nav-utility .ads-nav,
+  .ads-nav-bar,
+  .ads-nav-menu-panels,
+  .ads-search-panel .ads-form-search
   {
     width: $panelsWidth;
     margin-right: auto;
     margin-left: auto;
   }
 
-  .nav-utility
+  .ads-nav-utility
   {
     display: block;
   }
 
-  .nav-utility .nav-link,
-  .nav-primary .nav-bar .nav-link
+  .ads-nav-utility .ads-nav-link,
+  .ads-nav-primary .ads-nav-bar .ads-nav-link
   {
     @include font-size($fs-body-subtle);
   }
 
-  .nav-menu-back
+  .ads-nav-menu-back
   {
     display: none;
   }
 
-  .nav-primary
+  .ads-nav-primary
   {
-    .nav-bar
+    .ads-nav-bar
     {
-      .nav-link-logo
+      .ads-nav-link-logo
       {
         padding-left: 0;
       }
 
-      .nav
+      .ads-nav
       {
-        .nav-item
+        .ads-nav-item
         {
-          &.nav-item-root
+          &.ads-nav-item-root
           {
             display: block;
           }
 
-          &.nav-item-toggle
+          &.ads-nav-item-toggle
           {
             display: none;
           }
 
-          &.nav-item-search
+          &.ads-nav-item-search
           {
-            .nav-link
+            .ads-nav-link
             {
               box-sizing: content-box;
               padding: space(2x);
@@ -647,7 +648,7 @@ $menuPadding: space(md) 0;
               }
             }
 
-            .nav-link-search-text
+            .ads-nav-link-search-text
             {
               @include visually-hidden;
             }
@@ -656,53 +657,53 @@ $menuPadding: space(md) 0;
       }
     }
 
-    .nav-menu
+    .ads-nav-menu
     {
       height: 60vh;
 
-      .nav
+      .ads-nav
       {
         padding: space(4x) 0 space(3x);
         height: 100%;
         overflow-y: auto;
       }
 
-      .nav-link
+      .ads-nav-link
       {
         border: 0;
       }
     }
 
-    .nav-menu-panels
+    .ads-nav-menu-panels
     {
       width: $panelsWidth;
       height: 100%;
       @include panelSettings($panelsWidth);
 
-      & > .nav-active-list
+      & > .ads-nav-active-list
       {
-        .nav-menu-panel
+        .ads-nav-menu-panel
         {
           z-index: -1;
         }
       }
 
-      .nav-menu-panel-header
+      .ads-nav-menu-panel-header
       {
         padding: space(4x) space(4x) space(3x);
         border-right: space(xxs) solid $neutral-80;
         border-bottom: 0;
       }
 
-      & > .nav-menu-panel .nav-menu-panel .nav-menu-panel
+      & > .ads-nav-menu-panel .ads-nav-menu-panel .ads-nav-menu-panel
       {
-        .nav-link
+        .ads-nav-link
         {
           @include font-size($fs-body-subtle);
         }
       }
 
-      .nav-menu-panel
+      .ads-nav-menu-panel
       {
         position: absolute;
         top: 0;
@@ -720,18 +721,18 @@ $menuPadding: space(md) 0;
           border-right: space(xxs) solid $neutral-80;
         }
 
-        &.nav-list-history
+        &.ads-nav-list-history
         {
           z-index: $navListZIndex;
 
-          > .nav
+          > .ads-nav
           {
             padding: space(4x) 0 space(3x);
           }
 
-          & > .nav > .nav-item:not(.nav-item-parent),
-          & > .nav > .nav-item-parent > .nav-link,
-          > .nav-menu-panel-header
+          & > .ads-nav > .ads-nav-item:not(.ads-nav-item-parent),
+          & > .ads-nav > .ads-nav-item-parent > .ads-nav-link,
+          > .ads-nav-menu-panel-header
           {
             display: block;
           }
@@ -750,12 +751,12 @@ $menuPadding: space(md) 0;
       }
     }
 
-    .nav-link-see-all
+    .ads-nav-link-see-all
     {
       @include font-size($fs-body-subtle);
     }
 
-    .nav-block
+    .ads-nav-block
     {
       display: none;
     }
@@ -767,16 +768,16 @@ $menuPadding: space(md) 0;
 {
   $panelsWidth: 71.25rem; // NOTE: This is a one off size to match the layout widths.
 
-  .nav-utility .nav,
-  .nav-bar,
-  .search-panel .ads-form-search
+  .ads-nav-utility .ads-nav,
+  .ads-nav-bar,
+  .ads-search-panel .ads-form-search
   {
     width: $panelsWidth;
   }
 
-  .nav-primary
+  .ads-nav-primary
   {
-    .nav-menu-panels
+    .ads-nav-menu-panels
     {
       width: $panelsWidth;
       @include panelSettings($panelsWidth);
@@ -788,16 +789,16 @@ $menuPadding: space(md) 0;
 {
   $panelsWidth: 82.5rem; // NOTE: This is a one off size to match the layout widths.
 
-  .nav-utility .nav,
-  .nav-bar,
-  .search-panel .ads-form-search
+  .ads-nav-utility .ads-nav,
+  .ads-nav-bar,
+  .ads-search-panel .ads-form-search
   {
     width: $panelsWidth;
   }
 
-  .nav-primary
+  .ads-nav-primary
   {
-    .nav-menu-panels
+    .ads-nav-menu-panels
     {
       width: $panelsWidth;
       @include panelSettings($panelsWidth);

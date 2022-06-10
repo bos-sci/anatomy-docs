@@ -200,26 +200,26 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   }
 
   return (
-    <header className="nav-header" ref={navRef}>
+    <header className="ads-nav-header" ref={navRef}>
       {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
-      <nav className="nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
-        <div className="nav-bar">
+      <nav className="ads-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
+        <div className="ads-nav-bar">
           {(logo.to || logo.href) ?
-            <Link to={logo.to} href={logo.href} isNavLink={true} className="nav-link-logo" aria-label={logo.ariaLabel}>
+            <Link to={logo.to} href={logo.href} isNavLink={true} className="ads-nav-link-logo" aria-label={logo.ariaLabel}>
               <img src={logo.src} alt={logo.alt} />
             </Link>
             :
-            <img className="nav-link-logo" src={logo.src} alt={logo.alt} />
+            <img className="ads-nav-link-logo" src={logo.src} alt={logo.alt} />
           }
-          <ul className="nav">
+          <ul className="ads-nav">
             {navTree.map((navItem, i) => (
-              <li key={navItem.text + i} className="nav-item nav-item-root">
+              <li key={navItem.text + i} className="ads-nav-item ads-nav-item-root">
                 {navItem.children &&
                   <Button
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className={"nav-link" + (navItem === getActiveRoot() ? ' active' : '')}
+                    className={"ads-nav-link" + (navItem === getActiveRoot() ? ' active' : '')}
                     aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
                     aria-controls={menuId}
@@ -229,28 +229,28 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
                   </Button>
                 }
                   {(navItem.slug || navItem.href) &&
-                    <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="nav-link" isActive={navItem.isActive}>{navItem.text}</NavLink>
+                    <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="ads-nav-link" isActive={navItem.isActive}>{navItem.text}</NavLink>
                   }
               </li>
             ))}
             {hasSearch &&
-              <li className="nav-item nav-item-search">
+              <li className="ads-nav-item ads-nav-item-search">
                 <Button
                   variant="subtle"
-                  className="nav-link"
+                  className="ads-nav-link"
                   aria-label={texts?.searchToggleAriaLabel || 'Toggle search'}
                   aria-expanded={isSearchOpen}
                   onClick={toggleSearch}>
-                  <span className="nav-link-search-text">
+                  <span className="ads-nav-link-search-text">
                     {texts?.searchToggleText || 'Search'}
                   </span>
                 </Button>
               </li>
             }
-            <li className="nav-item nav-item-toggle">
+            <li className="ads-nav-item ads-nav-item-toggle">
               <Button
                 variant="subtle"
-                className="nav-link"
+                className="ads-nav-link"
                 aria-label={texts?.menuToggleAriaLabel || 'Toggle menu'}
                 aria-expanded={isMenuOpen}
                 onClick={toggleMenu}>
@@ -259,7 +259,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
             </li>
           </ul>
         </div>
-        <div className={'search-panel' + (isSearchOpen ? ' open' : '')}>
+        <div className={'ads-search-panel' + (isSearchOpen ? ' open' : '')}>
           <Search label="Search" buttonText={texts?.searchButtonText} buttonAriaLabel={texts?.searchButtonAriaLabel} />
         </div>
         {navTree.length > 0 &&
