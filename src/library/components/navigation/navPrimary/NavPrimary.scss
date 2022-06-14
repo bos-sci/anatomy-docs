@@ -31,6 +31,14 @@ $menuPadding: space(md) 0;
 }
 
 .ads-nav-utility,
+.ads-nav-primary,
+.ads-nav-menu,
+.ads-search-panel
+{
+  background-color: $neutral-100;
+}
+
+.ads-nav-utility,
 .ads-nav-primary
 {
   .ads-nav
@@ -113,14 +121,13 @@ $menuPadding: space(md) 0;
 
 .ads-nav-primary
 {
+  position: relative;
   box-shadow: inset 0 calc(0rem - space(xxs)) $border-color-subtle;
-  background-color: $neutral-100;
 
   // Primary Nav Top Bar
 
   .ads-nav-bar
   {
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -130,20 +137,16 @@ $menuPadding: space(md) 0;
 
     .ads-nav-link-logo
     {
-      display: block;
+      display: flex;
       margin: auto;
-      padding: space(2x);
-
-      img {
-        display: block;
-      }
+      padding: space(sm) space(2x);
     }
 
-    .ads-nav
+    & > .ads-nav
     {
       justify-content: center;
 
-      .ads-nav-item
+       & > .ads-nav-item
       {
         margin-top: 0;
 
@@ -151,7 +154,7 @@ $menuPadding: space(md) 0;
         {
           display: none;
 
-          button.ads-nav-link
+          & > button.ads-nav-link
           {
             padding-right: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
 
@@ -225,34 +228,34 @@ $menuPadding: space(md) 0;
             }
           }
         }
-      }
 
-      .ads-nav-link
-      {
-        position: relative;
-        padding: space(3x) space(2x);
-        border: 0;
-
-        &.active,
-        &:hover,
-        &[aria-expanded="true"]
+        & > .ads-nav-link
         {
-          text-decoration: none;
+          position: relative;
+          padding: space(3x) space(2x);
+          border: 0;
 
-          &::before
+          &.active,
+          &:hover,
+          &[aria-expanded="true"]
           {
-            content: '';
-            position: absolute;
-            right: space(2x);
-            bottom: 0;
-            left: space(2x);
-            border-bottom: space(sm) solid $neutral-00;
-          }
-        }
+            text-decoration: none;
 
-        &.active
-        {
-          font-family: $font-family-base-heavy;
+            &::before
+            {
+              content: '';
+              position: absolute;
+              right: space(2x);
+              bottom: 0;
+              left: space(2x);
+              border-bottom: space(sm) solid $neutral-00;
+            }
+          }
+
+          &.active
+          {
+            font-family: $font-family-base-heavy;
+          }
         }
       }
     }
@@ -263,10 +266,10 @@ $menuPadding: space(md) 0;
   .ads-nav-menu
   {
     position: absolute;
+    left: 0;
     border-bottom: space(xxs) solid $neutral-80;
     width: 100%;
     @include font-size($fs-base);
-    background-color: $neutral-100;
     z-index: $navMenuZIndex;
 
     &:not(.open)
@@ -605,11 +608,6 @@ $menuPadding: space(md) 0;
   {
     .ads-nav-bar
     {
-      .ads-nav-link-logo
-      {
-        padding-left: 0;
-      }
-
       .ads-nav
       {
         .ads-nav-item
@@ -674,6 +672,7 @@ $menuPadding: space(md) 0;
       .ads-nav-link
       {
         border: 0;
+        word-wrap: break-word;
       }
     }
 

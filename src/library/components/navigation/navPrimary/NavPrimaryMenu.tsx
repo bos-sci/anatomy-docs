@@ -21,7 +21,7 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
   const [activeDepth, setActiveDepth] = useState(0);
 
   return (
-    <div ref={ref} id={props.menuId} className={"ads-nav-menu" + (props.isMenuOpen ? ' open' : '')} tabIndex={-1}>
+    <div ref={ref} id={props.menuId} className={"ads-nav-menu" + (props.isMenuOpen ? ' open' : '')}>
       {props.history.length > 0 &&
         <Button
           type="button"

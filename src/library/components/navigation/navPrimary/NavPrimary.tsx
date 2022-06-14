@@ -2,7 +2,7 @@
   - Keyboard nav for tabbing backwards from menu to nav bar
 */
 
-import { FocusEvent as ReactFocusEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
@@ -79,6 +79,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isRootOpen, setIsRootOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [history, setHistory] = useState<HistoryNode[]>([]);
   const [activeNode, setActiveNode] = useState<NavNode | null>(null);
@@ -114,9 +115,11 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
     if (history.length && history[0].node === navItem) {
       setHistory([]);
       setIsMenuOpen(false);
+      setIsRootOpen(false);
     } else {
       pushHistory(navItem, 0);
       setIsMenuOpen(true);
+      setIsRootOpen(true);
       setIsSearchOpen(false);
     }
   }
@@ -182,6 +185,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
     if (isMenuOpen) {
       setHistory([]);
     }
+    setIsRootOpen(false);
     setIsMenuOpen(!isMenuOpen);
   }
 
@@ -191,12 +195,6 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
       setHistory([]);
     }
     setIsSearchOpen(!isSearchOpen);
-  }
-
-  const manageFocus = (e: ReactFocusEvent) => {
-    if (e.target.getAttribute('aria-expanded') === 'true') {
-      menuRef.current?.focus();
-    }
   }
 
   return (
@@ -223,14 +221,26 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
                     aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
                     aria-controls={menuId}
-                    onClick={() => updateMenu(navItem)}
-                    onBlur={manageFocus}>
+                    aria-current={navItem === getActiveRoot() ? 'location' : 'false'}
+                    onClick={() => updateMenu(navItem)}>
                     {navItem.text}
                   </Button>
                 }
-                  {(navItem.slug || navItem.href) &&
-                    <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="ads-nav-link" isActive={navItem.isActive}>{navItem.text}</NavLink>
-                  }
+                {(navItem.slug || navItem.href) &&
+                  <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="ads-nav-link" isActive={navItem.isActive}>{navItem.text}</NavLink>
+                }
+                {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && isRootOpen) &&
+                  <NavPrimaryMenu
+                    ref={menuRef}
+                    navItems={navTree}
+                    utilityItems={utilityItems}
+                    setActiveNode={setActiveNode}
+                    menuId={menuId}
+                    isMenuOpen={isMenuOpen}
+                    history={history}
+                    pushHistory={pushHistory}
+                    popHistory={popHistory} />
+                }
               </li>
             ))}
             {hasSearch &&
@@ -262,7 +272,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
         <div className={'ads-search-panel' + (isSearchOpen ? ' open' : '')}>
           <Search label="Search" buttonText={texts?.searchButtonText} buttonAriaLabel={texts?.searchButtonAriaLabel} />
         </div>
-        {navTree.length > 0 &&
+        {(navTree.length > 0 && !isRootOpen) &&
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
