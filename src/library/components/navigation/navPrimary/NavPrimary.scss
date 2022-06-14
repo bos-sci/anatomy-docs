@@ -138,8 +138,14 @@ $menuPadding: space(md) 0;
     .ads-nav-link-logo
     {
       display: flex;
+      flex-wrap: wrap;
       margin: auto;
       padding: space(sm) space(2x);
+
+      &:focus
+      {
+        @include focus-default-inset;
+      }
     }
 
     & > .ads-nav
@@ -594,7 +600,7 @@ $menuPadding: space(md) 0;
   }
 
   .ads-nav-utility .ads-nav-link,
-  .ads-nav-primary .ads-nav-bar .ads-nav-link
+  .ads-nav-primary .ads-nav-bar > .ads-nav > .ads-nav-item > .ads-nav-link
   {
     @include font-size($fs-body-subtle);
   }
