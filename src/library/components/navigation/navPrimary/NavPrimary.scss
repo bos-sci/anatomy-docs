@@ -500,6 +500,9 @@ $menuPadding: space(md) 0;
 
     .ads-dropdown-trigger
     {
+      display: inline-flex;
+      padding-right: space(md) + $icon-size-sm + space(lg);
+
       &[aria-expanded="true"],
       &:hover,
       &:active
@@ -510,7 +513,10 @@ $menuPadding: space(md) 0;
 
       &::after
       {
-        display: none;
+        right: space(lg);
+        width: $icon-size-sm;
+        height: $icon-size-sm;
+        background-color: $neutral-40;
       }
     }
   }
