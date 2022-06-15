@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import IconChevronRight from '../../icon/icons/IconChevronRight';
 import Button from '../../Button';
 import NavSecondaryList from './NavSecondaryList';
 import { NavNode } from './NavSecondary';
@@ -22,16 +21,15 @@ const NavSecondaryListParent = ({ navItem, activeParent, setActiveParent }: NavP
   }, []);
 
   return (
-    <li className="nav-item-parent">
+    <li className="ads-nav-item-parent">
       <Button
         variant="subtle"
-        className="nav-link-parent-trigger nav-link"
+        className="ads-nav-link"
         aria-expanded={navItem === activeParent}
         aria-controls={navListId}
         onClick={() => setActiveParent(navItem)}
       >
         {navItem.text}
-        <IconChevronRight className="ads-icon-lg" />
       </Button>
       <NavSecondaryList navListId={navListId} navItems={navItem.children!} parent={navItem} activeParent={activeParent} setActiveParent={setActiveParent} />
     </li>
