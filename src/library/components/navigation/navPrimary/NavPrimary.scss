@@ -402,9 +402,8 @@ $menuPadding: space(md) 0;
 
     .ads-nav-menu-panel-title
     {
-      @extend .h4;
+      @extend .h3;
       margin-top: 0;
-      @include font-size($fs-h3);
     }
   }
 
