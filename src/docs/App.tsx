@@ -2,7 +2,8 @@ import { useState, useEffect, createContext, lazy, Suspense, useCallback } from 
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import { slugify } from './helpers';
 import { useGetCollectionsQuery } from './shared/types/contentful';
@@ -78,7 +79,10 @@ const App = (): JSX.Element => {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/components" component={ComponentsRouter} />
-              <Route path="/resources/developers/code-standards" component={CodeStandardsRouter} />
+              <Route path="/resources/developers/code-standards">
+                <Redirect to="/code-standards" />
+              </Route>
+              <Route path="/code-standards" component={CodeStandardsRouter} />
               <Route path="/content" component={ContentGuidelinesRouter} />
               <Route path="/foundations" component={FoundationsRouter} />
               <Route path="/resources" component={ResourcesRouter} />

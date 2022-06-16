@@ -1,19 +1,12 @@
-/* TODO
-  - Figure out what needs to be a prop
-  - Fix borders
-  - Keyboard nav for tabbing backwards from menu to nav bar
-*/
-
-import { FocusEvent as ReactFocusEvent, useEffect, useRef, useState } from 'react';
-import SkipLink from '../../SkipLink';
+import { useEffect, useRef, useState } from 'react';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
-import { NavLink } from 'react-router-dom';
-import IconClose from '../../icon/icons/IconClose';
+import { NavLink, NavLinkProps } from 'react-router-dom';
 import Link from '../../Link';
+import Search from '../../Search';
 
 interface NavItem {
   text: string;
@@ -29,6 +22,7 @@ interface NavItemPrimaryBase extends NavItem {
   altHref?: string;
   altLinkText?: string;
   isExactMatch?: boolean;
+  isActive?: NavLinkProps['isActive'];
 }
 
 interface NavItemUtilityBase extends NavItem {
@@ -58,7 +52,6 @@ interface Props {
     alt: string;
     href?: string;
     to?: string;
-    ariaLabel: string;
   };
   texts?: {
     menuToggleAriaLabel?: string;
@@ -71,22 +64,28 @@ interface Props {
     primaryNavAriaLabel?: string;
   }
   navItems: NavItemPrimary[];
-  activeSlug?: string;
   utilityItems?: NavItemUtility[];
   hasSearch?: boolean;
 }
+
+let navPrimaryMenuIndex = 0;
 
 const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isRootOpen, setIsRootOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
   const [history, setHistory] = useState<HistoryNode[]>([]);
   const [activeNode, setActiveNode] = useState<NavNode | null>(null);
+  const [menuId, setMenuId] = useState('');
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMenuId('navPrimaryMenu' + navPrimaryMenuIndex++);
+  }, []);
 
   const pushHistory = (navItem: NavNode, depth: number) => {
     const newHistory = [...history];
@@ -106,18 +105,21 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
     setHistory(newHistory);
   }
 
+  // Open menu to right place or close menu on click of root item
   const updateMenu = (navItem: NavNode): void => {
-
     if (history.length && history[0].node === navItem) {
       setHistory([]);
       setIsMenuOpen(false);
+      setIsRootOpen(false);
     } else {
       pushHistory(navItem, 0);
       setIsMenuOpen(true);
+      setIsRootOpen(true);
       setIsSearchOpen(false);
     }
   }
 
+  // Travels up the tree from the active node to get the root item
   const getActiveRoot = (): NavNode | null => {
     let node = activeNode;
     while (node?.parent) {
@@ -129,6 +131,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   useEffect(() => {
     const tree = [...navItems] as NavNode[];
 
+    // Add 'parent' property to each nav item that points to the items parent
     const populateParents = (nodes: NavNode[], parent: NavNode | null = null, index = 0) => {
       nodes.forEach((node, i) => {
         node.parent = parent;
@@ -144,24 +147,40 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   }, [navItems]);
 
   useEffect(() => {
+    // Close menu on focus out or click out
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!navRef.current?.contains(e.target as Node)) {
         setIsMenuOpen(false);
         setHistory([]);
       }
     }
+
+    // Close menu when viewport goes from small to large before making a root item selection
+    const onResize = (e: UIEvent) => {
+      const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      if (window.innerWidth >= fontSize * 62 && history.length === 0) {
+        setIsMenuOpen(false);
+      }
+    }
+
     window.addEventListener('focusin', onFocusWithinOut);
     window.addEventListener('pointerup', onFocusWithinOut);
+    window.addEventListener('resize', onResize);
     return () => {
       window.removeEventListener('focusin', onFocusWithinOut);
       window.removeEventListener('pointerup', onFocusWithinOut);
+      window.removeEventListener('resize', onResize);
     }
-  }, []);
+  }, [history]);
 
   const toggleMenu = () => {
     if (!isMenuOpen && isSearchOpen) {
       setIsSearchOpen(false);
     }
+    if (isMenuOpen) {
+      setHistory([]);
+    }
+    setIsRootOpen(false);
     setIsMenuOpen(!isMenuOpen);
   }
 
@@ -173,61 +192,70 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
     setIsSearchOpen(!isSearchOpen);
   }
 
-  const manageFocus = (e: ReactFocusEvent) => {
-    if (e.target.getAttribute('aria-expanded') === 'true') {
-      menuRef.current?.focus();
-    }
-  }
-
-  return <>
-    <SkipLink destinationId="mainContent" destination="main content"/>
-    <header className="nav-header" ref={navRef}>
+  return (
+    <header className="ads-nav-header" ref={navRef}>
       {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
-      <nav className="nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
-        <div className="nav-bar">
-          <ul className="nav">
-            <li className="nav-item nav-item-logo">
-              <Link to={logo.to} href={logo.href} className="nav-link-logo" aria-label={logo.ariaLabel}>
-                <img src={logo.src} alt={logo.alt} />
-              </Link>
-            </li>
+      <nav className="ads-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
+        <div className="ads-nav-bar">
+          {(logo.to || logo.href) ?
+            <Link to={logo.to} href={logo.href} isNavLink={true} className="ads-nav-link-logo">
+              <img src={logo.src} alt={logo.alt} />
+            </Link>
+            :
+            <img className="ads-nav-link-logo" src={logo.src} alt={logo.alt} />
+          }
+          <ul className="ads-nav">
             {navTree.map((navItem, i) => (
-              <li key={navItem.text + i} className="nav-item nav-item-root">
+              <li key={navItem.text + i} className="ads-nav-item ads-nav-item-root">
                 {navItem.children &&
                   <Button
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className={"nav-link" + (navItem === getActiveRoot() ? ' active' : '')}
+                    className={"ads-nav-link" + (navItem === getActiveRoot() ? ' active' : '')}
+                    aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
-                    onClick={() => updateMenu(navItem)}
-                    onBlur={manageFocus}>
+                    aria-controls={menuId}
+                    aria-current={navItem === getActiveRoot() ? 'location' : 'false'}
+                    onClick={() => updateMenu(navItem)}>
                     {navItem.text}
                   </Button>
                 }
-                  {(navItem.slug || navItem.href) &&
-                    <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="nav-link">{navItem.text}</NavLink>
-                  }
+                {(navItem.slug || navItem.href) &&
+                  <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="ads-nav-link" isActive={navItem.isActive}>{navItem.text}</NavLink>
+                }
+                {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && isRootOpen) &&
+                  <NavPrimaryMenu
+                    ref={menuRef}
+                    navItems={navTree}
+                    utilityItems={utilityItems}
+                    setActiveNode={setActiveNode}
+                    menuId={menuId}
+                    isMenuOpen={isMenuOpen}
+                    history={history}
+                    pushHistory={pushHistory}
+                    popHistory={popHistory} />
+                }
               </li>
             ))}
             {hasSearch &&
-              <li className="nav-item nav-item-search">
+              <li className="ads-nav-item ads-nav-item-search">
                 <Button
                   variant="subtle"
-                  className="nav-link"
+                  className="ads-nav-link"
                   aria-label={texts?.searchToggleAriaLabel || 'Toggle search'}
                   aria-expanded={isSearchOpen}
                   onClick={toggleSearch}>
-                  <span className="nav-link-search-text">
+                  <span className="ads-nav-link-search-text">
                     {texts?.searchToggleText || 'Search'}
                   </span>
                 </Button>
               </li>
             }
-            <li className="nav-item nav-item-toggle">
+            <li className="ads-nav-item ads-nav-item-toggle">
               <Button
                 variant="subtle"
-                className="nav-link"
+                className="ads-nav-link"
                 aria-label={texts?.menuToggleAriaLabel || 'Toggle menu'}
                 aria-expanded={isMenuOpen}
                 onClick={toggleMenu}>
@@ -236,38 +264,16 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
             </li>
           </ul>
         </div>
-        {isSearchOpen &&
-          <div className="search-panel">
-            <form className="search" role="search" aria-label="site search">
-              <div className="search-control">
-                <input
-                  type="search"
-                  className="ads-input-text-input search-input"
-                  placeholder="Search"
-                  aria-label="search"
-                  value={searchValue}
-                  onChange={e => setSearchValue(e.target.value)} />
-                {searchValue &&
-                  <button
-                    className="search-clear"
-                    aria-label="clear search text"
-                    onClick={() => setSearchValue('')}>
-                    <IconClose className="ads-icon-lg" />
-                  </button>
-                }
-              </div>
-              <Button variant="assertive" disabled={!searchValue} aria-label={texts?.searchButtonAriaLabel || 'Search'}>
-                {texts?.searchButtonText || 'Search'}
-              </Button>
-            </form>
-          </div>
-        }
-        {navTree.length > 0 &&
+        <div className={'ads-search-panel' + (isSearchOpen ? ' open' : '')}>
+          <Search label="Search" buttonText={texts?.searchButtonText} buttonAriaLabel={texts?.searchButtonAriaLabel} />
+        </div>
+        {(navTree.length > 0 && !isRootOpen) &&
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
             utilityItems={utilityItems}
             setActiveNode={setActiveNode}
+            menuId={menuId}
             isMenuOpen={isMenuOpen}
             history={history}
             pushHistory={pushHistory}
@@ -275,7 +281,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
         }
       </nav>
     </header>
-  </>;
+  );
 }
 
 export default NavPrimary;

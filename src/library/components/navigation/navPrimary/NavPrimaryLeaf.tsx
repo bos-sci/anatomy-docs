@@ -18,8 +18,8 @@ const NavPrimaryLeaf = (props: Props) => {
   }, [isMatch, props]);
 
   return (
-    <li className="nav-item">
-      <Link href={props.navItem.href} to={props.navItem.slug} className="nav-link">{props.navItem.text}</Link>
+    <li className="ads-nav-item">
+      <Link href={props.navItem.href} to={props.navItem.slug} className="ads-nav-link" isNavLink={true}>{props.navItem.text}</Link>
     </li>
   );
 }

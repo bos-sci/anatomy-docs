@@ -1,0 +1,66 @@
+.ads-search
+{
+  width: 100%;
+
+  .ads-input-text-input
+  {
+    margin-top: 0;
+    height: 100%;
+  }
+}
+
+.ads-search-control
+{
+  display: flex;
+  flex-direction: column;
+  gap: space(2x);
+}
+
+.ads-input-search
+{
+  position: relative;
+  flex: 1;
+}
+
+.ads-search-clear
+{
+  position: absolute;
+  right: 0;
+  border: 0;
+  padding: space(2x);
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  background: transparent;
+
+  &:focus
+  {
+    @include focus-default-inset;
+  }
+
+  &:hover:not(:disabled)
+  {
+    background: transparent;
+
+    &:not(:active)
+    {
+      fill: $action-primary-40;
+    }
+  }
+}
+
+@media (min-width: $sm)
+{
+  .ads-search-control
+  {
+    flex-direction: row;
+  }
+}
+
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
