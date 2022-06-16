@@ -28,7 +28,7 @@ const NavPrimaryList = (props: Props) => {
     >
       {parent?.altLinkText && props.depth === 1 &&
         <div className="ads-nav-menu-panel-header">
-          <p className="h4">{ parent.text }</p>
+          <p className="ads-nav-menu-panel-title">{ parent.text }</p>
           <p className="body-subtle">{ parent.description }</p>
           <Link to={parent.altTo} href={parent.altHref} className="body-subtle ads-nav-menu-panel-header-link">
             {parent.altLinkText}

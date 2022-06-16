@@ -45,7 +45,6 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
       {(props.history.length === 0 && props.utilityItems) &&
         <ul className="ads-nav ads-nav-block">
           {props.utilityItems.map((item, i) => (
-            // TODO: Should this be a select instead of a dropdown?
             <li key={'utilityItem' + i} className="ads-nav-item">
               {item.children ?
                 <Dropdown key={'utilityItem' + item.text + i} triggerText={item.text} className="ads-nav-link">

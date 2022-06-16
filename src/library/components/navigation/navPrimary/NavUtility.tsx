@@ -12,7 +12,6 @@ const NavUtility = ({utilityItems, ariaLabel}: Props): JSX.Element => {
     <nav className="ads-nav-utility" aria-label={ariaLabel || 'Utility'}>
       <ul className="ads-nav">
         {utilityItems.map((utilityItem, i) =>
-          // TODO: Should this be a select instead of a dropdown?
           <li key={'utilityItem' + i} className="ads-nav-item">
             {utilityItem.children ?
               <Dropdown triggerText={utilityItem.text} className="ads-nav-link">

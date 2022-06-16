@@ -400,8 +400,9 @@ $menuPadding: space(md) 0;
   {
     padding: space(lg) space(3x) space(4x);
 
-    :first-child
+    .ads-nav-menu-panel-title
     {
+      @extend .h4;
       margin-top: 0;
       @include font-size($fs-h3);
     }

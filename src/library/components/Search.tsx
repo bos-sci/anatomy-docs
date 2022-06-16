@@ -55,6 +55,7 @@ const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholde
                 aria-describedby={helpText || ''}
                 onChange={e => setValue(e.target.value)}
                 {...inputAttrs} />
+              {/* TODO: consider pulling these into an action mixin */}
               {value &&
                 <button
                   className="ads-search-clear"

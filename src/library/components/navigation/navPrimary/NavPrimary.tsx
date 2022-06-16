@@ -1,7 +1,3 @@
-/* TODO
-  - Keyboard nav for tabbing backwards from menu to nav bar
-*/
-
 import { useEffect, useRef, useState } from 'react';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
@@ -56,7 +52,6 @@ interface Props {
     alt: string;
     href?: string;
     to?: string;
-    ariaLabel: string;
   };
   texts?: {
     menuToggleAriaLabel?: string;
@@ -203,7 +198,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
       <nav className="ads-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="ads-nav-bar">
           {(logo.to || logo.href) ?
-            <Link to={logo.to} href={logo.href} isNavLink={true} className="ads-nav-link-logo" aria-label={logo.ariaLabel}>
+            <Link to={logo.to} href={logo.href} isNavLink={true} className="ads-nav-link-logo">
               <img src={logo.src} alt={logo.alt} />
             </Link>
             :
