@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
@@ -79,6 +79,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   const [history, setHistory] = useState<HistoryNode[]>([]);
   const [activeNode, setActiveNode] = useState<NavNode | null>(null);
   const [menuId, setMenuId] = useState('');
+  const [isViewportSmall, setIsViewportSmall] = useState(false);
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -146,6 +147,21 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
 
   }, [navItems]);
 
+  // Close menu when viewport goes from small to large before making a root item selection
+  const onResize = useCallback(() => {
+    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    if (window.innerWidth >= fontSize * 62) {
+      if (isViewportSmall) {
+        setIsViewportSmall(false);
+      }
+      if (history.length === 0) {
+        setIsMenuOpen(false);
+      }
+    } else if (!isViewportSmall) {
+      setIsViewportSmall(true);
+    }
+  }, [history.length, isViewportSmall]);
+
   useEffect(() => {
     // Close menu on focus out or click out
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
@@ -155,13 +171,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
       }
     }
 
-    // Close menu when viewport goes from small to large before making a root item selection
-    const onResize = (e: UIEvent) => {
-      const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-      if (window.innerWidth >= fontSize * 62 && history.length === 0) {
-        setIsMenuOpen(false);
-      }
-    }
+    onResize();
 
     window.addEventListener('focusin', onFocusWithinOut);
     window.addEventListener('pointerup', onFocusWithinOut);
@@ -171,7 +181,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
       window.removeEventListener('pointerup', onFocusWithinOut);
       window.removeEventListener('resize', onResize);
     }
-  }, [history]);
+  }, [onResize]);
 
   const toggleMenu = () => {
     if (!isMenuOpen && isSearchOpen) {
@@ -224,7 +234,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
                 {(navItem.slug || navItem.href) &&
                   <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="ads-nav-link" isActive={navItem.isActive}>{navItem.text}</NavLink>
                 }
-                {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && isRootOpen) &&
+                {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && isRootOpen && !isViewportSmall) &&
                   <NavPrimaryMenu
                     ref={menuRef}
                     navItems={navTree}
@@ -267,7 +277,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
         <div className={'ads-search-panel' + (isSearchOpen ? ' open' : '')}>
           <Search label="Search" buttonText={texts?.searchButtonText} buttonAriaLabel={texts?.searchButtonAriaLabel} />
         </div>
-        {(navTree.length > 0 && !isRootOpen) &&
+        {((navTree.length > 0 && !isRootOpen) || isViewportSmall) &&
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
