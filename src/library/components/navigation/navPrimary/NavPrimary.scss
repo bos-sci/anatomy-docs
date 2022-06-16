@@ -140,7 +140,7 @@ $menuPadding: space(md) 0;
       display: flex;
       flex-wrap: wrap;
       margin: auto;
-      padding: space(sm) space(2x);
+      padding: space(2x);
 
       &:focus
       {
@@ -581,6 +581,7 @@ $menuPadding: space(md) 0;
       .ads-nav-link-logo
       {
         margin: 0;
+        padding: space(sm) space(2x);
       }
     }
   }
