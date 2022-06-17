@@ -73,9 +73,8 @@
     {
       content: "";
       position: absolute;
-      top: 50%;
+      top: calc(((1em * 1.5) - $ffs-body-assertive) / 2);
       left: 0;
-      transform: translateY(-50%);
       width: $ffs-body-assertive;
       height: $ffs-body-assertive;
       border: space(xxs) solid $neutral-00;
@@ -110,9 +109,8 @@
       {
         content: '';
         position: absolute;
-        top: 50%;
+        top: calc(((1em * 1.5) - $ffs-body-assertive) / 2);
         left: 0;
-        transform: translateY(-50%);
         color: $neutral-100;
         width: $ffs-body-assertive;
         height: $ffs-body-assertive;
