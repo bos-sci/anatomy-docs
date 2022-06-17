@@ -82,9 +82,8 @@
     {
       content: "";
       position: absolute;
-      top: 50%;
+      top: calc(((1em * 1.5) - $ffs-body-assertive) / 2);
       left: 0;
-      transform: translateY(-50%);
       width: $ffs-body-assertive;
       height: $ffs-body-assertive;
       border: space(xxs) solid $neutral-00;
@@ -108,13 +107,13 @@
       {
         content: '';
         position: absolute;
-        top: 50%;
+        top: calc(((1em * 1.5) - $ffs-body-assertive) / 2);
         left: 0;
         width: space(md);
         height: space(md);
         border-radius: 50%;
         background: $neutral-100;
-        transform: translate(calc(space(xxs) + space(sm)), -50%);
+        transform: translateX(calc(space(xxs) + space(sm)));
       }
     }
   }
