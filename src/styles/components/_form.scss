@@ -23,8 +23,24 @@
 
 .ads-input-error
 {
+  display: flex;
+  align-items: center;
   margin: space(md) 0 0 0;
   color: $feedback-error-40;
+
+  &::before
+  {
+    content: '';
+    flex-shrink: 0;
+    align-self: flex-start;
+    display: inline-block;
+    width: space(3x);
+    height: space(3x);
+    margin-right: space(md);
+    background-image: url("../../assets/images/icon-error.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
 }
 
 .ads-input-help-text
@@ -37,4 +53,15 @@
 .ads-form-control
 {
   margin-top: space(4x);
+}
+
+@media (min-width: 992px)
+{
+  .ads-input-error
+  {
+    &::before
+    {
+      transform: translateY(space(xs));
+    }
+  }
 }

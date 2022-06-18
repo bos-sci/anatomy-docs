@@ -75,6 +75,8 @@ const exampleData: NavItemPrimary[] = [
       },
       {
         text: 'Healthcare solutions',
+        altLinkText: 'See all healthcare solutions',
+        altTo: '#demo',
         children: [
           {
             text: 'Child item',
@@ -84,6 +86,8 @@ const exampleData: NavItemPrimary[] = [
       },
       {
         text: 'Professional education',
+        altLinkText: 'See all professional education',
+        altTo: '#demo',
         children: [
           {
             text: 'Child item',
@@ -93,6 +97,8 @@ const exampleData: NavItemPrimary[] = [
       },
       {
         text: 'Customer support',
+        altLinkText: 'See all customer support',
+        altTo: '#demo',
         children: [
           {
             text: 'Child item',
@@ -117,6 +123,8 @@ const exampleData: NavItemPrimary[] = [
         children: [
           {
             text: 'Airway & breathing',
+            altLinkText: 'See all airway & breathing',
+            altTo: '#demo',
             children: [
               {
                 text: 'Asthma',
@@ -134,6 +142,8 @@ const exampleData: NavItemPrimary[] = [
           },
           {
             text: 'Cancer',
+            altLinkText: 'See all cancer',
+            altTo: '#demo',
             children: [
               {
                 text: 'Last level',
@@ -143,6 +153,8 @@ const exampleData: NavItemPrimary[] = [
           },
           {
             text: 'Digestion & nutrition',
+            altLinkText: 'See all digestion & nutrition',
+            altTo: '#demo',
             children: [
               {
                 text: 'Last level',
@@ -152,6 +164,8 @@ const exampleData: NavItemPrimary[] = [
           },
           {
             text: 'Heart & vascular',
+            altLinkText: 'See all heart & vascular',
+            altTo: '#demo',
             children: [
               {
                 text: 'Last level',
@@ -161,6 +175,8 @@ const exampleData: NavItemPrimary[] = [
           },
           {
             text: 'Kidneys',
+            altLinkText: 'See all kidneys',
+            altTo: '#demo',
             children: [
               {
                 text: 'Last level',
@@ -170,6 +186,8 @@ const exampleData: NavItemPrimary[] = [
           },
           {
             text: `Men's health`,
+            altLinkText: 'See all men\'s health',
+            altTo: '#demo',
             children: [
               {
                 text: 'Last level',
@@ -179,6 +197,8 @@ const exampleData: NavItemPrimary[] = [
           },
           {
             text: `Women's health`,
+            altLinkText: 'See all women\'s health',
+            altTo: '#demo',
             children: [
               {
                 text: 'Last level',
@@ -188,6 +208,8 @@ const exampleData: NavItemPrimary[] = [
           },
           {
             text: 'Neurological conditions',
+            altLinkText: 'See all neurological conditions',
+            altTo: '#demo',
             children: [
               {
                 text: 'Last level',
@@ -197,6 +219,8 @@ const exampleData: NavItemPrimary[] = [
           },
           {
             text: 'Pain management',
+            altLinkText: 'See all pain management',
+            altTo: '#demo',
             children: [
               {
                 text: 'Last level',
@@ -209,6 +233,8 @@ const exampleData: NavItemPrimary[] = [
       {
         text: 'Device support',
         description: 'Device setup, user manuals, and troubleshooting',
+        altLinkText: 'See all device support',
+        altTo: '#demo',
         children: [
           {
             text: 'Child item 1',
@@ -219,6 +245,8 @@ const exampleData: NavItemPrimary[] = [
       {
         text: 'Contact us',
         description: 'Call one of our dedicated customer service centers or send us and email',
+        altLinkText: 'See all contact us',
+        altTo: '#demo',
         children: [
           {
             text: 'Child item 2',
@@ -266,6 +294,8 @@ const exampleData: NavItemPrimary[] = [
       {
         text: 'Citizenship',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all citizenship',
+        altTo: '#demo',
         children: [
           {
             text: 'Child item',
@@ -276,6 +306,8 @@ const exampleData: NavItemPrimary[] = [
       {
         text: 'Careers',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all careers',
+        altTo: '#demo',
         children: [
           {
             text: 'Child item',
@@ -286,6 +318,8 @@ const exampleData: NavItemPrimary[] = [
       {
         text: 'News',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all news',
+        altTo: '#demo',
         children: [
           {
             text: 'Child item',

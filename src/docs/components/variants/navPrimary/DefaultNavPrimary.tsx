@@ -1,7 +1,7 @@
 import NavPrimary from '../../../../library/components/navigation/navPrimary/NavPrimary';
 import useTitle from '../../../shared/hooks/useTitle';
 
-import logoBSC from '../../../../assets/images/logo-bsc.svg';
+import logoBSC from '../../../../assets/images/logo-bsc-tagline.svg';
 import navPrimaryData from './navPrimaryData';
 
 const utilityItems = [
@@ -21,13 +21,65 @@ const utilityItems = [
     text: 'Region Selector',
     children: [
       {
-        text: 'USA',
+        text: 'Argentina',
         slug: '/'
       },
       {
-        text: 'FRA',
+        text: 'Brazil',
         slug: '/'
       },
+      {
+        text: 'Chile',
+        slug: '/'
+      },
+      {
+        text: 'China',
+        slug: '/'
+      },
+      {
+        text: 'Columbia',
+        slug: '/'
+      },
+      {
+        text: 'Deutschland',
+        slug: '/'
+      },
+      {
+        text: 'Europe',
+        slug: '/'
+      },
+      {
+        text: 'India',
+        slug: '/'
+      },
+      {
+        text: 'Japan',
+        slug: '/'
+      },
+      {
+        text: 'Korea',
+        slug: '/'
+      },
+      {
+        text: 'Malaysia',
+        slug: '/'
+      },
+      {
+        text: 'Mexico',
+        slug: '/'
+      },
+      {
+        text: 'Peru',
+        slug: '/'
+      },
+      {
+        text: 'Spain',
+        slug: '/'
+      },
+      {
+        text: 'United States',
+        slug: '/'
+      }
     ]
   }
 ];

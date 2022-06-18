@@ -7,12 +7,12 @@ import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
 import { IdLookup } from '../shared/types/docs';
 import { GetComponentQuery, useGetComponentQuery } from '../shared/types/contentful';
-import './Components.scss';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
 import Layout from '../shared/components/Layout';
+import './Components.scss';
 
 interface ComponentMatch extends match {
   params: {
@@ -126,6 +126,10 @@ const Components = (props: Props): JSX.Element => {
         ]
       },
       {
+        text: 'Stoplight',
+        slug: basePath + '/stoplight',
+      },
+      {
         text: 'Tabs',
         slug: basePath + '/tabs',
       },
@@ -165,7 +169,6 @@ const Components = (props: Props): JSX.Element => {
           leadParagraph={componentData?.leadParagraph || ''}
           navSecondaryMenuTrigger="Components"
           navSecondaryItems={navItems}
-          navSecondaryActiveSlug={props.match.url}
           navTertiaryItems={headings}>
           <Preview component={ componentName } variant='Default' />
           {(componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>

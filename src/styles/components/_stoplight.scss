@@ -1,0 +1,65 @@
+[class*="ads-stoplight"]
+{
+  display: flex;
+  align-items: center;
+
+  &::before
+  {
+    content: '';
+    display: inline-block;
+    width: space(3x);
+    height: space(3x);
+    margin-right: space(md);
+    background-size: 100%;
+  }
+
+  &.body-subtle
+  {
+    &::before
+    {
+      width: space(2x);
+      height: space(2x);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.ads-stoplight
+{
+  &-red
+  {
+    &::before
+    {
+      background-image: url("../../assets/images/icon-stoplight-red.svg");
+    }
+
+    &.ads-stoplight-ghost
+    {
+      &::before
+      {
+        background-image: url("../../assets/images/icon-stoplight-red-ghost.svg");
+      }
+    }
+  }
+
+  &-yellow
+  {
+    &::before
+    {
+      background-image: url("../../assets/images/icon-stoplight-yellow.svg");
+    }
+  }
+
+  &-green
+  {
+    &::before
+    {
+      background-image: url("../../assets/images/icon-stoplight-green.svg");
+    }
+  }
+
+  &-ghost
+  {
+    color: $neutral-100;
+  }
+}

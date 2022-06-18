@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import Markdown from '../Markdown';
 import NavSecondary, { NavItemSecondary } from '../../../../library/components/navigation/navSecondary/NavSecondary';
 import NavTertiary, { NavItemTertiary } from '../../../../library/components/navigation/navTertiary/NavTertiary';
@@ -8,20 +8,27 @@ interface Props {
   lastUpdated: string;
   leadParagraph: string;
   navSecondaryItems?: NavItemSecondary[];
-  navSecondaryActiveSlug?: string;
   navSecondaryMenuTrigger?: string;
   navTertiaryItems: NavItemTertiary[];
   children: ReactNode;
 }
 
 const PageTemplate = (props: Props) => {
+
+  const [navSecondaryTexts, setNavSecondaryTexts] = useState({});
+
+  useEffect(() => {
+    setNavSecondaryTexts({
+      menuToggleText: props.navSecondaryMenuTrigger
+    });
+  }, [props.navSecondaryMenuTrigger]);
+
   return (
     <div className="app-body">
     { (props.navSecondaryItems && props.navSecondaryMenuTrigger) &&
       <NavSecondary
-        menuTriggerText={props.navSecondaryMenuTrigger}
-        navItems={props.navSecondaryItems}
-        activeSlug={props.navSecondaryActiveSlug} />
+        texts={navSecondaryTexts}
+        navItems={props.navSecondaryItems} />
     }
       <main id="mainContent">
         <div className="page-header">
