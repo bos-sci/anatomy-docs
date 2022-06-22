@@ -6,11 +6,14 @@
   &::before
   {
     content: '';
+    flex-shrink: 0;
+    align-self: flex-start;
     display: inline-block;
     width: space(3x);
     height: space(3x);
     margin-right: space(md);
     background-size: 100%;
+    background-repeat: no-repeat;
   }
 
   &.body-subtle
