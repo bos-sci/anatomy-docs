@@ -48,7 +48,7 @@
 
   &::after
   {
-    @include animated-brand-gradient;
+    @include animated-gradient-brand;
     bottom: 0;
   }
 
