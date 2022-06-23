@@ -166,6 +166,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
     // Close menu on focus out or click out
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!navRef.current?.contains(e.target as Node)) {
+        setIsSearchOpen(false);
         setIsMenuOpen(false);
         setHistory([]);
       }

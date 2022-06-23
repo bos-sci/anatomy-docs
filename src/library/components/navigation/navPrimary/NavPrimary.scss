@@ -128,11 +128,14 @@ $menuPadding: space(md) 0;
 
   .ads-nav-bar
   {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     align-content: center;
     flex-direction: column;
+    border-bottom: space(xxs) solid $neutral-80;
+    background-color: $neutral-100;
     z-index: $navBarZIndex;
 
     .ads-nav-link-logo
