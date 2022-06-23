@@ -1,3 +1,5 @@
+$checkbox-size: $ffs-body-assertive;
+$checkmark-size: $ffs-body-assertive;
 
 .ads-fieldset[aria-invalid="true"] .ads-input-checkbox-input,
 .ads-input-checkbox-input[aria-invalid="true"]
@@ -73,10 +75,10 @@
     {
       content: "";
       position: absolute;
-      top: calc(((1em * 1.5) - $ffs-body-assertive) / 2);
+      top: calc((1.5em - $checkbox-size) / 2);
       left: 0;
-      width: $ffs-body-assertive;
-      height: $ffs-body-assertive;
+      width: $checkbox-size;
+      height: $checkbox-size;
       border: space(xxs) solid $neutral-00;
       background: $neutral-100;
     }
@@ -109,11 +111,11 @@
       {
         content: '';
         position: absolute;
-        top: calc(((1em * 1.5) - $ffs-body-assertive) / 2);
+        top: calc((1.5em - $checkmark-size) / 2);
         left: 0;
         color: $neutral-100;
-        width: $ffs-body-assertive;
-        height: $ffs-body-assertive;
+        width: $checkmark-size;
+        height: $checkmark-size;
         padding: space(xxs) + space(xs);
         background-image: url("../../assets/images/icon-check.svg");
         background-size: 100%;

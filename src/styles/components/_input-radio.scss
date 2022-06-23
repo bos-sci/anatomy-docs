@@ -1,3 +1,6 @@
+$outer-circle-diameter: $ffs-body-assertive;
+$inner-circle-diameter: space(md);
+
 .ads-input-radio-input
 {
   &[aria-invalid="true"]
@@ -82,10 +85,10 @@
     {
       content: "";
       position: absolute;
-      top: calc(((1em * 1.5) - $ffs-body-assertive) / 2);
+      top: calc((1.5em - $outer-circle-diameter) / 2);
       left: 0;
-      width: $ffs-body-assertive;
-      height: $ffs-body-assertive;
+      width: $outer-circle-diameter;
+      height: $outer-circle-diameter;
       border: space(xxs) solid $neutral-00;
       border-radius: 50%;
       background: $neutral-100;
@@ -107,13 +110,12 @@
       {
         content: '';
         position: absolute;
-        top: calc(((1em * 1.5) - $ffs-body-assertive) / 2);
-        left: 0;
-        width: space(md);
-        height: space(md);
+        top: calc((1.5em - ($outer-circle-diameter / 2)) / 2);
+        left: calc(($outer-circle-diameter - $inner-circle-diameter) / 2);
+        width: $inner-circle-diameter;
+        height: $inner-circle-diameter;
         border-radius: 50%;
         background: $neutral-100;
-        transform: translateX(calc(space(xxs) + space(sm)));
       }
     }
   }
