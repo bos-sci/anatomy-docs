@@ -11,6 +11,8 @@ interface Props {
   navTertiaryItems?: NavItemTertiary[];
 }
 
+
+
 const NavTertiary = ({ navTertiaryItems }: Props): JSX.Element => {
   return (
     <nav className="nav-tertiary" aria-label="Table of contents">
@@ -21,7 +23,9 @@ const NavTertiary = ({ navTertiaryItems }: Props): JSX.Element => {
         {navTertiaryItems && Array.from(navTertiaryItems).map((navItem, i) => {
           return (
             <li key={`tertiaryNavItem${i}`} className="nav-item">
-              <Link to={ '#' + navItem.id } className="nav-link">
+              <Link to={{
+                hash: navItem.id,
+              }} className="nav-link">
                 {navItem.text}
               </Link>
             </li>
