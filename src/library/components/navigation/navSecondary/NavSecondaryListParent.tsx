@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Button from '../../Button';
 import NavSecondaryList from './NavSecondaryList';
 import { NavNode } from './NavSecondary';
@@ -6,14 +6,15 @@ import { NavNode } from './NavSecondary';
 interface NavParentProps {
   navItem: NavNode;
   activeParent: NavNode | null;
-  setActiveParent: (node: NavNode | null) => any;
+  openChild: (node: NavNode | null) => any;
 }
 
 let navParentId = 0;
 
-const NavSecondaryListParent = ({ navItem, activeParent, setActiveParent }: NavParentProps) => {
+const NavSecondaryListParent = ({ navItem, activeParent, openChild }: NavParentProps) => {
 
   const [navListId, setNavListId] = useState('');
+  const parentBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const idNum = ++navParentId;
@@ -23,15 +24,16 @@ const NavSecondaryListParent = ({ navItem, activeParent, setActiveParent }: NavP
   return (
     <li className="ads-nav-item-parent">
       <Button
+        ref={parentBtnRef}
         variant="subtle"
         className="ads-nav-link"
         aria-expanded={navItem === activeParent}
         aria-controls={navListId}
-        onClick={() => setActiveParent(navItem)}
+        onClick={() => openChild(navItem)}
       >
         {navItem.text}
       </Button>
-      <NavSecondaryList navListId={navListId} navItems={navItem.children!} parent={navItem} activeParent={activeParent} setActiveParent={setActiveParent} />
+      <NavSecondaryList navListId={navListId} navItems={navItem.children!} parent={navItem} activeParent={activeParent} openChild={openChild} />
     </li>
   );
 }

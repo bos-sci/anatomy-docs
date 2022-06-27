@@ -7,10 +7,10 @@ interface NavListProps {
   navItems: NavNode[];
   parent: NavNode | null;
   activeParent: NavNode | null;
-  setActiveParent: (node: NavNode | null) => any;
+  openChild: (node: NavNode | null) => any;
 }
 
-const NavSecondaryList = ({ navListId, navItems, parent, activeParent, setActiveParent }: NavListProps) => {
+const NavSecondaryList = ({ navListId, navItems, parent, activeParent, openChild }: NavListProps) => {
   return (
     <ul id={navListId} className={`ads-nav${parent?.text === activeParent?.text ? ' ads-nav-active-list' : ''}`}>
       {navItems.map((navItem, i) => {
@@ -26,7 +26,7 @@ const NavSecondaryList = ({ navListId, navItems, parent, activeParent, setActive
             </li>
           )
         } else {
-          return <NavSecondaryListParent key={`secondaryNavItem${i}`} navItem={navItem} activeParent={activeParent} setActiveParent={setActiveParent} />;
+          return <NavSecondaryListParent key={`secondaryNavItem${i}`} navItem={navItem} activeParent={activeParent} openChild={openChild} />;
         }
       })}
     </ul>

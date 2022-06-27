@@ -42,6 +42,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
   const [navSecondaryId, setNavSecondaryId] = useState('');
 
   const nav = useRef<HTMLElement>(null);
+  const backBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const tree = [...navItems] as NavNode[];
@@ -93,6 +94,11 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
     }
   }, [activeSlug, location, navTree]);
 
+  const openChild = (navItem: NavNode | null) => {
+    setActiveParent(navItem);
+    setTimeout(() => backBtnRef.current?.focus(), 0)
+  }
+
   useEffect(() => {
     setNavSecondaryId('navSecondary' + navSecondaryIndex++);
   }, []);
@@ -118,12 +124,16 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
       </button>
       <div id={navSecondaryId} className={`ads-nav-secondary-menu${isOpen ? ' open' : ''}`}>
         {activeParent &&
-          <Button className="ads-nav-link-back" variant="subtle" onClick={() => setActiveParent(activeParent?.parent || null)}>
+          <Button
+            ref={backBtnRef}
+            className="ads-nav-link-back"
+            variant="subtle"
+            onClick={() => setActiveParent(activeParent?.parent || null)}>
             <IconChevronLeft className="ads-icon-md u-icon-left" />
             {texts?.backButtonText || 'Back'}
           </Button>
         }
-        <NavSecondaryList navItems={navTree} parent={null} activeParent={activeParent} setActiveParent={setActiveParent} />
+        <NavSecondaryList navItems={navTree} parent={null} activeParent={activeParent} openChild={openChild} />
       </div>
     </nav>
   );
