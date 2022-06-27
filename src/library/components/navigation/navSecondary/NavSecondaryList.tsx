@@ -1,16 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import NavSecondaryListParent from './NavSecondaryListParent';
 import { NavNode } from './NavSecondary';
+import { RefObject } from 'react';
 
 interface NavListProps {
   navListId?: string;
   navItems: NavNode[];
   parent: NavNode | null;
   activeParent: NavNode | null;
+  activeParentRef: RefObject<HTMLButtonElement> | null;
+  setActiveParentRef: (ref: RefObject<HTMLButtonElement> | null) => any;
   openChild: (node: NavNode | null) => any;
 }
 
-const NavSecondaryList = ({ navListId, navItems, parent, activeParent, openChild }: NavListProps) => {
+const NavSecondaryList = ({ navListId, navItems, parent, activeParent, activeParentRef, setActiveParentRef, openChild }: NavListProps) => {
   return (
     <ul id={navListId} className={`ads-nav${parent?.text === activeParent?.text ? ' ads-nav-active-list' : ''}`}>
       {navItems.map((navItem, i) => {
@@ -26,7 +29,7 @@ const NavSecondaryList = ({ navListId, navItems, parent, activeParent, openChild
             </li>
           )
         } else {
-          return <NavSecondaryListParent key={`secondaryNavItem${i}`} navItem={navItem} activeParent={activeParent} openChild={openChild} />;
+          return <NavSecondaryListParent key={`secondaryNavItem${i}`} navItem={navItem} activeParent={activeParent} activeParentRef={activeParentRef} setActiveParentRef={setActiveParentRef} openChild={openChild} />;
         }
       })}
     </ul>

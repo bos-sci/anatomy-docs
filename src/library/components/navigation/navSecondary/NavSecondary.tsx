@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { RefObject, useEffect, useRef, useState } from 'react'
 import { RequireOnlyOne } from '../../../types';
 import NavSecondaryList from './NavSecondaryList';
 import "./NavSecondary.scss"
@@ -38,6 +38,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [activeParent, setActiveParent] = useState<NavNode | null>(null);
+  const [activeParentRef, setActiveParentRef] = useState<RefObject<HTMLButtonElement> | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [navSecondaryId, setNavSecondaryId] = useState('');
 
@@ -94,6 +95,11 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
     }
   }, [activeSlug, location, navTree]);
 
+  const goBack = () => {
+    setActiveParent(activeParent?.parent || null);
+    setTimeout(() => activeParentRef?.current?.focus(), 0);
+  }
+
   const openChild = (navItem: NavNode | null) => {
     setActiveParent(navItem);
     setTimeout(() => backBtnRef.current?.focus(), 0)
@@ -119,7 +125,12 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
 
   return (
     <nav className="ads-nav-secondary" aria-label={texts?.navAriaLabel || 'secondary navigation'} ref={nav}>
-      <button className="ads-nav-secondary-menu-trigger" aria-expanded={isOpen} aria-controls={navSecondaryId} aria-label={texts?.menuToggleAriaLabel || 'Menu'} onClick={() => setIsOpen(!isOpen)}>
+      <button
+        className="ads-nav-secondary-menu-trigger"
+        aria-expanded={isOpen}
+        aria-controls={navSecondaryId}
+        aria-label={texts?.menuToggleAriaLabel || 'Menu'}
+        onClick={() => setIsOpen(!isOpen)}>
         { texts?.menuToggleText || 'Menu' }
       </button>
       <div id={navSecondaryId} className={`ads-nav-secondary-menu${isOpen ? ' open' : ''}`}>
@@ -128,12 +139,12 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
             ref={backBtnRef}
             className="ads-nav-link-back"
             variant="subtle"
-            onClick={() => setActiveParent(activeParent?.parent || null)}>
+            onClick={goBack}>
             <IconChevronLeft className="ads-icon-md u-icon-left" />
             {texts?.backButtonText || 'Back'}
           </Button>
         }
-        <NavSecondaryList navItems={navTree} parent={null} activeParent={activeParent} openChild={openChild} />
+        <NavSecondaryList navItems={navTree} parent={null} activeParent={activeParent} activeParentRef={activeParentRef} setActiveParentRef={setActiveParentRef} openChild={openChild} />
       </div>
     </nav>
   );
