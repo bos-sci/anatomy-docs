@@ -11,8 +11,6 @@ interface Props {
   navTertiaryItems?: NavItemTertiary[];
 }
 
-
-
 const NavTertiary = ({ navTertiaryItems }: Props): JSX.Element => {
   return (
     <nav className="nav-tertiary" aria-label="Table of contents">
