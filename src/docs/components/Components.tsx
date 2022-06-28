@@ -146,7 +146,7 @@ const Components = (props: Props): JSX.Element => {
     .join(' ');
 
   useTitle({titlePrefix: `${nameForTitle} - Components`});
-  useHashScroll(!!componentData);
+  useHashScroll(!!componentData?.name);
 
   const pageHeadings = useHeadings(componentData?.name);
   useEffect(() => {
