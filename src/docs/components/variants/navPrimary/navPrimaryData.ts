@@ -5,46 +5,46 @@ const basePath = '';
 export const utilityData = [
   {
     text: 'Page',
-    slug: '/'
+    slug: '/demo-link'
   },
   {
     text: 'Page',
-    slug: '/'
+    slug: '/demo-link'
   },
   {
     text: 'Page',
-    slug: '/'
+    slug: '/demo-link'
   },
   {
     text: 'Dropdown',
     children: [
       {
         text: 'Dropdown option',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Dropdown option',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Dropdown option',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Dropdown option',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Dropdown option',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Dropdown option',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Dropdown option',
-        slug: '/'
+        slug: '/demo-link'
       }
     ]
   }
@@ -53,78 +53,78 @@ export const utilityData = [
 export const contextualUtility = [
   {
     text: 'News',
-    slug: '/'
+    slug: '/demo-link'
   },
   {
     text: 'Careers',
-    slug: '/'
+    slug: '/demo-link'
   },
   {
     text: 'Investors',
-    slug: '/'
+    slug: '/demo-link'
   },
   {
     text: 'Region Selector',
     children: [
       {
         text: 'Argentina',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Brazil',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Chile',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'China',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Columbia',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Deutschland',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Europe',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'India',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Japan',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Korea',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Malaysia',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Mexico',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Peru',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'Spain',
-        slug: '/'
+        slug: '/demo-link'
       },
       {
         text: 'United States',
-        slug: '/'
+        slug: '/demo-link'
       }
     ]
   }
@@ -133,106 +133,106 @@ export const contextualUtility = [
 export const simpleData: NavItemPrimary[] = [
   {
     text: 'Page',
-    slug: basePath + '/some-path'
+    slug: '/demo-link'
   },
   {
     text: 'Page',
-    slug: basePath + '/some-path'
+    slug: '/demo-link'
+  },
+  {
+    text: 'Current page',
+    slug: './'
   },
   {
     text: 'Page',
-    slug: basePath + '/some-path'
-  },
-  {
-    text: 'Page',
-    slug: basePath + '/some-path'
+    slug: '/demo-link'
   }
 ];
 
 export const intermediateData: NavItemPrimary[] = [
   {
     text: 'Page',
-    slug: basePath + '/some-path'
+    slug: '/demo-link'
   },
   {
     text: 'Navigation section',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altLinkText: 'See all pages',
-    altTo: basePath + '/some-path',
+    altTo: '/demo-link',
     children: [
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
+      },
+      {
+        text: 'Current page',
+        slug: './'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       },
       {
         text: 'Child page',
-        slug: basePath + '/some-path'
-      },
-      {
-        text: 'Child page',
-        slug: basePath + '/some-path'
+        slug: '/demo-link'
       }
     ]
   },
   {
     text: 'Page',
-    slug: basePath + '/some-path'
+    slug: '/demo-link'
   },
   {
     text: 'Page',
-    slug: basePath + '/some-path'
+    slug: '/demo-link'
   }
 ];
 
@@ -240,103 +240,103 @@ export const complexData: NavItemPrimary[] = [
   {
     text: 'Navigation section',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
-    altHref: '#demo',
+    altHref: '/demo-link',
     altLinkText: 'All pages',
     children: [
       {
         text: 'Page group',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
-        altTo: basePath + '/some-path',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
+          },
+          {
+            text: 'Current page',
+            slug: './'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
-          },
-          {
-            text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
       {
         text: 'Page group',
         altLinkText: 'See all pages',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
       {
         text: 'Page group',
         altLinkText: 'See all pages',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
       {
         text: 'Page group',
         altLinkText: 'See all pages',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       }
@@ -345,119 +345,119 @@ export const complexData: NavItemPrimary[] = [
   {
     text: 'Navigation section',
     description: `Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.`,
-    altTo: '#demo',
+    altTo: '/demo-link',
     altLinkText: 'All pages',
     children: [
       {
         text: 'Page group',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
-        altTo: basePath + '/some-path',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Nested page group',
             altLinkText: 'See all pages',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Page',
-                slug: basePath + '/' // Used to demo the active style
+                slug: '/demo-link'
               },
               {
                 text: 'Page',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               },
               {
                 text: 'Page',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Nested page group',
             altLinkText: 'See all pages',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Page',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Nested page group',
             altLinkText: 'See all pages',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Page',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Nested page group',
             altLinkText: 'See all pages',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Page',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Nested page group',
             altLinkText: 'See all pages',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Page',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: `Nested page group`,
             altLinkText: 'See all pages',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Page',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: `Nested page group`,
             altLinkText: 'See all pages',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Page',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Nested page group',
             altLinkText: 'See all pages',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Page',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Nested page group',
             altLinkText: 'See all pages',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Page',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           }
@@ -467,11 +467,11 @@ export const complexData: NavItemPrimary[] = [
         text: 'Page group',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
@@ -479,11 +479,11 @@ export const complexData: NavItemPrimary[] = [
         text: 'Page group',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       }
@@ -492,34 +492,34 @@ export const complexData: NavItemPrimary[] = [
   {
     text: 'Navigation section',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
-    altHref: '#demo',
+    altHref: '/demo-link',
     altLinkText: 'All pages',
     children: [
       {
         text: 'Page group',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
-        altTo: basePath + '/some-path',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
@@ -527,11 +527,11 @@ export const complexData: NavItemPrimary[] = [
         text: 'Page group',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
@@ -539,11 +539,11 @@ export const complexData: NavItemPrimary[] = [
         text: 'Page group',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
@@ -551,11 +551,11 @@ export const complexData: NavItemPrimary[] = [
         text: 'Page group',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Page',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
@@ -571,103 +571,103 @@ export const contextualComplex: NavItemPrimary[] = [
   {
     text: 'For healthcare professionals',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
-    altHref: '#demo',
+    altHref: '/demo-link',
     altLinkText: 'All healthcare professionals information',
     children: [
       {
         text: 'Medical specialties',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all treatments',
-        altTo: basePath + '/some-path',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Electrophysiology',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Female Pelvic Medicine',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Gastroenterology',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Gastrointestinal Surgery',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Gynecology',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Interventional Cardiology',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Interventional Radiology',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Neurological Surgery',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Orthopedic Surgery',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Pain Medicine',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Pulmonology',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Structural Heart Valve',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Urology',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Vascular Surgery',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
       {
         text: 'Healthcare solutions',
         altLinkText: 'See all healthcare solutions',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
       {
         text: 'Professional education',
         altLinkText: 'See all professional education',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
       {
         text: 'Customer support',
         altLinkText: 'See all customer support',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       }
@@ -677,119 +677,119 @@ export const contextualComplex: NavItemPrimary[] = [
   {
     text: 'For patients & caregivers',
     description: `Find the information you need, whether you've been diagnosed with a health condition, have an implanted device, or need support.`,
-    altTo: '#demo',
+    altTo: '/demo-link',
     altLinkText: 'All patients & caregivers information',
     children: [
       {
         text: 'Treatments',
         description: 'Devices, procedures, and therapies',
         altLinkText: 'See all treatments',
-        altTo: basePath + '/some-path',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Airway & breathing',
             altLinkText: 'See all airway & breathing',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Asthma',
-                slug: basePath + '/' // Used to demo the active style
+                slug: basePath + '/demo-link' // Used to demo the active style
               },
               {
                 text: 'Last level',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               },
               {
                 text: 'Last level',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Cancer',
             altLinkText: 'See all cancer',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Digestion & nutrition',
             altLinkText: 'See all digestion & nutrition',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Heart & vascular',
             altLinkText: 'See all heart & vascular',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Kidneys',
             altLinkText: 'See all kidneys',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: `Men's health`,
             altLinkText: 'See all men\'s health',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: `Women's health`,
             altLinkText: 'See all women\'s health',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Neurological conditions',
             altLinkText: 'See all neurological conditions',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           },
           {
             text: 'Pain management',
             altLinkText: 'See all pain management',
-            altTo: '#demo',
+            altTo: '/demo-link',
             children: [
               {
                 text: 'Last level',
-                slug: basePath + '/some-path'
+                slug: '/demo-link'
               }
             ]
           }
@@ -799,11 +799,11 @@ export const contextualComplex: NavItemPrimary[] = [
         text: 'Device support',
         description: 'Device setup, user manuals, and troubleshooting',
         altLinkText: 'See all device support',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Child item 1',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
@@ -811,11 +811,11 @@ export const contextualComplex: NavItemPrimary[] = [
         text: 'Contact us',
         description: 'Call one of our dedicated customer service centers or send us and email',
         altLinkText: 'See all contact us',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Child item 2',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       }
@@ -825,34 +825,34 @@ export const contextualComplex: NavItemPrimary[] = [
   {
     text: 'About Boston Scientific',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
-    altHref: '#demo',
+    altHref: '/demo-link',
     altLinkText: 'All Boston Scientific information',
     children: [
       {
         text: 'About',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all',
-        altTo: basePath + '/some-path',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Businesses',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Leadership',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Locations',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Awards & recognition',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           },
           {
             text: 'Ventures',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
@@ -860,11 +860,11 @@ export const contextualComplex: NavItemPrimary[] = [
         text: 'Citizenship',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all citizenship',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
@@ -872,11 +872,11 @@ export const contextualComplex: NavItemPrimary[] = [
         text: 'Careers',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all careers',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
@@ -884,11 +884,11 @@ export const contextualComplex: NavItemPrimary[] = [
         text: 'News',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all news',
-        altTo: '#demo',
+        altTo: '/demo-link',
         children: [
           {
             text: 'Child item',
-            slug: basePath + '/some-path'
+            slug: '/demo-link'
           }
         ]
       },
