@@ -6,9 +6,8 @@ import { simpleData, utilityData } from './navPrimaryData';
 
 const logo = {
   src: logoBSC,
-  alt: 'Boston scientific logo',
+  alt: 'Boston Scientific logo',
   to: '/',
-  ariaLabel: 'Boston scientific home'
 }
 
 const SimpleNavPrimary = (): JSX.Element => {

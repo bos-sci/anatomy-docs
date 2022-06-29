@@ -6,13 +6,12 @@ import { intermediateData, utilityData } from './navPrimaryData';
 
 const logo = {
   src: logoBSC,
-  alt: 'Boston scientific logo',
-  to: '/',
-  ariaLabel: 'Boston scientific home'
+  alt: 'Boston Scientific logo',
+  to: '/'
 }
 
 const IntermediateNavPrimary = (): JSX.Element => {
-  useTitle({titlePrefix: `Primary Navigation - Simple Example - Components`});
+  useTitle({titlePrefix: `Primary Navigation - Intermediate Example - Components`});
   return (
     <NavPrimary logo={logo} navItems={intermediateData} utilityItems={utilityData} />
   );

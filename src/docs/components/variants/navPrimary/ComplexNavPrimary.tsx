@@ -6,13 +6,12 @@ import { complexData, utilityData } from './navPrimaryData';
 
 const logo = {
   src: logoBSC,
-  alt: 'Boston scientific logo',
-  to: '/',
-  ariaLabel: 'Boston scientific home'
+  alt: 'Boston Scientific logo',
+  to: '/'
 }
 
 const ComplexNavPrimary = (): JSX.Element => {
-  useTitle({titlePrefix: `Example Primary Navigation - Components`});
+  useTitle({titlePrefix: `Primary Navigation - Complex Example - Components`});
   return (
     <NavPrimary logo={logo} navItems={complexData} utilityItems={utilityData} />
   );
