@@ -1,0 +1,203 @@
+@import "/src/styles/abstracts/abstracts";
+@import "/src/styles/base/base";
+@import "/src/styles/utilities/utilities";
+
+$icon-size-sm: space(lg);
+
+@mixin icon-background($icon-size, $alignment: right) {
+  content: '';
+  box-sizing: content-box;
+  position: absolute;
+  // These are one offs for sizing/aligning icons
+  width: 1em;
+  height: 1em;
+  background-position: center;
+  background-size: $icon-size;
+  background-repeat: no-repeat;
+
+  @if $alignment == left
+  {
+    left: 0;
+  }
+  @else if $alignment == right
+  {
+    right: 0;
+  }
+}
+
+.ads-nav-secondary
+{
+  position: relative;
+  grid-area: nav-secondary;
+  z-index: 10;
+  width: 100%;
+  transition: width .25s ease-out;
+
+  .ads-nav-secondary-menu-trigger
+  {
+    position: relative;
+    display: block;
+    border: 0;
+    border-bottom: space(xxs) solid $neutral-80;
+    padding-left: space(4x);
+    padding-right: space(4x);
+    width: 100%;
+    text-align: left;
+    color: $text-color-primary;
+
+    &:hover
+    {
+      background: $neutral-100;
+      color: initial;
+      border-color: $neutral-80;
+    }
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
+
+    &::after
+    {
+      @include icon-background($icon-size-sm);
+      top: 0;
+      padding: space(2x) space(4x);
+      background-image: url('../../../../assets/images/icon-chevron-down.svg');
+    }
+
+    &[aria-expanded="true"]::after
+    {
+      transform: rotate(180deg);
+    }
+  }
+
+  .ads-nav-secondary-menu
+  {
+    position: absolute;
+    display: none;
+    border-bottom: space(xxs) solid $neutral-80;
+    padding: space(lg) space(2x);
+    width: 100%;
+    background: $neutral-100;
+
+    &.open
+    {
+      display: block;
+    }
+  }
+
+  .ads-nav
+  {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &:not(.ads-nav-active-list)
+    {
+      & > .ads-nav-item:not(.ads-nav-item-parent),
+      & > .ads-nav-item-parent > .ads-nav-link
+      {
+        display: none;
+      }
+    }
+
+    &.ads-nav-active-list
+    {
+      width: 100%;
+    }
+  }
+
+  .ads-nav-item,
+  .ads-nav-item-parent
+  {
+    margin-top: 0;
+  }
+
+  .ads-nav-item-parent
+  {
+    & > .ads-nav-link
+    {
+      position: relative;
+
+      &:hover
+      {
+        background: transparent;
+      }
+
+      &::after
+      {
+        @include icon-background($icon-size-sm);
+        padding: space(lg);
+        background-image: url('../../../../assets/images/icon-chevron-right.svg');
+      }
+    }
+  }
+
+  .ads-nav-link,
+  .ads-nav-link-back
+  {
+    align-items: center;
+    padding: space(lg) space(2x);
+    width: 100%;
+    text-align: left;
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
+  }
+
+  .ads-nav-link
+  {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    border-left: 0;
+    @include link-navigation;
+    @include font-size($fs-body-subtle);
+
+    &.active
+    {
+      &::before
+      {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: space(3x);
+        border-left: space(sm) solid $neutral-00;
+      }
+    }
+  }
+
+  .ads-nav-link-back
+  {
+    justify-content: flex-start;
+    @include font-size($fs-small);
+    fill: $action-primary-40; // TODO: revisit in xdc-1892 (fill vs stroke here or in mixin)
+
+    &:active
+    {
+      fill: $neutral-00;
+    }
+  }
+}
+
+@media (min-width: 992px)
+{
+  .ads-nav-secondary
+  {
+    .ads-nav-secondary-menu-trigger
+    {
+      display: none;
+    }
+
+    .ads-nav-secondary-menu
+    {
+      position: relative;
+      display: block;
+      border-bottom: 0;
+      padding: 0;
+    }
+  }
+}

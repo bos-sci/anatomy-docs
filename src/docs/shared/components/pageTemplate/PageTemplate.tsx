@@ -1,39 +1,51 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import Markdown from '../Markdown';
-import NavSecondary, { NavItemSecondary } from '../navSecondary/NavSecondary';
-import NavTertiary, { NavItemTertiary } from '../navTertiary/NavTertiary';
+import NavSecondary, { NavItemSecondary } from '../../../../library/components/navigation/navSecondary/NavSecondary';
+import NavTertiary, { NavItemTertiary } from '../../../../library/components/navigation/navTertiary/NavTertiary';
 
 interface Props {
   name: string;
   lastUpdated: string;
   leadParagraph: string;
-  navSecondaryItems: NavItemSecondary[];
+  navSecondaryItems?: NavItemSecondary[];
+  navSecondaryMenuTrigger?: string;
   navTertiaryItems: NavItemTertiary[];
   children: ReactNode;
 }
 
 const PageTemplate = (props: Props) => {
+
+  const [navSecondaryTexts, setNavSecondaryTexts] = useState({});
+
+  useEffect(() => {
+    setNavSecondaryTexts({
+      menuToggleText: props.navSecondaryMenuTrigger
+    });
+  }, [props.navSecondaryMenuTrigger]);
+
   return (
     <div className="app-body">
-      <div className="app-content">
-        <NavSecondary navItems={ props.navSecondaryItems } />
-        <main id="mainContent">
-          <div className="page-header">
-            <div className="metadata">
-              <h1 className="title">{ props.name }</h1>
-              <dl className="datestamp">
-                <dt>Last Updated:</dt>
-                <dd>{ props.lastUpdated ? new Date(props.lastUpdated).toLocaleDateString() : 'Draft' }</dd>
-              </dl>
-            </div>
-            <Markdown markdown={ props.leadParagraph } className="body-assertive" />
+    { (props.navSecondaryItems && props.navSecondaryMenuTrigger) &&
+      <NavSecondary
+        texts={navSecondaryTexts}
+        navItems={props.navSecondaryItems} />
+    }
+      <main id="mainContent">
+        <div className="page-header">
+          <div className="metadata">
+            <h1 className="title">{ props.name }</h1>
+            <dl className="datestamp">
+              <dt>Last Updated:</dt>
+              <dd>{ props.lastUpdated ? new Date(props.lastUpdated).toLocaleDateString() : 'Draft' }</dd>
+            </dl>
           </div>
-          <NavTertiary navTertiaryItems={ props.navTertiaryItems } />
-          <div className="page-content">
-            { props.children }
-          </div>
-        </main>
-      </div>
+          <Markdown markdown={ props.leadParagraph } className="body-assertive" />
+        </div>
+        <NavTertiary navTertiaryItems={ props.navTertiaryItems } />
+        <div className="page-content">
+          { props.children }
+        </div>
+      </main>
     </div>
   );
 }

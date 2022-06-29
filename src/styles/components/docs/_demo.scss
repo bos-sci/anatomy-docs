@@ -34,6 +34,16 @@
   {
     margin-top: 0;
   }
+
+  & .nav-tertiary
+  {
+    width: 100%; // TODO: remove this when we remove the fixed widths from the page layout
+  }
+
+  & .icon-decorative > *
+  {
+    margin-top: 0;
+  }
 }
 
 .u-margin-top-remove
@@ -59,4 +69,33 @@
       border-radius: $border-radius;
     }
   }
+}
+
+.demo-link
+{
+  display: inline-block;
+  margin-top: space(3x);
+}
+
+.demo-standalone
+{
+  margin: space(4x);
+}
+
+.docs-wire-header,
+.docs-wire-main
+{
+  padding: 0 space(2x) space(2x);
+  text-align: center;
+}
+
+.docs-wire-header
+{
+  border-bottom: space(xxs) solid $border-color-subtle;
+}
+
+.docs-wire-main
+{
+  height: 100vh;
+  background: $neutral-95;
 }

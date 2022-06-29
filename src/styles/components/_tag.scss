@@ -1,0 +1,66 @@
+@mixin tag-default
+{
+  @include font-size($fs-small);
+  font-family: $font-family-base-heavy;
+  text-transform: uppercase;
+  letter-spacing: 0.075rem; // NOTE: this is a one-off size
+}
+
+@mixin tag-assertive
+{
+  @include tag-default;
+  display: inline;
+  padding: space(md) space(lg);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+@mixin tag-accent
+{
+  @include tag-default;
+  border-style: solid;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: space(sm);
+  padding: space(xs) 0 space(xs) space(md);
+}
+
+.ads-tag
+{
+  @include tag-default;
+
+  &-ghost
+  {
+    @include tag-default;
+    color: $neutral-100;
+  }
+
+  &-accent
+  {
+    @include tag-accent;
+    border-image-source: $gradient-accent-vertical;
+    border-image-slice: 1;
+  }
+
+  &-accent-ghost
+  {
+    @include tag-accent;
+    border-color: $accent-secondary-60;
+    color: $neutral-100;
+  }
+
+  &-assertive
+  {
+    @include tag-assertive;
+    background: $action-primary-20;
+    color: $neutral-100;
+  }
+
+  &-assertive-ghost
+  {
+    @include tag-assertive;
+    background: $neutral-100;
+    color: $neutral-00;
+  }
+}

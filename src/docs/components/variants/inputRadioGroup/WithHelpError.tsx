@@ -26,7 +26,7 @@ const WithHelpError = (): JSX.Element => {
             value="groupHelpError1"
             onChange={handleChange}
             checked={selectedRadio === 'groupHelpError1'}
-            forceValidation={true} />
+            forceValidation />
           <InputRadio
             label="Radio 2"
             name="groupHelpError"

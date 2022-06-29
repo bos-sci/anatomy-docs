@@ -1,0 +1,92 @@
+$icon-size: 1em;
+
+.ads-dropdown
+{
+  .ads-dropdown-trigger
+  {
+    position: relative;
+    padding-right: calc(space(lg) + $icon-size + space(3x)); // gap + icon width + padding
+
+    &::after
+    {
+      content: '';
+      -webkit-mask: url("../../assets/images/icon-chevron-down.svg") no-repeat 50% 50%;
+      mask: url("../../assets/images/icon-chevron-down.svg") no-repeat 50% 50%;
+      -webkit-mask-size: cover;
+      mask-size: cover;
+      background-color: $text-color-primary;
+      position: absolute;
+      right: space(3x);
+      width: $icon-size;
+      height: $icon-size;
+    }
+
+    &:active,
+    &[aria-expanded="true"]
+    {
+      color: $neutral-100;
+      fill: $neutral-100;
+      background-color: $action-primary-20;
+    }
+
+    &[aria-expanded="true"]::after
+    {
+      transform: rotate(180deg);
+    }
+  }
+
+  .ads-dropdown-menu
+  {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: $neutral-100;
+    box-shadow: $box-shadow-secondary;
+    z-index: 1000;
+
+    .ads-dropdown-item
+    {
+      margin-top: 0;
+    }
+
+    .ads-button,
+    .ads-link
+    {
+      display: block;
+      border: 0;
+      padding: space(lg) space(2x);
+      font-family: $font-family-base-regular;
+      @include font-size($fs-base);
+      color: $text-color-primary;
+      text-decoration: none;
+
+      &:focus
+      {
+        @include focus-default-inset;
+      }
+    }
+
+    .ads-button
+    {
+      &:hover
+      {
+        color: $neutral-100;
+        background: $action-primary-40;
+      }
+
+      &:active
+      {
+        background: $action-primary-20;
+      }
+    }
+
+    .ads-link
+    {
+      &:hover
+      {
+        text-decoration: underline;
+      }
+    }
+  }
+}

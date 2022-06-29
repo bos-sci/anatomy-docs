@@ -11,12 +11,22 @@ $border-color-ghost: $neutral-100;
 $border-color-accent: $action-primary-40;
 $border-color-subtle: $neutral-80;
 
+@mixin border-gradient-accent
+{
+  border-width: space(sm);
+  border-style: solid;
+  border-image-source: $gradient-accent;
+  border-image-slice: 1;
+}
+
 $border-radius: 0.25rem; // NOTE: this is a one-off size
 
 
 // Shadow Utility Variables
 
 $box-shadow-primary: 0 0 0.75rem 0 rgba($neutral-00, 0.2); // NOTE: this is a one-off size
+$box-shadow-secondary: 0 0.125rem 1rem 0 rgba($neutral-00, 0.1);
+$box-shadow-tertiary: 0 0.125rem 0.625rem 0 rgba($neutral-00, 0.2);
 
 
 // Breakpoint Utility Variables

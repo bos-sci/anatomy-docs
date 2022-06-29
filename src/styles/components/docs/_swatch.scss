@@ -50,11 +50,16 @@
   &-neutral-100
   {
     @include swatch;
-    border: 1px solid black;
+    border: space(xxs) solid $neutral-00;
     background: $neutral-100;
   }
 
   // action color range
+  &-action-primary-10
+  {
+    @include swatch;
+    background: $action-primary-10;
+  }
   &-action-primary-20
   {
     @include swatch;
@@ -79,6 +84,11 @@
   {
     @include swatch;
     background: $action-primary-95;
+  }
+  &-action-primary-97
+  {
+    @include swatch;
+    background: $action-primary-97;
   }
 
   // accent color ranges
@@ -182,6 +192,11 @@
     @include swatch;
     background: $gradient-secondary;
   }
+  &-gradient-accent
+  {
+    @include swatch;
+    background: $gradient-accent;
+  }
   &-gradient-assertive
   {
     @include swatch;
@@ -191,5 +206,39 @@
   {
     @include swatch;
     background: $gradient-subtle;
+  }
+
+  // shadows
+  &-shadow-primary
+  {
+    @include swatch;
+    margin-left: space(2x);
+    box-shadow: $box-shadow-primary;
+  }
+  &-shadow-secondary
+  {
+    @include swatch;
+    margin-left: space(2x);
+    box-shadow: $box-shadow-secondary;
+  }
+  &-shadow-tertiary
+  {
+    @include swatch;
+    margin-left: space(2x);
+    box-shadow: $box-shadow-tertiary;
+  }
+
+  // borders
+  &-border-gradient-accent
+  {
+    @include swatch;
+    @include border-gradient-accent;
+  }
+
+  // backgrounds
+  &-background-action
+  {
+    @include swatch;
+    background: $action-primary-95;
   }
 }

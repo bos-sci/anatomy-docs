@@ -97,7 +97,6 @@ const InputRadio = forwardRef(({ label, helpText, forceValidation, onBlur, onInp
           onBlur={handleBlur}
           onInput={handleChange}
           aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
-          aria-invalid={addonProps.ariaInvalid && addonProps.isDirty}
           {...inputAttrs} />
         <label htmlFor={inputId} className="ads-input-radio-label">{ label }</label>
       </div>

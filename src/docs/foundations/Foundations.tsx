@@ -1,15 +1,16 @@
 import { useState, useEffect, useContext } from 'react';
-import { NavItemSecondary } from '../shared/components/navSecondary/NavSecondary';
-import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
+import { NavItemSecondary } from '../../library/components/navigation/navSecondary/NavSecondary';
+import { NavItemTertiary } from '../../library/components/navigation/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
-import { GetFoundationQuery, useGetFoundationQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
+import { GetFoundationQuery, useGetFoundationQuery } from '../shared/types/contentful';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
+import Layout from '../shared/components/Layout';
 
 interface ComponentMatch extends match {
   params: {
@@ -23,12 +24,10 @@ interface Props {
 
 const Foundations = (props:  Props): JSX.Element => {
   const foundationName = props.match.params.foundationName;
+  const idLookup: IdLookup = useContext(IdLookupContext);
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [foundationData, setFoundationData] = useState<GetFoundationQuery['foundation']>({} as GetFoundationQuery['foundation']);
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
-
-  const idLookup: IdLookup = useContext(IdLookupContext);
-
 
   const {data, error} = useGetFoundationQuery({
     variables: {
@@ -42,31 +41,46 @@ const Foundations = (props:  Props): JSX.Element => {
   }
 
   useEffect(() => {
-    if (data?.foundation) {
+    if(data?.foundation) {
       setFoundationData(data.foundation);
     }
-    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
-    const pathPrefix = basePath + '/';
-    const navItems = [
+  }, [data]);
+
+  useEffect(() => {
+    // TODO: get rid of .replace() after fixing routing
+    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/')).replace('/iconography', '');
+    setNavItems([
       {
         text: 'Accessibility',
-        slug: pathPrefix + 'accessibility'
+        slug: basePath + '/accessibility'
       },
       {
         text: 'Color',
-        slug: pathPrefix + 'color'
+        slug: basePath + '/color'
+      },
+      {
+        text: 'Icons',
+        children: [
+          {
+            text: 'Decorative icons',
+            slug: basePath + '/iconography/decorative-icons'
+          },
+          {
+            text: 'System icons',
+            slug: basePath + '/iconography/system-icons'
+          }
+        ]
       },
       {
         text: 'Spacing',
-        slug: pathPrefix + 'spacing'
+        slug: basePath + '/spacing'
       },
       {
         text: 'Typography',
-        slug: pathPrefix + 'typography'
+        slug: basePath + '/typography'
       },
-    ];
-    setNavItems(navItems);
-  }, [data, idLookup, props.match.path]);
+    ]);
+  }, [props.match.path]);
 
   useTitle({titlePrefix: `${foundationData?.name} - Foundations`});
   useHashScroll(!!foundationData?.content);
@@ -83,16 +97,21 @@ const Foundations = (props:  Props): JSX.Element => {
     }
   }, [foundationData?.name, pageHeadings]);
 
-  return (
-    <PageTemplate
-      name={foundationData?.name || ''}
-      lastUpdated={foundationData?.sys?.publishedAt}
-      leadParagraph={foundationData?.leadParagraph || ''}
-      navSecondaryItems={navItems}
-      navTertiaryItems={headings}>
-      <Markdown markdown={foundationData?.content || ''} headingOffset={1} />
-    </PageTemplate>
-  );
+  if (foundationData) {
+    return (
+      <Layout>
+        <PageTemplate
+          name={foundationData?.name || ''}
+          lastUpdated={foundationData?.sys?.publishedAt}
+          leadParagraph={foundationData?.leadParagraph || ''}
+          navSecondaryMenuTrigger="Foundations"
+          navSecondaryItems={navItems}
+          navTertiaryItems={headings}>
+          <Markdown markdown={foundationData?.content || ''} headingOffset={1} />
+        </PageTemplate>
+      </Layout>
+    );
+  } else return <Layout><main id="mainContent">Loading...</main></Layout>;
 }
 
 export default Foundations;

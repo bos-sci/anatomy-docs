@@ -17,7 +17,7 @@ interface Props {
 }
 
 const Fallback = () => {
-  return <p>Loading Icon...</p>
+  return <></>
 }
 
 const Icon = (props: Props): JSX.Element => {
@@ -25,18 +25,53 @@ const Icon = (props: Props): JSX.Element => {
   const sizeClass = `ads-icon-${props.size ? props.size : '2x'}`;
 
   switch (props.name) {
+    case 'ellipsis':
+      const IconEllipsis = lazy(() => import('./icons/IconEllipsis'));
+      return (
+        <Suspense fallback={<Fallback />}>
+          <IconEllipsis className={sizeClass + ' ' + props.className} />
+        </Suspense>
+      );
     case 'plus':
-      const IconPlus = lazy(() => import('../../icons/IconPlus'));
+      const IconPlus = lazy(() => import('./icons/IconPlus'));
       return (
         <Suspense fallback={<Fallback />}>
           <IconPlus className={sizeClass + ' ' + props.className} />
         </Suspense>
       );
+    case 'menu':
+      const IconMenu = lazy(() => import('./icons/IconMenu'));
+      return (
+        <Suspense fallback={<Fallback />}>
+          <IconMenu className={sizeClass + ' ' + props.className} />
+        </Suspense>
+      );
     case 'chevronRight':
-      const IconChevronRight = lazy(() => import('../../icons/IconChevronRight'));
+      const IconChevronRight = lazy(() => import('./icons/IconChevronRight'));
       return (
         <Suspense fallback={<Fallback />}>
           <IconChevronRight className={sizeClass + ' ' + props.className} />
+        </Suspense>
+      );
+    case 'chevronLeft':
+      const IconChevronLeft = lazy(() => import('./icons/IconChevronLeft'));
+      return (
+        <Suspense fallback={<Fallback />}>
+          <IconChevronLeft className={sizeClass + ' ' + props.className} />
+        </Suspense>
+      );
+    case 'chevronDown':
+      const IconChevronDown = lazy(() => import('./icons/IconChevronDown'));
+      return (
+        <Suspense fallback={<Fallback />}>
+         <IconChevronDown className={sizeClass + ' ' + props.className} />
+        </Suspense>
+      );
+    case 'chevronUp':
+      const IconChevronUp = lazy(() => import('./icons/IconChevronUp'));
+      return (
+        <Suspense fallback={<Fallback />}>
+          <IconChevronUp className={sizeClass + ' ' + props.className} />
         </Suspense>
       );
 

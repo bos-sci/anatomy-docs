@@ -11,6 +11,23 @@
   {
     @include link-ghost;
   }
+
+  &-nav
+  {
+    @include link-navigation;
+  }
+
+  &-cta
+  {
+    @include button-default;
+    text-decoration: none;
+
+    .ads-link-cta-icon
+    {
+      margin-left: space(md);
+      width: $ffs-body-assertive;
+    }
+  }
 }
 
 //

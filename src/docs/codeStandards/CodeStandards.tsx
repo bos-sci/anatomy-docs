@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
-import { NavItemSecondary } from '../shared/components/navSecondary/NavSecondary';
-import { NavItemTertiary } from '../shared/components/navTertiary/NavTertiary';
+import { NavItemSecondary } from '../../library/components/navigation/navSecondary/NavSecondary';
+import { NavItemTertiary } from '../../library/components/navigation/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';
 import { match } from 'react-router';
@@ -10,6 +10,7 @@ import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
+import Layout from '../shared/components/Layout';
 
 interface ComponentMatch extends match {
   params: {
@@ -90,18 +91,19 @@ const CodeStandards = (props:  Props): JSX.Element => {
     }
   }, [codeStandardData?.name, pageHeadings]);
 
-  if (codeStandardData) {
-    return (
+  return (
+    <Layout>
       <PageTemplate
         name={codeStandardData?.name || ''}
         lastUpdated={codeStandardData?.sys?.publishedAt}
         leadParagraph={codeStandardData?.leadParagraph || ''}
+        navSecondaryMenuTrigger="Code standards"
         navSecondaryItems={navItems}
         navTertiaryItems={headings}>
         <Markdown markdown={ codeStandardData?.content || '' } />
       </PageTemplate>
-    );
-  } else return <></>;
+    </Layout>
+  );
 }
 
 export default CodeStandards;

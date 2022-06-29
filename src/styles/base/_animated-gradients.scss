@@ -1,0 +1,89 @@
+@-webkit-keyframes animatedGradient
+{
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+@-moz-keyframes animatedGradient
+{
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+@-o-keyframes animatedGradient
+{
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+@keyframes animatedGradient
+{
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+@mixin animated-gradient-brand
+{
+  // NOTE: only approved for use on Teaser hero in hero container and Wizard Nav
+  $gradient-brand-animated: linear-gradient(90deg, $brand-primary, $accent-primary-60, $accent-secondary-60, $brand-primary, $accent-primary-60);
+
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: space(sm);
+  background: $gradient-brand;
+  background-image: $gradient-brand-animated;
+  background-size: 400% 100%;
+  content: '';
+  -webkit-animation: animatedGradient 10s linear infinite;
+  -moz-animation: animatedGradient 10s linear infinite;
+  -o-animation: animatedGradient 10s linear infinite;
+  animation: animatedGradient 10s linear infinite;
+  z-index: 1;
+
+  @media (prefers-reduced-motion: reduce)
+  {
+    background-image: $gradient-brand;
+    background-size: 100% 100%;
+    animation: none;
+  }
+}
+
+@mixin animated-gradient-primary
+{
+  $gradient-primary-animated: linear-gradient(90deg, $accent-secondary-60, $action-primary-40, $accent-secondary-60, $action-primary-40);
+
+  background: $gradient-primary;
+  background-image: $gradient-primary-animated;
+  background-size: 300% 100%;
+  -webkit-animation: animatedGradient 10s linear infinite;
+  -moz-animation: animatedGradient 10s linear infinite;
+  -o-animation: animatedGradient 10s linear infinite;
+  animation: animatedGradient 10s linear infinite;
+  z-index: 1;
+
+  @media (prefers-reduced-motion: reduce)
+  {
+    background-image: $gradient-primary;
+    background-size: 100% 100%;
+    animation: none;
+  }
+}
+
+@mixin animated-gradient-secondary
+{
+  $gradient-secondary-animated: linear-gradient(90deg, $accent-primary-60, $action-primary-20, $accent-primary-60, $action-primary-20);
+
+  background: $gradient-secondary;
+  background-image: $gradient-secondary-animated;
+  background-size: 300% 100%;
+  -webkit-animation: animatedGradient 10s linear infinite;
+  -moz-animation: animatedGradient 10s linear infinite;
+  -o-animation: animatedGradient 10s linear infinite;
+  animation: animatedGradient 10s linear infinite;
+  z-index: 1;
+
+  @media (prefers-reduced-motion: reduce)
+  {
+    background-image: $gradient-secondary;
+    background-size: 100% 100%;
+    animation: none;
+  }
+}

@@ -1,54 +1,9 @@
 @import "/src/styles/abstracts/abstracts";
 @import "/src/styles/base/base";
 
-@-webkit-keyframes animatedGradient
-{
-  0% { background-position: 100% 0; }
-  100% { background-position: 0 0; }
-}
-@-moz-keyframes animatedGradient
-{
-  0% { background-position: 100% 0; }
-  100% { background-position: 0 0; }
-}
-@-o-keyframes animatedGradient
-{
-  0% { background-position: 100% 0; }
-  100% { background-position: 0 0; }
-}
-@keyframes animatedGradient
-{
-  0% { background-position: 100% 0; }
-  100% { background-position: 0 0; }
-}
-
-@mixin animated-brand-gradient
-{
-  $gradient-brand-animated: linear-gradient(90deg, $brand-primary, $accent-primary-60, $accent-secondary-60, $brand-primary, $accent-primary-60);
-
-  position: absolute;
-  right: 0;
-  left: 0;
-  height: space(sm);
-  background: $gradient-brand;
-  background-image: $gradient-brand-animated;
-  background-size: 400% 100%;
-  content: '';
-  -webkit-animation: animatedGradient 10s linear infinite;
-  -moz-animation: animatedGradient 10s linear infinite;
-  -o-animation: animatedGradient 10s linear infinite;
-  animation: animatedGradient 10s linear infinite;
-
-  @media (prefers-reduced-motion: reduce)
-  {
-    background-image: $gradient-brand;
-    background-size: 100% 100%;
-    animation: none;
-  }
-}
-
 .app-home
 {
+  flex: 1;
   position: relative;
   display: grid;
   padding: space(4x);
@@ -57,7 +12,7 @@
   &::after
   {
     bottom: - space(sm);
-    @include animated-brand-gradient;
+    @include animated-gradient-brand;
   }
 
   .page-title

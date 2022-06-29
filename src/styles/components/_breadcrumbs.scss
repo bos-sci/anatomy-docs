@@ -1,8 +1,9 @@
-$ads-breadcrumb-divider: '/';
+$ads-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
 
 .ads-breadcrumbs
 {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: space(sm) space(md);
   margin: 0;
@@ -17,15 +18,23 @@ $ads-breadcrumb-divider: '/';
 
   &:not(:first-child)
   {
+    display: flex;
+    align-items: center;
+
     &::before
     {
-      padding-right: space(md);
-      content: $ads-breadcrumb-divider;
-      font-family: $font-family-base-regular;
+      content: "";
+      display: inline-block;
+      margin-right: space(md);
+      width: 1ch;
+      height: 1em;
+      background-image: $ads-breadcrumb-divider;
+      background-repeat: no-repeat;
+      background-position: center;
     }
   }
 
-  &.ads-breadcrumb-item-active
+  &[aria-current]
   {
     font-family: $font-family-base-heavy;
   }
@@ -34,6 +43,23 @@ $ads-breadcrumb-divider: '/';
 .ads-breadcrumb-link
 {
   @include link-navigation;
+}
+
+.ads-breadcrumb-overflow
+{
+  .ads-dropdown
+  {
+    .ads-dropdown-trigger
+    {
+      border-radius: 0;
+      padding: space(lg) space(sm);
+
+      &::after
+      {
+        display: none;
+      }
+    }
+  }
 }
 
 // DEVELOPER NOTE:

@@ -1,3 +1,21 @@
+.icon-decorative,
+.icon-system
+{
+  display: flex;
+}
+
+.icon-decorative > img
+{
+  width: space(8x);
+  height: space(8x);
+}
+
+.icon-system > img
+{
+  width: $ffs-body-assertive;
+  height: $ffs-body-assertive;
+}
+
 .code-do,
 .code-dont
 {

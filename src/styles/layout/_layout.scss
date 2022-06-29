@@ -10,26 +10,22 @@
 
 .app-root
 {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
 }
 
 .app-body
 {
-  padding: space(4x) - space(sm); // NOTE: the second value in this calc is the same as the padding on .app-content to prevent the left edge of focus indicators from being chopped off
-}
-
-.app-content
-{
+  flex: 1;
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
   grid-template-areas: "nav-secondary" "main";
 
   .nav-secondary
   {
     grid-area: nav-secondary;
-    padding: space(sm); // NOTE: this value is the same as the second padding value on .app-content to prevent the left edge of focus indicators from being chopped off
   }
 
   main
@@ -41,10 +37,11 @@
       "nav-tertiary"
       "page-content";
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
     justify-content: start;
     justify-items: start;
     overflow-y: auto;
-    padding: space(sm); // NOTE: this value is the same as the second padding value on .app-content to prevent the left edge of focus indicators from being chopped off
+    padding: space(4x);
   }
 }
 
@@ -61,14 +58,12 @@ main
 {
   grid-area: intro;
   width: 100%;
-  margin-top: space(4x);
 }
 
 .page-content
 {
   grid-area: page-content;
   width: 100%;
-  overflow-y: auto;
 
   & > .demo-example:first-of-type
   {
@@ -97,10 +92,6 @@ main
     width: 60rem;
     margin-right: auto;
     margin-left: auto;
-  }
-
-  .app-content
-  {
     grid-template-columns: 1fr 4fr;
     grid-template-areas: "nav-secondary main";
     grid-column-gap: space(4x);
@@ -113,27 +104,34 @@ main
         "intro nav-tertiary"
         "page-content nav-tertiary";
       grid-template-columns: 4fr 1fr;
+      grid-template-rows: auto 1fr;
       grid-column-gap: space(4x);
       grid-row-gap: 0;
       justify-content: start;
       justify-items: start;
+      margin-top: space(4x);
+      padding: 0;
     }
-  }
 
-  .page-header
-  {
-    margin-top: 0;
+    & > .nav-secondary
+    {
+      width: 12rem;
+      margin-top: space(4x);
+    }
+
+    .nav-tertiary
+    {
+      margin-top: space(lg);
+      width: 12rem;
+    }
   }
 }
 
 @media (min-width: $xl)
 {
-
-  .app-content{
-    grid-template-columns: 1fr 5fr;
-  }
   .app-body
   {
+    grid-template-columns: 1fr 5fr;
     width: 71.25rem;
   }
 }
