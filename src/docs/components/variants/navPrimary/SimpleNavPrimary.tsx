@@ -14,7 +14,7 @@ const logo = {
 const SimpleNavPrimary = (): JSX.Element => {
   useTitle({titlePrefix: `Primary Navigation - Simple Example - Components`});
   return (
-    <NavPrimary logo={logo} navItems={simpleData} utilityItems={utilityData} hasSearch={false} />
+    <NavPrimary logo={logo} navItems={simpleData} utilityItems={utilityData} />
   );
 }
 

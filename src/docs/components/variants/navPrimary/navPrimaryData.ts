@@ -4,6 +4,54 @@ const basePath = '';
 
 export const utilityData = [
   {
+    text: 'Page',
+    slug: '/'
+  },
+  {
+    text: 'Page',
+    slug: '/'
+  },
+  {
+    text: 'Page',
+    slug: '/'
+  },
+  {
+    text: 'Dropdown',
+    children: [
+      {
+        text: 'Dropdown option',
+        slug: '/'
+      },
+      {
+        text: 'Dropdown option',
+        slug: '/'
+      },
+      {
+        text: 'Dropdown option',
+        slug: '/'
+      },
+      {
+        text: 'Dropdown option',
+        slug: '/'
+      },
+      {
+        text: 'Dropdown option',
+        slug: '/'
+      },
+      {
+        text: 'Dropdown option',
+        slug: '/'
+      },
+      {
+        text: 'Dropdown option',
+        slug: '/'
+      }
+    ]
+  }
+];
+
+export const contextualUtility = [
+  {
     text: 'News',
     slug: '/'
   },

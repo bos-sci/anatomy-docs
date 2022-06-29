@@ -14,7 +14,7 @@ const logo = {
 const IntermediateNavPrimary = (): JSX.Element => {
   useTitle({titlePrefix: `Primary Navigation - Simple Example - Components`});
   return (
-    <NavPrimary logo={logo} navItems={intermediateData} utilityItems={utilityData} hasSearch={false} />
+    <NavPrimary logo={logo} navItems={intermediateData} utilityItems={utilityData} />
   );
 }
 
