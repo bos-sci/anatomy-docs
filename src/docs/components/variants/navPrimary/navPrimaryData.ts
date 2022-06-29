@@ -2,7 +2,193 @@ import { NavItemPrimary } from '../../../../library/components/navigation/navPri
 
 const basePath = '';
 
-const exampleData: NavItemPrimary[] = [
+export const utilityData = [
+  {
+    text: 'News',
+    slug: '/'
+  },
+  {
+    text: 'Careers',
+    slug: '/'
+  },
+  {
+    text: 'Investors',
+    slug: '/'
+  },
+  {
+    text: 'Region Selector',
+    children: [
+      {
+        text: 'Argentina',
+        slug: '/'
+      },
+      {
+        text: 'Brazil',
+        slug: '/'
+      },
+      {
+        text: 'Chile',
+        slug: '/'
+      },
+      {
+        text: 'China',
+        slug: '/'
+      },
+      {
+        text: 'Columbia',
+        slug: '/'
+      },
+      {
+        text: 'Deutschland',
+        slug: '/'
+      },
+      {
+        text: 'Europe',
+        slug: '/'
+      },
+      {
+        text: 'India',
+        slug: '/'
+      },
+      {
+        text: 'Japan',
+        slug: '/'
+      },
+      {
+        text: 'Korea',
+        slug: '/'
+      },
+      {
+        text: 'Malaysia',
+        slug: '/'
+      },
+      {
+        text: 'Mexico',
+        slug: '/'
+      },
+      {
+        text: 'Peru',
+        slug: '/'
+      },
+      {
+        text: 'Spain',
+        slug: '/'
+      },
+      {
+        text: 'United States',
+        slug: '/'
+      }
+    ]
+  }
+];
+
+export const simpleData: NavItemPrimary[] = [
+  {
+    text: 'Page',
+    slug: basePath + '/some-path'
+  },
+  {
+    text: 'Page',
+    slug: basePath + '/some-path'
+  },
+  {
+    text: 'Page',
+    slug: basePath + '/some-path'
+  },
+  {
+    text: 'Page',
+    slug: basePath + '/some-path'
+  }
+];
+
+export const intermediateData: NavItemPrimary[] = [
+  {
+    text: 'Page',
+    slug: basePath + '/some-path'
+  },
+  {
+    text: 'Page group',
+    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    altLinkText: 'See all pages',
+    altTo: basePath + '/some-path',
+    children: [
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      },
+      {
+        text: 'Child page',
+        slug: basePath + '/some-path'
+      }
+    ]
+  },
+  {
+    text: 'Page',
+    slug: basePath + '/some-path'
+  },
+  {
+    text: 'Page',
+    slug: basePath + '/some-path'
+  }
+];
+
+export const complexData: NavItemPrimary[] = [
   {
     text: 'For healthcare professionals',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
@@ -333,6 +519,4 @@ const exampleData: NavItemPrimary[] = [
       }
     ]
   }
-]
-
-export default exampleData;
+];

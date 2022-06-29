@@ -60,8 +60,9 @@ const Preview = ( props: Props ): JSX.Element => {
         setRenderedComponent(<DefaultNavLink />);
         break;
 
-      case 'primary-navigation':
-        setRenderedComponent(<Link className="demo-link" to="/components/navigation/primary-navigation/example" target="_blank">See example</Link>);
+        case 'primary-navigation':
+        const NavPrimaryController = lazy(() => import('./navPrimary/_NavPrimaryController'));
+        setRenderedComponent(<NavPrimaryController variantId={variantId} />);
         break;
 
       case 'radio-group':
