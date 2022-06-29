@@ -11,6 +11,7 @@ interface Props {
   setActiveNode: (node: NavNode) => void;
   menuId: string;
   isMenuOpen: boolean;
+  isIntermediateNav: boolean;
   history: HistoryNode[];
   pushHistory: (navItem: NavNode, depth: number) => void;
   popHistory: () => void;
@@ -21,7 +22,7 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
   const [activeDepth, setActiveDepth] = useState(0);
 
   return (
-    <div ref={ref} id={props.menuId} className={"ads-nav-menu" + (props.isMenuOpen ? ' open' : '')}>
+    <div ref={ref} id={props.menuId} className={"ads-nav-menu" + (props.isMenuOpen ? ' open' : '') + (props.isIntermediateNav ? ' intermediate' : '')}>
       {props.history.length > 0 &&
         <Button
           type="button"
