@@ -15,8 +15,8 @@ $border-color-subtle: $neutral-80;
 {
   border-width: space(sm);
   border-style: solid;
-  border-image-slice: 1;
   border-image-source: $gradient-accent;
+  border-image-slice: 1;
 }
 
 $border-radius: 0.25rem; // NOTE: this is a one-off size
