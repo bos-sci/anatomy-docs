@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { VariantProps } from '../Preview';
-import DefaultNavPrimary from './ComplexNavPrimary';
 
 const NavPrimaryController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
