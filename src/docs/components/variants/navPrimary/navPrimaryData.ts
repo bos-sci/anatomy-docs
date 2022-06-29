@@ -107,7 +107,7 @@ export const intermediateData: NavItemPrimary[] = [
     slug: basePath + '/some-path'
   },
   {
-    text: 'Page group',
+    text: 'Navigation section',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altLinkText: 'See all pages',
     altTo: basePath + '/some-path',
@@ -189,6 +189,337 @@ export const intermediateData: NavItemPrimary[] = [
 ];
 
 export const complexData: NavItemPrimary[] = [
+  {
+    text: 'Navigation section',
+    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    altHref: '#demo',
+    altLinkText: 'All pages',
+    children: [
+      {
+        text: 'Page group',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all pages',
+        altTo: basePath + '/some-path',
+        children: [
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          }
+        ]
+      },
+      {
+        text: 'Page group',
+        altLinkText: 'See all pages',
+        altTo: '#demo',
+        children: [
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          }
+        ]
+      },
+      {
+        text: 'Page group',
+        altLinkText: 'See all pages',
+        altTo: '#demo',
+        children: [
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          }
+        ]
+      },
+      {
+        text: 'Page group',
+        altLinkText: 'See all pages',
+        altTo: '#demo',
+        children: [
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    text: 'Navigation section',
+    description: `Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.`,
+    altTo: '#demo',
+    altLinkText: 'All pages',
+    children: [
+      {
+        text: 'Page group',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all pages',
+        altTo: basePath + '/some-path',
+        children: [
+          {
+            text: 'Nested page group',
+            altLinkText: 'See all pages',
+            altTo: '#demo',
+            children: [
+              {
+                text: 'Page',
+                slug: basePath + '/' // Used to demo the active style
+              },
+              {
+                text: 'Page',
+                slug: basePath + '/some-path'
+              },
+              {
+                text: 'Page',
+                slug: basePath + '/some-path'
+              }
+            ]
+          },
+          {
+            text: 'Nested page group',
+            altLinkText: 'See all pages',
+            altTo: '#demo',
+            children: [
+              {
+                text: 'Page',
+                slug: basePath + '/some-path'
+              }
+            ]
+          },
+          {
+            text: 'Nested page group',
+            altLinkText: 'See all pages',
+            altTo: '#demo',
+            children: [
+              {
+                text: 'Page',
+                slug: basePath + '/some-path'
+              }
+            ]
+          },
+          {
+            text: 'Nested page group',
+            altLinkText: 'See all pages',
+            altTo: '#demo',
+            children: [
+              {
+                text: 'Page',
+                slug: basePath + '/some-path'
+              }
+            ]
+          },
+          {
+            text: 'Nested page group',
+            altLinkText: 'See all pages',
+            altTo: '#demo',
+            children: [
+              {
+                text: 'Page',
+                slug: basePath + '/some-path'
+              }
+            ]
+          },
+          {
+            text: `Nested page group`,
+            altLinkText: 'See all pages',
+            altTo: '#demo',
+            children: [
+              {
+                text: 'Page',
+                slug: basePath + '/some-path'
+              }
+            ]
+          },
+          {
+            text: `Nested page group`,
+            altLinkText: 'See all pages',
+            altTo: '#demo',
+            children: [
+              {
+                text: 'Page',
+                slug: basePath + '/some-path'
+              }
+            ]
+          },
+          {
+            text: 'Nested page group',
+            altLinkText: 'See all pages',
+            altTo: '#demo',
+            children: [
+              {
+                text: 'Page',
+                slug: basePath + '/some-path'
+              }
+            ]
+          },
+          {
+            text: 'Nested page group',
+            altLinkText: 'See all pages',
+            altTo: '#demo',
+            children: [
+              {
+                text: 'Page',
+                slug: basePath + '/some-path'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        text: 'Page group',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all pages',
+        altTo: '#demo',
+        children: [
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          }
+        ]
+      },
+      {
+        text: 'Page group',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all pages',
+        altTo: '#demo',
+        children: [
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    text: 'Navigation section',
+    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    altHref: '#demo',
+    altLinkText: 'All pages',
+    children: [
+      {
+        text: 'Page group',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all pages',
+        altTo: basePath + '/some-path',
+        children: [
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          },
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          }
+        ]
+      },
+      {
+        text: 'Page group',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all pages',
+        altTo: '#demo',
+        children: [
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          }
+        ]
+      },
+      {
+        text: 'Page group',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all pages',
+        altTo: '#demo',
+        children: [
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          }
+        ]
+      },
+      {
+        text: 'Page group',
+        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        altLinkText: 'See all pages',
+        altTo: '#demo',
+        children: [
+          {
+            text: 'Page',
+            slug: basePath + '/some-path'
+          }
+        ]
+      },
+      {
+        text: 'Page',
+        href: 'external-url-here'
+      }
+    ]
+  }
+];
+
+export const contextualComplex: NavItemPrimary[] = [
   {
     text: 'For healthcare professionals',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
