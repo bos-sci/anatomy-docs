@@ -112,7 +112,7 @@ $inner-circle-diameter: space(md);
         position: absolute;
         top: calc((1.5em - $outer-circle-diameter) / 2);
         left: 0;
-        transform: scale($inner-circle-diameter / $outer-circle-diameter);
+        transform: scale(calc($inner-circle-diameter / $outer-circle-diameter));
         width: $outer-circle-diameter;
         height: $outer-circle-diameter;
         border-radius: 50%;
