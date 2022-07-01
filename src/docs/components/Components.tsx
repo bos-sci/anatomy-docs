@@ -140,10 +140,7 @@ const Components = (props: Props): JSX.Element => {
     ]);
   }, [props.match.path]);
 
-  const nameForTitle = (componentData?.name || '')
-    .split(' ')
-    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-    .join(' ');
+  const nameForTitle = (componentData?.name || '');
 
   useTitle({titlePrefix: `${nameForTitle} - Components`});
   useHashScroll(!!componentData?.name);
