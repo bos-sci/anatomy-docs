@@ -79,9 +79,9 @@ const CodeStandards = (props:  Props): JSX.Element => {
   useTitle({titlePrefix: `${codeStandardData?.name} - Code Standards`});
   useHashScroll(!!codeStandardData?.content);
 
-  const pageHeadings = useHeadings(codeStandardData?.name);
+  const pageHeadings = useHeadings();
   useEffect(() => {
-    if (codeStandardData?.name) {
+    if (pageHeadings.length > 0) {
       setHeadings(pageHeadings.map(heading => {
         return {
           id: heading.id as string,
@@ -89,7 +89,7 @@ const CodeStandards = (props:  Props): JSX.Element => {
         };
       }));
     }
-  }, [codeStandardData?.name, pageHeadings]);
+  }, [pageHeadings]);
 
   return (
     <Layout>
