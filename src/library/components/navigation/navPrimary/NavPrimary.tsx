@@ -80,6 +80,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   const [activeNode, setActiveNode] = useState<NavNode | null>(null);
   const [menuId, setMenuId] = useState('');
   const [isViewportSmall, setIsViewportSmall] = useState(false);
+  const [isIntermediateNav, setIsIntermediateNav] = useState(false);
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -132,8 +133,13 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   useEffect(() => {
     const tree = [...navItems] as NavNode[];
 
+    let treeDepth = 0;
+
     // Add 'parent' property to each nav item that points to the items parent
     const populateParents = (nodes: NavNode[], parent: NavNode | null = null, index = 0) => {
+      if (index > treeDepth) {
+        treeDepth = index;
+      }
       nodes.forEach((node, i) => {
         node.parent = parent;
         node.id = `navPrimaryNode${index}-${i}`;
@@ -144,6 +150,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
     }
     populateParents(tree);
     setNavTree(tree);
+    setIsIntermediateNav(treeDepth + 1 === 2);
 
   }, [navItems]);
 
@@ -156,16 +163,19 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
       }
       if (history.length === 0) {
         setIsMenuOpen(false);
+      } else if (isMenuOpen) {
+        setIsRootOpen(true);
       }
     } else if (!isViewportSmall) {
       setIsViewportSmall(true);
     }
-  }, [history.length, isViewportSmall]);
+  }, [history.length, isMenuOpen, isViewportSmall]);
 
   useEffect(() => {
     // Close menu on focus out or click out
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!navRef.current?.contains(e.target as Node)) {
+        setIsSearchOpen(false);
         setIsMenuOpen(false);
         setHistory([]);
       }
@@ -242,6 +252,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
                     setActiveNode={setActiveNode}
                     menuId={menuId}
                     isMenuOpen={isMenuOpen}
+                    isIntermediateNav={isIntermediateNav}
                     history={history}
                     pushHistory={pushHistory}
                     popHistory={popHistory} />
@@ -277,7 +288,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
         <div className={'ads-search-panel' + (isSearchOpen ? ' open' : '')}>
           <Search label="Search" buttonText={texts?.searchButtonText} buttonAriaLabel={texts?.searchButtonAriaLabel} />
         </div>
-        {((navTree.length > 0 && !isRootOpen) || isViewportSmall) &&
+        {((navTree.length > 0 && !isRootOpen && isViewportSmall)) &&
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
@@ -285,6 +296,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
             setActiveNode={setActiveNode}
             menuId={menuId}
             isMenuOpen={isMenuOpen}
+            isIntermediateNav={isIntermediateNav}
             history={history}
             pushHistory={pushHistory}
             popHistory={popHistory} />

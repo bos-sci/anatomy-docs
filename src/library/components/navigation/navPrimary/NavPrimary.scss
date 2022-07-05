@@ -133,6 +133,8 @@ $menuPadding: space(md) 0;
     align-items: stretch;
     align-content: center;
     flex-direction: column;
+    border-bottom: space(xxs) solid $neutral-80;
+    background-color: $neutral-100;
     z-index: $navBarZIndex;
 
     .ads-nav-link-logo
@@ -398,6 +400,7 @@ $menuPadding: space(md) 0;
 
   .ads-nav-menu-panel-header
   {
+    border-bottom: space(xxs) solid $neutral-80;
     padding: space(lg) space(3x) space(4x);
 
     .ads-nav-menu-panel-title
@@ -673,6 +676,7 @@ $menuPadding: space(md) 0;
 
     .ads-nav-menu
     {
+      border-top: space(xxs) solid $neutral-80;
       height: 60vh;
 
       .ads-nav
@@ -687,13 +691,43 @@ $menuPadding: space(md) 0;
         border: 0;
         word-wrap: break-word;
       }
+
+      &:not(.intermediate)
+      {
+        .ads-nav-menu-panels
+        {
+          @include panelSettings($panelsWidth);
+        }
+      }
+
+      &.intermediate
+      {
+        .ads-nav-menu-panel
+        {
+          width: 100%;
+        }
+
+        .ads-nav-menu-panels .ads-nav-menu-panel.has-header .ads-nav-menu-panel-header
+        {
+          width: calc($panelsWidth / $numPanels);
+          flex: unset;
+        }
+
+        .ads-nav
+        {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-content: flex-start;
+          align-items: flex-start;
+        }
+      }
     }
 
     .ads-nav-menu-panels
     {
       width: $panelsWidth;
       height: 100%;
-      @include panelSettings($panelsWidth);
 
       & > .ads-nav-active-list
       {
@@ -792,10 +826,17 @@ $menuPadding: space(md) 0;
 
   .ads-nav-primary
   {
+    .ads-nav-men:not(.intermediate)
+    {
+      .ads-nav-menu-panels
+      {
+        @include panelSettings($panelsWidth);
+      }
+    }
+
     .ads-nav-menu-panels
     {
       width: $panelsWidth;
-      @include panelSettings($panelsWidth);
     }
   }
 }
@@ -813,10 +854,17 @@ $menuPadding: space(md) 0;
 
   .ads-nav-primary
   {
+    .ads-nav-men:not(.intermediate)
+    {
+      .ads-nav-menu-panels
+      {
+        @include panelSettings($panelsWidth);
+      }
+    }
+
     .ads-nav-menu-panels
     {
       width: $panelsWidth;
-      @include panelSettings($panelsWidth);
     }
   }
 }

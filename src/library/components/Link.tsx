@@ -24,6 +24,9 @@ const Link = forwardRef((props: Props, ref: ForwardedRef<HTMLAnchorElement>): JS
     case 'ghost':
       classes = 'ads-link-ghost'
       break;
+    case 'cta':
+      classes = 'ads-link-cta'
+      break;
     default:
       classes = 'ads-link';
       break;

@@ -3,6 +3,7 @@ import DefaultLink from './DefaultLink';
 import DefaultStyle from './DefaultStyle';
 import SubtleStyle from './SubtleStyle';
 import GhostStyle from './GhostStyle';
+import CtaStyle from './CtaStyle';
 
 const LinkVariants = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
@@ -13,6 +14,8 @@ const LinkVariants = ({ variantId }: VariantProps): JSX.Element => {
       return <SubtleStyle />;
     case 'linkGhost':
       return <GhostStyle />;
+    case 'linkCta':
+      return <CtaStyle />;
 
     default:
       return <DefaultLink />;

@@ -12,7 +12,7 @@
   &::after
   {
     bottom: - space(sm);
-    @include animated-brand-gradient;
+    @include animated-gradient-brand;
   }
 
   .page-title
