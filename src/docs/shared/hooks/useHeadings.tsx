@@ -7,20 +7,20 @@ import { useEffect, useState } from 'react';
 const useHeadings = (depth = 1): Element[] => {
   const [headings, setHeadings] = useState<Element[]>([]);
 
-  const getHeadings = () => {
-    const selector = Array.from(Array(depth)).map((_val, i) => '.page-content h' + (i + 2) + ':not(.nav-tertiary-title)').join(', ');
-    setHeadings(Array.from(document.querySelectorAll(selector)));
-  }
-
   const targetNode = document.querySelector('.page-content');
-  const config = { attributes: true, childList: true, subtree: true };
-  const observer = new MutationObserver(getHeadings);
 
   useEffect(() => {
     if (targetNode) {
+      const getHeadings = () => {
+        const selector = Array.from(Array(depth)).map((_val, i) => '.page-content h' + (i + 2) + ':not(.nav-tertiary-title)').join(', ');
+        setHeadings(Array.from(document.querySelectorAll(selector)));
+      }
+
+      const config = { attributes: true, childList: true, subtree: true };
+      const observer = new MutationObserver(getHeadings);
       observer.observe(targetNode, config);
     }
-  }, [targetNode]);
+  }, [targetNode, depth]);
 
   return headings;
 }
