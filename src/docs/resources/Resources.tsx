@@ -88,17 +88,12 @@ const Resources = (props:  Props): JSX.Element => {
   useTitle({titlePrefix: `${resourceData?.name} - Resources`});
   useHashScroll(!!resourceData?.content);
 
-  const pageHeadings = useHeadings(resourceData?.name);
+  const pageHeadings = useHeadings();
   useEffect(() => {
-    if (resourceData?.name) {
-      setHeadings(pageHeadings.map(heading => {
-        return {
-          id: heading.id as string,
-          text: heading.textContent as string
-        };
-      }));
+    if (pageHeadings.length > 0) {
+      setHeadings(pageHeadings);
     }
-  }, [resourceData?.name, pageHeadings]);
+  }, [pageHeadings]);
 
   return (
     <Layout>
