@@ -99,15 +99,27 @@ $fs-small: (
 
 body
 {
+  margin: 0;
   color: $text-color-primary;
   font-family: $font-family-base-regular;
   @include font-size($fs-base);
   line-height: 1.5;
 }
 
-p, ul, ol, dl
+p, dl
 {
   margin: space(2x) 0 0;
+}
+
+ul, ol
+{
+  margin: space(2x) 0 0;
+  padding-left: 2rem;
+}
+
+code {
+  color: $accent-primary-35;
+  word-wrap: break-word;
 }
 
 li:not(:first-of-type)
