@@ -148,12 +148,7 @@ const Components = (props: Props): JSX.Element => {
   const pageHeadings = useHeadings();
   useEffect(() => {
     if (pageHeadings.length > 0) {
-      setHeadings(pageHeadings.map(heading => {
-        return {
-          id: heading.id as string,
-          text: heading.textContent as string
-        };
-      }));
+      setHeadings(pageHeadings);
     }
   }, [pageHeadings]);
 
