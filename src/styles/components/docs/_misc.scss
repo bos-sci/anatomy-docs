@@ -12,7 +12,7 @@
   dd
   {
     display: inline;
-    font-weight: $font-weight-regular; // TODO: delete this when we rip out bootstrap
+    font-weight: $font-weight-regular; 
   }
 
   dd
@@ -31,4 +31,10 @@
       vertical-align: top;
     }
   }
+}
+
+code 
+{
+  color: $code-snippet;
+  word-wrap: break-word;
 }

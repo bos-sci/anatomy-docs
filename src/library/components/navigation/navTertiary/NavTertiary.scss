@@ -16,13 +16,13 @@
     font-family: $font-family-base-regular;
     @include font-size($fs-small);
     line-height: 1.5; // NOTE: overriding h2's default line height
+    font-weight: 500;
   }
 
   .nav
   {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     margin: 0;
     padding-left: 0;
     list-style: none;
