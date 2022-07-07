@@ -56,17 +56,12 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
   useTitle({titlePrefix: `${contentGuidelineData?.name} - Content`});
   useHashScroll(!!contentGuidelineData?.content);
 
-  const pageHeadings = useHeadings(contentGuidelineData?.name);
+  const pageHeadings = useHeadings();
   useEffect(() => {
-    if (contentGuidelineData?.name) {
-      setHeadings(pageHeadings.map(heading => {
-        return {
-          id: heading.id as string,
-          text: heading.textContent as string
-        };
-      }));
+    if (pageHeadings.length > 0) {
+      setHeadings(pageHeadings);
     }
-  }, [contentGuidelineData?.name, pageHeadings]);
+  }, [pageHeadings]);
 
   return (
     <Layout>

@@ -145,17 +145,12 @@ const Components = (props: Props): JSX.Element => {
   useTitle({titlePrefix: `${nameForTitle} - Components`});
   useHashScroll(!!componentData?.name);
 
-  const pageHeadings = useHeadings(componentData?.name);
+  const pageHeadings = useHeadings();
   useEffect(() => {
-    if (componentData?.name) {
-      setHeadings(pageHeadings.map(heading => {
-        return {
-          id: heading.id as string,
-          text: heading.textContent as string
-        };
-      }));
+    if (pageHeadings.length > 0) {
+      setHeadings(pageHeadings);
     }
-  }, [componentData?.name, pageHeadings]);
+  }, [pageHeadings]);
 
   if (componentData) {
     return (

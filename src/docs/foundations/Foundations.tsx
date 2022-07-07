@@ -85,17 +85,12 @@ const Foundations = (props:  Props): JSX.Element => {
   useTitle({titlePrefix: `${foundationData?.name} - Foundations`});
   useHashScroll(!!foundationData?.content);
 
-  const pageHeadings = useHeadings(foundationData?.name);
+  const pageHeadings = useHeadings();
   useEffect(() => {
-    if (foundationData?.name) {
-      setHeadings(pageHeadings.map(heading => {
-        return {
-          id: heading.id as string,
-          text: heading.textContent as string
-        };
-      }));
+    if (pageHeadings.length > 0) {
+      setHeadings(pageHeadings);
     }
-  }, [foundationData?.name, pageHeadings]);
+  }, [pageHeadings]);
 
   if (foundationData) {
     return (

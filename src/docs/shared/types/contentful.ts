@@ -5,7 +5,7 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions =  {}
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -1617,7 +1617,7 @@ export type GetCodeStandardQueryVariables = Exact<{
 }>;
 
 
-export type GetCodeStandardQuery = { __typename?: 'Query', codeStandard?: { __typename?: 'CodeStandard', name?: string | null | undefined, leadParagraph?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetCodeStandardQuery = { __typename?: 'Query', codeStandard?: { __typename?: 'CodeStandard', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetComponentQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1625,7 +1625,7 @@ export type GetComponentQueryVariables = Exact<{
 }>;
 
 
-export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null | undefined, leadParagraph?: string | null | undefined, usage?: string | null | undefined, usageDo?: string | null | undefined, usageDont?: string | null | undefined, interactions?: string | null | undefined, contentGuidelines?: string | null | undefined, contentGuidelinesDo?: string | null | undefined, contentGuidelinesDont?: string | null | undefined, userResearch?: string | null | undefined, accessibility?: string | null | undefined, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null | undefined, description?: string | null | undefined, modifierId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null | undefined, description?: string | null | undefined, styleId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null | undefined, description?: string | null | undefined, stateId?: string | null | undefined, isPreviewDarkThemed?: boolean | null | undefined } | null | undefined> } | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetContentGuidelineQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1633,7 +1633,7 @@ export type GetContentGuidelineQueryVariables = Exact<{
 }>;
 
 
-export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null | undefined, leadParagraph?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetFoundationQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1641,14 +1641,14 @@ export type GetFoundationQueryVariables = Exact<{
 }>;
 
 
-export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null | undefined, leadParagraph?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetCollectionsQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
-export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null | undefined, sys: { __typename?: 'Sys', id: string } } | null | undefined> } | null | undefined };
+export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type GetResourceQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1656,7 +1656,7 @@ export type GetResourceQueryVariables = Exact<{
 }>;
 
 
-export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null | undefined, leadParagraph?: string | null | undefined, content?: string | null | undefined, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null | undefined } } | null | undefined };
+export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 
 export const GetCodeStandardDocument = gql`
