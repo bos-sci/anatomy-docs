@@ -57,10 +57,18 @@
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.6",
     "@types/react-router-dom": "^5.3.3",
+<<<<<<< HEAD
     "graphql": "^16.5.0",
     "axe-core": "^4.4.2",
     "cypress": "^9.7.0",
     "cypress-axe": "^0.14.0",
     "cypress-real-events": "^1.7.0"
+=======
+    "axe-core": "^4.4.2",
+    "cypress": "^10.3.0",
+    "cypress-axe": "^1.0.0",
+    "cypress-real-events": "^1.7.1",
+    "graphql": "^16.5.0"
+>>>>>>> feature/xdc-42__automated-test-workflow_cypress_rtl
   }
 }
