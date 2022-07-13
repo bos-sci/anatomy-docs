@@ -3,7 +3,6 @@ import { NavItemSecondary } from '../../library/components/navigation/navSeconda
 import { NavItemTertiary } from '../../library/components/navigation/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';
-import { match } from 'react-router';
 import { IdLookup } from '../shared/types/docs';
 import { GetResourceQuery, useGetResourceQuery } from '../shared/types/contentful';
 import useTitle from '../shared/hooks/useTitle';
@@ -11,19 +10,11 @@ import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
 import Layout from '../shared/components/Layout';
+import { useLocation, useParams } from 'react-router-dom';
 
-interface ComponentMatch extends match {
-  params: {
-    resourceName: string;
-  }
-}
-
-interface Props {
-  match: ComponentMatch;
-}
-
-const Resources = (props:  Props): JSX.Element => {
-  const resourceName = props.match.params.resourceName;
+const Resources = (): JSX.Element => {
+  const params = useParams();
+  const location = useLocation();
   const idLookup: IdLookup = useContext(IdLookupContext);
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [resourceData, setResourceData] = useState<GetResourceQuery['resource']>({} as GetResourceQuery['resource']);
@@ -31,7 +22,7 @@ const Resources = (props:  Props): JSX.Element => {
 
   const {data, error} = useGetResourceQuery({
     variables: {
-      id: idLookup.resources[resourceName].id,
+      id: idLookup.resources[params.resourceName!].id,
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
     }
   });
@@ -47,7 +38,7 @@ const Resources = (props:  Props): JSX.Element => {
   }, [data]);
 
   useEffect(() => {
-    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/')).replace('/designers', '');
+    const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/')).replace('/designers', '');
     setNavItems([
       {
         text: 'Community',
@@ -83,7 +74,7 @@ const Resources = (props:  Props): JSX.Element => {
         slug: basePath + '/release-notes'
       },
     ]);
-  }, [props.match.path]);
+  }, [location]);
 
   useTitle({titlePrefix: `${resourceData?.name} - Resources`});
   useHashScroll(!!resourceData?.content);

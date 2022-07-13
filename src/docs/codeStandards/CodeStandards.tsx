@@ -3,7 +3,6 @@ import { NavItemSecondary } from '../../library/components/navigation/navSeconda
 import { NavItemTertiary } from '../../library/components/navigation/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';
-import { match } from 'react-router';
 import { GetCodeStandardQuery, useGetCodeStandardQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
@@ -11,19 +10,11 @@ import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
 import Layout from '../shared/components/Layout';
+import { useLocation, useParams } from 'react-router-dom';
 
-interface ComponentMatch extends match {
-  params: {
-    standardName: string;
-  }
-}
-
-interface Props {
-  match: ComponentMatch;
-}
-
-const CodeStandards = (props:  Props): JSX.Element => {
-  const standardName = props.match.params.standardName;
+const CodeStandards = (): JSX.Element => {
+  const location = useLocation();
+  const params = useParams();
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [codeStandardData, setCodeStandardData] = useState<GetCodeStandardQuery['codeStandard']>({} as GetCodeStandardQuery['codeStandard']);
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
@@ -32,7 +23,7 @@ const CodeStandards = (props:  Props): JSX.Element => {
 
   const {data, error} = useGetCodeStandardQuery({
     variables: {
-      id: idLookup.codeStandards[standardName].id,
+      id: idLookup.codeStandards[params.standardName!].id,
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
     }
   });
@@ -45,7 +36,7 @@ const CodeStandards = (props:  Props): JSX.Element => {
     if (data?.codeStandard) {
       setCodeStandardData(data.codeStandard);
     }
-    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'));
+    const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/'));
     const pathPrefix = basePath + '/';
     const navItems = [
       {
@@ -74,7 +65,7 @@ const CodeStandards = (props:  Props): JSX.Element => {
       },
     ];
     setNavItems(navItems);
-  }, [data, idLookup, props.match.path]);
+  }, [data, idLookup, location]);
 
   useTitle({titlePrefix: `${codeStandardData?.name} - Code Standards`});
   useHashScroll(!!codeStandardData?.content);

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import Link from '../../Link';
 import { NavNode } from './NavPrimary';
 
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const NavPrimaryLeaf = (props: Props) => {
-  const isMatch = useRouteMatch(props.navItem.slug ? props.navItem.slug : props.navItem.href || '');
+  const isMatch = useMatch(props.navItem.slug ? props.navItem.slug : props.navItem.href || '');
 
   useEffect(() => {
     if (isMatch) {

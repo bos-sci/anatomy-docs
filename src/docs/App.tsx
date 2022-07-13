@@ -1,14 +1,27 @@
 import { useState, useEffect, createContext, lazy, Suspense, useCallback } from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
-  Redirect
+  Navigate
 } from "react-router-dom";
 import { slugify } from './helpers';
 import { useGetCollectionsQuery } from './shared/types/contentful';
 import { IdLookup, IdLookupEntry } from './shared/types/docs';
 import Home from './home/Home';
+import Components from './components/Components';
+import ComplexNavPrimary from './components/variants/navPrimary/ComplexNavPrimary';
+import IntermediateNavPrimary from './components/variants/navPrimary/IntermediateNavPrimary';
+import SimpleNavPrimary from './components/variants/navPrimary/SimpleNavPrimary';
+import DefaultNavWizard from './components/variants/navWizard/DefaultNavWizard';
+import DefaultSkipLink from './components/variants/skipLink/DefaultSkipLink';
+import CodeStandards from './codeStandards/CodeStandards';
+import ContentGuidelines from './contentGuidelines/ContentGuidelines';
+import Foundations from './foundations/Foundations';
+import Resources from './resources/Resources';
+import ComponentsController from './components/ComponentsController';
+import NotFound from './shared/components/NotFound';
+import FullPageExample from './components/variants/FullPageExample';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
@@ -22,6 +35,7 @@ interface Collection {
       id: string;
     }
     name: string;
+    group?: string;
   }[];
 }
 
@@ -52,7 +66,8 @@ const App = (): JSX.Element => {
     collection.items.forEach((item) => (
       destination[slugify(item?.name as string)] = {
         id: item?.sys.id,
-        name: item?.name
+        name: item?.name,
+        group: item?.group ? slugify(item.group) : null
       })
     );
   }, []);
@@ -76,17 +91,48 @@ const App = (): JSX.Element => {
       <IdLookupContext.Provider value={idLookup}>
         {isLookupReady &&
           <Suspense fallback={<main id="mainContent"><p>Loading...</p></main>}>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/components" component={ComponentsRouter} />
-              <Route path="/resources/developers/code-standards">
-                <Redirect to="/code-standards" />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="components">
+                <Route path='' element={<Navigate to="button" />} />
+                <Route path=':componentName'>
+                    <Route path='' element={<ComponentsController />} />
+                    <Route path='example/:example' element={<FullPageExample />} />
+                </Route>
+                <Route path=':group'>
+                  <Route path=':componentName'>
+                    <Route path='' element={<ComponentsController />} />
+                    <Route path='example/:example' element={<FullPageExample />} />
+                  </Route>
+                </Route>
+
+                {/* <Route path='navigation/primary-navigation/simple-example' element={<SimpleNavPrimary />} />
+                <Route path='navigation/primary-navigation/intermediate-example' element={<IntermediateNavPrimary />} />
+                <Route path='navigation/primary-navigation/complex-example' element={<ComplexNavPrimary />} />
+                <Route path='navigation/wizard-navigation/example' element={<DefaultNavWizard />} />
+                <Route path='skip-link/example' element={<DefaultSkipLink />} /> */}
               </Route>
-              <Route path="/code-standards" component={CodeStandardsRouter} />
-              <Route path="/content" component={ContentGuidelinesRouter} />
-              <Route path="/foundations" component={FoundationsRouter} />
-              <Route path="/resources" component={ResourcesRouter} />
-            </Switch>
+              <Route path="code-standards">
+                <Route path='' element={<Navigate to='general' />} />
+                <Route path=':standardName' element={<CodeStandards />} />
+              </Route>
+              <Route path="content">
+                <Route path='' element={<Navigate to='audiences' />} />
+                <Route path=':contentName' element={<ContentGuidelines />} />
+              </Route>
+              <Route path="foundations">
+                <Route path='' element={<Navigate to='accessibility' />} />
+                <Route path='iconography/:foundationName' element={<Foundations />} />
+                <Route path=':foundationName' element={<Foundations />} />
+              </Route>
+              <Route path="resources">
+                <Route path='' element={<Navigate to='community' />} />
+                <Route path='designers/:resourceName' element={<Resources />} />
+                <Route path=':resourceName' element={<Resources />} />
+                <Route path="developers/code-standards/general" element={<Navigate to="../../code-standards" />} />
+              </Route>
+              <Route path="*" element={<NotFound />}/>
+            </Routes>
           </Suspense>
         }
       </IdLookupContext.Provider>

@@ -15,14 +15,6 @@ query getCollections($preview: Boolean) {
       }
     }
   }
-  contentGuidelineCollection(order: name_ASC, preview: $preview) {
-    items {
-      name
-      sys {
-        id
-      }
-    }
-  }
   codeStandardCollection(preview: $preview) {
     items {
       name
@@ -34,6 +26,7 @@ query getCollections($preview: Boolean) {
   componentCollection(order: name_ASC, preview: $preview) {
     items {
       name
+      group
       sys {
         id
       }

@@ -317,6 +317,7 @@ export type Component = Entry & {
   contentGuidelinesDo?: Maybe<Scalars['String']>;
   contentGuidelinesDont?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
+  group?: Maybe<Scalars['String']>;
   interactions?: Maybe<Scalars['String']>;
   leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ComponentLinkingCollections>;
@@ -352,6 +353,12 @@ export type ComponentContentGuidelinesDoArgs = {
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentContentGuidelinesDontArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
+export type ComponentGroupArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -470,6 +477,13 @@ export type ComponentFilter = {
   contentGuidelines_not_contains?: InputMaybe<Scalars['String']>;
   contentGuidelines_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  group?: InputMaybe<Scalars['String']>;
+  group_contains?: InputMaybe<Scalars['String']>;
+  group_exists?: InputMaybe<Scalars['Boolean']>;
+  group_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  group_not?: InputMaybe<Scalars['String']>;
+  group_not_contains?: InputMaybe<Scalars['String']>;
+  group_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   interactions?: InputMaybe<Scalars['String']>;
   interactions_contains?: InputMaybe<Scalars['String']>;
   interactions_exists?: InputMaybe<Scalars['Boolean']>;
@@ -667,6 +681,8 @@ export type ComponentModifiersCollection = {
 };
 
 export enum ComponentOrder {
+  GroupAsc = 'group_ASC',
+  GroupDesc = 'group_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1625,7 +1641,7 @@ export type GetComponentQueryVariables = Exact<{
 }>;
 
 
-export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, group?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetContentGuidelineQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1648,7 +1664,7 @@ export type GetCollectionsQueryVariables = Exact<{
 }>;
 
 
-export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
+export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type GetResourceQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1739,6 +1755,7 @@ export const GetComponentDocument = gql`
     contentGuidelinesDont
     userResearch
     accessibility
+    group
     sys {
       id
       publishedAt
@@ -1877,14 +1894,6 @@ export const GetCollectionsDocument = gql`
       }
     }
   }
-  contentGuidelineCollection(order: name_ASC, preview: $preview) {
-    items {
-      name
-      sys {
-        id
-      }
-    }
-  }
   codeStandardCollection(preview: $preview) {
     items {
       name
@@ -1896,6 +1905,7 @@ export const GetCollectionsDocument = gql`
   componentCollection(order: name_ASC, preview: $preview) {
     items {
       name
+      group
       sys {
         id
       }

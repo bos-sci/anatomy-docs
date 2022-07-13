@@ -35,6 +35,7 @@ query getComponent($id: String!, $preview: Boolean) {
     contentGuidelinesDont
     userResearch
     accessibility
+    group
     sys {
       id
       publishedAt

@@ -189,6 +189,7 @@ type Component implements Entry {
   contentGuidelinesDo(locale: String): String
   contentGuidelinesDont(locale: String): String
   contentfulMetadata: ContentfulMetadata!
+  group(locale: String): String
   interactions(locale: String): String
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentLinkingCollections
@@ -242,6 +243,13 @@ input ComponentFilter {
   contentGuidelines_not_contains: String
   contentGuidelines_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  group: String
+  group_contains: String
+  group_exists: Boolean
+  group_in: [String]
+  group_not: String
+  group_not_contains: String
+  group_not_in: [String]
   interactions: String
   interactions_contains: String
   interactions_exists: Boolean
@@ -382,6 +390,8 @@ type ComponentModifiersCollection {
 }
 
 enum ComponentOrder {
+  group_ASC
+  group_DESC
   name_ASC
   name_DESC
   sys_firstPublishedAt_ASC

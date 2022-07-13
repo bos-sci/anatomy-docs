@@ -4,7 +4,7 @@ import Fallback from './Fallback';
 
 interface Props {
   component: string;
-  variant: string;
+  variant?: string;
   variantId?: string;
   isDarkTheme?: boolean;
 }
@@ -105,7 +105,7 @@ const Preview = ( props: Props ): JSX.Element => {
         break;
 
       case 'wizard-navigation':
-        setRenderedComponent(<Link className="demo-link" to="/components/navigation/wizard-navigation/example" target="_blank">See example</Link>);
+        setRenderedComponent(<Link className="demo-link" to="/components/navigation/wizard-navigation/example/" target="_blank">See example</Link>);
         break;
 
       default:

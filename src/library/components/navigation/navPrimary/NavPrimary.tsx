@@ -22,7 +22,7 @@ interface NavItemPrimaryBase extends NavItem {
   altHref?: string;
   altLinkText?: string;
   isExactMatch?: boolean;
-  isActive?: NavLinkProps['isActive'];
+  //isActive?: NavLinkProps['isActive'];
 }
 
 interface NavItemUtilityBase extends NavItem {
@@ -242,7 +242,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
                   </Button>
                 }
                 {(navItem.slug || navItem.href) &&
-                  <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="ads-nav-link" isActive={navItem.isActive}>{navItem.text}</NavLink>
+                  <NavLink end={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="ads-nav-link">{navItem.text}</NavLink>
                 }
                 {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && isRootOpen && !isViewportSmall) &&
                   <NavPrimaryMenu

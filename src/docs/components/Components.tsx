@@ -1,11 +1,8 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import Preview from './variants/Preview';
 import { NavItemSecondary } from '../../library/components/navigation/navSecondary/NavSecondary';
 import { NavItemTertiary } from '../../library/components/navigation/navTertiary/NavTertiary';
-import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';
-import { match } from 'react-router';
-import { IdLookup } from '../shared/types/docs';
 import { GetComponentQuery, useGetComponentQuery } from '../shared/types/contentful';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
@@ -13,27 +10,24 @@ import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
 import Layout from '../shared/components/Layout';
 import './Components.scss';
-
-interface ComponentMatch extends match {
-  params: {
-    componentName: string;
-  }
-}
+import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { IdLookupEntry, IdLookupProperties } from '../shared/types/docs';
 
 interface Props {
-  match: ComponentMatch;
+  componentFromId: IdLookupProperties;
 }
 
 const Components = (props: Props): JSX.Element => {
-  const componentName = props.match.params.componentName;
-  const idLookup: IdLookup = useContext(IdLookupContext);
+  const params = useParams();
+  const location = useLocation();
+
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [componentData, setComponentData] = useState<GetComponentQuery['component']>({} as GetComponentQuery['component']);
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const {data, error} = useGetComponentQuery({
     variables: {
-      id: idLookup.components[componentName].id,
+      id: props.componentFromId.id,
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
     }
   });
@@ -50,7 +44,7 @@ const Components = (props: Props): JSX.Element => {
 
   useEffect(() => {
     // TODO: get rid of .replace() after fixing routing
-    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/'))
+    const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/'))
       .replace('/form-controls', '')
       .replace('/navigation', '');
     setNavItems([
@@ -138,7 +132,7 @@ const Components = (props: Props): JSX.Element => {
         slug: basePath + '/tag',
       },
     ]);
-  }, [props.match.path]);
+  }, [location]);
 
   const nameForTitle = (componentData?.name || '');
 
@@ -162,14 +156,14 @@ const Components = (props: Props): JSX.Element => {
           navSecondaryMenuTrigger="Components"
           navSecondaryItems={navItems}
           navTertiaryItems={headings}>
-          <Preview component={ componentName } variant='Default' />
+          <Preview component={ params.componentName! } variant='Default' />
           {(componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>
             <h2 id="modifiers">Modifiers</h2>
               { componentData.modifiersCollection.items.map((modifier) => (
                 <div key={ modifier?.modifierId } className="component-variant">
                   <h3>{ modifier?.name }</h3>
                   <Markdown markdown={modifier?.description || ''} />
-                  <Preview component={ componentName } variant={ modifier?.name as string } variantId={modifier?.modifierId as string} isDarkTheme={ modifier?.isPreviewDarkThemed || false } />
+                  <Preview component={ params.componentName! } variantId={modifier?.modifierId as string} isDarkTheme={ modifier?.isPreviewDarkThemed || false } />
                 </div>
               ))}
             </>
@@ -181,7 +175,7 @@ const Components = (props: Props): JSX.Element => {
                 <div key={ style?.styleId } className="component-variant">
                   <h3>{ style?.name }</h3>
                   <Markdown markdown={style?.description || ''} />
-                  <Preview component={ componentName } variant={ style?.name as string } variantId={style?.styleId as string} isDarkTheme={ style?.isPreviewDarkThemed || false } />
+                  <Preview component={ params.componentName! } variant={ style?.name as string } variantId={style?.styleId as string} isDarkTheme={ style?.isPreviewDarkThemed || false } />
                 </div>
               ))}
             </>
@@ -193,7 +187,7 @@ const Components = (props: Props): JSX.Element => {
                 <div key={ state?.stateId } className="component-variant">
                   <h3>{ state?.name }</h3>
                   <Markdown markdown={state?.description || ''} />
-                  <Preview component={ componentName } variant={ state?.name as string } variantId={state?.stateId as string} isDarkTheme={ state?.isPreviewDarkThemed || false } />
+                  <Preview component={ params.componentName! } variant={ state?.name as string } variantId={state?.stateId as string} isDarkTheme={ state?.isPreviewDarkThemed || false } />
                 </div>
               ))}
             </>
