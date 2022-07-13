@@ -156,38 +156,56 @@ const Components = (props: Props): JSX.Element => {
           navSecondaryMenuTrigger="Components"
           navSecondaryItems={navItems}
           navTertiaryItems={headings}>
-          <Preview component={ params.componentName! } variant='Default' />
+
+          {/* Default Preview */}
+          {componentData.name && <Preview component={ params.componentName! } shouldLinkToExamples={ componentData.shouldLinkToExamples || false }  /> }
+
+          {/* Modifiers */}
           {(componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>
             <h2 id="modifiers">Modifiers</h2>
               { componentData.modifiersCollection.items.map((modifier) => (
                 <div key={ modifier?.modifierId } className="component-variant">
                   <h3>{ modifier?.name }</h3>
                   <Markdown markdown={modifier?.description || ''} />
-                  <Preview component={ params.componentName! } variantId={modifier?.modifierId as string} isDarkTheme={ modifier?.isPreviewDarkThemed || false } />
+                  <Preview
+                    component={ params.componentName! }
+                    variant={modifier?.name as string}
+                    variantId={modifier?.modifierId as string}
+                    shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
                 </div>
               ))}
             </>
           }
 
+          {/* Styles */}
           {(componentData.stylesCollection?.items && componentData.stylesCollection.items.length > 0) && <>
             <h2 id="styles">Styles</h2>
               { componentData.stylesCollection.items.map((style) => (
                 <div key={ style?.styleId } className="component-variant">
                   <h3>{ style?.name }</h3>
                   <Markdown markdown={style?.description || ''} />
-                  <Preview component={ params.componentName! } variant={ style?.name as string } variantId={style?.styleId as string} isDarkTheme={ style?.isPreviewDarkThemed || false } />
+                  <Preview
+                    component={ params.componentName! }
+                    variant={style?.name as string}
+                    variantId={style?.styleId as string}
+                    shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
                 </div>
               ))}
             </>
           }
 
+          {/* States */}
           {(componentData.statesCollection?.items && componentData.statesCollection.items.length > 0) && <>
             <h2 id="states">States</h2>
               { componentData.statesCollection.items.map((state) => (
                 <div key={ state?.stateId } className="component-variant">
                   <h3>{ state?.name }</h3>
                   <Markdown markdown={state?.description || ''} />
-                  <Preview component={ params.componentName! } variant={ state?.name as string } variantId={state?.stateId as string} isDarkTheme={ state?.isPreviewDarkThemed || false } />
+                  <Preview
+                    component={ params.componentName! }
+                    variant={state?.name as string}
+                    variantId={state?.stateId as string}
+                    shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
                 </div>
               ))}
             </>

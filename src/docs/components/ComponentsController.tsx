@@ -10,7 +10,6 @@ const ComponentsController = (): JSX.Element => {
   const navigate = useNavigate();
   const idLookup: IdLookup = useContext(IdLookupContext);
 
-  console.log('invalid');
   if (params.componentName && !Object.keys(idLookup.components).includes(params.componentName)) {
     return <NotFound />;
   }

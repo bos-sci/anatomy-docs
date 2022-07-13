@@ -195,6 +195,7 @@ type Component implements Entry {
   linkedFrom(allowedLocales: [String]): ComponentLinkingCollections
   modifiersCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentModifiersCollection
   name(locale: String): String
+  shouldLinkToExamples(locale: String): Boolean
   statesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentStatesCollection
   stylesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentStylesCollection
   sys: Sys!
@@ -272,6 +273,9 @@ input ComponentFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  shouldLinkToExamples: Boolean
+  shouldLinkToExamples_exists: Boolean
+  shouldLinkToExamples_not: Boolean
   statesCollection_exists: Boolean
   stylesCollection_exists: Boolean
   sys: SysFilter
@@ -394,6 +398,8 @@ enum ComponentOrder {
   group_DESC
   name_ASC
   name_DESC
+  shouldLinkToExamples_ASC
+  shouldLinkToExamples_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC

@@ -9,19 +9,13 @@ import { slugify } from './helpers';
 import { useGetCollectionsQuery } from './shared/types/contentful';
 import { IdLookup, IdLookupEntry } from './shared/types/docs';
 import Home from './home/Home';
-import Components from './components/Components';
-import ComplexNavPrimary from './components/variants/navPrimary/ComplexNavPrimary';
-import IntermediateNavPrimary from './components/variants/navPrimary/IntermediateNavPrimary';
-import SimpleNavPrimary from './components/variants/navPrimary/SimpleNavPrimary';
-import DefaultNavWizard from './components/variants/navWizard/DefaultNavWizard';
-import DefaultSkipLink from './components/variants/skipLink/DefaultSkipLink';
 import CodeStandards from './codeStandards/CodeStandards';
 import ContentGuidelines from './contentGuidelines/ContentGuidelines';
 import Foundations from './foundations/Foundations';
 import Resources from './resources/Resources';
 import ComponentsController from './components/ComponentsController';
 import NotFound from './shared/components/NotFound';
-import FullPageExample from './components/variants/FullPageExample';
+import Preview from './components/variants/Preview';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
@@ -97,20 +91,14 @@ const App = (): JSX.Element => {
                 <Route path='' element={<Navigate to="button" />} />
                 <Route path=':componentName'>
                     <Route path='' element={<ComponentsController />} />
-                    <Route path='example/:example' element={<FullPageExample />} />
+                    <Route path='example/:example' element={<Preview />} />
                 </Route>
                 <Route path=':group'>
                   <Route path=':componentName'>
                     <Route path='' element={<ComponentsController />} />
-                    <Route path='example/:example' element={<FullPageExample />} />
+                    <Route path='example/:example' element={ <Preview />} />
                   </Route>
                 </Route>
-
-                {/* <Route path='navigation/primary-navigation/simple-example' element={<SimpleNavPrimary />} />
-                <Route path='navigation/primary-navigation/intermediate-example' element={<IntermediateNavPrimary />} />
-                <Route path='navigation/primary-navigation/complex-example' element={<ComplexNavPrimary />} />
-                <Route path='navigation/wizard-navigation/example' element={<DefaultNavWizard />} />
-                <Route path='skip-link/example' element={<DefaultSkipLink />} /> */}
               </Route>
               <Route path="code-standards">
                 <Route path='' element={<Navigate to='general' />} />

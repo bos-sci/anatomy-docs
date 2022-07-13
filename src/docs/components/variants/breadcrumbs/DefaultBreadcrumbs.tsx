@@ -18,9 +18,7 @@ const DefaultBreadcrumbs = (): JSX.Element => {
   ];
 
   return (
-    <Example>
       <Breadcrumb crumbs={crumbs} currentPage="Current Page" hasOverflow={false} />
-    </Example>
   );
 }
 

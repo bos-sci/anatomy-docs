@@ -18,9 +18,7 @@ const OverflowBreadcrumbs = (): JSX.Element => {
   ];
 
   return (
-    <Example>
       <Breadcrumb crumbs={crumbs} currentPage="Current Page" />
-    </Example>
   );
 }
 
