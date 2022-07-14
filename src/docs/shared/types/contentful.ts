@@ -220,6 +220,7 @@ export type CodeStandard = Entry & {
   leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<CodeStandardLinkingCollections>;
   name?: Maybe<Scalars['String']>;
+  seoMetaDescription?: Maybe<Scalars['String']>;
   sys: Sys;
 };
 
@@ -244,6 +245,12 @@ export type CodeStandardLinkedFromArgs = {
 
 /** Documentation regarding code standards. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/codeStandard) */
 export type CodeStandardNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation regarding code standards. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/codeStandard) */
+export type CodeStandardSeoMetaDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -280,6 +287,13 @@ export type CodeStandardFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seoMetaDescription?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_contains?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  seoMetaDescription_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seoMetaDescription_not?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_not_contains?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -299,6 +313,8 @@ export type CodeStandardLinkingCollectionsEntryCollectionArgs = {
 export enum CodeStandardOrder {
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
+  SeoMetaDescriptionAsc = 'seoMetaDescription_ASC',
+  SeoMetaDescriptionDesc = 'seoMetaDescription_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',

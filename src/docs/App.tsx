@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, lazy, Suspense, useCallback } from 'react';
+import { useState, useEffect, createContext, Suspense, useCallback } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,13 +15,12 @@ import Foundations from './foundations/Foundations';
 import Resources from './resources/Resources';
 import ComponentsController from './components/ComponentsController';
 import NotFound from './shared/components/NotFound';
-import Preview from './components/variants/Preview';
 
-const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
+/* const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
 const ContentGuidelinesRouter = lazy(() => import('./contentGuidelines/ContentGuidelinesRouter'));
 const FoundationsRouter = lazy(() => import('./foundations/FoundationsRouter'));
-const ResourcesRouter = lazy(() => import('./resources/ResourcesRouter'));
+const ResourcesRouter = lazy(() => import('./resources/ResourcesRouter')); */
 
 interface Collection {
   items: {
@@ -90,13 +89,13 @@ const App = (): JSX.Element => {
               <Route path="components">
                 <Route path='' element={<Navigate to="button" />} />
                 <Route path=':componentName'>
-                    <Route path='' element={<ComponentsController />} />
-                    <Route path='example/:example' element={<Preview />} />
+                  <Route path='' element={<ComponentsController />} />
+                  <Route path='example/:example' element={<ComponentsController isExternal />} />
                 </Route>
                 <Route path=':group'>
                   <Route path=':componentName'>
                     <Route path='' element={<ComponentsController />} />
-                    <Route path='example/:example' element={ <Preview />} />
+                    <Route path='example/:example' element={ <ComponentsController isExternal />} />
                   </Route>
                 </Route>
               </Route>

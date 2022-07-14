@@ -1,33 +1,73 @@
-import { Suspense, lazy, useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import useTitle from '../../shared/hooks/useTitle';
+import { ComponentModifier, GetComponentQuery } from '../../shared/types/contentful';
+import { ComponentContext } from '../ComponentsController';
 import Fallback from './Fallback';
 import DefaultNavWizard from './navWizard/DefaultNavWizard';
-
-interface Props {
-  component?: string;
-  variant?: string;
-  variantId?: string;
-  shouldLinkToExamples?: boolean;
-}
 
 export interface VariantProps {
   variantId: string;
 }
 
+interface Props {
+  variant?: string;
+  variantId?: string;
+  shouldLinkToExamples?: boolean;
+  isExternal?: boolean;
+}
+
 const Preview = ( props: Props ): JSX.Element => {
   const params = useParams();
+  const data = useContext(ComponentContext);
 
+  const [componentData, setComponentData] = useState<GetComponentQuery['component']>({} as GetComponentQuery['component']);
   const [renderedComponent, setRenderedComponent] = useState<JSX.Element>(<></>);
+  const [variant, setVariant] = useState<ComponentModifier | null>(null);
+
+  useEffect(() => {
+    if(data) {
+      setComponentData(data);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    let currentVariant: ComponentModifier | null = null;
+
+    currentVariant = componentData?.modifiersCollection?.items.find(variant => variant?.modifierId === params.example) as ComponentModifier;
+
+    if (!currentVariant) {
+      currentVariant = componentData?.stylesCollection?.items.find(variant => variant?.styleId === params.example) as ComponentModifier;
+    }
+
+    if (!currentVariant) {
+      currentVariant = componentData?.statesCollection?.items.find(variant => variant?.stateId === params.example) as ComponentModifier;
+    }
+
+    setVariant(currentVariant);
+  }, [componentData, params.example]);
+
+  let title;
+  if (componentData?.name) {
+    title = componentData.name;
+
+    if (props.isExternal && params.example) {
+      title = (variant?.name ? variant.name : 'Default') + ' - ' + title;
+    }
+  }
+
+  useTitle({
+    titlePrefix: `${title} - Components`
+  });
 
   useEffect(() => {
     const variantId = props.variantId ? props.variantId : params.example!;
-    const component = props.component ? props.component : params.componentName;
 
     if (props.shouldLinkToExamples) {
       setRenderedComponent(<Link className="demo-link" to={`example/${props.variantId}`}target="_blank">See {props.variant || 'example'}</Link>);
     } else {
-      switch (component) {
+      switch (params.componentName) {
         case 'accordion':
           const DefaultAccordion = lazy(() => import('./accordion/DefaultAccordion'));
           setRenderedComponent(<DefaultAccordion />);
@@ -120,7 +160,7 @@ const Preview = ( props: Props ): JSX.Element => {
           setRenderedComponent(<p>Failed to load component!</p>);
       }
     }
-  }, [props.variantId, props.component, props.shouldLinkToExamples]);
+  }, [props, params]);
 
   return (
     <Suspense fallback={<Fallback />}>

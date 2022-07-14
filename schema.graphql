@@ -125,6 +125,7 @@ type CodeStandard implements Entry {
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): CodeStandardLinkingCollections
   name(locale: String): String
+  seoMetaDescription(locale: String): String
   sys: Sys!
 }
 
@@ -160,6 +161,13 @@ input CodeStandardFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  seoMetaDescription: String
+  seoMetaDescription_contains: String
+  seoMetaDescription_exists: Boolean
+  seoMetaDescription_in: [String]
+  seoMetaDescription_not: String
+  seoMetaDescription_not_contains: String
+  seoMetaDescription_not_in: [String]
   sys: SysFilter
 }
 
@@ -170,6 +178,8 @@ type CodeStandardLinkingCollections {
 enum CodeStandardOrder {
   name_ASC
   name_DESC
+  seoMetaDescription_ASC
+  seoMetaDescription_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC

@@ -1,18 +1,23 @@
-import { useContext } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { IdLookupContext } from '../App';
-import NotFound from '../shared/components/NotFound';
+import { GetComponentQuery, useGetComponentQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
 import Components from './Components';
+import Preview from './variants/Preview';
 
-const ComponentsController = (): JSX.Element => {
+export const ComponentContext = createContext<GetComponentQuery['component']>({} as GetComponentQuery['component']);
+
+interface Props {
+  isExternal?: boolean;
+}
+
+const ComponentsController = (props: Props): JSX.Element => {
   const params = useParams();
   const navigate = useNavigate();
   const idLookup: IdLookup = useContext(IdLookupContext);
 
-  if (params.componentName && !Object.keys(idLookup.components).includes(params.componentName)) {
-    return <NotFound />;
-  }
+  const [componentData, setComponentData] = useState<GetComponentQuery['component']>({} as GetComponentQuery['component']);
 
   // If route is /components/:componentName that should have a group, navigate to /components/:group/:componentName
   // TODO: Do we want to correct the route here or throw a 404?
@@ -21,7 +26,37 @@ const ComponentsController = (): JSX.Element => {
     navigate('../' + componentFromId.group + '/' + params.componentName)
   }
 
-  return <Components componentFromId={componentFromId} />;
+  const {data, error} = useGetComponentQuery({
+    variables: {
+      id: componentFromId.id,
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
+    }
+  });
+
+  if (error) {
+    console.error(error);
+  }
+
+  useEffect(() => {
+    if (data) {
+      setComponentData(data.component);
+    }
+  }, [data])
+
+
+  if (props.isExternal) {
+    return (
+      <ComponentContext.Provider value={componentData}>
+        <Preview isExternal />
+      </ComponentContext.Provider>
+    );
+  }
+
+  return (
+    <ComponentContext.Provider value={componentData}>
+      <Components />
+    </ComponentContext.Provider>
+  );
 }
 
 export default ComponentsController;

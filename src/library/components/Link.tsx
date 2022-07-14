@@ -14,7 +14,7 @@ export interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
 //type Props = RequireOnlyOne<Inputs, 'href' | 'to'>;
 
 const Link = forwardRef((props: Props, ref: ForwardedRef<HTMLAnchorElement>): JSX.Element => {
-  const { variant, href, ...linkAttrs } = props;
+  const { variant, href, to, isNavLink, children, ...linkAttrs } = props;
 
   let classes = '';
   switch (variant) {
@@ -32,14 +32,14 @@ const Link = forwardRef((props: Props, ref: ForwardedRef<HTMLAnchorElement>): JS
       break;
   }
 
-  if (props.to) {
-    if (props.isNavLink) {
-      return <NavLink ref={ref} to={props.to} className={classes} {...linkAttrs}>{props.children}</NavLink>;
+  if (to) {
+    if (isNavLink) {
+      return <NavLink ref={ref} to={to} className={classes} {...linkAttrs}>{children}</NavLink>;
     } else {
-      return <RouterLink ref={ref} to={props.to} className={classes} {...linkAttrs}>{props.children}</RouterLink>;
+      return <RouterLink ref={ref} to={to} className={classes} {...linkAttrs}>{children}</RouterLink>;
     }
   } else {
-    return <a ref={ref} href={props.href} className={classes} {...linkAttrs}>{props.children}</a>;
+    return <a ref={ref} href={props.href} className={classes} {...linkAttrs}>{children}</a>;
   }
 
 });

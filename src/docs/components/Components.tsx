@@ -1,44 +1,30 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Preview from './variants/Preview';
 import { NavItemSecondary } from '../../library/components/navigation/navSecondary/NavSecondary';
 import { NavItemTertiary } from '../../library/components/navigation/navTertiary/NavTertiary';
 import Markdown from '../shared/components/Markdown';
-import { GetComponentQuery, useGetComponentQuery } from '../shared/types/contentful';
+import { GetComponentQuery } from '../shared/types/contentful';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
 import Layout from '../shared/components/Layout';
 import './Components.scss';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
-import { IdLookupEntry, IdLookupProperties } from '../shared/types/docs';
+import { useLocation } from 'react-router-dom';
+import { ComponentContext } from './ComponentsController';
 
-interface Props {
-  componentFromId: IdLookupProperties;
-}
-
-const Components = (props: Props): JSX.Element => {
-  const params = useParams();
+const Components = (): JSX.Element => {
   const location = useLocation();
 
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [componentData, setComponentData] = useState<GetComponentQuery['component']>({} as GetComponentQuery['component']);
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
-  const {data, error} = useGetComponentQuery({
-    variables: {
-      id: props.componentFromId.id,
-      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
-    }
-  });
-
-  if (error) {
-    console.error(error);
-  }
+  const data = useContext(ComponentContext);
 
   useEffect(() => {
-    if(data?.component) {
-      setComponentData(data.component);
+    if(data) {
+      setComponentData(data);
     }
   }, [data]);
 
@@ -158,7 +144,7 @@ const Components = (props: Props): JSX.Element => {
           navTertiaryItems={headings}>
 
           {/* Default Preview */}
-          {componentData.name && <Preview component={ params.componentName! } shouldLinkToExamples={ componentData.shouldLinkToExamples || false }  /> }
+          {componentData.name && <Preview shouldLinkToExamples={ componentData.shouldLinkToExamples || false }  /> }
 
           {/* Modifiers */}
           {(componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>
@@ -168,7 +154,6 @@ const Components = (props: Props): JSX.Element => {
                   <h3>{ modifier?.name }</h3>
                   <Markdown markdown={modifier?.description || ''} />
                   <Preview
-                    component={ params.componentName! }
                     variant={modifier?.name as string}
                     variantId={modifier?.modifierId as string}
                     shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
@@ -185,7 +170,6 @@ const Components = (props: Props): JSX.Element => {
                   <h3>{ style?.name }</h3>
                   <Markdown markdown={style?.description || ''} />
                   <Preview
-                    component={ params.componentName! }
                     variant={style?.name as string}
                     variantId={style?.styleId as string}
                     shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
@@ -202,7 +186,6 @@ const Components = (props: Props): JSX.Element => {
                   <h3>{ state?.name }</h3>
                   <Markdown markdown={state?.description || ''} />
                   <Preview
-                    component={ params.componentName! }
                     variant={state?.name as string}
                     variantId={state?.stateId as string}
                     shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
