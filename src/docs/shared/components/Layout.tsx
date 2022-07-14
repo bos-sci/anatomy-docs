@@ -17,37 +17,37 @@ const navItems: NavItemPrimary[] = [
   {
     text: 'Content',
     slug: '/content/audiences',
-    /* isActive: (_match, location) => {
+    isActive: (location) => {
       return location.pathname.split('/')[1] === 'content';
-    } */
+    }
   },
   {
     text: 'Foundations',
     slug: '/foundations/accessibility',
-    /* isActive: (_match, location) => {
+    isActive: (location) => {
       return location.pathname.split('/')[1] === 'foundations';
-    } */
+    }
   },
   {
     text: 'Components',
     slug: '/components/button',
-    /* isActive: (_match, location) => {
+    isActive: (location) => {
       return location.pathname.split('/')[1] === 'components';
-    } */
+    }
   },
   {
     text: 'Code standards',
     slug: '/resources/developers/code-standards/general',
-    /* isActive: (_match, location) => {
+    isActive: (location) => {
       return location.pathname.split('/')[1] === 'code-standards';
-    } */
+    }
   },
   {
     text: 'Resources',
     slug: '/resources/community',
-    /* isActive: (_match, location) => {
+    isActive: (location) => {
       return location.pathname.split('/')[1] === 'resources';
-    } */
+    }
   }
 ];
 
