@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import NotFound from '../../shared/components/NotFound';
 import useTitle from '../../shared/hooks/useTitle';
 import { ComponentModifier, GetComponentQuery } from '../../shared/types/contentful';
 import { ComponentContext } from '../ComponentsController';
@@ -23,8 +24,8 @@ const Preview = ( props: Props ): JSX.Element => {
   const data = useContext(ComponentContext);
 
   const [componentData, setComponentData] = useState<GetComponentQuery['component']>({} as GetComponentQuery['component']);
-  const [renderedComponent, setRenderedComponent] = useState<JSX.Element>(<></>);
-  const [variant, setVariant] = useState<ComponentModifier | null>(null);
+  const [renderedComponent, setRenderedComponent] = useState<JSX.Element | null>(null);
+  const [variant, setVariant] = useState<ComponentModifier | null | undefined>(undefined);
 
   useEffect(() => {
     if(data) {
@@ -45,7 +46,7 @@ const Preview = ( props: Props ): JSX.Element => {
       currentVariant = componentData?.statesCollection?.items.find(variant => variant?.stateId === params.example) as ComponentModifier;
     }
 
-    setVariant(currentVariant);
+    setVariant(currentVariant === undefined ? null : currentVariant);
   }, [componentData, params.example]);
 
   let title;
@@ -65,7 +66,14 @@ const Preview = ( props: Props ): JSX.Element => {
     const variantId = props.variantId ? props.variantId : params.example!;
 
     if (props.shouldLinkToExamples) {
-      setRenderedComponent(<Link className="demo-link" to={`example/${props.variantId}`}target="_blank">See {props.variant || 'example'}</Link>);
+      setRenderedComponent(
+        <Link
+          className="demo-link"
+          to={`example/${props.variantId ? props.variantId : 'default'}`}
+          target="_blank">
+          See {props.variant || 'example'}
+        </Link>
+      );
     } else {
       switch (params.componentName) {
         case 'accordion':
@@ -162,11 +170,15 @@ const Preview = ( props: Props ): JSX.Element => {
     }
   }, [props, params]);
 
-  return (
-    <Suspense fallback={<Fallback />}>
-      {renderedComponent}
-    </Suspense>
-  );
+  if ((variant === null && params.example !== 'default') && componentData?.name && props.isExternal && renderedComponent) {
+    return <NotFound />;
+  } else {
+    return (
+      <Suspense fallback={<Fallback />}>
+        {renderedComponent}
+      </Suspense>
+    );
+  }
 }
 
 export default Preview;
