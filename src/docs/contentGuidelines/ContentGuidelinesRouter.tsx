@@ -1,16 +1,17 @@
+import { useContext } from 'react';
+import { useParams } from 'react-router';
+import { IdLookupContext } from '../App';
+import NotFound from '../shared/components/NotFound';
+import { IdLookup } from '../shared/types/docs';
 import ContentGuidelines from './ContentGuidelines';
 
+const ContentGuidelinesRouter = (): JSX.Element => {
+  const params = useParams();
+  const idLookup: IdLookup = useContext(IdLookupContext);
 
-const CodeStandardsRouter = (): JSX.Element => {
-
-  return (
-    <>
-{/*       <Route exact path={path}>
-        <Redirect to={`${path}/audiences`} />
-      </Route>
-      <Route path={`${path}/:contentName`} component={ContentGuidelines} /> */}
-    </>
-  );
+  if (params.contentName && !Object.keys(idLookup.contentGuidelines).includes(params.contentName)) {
+    return <NotFound />;
+  } else return <ContentGuidelines />;
 }
 
-export default CodeStandardsRouter;
+export default ContentGuidelinesRouter;

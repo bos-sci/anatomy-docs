@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, Suspense, useCallback } from 'react';
+import { useState, useEffect, createContext, Suspense, useCallback, lazy } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,18 +9,13 @@ import { slugify } from './helpers';
 import { useGetCollectionsQuery } from './shared/types/contentful';
 import { IdLookup, IdLookupEntry } from './shared/types/docs';
 import Home from './home/Home';
-import CodeStandards from './codeStandards/CodeStandards';
-import ContentGuidelines from './contentGuidelines/ContentGuidelines';
-import Foundations from './foundations/Foundations';
-import Resources from './resources/Resources';
-import ComponentsController from './components/ComponentsController';
 import NotFound from './shared/components/NotFound';
 
-/* const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
+const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
 const ContentGuidelinesRouter = lazy(() => import('./contentGuidelines/ContentGuidelinesRouter'));
 const FoundationsRouter = lazy(() => import('./foundations/FoundationsRouter'));
-const ResourcesRouter = lazy(() => import('./resources/ResourcesRouter')); */
+const ResourcesRouter = lazy(() => import('./resources/ResourcesRouter'));
 
 interface Collection {
   items: {
@@ -89,33 +84,33 @@ const App = (): JSX.Element => {
               <Route path="components">
                 <Route path='' element={<Navigate to="button" />} />
                 <Route path=':componentName'>
-                  <Route path='' element={<ComponentsController />} />
-                  <Route path='example/:example' element={<ComponentsController isExternal />} />
+                  <Route path='' element={<ComponentsRouter />} />
+                  <Route path='example/:example' element={<ComponentsRouter isExternal />} />
                 </Route>
                 <Route path=':group'>
                   <Route path=':componentName'>
-                    <Route path='' element={<ComponentsController />} />
-                    <Route path='example/:example' element={ <ComponentsController isExternal />} />
+                    <Route path='' element={<ComponentsRouter />} />
+                    <Route path='example/:example' element={ <ComponentsRouter isExternal />} />
                   </Route>
                 </Route>
               </Route>
               <Route path="code-standards">
                 <Route path='' element={<Navigate to='general' />} />
-                <Route path=':standardName' element={<CodeStandards />} />
+                <Route path=':standardName' element={<CodeStandardsRouter />} />
               </Route>
               <Route path="content">
                 <Route path='' element={<Navigate to='audiences' />} />
-                <Route path=':contentName' element={<ContentGuidelines />} />
+                <Route path=':contentName' element={<ContentGuidelinesRouter />} />
               </Route>
               <Route path="foundations">
                 <Route path='' element={<Navigate to='accessibility' />} />
-                <Route path='iconography/:foundationName' element={<Foundations />} />
-                <Route path=':foundationName' element={<Foundations />} />
+                <Route path='iconography/:foundationName' element={<FoundationsRouter />} />
+                <Route path=':foundationName' element={<FoundationsRouter />} />
               </Route>
               <Route path="resources">
                 <Route path='' element={<Navigate to='community' />} />
-                <Route path='designers/:resourceName' element={<Resources />} />
-                <Route path=':resourceName' element={<Resources />} />
+                <Route path='designers/:resourceName' element={<ResourcesRouter />} />
+                <Route path=':resourceName' element={<ResourcesRouter />} />
                 <Route path="developers/code-standards/general" element={<Navigate to="../../code-standards" />} />
               </Route>
               <Route path="*" element={<NotFound />}/>

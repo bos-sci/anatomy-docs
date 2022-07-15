@@ -1,14 +1,18 @@
-import { Route, Navigate, Routes } from 'react-router';
+import { useContext } from 'react';
+import { useParams } from 'react-router';
+import { IdLookupContext } from '../App';
+import NotFound from '../shared/components/NotFound';
+import { IdLookup } from '../shared/types/docs';
 import CodeStandards from './CodeStandards';
 
 
 const CodeStandardsRouter = (): JSX.Element => {
-  return (
-    <Routes>
-      <Route path='' element={<Navigate to='general' />} />
-      <Route path=':standardName' element={<CodeStandards />} />
-    </Routes>
-  );
+  const params = useParams();
+  const idLookup: IdLookup = useContext(IdLookupContext);
+
+  if (params.standardName && !Object.keys(idLookup.codeStandards).includes(params.standardName)) {
+    return <NotFound />;
+  } else return <CodeStandards />;
 }
 
 export default CodeStandardsRouter;
