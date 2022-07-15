@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useHref, useLocation, useMatch } from 'react-router-dom';
+import { useHref, useMatch } from 'react-router-dom';
 import Link from '../../Link';
 import { NavNode } from './NavPrimary';
 
@@ -20,7 +20,7 @@ const NavPrimaryLeaf = (props: Props) => {
 
   return (
     <li className="ads-nav-item">
-      <Link href={props.navItem.href} to={props.navItem.slug} className={`ads-nav-link`} isNavLink={true}>{props.navItem.text}{matchLink+' '}</Link>
+      <Link href={props.navItem.href} to={props.navItem.slug} className={`ads-nav-link`} isNavLink>{props.navItem.text}</Link>
     </li>
   );
 }
