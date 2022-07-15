@@ -125,7 +125,7 @@ type CodeStandard implements Entry {
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): CodeStandardLinkingCollections
   name(locale: String): String
-  seoMetaDescription(locale: String): String
+  pageProperties(locale: String, preview: Boolean): PageProperties
   sys: Sys!
 }
 
@@ -161,13 +161,8 @@ input CodeStandardFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
-  seoMetaDescription: String
-  seoMetaDescription_contains: String
-  seoMetaDescription_exists: Boolean
-  seoMetaDescription_in: [String]
-  seoMetaDescription_not: String
-  seoMetaDescription_not_contains: String
-  seoMetaDescription_not_in: [String]
+  pageProperties: cfPagePropertiesNestedFilter
+  pageProperties_exists: Boolean
   sys: SysFilter
 }
 
@@ -178,8 +173,6 @@ type CodeStandardLinkingCollections {
 enum CodeStandardOrder {
   name_ASC
   name_DESC
-  seoMetaDescription_ASC
-  seoMetaDescription_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -907,6 +900,55 @@ input ImageTransformOptions {
 }
 
 """
+[See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/pageProperties)
+"""
+type PageProperties implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): PagePropertiesLinkingCollections
+  seoMetaDescription(locale: String): String
+  sys: Sys!
+}
+
+type PagePropertiesCollection {
+  items: [PageProperties]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input PagePropertiesFilter {
+  AND: [PagePropertiesFilter]
+  OR: [PagePropertiesFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  seoMetaDescription: String
+  seoMetaDescription_contains: String
+  seoMetaDescription_exists: Boolean
+  seoMetaDescription_in: [String]
+  seoMetaDescription_not: String
+  seoMetaDescription_not_contains: String
+  seoMetaDescription_not_in: [String]
+  sys: SysFilter
+}
+
+type PagePropertiesLinkingCollections {
+  codeStandardCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CodeStandardCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum PagePropertiesOrder {
+  seoMetaDescription_ASC
+  seoMetaDescription_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
 The 'Quality' type represents quality as whole numeric values between `1` and `100`.
 """
 scalar Quality
@@ -929,6 +971,8 @@ type Query {
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
   foundation(id: String!, locale: String, preview: Boolean): Foundation
   foundationCollection(limit: Int = 100, locale: String, order: [FoundationOrder], preview: Boolean, skip: Int = 0, where: FoundationFilter): FoundationCollection
+  pageProperties(id: String!, locale: String, preview: Boolean): PageProperties
+  pagePropertiesCollection(limit: Int = 100, locale: String, order: [PagePropertiesOrder], preview: Boolean, skip: Int = 0, where: PagePropertiesFilter): PagePropertiesCollection
   resource(id: String!, locale: String, preview: Boolean): Resource
   resourceCollection(limit: Int = 100, locale: String, order: [ResourceOrder], preview: Boolean, skip: Int = 0, where: ResourceFilter): ResourceCollection
 }
@@ -1041,4 +1085,18 @@ input SysFilter {
   publishedVersion_lte: Float
   publishedVersion_not: Float
   publishedVersion_not_in: [Float]
+}
+
+input cfPagePropertiesNestedFilter {
+  AND: [cfPagePropertiesNestedFilter]
+  OR: [cfPagePropertiesNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  seoMetaDescription: String
+  seoMetaDescription_contains: String
+  seoMetaDescription_exists: Boolean
+  seoMetaDescription_in: [String]
+  seoMetaDescription_not: String
+  seoMetaDescription_not_contains: String
+  seoMetaDescription_not_in: [String]
+  sys: SysFilter
 }

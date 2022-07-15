@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useMatch } from 'react-router-dom';
+import { useHref, useLocation, useMatch } from 'react-router-dom';
 import Link from '../../Link';
 import { NavNode } from './NavPrimary';
 
@@ -9,7 +9,8 @@ interface Props {
 }
 
 const NavPrimaryLeaf = (props: Props) => {
-  const isMatch = useMatch(props.navItem.slug ? props.navItem.slug : props.navItem.href || '');
+  const matchLink = useHref(props.navItem.slug ? props.navItem.slug : props.navItem.href || '');
+  const isMatch = useMatch(matchLink);
 
   useEffect(() => {
     if (isMatch) {
@@ -19,7 +20,7 @@ const NavPrimaryLeaf = (props: Props) => {
 
   return (
     <li className="ads-nav-item">
-      <Link href={props.navItem.href} to={props.navItem.slug} className="ads-nav-link" isNavLink={true}>{props.navItem.text}</Link>
+      <Link href={props.navItem.href} to={props.navItem.slug} className={`ads-nav-link`} isNavLink={true}>{props.navItem.text}{matchLink+' '}</Link>
     </li>
   );
 }
