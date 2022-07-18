@@ -993,6 +993,7 @@ Documentation for resources. [See type definition](https://app.contentful.com/sp
 type Resource implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
+  group(locale: String): String
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ResourceLinkingCollections
   name(locale: String): String
@@ -1017,6 +1018,13 @@ input ResourceFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  group: String
+  group_contains: String
+  group_exists: Boolean
+  group_in: [String]
+  group_not: String
+  group_not_contains: String
+  group_not_in: [String]
   leadParagraph: String
   leadParagraph_contains: String
   leadParagraph_exists: Boolean
@@ -1039,6 +1047,8 @@ type ResourceLinkingCollections {
 }
 
 enum ResourceOrder {
+  group_ASC
+  group_DESC
   name_ASC
   name_DESC
   sys_firstPublishedAt_ASC

@@ -1623,6 +1623,7 @@ export type Resource = Entry & {
   __typename?: 'Resource';
   content?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
+  group?: Maybe<Scalars['String']>;
   leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ResourceLinkingCollections>;
   name?: Maybe<Scalars['String']>;
@@ -1632,6 +1633,12 @@ export type Resource = Entry & {
 
 /** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
 export type ResourceContentArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
+export type ResourceGroupArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1672,6 +1679,13 @@ export type ResourceFilter = {
   content_not_contains?: InputMaybe<Scalars['String']>;
   content_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  group?: InputMaybe<Scalars['String']>;
+  group_contains?: InputMaybe<Scalars['String']>;
+  group_exists?: InputMaybe<Scalars['Boolean']>;
+  group_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  group_not?: InputMaybe<Scalars['String']>;
+  group_not_contains?: InputMaybe<Scalars['String']>;
+  group_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   leadParagraph?: InputMaybe<Scalars['String']>;
   leadParagraph_contains?: InputMaybe<Scalars['String']>;
   leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1703,6 +1717,8 @@ export type ResourceLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum ResourceOrder {
+  GroupAsc = 'group_ASC',
+  GroupDesc = 'group_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1813,7 +1829,7 @@ export type GetCollectionsQueryVariables = Exact<{
 }>;
 
 
-export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
+export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type GetResourceQueryVariables = Exact<{
   id: Scalars['String'];
@@ -2065,6 +2081,7 @@ export const GetCollectionsDocument = gql`
   resourceCollection(order: name_ASC, preview: $preview) {
     items {
       name
+      group
       sys {
         id
       }

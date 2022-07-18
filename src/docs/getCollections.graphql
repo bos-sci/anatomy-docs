@@ -36,6 +36,7 @@ query getCollections($preview: Boolean) {
   resourceCollection(order: name_ASC, preview: $preview) {
     items {
       name
+      group
       sys {
         id
       }

@@ -81,12 +81,14 @@ const App = (): JSX.Element => {
           <Suspense fallback={<main id="mainContent"><p>Loading...</p></main>}>
             <Routes>
               <Route path="/" element={<Home />} />
+
               <Route path="components">
                 <Route path='' element={<Navigate to="button" />} />
                 <Route path=':componentName'>
                   <Route path='' element={<ComponentsRouter />} />
                   <Route path='example/:example' element={<ComponentsRouter isExternal />} />
                 </Route>
+
                 <Route path=':group'>
                   <Route path=':componentName'>
                     <Route path='' element={<ComponentsRouter />} />
@@ -94,25 +96,30 @@ const App = (): JSX.Element => {
                   </Route>
                 </Route>
               </Route>
+
               <Route path="code-standards">
                 <Route path='' element={<Navigate to='general' />} />
                 <Route path=':standardName' element={<CodeStandardsRouter />} />
               </Route>
+
               <Route path="content">
                 <Route path='' element={<Navigate to='audiences' />} />
                 <Route path=':contentName' element={<ContentGuidelinesRouter />} />
               </Route>
+
               <Route path="foundations">
                 <Route path='' element={<Navigate to='accessibility' />} />
                 <Route path=':foundationName' element={<FoundationsRouter />} />
                 <Route path=':group/:foundationName' element={<FoundationsRouter />} />
               </Route>
+
               <Route path="resources">
                 <Route path='' element={<Navigate to='community' />} />
-                <Route path='designers/:resourceName' element={<ResourcesRouter />} />
                 <Route path=':resourceName' element={<ResourcesRouter />} />
+                <Route path=':group/:resourceName' element={<ResourcesRouter />} />
                 <Route path="developers/code-standards/general" element={<Navigate to="../../code-standards" />} />
               </Route>
+
               <Route path="*" element={<NotFound />}/>
             </Routes>
           </Suspense>
