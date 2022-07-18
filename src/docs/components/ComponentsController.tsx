@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router';
+import { useParams } from 'react-router';
 import { IdLookupContext } from '../App';
 import { GetComponentQuery, useGetComponentQuery } from '../shared/types/contentful';
 import { IdLookup } from '../shared/types/docs';
@@ -14,17 +14,11 @@ interface Props {
 
 const ComponentsController = (props: Props): JSX.Element => {
   const params = useParams();
-  const navigate = useNavigate();
   const idLookup: IdLookup = useContext(IdLookupContext);
 
   const [componentData, setComponentData] = useState<GetComponentQuery['component']>({} as GetComponentQuery['component']);
 
-  // If route is /components/:componentName that should have a group, navigate to /components/:group/:componentName
-  // TODO: Do we want to correct the route here or throw a 404?
   const componentFromId = idLookup.components[params.componentName!];
-  if (!params.group && componentFromId.group) {
-    navigate('../' + componentFromId.group + '/' + params.componentName)
-  }
 
   const {data, error} = useGetComponentQuery({
     variables: {

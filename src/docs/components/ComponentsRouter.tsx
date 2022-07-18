@@ -15,6 +15,8 @@ const ComponentsRouter = (props: Props): JSX.Element => {
 
   if (params.componentName && !Object.keys(idLookup.components).includes(params.componentName)) {
     return <NotFound />;
+  } else if (!params.group && idLookup.components[params.componentName!].group) {
+    return <NotFound />;
   } else return <ComponentsController isExternal={props.isExternal} />;
 }
 
