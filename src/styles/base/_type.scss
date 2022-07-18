@@ -110,6 +110,12 @@ p, dl
   margin: space(2x) 0 0;
 }
 
+ul, ol
+{
+  margin: space(2x) 0 0;
+  padding-left: space(4x);
+}
+
 li:not(:first-of-type)
 {
   margin: space(2x) 0 0;

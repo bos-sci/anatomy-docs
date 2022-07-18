@@ -14,9 +14,9 @@
     padding-bottom: space(lg);
     color: $neutral-40;
     font-family: $font-family-base-regular;
+    font-weight: $font-weight-regular;
     @include font-size($fs-small);
     line-height: 1.5; // NOTE: overriding h2's default line height
-    font-weight: 500;
   }
 
   .nav
