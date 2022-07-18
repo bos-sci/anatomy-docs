@@ -104,8 +104,8 @@ const App = (): JSX.Element => {
               </Route>
               <Route path="foundations">
                 <Route path='' element={<Navigate to='accessibility' />} />
-                <Route path='iconography/:foundationName' element={<FoundationsRouter />} />
                 <Route path=':foundationName' element={<FoundationsRouter />} />
+                <Route path=':group/:foundationName' element={<FoundationsRouter />} />
               </Route>
               <Route path="resources">
                 <Route path='' element={<Navigate to='community' />} />

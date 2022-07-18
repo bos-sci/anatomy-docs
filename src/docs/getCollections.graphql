@@ -2,6 +2,7 @@ query getCollections($preview: Boolean) {
   foundationCollection(order: name_ASC, preview: $preview) {
     items {
       name
+      group
       sys {
         id
       }

@@ -710,6 +710,7 @@ Documentation for foundations. [See type definition](https://app.contentful.com/
 type Foundation implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
+  group(locale: String): String
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): FoundationLinkingCollections
   name(locale: String): String
@@ -734,6 +735,13 @@ input FoundationFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  group: String
+  group_contains: String
+  group_exists: Boolean
+  group_in: [String]
+  group_not: String
+  group_not_contains: String
+  group_not_in: [String]
   leadParagraph: String
   leadParagraph_contains: String
   leadParagraph_exists: Boolean
@@ -756,6 +764,8 @@ type FoundationLinkingCollections {
 }
 
 enum FoundationOrder {
+  group_ASC
+  group_DESC
   name_ASC
   name_DESC
   sys_firstPublishedAt_ASC
