@@ -134,9 +134,9 @@ Pull requests should start with the branch name, followed by a brief description
 ### GraphQL
 You can build and test queries using GraphQL at the following link.
 
-https://graphql.contentful.com/content/v1/spaces/{spaceID}/explore?access_token={accessToken}
+https://graphql.contentful.com/content/v1/spaces/{spaceID}/environments/{environment}/explore?access_token={accessToken}
 
-spaceID and accessToken can be found in your .env file or through the contentful dashboard.
+spaceID, environment and accessToken can be found in your .env file or through the contentful dashboard.
 
 ## Scripts
 

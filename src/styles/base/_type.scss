@@ -105,9 +105,15 @@ body
   line-height: 1.5;
 }
 
-p, ul, ol, dl
+p, dl
 {
   margin: space(2x) 0 0;
+}
+
+ul, ol
+{
+  margin: space(2x) 0 0;
+  padding-left: space(4x);
 }
 
 li:not(:first-of-type)
