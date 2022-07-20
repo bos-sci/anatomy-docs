@@ -7,6 +7,11 @@
   box-sizing: border-box;
 }
 
+body 
+{
+  margin: 0;
+}
+
 .app-root
 {
   display: flex;
@@ -51,11 +56,6 @@ main
     width: 100%;
     margin-top: space(3x);
   }
-}
-
-body 
-{
-  margin: 0;
 }
 
 .page-header
