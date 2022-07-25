@@ -69,6 +69,7 @@ const ContentGuidelines = (props:  Props): JSX.Element => {
         name={contentGuidelineData?.name || ''}
         lastUpdated={contentGuidelineData?.sys?.publishedAt}
         leadParagraph={contentGuidelineData?.leadParagraph || ''}
+        seoMetaDescription={''}
         navSecondaryMenuTrigger="Content"
         navSecondaryItems={navItems}
         navTertiaryItems={headings}>

@@ -1,12 +1,18 @@
+import { HelmetProvider } from 'react-helmet-async';
 import Layout from '../shared/components/Layout';
 import useTitle from '../shared/hooks/useTitle';
 import "./Home.scss"
+import { Helmet } from 'react-helmet-async';
 
 const Home = (): JSX.Element => {
   useTitle({titlePrefix: `Home`});
 
   return (
     <Layout>
+      <HelmetProvider>
+      <Helmet>
+          <meta name="description" content="Boston Scientific Anatomy Design System website homepage"/>
+        </Helmet>
       <main id="mainContent" className="app-home">
         <h1 className="page-title u-margin-top-remove">
           <span>Introducing</span>
@@ -23,6 +29,7 @@ const Home = (): JSX.Element => {
           <span>the Boston Scientific design system</span>
         </h1>
       </main>
+      </HelmetProvider>
     </Layout>
   );
 }
