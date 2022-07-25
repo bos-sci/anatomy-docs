@@ -1,5 +1,4 @@
 import NavPrimary from '../../../../library/components/navigation/navPrimary/NavPrimary';
-import useTitle from '../../../shared/hooks/useTitle';
 
 import logoBSC from '../../../../assets/images/logo-bsc-tagline.svg';
 import { complexData, utilityData } from './navPrimaryData';
@@ -12,7 +11,6 @@ const logo = {
 }
 
 const ComplexNavPrimary = (): JSX.Element => {
-  useTitle({titlePrefix: `Primary Navigation - Complex Example - Components`});
   return (
     <Example isFlush>
       <NavPrimary logo={logo} navItems={complexData} utilityItems={utilityData} />

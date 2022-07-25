@@ -49,7 +49,7 @@ const Preview = ( props: Props ): JSX.Element => {
     setVariant(currentVariant === undefined ? null : currentVariant);
   }, [componentData, params.example]);
 
-  let title;
+  let title = '';
   if (componentData?.name) {
     title = componentData.name;
 
