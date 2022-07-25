@@ -4,7 +4,7 @@ import RedLightStyle from './RedLightStyle';
 import YellowLightStyle from './YellowLightStyle';
 import GreenLightStyle from './GreenLightStyle';
 
-const StoplightVariants = ({ variantId }: VariantProps): JSX.Element => {
+const StoplightController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Styles
     case 'stoplightRed':
@@ -19,4 +19,4 @@ const StoplightVariants = ({ variantId }: VariantProps): JSX.Element => {
   }
 }
 
-export default StoplightVariants;
+export default StoplightController;

@@ -82,23 +82,23 @@ const Preview = ( props: Props ): JSX.Element => {
           break;
 
         case 'breadcrumbs':
-          const BreadcrumbVariants = lazy(() => import('./breadcrumbs/BreadcrumbVariants'));
-          setRenderedComponent(<BreadcrumbVariants variantId={variantId} />);
+          const BreadcrumbController = lazy(() => import('./breadcrumbs/_BreadcrumbController'));
+          setRenderedComponent(<BreadcrumbController variantId={variantId} />);
           break;
 
         case 'button':
-          const ButtonVariants = lazy(() => import('./buttons/ButtonVariants'));
-          setRenderedComponent(<ButtonVariants variantId={variantId} />);
+          const ButtonController = lazy(() => import('./buttons/_ButtonController'));
+          setRenderedComponent(<ButtonController variantId={variantId} />);
           break;
 
         case 'checkbox':
-          const InputCheckboxVariants = lazy(() => import('./inputCheckbox/inputCheckboxVariants'));
-          setRenderedComponent(<InputCheckboxVariants variantId={variantId} />);
+          const InputCheckboxController = lazy(() => import('./inputCheckbox/_inputCheckboxController'));
+          setRenderedComponent(<InputCheckboxController variantId={variantId} />);
           break;
 
         case 'checkbox-group':
-          const InputCheckboxGroupVariants = lazy(() => import('./inputCheckboxGroup/InputCheckboxGroupVariants'));
-          setRenderedComponent(<InputCheckboxGroupVariants variantId={variantId} />);
+          const InputCheckboxGroupController = lazy(() => import('./inputCheckboxGroup/_InputCheckboxGroupController'));
+          setRenderedComponent(<InputCheckboxGroupController variantId={variantId} />);
           break;
 
         case 'form':
@@ -107,8 +107,8 @@ const Preview = ( props: Props ): JSX.Element => {
           break;
 
         case 'link':
-          const LinkVariants = lazy(() => import('./link/LinkVariants'));
-          setRenderedComponent(<LinkVariants variantId={variantId} />);
+          const LinkController = lazy(() => import('./link/_LinkController'));
+          setRenderedComponent(<LinkController variantId={variantId} />);
           break;
 
         case 'navigation-link':
@@ -122,8 +122,8 @@ const Preview = ( props: Props ): JSX.Element => {
           break;
 
         case 'radio-group':
-          const InputRadioGroupVariants = lazy(() => import('./inputRadioGroup/InputRadioGroupVariants'));
-          setRenderedComponent(<InputRadioGroupVariants variantId={variantId} />);
+          const InputRadioGroupController = lazy(() => import('./inputRadioGroup/_InputRadioGroupController'));
+          setRenderedComponent(<InputRadioGroupController variantId={variantId} />);
           break;
 
         case 'secondary-navigation':
@@ -136,8 +136,8 @@ const Preview = ( props: Props ): JSX.Element => {
           break;
 
         case 'stoplight':
-          const StoplightVariants = lazy(() => import('./stoplight/StoplightVariants'));
-          setRenderedComponent(<StoplightVariants variantId={variantId} />);
+          const StoplightController = lazy(() => import('./stoplight/_StoplightController'));
+          setRenderedComponent(<StoplightController variantId={variantId} />);
           break;
 
         case 'tabs':
@@ -146,8 +146,8 @@ const Preview = ( props: Props ): JSX.Element => {
           break;
 
         case 'tag':
-          const TagVariants = lazy(() => import('./tag/TagVariants'));
-          setRenderedComponent(<TagVariants variantId={variantId} />);
+          const TagController = lazy(() => import('./tag/_TagController'));
+          setRenderedComponent(<TagController variantId={variantId} />);
           break;
 
         case 'tertiary-navigation':
@@ -156,8 +156,8 @@ const Preview = ( props: Props ): JSX.Element => {
           break;
 
         case 'text-input':
-          const InputTextVariants = lazy(() => import('./inputText/InputTextVariants'));
-          setRenderedComponent(<InputTextVariants variantId={variantId} />);
+          const InputTextController = lazy(() => import('./inputText/_InputTextController'));
+          setRenderedComponent(<InputTextController variantId={variantId} />);
           break;
 
         case 'wizard-navigation':
