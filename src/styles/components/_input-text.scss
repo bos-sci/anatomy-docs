@@ -9,6 +9,9 @@
   border: space(xxs) solid $neutral-40;
   padding: space(lg) space(2x);
   width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 
   &:not(:disabled):not(:read-only)
   {

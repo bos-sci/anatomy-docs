@@ -10,6 +10,7 @@
       background: $action-primary-20;
       color: $neutral-100;
       text-decoration: none;
+      cursor: pointer;
     }
   }
 }
@@ -62,6 +63,7 @@
   font-family: $font-family-base-heavy;
   font-size: $ffs-body-assertive;
   text-align: center;
+  line-height: inherit;
 
   .ads-button-text
   {
