@@ -198,6 +198,7 @@ type Component implements Entry {
   linkedFrom(allowedLocales: [String]): ComponentLinkingCollections
   modifiersCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentModifiersCollection
   name(locale: String): String
+  pageProperties(locale: String, preview: Boolean): PageProperties
   shouldLinkToExamples(locale: String): Boolean
   statesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentStatesCollection
   stylesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentStylesCollection
@@ -276,6 +277,8 @@ input ComponentFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  pageProperties: cfPagePropertiesNestedFilter
+  pageProperties_exists: Boolean
   shouldLinkToExamples: Boolean
   shouldLinkToExamples_exists: Boolean
   shouldLinkToExamples_not: Boolean
@@ -582,6 +585,7 @@ type ContentGuideline implements Entry {
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ContentGuidelineLinkingCollections
   name(locale: String): String
+  pageProperties(locale: String, preview: Boolean): PageProperties
   sys: Sys!
 }
 
@@ -617,6 +621,8 @@ input ContentGuidelineFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  pageProperties: cfPagePropertiesNestedFilter
+  pageProperties_exists: Boolean
   sys: SysFilter
 }
 
@@ -714,6 +720,7 @@ type Foundation implements Entry {
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): FoundationLinkingCollections
   name(locale: String): String
+  pageProperties(locale: String, preview: Boolean): PageProperties
   sys: Sys!
 }
 
@@ -756,6 +763,8 @@ input FoundationFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  pageProperties: cfPagePropertiesNestedFilter
+  pageProperties_exists: Boolean
   sys: SysFilter
 }
 
@@ -942,7 +951,11 @@ input PagePropertiesFilter {
 
 type PagePropertiesLinkingCollections {
   codeStandardCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CodeStandardCollection
+  componentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCollection
+  contentGuidelineCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ContentGuidelineCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  foundationCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): FoundationCollection
+  resourceCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ResourceCollection
 }
 
 enum PagePropertiesOrder {
@@ -997,6 +1010,7 @@ type Resource implements Entry {
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ResourceLinkingCollections
   name(locale: String): String
+  pageProperties(locale: String, preview: Boolean): PageProperties
   sys: Sys!
 }
 
@@ -1039,6 +1053,8 @@ input ResourceFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  pageProperties: cfPagePropertiesNestedFilter
+  pageProperties_exists: Boolean
   sys: SysFilter
 }
 

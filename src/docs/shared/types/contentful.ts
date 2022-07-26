@@ -333,6 +333,7 @@ export type Component = Entry & {
   linkedFrom?: Maybe<ComponentLinkingCollections>;
   modifiersCollection?: Maybe<ComponentModifiersCollection>;
   name?: Maybe<Scalars['String']>;
+  pageProperties?: Maybe<PageProperties>;
   shouldLinkToExamples?: Maybe<Scalars['Boolean']>;
   statesCollection?: Maybe<ComponentStatesCollection>;
   stylesCollection?: Maybe<ComponentStylesCollection>;
@@ -404,6 +405,13 @@ export type ComponentModifiersCollectionArgs = {
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
+export type ComponentPagePropertiesArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -523,6 +531,8 @@ export type ComponentFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageProperties?: InputMaybe<CfPagePropertiesNestedFilter>;
+  pageProperties_exists?: InputMaybe<Scalars['Boolean']>;
   shouldLinkToExamples?: InputMaybe<Scalars['Boolean']>;
   shouldLinkToExamples_exists?: InputMaybe<Scalars['Boolean']>;
   shouldLinkToExamples_not?: InputMaybe<Scalars['Boolean']>;
@@ -981,6 +991,7 @@ export type ContentGuideline = Entry & {
   leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ContentGuidelineLinkingCollections>;
   name?: Maybe<Scalars['String']>;
+  pageProperties?: Maybe<PageProperties>;
   sys: Sys;
 };
 
@@ -1006,6 +1017,13 @@ export type ContentGuidelineLinkedFromArgs = {
 /** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
 export type ContentGuidelineNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuidelinePagePropertiesArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type ContentGuidelineCollection = {
@@ -1041,6 +1059,8 @@ export type ContentGuidelineFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageProperties?: InputMaybe<CfPagePropertiesNestedFilter>;
+  pageProperties_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -1136,6 +1156,7 @@ export type Foundation = Entry & {
   leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<FoundationLinkingCollections>;
   name?: Maybe<Scalars['String']>;
+  pageProperties?: Maybe<PageProperties>;
   sys: Sys;
 };
 
@@ -1167,6 +1188,13 @@ export type FoundationLinkedFromArgs = {
 /** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
 export type FoundationNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationPagePropertiesArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type FoundationCollection = {
@@ -1209,6 +1237,8 @@ export type FoundationFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageProperties?: InputMaybe<CfPagePropertiesNestedFilter>;
+  pageProperties_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -1381,7 +1411,11 @@ export type PagePropertiesFilter = {
 export type PagePropertiesLinkingCollections = {
   __typename?: 'PagePropertiesLinkingCollections';
   codeStandardCollection?: Maybe<CodeStandardCollection>;
+  componentCollection?: Maybe<ComponentCollection>;
+  contentGuidelineCollection?: Maybe<ContentGuidelineCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  foundationCollection?: Maybe<FoundationCollection>;
+  resourceCollection?: Maybe<ResourceCollection>;
 };
 
 
@@ -1393,7 +1427,39 @@ export type PagePropertiesLinkingCollectionsCodeStandardCollectionArgs = {
 };
 
 
+export type PagePropertiesLinkingCollectionsComponentCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PagePropertiesLinkingCollectionsContentGuidelineCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type PagePropertiesLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PagePropertiesLinkingCollectionsFoundationCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PagePropertiesLinkingCollectionsResourceCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -1627,6 +1693,7 @@ export type Resource = Entry & {
   leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ResourceLinkingCollections>;
   name?: Maybe<Scalars['String']>;
+  pageProperties?: Maybe<PageProperties>;
   sys: Sys;
 };
 
@@ -1658,6 +1725,13 @@ export type ResourceLinkedFromArgs = {
 /** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
 export type ResourceNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
+export type ResourcePagePropertiesArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type ResourceCollection = {
@@ -1700,6 +1774,8 @@ export type ResourceFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageProperties?: InputMaybe<CfPagePropertiesNestedFilter>;
+  pageProperties_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -1806,7 +1882,7 @@ export type GetComponentQueryVariables = Exact<{
 }>;
 
 
-export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetContentGuidelineQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1814,7 +1890,7 @@ export type GetContentGuidelineQueryVariables = Exact<{
 }>;
 
 
-export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetFoundationQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1822,7 +1898,7 @@ export type GetFoundationQueryVariables = Exact<{
 }>;
 
 
-export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetCollectionsQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -1837,7 +1913,7 @@ export type GetResourceQueryVariables = Exact<{
 }>;
 
 
-export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 
 export const GetCodeStandardDocument = gql`
@@ -1923,6 +1999,9 @@ export const GetComponentDocument = gql`
     contentGuidelinesDont
     userResearch
     accessibility
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
@@ -1965,6 +2044,9 @@ export const GetContentGuidelineDocument = gql`
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
@@ -2007,6 +2089,9 @@ export const GetFoundationDocument = gql`
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
@@ -2129,6 +2214,9 @@ export const GetResourceDocument = gql`
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
