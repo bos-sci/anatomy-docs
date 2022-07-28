@@ -4,7 +4,6 @@ import './styles/global.scss';
 import App from './docs/App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { Helmet } from 'react-helmet';
 
 // Utilize the environment variables defined in the `.env` file
 const {
@@ -21,15 +20,12 @@ export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
 const container = document.getElementById('root');
 const root = createRoot(container!);
 
 root.render(
   <React.StrictMode>
     <ApolloProvider client={apolloClient}>
-      <Helmet>
-      </Helmet>
         <App />
     </ApolloProvider>
   </React.StrictMode>
