@@ -90,7 +90,7 @@
 {
   @include link-default;
   border-color: transparent;
-  padding: 0;
+  padding: inherit;
   text-decoration: none;
   background: transparent;
   @include button-focus;
@@ -107,6 +107,7 @@
 
     &:hover
     {
+      @include button-hover;
       @include link-hover;
       color: $action-primary-40;
     }

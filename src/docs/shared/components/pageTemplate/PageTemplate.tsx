@@ -2,11 +2,13 @@ import { ReactNode, useEffect, useState } from 'react';
 import Markdown from '../Markdown';
 import NavSecondary, { NavItemSecondary } from '../../../../library/components/navigation/navSecondary/NavSecondary';
 import NavTertiary, { NavItemTertiary } from '../../../../library/components/navigation/navTertiary/NavTertiary';
+import { Helmet } from 'react-helmet'
 
 interface Props {
   name: string;
   lastUpdated: string;
   leadParagraph: string;
+  seoMetaDescription: string;
   navSecondaryItems?: NavItemSecondary[];
   navSecondaryMenuTrigger?: string;
   navTertiaryItems: NavItemTertiary[];
@@ -25,6 +27,9 @@ const PageTemplate = (props: Props) => {
 
   return (
     <div className="app-body">
+     <Helmet>
+      <meta name="description" content={props.seoMetaDescription || 'Boston Scientific Anatomy Design System website'} />
+     </Helmet>
     { (props.navSecondaryItems && props.navSecondaryMenuTrigger) &&
       <NavSecondary
         texts={navSecondaryTexts}

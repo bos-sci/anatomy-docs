@@ -3,6 +3,9 @@ query getFoundation($id: String!, $preview: Boolean) {
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt

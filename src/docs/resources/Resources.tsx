@@ -101,6 +101,7 @@ const Resources = (props:  Props): JSX.Element => {
         name={resourceData?.name || ''}
         lastUpdated={resourceData?.sys?.publishedAt}
         leadParagraph={resourceData?.leadParagraph || ''}
+        seoMetaDescription={resourceData?.pageProperties?.seoMetaDescription || ''}
         navSecondaryMenuTrigger="Resources"
         navSecondaryItems={navItems}
         navTertiaryItems={headings}>

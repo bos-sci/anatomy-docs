@@ -159,6 +159,7 @@ const Components = (props: Props): JSX.Element => {
           name={componentData?.name || ''}
           lastUpdated={componentData?.sys?.publishedAt}
           leadParagraph={componentData?.leadParagraph || ''}
+          seoMetaDescription={componentData?.pageProperties?.seoMetaDescription || ''}
           navSecondaryMenuTrigger="Components"
           navSecondaryItems={navItems}
           navTertiaryItems={headings}>
