@@ -83,6 +83,7 @@ const CodeStandards = (): JSX.Element => {
         name={codeStandardData?.name || ''}
         lastUpdated={codeStandardData?.sys?.publishedAt}
         leadParagraph={codeStandardData?.leadParagraph || ''}
+        seoMetaDescription={codeStandardData?.pageProperties?.seoMetaDescription || ''}
         navSecondaryMenuTrigger="Code standards"
         navSecondaryItems={navItems}
         navTertiaryItems={headings}>

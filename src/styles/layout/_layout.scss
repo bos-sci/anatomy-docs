@@ -4,8 +4,12 @@
 ::after,
 ::before
 {
-  // We get this from Bootstrap's _reboot, but it may be necessary to include in other platforms
   box-sizing: border-box;
+}
+
+body 
+{
+  margin: 0;
 }
 
 .app-root

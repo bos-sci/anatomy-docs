@@ -90,6 +90,7 @@ const Foundations = (): JSX.Element => {
           name={foundationData?.name || ''}
           lastUpdated={foundationData?.sys?.publishedAt}
           leadParagraph={foundationData?.leadParagraph || ''}
+          seoMetaDescription={foundationData?.pageProperties?.seoMetaDescription || ''}
           navSecondaryMenuTrigger="Foundations"
           navSecondaryItems={navItems}
           navTertiaryItems={headings}>

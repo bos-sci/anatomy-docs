@@ -60,6 +60,7 @@ const ContentGuidelines = (): JSX.Element => {
         name={contentGuidelineData?.name || ''}
         lastUpdated={contentGuidelineData?.sys?.publishedAt}
         leadParagraph={contentGuidelineData?.leadParagraph || ''}
+        seoMetaDescription={contentGuidelineData?.pageProperties?.seoMetaDescription || ''}
         navSecondaryMenuTrigger="Content"
         navSecondaryItems={navItems}
         navTertiaryItems={headings}>

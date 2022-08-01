@@ -1874,7 +1874,7 @@ export type GetCodeStandardQueryVariables = Exact<{
 }>;
 
 
-export type GetCodeStandardQuery = { __typename?: 'Query', codeStandard?: { __typename?: 'CodeStandard', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetCodeStandardQuery = { __typename?: 'Query', codeStandard?: { __typename?: 'CodeStandard', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetComponentQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1882,7 +1882,7 @@ export type GetComponentQueryVariables = Exact<{
 }>;
 
 
-export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, shouldLinkToExamples?: boolean | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, group?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, shouldLinkToExamples?: boolean | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, group?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetContentGuidelineQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1890,7 +1890,7 @@ export type GetContentGuidelineQueryVariables = Exact<{
 }>;
 
 
-export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetFoundationQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1898,7 +1898,7 @@ export type GetFoundationQueryVariables = Exact<{
 }>;
 
 
-export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetCollectionsQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -1913,7 +1913,7 @@ export type GetResourceQueryVariables = Exact<{
 }>;
 
 
-export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 
 export const GetCodeStandardDocument = gql`
@@ -1922,6 +1922,9 @@ export const GetCodeStandardDocument = gql`
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
@@ -1998,6 +2001,9 @@ export const GetComponentDocument = gql`
     userResearch
     accessibility
     group
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
@@ -2040,6 +2046,9 @@ export const GetContentGuidelineDocument = gql`
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
@@ -2082,6 +2091,9 @@ export const GetFoundationDocument = gql`
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
@@ -2199,6 +2211,9 @@ export const GetResourceDocument = gql`
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt

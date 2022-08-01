@@ -1,12 +1,16 @@
 import Layout from '../shared/components/Layout';
 import useTitle from '../shared/hooks/useTitle';
 import "./Home.scss"
+import { Helmet } from 'react-helmet';
 
 const Home = (): JSX.Element => {
   useTitle({titlePrefix: `Home`});
 
   return (
     <Layout>
+      <Helmet>
+        <meta name="description" content="Boston Scientific Anatomy Design System website homepage"/>
+      </Helmet>
       <main id="mainContent" className="app-home">
         <h1 className="page-title u-margin-top-remove">
           <span>Introducing</span>

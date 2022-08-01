@@ -37,6 +37,9 @@ query getComponent($id: String!, $preview: Boolean) {
     userResearch
     accessibility
     group
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt

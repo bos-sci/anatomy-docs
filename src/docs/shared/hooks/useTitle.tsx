@@ -12,9 +12,9 @@ const useTitle = ({title, titlePrefix}: Props): void => {
     if (title) {
       pageTitle = title;
     } else if (titlePrefix) {
-      pageTitle = titlePrefix + ' - Anatomy';
+      pageTitle = titlePrefix + ' - Anatomy - Boston Scientific';
     } else {
-      pageTitle = 'Anatomy';
+      pageTitle = 'Anatomy - Boston Scientific';
     }
 
     if (pageTitle.length > 70) {
