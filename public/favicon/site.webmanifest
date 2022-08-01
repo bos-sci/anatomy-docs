@@ -1,6 +1,6 @@
 {
-  "short_name": "ADS Boston Scientific",
-  "name": "Anatomy Design System Boston Scientific",
+  "short_name": "Anatomy",
+  "name": "Anatomy Design System",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

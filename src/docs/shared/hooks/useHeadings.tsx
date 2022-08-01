@@ -41,7 +41,6 @@ const useHeadings = (depth = 1): NavItemTertiary[] => {
         observer.disconnect();
       }
     }
-
   }, [targetNode, depth, observer]);
 
   return headings;

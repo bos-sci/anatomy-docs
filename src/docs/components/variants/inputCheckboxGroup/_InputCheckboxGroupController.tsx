@@ -5,7 +5,6 @@ import WithError from './WithError';
 import WithHelpError from './WithHelpError';
 import Disabled from './Disabled';
 
-
 const InputCheckboxController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers

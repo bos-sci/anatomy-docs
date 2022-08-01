@@ -8,7 +8,6 @@ import Disabled from './Disabled';
 import Readonly from './Readonly';
 import Required from './Required';
 
-
 const InputTextController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers

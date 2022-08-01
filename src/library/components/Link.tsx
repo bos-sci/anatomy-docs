@@ -1,4 +1,4 @@
-// TODO: We should figure out hwo to pass down NAvLink props e.g. "end"
+// TODO: We should figure out how to pass down NavLink props e.g. "end"
 
 import { AnchorHTMLAttributes, ForwardedRef, forwardRef, ReactNode } from 'react';
 import { NavLink, Link as RouterLink } from 'react-router-dom';
@@ -10,8 +10,6 @@ export interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: string;
   isNavLink?: boolean;
 }
-
-//type Props = RequireOnlyOne<Inputs, 'href' | 'to'>;
 
 const Link = forwardRef(({ variant, href, to, isNavLink, className, children, ...linkAttrs }: Props, ref: ForwardedRef<HTMLAnchorElement>): JSX.Element => {
 

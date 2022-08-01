@@ -10,7 +10,7 @@ interface Props {
 
 const Example = (props: Props): JSX.Element => {
 
-  // TODO: Should we determine if example is in external page via location or through setting context in App routing?
+  // TODO: Should we determine if example is in external page via location (.../example/...) or through setting context in App routing (pass down isExternal props from app -> preview -> example)?
   const location = useLocation();
   const pathArray = location.pathname.split('/');
   const isExternal = pathArray[pathArray.length - 2] === 'example';
