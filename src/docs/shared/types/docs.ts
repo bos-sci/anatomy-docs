@@ -1,8 +1,11 @@
+export interface IdLookupProperties {
+  id: string;
+  name: string;
+  group: string | null;
+}
+
 export interface IdLookupEntry {
-  [key: string]: {
-    id: string;
-    name: string;
-  }
+  [key: string]: IdLookupProperties;
 }
 
 export interface IdLookup {

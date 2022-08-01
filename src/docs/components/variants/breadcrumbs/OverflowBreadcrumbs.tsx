@@ -4,22 +4,22 @@ import Example from '../../../shared/components/Example';
 const OverflowBreadcrumbs = (): JSX.Element => {
   const crumbs: Crumb[] = [
     {
-      name: 'Great Grandparent Page',
+      name: 'Great grandparent page',
       href: '#'
     },
     {
-      name: 'Grandparent Page',
+      name: 'Grandparent page',
       href: '#'
     },
     {
-      name: 'Parent Page',
+      name: 'Parent page',
       href: '#'
     },
   ];
 
   return (
     <Example>
-      <Breadcrumb crumbs={crumbs} currentPage="Current Page" />
+      <Breadcrumb crumbs={crumbs} currentPage="Current page" />
     </Example>
   );
 }

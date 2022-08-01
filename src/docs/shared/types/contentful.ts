@@ -1882,7 +1882,7 @@ export type GetComponentQueryVariables = Exact<{
 }>;
 
 
-export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, shouldLinkToExamples?: boolean | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, group?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetContentGuidelineQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1905,7 +1905,7 @@ export type GetCollectionsQueryVariables = Exact<{
 }>;
 
 
-export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
+export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type GetResourceQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1990,6 +1990,7 @@ export const GetComponentDocument = gql`
         isPreviewDarkThemed
       }
     }
+    shouldLinkToExamples
     usage
     usageDo
     usageDont
@@ -1999,6 +2000,7 @@ export const GetComponentDocument = gql`
     contentGuidelinesDont
     userResearch
     accessibility
+    group
     pageProperties {
       seoMetaDescription
     }
@@ -2133,14 +2135,7 @@ export const GetCollectionsDocument = gql`
   foundationCollection(order: name_ASC, preview: $preview) {
     items {
       name
-      sys {
-        id
-      }
-    }
-  }
-  contentGuidelineCollection(order: name_ASC, preview: $preview) {
-    items {
-      name
+      group
       sys {
         id
       }
@@ -2165,6 +2160,7 @@ export const GetCollectionsDocument = gql`
   componentCollection(order: name_ASC, preview: $preview) {
     items {
       name
+      group
       sys {
         id
       }
@@ -2173,6 +2169,7 @@ export const GetCollectionsDocument = gql`
   resourceCollection(order: name_ASC, preview: $preview) {
     items {
       name
+      group
       sys {
         id
       }

@@ -5,7 +5,7 @@ import SubtleStyle from './SubtleStyle';
 import GhostStyle from './GhostStyle';
 import CtaStyle from './CtaStyle';
 
-const LinkVariants = ({ variantId }: VariantProps): JSX.Element => {
+const LinkController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Styles
     case 'linkDefault':
@@ -22,4 +22,4 @@ const LinkVariants = ({ variantId }: VariantProps): JSX.Element => {
   }
 }
 
-export default LinkVariants;
+export default LinkController;

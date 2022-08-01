@@ -1,7 +1,5 @@
 import { NavItemWizard } from '../../../../library/components/navigation/navWizard/NavWizard';
 
-const basePath = '';
-
 const exampleData: NavItemWizard[] = [
   {
     title: 'Second step title',
@@ -12,43 +10,43 @@ const exampleData: NavItemWizard[] = [
         title: 'Third step title',
         text: 'Nested page group 1',
         overflowLinkText: 'See all pages',
-        overflowTo: basePath + '/',
+        overflowTo: 'demo-link',
         children: [
           {
             text: 'Page 1',
-            slug: basePath + '/'
+            slug: '.'
           },
           {
             text: 'Page 2',
-            slug: basePath + '/'
+            slug: 'demo-link'
           },
           {
             text: 'Page 3',
-            slug: basePath + '/'
+            slug: 'demo-link'
           },
           {
             text: 'Page 4',
-            slug: basePath + '/'
+            slug: 'demo-link'
           },
           {
             text: 'Page 5',
-            slug: basePath + '/'
+            slug: 'demo-link'
           },
           {
             text: 'Page 6',
-            slug: basePath + '/'
+            slug: 'demo-link'
           },
           {
             text: 'Page 7',
-            slug: basePath + '/'
+            slug: 'demo-link'
           },
           {
             text: 'Page 8',
-            slug: basePath + '/'
+            slug: 'demo-link'
           },
           {
             text: 'Page 9',
-            slug: basePath + '/'
+            slug: 'demo-link'
           }
         ]
       },
@@ -58,7 +56,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: basePath + '/'
+            slug: 'demo-link'
           }
         ]
       }
@@ -73,7 +71,7 @@ const exampleData: NavItemWizard[] = [
         title: 'Third step title',
         description: 'Optional description for this step',
         text: 'Nested page group 1',
-        overflowTo: basePath + '/',
+        overflowTo: 'demo-link',
         children: [
           {
             text: 'Page 1',
@@ -88,7 +86,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: basePath + '/'
+            slug: 'demo-link'
           }
         ]
       },
@@ -99,7 +97,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: basePath + '/'
+            slug: 'demo-link'
           }
         ]
       }
@@ -114,27 +112,27 @@ const exampleData: NavItemWizard[] = [
         title: 'Third step title',
         description: 'Optional description for this step',
         text: 'Nested page group 1',
-        overflowTo: basePath + '/',
+        overflowTo: 'demo-link',
         children: [
           {
             text: 'Page 1',
-            slug: basePath + '/'
+            slug: 'demo-link'
           },
           {
             text: 'Page 2',
-            slug: basePath + '/'
+            slug: 'demo-link'
           },
           {
             text: 'Page 3',
-            slug: basePath + '/'
+            slug: 'demo-link'
           },
           {
             text: 'Page 4',
-            slug: basePath + '/'
+            slug: 'demo-link'
           },
           {
             text: 'Page 5',
-            slug: basePath + '/'
+            slug: 'demo-link'
           }
         ]
       },
@@ -145,7 +143,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: basePath + '/'
+            slug: 'demo-link'
           }
         ]
       },
@@ -156,7 +154,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: basePath + '/'
+            slug: 'demo-link'
           }
         ]
       }

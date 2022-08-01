@@ -33,7 +33,7 @@ const NavWizardList = (props: Props) => {
           return (
             // Leaf Node
             <li key={navItem.text + i} className="ads-nav-item">
-              <Link href={navItem.href} to={navItem.slug} className="ads-nav-link">{navItem.text}</Link>
+              <Link href={navItem.href} to={navItem.slug} className="ads-nav-link" isNavLink>{navItem.text}</Link>
             </li>
           );
         }

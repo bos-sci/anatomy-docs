@@ -26,6 +26,7 @@ query getComponent($id: String!, $preview: Boolean) {
         isPreviewDarkThemed
       }
     }
+    shouldLinkToExamples
     usage
     usageDo
     usageDont
@@ -35,6 +36,7 @@ query getComponent($id: String!, $preview: Boolean) {
     contentGuidelinesDont
     userResearch
     accessibility
+    group
     pageProperties {
       seoMetaDescription
     }

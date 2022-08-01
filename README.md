@@ -83,6 +83,17 @@ Steps for adding a site section that will be accessible from the primary navigat
 6. Add site section link in `navPrimary.tsx`.
 7. Be sure to restart your local server to regen Contentful types and clear errors.
 
+##### Adding grouped items to secondary nav
+A grouped item is when you have nav items nested under a parent folder. The parent is not a location, it is a collapsible that reveals grouped items.
+
+If there are already grouped items in the secondary nav in question, no development work is needed. Simply create/add options to the group field in the corresponding Contentful content.
+
+If there are no grouped items then reference the following.
+
+1. In Contentful, create a text field titled "group" that accepts specific values (styled as select) in the page content model. Reference other group fields as examples.
+2. In code, add the group support in `App.tsx`. Follow the pattern for existing group capable sections.
+3. In code, add the additional conditional to check group value in the page router file. Reference other page router files for examples.
+
 ##### Adding a new field to an existing section
 Steps for adding a new field to an existing section.
 1. Add field to content model in Contentful, following naming conventions as outlined in [adding a primary section to the docs site](#adding-a-primary-section-to-the-docs-site).
@@ -91,11 +102,12 @@ Steps for adding a new field to an existing section.
 
 ##### Adding a component to the library
 1. Add component in `/library`.
-2. Add subfolder in `/docs/components` with a variants controller, e.g. `ButtonVariants.tsx`.
+2. Add subfolder in `/docs/components` with a variants controller, e.g. `_ButtonController.tsx`.
 3. Add variants.
     - Cases in switch case must match variant ids in Contentful (spacing and casing).
 4. Add component to `Preview.tsx`.
     - Case in switch case must match docs site route for that component.
+5. If the examples are external (e.g. primary nav), add the routes to those examples as ignores in SiteImprove.
 
 #### Deploy to Production
 1. In Contentful, point the master alias environment at the working environment.

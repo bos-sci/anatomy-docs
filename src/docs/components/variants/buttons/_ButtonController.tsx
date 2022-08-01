@@ -9,7 +9,7 @@ import GhostStyle from './GhostStyle';
 import SubtleStyle from './SubtleStyle';
 import Disabled from './Disabled';
 
-const ButtonVariants = ({ variantId }: VariantProps): JSX.Element => {
+const ButtonController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
     case 'buttonIconLeft':
@@ -38,4 +38,4 @@ const ButtonVariants = ({ variantId }: VariantProps): JSX.Element => {
   }
 }
 
-export default ButtonVariants;
+export default ButtonController;

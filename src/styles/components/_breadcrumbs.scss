@@ -40,7 +40,7 @@ $ads-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
   }
 }
 
-.ads-breadcrumb-link
+.ads-link.ads-breadcrumb-link
 {
   @include link-navigation;
 }
@@ -67,7 +67,7 @@ $ads-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
 // We added :not([href]) styles for the docs site so that we can demonstrate the hover state.
 // *** We should never do this on our actual site. ***
 
-.ads-breadcrumb-link:not([href]):hover // FOR DEMO ONLY
+.ads-link.ads-breadcrumb-link:not([href]):hover // FOR DEMO ONLY
 {
   color: $neutral-00;
   text-decoration: underline;

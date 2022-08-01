@@ -4,7 +4,7 @@ import Button from '../../Button';
 import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
-import { NavLink, NavLinkProps } from 'react-router-dom';
+import { Location, NavLink, useLocation } from 'react-router-dom';
 import Link from '../../Link';
 import Search from '../../Search';
 
@@ -22,7 +22,7 @@ interface NavItemPrimaryBase extends NavItem {
   altHref?: string;
   altLinkText?: string;
   isExactMatch?: boolean;
-  isActive?: NavLinkProps['isActive'];
+  isActive?: (location: Location) => boolean;
 }
 
 interface NavItemUtilityBase extends NavItem {
@@ -71,6 +71,7 @@ interface Props {
 let navPrimaryMenuIndex = 0;
 
 const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: Props): JSX.Element => {
+  const location = useLocation();
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -242,7 +243,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
                   </Button>
                 }
                 {(navItem.slug || navItem.href) &&
-                  <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="ads-nav-link" isActive={navItem.isActive}>{navItem.text}</NavLink>
+                  <NavLink end={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className={`ads-nav-link${navItem.isActive && navItem.isActive(location) ? ' active' : ''}`}>{navItem.text}</NavLink>
                 }
                 {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && isRootOpen && !isViewportSmall) &&
                   <NavPrimaryMenu
