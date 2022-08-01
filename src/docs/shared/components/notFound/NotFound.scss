@@ -1,0 +1,15 @@
+@import "/src/styles/abstracts/abstracts";
+@import "/src/styles/base/base";
+
+.app-body
+{
+  main
+  {
+    display: block;
+
+    h1
+    {
+      margin-top: 0;
+    }
+  }
+}

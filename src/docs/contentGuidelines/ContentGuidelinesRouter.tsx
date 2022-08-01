@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useParams } from 'react-router';
 import { IdLookupContext } from '../App';
-import NotFound from '../shared/components/NotFound';
+import NotFound from '../shared/components/notFound/NotFound';
 import { IdLookup } from '../shared/types/docs';
 import ContentGuidelines from './ContentGuidelines';
 
