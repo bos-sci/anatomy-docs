@@ -7,7 +7,7 @@ import { GetComponentQuery } from '../shared/types/contentful';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
-import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
+import PageTemplate from '../shared/components/PageTemplate';
 import Layout from '../shared/components/Layout';
 import './Components.scss';
 import { useLocation } from 'react-router-dom';

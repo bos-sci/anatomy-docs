@@ -8,7 +8,7 @@ import { IdLookup } from '../shared/types/docs';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
-import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
+import PageTemplate from '../shared/components/PageTemplate';
 import Layout from '../shared/components/Layout';
 import { useLocation, useParams } from 'react-router-dom';
 
