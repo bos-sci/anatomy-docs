@@ -2,10 +2,17 @@
 {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
+  column-gap: 2rem;
 
   .component-list-block
   {
     flex: 1;
   }
 }
+
+@media (min-width: 992px) {
+  .component-lists {
+    flex-flow: row wrap;
+  }
+} 

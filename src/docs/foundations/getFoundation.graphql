@@ -6,6 +6,10 @@ query getFoundation($id: String!, $preview: Boolean) {
     pageProperties {
       seoMetaDescription
     }
+    usage
+    usageDo
+    usageDont
+    secondaryContent
     sys {
       id
       publishedAt

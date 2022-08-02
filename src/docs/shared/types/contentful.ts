@@ -1954,7 +1954,7 @@ export type GetFoundationQueryVariables = Exact<{
 }>;
 
 
-export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, secondaryContent?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetCollectionsQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -2150,6 +2150,10 @@ export const GetFoundationDocument = gql`
     pageProperties {
       seoMetaDescription
     }
+    usage
+    usageDo
+    usageDont
+    secondaryContent
     sys {
       id
       publishedAt
