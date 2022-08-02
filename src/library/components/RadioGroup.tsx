@@ -59,7 +59,7 @@ const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAtt
   }, []);
 
   return (
-    <fieldset className="ads-fieldset" aria-describedby={helpTextId ? helpTextId : ''} {...fieldsetAttrs} aria-invalid={addonProps.ariaInvalid && addonProps.isDirty}>
+    <fieldset className="ads-fieldset" aria-describedby={helpTextId ? helpTextId : ''} {...fieldsetAttrs}>
       <legend className="ads-legend">{ legend }</legend>
       { validationMessage &&
         <p id={errorTextId} className="ads-input-error">{ validationMessage }</p>
