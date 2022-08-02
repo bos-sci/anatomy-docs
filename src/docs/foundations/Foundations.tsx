@@ -11,7 +11,6 @@ import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/PageTemplate';
 import Layout from '../shared/components/Layout';
 import { useLocation, useParams } from 'react-router-dom';
-import '../components/Components.scss';
 
 const Foundations = (): JSX.Element => {
   const params = useParams();
@@ -96,7 +95,7 @@ const Foundations = (): JSX.Element => {
           navSecondaryItems={navItems}
           navTertiaryItems={headings}>
           <Markdown markdown={foundationData?.content || ''} headingOffset={1} />
-          {(foundationData.usage) &&
+          {(foundationData?.usage) &&
             <h2 id="usage">Usage</h2>
           }
           { foundationData.usage && <Markdown markdown={ foundationData.usage } />}

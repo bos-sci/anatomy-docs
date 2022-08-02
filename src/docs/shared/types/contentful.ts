@@ -992,6 +992,9 @@ export type ContentGuideline = Entry & {
   linkedFrom?: Maybe<ContentGuidelineLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   pageProperties?: Maybe<PageProperties>;
+  patientDo?: Maybe<Scalars['String']>;
+  patientDont?: Maybe<Scalars['String']>;
+  patients?: Maybe<Scalars['String']>;
   sys: Sys;
 };
 
@@ -1024,6 +1027,24 @@ export type ContentGuidelineNameArgs = {
 export type ContentGuidelinePagePropertiesArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuidelinePatientDoArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuidelinePatientDontArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuidelinePatientsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 export type ContentGuidelineCollection = {
@@ -1061,6 +1082,27 @@ export type ContentGuidelineFilter = {
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   pageProperties?: InputMaybe<CfPagePropertiesNestedFilter>;
   pageProperties_exists?: InputMaybe<Scalars['Boolean']>;
+  patientDo?: InputMaybe<Scalars['String']>;
+  patientDo_contains?: InputMaybe<Scalars['String']>;
+  patientDo_exists?: InputMaybe<Scalars['Boolean']>;
+  patientDo_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  patientDo_not?: InputMaybe<Scalars['String']>;
+  patientDo_not_contains?: InputMaybe<Scalars['String']>;
+  patientDo_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  patientDont?: InputMaybe<Scalars['String']>;
+  patientDont_contains?: InputMaybe<Scalars['String']>;
+  patientDont_exists?: InputMaybe<Scalars['Boolean']>;
+  patientDont_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  patientDont_not?: InputMaybe<Scalars['String']>;
+  patientDont_not_contains?: InputMaybe<Scalars['String']>;
+  patientDont_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  patients?: InputMaybe<Scalars['String']>;
+  patients_contains?: InputMaybe<Scalars['String']>;
+  patients_exists?: InputMaybe<Scalars['Boolean']>;
+  patients_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  patients_not?: InputMaybe<Scalars['String']>;
+  patients_not_contains?: InputMaybe<Scalars['String']>;
+  patients_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -1954,7 +1996,7 @@ export type GetFoundationQueryVariables = Exact<{
 }>;
 
 
-export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, secondaryContent?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, secondaryContent?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetCollectionsQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;

@@ -65,6 +65,22 @@ const ContentGuidelines = (): JSX.Element => {
         navSecondaryItems={navItems}
         navTertiaryItems={headings}>
         <Markdown markdown={contentGuidelineData?.content || ''} headingOffset={1} />
+        {(contentGuidelineData?.patients) &&
+            <h2 id="usage">Patients</h2>
+          }
+          { contentGuidelineData?.patients && <Markdown markdown={ contentGuidelineData?.patients } />}
+          {(contentGuidelineData?.patientsDo || contentGuidelineData?.patientsDont) &&
+            <div className="component-lists">
+              <div className="component-list-block">
+                <h3>Do write:</h3>
+                <Markdown markdown={contentGuidelineData?.patientsDo || ''} />
+              </div>
+              <div className="component-list-block">
+                <h3>Don't write:</h3>
+                <Markdown markdown={contentGuidelineData?.patientsDont || ''} />
+              </div>
+            </div>
+          }
       </PageTemplate>
     </Layout>
   );
