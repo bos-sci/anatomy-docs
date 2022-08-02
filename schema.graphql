@@ -721,7 +721,11 @@ type Foundation implements Entry {
   linkedFrom(allowedLocales: [String]): FoundationLinkingCollections
   name(locale: String): String
   pageProperties(locale: String, preview: Boolean): PageProperties
+  secondaryContent(locale: String): String
   sys: Sys!
+  usage(locale: String): String
+  usageDo(locale: String): String
+  usageDont(locale: String): String
 }
 
 type FoundationCollection {
@@ -765,7 +769,35 @@ input FoundationFilter {
   name_not_in: [String]
   pageProperties: cfPagePropertiesNestedFilter
   pageProperties_exists: Boolean
+  secondaryContent: String
+  secondaryContent_contains: String
+  secondaryContent_exists: Boolean
+  secondaryContent_in: [String]
+  secondaryContent_not: String
+  secondaryContent_not_contains: String
+  secondaryContent_not_in: [String]
   sys: SysFilter
+  usage: String
+  usageDo: String
+  usageDo_contains: String
+  usageDo_exists: Boolean
+  usageDo_in: [String]
+  usageDo_not: String
+  usageDo_not_contains: String
+  usageDo_not_in: [String]
+  usageDont: String
+  usageDont_contains: String
+  usageDont_exists: Boolean
+  usageDont_in: [String]
+  usageDont_not: String
+  usageDont_not_contains: String
+  usageDont_not_in: [String]
+  usage_contains: String
+  usage_exists: Boolean
+  usage_in: [String]
+  usage_not: String
+  usage_not_contains: String
+  usage_not_in: [String]
 }
 
 type FoundationLinkingCollections {
