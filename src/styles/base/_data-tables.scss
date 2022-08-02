@@ -3,6 +3,8 @@ table
   width: 100%;
   margin: space(3x) 0 0;
   border: 0;
+  border-collapse: collapse;
+  
 
   caption
   {
@@ -19,6 +21,7 @@ table
     th
     {
       font-family: $font-family-base-heavy;
+      text-align: inherit;
     }
 
     th,
