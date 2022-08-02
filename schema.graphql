@@ -586,9 +586,12 @@ type ContentGuideline implements Entry {
   linkedFrom(allowedLocales: [String]): ContentGuidelineLinkingCollections
   name(locale: String): String
   pageProperties(locale: String, preview: Boolean): PageProperties
+<<<<<<< Updated upstream
   patientDo(locale: String): String
   patientDont(locale: String): String
   patients(locale: String): String
+=======
+>>>>>>> Stashed changes
   sys: Sys!
 }
 
@@ -626,6 +629,7 @@ input ContentGuidelineFilter {
   name_not_in: [String]
   pageProperties: cfPagePropertiesNestedFilter
   pageProperties_exists: Boolean
+<<<<<<< Updated upstream
   patientDo: String
   patientDo_contains: String
   patientDo_exists: Boolean
@@ -647,6 +651,8 @@ input ContentGuidelineFilter {
   patients_not: String
   patients_not_contains: String
   patients_not_in: [String]
+=======
+>>>>>>> Stashed changes
   sys: SysFilter
 }
 
