@@ -1,28 +1,28 @@
-.ads-search
+.lib-search
 {
   width: 100%;
 
-  .ads-input-text-input
+  .lib-input-text-input
   {
     margin-top: 0;
     height: 100%;
   }
 }
 
-.ads-search-control
+.lib-search-control
 {
   display: flex;
   flex-direction: column;
   gap: space(2x);
 }
 
-.ads-input-search
+.lib-input-search
 {
   position: relative;
   flex: 1;
 }
 
-.ads-search-clear
+.lib-search-clear
 {
   position: absolute;
   right: 0;
@@ -50,7 +50,7 @@
 
 @media (min-width: $sm)
 {
-  .ads-search-control
+  .lib-search-control
   {
     flex-direction: row;
   }

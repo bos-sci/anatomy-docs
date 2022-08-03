@@ -1,9 +1,9 @@
-.ads-tabs
+.lib-tabs
 {
   width: 100%;
 }
 
-.ads-tab-list
+.lib-tab-list
 {
   position: relative;
   display: flex;
@@ -26,7 +26,7 @@
   }
 }
 
-.ads-tab
+.lib-tab
 {
   position: relative;
   margin-right: space(2x);
@@ -53,13 +53,13 @@
     {
       background: transparent;
       color: $action-primary-40;
-  
+
       &::after
       {
         background: $action-primary-40;
       }
     }
-  
+
     &:focus
     {
       @include focus-default-inset;
@@ -87,13 +87,13 @@
   }
 }
 
-.ads-tab-panels
+.lib-tab-panels
 {
   border-top: space(xxs) solid $neutral-80;
   padding-top: space(3x);
 }
 
-.ads-tab-panel:not([disabled]):focus
+.lib-tab-panel:not([disabled]):focus
 {
   @include focus-default;
 }

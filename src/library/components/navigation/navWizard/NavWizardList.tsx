@@ -18,8 +18,8 @@ const NavWizardList = (props: Props) => {
   return (
     <ul
       className=
-        {'ads-nav'
-        + ((props.history.length === 0 && props.depth === 0) || ((parent && props.history[props.history.length - 1]?.node === parent)) ? ' ads-nav-active-list' : '')
+        {'lib-nav'
+        + ((props.history.length === 0 && props.depth === 0) || ((parent && props.history[props.history.length - 1]?.node === parent)) ? ' lib-nav-active-list' : '')
         + (props.navItems.length === 1 ? ' has-one-col' : '')
         + (props.navItems.length === 2 ? ' has-two-col' : '')
       }
@@ -32,8 +32,8 @@ const NavWizardList = (props: Props) => {
         } else {
           return (
             // Leaf Node
-            <li key={navItem.text + i} className="ads-nav-item">
-              <Link href={navItem.href} to={navItem.slug} className="ads-nav-link" isNavLink>{navItem.text}</Link>
+            <li key={navItem.text + i} className="lib-nav-item">
+              <Link href={navItem.href} to={navItem.slug} className="lib-nav-link" isNavLink>{navItem.text}</Link>
             </li>
           );
         }
@@ -41,7 +41,7 @@ const NavWizardList = (props: Props) => {
 
       {/* Overflow Link */}
       {parent?.overflowLinkText &&
-        <li key={parent.overflowLinkText + props.depth} className="ads-nav-item ads-nav-item-overflow">
+        <li key={parent.overflowLinkText + props.depth} className="lib-nav-item lib-nav-item-overflow">
           <Link href={parent.overflowHref} to={parent.overflowTo}>{parent.overflowLinkText}</Link>
         </li>
       }

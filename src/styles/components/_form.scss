@@ -1,9 +1,9 @@
-.ads-form
+.lib-form
 {
   width: 100%;
 }
 
-.ads-fieldset
+.lib-fieldset
 {
   display: flex;
   flex-direction: column;
@@ -12,19 +12,19 @@
   padding-right: 0;
 }
 
-.ads-legend
+.lib-legend
 {
   margin: 0; // TODO: look at this after we rip out bootstrap
   font-family: $font-family-base-heavy;
   @include font-size($fs-base);
 }
 
-.ads-input
+.lib-input
 {
   width: 100%;
 }
 
-.ads-input-error
+.lib-input-error
 {
   display: flex;
   align-items: center;
@@ -46,21 +46,21 @@
   }
 }
 
-.ads-input-help-text
+.lib-input-help-text
 {
   margin: space(sm) 0 0 0;
   @include font-size($fs-body-subtle);
   color: $neutral-40;
 }
 
-.ads-form-control
+.lib-form-control
 {
   margin-top: space(4x);
 }
 
 @media (min-width: 992px)
 {
-  .ads-input-error
+  .lib-input-error
   {
     &::before
     {

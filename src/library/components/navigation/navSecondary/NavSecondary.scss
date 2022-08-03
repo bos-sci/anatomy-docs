@@ -25,7 +25,7 @@ $icon-size-sm: space(lg);
   }
 }
 
-.ads-nav-secondary
+.lib-nav-secondary
 {
   position: relative;
   grid-area: nav-secondary;
@@ -33,7 +33,7 @@ $icon-size-sm: space(lg);
   width: 100%;
   transition: width .25s ease-out;
 
-  .ads-nav-secondary-menu-trigger
+  .lib-nav-secondary-menu-trigger
   {
     position: relative;
     display: block;
@@ -71,7 +71,7 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .ads-nav-secondary-menu
+  .lib-nav-secondary-menu
   {
     position: absolute;
     display: none;
@@ -86,37 +86,37 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .ads-nav
+  .lib-nav
   {
     flex-direction: column;
     margin: 0;
     padding: 0;
     list-style: none;
 
-    &:not(.ads-nav-active-list)
+    &:not(.lib-nav-active-list)
     {
-      & > .ads-nav-item:not(.ads-nav-item-parent),
-      & > .ads-nav-item-parent > .ads-nav-link
+      & > .lib-nav-item:not(.lib-nav-item-parent),
+      & > .lib-nav-item-parent > .lib-nav-link
       {
         display: none;
       }
     }
 
-    &.ads-nav-active-list
+    &.lib-nav-active-list
     {
       width: 100%;
     }
   }
 
-  .ads-nav-item,
-  .ads-nav-item-parent
+  .lib-nav-item,
+  .lib-nav-item-parent
   {
     margin-top: 0;
   }
 
-  .ads-nav-item-parent
+  .lib-nav-item-parent
   {
-    & > .ads-nav-link
+    & > .lib-nav-link
     {
       position: relative;
 
@@ -134,8 +134,8 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .ads-nav-link,
-  .ads-nav-link-back
+  .lib-nav-link,
+  .lib-nav-link-back
   {
     align-items: center;
     padding: space(lg) space(2x);
@@ -148,7 +148,7 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .ads-nav-link
+  .lib-nav-link
   {
     display: flex;
     justify-content: space-between;
@@ -170,7 +170,7 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .ads-nav-link-back
+  .lib-nav-link-back
   {
     justify-content: flex-start;
     @include font-size($fs-small);
@@ -185,14 +185,14 @@ $icon-size-sm: space(lg);
 
 @media (min-width: 992px)
 {
-  .ads-nav-secondary
+  .lib-nav-secondary
   {
-    .ads-nav-secondary-menu-trigger
+    .lib-nav-secondary-menu-trigger
     {
       display: none;
     }
 
-    .ads-nav-secondary-menu
+    .lib-nav-secondary-menu
     {
       position: relative;
       display: block;

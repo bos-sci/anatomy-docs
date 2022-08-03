@@ -11,7 +11,7 @@ const DefaultInputText = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="ads-form-control">
+      <div className="lib-form-control">
         <InputText label="Text input" value={inputValue} onChange={handleChange} />
       </div>
     </Example>

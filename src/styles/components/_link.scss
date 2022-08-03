@@ -1,4 +1,4 @@
-.ads-link
+.lib-link
 {
   @include link-default;
 
@@ -22,7 +22,7 @@
     @include button-default;
     text-decoration: none;
 
-    .ads-link-cta-icon
+    .lib-link-cta-icon
     {
       margin-left: space(md);
       width: $ffs-body-assertive;
@@ -36,7 +36,7 @@
 // NOTE: these will need to be updated if we modify the link mixins
 //
 
-button[class*="ads-link"]
+button[class*="lib-link"]
 {
   border: 0;
   padding: 0;
@@ -52,7 +52,7 @@ button[class*="ads-link"]
   }
 }
 
-button.ads-link
+button.lib-link
 {
   &:not([disabled]):hover,
   &:not([disabled]):active
@@ -61,7 +61,7 @@ button.ads-link
   }
 }
 
-button.ads-link-subtle
+button.lib-link-subtle
 {
   &:not([disabled]):hover,
   &:not([disabled]):active
@@ -70,7 +70,7 @@ button.ads-link-subtle
   }
 }
 
-button.ads-link-ghost
+button.lib-link-ghost
 {
   &:not([disabled]):hover,
   &:not([disabled]):active

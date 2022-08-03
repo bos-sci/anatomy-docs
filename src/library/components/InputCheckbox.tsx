@@ -68,8 +68,8 @@ const InputCheckbox = forwardRef(({ label, helpText, errorText, forceValidation,
   }, []);
 
   return (
-    <div className="ads-input">
-      <div className="ads-input-checkbox">
+    <div className="lib-input">
+      <div className="lib-input-checkbox">
         <input
           ref={node => {
             if (node) {
@@ -83,17 +83,17 @@ const InputCheckbox = forwardRef(({ label, helpText, errorText, forceValidation,
           }}
           type="checkbox"
           id={inputId}
-          className="ads-input-checkbox-input"
+          className="lib-input-checkbox-input"
           onInvalid={handleInvalid}
           onBlur={handleBlur}
           onChange={handleChange}
           aria-invalid={!!validationMessage}
           aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
           {...inputAttrs} />
-        <label htmlFor={inputId} className="ads-input-checkbox-label">{label}</label>
+        <label htmlFor={inputId} className="lib-input-checkbox-label">{label}</label>
       </div>
-      {validationMessage && <p id={errorTextId} className="ads-input-error">{ validationMessage }</p>}
-      {helpText && <p id={helpTextId} className="ads-input-help-text">{ helpText }</p>}
+      {validationMessage && <p id={errorTextId} className="lib-input-error">{ validationMessage }</p>}
+      {helpText && <p id={helpTextId} className="lib-input-help-text">{ helpText }</p>}
     </div>
   );
 });

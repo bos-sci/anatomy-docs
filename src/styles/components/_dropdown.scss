@@ -1,8 +1,8 @@
 $icon-size: 1em;
 
-.ads-dropdown
+.lib-dropdown
 {
-  .ads-dropdown-trigger
+  .lib-dropdown-trigger
   {
     position: relative;
     padding-right: calc(space(lg) + $icon-size + space(3x)); // gap + icon width + padding
@@ -35,7 +35,7 @@ $icon-size: 1em;
     }
   }
 
-  .ads-dropdown-menu
+  .lib-dropdown-menu
   {
     position: absolute;
     margin: 0;
@@ -45,13 +45,13 @@ $icon-size: 1em;
     box-shadow: $box-shadow-secondary;
     z-index: 1000;
 
-    .ads-dropdown-item
+    .lib-dropdown-item
     {
       margin-top: 0;
     }
 
-    .ads-button,
-    .ads-link
+    .lib-button,
+    .lib-link
     {
       display: block;
       border: 0;
@@ -67,7 +67,7 @@ $icon-size: 1em;
       }
     }
 
-    .ads-button
+    .lib-button
     {
       &:hover
       {
@@ -81,7 +81,7 @@ $icon-size: 1em;
       }
     }
 
-    .ads-link
+    .lib-link
     {
       &:hover
       {

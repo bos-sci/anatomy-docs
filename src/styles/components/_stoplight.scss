@@ -1,4 +1,4 @@
-[class*="ads-stoplight"]
+[class*="lib-stoplight"]
 {
   display: flex;
   align-items: center;
@@ -27,7 +27,7 @@
   }
 }
 
-.ads-stoplight
+.lib-stoplight
 {
   &-red
   {
@@ -36,7 +36,7 @@
       background-image: url("../../assets/images/icon-stoplight-red.svg");
     }
 
-    &.ads-stoplight-ghost
+    &.lib-stoplight-ghost
     {
       &::before
       {

@@ -30,11 +30,11 @@ const NavSecondaryListParent = ({ navItem, activeParent, activeParentRef, setAct
   }, []);
 
   return (
-    <li className="ads-nav-item-parent">
+    <li className="lib-nav-item-parent">
       <Button
         ref={parentBtnRef}
         variant="subtle"
-        className="ads-nav-link"
+        className="lib-nav-link"
         aria-expanded={navItem === activeParent}
         aria-controls={navListId}
         onClick={() => openChild(navItem)}

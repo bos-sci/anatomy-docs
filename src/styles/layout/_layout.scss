@@ -27,7 +27,7 @@ body
   grid-template-rows: auto 1fr;
   grid-template-areas: "nav-secondary" "main";
 
-  .ads-nav-secondary
+  .lib-nav-secondary
   {
     grid-area: nav-secondary;
   }
@@ -117,7 +117,7 @@ main
       padding: 0;
     }
 
-    & > .ads-nav-secondary
+    & > .lib-nav-secondary
     {
       width: 12rem;
       margin-top: space(4x);

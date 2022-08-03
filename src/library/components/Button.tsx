@@ -19,27 +19,27 @@ const Button = forwardRef(({ children, variant, icon, iconAlignment = 'left', ic
   let classes = '';
   switch (variant) {
     case 'assertive':
-      classes = 'ads-button-assertive';
+      classes = 'lib-button-assertive';
       break;
     case 'ghost':
-      classes = 'ads-button-ghost';
+      classes = 'lib-button-ghost';
       break;
     case 'subtle':
-      classes = 'ads-button-subtle';
+      classes = 'lib-button-subtle';
       break;
     default:
-      classes = 'ads-button';
+      classes = 'lib-button';
       break;
   }
 
   if (icon && !children) {
-    return <button ref={ref} className={`ads-button-icon ${classes} ${className || ''}`} {...buttonAttrs}><Icon name={icon} size={iconSize} /></button>;
+    return <button ref={ref} className={`lib-button-icon ${classes} ${className || ''}`} {...buttonAttrs}><Icon name={icon} size={iconSize} /></button>;
   }
 
   return (
     <button ref={ref} className={`${classes} ${className || ''}`} {...buttonAttrs}>
       { icon && iconAlignment === 'left' && <Icon name={icon} size={iconSize} className="u-icon-left" /> }
-      { icon && children ? <span className="ads-button-text">{ children }</span> : children }
+      { icon && children ? <span className="lib-button-text">{ children }</span> : children }
       { icon && iconAlignment === 'right' && <Icon name={icon} size={iconSize} className="u-icon-right" /> }
     </button>
   );

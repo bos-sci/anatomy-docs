@@ -22,13 +22,13 @@ const AccordionHeading = ({ accordionHeading, setIsPanelExpanded, index, isPanel
     <button
       ref={accordionRef}
       id={`${accordionPanelId}Heading`}
-      className="ads-accordion-trigger"
+      className="lib-accordion-trigger"
       aria-controls={accordionPanelId}
       aria-expanded={isPanelExpanded}
       onClick={onClick}
       // onClick={() => setIsPanelExpanded(index)}
     >
-      <span className="ads-accordion-trigger-text">
+      <span className="lib-accordion-trigger-text">
         { accordionHeading }
       </span>
       <IconChevronDown />

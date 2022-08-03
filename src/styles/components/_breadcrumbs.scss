@@ -1,6 +1,6 @@
-$ads-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
+$lib-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
 
-.ads-breadcrumbs
+.lib-breadcrumbs
 {
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@ $ads-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
   list-style: none;
 }
 
-.ads-breadcrumb-item.ads-breadcrumb-item
+.lib-breadcrumb-item.lib-breadcrumb-item
 {
   margin-top: 0; // TODO: reduce specificity when we look at how we apply spacing outside of components
   @include font-size($fs-body-subtle);
@@ -28,7 +28,7 @@ $ads-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
       margin-right: space(md);
       width: 1ch;
       height: 1em;
-      background-image: $ads-breadcrumb-divider;
+      background-image: $lib-breadcrumb-divider;
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -40,16 +40,16 @@ $ads-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
   }
 }
 
-.ads-link.ads-breadcrumb-link
+.lib-link.lib-breadcrumb-link
 {
   @include link-navigation;
 }
 
-.ads-breadcrumb-overflow
+.lib-breadcrumb-overflow
 {
-  .ads-dropdown
+  .lib-dropdown
   {
-    .ads-dropdown-trigger
+    .lib-dropdown-trigger
     {
       border-radius: 0;
       padding: space(lg) space(sm);
@@ -67,7 +67,7 @@ $ads-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
 // We added :not([href]) styles for the docs site so that we can demonstrate the hover state.
 // *** We should never do this on our actual site. ***
 
-.ads-link.ads-breadcrumb-link:not([href]):hover // FOR DEMO ONLY
+.lib-link.lib-breadcrumb-link:not([href]):hover // FOR DEMO ONLY
 {
   color: $neutral-00;
   text-decoration: underline;

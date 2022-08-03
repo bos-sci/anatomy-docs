@@ -1,4 +1,4 @@
-.ads-button
+.lib-button
 {
   @include button-default;
 
@@ -29,7 +29,7 @@
 // NOTE: these will need to be updated if we modify the link mixins
 //
 
-a[class*="ads-button"]
+a[class*="lib-button"]
 {
   text-decoration: none;
 
@@ -41,8 +41,8 @@ a[class*="ads-button"]
   }
 }
 
-a.ads-button,
-a.ads-button-subtle
+a.lib-button,
+a.lib-button-subtle
 {
   &:visited
   {
@@ -50,8 +50,8 @@ a.ads-button-subtle
   }
 }
 
-a.ads-button-assertive,
-a.ads-button-ghost
+a.lib-button-assertive,
+a.lib-button-ghost
 {
   &:visited
   {

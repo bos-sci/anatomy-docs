@@ -82,11 +82,11 @@ const InputText = forwardRef(({ label, helpText, errorText, requiredText = 'requ
   }, []);
 
   return (
-    <div className="ads-input">
-      <label className="ads-input-text">
-        <div className="ads-input-text-label">
+    <div className="lib-input">
+      <label className="lib-input-text">
+        <div className="lib-input-text-label">
           { label }
-          { inputAttrs.required && <span className="ads-input-help-text">{ requiredText }</span> }
+          { inputAttrs.required && <span className="lib-input-help-text">{ requiredText }</span> }
         </div>
         <input
           ref={node => {
@@ -99,7 +99,7 @@ const InputText = forwardRef(({ label, helpText, errorText, requiredText = 'requ
               }
             }
           }}
-          className="ads-input-text-input"
+          className="lib-input-text-input"
           onInvalid={handleInvalid}
           onBlur={handleBlur}
           onChange={handleChange}
@@ -107,8 +107,8 @@ const InputText = forwardRef(({ label, helpText, errorText, requiredText = 'requ
           aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
           {...inputAttrs} />
       </label>
-      {validationMessage && <p id={errorTextId} className="ads-input-error">{ validationMessage }</p>}
-      {helpText && <p id={helpTextId} className="ads-input-help-text">{ helpText }</p>}
+      {validationMessage && <p id={errorTextId} className="lib-input-error">{ validationMessage }</p>}
+      {helpText && <p id={helpTextId} className="lib-input-help-text">{ helpText }</p>}
     </div>
   );
 });

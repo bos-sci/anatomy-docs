@@ -5,7 +5,7 @@ import Example from '../../../shared/components/Example';
 const DefaultInputCheckboxGroup = (): JSX.Element => {
   return (
     <Example>
-      <div className="ads-form-control">
+      <div className="lib-form-control">
         <Fieldset legend="Legend">
           <InputCheckbox label="Checkbox 1" />
           <InputCheckbox label="Checkbox 2" />

@@ -6,7 +6,7 @@ interface Props {
 }
 
 const SkipLink = (props: Props): JSX.Element => {
-  return <a href={`#${props.destinationId}`} className="ads-skip-link">{`Skip to ${props.destination}`}</a>;
+  return <a href={`#${props.destinationId}`} className="lib-skip-link">{`Skip to ${props.destination}`}</a>;
 };
 
 export default SkipLink;

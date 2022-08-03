@@ -77,8 +77,8 @@ const InputRadio = forwardRef(({ label, helpText, forceValidation, onBlur, onInp
   }, []);
 
   return (
-    <div className="ads-input">
-      <div className="ads-input-radio">
+    <div className="lib-input">
+      <div className="lib-input-radio">
         <input
           ref={node => {
             if (node) {
@@ -92,15 +92,15 @@ const InputRadio = forwardRef(({ label, helpText, forceValidation, onBlur, onInp
           }}
           type="radio"
           id={inputId}
-          className="ads-input-radio-input"
+          className="lib-input-radio-input"
           onInvalid={handleInvalid}
           onBlur={handleBlur}
           onInput={handleChange}
           aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
           {...inputAttrs} />
-        <label htmlFor={inputId} className="ads-input-radio-label">{ label }</label>
+        <label htmlFor={inputId} className="lib-input-radio-label">{ label }</label>
       </div>
-      { helpText && <p id={helpTextId} className="ads-input-help-text">{ helpText }</p> }
+      { helpText && <p id={helpTextId} className="lib-input-help-text">{ helpText }</p> }
     </div>
   );
 });

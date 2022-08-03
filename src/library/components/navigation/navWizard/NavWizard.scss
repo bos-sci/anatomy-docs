@@ -2,14 +2,14 @@
 @import "/src/styles/base/base";
 @import "/src/styles/utilities/utilities";
 
-.ads-nav-wizard
+.lib-nav-wizard
 {
   position: relative;
   padding: space(4x);
   background-color: $neutral-100;
   box-shadow: $box-shadow-tertiary;
 
-  .ads-nav-wizard-header
+  .lib-nav-wizard-header
   {
     display: grid;
     grid-template-columns: 1fr;
@@ -20,27 +20,27 @@
       'description';
   }
 
-  .ads-nav-back
+  .lib-nav-back
   {
     grid-area: back;
     justify-self: start;
     @include font-size($fs-body-subtle);
   }
 
-  .ads-nav-breadcrumb
+  .lib-nav-breadcrumb
   {
     grid-area: breadcrumb;
     margin-top: space(4x);
     @include font-size($fs-body-subtle);
   }
 
-  .ads-nav-title
+  .lib-nav-title
   {
     grid-area: title;
     margin-top: space(2x);
   }
 
-  .ads-nav-description
+  .lib-nav-description
   {
     grid-area: description;
     margin-top: space(3x);
@@ -52,21 +52,21 @@
     bottom: 0;
   }
 
-  .ads-nav-wizard-menu
+  .lib-nav-wizard-menu
   {
     margin-top: space(4x);
     border-top: space(xs) solid $border-color-subtle;
     padding-top: space(4x);
   }
 
-  .ads-nav
+  .lib-nav
   {
     display: block;
     margin-top: 0;
     list-style: none;
     padding: 0;
 
-    &.ads-nav-active-list
+    &.lib-nav-active-list
     {
       display: grid;
       grid-template-columns: 1fr;
@@ -74,36 +74,36 @@
       gap: space(2x) space(4x);
     }
 
-    &:not(.ads-nav-active-list)
+    &:not(.lib-nav-active-list)
     {
-      & > .ads-nav-item:not(.ads-nav-item-parent),
-      & > .ads-nav-item-parent > .ads-nav-link
+      & > .lib-nav-item:not(.lib-nav-item-parent),
+      & > .lib-nav-item-parent > .lib-nav-link
       {
         display: none;
       }
     }
   }
 
-  .ads-nav-item,
-  .ads-nav-item-parent
+  .lib-nav-item,
+  .lib-nav-item-parent
   {
     margin-top: 0;
   }
 
-  .ads-nav-item-parent
+  .lib-nav-item-parent
   {
-    & > .ads-nav-link
+    & > .lib-nav-link
     {
       display: flex;
       padding: 0;
 
-      & > .ads-nav-link-text,
-      & > .ads-nav-link-addon
+      & > .lib-nav-link-text,
+      & > .lib-nav-link-addon
       {
         padding: space(3x);
       }
 
-      & > .ads-nav-link-addon
+      & > .lib-nav-link-addon
       {
         display: flex;
         justify-content: center;
@@ -117,12 +117,12 @@
       {
         text-decoration: none;
 
-        & > .ads-nav-link-text
+        & > .lib-nav-link-text
         {
           border-right: 0;
         }
 
-        & > .ads-nav-link-addon
+        & > .lib-nav-link-addon
         {
           color: $neutral-100;
           background-color: $action-primary-40;
@@ -131,7 +131,7 @@
     }
   }
 
-  .ads-nav-link
+  .lib-nav-link
   {
     display: flex;
     justify-content: space-between;
@@ -156,7 +156,7 @@
     }
   }
 
-  .ads-nav-link-back
+  .lib-nav-link-back
   {
     justify-content: flex-start;
     padding-left: 0;
@@ -172,11 +172,11 @@
 
 @media (min-width: $lg)
 {
-  .ads-nav-wizard
+  .lib-nav-wizard
   {
     padding: space(6x) space(8x);
 
-    .ads-nav-wizard-header
+    .lib-nav-wizard-header
     {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -187,26 +187,26 @@
       text-align: center;
     }
 
-    .ads-nav-breadcrumb
+    .lib-nav-breadcrumb
     {
       margin-top: 0;
     }
 
-    .ads-nav-wizard-menu
+    .lib-nav-wizard-menu
     {
       border-top: 0;
       padding-top: 0;
     }
 
-    .ads-nav
+    .lib-nav
     {
-      &.ads-nav-active-list
+      &.lib-nav-active-list
       {
         grid-template-columns: repeat(3, 1fr);
 
         &.has-one-col
         {
-          .ads-nav-item
+          .lib-nav-item
           {
             grid-column-start: 2;
           }
@@ -221,7 +221,7 @@
       }
     }
 
-    .ads-nav-item-overflow
+    .lib-nav-item-overflow
     {
       grid-column-start: 1;
       grid-column-end: span 3;

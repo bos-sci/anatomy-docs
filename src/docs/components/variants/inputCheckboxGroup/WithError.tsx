@@ -38,7 +38,7 @@ const WithError = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="ads-form-control">
+      <div className="lib-form-control">
         <Fieldset legend="Legend" errorText={errorText}>
           {checkboxes.map((checkbox, i) => (
             <InputCheckbox

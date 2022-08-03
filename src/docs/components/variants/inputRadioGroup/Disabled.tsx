@@ -5,7 +5,7 @@ import Example from '../../../shared/components/Example';
 const Disabled = (): JSX.Element => {
   return (
     <Example>
-      <div className="ads-form-control">
+      <div className="lib-form-control">
         <RadioGroup legend="Disabled radio group" disabled>
           <InputRadio label="Radio 1" name="groupDisabled" value="defaultRadio1" defaultChecked />
           <InputRadio label="Radio 2" name="groupDisabled" value="defaultRadio2" />
