@@ -176,9 +176,16 @@ $icon-size-sm: space(lg);
     @include font-size($fs-small);
     fill: $action-primary-40; // TODO: revisit in xdc-1892 (fill vs stroke here or in mixin)
 
-    &:active
+    &:active,
+    &:hover
     {
       fill: $neutral-00;
+    }
+
+    &:hover
+    {
+      color: $action-primary-40;
+      background: transparent;
     }
   }
 }
