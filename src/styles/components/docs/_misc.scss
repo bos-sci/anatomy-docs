@@ -39,21 +39,28 @@ code
   word-wrap: break-word;
 }
 
-.twoColumn-lists
+.two-column-lists
 {
   display: flex;
   justify-content: space-between;
   flex-flow: column wrap;
   column-gap: space(4x);
 
-  .twoColumn-list-block
+  .two-column-list-block
   {
     flex: 1;
   }
 }
 
-@media (min-width: 992px) {
-  .twoColumn-lists {
+@media (min-width: 992px) 
+{
+  .two-column-lists 
+  {
     flex-flow: row wrap;
   }
 } 
+
+.noWrap 
+{
+  white-space: nowrap;
+}
