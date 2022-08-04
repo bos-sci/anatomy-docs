@@ -11,22 +11,22 @@ const Tag = (props: Props): JSX.Element => {
   let classes = '';
   switch (variant) {
     case 'accent':
-      classes = 'lib-tag-accent'
+      classes = 'bsds-tag-accent'
       break;
     case 'accent-ghost':
-      classes = 'lib-tag-accent-ghost'
+      classes = 'bsds-tag-accent-ghost'
       break;
     case 'assertive':
-      classes = 'lib-tag-assertive'
+      classes = 'bsds-tag-assertive'
       break;
     case 'assertive-ghost':
-      classes = 'lib-tag-assertive-ghost'
+      classes = 'bsds-tag-assertive-ghost'
       break;
     case 'ghost':
-      classes = 'lib-tag-ghost'
+      classes = 'bsds-tag-ghost'
       break;
     default:
-      classes = 'lib-tag';
+      classes = 'bsds-tag';
       break;
   }
 

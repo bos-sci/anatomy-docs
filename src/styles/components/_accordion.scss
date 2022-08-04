@@ -1,4 +1,4 @@
-.lib-accordion
+.bsds-accordion
 {
   width: 100%;
 
@@ -8,12 +8,12 @@
   }
 }
 
-.lib-accordion-heading
+.bsds-accordion-heading
 {
   margin-top: 0;
 }
 
-.lib-accordion-trigger
+.bsds-accordion-trigger
 {
   display: flex;
   justify-content: space-between;
@@ -88,7 +88,7 @@
   }
 }
 
-.lib-accordion-panel
+.bsds-accordion-panel
 {
   padding: space(2x) space(3x) space(4x);
 }

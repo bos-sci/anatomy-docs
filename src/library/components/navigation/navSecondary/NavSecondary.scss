@@ -25,7 +25,7 @@ $icon-size-sm: space(lg);
   }
 }
 
-.lib-nav-secondary
+.bsds-nav-secondary
 {
   position: relative;
   grid-area: nav-secondary;
@@ -33,7 +33,7 @@ $icon-size-sm: space(lg);
   width: 100%;
   transition: width .25s ease-out;
 
-  .lib-nav-secondary-menu-trigger
+  .bsds-nav-secondary-menu-trigger
   {
     position: relative;
     display: block;
@@ -71,7 +71,7 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .lib-nav-secondary-menu
+  .bsds-nav-secondary-menu
   {
     position: absolute;
     display: none;
@@ -86,37 +86,37 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .lib-nav
+  .bsds-nav
   {
     flex-direction: column;
     margin: 0;
     padding: 0;
     list-style: none;
 
-    &:not(.lib-nav-active-list)
+    &:not(.bsds-nav-active-list)
     {
-      & > .lib-nav-item:not(.lib-nav-item-parent),
-      & > .lib-nav-item-parent > .lib-nav-link
+      & > .bsds-nav-item:not(.bsds-nav-item-parent),
+      & > .bsds-nav-item-parent > .bsds-nav-link
       {
         display: none;
       }
     }
 
-    &.lib-nav-active-list
+    &.bsds-nav-active-list
     {
       width: 100%;
     }
   }
 
-  .lib-nav-item,
-  .lib-nav-item-parent
+  .bsds-nav-item,
+  .bsds-nav-item-parent
   {
     margin-top: 0;
   }
 
-  .lib-nav-item-parent
+  .bsds-nav-item-parent
   {
-    & > .lib-nav-link
+    & > .bsds-nav-link
     {
       position: relative;
 
@@ -134,8 +134,8 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .lib-nav-link,
-  .lib-nav-link-back
+  .bsds-nav-link,
+  .bsds-nav-link-back
   {
     align-items: center;
     padding: space(lg) space(2x);
@@ -148,7 +148,7 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .lib-nav-link
+  .bsds-nav-link
   {
     display: flex;
     justify-content: space-between;
@@ -170,7 +170,7 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .lib-nav-link-back
+  .bsds-nav-link-back
   {
     justify-content: flex-start;
     @include font-size($fs-small);
@@ -185,14 +185,14 @@ $icon-size-sm: space(lg);
 
 @media (min-width: 992px)
 {
-  .lib-nav-secondary
+  .bsds-nav-secondary
   {
-    .lib-nav-secondary-menu-trigger
+    .bsds-nav-secondary-menu-trigger
     {
       display: none;
     }
 
-    .lib-nav-secondary-menu
+    .bsds-nav-secondary-menu
     {
       position: relative;
       display: block;

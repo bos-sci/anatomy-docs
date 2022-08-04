@@ -1,13 +1,13 @@
 @import "/src/styles/abstracts/abstracts";
 @import "/src/styles/base/base";
 
-.lib-nav-tertiary
+.bsds-nav-tertiary
 {
   grid-area: nav-tertiary;
   width: 100%;
   margin: space(4x) 0 0;
 
-  .lib-nav-tertiary-title
+  .bsds-nav-tertiary-title
   {
     margin: 0;
     border-bottom: space(xxs) solid $neutral-80;
@@ -19,7 +19,7 @@
     line-height: 1.5; // NOTE: overriding h2's default line height
   }
 
-  .lib-nav
+  .bsds-nav
   {
     display: flex;
     flex-direction: column;
@@ -29,12 +29,12 @@
     @include font-size($fs-small);
   }
 
-  .lib-nav-item
+  .bsds-nav-item
   {
     margin-top: space(lg);
   }
 
-  .lib-nav-link
+  .bsds-nav-link
   {
     display: inline-flex;
     padding: 0;
@@ -44,7 +44,7 @@
 
 @media (min-width: $lg)
 {
-  .lib-nav-tertiary
+  .bsds-nav-tertiary
   {
     margin-top: 0;
   }

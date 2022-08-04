@@ -1,9 +1,9 @@
-.lib-tabs
+.bsds-tabs
 {
   width: 100%;
 }
 
-.lib-tab-list
+.bsds-tab-list
 {
   position: relative;
   display: flex;
@@ -26,7 +26,7 @@
   }
 }
 
-.lib-tab
+.bsds-tab
 {
   position: relative;
   margin-right: space(2x);
@@ -87,13 +87,13 @@
   }
 }
 
-.lib-tab-panels
+.bsds-tab-panels
 {
   border-top: space(xxs) solid $neutral-80;
   padding-top: space(3x);
 }
 
-.lib-tab-panel:not([disabled]):focus
+.bsds-tab-panel:not([disabled]):focus
 {
   @include focus-default;
 }

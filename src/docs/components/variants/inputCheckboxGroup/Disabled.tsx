@@ -5,7 +5,7 @@ import Example from '../../../shared/components/Example';
 const Disabled = (): JSX.Element => {
   return (
     <Example>
-      <div className="lib-form-control">
+      <div className="bsds-form-control">
         <Fieldset legend="Disabled checkbox group" disabled>
           <InputCheckbox label="Checkbox 1" defaultChecked />
           <InputCheckbox label="Checkbox 2" />

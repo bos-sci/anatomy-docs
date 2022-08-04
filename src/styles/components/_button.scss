@@ -1,4 +1,4 @@
-.lib-button
+.bsds-button
 {
   @include button-default;
 
@@ -29,7 +29,7 @@
 // NOTE: these will need to be updated if we modify the link mixins
 //
 
-a[class*="lib-button"]
+a[class*="bsds-button"]
 {
   text-decoration: none;
 
@@ -41,8 +41,8 @@ a[class*="lib-button"]
   }
 }
 
-a.lib-button,
-a.lib-button-subtle
+a.bsds-button,
+a.bsds-button-subtle
 {
   &:visited
   {
@@ -50,8 +50,8 @@ a.lib-button-subtle
   }
 }
 
-a.lib-button-assertive,
-a.lib-button-ghost
+a.bsds-button-assertive,
+a.bsds-button-ghost
 {
   &:visited
   {

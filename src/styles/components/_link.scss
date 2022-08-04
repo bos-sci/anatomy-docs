@@ -1,4 +1,4 @@
-.lib-link
+.bsds-link
 {
   @include link-default;
 
@@ -22,7 +22,7 @@
     @include button-default;
     text-decoration: none;
 
-    .lib-link-cta-icon
+    .bsds-link-cta-icon
     {
       margin-left: space(md);
       width: $ffs-body-assertive;
@@ -36,7 +36,7 @@
 // NOTE: these will need to be updated if we modify the link mixins
 //
 
-button[class*="lib-link"]
+button[class*="bsds-link"]
 {
   border: 0;
   padding: 0;
@@ -52,7 +52,7 @@ button[class*="lib-link"]
   }
 }
 
-button.lib-link
+button.bsds-link
 {
   &:not([disabled]):hover,
   &:not([disabled]):active
@@ -61,7 +61,7 @@ button.lib-link
   }
 }
 
-button.lib-link-subtle
+button.bsds-link-subtle
 {
   &:not([disabled]):hover,
   &:not([disabled]):active
@@ -70,7 +70,7 @@ button.lib-link-subtle
   }
 }
 
-button.lib-link-ghost
+button.bsds-link-ghost
 {
   &:not([disabled]):hover,
   &:not([disabled]):active

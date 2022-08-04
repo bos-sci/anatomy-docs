@@ -2,14 +2,14 @@
 @import "/src/styles/base/base";
 @import "/src/styles/utilities/utilities";
 
-.lib-nav-wizard
+.bsds-nav-wizard
 {
   position: relative;
   padding: space(4x);
   background-color: $neutral-100;
   box-shadow: $box-shadow-tertiary;
 
-  .lib-nav-wizard-header
+  .bsds-nav-wizard-header
   {
     display: grid;
     grid-template-columns: 1fr;
@@ -20,27 +20,27 @@
       'description';
   }
 
-  .lib-nav-back
+  .bsds-nav-back
   {
     grid-area: back;
     justify-self: start;
     @include font-size($fs-body-subtle);
   }
 
-  .lib-nav-breadcrumb
+  .bsds-nav-breadcrumb
   {
     grid-area: breadcrumb;
     margin-top: space(4x);
     @include font-size($fs-body-subtle);
   }
 
-  .lib-nav-title
+  .bsds-nav-title
   {
     grid-area: title;
     margin-top: space(2x);
   }
 
-  .lib-nav-description
+  .bsds-nav-description
   {
     grid-area: description;
     margin-top: space(3x);
@@ -52,21 +52,21 @@
     bottom: 0;
   }
 
-  .lib-nav-wizard-menu
+  .bsds-nav-wizard-menu
   {
     margin-top: space(4x);
     border-top: space(xs) solid $border-color-subtle;
     padding-top: space(4x);
   }
 
-  .lib-nav
+  .bsds-nav
   {
     display: block;
     margin-top: 0;
     list-style: none;
     padding: 0;
 
-    &.lib-nav-active-list
+    &.bsds-nav-active-list
     {
       display: grid;
       grid-template-columns: 1fr;
@@ -74,36 +74,36 @@
       gap: space(2x) space(4x);
     }
 
-    &:not(.lib-nav-active-list)
+    &:not(.bsds-nav-active-list)
     {
-      & > .lib-nav-item:not(.lib-nav-item-parent),
-      & > .lib-nav-item-parent > .lib-nav-link
+      & > .bsds-nav-item:not(.bsds-nav-item-parent),
+      & > .bsds-nav-item-parent > .bsds-nav-link
       {
         display: none;
       }
     }
   }
 
-  .lib-nav-item,
-  .lib-nav-item-parent
+  .bsds-nav-item,
+  .bsds-nav-item-parent
   {
     margin-top: 0;
   }
 
-  .lib-nav-item-parent
+  .bsds-nav-item-parent
   {
-    & > .lib-nav-link
+    & > .bsds-nav-link
     {
       display: flex;
       padding: 0;
 
-      & > .lib-nav-link-text,
-      & > .lib-nav-link-addon
+      & > .bsds-nav-link-text,
+      & > .bsds-nav-link-addon
       {
         padding: space(3x);
       }
 
-      & > .lib-nav-link-addon
+      & > .bsds-nav-link-addon
       {
         display: flex;
         justify-content: center;
@@ -117,12 +117,12 @@
       {
         text-decoration: none;
 
-        & > .lib-nav-link-text
+        & > .bsds-nav-link-text
         {
           border-right: 0;
         }
 
-        & > .lib-nav-link-addon
+        & > .bsds-nav-link-addon
         {
           color: $neutral-100;
           background-color: $action-primary-40;
@@ -131,7 +131,7 @@
     }
   }
 
-  .lib-nav-link
+  .bsds-nav-link
   {
     display: flex;
     justify-content: space-between;
@@ -156,7 +156,7 @@
     }
   }
 
-  .lib-nav-link-back
+  .bsds-nav-link-back
   {
     justify-content: flex-start;
     padding-left: 0;
@@ -172,11 +172,11 @@
 
 @media (min-width: $lg)
 {
-  .lib-nav-wizard
+  .bsds-nav-wizard
   {
     padding: space(6x) space(8x);
 
-    .lib-nav-wizard-header
+    .bsds-nav-wizard-header
     {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -187,26 +187,26 @@
       text-align: center;
     }
 
-    .lib-nav-breadcrumb
+    .bsds-nav-breadcrumb
     {
       margin-top: 0;
     }
 
-    .lib-nav-wizard-menu
+    .bsds-nav-wizard-menu
     {
       border-top: 0;
       padding-top: 0;
     }
 
-    .lib-nav
+    .bsds-nav
     {
-      &.lib-nav-active-list
+      &.bsds-nav-active-list
       {
         grid-template-columns: repeat(3, 1fr);
 
         &.has-one-col
         {
-          .lib-nav-item
+          .bsds-nav-item
           {
             grid-column-start: 2;
           }
@@ -221,7 +221,7 @@
       }
     }
 
-    .lib-nav-item-overflow
+    .bsds-nav-item-overflow
     {
       grid-column-start: 1;
       grid-column-end: span 3;

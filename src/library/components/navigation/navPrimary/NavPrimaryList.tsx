@@ -20,22 +20,22 @@ const NavPrimaryList = (props: Props) => {
   return (
     <div
       className={
-        'lib-nav-menu-panel'
+        'bsds-nav-menu-panel'
         + (parent?.altLinkText && props.depth === 1 ? ' has-header' : '')
-        + ((props.history.length === 0 && props.depth === 0) || ((parent && props.history[props.history.length - 1]?.node === parent)) ? ' lib-nav-active-list' : '')
-        + (parent && Array.from(props.history, h => h.node).includes(parent) ? ' lib-nav-list-history' : '')
+        + ((props.history.length === 0 && props.depth === 0) || ((parent && props.history[props.history.length - 1]?.node === parent)) ? ' bsds-nav-active-list' : '')
+        + (parent && Array.from(props.history, h => h.node).includes(parent) ? ' bsds-nav-list-history' : '')
       }
     >
       {parent?.altLinkText && props.depth === 1 &&
-        <div className="lib-nav-menu-panel-header">
-          <p className="lib-nav-menu-panel-title">{ parent.text }</p>
+        <div className="bsds-nav-menu-panel-header">
+          <p className="bsds-nav-menu-panel-title">{ parent.text }</p>
           <p className="body-subtle">{ parent.description }</p>
-          <Link to={parent.altTo} href={parent.altHref} className="body-subtle lib-nav-menu-panel-header-link">
+          <Link to={parent.altTo} href={parent.altHref} className="body-subtle bsds-nav-menu-panel-header-link">
             {parent.altLinkText}
           </Link>
         </div>
       }
-      <ul className="lib-nav" aria-describedby={parent?.id}>
+      <ul className="bsds-nav" aria-describedby={parent?.id}>
         {props.navItems.map((navItem, i) => {
           if (navItem.children) {
             // Parent Button
@@ -59,8 +59,8 @@ const NavPrimaryList = (props: Props) => {
 
         {/* Bottom Link */}
         {parent?.altLinkText && props.depth !== 1  &&
-          <li key={parent.altLinkText + props.depth} className="lib-nav-item">
-            <Link href={parent.altHref} to={parent.altTo} className="lib-nav-link-see-all">{parent.altLinkText}</Link>
+          <li key={parent.altLinkText + props.depth} className="bsds-nav-item">
+            <Link href={parent.altHref} to={parent.altTo} className="bsds-nav-link-see-all">{parent.altLinkText}</Link>
           </li>
         }
       </ul>

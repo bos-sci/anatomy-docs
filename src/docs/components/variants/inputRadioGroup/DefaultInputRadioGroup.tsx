@@ -12,7 +12,7 @@ const DefaultInputRadioGroup = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="lib-form-control">
+      <div className="bsds-form-control">
         <RadioGroup legend="Legend">
           <InputRadio
             label="Radio 1"

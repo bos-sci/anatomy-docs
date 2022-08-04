@@ -47,10 +47,10 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
   }, [children, accordionPanels.length]);
 
   return (
-    <div className="lib-accordion">
+    <div className="bsds-accordion">
       {accordionPanels.map((accordionPanel, index) => (
         <>
-          <HeadingElement headingLevel={headingLevel} className="lib-accordion-heading">
+          <HeadingElement headingLevel={headingLevel} className="bsds-accordion-heading">
             <AccordionHeading
               key={`${accordionPanelId + index}Heading`}
               accordionHeading={accordionPanel.props.accordionHeading}
@@ -64,7 +64,7 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
           <div
             key={accordionPanelId + index}
             id={accordionPanelId + index}
-            className="lib-accordion-panel"
+            className="bsds-accordion-panel"
             hidden={index !== expandedPanel}
           >
             { accordionPanel }

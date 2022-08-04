@@ -12,13 +12,13 @@ const Stoplight = ({ children, lightColor, textColor, size }: Props): JSX.Elemen
   let lightColorClasses = '';
   switch (lightColor) {
     case 'red':
-      lightColorClasses = 'lib-stoplight-red'
+      lightColorClasses = 'bsds-stoplight-red'
       break;
     case 'yellow':
-      lightColorClasses = 'lib-stoplight-yellow'
+      lightColorClasses = 'bsds-stoplight-yellow'
       break;
     case 'green':
-      lightColorClasses = 'lib-stoplight-green'
+      lightColorClasses = 'bsds-stoplight-green'
       break;
   }
 
@@ -35,7 +35,7 @@ const Stoplight = ({ children, lightColor, textColor, size }: Props): JSX.Elemen
   let textColorClasses = '';
   switch (textColor) {
     case 'ghost':
-      textColorClasses = ' lib-stoplight-ghost'
+      textColorClasses = ' bsds-stoplight-ghost'
       break;
   }
 

@@ -26,22 +26,22 @@ const NavPrimaryListParent = (props: Props) => {
 
   const isActive = Array.from(props.history, h => h.node).includes(props.navItem);
   return (
-    <li className="lib-nav-item-parent">
+    <li className="bsds-nav-item-parent">
       <Button
         id={props.navItem.id}
         variant="subtle"
         className={
-          'lib-nav-link'
+          'bsds-nav-link'
           + (isActive ? ' active' : '')
         }
         aria-expanded={isActive}
         onClick={updateHistory}
       >
-        <div className="lib-nav-link-text">
+        <div className="bsds-nav-link-text">
           {props.navItem.text}
         </div>
         {props.navItem.description &&
-          <div className="lib-nav-link-description">
+          <div className="bsds-nav-link-description">
             {props.navItem.description}
           </div>
         }

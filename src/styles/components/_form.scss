@@ -1,9 +1,9 @@
-.lib-form
+.bsds-form
 {
   width: 100%;
 }
 
-.lib-fieldset
+.bsds-fieldset
 {
   display: flex;
   flex-direction: column;
@@ -12,19 +12,19 @@
   padding-right: 0;
 }
 
-.lib-legend
+.bsds-legend
 {
   margin: 0; // TODO: look at this after we rip out bootstrap
   font-family: $font-family-base-heavy;
   @include font-size($fs-base);
 }
 
-.lib-input
+.bsds-input
 {
   width: 100%;
 }
 
-.lib-input-error
+.bsds-input-error
 {
   display: flex;
   align-items: center;
@@ -46,21 +46,21 @@
   }
 }
 
-.lib-input-help-text
+.bsds-input-help-text
 {
   margin: space(sm) 0 0 0;
   @include font-size($fs-body-subtle);
   color: $neutral-40;
 }
 
-.lib-form-control
+.bsds-form-control
 {
   margin-top: space(4x);
 }
 
 @media (min-width: 992px)
 {
-  .lib-input-error
+  .bsds-input-error
   {
     &::before
     {

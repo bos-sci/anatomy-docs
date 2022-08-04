@@ -26,16 +26,16 @@ const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholde
   }, []);
 
   return (
-    <form className="lib-form-search" role="search" aria-label="site search">
-      <div className="lib-input">
-        <label className="lib-search">
+    <form className="bsds-form-search" role="search" aria-label="site search">
+      <div className="bsds-input">
+        <label className="bsds-search">
           {isLabelVisible &&
-            <div className="lib-input-text-label">
+            <div className="bsds-input-text-label">
               { label }
             </div>
           }
-          <div className="lib-search-control">
-            <div className="lib-input-search">
+          <div className="bsds-search-control">
+            <div className="bsds-input-search">
               <input
                 ref={node => {
                   if (node) {
@@ -48,7 +48,7 @@ const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholde
                   }
                 }}
                 type="search"
-                className="lib-input-text-input"
+                className="bsds-input-text-input"
                 placeholder={placeholder || 'Search'}
                 aria-label="search"
                 value={value}
@@ -58,10 +58,10 @@ const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholde
               {/* TODO: consider pulling these into an action mixin */}
               {value &&
                 <button
-                  className="lib-search-clear"
+                  className="bsds-search-clear"
                   aria-label="clear search text"
                   onClick={() => setValue('')}>
-                  <IconClose className="lib-icon-lg" />
+                  <IconClose className="bsds-icon-lg" />
                 </button>
               }
             </div>
@@ -70,7 +70,7 @@ const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholde
             </Button>
           </div>
         </label>
-        {helpText && <p id={helpTextId} className="lib-input-help-text">{ helpText }</p>}
+        {helpText && <p id={helpTextId} className="bsds-input-help-text">{ helpText }</p>}
       </div>
     </form>
   );

@@ -22,10 +22,10 @@ const Fieldset = ({ legend, errorText, helpText, children, ...fieldsetAttrs }: P
   }, []);
 
   return (
-    <fieldset className="lib-fieldset" aria-describedby={helpTextId ? helpTextId : ''} {...fieldsetAttrs} >
-      <legend className="lib-legend">{ legend }</legend>
-      { errorText && <p id={errorTextId} className="lib-input-error">{ errorText }</p> }
-      { helpText && <p id={helpTextId} className="lib-input-help-text">{ helpText }</p> }
+    <fieldset className="bsds-fieldset" aria-describedby={helpTextId ? helpTextId : ''} {...fieldsetAttrs} >
+      <legend className="bsds-legend">{ legend }</legend>
+      { errorText && <p id={errorTextId} className="bsds-input-error">{ errorText }</p> }
+      { helpText && <p id={helpTextId} className="bsds-input-help-text">{ helpText }</p> }
       { children }
     </fieldset>
   );

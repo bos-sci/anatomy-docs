@@ -5,7 +5,7 @@ import Example from '../../../shared/components/Example';
 const WithHelp = (): JSX.Element => {
   return (
     <Example>
-      <div className="lib-form-control">
+      <div className="bsds-form-control">
         <Fieldset
           legend="Legend"
           helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three.">

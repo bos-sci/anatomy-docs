@@ -1,11 +1,11 @@
 $outer-circle-diameter: $ffs-body-assertive;
 $inner-circle-diameter: space(md);
 
-.lib-input-radio-input
+.bsds-input-radio-input
 {
   &[aria-invalid="true"]
   {
-    + .lib-input-radio-label
+    + .bsds-input-radio-label
     {
       &::before
       {
@@ -17,7 +17,7 @@ $inner-circle-diameter: space(md);
     &:checked,
     &[aria-checked="true"]
     {
-      + .lib-input-radio-label
+      + .bsds-input-radio-label
       {
         &::before
         {
@@ -35,7 +35,7 @@ $inner-circle-diameter: space(md);
     &:focus,
     &:focus:checked
     {
-      + .lib-input-radio-label
+      + .bsds-input-radio-label
       {
         &::before
         {
@@ -46,23 +46,23 @@ $inner-circle-diameter: space(md);
   }
 }
 
-.lib-fieldset
+.bsds-fieldset
 {
-  > .lib-input:not(:first-child)
+  > .bsds-input:not(:first-child)
   {
-    .lib-input-radio
+    .bsds-input-radio
     {
       margin-top: space(2x);
     }
   }
 }
 
-.lib-input-radio
+.bsds-input-radio
 {
   display: flex;
 }
 
-.lib-input-radio-input
+.bsds-input-radio-input
 {
   position: absolute;
   box-sizing: border-box;
@@ -74,7 +74,7 @@ $inner-circle-diameter: space(md);
   -webkit-appearance: none;
   pointer-events: none;
 
-  + .lib-input-radio-label
+  + .bsds-input-radio-label
   {
     position: relative;
     vertical-align: middle;
@@ -98,7 +98,7 @@ $inner-circle-diameter: space(md);
   &:checked,
   &[aria-checked="true"]
   {
-    + .lib-input-radio-label
+    + .bsds-input-radio-label
     {
       &::before
       {
@@ -124,7 +124,7 @@ $inner-circle-diameter: space(md);
   &:focus,
   &:focus:checked
   {
-    + .lib-input-radio-label
+    + .bsds-input-radio-label
     {
       &::before
       {
@@ -135,7 +135,7 @@ $inner-circle-diameter: space(md);
 
   &:disabled
   {
-    + .lib-input-radio-label.lib-input-radio-label // TODO: lower specificity after we refactor for form groups & validation
+    + .bsds-input-radio-label.bsds-input-radio-label // TODO: lower specificity after we refactor for form groups & validation
     {
       cursor: not-allowed;
 
@@ -150,7 +150,7 @@ $inner-circle-diameter: space(md);
     &:checked,
     &[aria-checked="true"]
     {
-      + .lib-input-radio-label.lib-input-radio-label // TODO: lower specificity after we refactor for form groups & validation
+      + .bsds-input-radio-label.bsds-input-radio-label // TODO: lower specificity after we refactor for form groups & validation
       {
         &::after
         {

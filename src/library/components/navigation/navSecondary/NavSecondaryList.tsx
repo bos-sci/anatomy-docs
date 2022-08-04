@@ -15,14 +15,14 @@ interface NavListProps {
 
 const NavSecondaryList = ({ navListId, navItems, parent, activeParent, activeParentRef, setActiveParentRef, openChild }: NavListProps) => {
   return (
-    <ul id={navListId} className={`lib-nav${parent?.text === activeParent?.text ? ' lib-nav-active-list' : ''}`} role={parent?.text === activeParent?.text ? '' : 'none'}>
+    <ul id={navListId} className={`bsds-nav${parent?.text === activeParent?.text ? ' bsds-nav-active-list' : ''}`} role={parent?.text === activeParent?.text ? '' : 'none'}>
       {navItems.map((navItem, i) => {
         if (navItem.slug) {
           return (
-            <li key={`secondaryNavItem${i}`} className="lib-nav-item">
+            <li key={`secondaryNavItem${i}`} className="bsds-nav-item">
               <NavLink
                 to={navItem.slug}
-                className="lib-nav-link"
+                className="bsds-nav-link"
               >
                 {navItem.text}
               </NavLink>

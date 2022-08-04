@@ -124,23 +124,23 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
   }, [isOpen]);
 
   return (
-    <nav className="lib-nav-secondary" aria-label={texts?.navAriaLabel || 'secondary navigation'} ref={nav}>
+    <nav className="bsds-nav-secondary" aria-label={texts?.navAriaLabel || 'secondary navigation'} ref={nav}>
       <button
-        className="lib-nav-secondary-menu-trigger"
+        className="bsds-nav-secondary-menu-trigger"
         aria-expanded={isOpen}
         aria-controls={navSecondaryId}
         aria-label={texts?.menuToggleAriaLabel || 'Menu'}
         onClick={() => setIsOpen(!isOpen)}>
         { texts?.menuToggleText || 'Menu' }
       </button>
-      <div id={navSecondaryId} className={`lib-nav-secondary-menu${isOpen ? ' open' : ''}`}>
+      <div id={navSecondaryId} className={`bsds-nav-secondary-menu${isOpen ? ' open' : ''}`}>
         {activeParent &&
           <Button
             ref={backBtnRef}
-            className="lib-nav-link-back"
+            className="bsds-nav-link-back"
             variant="subtle"
             onClick={goBack}>
-            <IconChevronLeft className="lib-icon-md u-icon-left" />
+            <IconChevronLeft className="bsds-icon-md u-icon-left" />
             {texts?.backButtonText || 'Back'}
           </Button>
         }

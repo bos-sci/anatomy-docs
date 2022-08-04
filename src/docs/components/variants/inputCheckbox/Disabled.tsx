@@ -4,10 +4,10 @@ import Example from '../../../shared/components/Example';
 const Disabled = (): JSX.Element => {
   return (
     <Example>
-      <div className="lib-form-control">
+      <div className="bsds-form-control">
         <InputCheckbox label="Disabled checkbox" disabled/>
       </div>
-      <div className="lib-form-control">
+      <div className="bsds-form-control">
         <InputCheckbox label="Disabled checked checkbox" disabled defaultChecked />
       </div>
     </Example>

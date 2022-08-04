@@ -13,17 +13,17 @@ interface Props {
 
 const NavTertiary = ({ navTertiaryItems }: Props): JSX.Element => {
   return (
-    <nav className="lib-nav-tertiary" aria-label="Table of contents">
-      <h2 className="lib-nav-tertiary-title" aria-hidden="true">
+    <nav className="bsds-nav-tertiary" aria-label="Table of contents">
+      <h2 className="bsds-nav-tertiary-title" aria-hidden="true">
         On this page
       </h2>
-      <ul className="lib-nav">
+      <ul className="bsds-nav">
         {navTertiaryItems && Array.from(navTertiaryItems).map((navItem, i) => {
           return (
-            <li key={`tertiaryNavItem${i}`} className="lib-nav-item">
+            <li key={`tertiaryNavItem${i}`} className="bsds-nav-item">
               <Link
                 to={{hash: navItem.id}}
-                className="lib-nav-link">
+                className="bsds-nav-link">
                 {navItem.text}
               </Link>
             </li>

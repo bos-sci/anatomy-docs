@@ -1,4 +1,4 @@
-[class*="lib-stoplight"]
+[class*="bsds-stoplight"]
 {
   display: flex;
   align-items: center;
@@ -27,7 +27,7 @@
   }
 }
 
-.lib-stoplight
+.bsds-stoplight
 {
   &-red
   {
@@ -36,7 +36,7 @@
       background-image: url("../../assets/images/icon-stoplight-red.svg");
     }
 
-    &.lib-stoplight-ghost
+    &.bsds-stoplight-ghost
     {
       &::before
       {

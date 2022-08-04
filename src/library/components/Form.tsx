@@ -13,7 +13,7 @@ const Form = ({ children, onInvalid, ...formAttrs }: Props): JSX.Element => {
     }
   }
 
-  return <form className="lib-form" onInvalid={handleInvalid} {...formAttrs}>{children}</form>;
+  return <form className="bsds-form" onInvalid={handleInvalid} {...formAttrs}>{children}</form>;
 }
 
 export default Form;

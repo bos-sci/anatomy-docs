@@ -1,8 +1,8 @@
 $icon-size: 1em;
 
-.lib-dropdown
+.bsds-dropdown
 {
-  .lib-dropdown-trigger
+  .bsds-dropdown-trigger
   {
     position: relative;
     padding-right: calc(space(lg) + $icon-size + space(3x)); // gap + icon width + padding
@@ -35,7 +35,7 @@ $icon-size: 1em;
     }
   }
 
-  .lib-dropdown-menu
+  .bsds-dropdown-menu
   {
     position: absolute;
     margin: 0;
@@ -45,13 +45,13 @@ $icon-size: 1em;
     box-shadow: $box-shadow-secondary;
     z-index: 1000;
 
-    .lib-dropdown-item
+    .bsds-dropdown-item
     {
       margin-top: 0;
     }
 
-    .lib-button,
-    .lib-link
+    .bsds-button,
+    .bsds-link
     {
       display: block;
       border: 0;
@@ -67,7 +67,7 @@ $icon-size: 1em;
       }
     }
 
-    .lib-button
+    .bsds-button
     {
       &:hover
       {
@@ -81,7 +81,7 @@ $icon-size: 1em;
       }
     }
 
-    .lib-link
+    .bsds-link
     {
       &:hover
       {
