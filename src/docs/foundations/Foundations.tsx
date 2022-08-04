@@ -95,23 +95,6 @@ const Foundations = (): JSX.Element => {
           navSecondaryItems={navItems}
           navTertiaryItems={headings}>
           <Markdown markdown={foundationData?.content || ''} headingOffset={1} />
-          {(foundationData?.usage) &&
-            <h2 id="usage">Usage</h2>
-          }
-          { foundationData.usage && <Markdown markdown={ foundationData.usage } />}
-          {(foundationData.usageDo || foundationData.usageDont) &&
-            <div className="component-lists">
-              <div className="component-list-block">
-                <h3>Do:</h3>
-                <Markdown markdown={foundationData.usageDo || ''} />
-              </div>
-              <div className="component-list-block">
-                <h3>Don't:</h3>
-                <Markdown markdown={foundationData.usageDont || ''} />
-              </div>
-            </div>
-          }
-          <Markdown markdown={foundationData?.secondaryContent || ''} headingOffset={1} />
         </PageTemplate>
       </Layout>
     );

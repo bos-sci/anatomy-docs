@@ -201,12 +201,12 @@ const Components = (): JSX.Element => {
           }
           { componentData.usage && <Markdown markdown={ componentData.usage } />}
           {(componentData.usageDo || componentData.usageDont) &&
-            <div className="component-lists">
-              <div className="component-list-block">
+            <div className="twoColumn-lists">
+              <div className="twoColumn-list-block">
                 <h3>Do:</h3>
                 <Markdown markdown={componentData.usageDo || ''} />
               </div>
-              <div className="component-list-block">
+              <div className="twoColumn-list-block">
                 <h3>Don't:</h3>
                 <Markdown markdown={componentData.usageDont || ''} />
               </div>
@@ -223,12 +223,12 @@ const Components = (): JSX.Element => {
           }
           { componentData.contentGuidelines && <Markdown markdown={ componentData.contentGuidelines } />}
           {(componentData.contentGuidelinesDo || componentData.contentGuidelinesDont) &&
-            <div className="component-lists">
-              <div className="component-list-block">
+            <div className="twoColumn-lists">
+              <div className="twoColumn-list-block">
                 <h3>Do:</h3>
                 <Markdown markdown={componentData.contentGuidelinesDo || ''} />
               </div>
-              <div className="component-list-block">
+              <div className="twoColumn-list-block">
                 <h3>Don't:</h3>
                 <Markdown markdown={componentData.contentGuidelinesDont || ''} />
               </div>

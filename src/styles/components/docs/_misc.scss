@@ -39,21 +39,21 @@ code
   word-wrap: break-word;
 }
 
-.component-lists
+.twoColumn-lists
 {
   display: flex;
   justify-content: space-between;
   flex-flow: column wrap;
   column-gap: space(4x);
 
-  .component-list-block
+  .twoColumn-list-block
   {
     flex: 1;
   }
 }
 
 @media (min-width: 992px) {
-  .component-lists {
+  .twoColumn-lists {
     flex-flow: row wrap;
   }
 } 
