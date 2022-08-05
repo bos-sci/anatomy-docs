@@ -248,6 +248,7 @@ $menuPadding: space(md) 0;
           &[aria-expanded="true"]
           {
             text-decoration: none;
+            background: initial;
 
             &::before
             {

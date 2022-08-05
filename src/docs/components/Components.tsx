@@ -9,7 +9,6 @@ import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
 import PageTemplate from '../shared/components/PageTemplate';
 import Layout from '../shared/components/Layout';
-import './Components.scss';
 import { useLocation } from 'react-router-dom';
 import { ComponentContext } from './ComponentsController';
 
@@ -202,12 +201,12 @@ const Components = (): JSX.Element => {
           }
           { componentData.usage && <Markdown markdown={ componentData.usage } />}
           {(componentData.usageDo || componentData.usageDont) &&
-            <div className="component-lists">
-              <div className="component-list-block">
+            <div className="two-column-lists">
+              <div className="two-column-list-block">
                 <h3>Do:</h3>
                 <Markdown markdown={componentData.usageDo || ''} />
               </div>
-              <div className="component-list-block">
+              <div className="two-column-list-block">
                 <h3>Don't:</h3>
                 <Markdown markdown={componentData.usageDont || ''} />
               </div>
@@ -224,12 +223,12 @@ const Components = (): JSX.Element => {
           }
           { componentData.contentGuidelines && <Markdown markdown={ componentData.contentGuidelines } />}
           {(componentData.contentGuidelinesDo || componentData.contentGuidelinesDont) &&
-            <div className="component-lists">
-              <div className="component-list-block">
+            <div className="two-column-lists">
+              <div className="two-column-list-block">
                 <h3>Do:</h3>
                 <Markdown markdown={componentData.contentGuidelinesDo || ''} />
               </div>
-              <div className="component-list-block">
+              <div className="two-column-list-block">
                 <h3>Don't:</h3>
                 <Markdown markdown={componentData.contentGuidelinesDont || ''} />
               </div>
