@@ -58,13 +58,13 @@ main
   }
 }
 
-.page-header
+.docs-page-header
 {
   grid-area: intro;
   width: 100%;
 }
 
-.page-content
+.docs-page-content
 {
   grid-area: page-content;
   width: 100%;
@@ -84,7 +84,7 @@ main
   padding: space(4x);
 }
 
-.footer-logo
+.docs-footer-logo
 {
   width: space(12x);
 }
@@ -123,7 +123,7 @@ main
       margin-top: space(4x);
     }
 
-    .nav-tertiary
+    .bsds-nav-tertiary
     {
       margin-top: space(lg);
       width: 12rem;

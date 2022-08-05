@@ -1,9 +1,9 @@
-.title
+.docs-title
 {
   margin-top: 0;
 }
 
-.datestamp
+.docs-datestamp
 {
   margin-top: 0;
   @include font-size($fs-body-subtle);
@@ -12,7 +12,7 @@
   dd
   {
     display: inline;
-    font-weight: $font-weight-regular; 
+    font-weight: $font-weight-regular;
   }
 
   dd
@@ -22,7 +22,7 @@
   }
 }
 
-.table-align-top
+.docs-table-align-top
 {
   table
   {
@@ -33,34 +33,34 @@
   }
 }
 
-code 
+code
 {
   color: $code-snippet;
   word-wrap: break-word;
 }
 
-.two-column-lists
+.docs-two-column-lists
 {
   display: flex;
   justify-content: space-between;
   flex-flow: column wrap;
   column-gap: space(4x);
 
-  .two-column-list-block
+  .docs-two-column-list-block
   {
     flex: 1;
   }
 }
 
-@media (min-width: 992px) 
+@media (min-width: 992px)
 {
-  .two-column-lists 
+  .docs-two-column-lists
   {
     flex-flow: row wrap;
   }
-} 
+}
 
-.no-wrap 
+.u-no-wrap
 {
   white-space: nowrap;
 }

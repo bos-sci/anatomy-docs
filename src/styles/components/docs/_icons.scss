@@ -1,23 +1,23 @@
-.icon-decorative,
-.icon-system
+.docs-icon-decorative,
+.docs-icon-system
 {
   display: flex;
 }
 
-.icon-decorative > img
+.docs-icon-decorative > img
 {
   width: space(8x);
   height: space(8x);
 }
 
-.icon-system > img
+.docs-icon-system > img
 {
   width: $ffs-body-assertive;
   height: $ffs-body-assertive;
 }
 
-.code-do,
-.code-dont
+.docs-code-do,
+.docs-code-dont
 {
   position: relative;
   display: block;
@@ -43,12 +43,12 @@
   }
 }
 
-.code-do::before
+.docs-code-do::before
 {
   background-image: url("../../../assets/images/icon-check-circle.svg");
 }
 
-.code-dont::before
+.docs-code-dont::before
 {
   background-image: url("../../../assets/images/icon-times-circle.svg");
 }

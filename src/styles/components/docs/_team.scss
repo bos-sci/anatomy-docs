@@ -1,4 +1,4 @@
-.team-member-card
+.docs-team-member-card
 {
   display: flex;
   align-items: center;
@@ -23,18 +23,18 @@
     border-radius: 50%;
   }
 
-  .team-member
+  .docs-team-member
   {
     margin-left: space(4x);
   }
 
-  .team-member-name
+  .docs-team-member-name
   {
     margin: 0;
     font-family: $font-family-base-heavy;
   }
 
-  .team-member-title
+  .docs-team-member-title
   {
     margin: 0;
   }

@@ -36,10 +36,10 @@ const PageTemplate = (props: Props) => {
         navItems={props.navSecondaryItems} />
     }
       <main id="mainContent">
-        <div className="page-header">
-          <div className="metadata">
-            <h1 className="title">{ props.name }</h1>
-            <dl className="datestamp">
+        <div className="docs-page-header">
+          <div className="docs-metadata">
+            <h1 className="docs-title">{ props.name }</h1>
+            <dl className="docs-datestamp">
               <dt>Last Updated:</dt>
               <dd>{ props.lastUpdated ? new Date(props.lastUpdated).toLocaleDateString() : 'Draft' }</dd>
             </dl>
@@ -47,7 +47,7 @@ const PageTemplate = (props: Props) => {
           <Markdown markdown={ props.leadParagraph } className="body-assertive" />
         </div>
         <NavTertiary navTertiaryItems={ props.navTertiaryItems } />
-        <div className="page-content">
+        <div className="docs-page-content">
           { props.children }
         </div>
       </main>
