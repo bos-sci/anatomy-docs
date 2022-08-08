@@ -9,6 +9,7 @@
         "types": [
             "cypress",
             "cypress-axe",
+            "cypress-real-events",
             "node"
         ]
     }

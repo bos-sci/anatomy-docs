@@ -21,5 +21,4 @@ import "./commands";
 
 // Cypress-axe and cypress-real-events commands
 import "cypress-axe";
-import "cypress-real-events";
-
+import "cypress-real-events/support";
