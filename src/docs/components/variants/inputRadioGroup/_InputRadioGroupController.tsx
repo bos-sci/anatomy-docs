@@ -5,7 +5,7 @@ import WithError from './WithError';
 import WithHelpError from './WithHelpError';
 import Disabled from './Disabled';
 
-const InputRadioVariants = ({ variantId }: VariantProps): JSX.Element => {
+const InputRadioController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
     case 'inputRadioGroupWithHelpText':
@@ -24,4 +24,4 @@ const InputRadioVariants = ({ variantId }: VariantProps): JSX.Element => {
   }
 }
 
-export default InputRadioVariants;
+export default InputRadioController;

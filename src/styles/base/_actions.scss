@@ -10,6 +10,7 @@
       background: $action-primary-20;
       color: $neutral-100;
       text-decoration: none;
+      cursor: pointer;
     }
   }
 }
@@ -62,6 +63,7 @@
   font-family: $font-family-base-heavy;
   font-size: $ffs-body-assertive;
   text-align: center;
+  line-height: inherit;
 
   .ads-button-text
   {
@@ -88,7 +90,7 @@
 {
   @include link-default;
   border-color: transparent;
-  padding: 0;
+  padding: space(lg) space(3x) 0.6875rem;
   text-decoration: none;
   background: transparent;
   @include button-focus;
@@ -96,22 +98,15 @@
 
   &:not([disabled])
   {
-    &:hover,
     &:active
     {
       text-decoration: underline;
-      background: transparent;
     }
 
     &:hover
     {
       @include link-hover;
-      color: $action-primary-40;
-    }
-
-    &:active
-    {
-      color: $neutral-00;
+      color: $neutral-100;
     }
   }
 

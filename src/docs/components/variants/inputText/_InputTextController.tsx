@@ -8,8 +8,7 @@ import Disabled from './Disabled';
 import Readonly from './Readonly';
 import Required from './Required';
 
-
-const InputTextVariants = ({ variantId }: VariantProps): JSX.Element => {
+const InputTextController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
     case 'inputTextWithPlaceholderText':
@@ -34,4 +33,4 @@ const InputTextVariants = ({ variantId }: VariantProps): JSX.Element => {
   }
 }
 
-export default InputTextVariants;
+export default InputTextController;

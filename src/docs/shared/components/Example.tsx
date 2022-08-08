@@ -1,17 +1,33 @@
 import { ReactNode } from 'react';
+import { useLocation } from 'react-router';
 
 interface Props {
   isDarkTheme?: boolean;
+  isFlush?: boolean;
   isFlex?: boolean;
   children: ReactNode;
 }
 
-const Example = ({ isDarkTheme = false, isFlex = false, children }: Props) => {
-  return (
-    <div className={`demo-example${isDarkTheme ? ' dark' : ''}${isFlex ? ' demo-example-flex' : ''}`}>
-      { children }
-    </div>
-  );
+const Example = (props: Props): JSX.Element => {
+
+  // TODO: Should we determine if example is in external page via location (.../example/...) or through setting context in App routing (pass down isExternal props from app -> preview -> example)?
+  const location = useLocation();
+  const pathArray = location.pathname.split('/');
+  const isExternal = pathArray[pathArray.length - 2] === 'example';
+
+  if (isExternal) {
+    if (props.isFlush) {
+      return <>{props.children}</>
+    } else {
+      return <div className="demo-standalone">{props.children}</div>;
+    }
+  } else {
+    return (
+      <div className={`demo-example${props.isDarkTheme ? ' dark' : ''}${props.isFlex ? ' demo-example-flex' : ''}`}>
+        { props.children }
+      </div>
+    );
+  }
 }
 
 export default Example;

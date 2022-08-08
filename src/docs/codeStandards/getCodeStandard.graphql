@@ -3,6 +3,9 @@ query getCodeStandard($id: String!, $preview: Boolean) {
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt

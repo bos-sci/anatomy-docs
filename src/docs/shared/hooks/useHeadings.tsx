@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { NavItemTertiary } from '../../../library/components/navigation/navTertiary/NavTertiary';
 
 /*
@@ -7,28 +7,41 @@ import { NavItemTertiary } from '../../../library/components/navigation/navTerti
 */
 const useHeadings = (depth = 1): NavItemTertiary[] => {
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
-
-  const targetNode = document.querySelector('.page-content');
+  const [observer, setObserver] = useState<MutationObserver | null>(null);
+  const [targetNode, setTargetNode] = useState<Element | null>(null);
 
   useEffect(() => {
-    if (targetNode) {
-      const getHeadings = () => {
-        const selector = Array.from(Array(depth)).map((_val, i) => '.page-content h' + (i + 2) + ':not(.nav-tertiary-title)').join(', ');
-        setHeadings(
-          Array.from(document.querySelectorAll(selector)).map(heading => {
-            return {
-              id: heading.id as string,
-              text: heading.textContent as string
-            };
-          })
-        );
-      }
+    setTargetNode(document.querySelector('.page-content'));
+  }, []);
 
-      const config = { attributes: true, childList: true, subtree: true };
-      const observer = new MutationObserver(getHeadings);
+  const getHeadings = useCallback(() => {
+    const selector = Array.from(Array(depth)).map((_val, i) => '.page-content h' + (i + 2) + ':not(.nav-tertiary-title)').join(', ');
+    setHeadings(
+      Array.from(document.querySelectorAll(selector)).map(heading => {
+        return {
+          id: heading.id as string,
+          text: heading.textContent as string
+        };
+      })
+    );
+  }, [depth]);
+
+  useEffect(() => {
+    const obs = new MutationObserver(getHeadings);
+    setObserver(obs);
+  }, [getHeadings, setObserver]);
+
+  useEffect(() => {
+    const config = { attributes: false, childList: true, subtree: true };
+    if (targetNode && observer) {
       observer.observe(targetNode, config);
     }
-  }, [targetNode, depth]);
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    }
+  }, [targetNode, depth, observer]);
 
   return headings;
 }

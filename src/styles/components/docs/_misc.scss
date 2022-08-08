@@ -12,7 +12,7 @@
   dd
   {
     display: inline;
-    font-weight: $font-weight-regular; // TODO: delete this when we rip out bootstrap
+    font-weight: $font-weight-regular; 
   }
 
   dd
@@ -31,4 +31,36 @@
       vertical-align: top;
     }
   }
+}
+
+code 
+{
+  color: $code-snippet;
+  word-wrap: break-word;
+}
+
+.two-column-lists
+{
+  display: flex;
+  justify-content: space-between;
+  flex-flow: column wrap;
+  column-gap: space(4x);
+
+  .two-column-list-block
+  {
+    flex: 1;
+  }
+}
+
+@media (min-width: 992px) 
+{
+  .two-column-lists 
+  {
+    flex-flow: row wrap;
+  }
+} 
+
+.no-wrap 
+{
+  white-space: nowrap;
 }

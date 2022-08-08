@@ -220,6 +220,7 @@ export type CodeStandard = Entry & {
   leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<CodeStandardLinkingCollections>;
   name?: Maybe<Scalars['String']>;
+  pageProperties?: Maybe<PageProperties>;
   sys: Sys;
 };
 
@@ -245,6 +246,13 @@ export type CodeStandardLinkedFromArgs = {
 /** Documentation regarding code standards. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/codeStandard) */
 export type CodeStandardNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation regarding code standards. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/codeStandard) */
+export type CodeStandardPagePropertiesArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type CodeStandardCollection = {
@@ -280,6 +288,8 @@ export type CodeStandardFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageProperties?: InputMaybe<CfPagePropertiesNestedFilter>;
+  pageProperties_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -317,11 +327,14 @@ export type Component = Entry & {
   contentGuidelinesDo?: Maybe<Scalars['String']>;
   contentGuidelinesDont?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
+  group?: Maybe<Scalars['String']>;
   interactions?: Maybe<Scalars['String']>;
   leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ComponentLinkingCollections>;
   modifiersCollection?: Maybe<ComponentModifiersCollection>;
   name?: Maybe<Scalars['String']>;
+  pageProperties?: Maybe<PageProperties>;
+  shouldLinkToExamples?: Maybe<Scalars['Boolean']>;
   statesCollection?: Maybe<ComponentStatesCollection>;
   stylesCollection?: Maybe<ComponentStylesCollection>;
   sys: Sys;
@@ -357,6 +370,12 @@ export type ComponentContentGuidelinesDontArgs = {
 
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
+export type ComponentGroupArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentInteractionsArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
@@ -385,6 +404,19 @@ export type ComponentModifiersCollectionArgs = {
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
+export type ComponentPagePropertiesArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
+export type ComponentShouldLinkToExamplesArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -470,6 +502,13 @@ export type ComponentFilter = {
   contentGuidelines_not_contains?: InputMaybe<Scalars['String']>;
   contentGuidelines_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  group?: InputMaybe<Scalars['String']>;
+  group_contains?: InputMaybe<Scalars['String']>;
+  group_exists?: InputMaybe<Scalars['Boolean']>;
+  group_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  group_not?: InputMaybe<Scalars['String']>;
+  group_not_contains?: InputMaybe<Scalars['String']>;
+  group_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   interactions?: InputMaybe<Scalars['String']>;
   interactions_contains?: InputMaybe<Scalars['String']>;
   interactions_exists?: InputMaybe<Scalars['Boolean']>;
@@ -492,6 +531,11 @@ export type ComponentFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageProperties?: InputMaybe<CfPagePropertiesNestedFilter>;
+  pageProperties_exists?: InputMaybe<Scalars['Boolean']>;
+  shouldLinkToExamples?: InputMaybe<Scalars['Boolean']>;
+  shouldLinkToExamples_exists?: InputMaybe<Scalars['Boolean']>;
+  shouldLinkToExamples_not?: InputMaybe<Scalars['Boolean']>;
   statesCollection_exists?: InputMaybe<Scalars['Boolean']>;
   stylesCollection_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
@@ -667,8 +711,12 @@ export type ComponentModifiersCollection = {
 };
 
 export enum ComponentOrder {
+  GroupAsc = 'group_ASC',
+  GroupDesc = 'group_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
+  ShouldLinkToExamplesAsc = 'shouldLinkToExamples_ASC',
+  ShouldLinkToExamplesDesc = 'shouldLinkToExamples_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -943,6 +991,7 @@ export type ContentGuideline = Entry & {
   leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ContentGuidelineLinkingCollections>;
   name?: Maybe<Scalars['String']>;
+  pageProperties?: Maybe<PageProperties>;
   sys: Sys;
 };
 
@@ -968,6 +1017,13 @@ export type ContentGuidelineLinkedFromArgs = {
 /** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
 export type ContentGuidelineNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
+export type ContentGuidelinePagePropertiesArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type ContentGuidelineCollection = {
@@ -1003,6 +1059,8 @@ export type ContentGuidelineFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageProperties?: InputMaybe<CfPagePropertiesNestedFilter>;
+  pageProperties_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -1094,15 +1152,23 @@ export type Foundation = Entry & {
   __typename?: 'Foundation';
   content?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
+  group?: Maybe<Scalars['String']>;
   leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<FoundationLinkingCollections>;
   name?: Maybe<Scalars['String']>;
+  pageProperties?: Maybe<PageProperties>;
   sys: Sys;
 };
 
 
 /** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
 export type FoundationContentArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationGroupArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1124,6 +1190,13 @@ export type FoundationNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
+/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
+export type FoundationPagePropertiesArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
 export type FoundationCollection = {
   __typename?: 'FoundationCollection';
   items: Array<Maybe<Foundation>>;
@@ -1143,6 +1216,13 @@ export type FoundationFilter = {
   content_not_contains?: InputMaybe<Scalars['String']>;
   content_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  group?: InputMaybe<Scalars['String']>;
+  group_contains?: InputMaybe<Scalars['String']>;
+  group_exists?: InputMaybe<Scalars['Boolean']>;
+  group_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  group_not?: InputMaybe<Scalars['String']>;
+  group_not_contains?: InputMaybe<Scalars['String']>;
+  group_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   leadParagraph?: InputMaybe<Scalars['String']>;
   leadParagraph_contains?: InputMaybe<Scalars['String']>;
   leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1157,6 +1237,8 @@ export type FoundationFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageProperties?: InputMaybe<CfPagePropertiesNestedFilter>;
+  pageProperties_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -1174,6 +1256,8 @@ export type FoundationLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum FoundationOrder {
+  GroupAsc = 'group_ASC',
+  GroupDesc = 'group_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1281,6 +1365,120 @@ export type ImageTransformOptions = {
   width?: InputMaybe<Scalars['Dimension']>;
 };
 
+/** [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/pageProperties) */
+export type PageProperties = Entry & {
+  __typename?: 'PageProperties';
+  contentfulMetadata: ContentfulMetadata;
+  linkedFrom?: Maybe<PagePropertiesLinkingCollections>;
+  seoMetaDescription?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/pageProperties) */
+export type PagePropertiesLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/pageProperties) */
+export type PagePropertiesSeoMetaDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type PagePropertiesCollection = {
+  __typename?: 'PagePropertiesCollection';
+  items: Array<Maybe<PageProperties>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type PagePropertiesFilter = {
+  AND?: InputMaybe<Array<InputMaybe<PagePropertiesFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<PagePropertiesFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  seoMetaDescription?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_contains?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  seoMetaDescription_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seoMetaDescription_not?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_not_contains?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type PagePropertiesLinkingCollections = {
+  __typename?: 'PagePropertiesLinkingCollections';
+  codeStandardCollection?: Maybe<CodeStandardCollection>;
+  componentCollection?: Maybe<ComponentCollection>;
+  contentGuidelineCollection?: Maybe<ContentGuidelineCollection>;
+  entryCollection?: Maybe<EntryCollection>;
+  foundationCollection?: Maybe<FoundationCollection>;
+  resourceCollection?: Maybe<ResourceCollection>;
+};
+
+
+export type PagePropertiesLinkingCollectionsCodeStandardCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PagePropertiesLinkingCollectionsComponentCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PagePropertiesLinkingCollectionsContentGuidelineCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PagePropertiesLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PagePropertiesLinkingCollectionsFoundationCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PagePropertiesLinkingCollectionsResourceCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum PagePropertiesOrder {
+  SeoMetaDescriptionAsc = 'seoMetaDescription_ASC',
+  SeoMetaDescriptionDesc = 'seoMetaDescription_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
 export type Query = {
   __typename?: 'Query';
   asset?: Maybe<Asset>;
@@ -1300,6 +1498,8 @@ export type Query = {
   entryCollection?: Maybe<EntryCollection>;
   foundation?: Maybe<Foundation>;
   foundationCollection?: Maybe<FoundationCollection>;
+  pageProperties?: Maybe<PageProperties>;
+  pagePropertiesCollection?: Maybe<PagePropertiesCollection>;
   resource?: Maybe<Resource>;
   resourceCollection?: Maybe<ResourceCollection>;
 };
@@ -1451,6 +1651,23 @@ export type QueryFoundationCollectionArgs = {
 };
 
 
+export type QueryPagePropertiesArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryPagePropertiesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PagePropertiesOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<PagePropertiesFilter>;
+};
+
+
 export type QueryResourceArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
@@ -1472,15 +1689,23 @@ export type Resource = Entry & {
   __typename?: 'Resource';
   content?: Maybe<Scalars['String']>;
   contentfulMetadata: ContentfulMetadata;
+  group?: Maybe<Scalars['String']>;
   leadParagraph?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ResourceLinkingCollections>;
   name?: Maybe<Scalars['String']>;
+  pageProperties?: Maybe<PageProperties>;
   sys: Sys;
 };
 
 
 /** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
 export type ResourceContentArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
+export type ResourceGroupArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1502,6 +1727,13 @@ export type ResourceNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
+/** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
+export type ResourcePagePropertiesArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
 export type ResourceCollection = {
   __typename?: 'ResourceCollection';
   items: Array<Maybe<Resource>>;
@@ -1521,6 +1753,13 @@ export type ResourceFilter = {
   content_not_contains?: InputMaybe<Scalars['String']>;
   content_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  group?: InputMaybe<Scalars['String']>;
+  group_contains?: InputMaybe<Scalars['String']>;
+  group_exists?: InputMaybe<Scalars['Boolean']>;
+  group_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  group_not?: InputMaybe<Scalars['String']>;
+  group_not_contains?: InputMaybe<Scalars['String']>;
+  group_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   leadParagraph?: InputMaybe<Scalars['String']>;
   leadParagraph_contains?: InputMaybe<Scalars['String']>;
   leadParagraph_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1535,6 +1774,8 @@ export type ResourceFilter = {
   name_not?: InputMaybe<Scalars['String']>;
   name_not_contains?: InputMaybe<Scalars['String']>;
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  pageProperties?: InputMaybe<CfPagePropertiesNestedFilter>;
+  pageProperties_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -1552,6 +1793,8 @@ export type ResourceLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum ResourceOrder {
+  GroupAsc = 'group_ASC',
+  GroupDesc = 'group_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1611,13 +1854,27 @@ export type SysFilter = {
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
+export type CfPagePropertiesNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfPagePropertiesNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfPagePropertiesNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  seoMetaDescription?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_contains?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  seoMetaDescription_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seoMetaDescription_not?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_not_contains?: InputMaybe<Scalars['String']>;
+  seoMetaDescription_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
 export type GetCodeStandardQueryVariables = Exact<{
   id: Scalars['String'];
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
-export type GetCodeStandardQuery = { __typename?: 'Query', codeStandard?: { __typename?: 'CodeStandard', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetCodeStandardQuery = { __typename?: 'Query', codeStandard?: { __typename?: 'CodeStandard', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetComponentQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1625,7 +1882,7 @@ export type GetComponentQueryVariables = Exact<{
 }>;
 
 
-export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, shouldLinkToExamples?: boolean | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, group?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetContentGuidelineQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1633,7 +1890,7 @@ export type GetContentGuidelineQueryVariables = Exact<{
 }>;
 
 
-export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetFoundationQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1641,14 +1898,14 @@ export type GetFoundationQueryVariables = Exact<{
 }>;
 
 
-export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetCollectionsQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
-export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
+export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type GetResourceQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1656,7 +1913,7 @@ export type GetResourceQueryVariables = Exact<{
 }>;
 
 
-export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null, leadParagraph?: string | null, content?: string | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 
 export const GetCodeStandardDocument = gql`
@@ -1665,6 +1922,9 @@ export const GetCodeStandardDocument = gql`
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
@@ -1730,6 +1990,7 @@ export const GetComponentDocument = gql`
         isPreviewDarkThemed
       }
     }
+    shouldLinkToExamples
     usage
     usageDo
     usageDont
@@ -1739,6 +2000,10 @@ export const GetComponentDocument = gql`
     contentGuidelinesDont
     userResearch
     accessibility
+    group
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
@@ -1781,6 +2046,9 @@ export const GetContentGuidelineDocument = gql`
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
@@ -1823,6 +2091,9 @@ export const GetFoundationDocument = gql`
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt
@@ -1864,14 +2135,7 @@ export const GetCollectionsDocument = gql`
   foundationCollection(order: name_ASC, preview: $preview) {
     items {
       name
-      sys {
-        id
-      }
-    }
-  }
-  contentGuidelineCollection(order: name_ASC, preview: $preview) {
-    items {
-      name
+      group
       sys {
         id
       }
@@ -1896,6 +2160,7 @@ export const GetCollectionsDocument = gql`
   componentCollection(order: name_ASC, preview: $preview) {
     items {
       name
+      group
       sys {
         id
       }
@@ -1904,6 +2169,7 @@ export const GetCollectionsDocument = gql`
   resourceCollection(order: name_ASC, preview: $preview) {
     items {
       name
+      group
       sys {
         id
       }
@@ -1945,6 +2211,9 @@ export const GetResourceDocument = gql`
     name
     leadParagraph
     content
+    pageProperties {
+      seoMetaDescription
+    }
     sys {
       id
       publishedAt

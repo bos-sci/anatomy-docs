@@ -125,6 +125,7 @@ type CodeStandard implements Entry {
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): CodeStandardLinkingCollections
   name(locale: String): String
+  pageProperties(locale: String, preview: Boolean): PageProperties
   sys: Sys!
 }
 
@@ -160,6 +161,8 @@ input CodeStandardFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  pageProperties: cfPagePropertiesNestedFilter
+  pageProperties_exists: Boolean
   sys: SysFilter
 }
 
@@ -189,11 +192,14 @@ type Component implements Entry {
   contentGuidelinesDo(locale: String): String
   contentGuidelinesDont(locale: String): String
   contentfulMetadata: ContentfulMetadata!
+  group(locale: String): String
   interactions(locale: String): String
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentLinkingCollections
   modifiersCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentModifiersCollection
   name(locale: String): String
+  pageProperties(locale: String, preview: Boolean): PageProperties
+  shouldLinkToExamples(locale: String): Boolean
   statesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentStatesCollection
   stylesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentStylesCollection
   sys: Sys!
@@ -242,6 +248,13 @@ input ComponentFilter {
   contentGuidelines_not_contains: String
   contentGuidelines_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  group: String
+  group_contains: String
+  group_exists: Boolean
+  group_in: [String]
+  group_not: String
+  group_not_contains: String
+  group_not_in: [String]
   interactions: String
   interactions_contains: String
   interactions_exists: Boolean
@@ -264,6 +277,11 @@ input ComponentFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  pageProperties: cfPagePropertiesNestedFilter
+  pageProperties_exists: Boolean
+  shouldLinkToExamples: Boolean
+  shouldLinkToExamples_exists: Boolean
+  shouldLinkToExamples_not: Boolean
   statesCollection_exists: Boolean
   stylesCollection_exists: Boolean
   sys: SysFilter
@@ -382,8 +400,12 @@ type ComponentModifiersCollection {
 }
 
 enum ComponentOrder {
+  group_ASC
+  group_DESC
   name_ASC
   name_DESC
+  shouldLinkToExamples_ASC
+  shouldLinkToExamples_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -563,6 +585,7 @@ type ContentGuideline implements Entry {
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ContentGuidelineLinkingCollections
   name(locale: String): String
+  pageProperties(locale: String, preview: Boolean): PageProperties
   sys: Sys!
 }
 
@@ -598,6 +621,8 @@ input ContentGuidelineFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  pageProperties: cfPagePropertiesNestedFilter
+  pageProperties_exists: Boolean
   sys: SysFilter
 }
 
@@ -691,9 +716,11 @@ Documentation for foundations. [See type definition](https://app.contentful.com/
 type Foundation implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
+  group(locale: String): String
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): FoundationLinkingCollections
   name(locale: String): String
+  pageProperties(locale: String, preview: Boolean): PageProperties
   sys: Sys!
 }
 
@@ -715,6 +742,13 @@ input FoundationFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  group: String
+  group_contains: String
+  group_exists: Boolean
+  group_in: [String]
+  group_not: String
+  group_not_contains: String
+  group_not_in: [String]
   leadParagraph: String
   leadParagraph_contains: String
   leadParagraph_exists: Boolean
@@ -729,6 +763,8 @@ input FoundationFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  pageProperties: cfPagePropertiesNestedFilter
+  pageProperties_exists: Boolean
   sys: SysFilter
 }
 
@@ -737,6 +773,8 @@ type FoundationLinkingCollections {
 }
 
 enum FoundationOrder {
+  group_ASC
+  group_DESC
   name_ASC
   name_DESC
   sys_firstPublishedAt_ASC
@@ -881,6 +919,59 @@ input ImageTransformOptions {
 }
 
 """
+[See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/pageProperties)
+"""
+type PageProperties implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): PagePropertiesLinkingCollections
+  seoMetaDescription(locale: String): String
+  sys: Sys!
+}
+
+type PagePropertiesCollection {
+  items: [PageProperties]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input PagePropertiesFilter {
+  AND: [PagePropertiesFilter]
+  OR: [PagePropertiesFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  seoMetaDescription: String
+  seoMetaDescription_contains: String
+  seoMetaDescription_exists: Boolean
+  seoMetaDescription_in: [String]
+  seoMetaDescription_not: String
+  seoMetaDescription_not_contains: String
+  seoMetaDescription_not_in: [String]
+  sys: SysFilter
+}
+
+type PagePropertiesLinkingCollections {
+  codeStandardCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CodeStandardCollection
+  componentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCollection
+  contentGuidelineCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ContentGuidelineCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  foundationCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): FoundationCollection
+  resourceCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ResourceCollection
+}
+
+enum PagePropertiesOrder {
+  seoMetaDescription_ASC
+  seoMetaDescription_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
 The 'Quality' type represents quality as whole numeric values between `1` and `100`.
 """
 scalar Quality
@@ -903,6 +994,8 @@ type Query {
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
   foundation(id: String!, locale: String, preview: Boolean): Foundation
   foundationCollection(limit: Int = 100, locale: String, order: [FoundationOrder], preview: Boolean, skip: Int = 0, where: FoundationFilter): FoundationCollection
+  pageProperties(id: String!, locale: String, preview: Boolean): PageProperties
+  pagePropertiesCollection(limit: Int = 100, locale: String, order: [PagePropertiesOrder], preview: Boolean, skip: Int = 0, where: PagePropertiesFilter): PagePropertiesCollection
   resource(id: String!, locale: String, preview: Boolean): Resource
   resourceCollection(limit: Int = 100, locale: String, order: [ResourceOrder], preview: Boolean, skip: Int = 0, where: ResourceFilter): ResourceCollection
 }
@@ -913,9 +1006,11 @@ Documentation for resources. [See type definition](https://app.contentful.com/sp
 type Resource implements Entry {
   content(locale: String): String
   contentfulMetadata: ContentfulMetadata!
+  group(locale: String): String
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ResourceLinkingCollections
   name(locale: String): String
+  pageProperties(locale: String, preview: Boolean): PageProperties
   sys: Sys!
 }
 
@@ -937,6 +1032,13 @@ input ResourceFilter {
   content_not_contains: String
   content_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
+  group: String
+  group_contains: String
+  group_exists: Boolean
+  group_in: [String]
+  group_not: String
+  group_not_contains: String
+  group_not_in: [String]
   leadParagraph: String
   leadParagraph_contains: String
   leadParagraph_exists: Boolean
@@ -951,6 +1053,8 @@ input ResourceFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  pageProperties: cfPagePropertiesNestedFilter
+  pageProperties_exists: Boolean
   sys: SysFilter
 }
 
@@ -959,6 +1063,8 @@ type ResourceLinkingCollections {
 }
 
 enum ResourceOrder {
+  group_ASC
+  group_DESC
   name_ASC
   name_DESC
   sys_firstPublishedAt_ASC
@@ -1015,4 +1121,18 @@ input SysFilter {
   publishedVersion_lte: Float
   publishedVersion_not: Float
   publishedVersion_not_in: [Float]
+}
+
+input cfPagePropertiesNestedFilter {
+  AND: [cfPagePropertiesNestedFilter]
+  OR: [cfPagePropertiesNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  seoMetaDescription: String
+  seoMetaDescription_contains: String
+  seoMetaDescription_exists: Boolean
+  seoMetaDescription_in: [String]
+  seoMetaDescription_not: String
+  seoMetaDescription_not_contains: String
+  seoMetaDescription_not_in: [String]
+  sys: SysFilter
 }

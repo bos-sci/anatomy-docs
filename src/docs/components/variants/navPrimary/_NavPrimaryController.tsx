@@ -1,18 +1,20 @@
-import { Link } from 'react-router-dom';
 import { VariantProps } from '../Preview';
+import ComplexNavPrimary from './ComplexNavPrimary';
+import IntermediateNavPrimary from './IntermediateNavPrimary';
+import SimpleNavPrimary from './SimpleNavPrimary';
 
 const NavPrimaryController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Styles
     case 'primaryNavigationSimple':
-      return <Link className="demo-link" to="/components/navigation/primary-navigation/simple-example" target="_blank">See simple example</Link>;
+      return <SimpleNavPrimary />;
     case 'primaryNavigationIntermediate':
-      return <Link className="demo-link" to="/components/navigation/primary-navigation/intermediate-example" target="_blank">See intermediate example</Link>;
+      return <IntermediateNavPrimary />;
     case 'primaryNavigationComplex':
-      return <Link className="demo-link" to="/components/navigation/primary-navigation/complex-example" target="_blank">See complex example</Link>;
+      return <ComplexNavPrimary />;
 
     default:
-      return <Link className="demo-link" to="/components/navigation/primary-navigation/simple-example" target="_blank">See example</Link>;
+      return <SimpleNavPrimary />;
   }
 }
 

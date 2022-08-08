@@ -3,27 +3,18 @@ import { NavItemSecondary } from '../../library/components/navigation/navSeconda
 import { NavItemTertiary } from '../../library/components/navigation/navTertiary/NavTertiary';
 import { IdLookupContext } from '../App';
 import Markdown from '../shared/components/Markdown';
-import { match } from 'react-router';
 import { IdLookup } from '../shared/types/docs';
 import { GetFoundationQuery, useGetFoundationQuery } from '../shared/types/contentful';
 import useTitle from '../shared/hooks/useTitle';
 import useHashScroll from '../shared/hooks/useHashScroll';
 import useHeadings from '../shared/hooks/useHeadings';
-import PageTemplate from '../shared/components/pageTemplate/PageTemplate';
+import PageTemplate from '../shared/components/PageTemplate';
 import Layout from '../shared/components/Layout';
+import { useLocation, useParams } from 'react-router-dom';
 
-interface ComponentMatch extends match {
-  params: {
-    foundationName: string;
-  }
-}
-
-interface Props {
-  match: ComponentMatch;
-}
-
-const Foundations = (props:  Props): JSX.Element => {
-  const foundationName = props.match.params.foundationName;
+const Foundations = (): JSX.Element => {
+  const params = useParams();
+  const location = useLocation();
   const idLookup: IdLookup = useContext(IdLookupContext);
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [foundationData, setFoundationData] = useState<GetFoundationQuery['foundation']>({} as GetFoundationQuery['foundation']);
@@ -31,7 +22,7 @@ const Foundations = (props:  Props): JSX.Element => {
 
   const {data, error} = useGetFoundationQuery({
     variables: {
-      id: idLookup.foundations[foundationName].id,
+      id: idLookup.foundations[params.foundationName!].id,
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
     }
   });
@@ -48,7 +39,7 @@ const Foundations = (props:  Props): JSX.Element => {
 
   useEffect(() => {
     // TODO: get rid of .replace() after fixing routing
-    const basePath = props.match.path.slice(0, props.match.path.lastIndexOf('/')).replace('/iconography', '');
+    const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/')).replace('/iconography', '');
     setNavItems([
       {
         text: 'Accessibility',
@@ -80,7 +71,7 @@ const Foundations = (props:  Props): JSX.Element => {
         slug: basePath + '/typography'
       },
     ]);
-  }, [props.match.path]);
+  }, [location]);
 
   useTitle({titlePrefix: `${foundationData?.name} - Foundations`});
   useHashScroll(!!foundationData?.content);
@@ -99,6 +90,7 @@ const Foundations = (props:  Props): JSX.Element => {
           name={foundationData?.name || ''}
           lastUpdated={foundationData?.sys?.publishedAt}
           leadParagraph={foundationData?.leadParagraph || ''}
+          seoMetaDescription={foundationData?.pageProperties?.seoMetaDescription || ''}
           navSecondaryMenuTrigger="Foundations"
           navSecondaryItems={navItems}
           navTertiaryItems={headings}>

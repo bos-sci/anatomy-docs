@@ -4,8 +4,12 @@
 ::after,
 ::before
 {
-  // We get this from Bootstrap's _reboot, but it may be necessary to include in other platforms
   box-sizing: border-box;
+}
+
+body
+{
+  margin: 0;
 }
 
 .app-root
@@ -89,7 +93,7 @@ main
 {
   .app-body
   {
-    width: 60rem;
+    width: var(--app-width);
     margin-right: auto;
     margin-left: auto;
     grid-template-columns: 1fr 4fr;
@@ -132,7 +136,7 @@ main
   .app-body
   {
     grid-template-columns: 1fr 5fr;
-    width: 71.25rem;
+    width: var(--app-width);
   }
 }
 
@@ -140,6 +144,6 @@ main
 {
   .app-body
   {
-    width: 82.5rem;
+    width: var(--app-width);
   }
 }
