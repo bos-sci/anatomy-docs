@@ -67,6 +67,31 @@ REACT_EDITOR=code
 *See [PR naming](#branches) guidelines below.*
 5. PR can only be merged after it has been reviewed and all tests pass.
 
+#### Testing
+
+- Unit and component integration tests live in `src/library/components/__tests__`
+- End-to-end tests live in `cypress/e2e/`
+
+##### Unit and Component Integration
+
+To start the test runner, run
+
+```
+npm test
+```
+
+This will start the Jest test runner in watch mode. As you edit test files (and their corresponding component files), the runner re-runs your tests and notifies you of any failures.
+
+##### End-to-end
+
+To run E2E tests in Cypress, run
+
+```
+npm run cypress:open
+```
+
+This will open the Cypress app. In the home screen, choose "end to end" and run the appropriate test from the list.
+
 ##### Adding a primary section to the docs site
 Steps for adding a site section that will be accessible from the primary navigation.
 1. Create content model in Contentful (use singular name, e.g.: Content Guideline > Name, Description, Content).

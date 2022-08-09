@@ -19,12 +19,14 @@
     "build": "npm run generate-types && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate-types": "graphql-codegen --config codegen.yml --require dotenv/config"
+    "generate-types": "graphql-codegen --config codegen.yml --require dotenv/config",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:testing-library/react"
     ]
   },
   "browserslist": {
@@ -58,6 +60,10 @@
     "@types/react-helmet": "^6.1.5",
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
+    "axe-core": "^4.4.2",
+    "cypress": "^10.3.0",
+    "cypress-axe": "^1.0.0",
+    "cypress-real-events": "^1.7.1",
     "graphql": "^16.5.0"
   }
 }

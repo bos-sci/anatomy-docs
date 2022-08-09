@@ -1,38 +1,14 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
   variant?: string;
 }
 
-const Tag = (props: Props): JSX.Element => {
-  const { variant } = props;
-
-  let classes = '';
-  switch (variant) {
-    case 'accent':
-      classes = 'ads-tag-accent'
-      break;
-    case 'accent-ghost':
-      classes = 'ads-tag-accent-ghost'
-      break;
-    case 'assertive':
-      classes = 'ads-tag-assertive'
-      break;
-    case 'assertive-ghost':
-      classes = 'ads-tag-assertive-ghost'
-      break;
-    case 'ghost':
-      classes = 'ads-tag-ghost'
-      break;
-    default:
-      classes = 'ads-tag';
-      break;
-  }
-
+const Tag = ({ variant, children }: Props): JSX.Element => {
   return (
-    <p className={classes}>{props.children}</p>
+    <p className={variant ? `ads-tag-${variant}` : "ads-tag"}>{children}</p>
   );
-}
+};
 
 export default Tag;
