@@ -38,9 +38,9 @@ const Button = forwardRef(({ children, variant, icon, iconAlignment = 'left', ic
 
   return (
     <button ref={ref} className={`${classes} ${className || ''}`} {...buttonAttrs}>
-      { icon && iconAlignment === 'left' && <Icon name={icon} size={iconSize} className="u-icon-left" /> }
+      { icon && iconAlignment === 'left' && <Icon name={icon} size={iconSize} className="bsds-icon-left" /> }
       { icon && children ? <span className="bsds-button-text">{ children }</span> : children }
-      { icon && iconAlignment === 'right' && <Icon name={icon} size={iconSize} className="u-icon-right" /> }
+      { icon && iconAlignment === 'right' && <Icon name={icon} size={iconSize} className="bsds-icon-right" /> }
     </button>
   );
 });

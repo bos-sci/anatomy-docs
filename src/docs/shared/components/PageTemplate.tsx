@@ -26,7 +26,7 @@ const PageTemplate = (props: Props) => {
   }, [props.navSecondaryMenuTrigger]);
 
   return (
-    <div className="app-body">
+    <div className="docs-body">
      <Helmet>
       <meta name="description" content={props.seoMetaDescription || 'Boston Scientific Anatomy Design System website'} />
      </Helmet>
@@ -44,7 +44,7 @@ const PageTemplate = (props: Props) => {
               <dd>{ props.lastUpdated ? new Date(props.lastUpdated).toLocaleDateString() : 'Draft' }</dd>
             </dl>
           </div>
-          <Markdown markdown={ props.leadParagraph } className="body-assertive" />
+          <Markdown markdown={ props.leadParagraph } className="bsds-body-assertive" />
         </div>
         <NavTertiary navTertiaryItems={ props.navTertiaryItems } />
         <div className="docs-page-content">

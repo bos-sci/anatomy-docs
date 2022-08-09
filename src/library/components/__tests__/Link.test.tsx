@@ -16,13 +16,13 @@ describe("Link", () => {
       </Link>
     );
     expect(screen.getByRole("link")).toBeInTheDocument();
-    expect(screen.getByRole("link")).toHaveClass("ads-link-ghost");
+    expect(screen.getByRole("link")).toHaveClass("bsds-link-ghost");
 
     rerender(
       <Link variant="subtle" href="#">
         Variant Link!
       </Link>
     );
-    expect(screen.getByRole("link")).toHaveClass("ads-link-subtle");
+    expect(screen.getByRole("link")).toHaveClass("bsds-link-subtle");
   });
 });

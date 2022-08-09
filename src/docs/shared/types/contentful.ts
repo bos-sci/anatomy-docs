@@ -1157,11 +1157,7 @@ export type Foundation = Entry & {
   linkedFrom?: Maybe<FoundationLinkingCollections>;
   name?: Maybe<Scalars['String']>;
   pageProperties?: Maybe<PageProperties>;
-  secondaryContent?: Maybe<Scalars['String']>;
   sys: Sys;
-  usage?: Maybe<Scalars['String']>;
-  usageDo?: Maybe<Scalars['String']>;
-  usageDont?: Maybe<Scalars['String']>;
 };
 
 
@@ -1199,30 +1195,6 @@ export type FoundationNameArgs = {
 export type FoundationPagePropertiesArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
-export type FoundationSecondaryContentArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
-export type FoundationUsageArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
-export type FoundationUsageDoArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
-export type FoundationUsageDontArgs = {
-  locale?: InputMaybe<Scalars['String']>;
 };
 
 export type FoundationCollection = {
@@ -1267,35 +1239,7 @@ export type FoundationFilter = {
   name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   pageProperties?: InputMaybe<CfPagePropertiesNestedFilter>;
   pageProperties_exists?: InputMaybe<Scalars['Boolean']>;
-  secondaryContent?: InputMaybe<Scalars['String']>;
-  secondaryContent_contains?: InputMaybe<Scalars['String']>;
-  secondaryContent_exists?: InputMaybe<Scalars['Boolean']>;
-  secondaryContent_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  secondaryContent_not?: InputMaybe<Scalars['String']>;
-  secondaryContent_not_contains?: InputMaybe<Scalars['String']>;
-  secondaryContent_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   sys?: InputMaybe<SysFilter>;
-  usage?: InputMaybe<Scalars['String']>;
-  usageDo?: InputMaybe<Scalars['String']>;
-  usageDo_contains?: InputMaybe<Scalars['String']>;
-  usageDo_exists?: InputMaybe<Scalars['Boolean']>;
-  usageDo_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  usageDo_not?: InputMaybe<Scalars['String']>;
-  usageDo_not_contains?: InputMaybe<Scalars['String']>;
-  usageDo_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  usageDont?: InputMaybe<Scalars['String']>;
-  usageDont_contains?: InputMaybe<Scalars['String']>;
-  usageDont_exists?: InputMaybe<Scalars['Boolean']>;
-  usageDont_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  usageDont_not?: InputMaybe<Scalars['String']>;
-  usageDont_not_contains?: InputMaybe<Scalars['String']>;
-  usageDont_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  usage_contains?: InputMaybe<Scalars['String']>;
-  usage_exists?: InputMaybe<Scalars['Boolean']>;
-  usage_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  usage_not?: InputMaybe<Scalars['String']>;
-  usage_not_contains?: InputMaybe<Scalars['String']>;
-  usage_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type FoundationLinkingCollections = {

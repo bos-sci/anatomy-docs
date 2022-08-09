@@ -12,7 +12,7 @@ const Home = (): JSX.Element => {
         <meta name="description" content="Boston Scientific Anatomy Design System website homepage"/>
       </Helmet>
       <main id="mainContent" className="app-home">
-        <h1 className="page-title u-margin-top-remove">
+        <h1 className="page-title bsds-margin-top-remove">
           <span>Introducing</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 55" className="logo">
             <title>Anatomy</title>

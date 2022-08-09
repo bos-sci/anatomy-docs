@@ -25,10 +25,10 @@ const Stoplight = ({ children, lightColor, textColor, size }: Props): JSX.Elemen
   let sizeClasses = '';
   switch (size) {
     case 'assertive':
-      sizeClasses = 'body-assertive'
+      sizeClasses = 'bsds-body-assertive'
       break;
     case 'subtle':
-      sizeClasses = 'body-subtle'
+      sizeClasses = 'bsds-body-subtle'
       break;
   }
 

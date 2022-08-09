@@ -12,14 +12,14 @@ body
   margin: 0;
 }
 
-.app-root
+.docs-root
 {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-.app-body
+.docs-body
 {
   flex: 1;
   display: grid;
@@ -75,7 +75,7 @@ main
   }
 }
 
-.app-footer
+.docs-footer
 {
   display: flex;
   justify-content: center;
@@ -91,7 +91,7 @@ main
 
 @media (min-width: $lg)
 {
-  .app-body
+  .docs-body
   {
     width: var(--app-width);
     margin-right: auto;
@@ -133,7 +133,7 @@ main
 
 @media (min-width: $xl)
 {
-  .app-body
+  .docs-body
   {
     grid-template-columns: 1fr 5fr;
     width: var(--app-width);
@@ -142,7 +142,7 @@ main
 
 @media (min-width: $xxl)
 {
-  .app-body
+  .docs-body
   {
     width: var(--app-width);
   }

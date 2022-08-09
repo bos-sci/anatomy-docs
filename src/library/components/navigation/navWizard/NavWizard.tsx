@@ -125,7 +125,7 @@ const NavWizard = (props: Props) => {
             className="bsds-nav-back"
             aria-label={props.backButtonAriaLabel ? props.backButtonAriaLabel : 'Back to previous step'}
             onClick={backStep}>
-            <IconChevronLeft className="bsds-icon-lg u-icon-left" />
+            <IconChevronLeft className="bsds-icon-lg bsds-icon-left" />
             {props.backButtonText ? props.backButtonText : 'Back'}
           </Button>}
         {breadcrumb && <p className="bsds-nav-breadcrumb" aria-current="step">{breadcrumb}</p>}

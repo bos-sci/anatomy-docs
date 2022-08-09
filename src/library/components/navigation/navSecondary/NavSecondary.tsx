@@ -140,7 +140,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
             className="bsds-nav-link-back"
             variant="subtle"
             onClick={goBack}>
-            <IconChevronLeft className="bsds-icon-md u-icon-left" />
+            <IconChevronLeft className="bsds-icon-md bsds-icon-left" />
             {texts?.backButtonText || 'Back'}
           </Button>
         }

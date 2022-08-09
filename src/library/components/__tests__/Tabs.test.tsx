@@ -18,7 +18,7 @@ describe("Tab", () => {
     expect(tabList).toBeInTheDocument();
     expect(firstTab).toBeInTheDocument();
     expect(firstPanel).toBeInTheDocument();
-    expect(firstPanel).toHaveClass("ads-tab-panel");
+    expect(firstPanel).toHaveClass("bsds-tab-panel");
     expect(firstPanel).toHaveAccessibleName("Tabs 1");
   });
 });
