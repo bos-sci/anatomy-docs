@@ -11,11 +11,11 @@ const useHeadings = (depth = 1): NavItemTertiary[] => {
   const [targetNode, setTargetNode] = useState<Element | null>(null);
 
   useEffect(() => {
-    setTargetNode(document.querySelector('.page-content'));
+    setTargetNode(document.querySelector('.docs-page-content'));
   }, []);
 
   const getHeadings = useCallback(() => {
-    const selector = Array.from(Array(depth)).map((_val, i) => '.page-content h' + (i + 2) + ':not(.nav-tertiary-title)').join(', ');
+    const selector = Array.from(Array(depth)).map((_val, i) => '.docs-page-content h' + (i + 2) + ':not(.bsds-nav-tertiary-title)').join(', ');
     setHeadings(
       Array.from(document.querySelectorAll(selector)).map(heading => {
         return {
