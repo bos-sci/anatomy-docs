@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
@@ -33,6 +33,6 @@ const Tag = (props: Props): JSX.Element => {
   return (
     <p className={classes}>{props.children}</p>
   );
-}
+};
 
 export default Tag;

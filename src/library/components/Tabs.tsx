@@ -1,18 +1,24 @@
 // TODO: figure out if we want to add aria-label or aria-labelledby on the tablist
 
-import { createRef, KeyboardEvent, ReactElement, RefObject, useEffect, useState } from 'react';
-import Tab from './Tab';
+import {
+  createRef,
+  KeyboardEvent,
+  ReactElement,
+  RefObject,
+  useEffect,
+  useState,
+} from "react";
+import Tab from "./Tab";
 
 type Props = {
   children: ReactElement[] | ReactElement;
-}
+};
 
 let tabsId = 0;
 
 const Tabs = ({ children }: Props): JSX.Element => {
-
   const [selectedTab, setSelectedTab] = useState(0);
-  const [tabPanelId, setTabPanelId] = useState('');
+  const [tabPanelId, setTabPanelId] = useState("");
   const [tabPanels, setTabPanels] = useState<ReactElement[]>([]);
   const [tabRefs, setTabRefs] = useState<RefObject<HTMLButtonElement>[]>([]);
 
@@ -20,13 +26,13 @@ const Tabs = ({ children }: Props): JSX.Element => {
     const tabRef = tabRefs[index];
     setSelectedTab(index);
     tabRef.current?.focus();
-  }
+  };
 
   const keyManager = (e: KeyboardEvent<HTMLDivElement>) => {
+    e.preventDefault();
     let nextTab = 0;
     switch (e.key) {
-      case 'ArrowLeft':
-        e.preventDefault();
+      case "ArrowLeft":
         if (selectedTab === 0) {
           nextTab = tabPanels.length - 1;
         } else {
@@ -35,8 +41,7 @@ const Tabs = ({ children }: Props): JSX.Element => {
         selectTab(nextTab);
         break;
 
-      case 'ArrowRight':
-        e.preventDefault();
+      case "ArrowRight":
         if (selectedTab === tabPanels.length - 1) {
           nextTab = 0;
         } else {
@@ -45,24 +50,22 @@ const Tabs = ({ children }: Props): JSX.Element => {
         selectTab(nextTab);
         break;
 
-      case 'Home':
-        e.preventDefault();
+      case "Home":
         selectTab(0);
         break;
 
-      case 'End':
-        e.preventDefault();
+      case "End":
         selectTab(tabPanels.length - 1);
         break;
 
       default:
         break;
     }
-  }
+  };
 
   useEffect(() => {
     const idNum = ++tabsId;
-    setTabPanelId('tabPanel' + idNum);
+    setTabPanelId("tabPanel" + idNum);
   }, []);
 
   useEffect(() => {
@@ -102,13 +105,14 @@ const Tabs = ({ children }: Props): JSX.Element => {
             role="tabpanel"
             aria-labelledby={`${tabPanelId + index}Tab`}
             tabIndex={0}
-            hidden={index !== selectedTab}>
-            { tabPanel }
+            hidden={index !== selectedTab}
+          >
+            {tabPanel}
           </div>
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Tabs;
