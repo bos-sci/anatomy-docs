@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, Fragment } from 'react';
 import Preview from './variants/Preview';
 import { NavItemSecondary } from '../../library/components/navigation/navSecondary/NavSecondary';
 import { NavItemTertiary } from '../../library/components/navigation/navTertiary/NavTertiary';
@@ -150,14 +150,14 @@ const Components = (): JSX.Element => {
           {(componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>
             <h2 id="modifiers">Modifiers</h2>
               { componentData.modifiersCollection.items.map((modifier) => (
-                <div key={ modifier?.modifierId } className="component-variant">
+                <Fragment key={ modifier?.modifierId }>
                   <h3>{ modifier?.name }</h3>
                   <Markdown markdown={modifier?.description || ''} />
                   <Preview
                     variant={modifier?.name as string}
                     variantId={modifier?.modifierId as string}
                     shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
-                </div>
+                </Fragment>
               ))}
             </>
           }
@@ -166,14 +166,14 @@ const Components = (): JSX.Element => {
           {(componentData.stylesCollection?.items && componentData.stylesCollection.items.length > 0) && <>
             <h2 id="styles">Styles</h2>
               { componentData.stylesCollection.items.map((style) => (
-                <div key={ style?.styleId } className="component-variant">
+                <Fragment key={ style?.styleId }>
                   <h3>{ style?.name }</h3>
                   <Markdown markdown={style?.description || ''} />
                   <Preview
                     variant={style?.name as string}
                     variantId={style?.styleId as string}
                     shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
-                </div>
+                </Fragment>
               ))}
             </>
           }
@@ -182,14 +182,14 @@ const Components = (): JSX.Element => {
           {(componentData.statesCollection?.items && componentData.statesCollection.items.length > 0) && <>
             <h2 id="states">States</h2>
               { componentData.statesCollection.items.map((state) => (
-                <div key={ state?.stateId } className="component-variant">
+                <Fragment key={ state?.stateId }>
                   <h3>{ state?.name }</h3>
                   <Markdown markdown={state?.description || ''} />
                   <Preview
                     variant={state?.name as string}
                     variantId={state?.stateId as string}
                     shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
-                </div>
+                </Fragment>
               ))}
             </>
           }
@@ -201,12 +201,12 @@ const Components = (): JSX.Element => {
           }
           { componentData.usage && <Markdown markdown={ componentData.usage } />}
           {(componentData.usageDo || componentData.usageDont) &&
-            <div className="two-column-lists">
-              <div className="two-column-list-block">
+            <div className="docs-list-flex">
+              <div className="docs-list-flex-item">
                 <h3>Do:</h3>
                 <Markdown markdown={componentData.usageDo || ''} />
               </div>
-              <div className="two-column-list-block">
+              <div className="docs-list-flex-item">
                 <h3>Don't:</h3>
                 <Markdown markdown={componentData.usageDont || ''} />
               </div>
@@ -223,12 +223,12 @@ const Components = (): JSX.Element => {
           }
           { componentData.contentGuidelines && <Markdown markdown={ componentData.contentGuidelines } />}
           {(componentData.contentGuidelinesDo || componentData.contentGuidelinesDont) &&
-            <div className="two-column-lists">
-              <div className="two-column-list-block">
+            <div className="docs-list-flex">
+              <div className="docs-list-flex-item">
                 <h3>Do:</h3>
                 <Markdown markdown={componentData.contentGuidelinesDo || ''} />
               </div>
-              <div className="two-column-list-block">
+              <div className="docs-list-flex-item">
                 <h3>Don't:</h3>
                 <Markdown markdown={componentData.contentGuidelinesDont || ''} />
               </div>

@@ -39,14 +39,14 @@ code
   word-wrap: break-word;
 }
 
-.docs-two-column-lists
+.docs-list-flex
 {
   display: flex;
   justify-content: space-between;
   flex-flow: column wrap;
   column-gap: space(4x);
 
-  .docs-two-column-list-block
+  .docs-list-flex-item
   {
     flex: 1;
   }
@@ -54,13 +54,13 @@ code
 
 @media (min-width: 992px)
 {
-  .docs-two-column-lists
+  .docs-list-flex
   {
     flex-flow: row wrap;
   }
 }
 
-.u-no-wrap
+.bsds-no-wrap
 {
   white-space: nowrap;
 }

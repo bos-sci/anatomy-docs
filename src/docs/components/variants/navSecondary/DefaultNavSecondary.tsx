@@ -50,7 +50,7 @@ const DefaultNavSecondary = (): JSX.Element => {
 
   useEffect(() => {
     setTimeout(() => {
-      document.querySelectorAll('.demo-example .nav-link')
+      document.querySelectorAll('.docs-preview .nav-link')
         .forEach((link, i) => i !== 1 && link.classList.remove('active'));
     }, 0)
   }, []);
