@@ -123,7 +123,7 @@ li:not(:first-of-type)
 
 .bsds-display-1, .bsds-display-2, .bsds-display-3, .bsds-display-4,
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6
+.bsds-h1, .bsds-h2, .bsds-h3, .bsds-h4, .bsds-h5, .bsds-h6
 {
   color: $text-color-primary;
   font-family: $font-family-base-heavy;
@@ -158,7 +158,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1,
-.h1
+.bsds-h1
 {
   margin: space(8x) 0 0;
   @include font-size($fs-h1);
@@ -166,7 +166,7 @@ h1,
 }
 
 h2,
-.h2
+.bsds-h2
 {
   margin: space(6x) 0 0;
   @include font-size($fs-h2);
@@ -174,7 +174,7 @@ h2,
 }
 
 h3,
-.h3
+.bsds-h3
 {
   margin: space(6x) 0 0;
   @include font-size($fs-h3);
@@ -182,7 +182,7 @@ h3,
 }
 
 h4,
-.h4
+.bsds-h4
 {
   margin: space(4x) 0 0;
   @include font-size($fs-h4);
@@ -190,7 +190,7 @@ h4,
 }
 
 h5,
-.h5
+.bsds-h5
 {
   margin: space(3x) 0 0;
   @include font-size($fs-h5);
@@ -198,7 +198,7 @@ h5,
 }
 
 h6,
-.h6
+.bsds-h6
 {
   margin: space(3x) 0 0;
   @include font-size($fs-h6);
