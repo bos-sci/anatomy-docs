@@ -20,7 +20,7 @@ const Markdown = ({ markdown, headingOffset = 0, className }: Props): JSX.Elemen
     const mdDom = new DOMParser().parseFromString(DOMPurify.sanitize(marked(md)), "text/html");
     mdDom.querySelectorAll('table').forEach(table => {
       const wrapperDiv = document.createElement('div');
-      wrapperDiv.classList.add('table-responsive');
+      wrapperDiv.classList.add('docs-table-responsive');
       table.parentNode?.insertBefore(wrapperDiv, table);
       wrapperDiv.appendChild(table);
     });

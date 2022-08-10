@@ -10,7 +10,7 @@ const exampleData: NavItemWizard[] = [
         title: 'Third step title',
         text: 'Nested page group 1',
         overflowLinkText: 'See all pages',
-        overflowTo: 'demo-link',
+        overflowTo: 'docs-demo-link',
         children: [
           {
             text: 'Page 1',
@@ -18,35 +18,35 @@ const exampleData: NavItemWizard[] = [
           },
           {
             text: 'Page 2',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           },
           {
             text: 'Page 3',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           },
           {
             text: 'Page 4',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           },
           {
             text: 'Page 5',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           },
           {
             text: 'Page 6',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           },
           {
             text: 'Page 7',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           },
           {
             text: 'Page 8',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           },
           {
             text: 'Page 9',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           }
         ]
       },
@@ -56,7 +56,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           }
         ]
       }
@@ -71,7 +71,7 @@ const exampleData: NavItemWizard[] = [
         title: 'Third step title',
         description: 'Optional description for this step',
         text: 'Nested page group 1',
-        overflowTo: 'demo-link',
+        overflowTo: 'docs-demo-link',
         children: [
           {
             text: 'Page 1',
@@ -86,7 +86,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           }
         ]
       },
@@ -97,7 +97,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           }
         ]
       }
@@ -112,27 +112,27 @@ const exampleData: NavItemWizard[] = [
         title: 'Third step title',
         description: 'Optional description for this step',
         text: 'Nested page group 1',
-        overflowTo: 'demo-link',
+        overflowTo: 'docs-demo-link',
         children: [
           {
             text: 'Page 1',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           },
           {
             text: 'Page 2',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           },
           {
             text: 'Page 3',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           },
           {
             text: 'Page 4',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           },
           {
             text: 'Page 5',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           }
         ]
       },
@@ -143,7 +143,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           }
         ]
       },
@@ -154,7 +154,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'demo-link'
+            slug: 'docs-demo-link'
           }
         ]
       }

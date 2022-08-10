@@ -115,25 +115,25 @@ const NavWizard = (props: Props) => {
   }, [props.navItems]);
 
   return (
-    <nav className="ads-nav-wizard">
-      <div className="ads-nav-wizard-header">
+    <nav className="bsds-nav-wizard">
+      <div className="bsds-nav-wizard-header">
         {history.length > 0 &&
           <Button
             ref={backBtnRef}
             variant="subtle"
             type="button"
-            className="ads-nav-back"
+            className="bsds-nav-back"
             aria-label={props.backButtonAriaLabel ? props.backButtonAriaLabel : 'Back to previous step'}
             onClick={backStep}>
-            <IconChevronLeft className="ads-icon-lg u-icon-left" />
+            <IconChevronLeft className="bsds-icon-lg bsds-icon-left" />
             {props.backButtonText ? props.backButtonText : 'Back'}
           </Button>}
-        {breadcrumb && <p className="ads-nav-breadcrumb" aria-current="step">{breadcrumb}</p>}
-        {title && <h2 className="ads-nav-title">{title}</h2>}
-        {description && <p className="ads-nav-description">{description}</p>}
+        {breadcrumb && <p className="bsds-nav-breadcrumb" aria-current="step">{breadcrumb}</p>}
+        {title && <h2 className="bsds-nav-title">{title}</h2>}
+        {description && <p className="bsds-nav-description">{description}</p>}
       </div>
       {navTree.length > 0 &&
-        <div className="ads-nav-wizard-menu">
+        <div className="bsds-nav-wizard-menu">
           <NavWizardList navItems={navTree} history={history} pushHistory={pushHistory} popHistory={popHistory} depth={0} focusBackBtn={focusBackBtn} />
         </div>
       }

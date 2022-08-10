@@ -121,36 +121,36 @@ li:not(:first-of-type)
   margin: space(2x) 0 0;
 }
 
-.display-1, .display-2, .display-3, .display-4,
+.bsds-display-1, .bsds-display-2, .bsds-display-3, .bsds-display-4,
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6
+.bsds-h1, .bsds-h2, .bsds-h3, .bsds-h4, .bsds-h5, .bsds-h6
 {
   color: $text-color-primary;
   font-family: $font-family-base-heavy;
 }
 
-.display-1
+.bsds-display-1
 {
   margin: space(12x) 0 0;
   @include font-size($fs-display-1);
   line-height: 1.2;
 }
 
-.display-2
+.bsds-display-2
 {
   margin: space(12x) 0 0;
   @include font-size($fs-display-2);
   line-height: 1.2;
 }
 
-.display-3
+.bsds-display-3
 {
   margin: space(8x) 0 0;
   @include font-size($fs-display-3);
   line-height: 1.4;
 }
 
-.display-4
+.bsds-display-4
 {
   margin: space(8x) 0 0;
   @include font-size($fs-display-4);
@@ -158,7 +158,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1,
-.h1
+.bsds-h1
 {
   margin: space(8x) 0 0;
   @include font-size($fs-h1);
@@ -166,7 +166,7 @@ h1,
 }
 
 h2,
-.h2
+.bsds-h2
 {
   margin: space(6x) 0 0;
   @include font-size($fs-h2);
@@ -174,7 +174,7 @@ h2,
 }
 
 h3,
-.h3
+.bsds-h3
 {
   margin: space(6x) 0 0;
   @include font-size($fs-h3);
@@ -182,7 +182,7 @@ h3,
 }
 
 h4,
-.h4
+.bsds-h4
 {
   margin: space(4x) 0 0;
   @include font-size($fs-h4);
@@ -190,7 +190,7 @@ h4,
 }
 
 h5,
-.h5
+.bsds-h5
 {
   margin: space(3x) 0 0;
   @include font-size($fs-h5);
@@ -198,14 +198,14 @@ h5,
 }
 
 h6,
-.h6
+.bsds-h6
 {
   margin: space(3x) 0 0;
   @include font-size($fs-h6);
   line-height: 1.5;
 }
 
-.body-assertive
+.bsds-body-assertive
 {
   margin: space(3x) 0 0;
   @include font-size($fs-body-assertive);
@@ -216,13 +216,13 @@ h6,
   }
 }
 
-.body-subtle
+.bsds-body-subtle
 {
   @include font-size($fs-body-subtle);
 }
 
 small,
-.font-size-sm
+.bsds-font-size-sm
 {
   display: block;
   @include font-size($fs-small);
@@ -235,8 +235,8 @@ small,
 
 b,
 strong,
-.font-weight-bold,
-.font-weight-heavy
+.bsds-font-weight-bold,
+.bsds-font-weight-heavy
 {
   font-family: $font-family-base-heavy;
 }

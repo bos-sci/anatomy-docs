@@ -16,16 +16,16 @@ const Link = forwardRef(({ variant, href, to, isNavLink, className, children, ..
   let classes = '';
   switch (variant) {
     case 'subtle':
-      classes = 'ads-link-subtle'
+      classes = 'bsds-link-subtle'
       break;
     case 'ghost':
-      classes = 'ads-link-ghost'
+      classes = 'bsds-link-ghost'
       break;
     case 'cta':
-      classes = 'ads-link-cta'
+      classes = 'bsds-link-cta'
       break;
     default:
-      classes = 'ads-link';
+      classes = 'bsds-link';
       break;
   }
 

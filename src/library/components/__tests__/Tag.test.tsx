@@ -7,14 +7,14 @@ describe("Tag", () => {
       <Tag>Sample Tag!</Tag>
     );
     expect(screen.getByText("Sample Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Sample Tag!")).toHaveClass("ads-tag");
+    expect(screen.getByText("Sample Tag!")).toHaveClass("bsds-tag");
   });
 
   it("Renders ghost variant", () => {
     render(<Tag variant="ghost">Variant Tag!</Tag>);
 
     expect(screen.getByText("Variant Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Variant Tag!")).toHaveClass("ads-tag-ghost");
+    expect(screen.getByText("Variant Tag!")).toHaveClass("bsds-tag-ghost");
   });
 
   it("Renders accent variation", () => {
@@ -22,7 +22,7 @@ describe("Tag", () => {
       <Tag variant="accent">Sample Tag!</Tag>
     );
     expect(screen.getByText("Sample Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Sample Tag!")).toHaveClass("ads-tag-accent");
+    expect(screen.getByText("Sample Tag!")).toHaveClass("bsds-tag-accent");
   });
 
   it("Renders accent-ghost variation", () => {
@@ -31,7 +31,7 @@ describe("Tag", () => {
     );
 
     expect(screen.getByText("Sample Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Sample Tag!")).toHaveClass("ads-tag-accent-ghost");
+    expect(screen.getByText("Sample Tag!")).toHaveClass("bsds-tag-accent-ghost");
   });
 
   it("Renders assertive variation", () => {
@@ -42,7 +42,7 @@ describe("Tag", () => {
     );
 
     expect(screen.getByText("Variant Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Variant Tag!")).toHaveClass("ads-tag-assertive");
+    expect(screen.getByText("Variant Tag!")).toHaveClass("bsds-tag-assertive");
   });
 
   it("Renders assertive-ghost variation", () => {
@@ -51,6 +51,6 @@ describe("Tag", () => {
     );
 
     expect(screen.getByText("Variant Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Variant Tag!")).toHaveClass("ads-tag-assertive-ghost");
+    expect(screen.getByText("Variant Tag!")).toHaveClass("bsds-tag-assertive-ghost");
   });
 });

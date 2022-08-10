@@ -19,11 +19,11 @@ const Example = (props: Props): JSX.Element => {
     if (props.isFlush) {
       return <>{props.children}</>
     } else {
-      return <div className="demo-standalone">{props.children}</div>;
+      return <div className="docs-preview-external">{props.children}</div>;
     }
   } else {
     return (
-      <div className={`demo-example${props.isDarkTheme ? ' dark' : ''}${props.isFlex ? ' demo-example-flex' : ''}`}>
+      <div className={`docs-preview${props.isDarkTheme ? ' dark' : ''}${props.isFlex ? ' docs-preview-flex' : ''}`}>
         { props.children }
       </div>
     );

@@ -1,10 +1,10 @@
 $checkbox-size: $ffs-body-assertive;
 $checkmark-size: $ffs-body-assertive;
 
-.ads-fieldset[aria-invalid="true"] .ads-input-checkbox-input,
-.ads-input-checkbox-input[aria-invalid="true"]
+.bsds-fieldset[aria-invalid="true"] .bsds-input-checkbox-input,
+.bsds-input-checkbox-input[aria-invalid="true"]
 {
-  + .ads-input-checkbox-label
+  + .bsds-input-checkbox-label
   {
     &::before
     {
@@ -15,7 +15,7 @@ $checkmark-size: $ffs-body-assertive;
   &:checked,
   &[aria-checked="true"]
   {
-    + .ads-input-checkbox-label
+    + .bsds-input-checkbox-label
     {
       &::before
       {
@@ -27,7 +27,7 @@ $checkmark-size: $ffs-body-assertive;
   &:focus,
   &:focus:checked
   {
-    + .ads-input-checkbox-label
+    + .bsds-input-checkbox-label
     {
       &::before
       {
@@ -37,23 +37,23 @@ $checkmark-size: $ffs-body-assertive;
   }
 }
 
-.ads-fieldset
+.bsds-fieldset
 {
-   > .ads-input:not(:first-child)
+   > .bsds-input:not(:first-child)
   {
-    .ads-input-checkbox
+    .bsds-input-checkbox
     {
       margin-top: space(2x);
     }
   }
 }
 
-.ads-input-checkbox
+.bsds-input-checkbox
 {
   display: flex;
 }
 
- .ads-input-checkbox-input
+ .bsds-input-checkbox-input
 {
   position: absolute;
   box-sizing: border-box;
@@ -65,7 +65,7 @@ $checkmark-size: $ffs-body-assertive;
   -webkit-appearance: none;
   pointer-events: none;
 
-  + .ads-input-checkbox-label
+  + .bsds-input-checkbox-label
   {
     position: relative;
     padding-left: space(3x) + space(xs);
@@ -88,7 +88,7 @@ $checkmark-size: $ffs-body-assertive;
   &[aria-checked="mixed"],
   &[aria-checked="true"]
   {
-    + .ads-input-checkbox-label
+    + .bsds-input-checkbox-label
     {
       &::before
       {
@@ -101,7 +101,7 @@ $checkmark-size: $ffs-body-assertive;
   &:checked,
   &[aria-checked="true"]
   {
-    + .ads-input-checkbox-label // checkmark
+    + .bsds-input-checkbox-label // checkmark
     {
       &::before
       {
@@ -128,7 +128,7 @@ $checkmark-size: $ffs-body-assertive;
   &:focus,
   &:focus:checked
   {
-    + .ads-input-checkbox-label
+    + .bsds-input-checkbox-label
     {
       &::before
       {
@@ -139,7 +139,7 @@ $checkmark-size: $ffs-body-assertive;
 
   &:disabled
   {
-    + .ads-input-checkbox-label
+    + .bsds-input-checkbox-label
     {
       cursor: not-allowed;
 

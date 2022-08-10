@@ -82,8 +82,8 @@ const Tabs = ({ children }: Props): JSX.Element => {
   }, [children, tabPanels.length]);
 
   return (
-    <div className="ads-tabs">
-      <div className="ads-tab-list" role="tablist" onKeyDown={keyManager}>
+    <div className="bsds-tabs">
+      <div className="bsds-tab-list" role="tablist" onKeyDown={keyManager}>
         {tabPanels.map((tabPanel, index) => (
           <Tab
             key={`${tabPanelId + index}Tab`}
@@ -96,12 +96,12 @@ const Tabs = ({ children }: Props): JSX.Element => {
           />
         ))}
       </div>
-      <div className="ads-tab-panels">
+      <div className="bsds-tab-panels">
         {tabPanels.map((tabPanel, index) => (
           <div
             key={tabPanelId + index}
             id={tabPanelId + index}
-            className="ads-tab-panel"
+            className="bsds-tab-panel"
             role="tabpanel"
             aria-labelledby={`${tabPanelId + index}Tab`}
             tabIndex={0}

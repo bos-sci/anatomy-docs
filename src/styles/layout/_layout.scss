@@ -12,14 +12,14 @@ body
   margin: 0;
 }
 
-.app-root
+.docs-root
 {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-.app-body
+.docs-body
 {
   flex: 1;
   display: grid;
@@ -27,7 +27,7 @@ body
   grid-template-rows: auto 1fr;
   grid-template-areas: "nav-secondary" "main";
 
-  .ads-nav-secondary
+  .bsds-nav-secondary
   {
     grid-area: nav-secondary;
   }
@@ -58,24 +58,24 @@ main
   }
 }
 
-.page-header
+.docs-page-header
 {
   grid-area: intro;
   width: 100%;
 }
 
-.page-content
+.docs-page-content
 {
   grid-area: page-content;
   width: 100%;
 
-  & > .demo-example:first-of-type
+  & > .docs-preview-:first-of-type
   {
     margin-top: space(6x);
   }
 }
 
-.app-footer
+.docs-footer
 {
   display: flex;
   justify-content: center;
@@ -84,14 +84,14 @@ main
   padding: space(4x);
 }
 
-.footer-logo
+.docs-footer-logo
 {
   width: space(12x);
 }
 
 @media (min-width: $lg)
 {
-  .app-body
+  .docs-body
   {
     width: var(--app-width);
     margin-right: auto;
@@ -117,13 +117,13 @@ main
       padding: 0;
     }
 
-    & > .ads-nav-secondary
+    & > .bsds-nav-secondary
     {
       width: 12rem;
       margin-top: space(4x);
     }
 
-    .nav-tertiary
+    .bsds-nav-tertiary
     {
       margin-top: space(lg);
       width: 12rem;
@@ -133,7 +133,7 @@ main
 
 @media (min-width: $xl)
 {
-  .app-body
+  .docs-body
   {
     grid-template-columns: 1fr 5fr;
     width: var(--app-width);
@@ -142,7 +142,7 @@ main
 
 @media (min-width: $xxl)
 {
-  .app-body
+  .docs-body
   {
     width: var(--app-width);
   }

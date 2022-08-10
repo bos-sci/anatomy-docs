@@ -5,7 +5,7 @@ import './NotFound.scss';
 const  NotFound = (): JSX.Element => {
   return (
     <Layout>
-      <div className="app-not-found">
+      <div className="docs-not-found">
         <main id="mainContent">
           <h1>Oops!</h1>
           <p>Looks like this page doesn't exist.</p>

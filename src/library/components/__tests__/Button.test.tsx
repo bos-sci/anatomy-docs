@@ -17,12 +17,12 @@ describe("Button", () => {
       <Button variant="ghost">Variant Button!</Button>
     );
     expect(screen.getByRole("button")).toBeInTheDocument();
-    expect(screen.getByRole("button")).toHaveClass("ads-button-ghost");
+    expect(screen.getByRole("button")).toHaveClass("bsds-button-ghost");
 
     rerender(<Button variant="assertive">Variant Button!</Button>);
-    expect(screen.getByRole("button")).toHaveClass("ads-button-assertive");
+    expect(screen.getByRole("button")).toHaveClass("bsds-button-assertive");
 
     rerender(<Button variant="subtle">Variant Button!</Button>);
-    expect(screen.getByRole("button")).toHaveClass("ads-button-subtle");
+    expect(screen.getByRole("button")).toHaveClass("bsds-button-subtle");
   });
 });

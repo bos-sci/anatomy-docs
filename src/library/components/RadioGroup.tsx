@@ -59,13 +59,13 @@ const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAtt
   }, []);
 
   return (
-    <fieldset className="ads-fieldset" aria-describedby={helpTextId ? helpTextId : ''} {...fieldsetAttrs} role="radiogroup" aria-invalid={addonProps.ariaInvalid && addonProps.isDirty}>
-      <legend className="ads-legend">{ legend }</legend>
+    <fieldset className="bsds-fieldset" aria-describedby={helpTextId ? helpTextId : ''} {...fieldsetAttrs} role="radiogroup" aria-invalid={addonProps.ariaInvalid && addonProps.isDirty}>
+      <legend className="bsds-legend">{ legend }</legend>
       { validationMessage &&
-        <p id={errorTextId} className="ads-input-error">{ validationMessage }</p>
+        <p id={errorTextId} className="bsds-input-error">{ validationMessage }</p>
       }
       { helpText &&
-        <p id={helpTextId} className="ads-input-help-text">{ helpText }</p>
+        <p id={helpTextId} className="bsds-input-help-text">{ helpText }</p>
       }
       <RadioAddonPropsContext.Provider value={addonProps}>
         { children }

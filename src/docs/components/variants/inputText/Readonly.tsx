@@ -4,10 +4,10 @@ import Example from '../../../shared/components/Example';
 const Readonly = (): JSX.Element => {
   return (
     <Example>
-      <div className="ads-form-control">
+      <div className="bsds-form-control">
         <InputText label="Readonly text input" readOnly />
       </div>
-      <div className="ads-form-control">
+      <div className="bsds-form-control">
         <InputText label="Readonly text input" value="Value" readOnly />
       </div>
     </Example>

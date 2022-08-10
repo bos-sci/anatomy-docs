@@ -99,7 +99,7 @@ const Resources = (): JSX.Element => {
         <Markdown
           markdown={resourceData?.content || ''}
           headingOffset={1}
-          className={resourceData?.name === 'Release notes' ? 'table-align-top' : ''} />
+          className={resourceData?.name === 'Release notes' ? 'docs-table-align-top' : ''} />
       </PageTemplate>
     </Layout>
   );

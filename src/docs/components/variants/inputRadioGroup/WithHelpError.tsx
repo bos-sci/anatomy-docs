@@ -15,7 +15,7 @@ const WithHelpError = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="ads-form-control">
+      <div className="bsds-form-control">
         <RadioGroup
           legend="Legend"
           helpText="This is an example help text. It can wrap to two lines, but try not to go longer than three."

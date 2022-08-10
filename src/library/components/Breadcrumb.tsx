@@ -40,9 +40,9 @@ const Breadcrumb = ({ crumbs, currentPage, hasOverflow = true }: Props): JSX.Ele
 
   return (
     <nav aria-label="breadcrumb">
-      <ol className="ads-breadcrumbs">
+      <ol className="bsds-breadcrumbs">
         {overflowCrumbs.length > 0 &&
-          <li className="ads-breadcrumb-overflow">
+          <li className="bsds-breadcrumb-overflow">
             {overflowCrumbs.length > 0 &&
               <Dropdown variant="subtle" icon="ellipsis" listType="ol" aria-label="previous pages">
                 {overflowCrumbs.map(crumb => (
@@ -53,11 +53,11 @@ const Breadcrumb = ({ crumbs, currentPage, hasOverflow = true }: Props): JSX.Ele
           </li>
         }
         {visibleCrumbs.map(crumb => (
-          <li key={`crumb${crumb.name}`} className="ads-breadcrumb-item">
-            <Link href={crumb.href} to={crumb.to} className="ads-breadcrumb-link">{crumb.name} </Link>
+          <li key={`crumb${crumb.name}`} className="bsds-breadcrumb-item">
+            <Link href={crumb.href} to={crumb.to} className="bsds-breadcrumb-link">{crumb.name} </Link>
           </li>
         ))}
-        <li className="ads-breadcrumb-item" aria-current="page">{currentPage}</li>
+        <li className="bsds-breadcrumb-item" aria-current="page">{currentPage}</li>
       </ol>
     </nav>
   );

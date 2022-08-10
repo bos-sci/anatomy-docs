@@ -6,7 +6,7 @@ describe("Stoplight", () => {
     render(<Stoplight lightColor="red">Sample Stoplight!</Stoplight>);
     expect(screen.getByText("Sample Stoplight!")).toBeInTheDocument();
     expect(screen.getByText("Sample Stoplight!")).toHaveClass(
-      "ads-stoplight-red"
+      "bsds-stoplight-red"
     );
   });
 
@@ -14,7 +14,7 @@ describe("Stoplight", () => {
     render(<Stoplight lightColor="yellow">Sample Stoplight!</Stoplight>);
     expect(screen.getByText("Sample Stoplight!")).toBeInTheDocument();
     expect(screen.getByText("Sample Stoplight!")).toHaveClass(
-      "ads-stoplight-yellow"
+      "bsds-stoplight-yellow"
     );
   });
 
@@ -23,7 +23,7 @@ describe("Stoplight", () => {
 
     expect(screen.getByText("Sample Stoplight!")).toBeInTheDocument();
     expect(screen.getByText("Sample Stoplight!")).toHaveClass(
-      "ads-stoplight-green"
+      "bsds-stoplight-green"
     );
   });
 
@@ -36,7 +36,7 @@ describe("Stoplight", () => {
 
     expect(screen.getByText("Variant Stoplight!")).toBeInTheDocument();
     expect(screen.getByText("Variant Stoplight!")).toHaveClass(
-      "ads-stoplight-ghost"
+      "bsds-stoplight-ghost"
     );
   });
 
@@ -49,7 +49,7 @@ describe("Stoplight", () => {
 
     expect(screen.getByText("Variant Stoplight!")).toBeInTheDocument();
     expect(screen.getByText("Variant Stoplight!")).toHaveClass(
-      "body-assertive"
+      "bsds-body-assertive"
     );
   });
 });

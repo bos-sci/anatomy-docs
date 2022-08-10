@@ -63,8 +63,8 @@ const Layout = (props: Props): JSX.Element => {
     <SkipLink destinationId="mainContent" destination="main content"/>
     <NavPrimary logo={logo} navItems={navItems} hasSearch={false} />
     { props.children }
-    <footer className="app-footer">
-      <img src={logoBSC} className="footer-logo" alt="Boston Scientific"/>
+    <footer className="docs-footer">
+      <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>
     </footer>
   </>;
 }

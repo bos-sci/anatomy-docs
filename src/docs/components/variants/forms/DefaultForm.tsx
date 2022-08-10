@@ -36,7 +36,7 @@ const DefaultForm = () => {
       <h2>Form example</h2>
       <p>Submit the form to see an example of validation.</p>
       <Form onSubmit={handleSubmit} onInvalid={handleInvalid}>
-        <div className="ads-form-control">
+        <div className="bsds-form-control">
           <InputText
             ref={noSpacesInput}
             label="Text input"
@@ -46,13 +46,13 @@ const DefaultForm = () => {
             onChange={validateTextInput}
             helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."/>
         </div>
-        <div className="ads-form-control">
+        <div className="bsds-form-control">
           <InputText label="Required text input" required />
         </div>
-        <div className="ads-form-control">
+        <div className="bsds-form-control">
           <InputText label="Disabled text input" disabled />
         </div>
-        <div className="ads-form-control">
+        <div className="bsds-form-control">
           <Fieldset
             legend="Checkbox group"
             helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three.">
@@ -61,17 +61,17 @@ const DefaultForm = () => {
             <InputCheckbox label="Checkbox 3" />
           </Fieldset>
         </div>
-        <div className="ads-form-control">
+        <div className="bsds-form-control">
           <RadioGroup legend="Radio group">
             <InputRadio label="Radio 1" name="groupDisabled" value="defaultRadio1" defaultChecked />
             <InputRadio label="Radio 2" name="groupDisabled" value="defaultRadio2" />
             <InputRadio label="Radio 3" name="groupDisabled" value="defaultRadio3" />
           </RadioGroup>
         </div>
-        <div className="ads-form-control">
+        <div className="bsds-form-control">
           <InputCheckbox label="Required checkbox" required />
         </div>
-        <div className="ads-form-control">
+        <div className="bsds-form-control">
           <Button variant="assertive">Submit</Button>
         </div>
       </Form>

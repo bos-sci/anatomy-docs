@@ -68,7 +68,7 @@ const Preview = ( props: Props ): JSX.Element => {
     if (props.shouldLinkToExamples) {
       setRenderedComponent(
         <Link
-          className="demo-link"
+          className="docs-demo-link"
           to={`example/${props.variantId ? props.variantId : 'default'}`}
           target="_blank">
           See {props.variant || 'example'}
@@ -132,7 +132,7 @@ const Preview = ( props: Props ): JSX.Element => {
           break;
 
         case 'skip-link':
-          setRenderedComponent(<Link className="demo-link" to="/components/skip-link/example" target="_blank">See example</Link>);
+          setRenderedComponent(<Link className="docs-demo-link" to="/components/skip-link/example" target="_blank">See example</Link>);
           break;
 
         case 'stoplight':
