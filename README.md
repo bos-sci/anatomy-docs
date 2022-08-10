@@ -150,6 +150,10 @@ In the end we should have 4 environments including master, working environment, 
 
 ### Naming Conventions
 
+#### Prefixes
+ - Library classes should be prefixed with `bsds-`.
+ - Documentation classes should be prefixed with `docs-`.
+
 #### Git Naming
 
 ##### Branches
