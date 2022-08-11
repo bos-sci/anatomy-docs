@@ -41,6 +41,10 @@
       "last 1 safari version"
     ]
   },
+  "engines" : {
+    "npm" : ">=7.0.0",
+    "node" : ">=16.0.0"
+  },
   "devDependencies": {
     "@apollo/client": "^3.6.9",
     "@graphql-codegen/cli": "^2.7.0",
