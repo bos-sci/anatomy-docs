@@ -46,6 +46,10 @@ const Foundations = (): JSX.Element => {
         slug: basePath + '/accessibility'
       },
       {
+        text: 'Anti-patterns',
+        slug: basePath + '/anti-patterns'
+      },
+      {
         text: 'Color',
         slug: basePath + '/color'
       },
