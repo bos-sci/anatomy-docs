@@ -30,9 +30,11 @@ const Tag = (props: Props): JSX.Element => {
       break;
   }
 
-  return (
+  return <></>
+
+  /* return (
     <p className={classes}>{props.children}</p>
-  );
+  ); */
 };
 
 export default Tag;
