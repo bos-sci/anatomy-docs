@@ -9,17 +9,17 @@ interface Props {
 
 const NavUtility = ({utilityItems, ariaLabel}: Props): JSX.Element => {
   return (
-    <nav className="ads-nav-utility" aria-label={ariaLabel || 'Utility'}>
-      <ul className="ads-nav">
+    <nav className="bsds-nav-utility" aria-label={ariaLabel || 'Utility'}>
+      <ul className="bsds-nav">
         {utilityItems.map((utilityItem, i) =>
-          <li key={'utilityItem' + i} className="ads-nav-item">
+          <li key={'utilityItem' + i} className="bsds-nav-item">
             {utilityItem.children ?
-              <Dropdown triggerText={utilityItem.text} className="ads-nav-link">
+              <Dropdown triggerText={utilityItem.text} className="bsds-nav-link">
                 {utilityItem.children.map((child, childI) => (
                   <Link key={child.text + childI} href={child.href} to={child.slug}>{child.text}</Link>
                 ))}
               </Dropdown>
-              : <Link to={utilityItem.slug} href={utilityItem.href} className="ads-nav-link">{utilityItem.text}</Link>
+              : <Link to={utilityItem.slug} href={utilityItem.href} className="bsds-nav-link">{utilityItem.text}</Link>
             }
           </li>
         )}

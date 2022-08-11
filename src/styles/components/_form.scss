@@ -1,27 +1,30 @@
-.ads-form
+.bsds-form
 {
   width: 100%;
 }
 
-.ads-fieldset
+.bsds-fieldset
 {
   display: flex;
   flex-direction: column;
+  border: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
-.ads-legend
+.bsds-legend
 {
   margin: 0; // TODO: look at this after we rip out bootstrap
   font-family: $font-family-base-heavy;
   @include font-size($fs-base);
 }
 
-.ads-input
+.bsds-input
 {
   width: 100%;
 }
 
-.ads-input-error
+.bsds-input-error
 {
   display: flex;
   align-items: center;
@@ -43,21 +46,21 @@
   }
 }
 
-.ads-input-help-text
+.bsds-input-help-text
 {
   margin: space(sm) 0 0 0;
   @include font-size($fs-body-subtle);
   color: $neutral-40;
 }
 
-.ads-form-control
+.bsds-form-control
 {
   margin-top: space(4x);
 }
 
 @media (min-width: 992px)
 {
-  .ads-input-error
+  .bsds-input-error
   {
     &::before
     {

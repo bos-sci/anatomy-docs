@@ -4,7 +4,7 @@ import Button from '../../Button';
 import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
-import { NavLink, NavLinkProps } from 'react-router-dom';
+import { Location, NavLink, useLocation } from 'react-router-dom';
 import Link from '../../Link';
 import Search from '../../Search';
 
@@ -22,7 +22,7 @@ interface NavItemPrimaryBase extends NavItem {
   altHref?: string;
   altLinkText?: string;
   isExactMatch?: boolean;
-  isActive?: NavLinkProps['isActive'];
+  isActive?: (location: Location) => boolean;
 }
 
 interface NavItemUtilityBase extends NavItem {
@@ -71,6 +71,7 @@ interface Props {
 let navPrimaryMenuIndex = 0;
 
 const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: Props): JSX.Element => {
+  const location = useLocation();
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -213,26 +214,26 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   }
 
   return (
-    <header className="ads-nav-header" ref={navRef}>
+    <header className="bsds-nav-header" ref={navRef}>
       {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
-      <nav className="ads-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
-        <div className="ads-nav-bar">
+      <nav className="bsds-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
+        <div className="bsds-nav-bar">
           {(logo.to || logo.href) ?
-            <Link to={logo.to} href={logo.href} isNavLink={true} className="ads-nav-link-logo">
+            <Link to={logo.to} href={logo.href} isNavLink={true} className="bsds-nav-link-logo">
               <img src={logo.src} alt={logo.alt} />
             </Link>
             :
-            <img className="ads-nav-link-logo" src={logo.src} alt={logo.alt} />
+            <img className="bsds-nav-link-logo" src={logo.src} alt={logo.alt} />
           }
-          <ul className="ads-nav">
+          <ul className="bsds-nav">
             {navTree.map((navItem, i) => (
-              <li key={navItem.text + i} className="ads-nav-item ads-nav-item-root">
+              <li key={navItem.text + i} className="bsds-nav-item bsds-nav-item-root">
                 {navItem.children &&
                   <Button
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className={"ads-nav-link" + (navItem === getActiveRoot() ? ' active' : '')}
+                    className={"bsds-nav-link" + (navItem === getActiveRoot() ? ' active' : '')}
                     aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
                     aria-controls={menuId}
@@ -242,7 +243,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
                   </Button>
                 }
                 {(navItem.slug || navItem.href) &&
-                  <NavLink exact={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className="ads-nav-link" isActive={navItem.isActive}>{navItem.text}</NavLink>
+                  <NavLink end={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className={`bsds-nav-link${navItem.isActive && navItem.isActive(location) ? ' active' : ''}`}>{navItem.text}</NavLink>
                 }
                 {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && isRootOpen && !isViewportSmall) &&
                   <NavPrimaryMenu
@@ -260,23 +261,23 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
               </li>
             ))}
             {hasSearch &&
-              <li className="ads-nav-item ads-nav-item-search">
+              <li className="bsds-nav-item bsds-nav-item-search">
                 <Button
                   variant="subtle"
-                  className="ads-nav-link"
+                  className="bsds-nav-link"
                   aria-label={texts?.searchToggleAriaLabel || 'Toggle search'}
                   aria-expanded={isSearchOpen}
                   onClick={toggleSearch}>
-                  <span className="ads-nav-link-search-text">
+                  <span className="bsds-nav-link-search-text">
                     {texts?.searchToggleText || 'Search'}
                   </span>
                 </Button>
               </li>
             }
-            <li className="ads-nav-item ads-nav-item-toggle">
+            <li className="bsds-nav-item bsds-nav-item-toggle">
               <Button
                 variant="subtle"
-                className="ads-nav-link"
+                className="bsds-nav-link"
                 aria-label={texts?.menuToggleAriaLabel || 'Toggle menu'}
                 aria-expanded={isMenuOpen}
                 onClick={toggleMenu}>
@@ -285,7 +286,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
             </li>
           </ul>
         </div>
-        <div className={'ads-search-panel' + (isSearchOpen ? ' open' : '')}>
+        <div className={'bsds-search-panel' + (isSearchOpen ? ' open' : '')}>
           <Search label="Search" buttonText={texts?.searchButtonText} buttonAriaLabel={texts?.searchButtonAriaLabel} />
         </div>
         {((navTree.length > 0 && !isRootOpen && isViewportSmall)) &&

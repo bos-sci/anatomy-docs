@@ -2,7 +2,7 @@ import { VariantProps } from '../Preview';
 import DefaultBreadcrumbs from './DefaultBreadcrumbs';
 import OverflowBreadcrumbs from './OverflowBreadcrumbs';
 
-const BreadcrumbVariants = ({ variantId }: VariantProps): JSX.Element => {
+const BreadcrumbController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
     case 'breadcrumbsOverflow':
@@ -13,4 +13,4 @@ const BreadcrumbVariants = ({ variantId }: VariantProps): JSX.Element => {
   }
 }
 
-export default BreadcrumbVariants;
+export default BreadcrumbController;

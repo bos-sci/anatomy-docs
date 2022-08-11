@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
@@ -11,28 +11,28 @@ const Tag = (props: Props): JSX.Element => {
   let classes = '';
   switch (variant) {
     case 'accent':
-      classes = 'ads-tag-accent'
+      classes = 'bsds-tag-accent'
       break;
     case 'accent-ghost':
-      classes = 'ads-tag-accent-ghost'
+      classes = 'bsds-tag-accent-ghost'
       break;
     case 'assertive':
-      classes = 'ads-tag-assertive'
+      classes = 'bsds-tag-assertive'
       break;
     case 'assertive-ghost':
-      classes = 'ads-tag-assertive-ghost'
+      classes = 'bsds-tag-assertive-ghost'
       break;
     case 'ghost':
-      classes = 'ads-tag-ghost'
+      classes = 'bsds-tag-ghost'
       break;
     default:
-      classes = 'ads-tag';
+      classes = 'bsds-tag';
       break;
   }
 
   return (
     <p className={classes}>{props.children}</p>
   );
-}
+};
 
 export default Tag;

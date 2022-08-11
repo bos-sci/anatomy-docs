@@ -12,7 +12,7 @@ const useHashScroll = (isContentLoaded = false): void => {
         setTimeout(() => {
           const element = document.querySelector(hash);
           if (element) {
-            element.scrollIntoView();
+            element.scrollIntoView({behavior: 'smooth'});
           }
         }, 0);
       }

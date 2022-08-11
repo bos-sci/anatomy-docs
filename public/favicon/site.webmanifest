@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+  "short_name": "Anatomy",
+  "name": "Anatomy Design System",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

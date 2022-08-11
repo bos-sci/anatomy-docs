@@ -25,22 +25,22 @@ const NavWizardListParent = (props: Props) => {
 
   const isActive = Array.from(props.history, h => h.node).includes(props.navItem);
   return (
-    <li className="ads-nav-item-parent">
+    <li className="bsds-nav-item-parent">
       <Button
         ref={navItemParentRef}
         id={props.navItem.id}
         variant="subtle"
         className={
-          'ads-nav-link'
+          'bsds-nav-link'
         }
         aria-expanded={isActive}
         onClick={updateHistory}
       >
-        <span className="ads-nav-link-text">
+        <span className="bsds-nav-link-text">
           {props.navItem.text}
         </span>
-        <div className="ads-nav-link-addon">
-          <IconChevronRight className="ads-icon-2x"/>
+        <div className="bsds-nav-link-addon">
+          <IconChevronRight className="bsds-icon-2x"/>
         </div>
       </Button>
       <NavWizardList navItems={ props.navItem.children! } depth={props.depth + 1} history={props.history} pushHistory={props.pushHistory} popHistory={props.popHistory} focusBackBtn={props.focusBackBtn} />

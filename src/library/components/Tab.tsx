@@ -19,7 +19,7 @@ const Tab = ({ tabName, setSelectedTab, index, isActive, tabPanelId, tabRef }: P
     <button
       ref={tabRef}
       id={`${tabPanelId}Tab`}
-      className="ads-tab"
+      className="bsds-tab"
       role="tab"
       aria-controls={tabPanelId}
       aria-selected={isActive}

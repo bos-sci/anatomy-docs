@@ -1,4 +1,4 @@
-.ads-accordion
+.bsds-accordion
 {
   width: 100%;
 
@@ -8,12 +8,12 @@
   }
 }
 
-.ads-accordion-heading
+.bsds-accordion-heading
 {
   margin-top: 0;
 }
 
-.ads-accordion-trigger
+.bsds-accordion-trigger
 {
   display: flex;
   justify-content: space-between;
@@ -55,7 +55,7 @@
       border-color: $neutral-80;
       background: transparent;
       color: $action-primary-40;
-  
+
       svg
       {
         color: $action-primary-40;
@@ -66,13 +66,13 @@
     {
       background: transparent;
       color: $action-primary-40;
-  
+
       svg
       {
         color: $action-primary-40;
       }
     }
-  
+
     &:focus
     {
       background: transparent;
@@ -88,7 +88,7 @@
   }
 }
 
-.ads-accordion-panel
+.bsds-accordion-panel
 {
   padding: space(2x) space(3x) space(4x);
 }

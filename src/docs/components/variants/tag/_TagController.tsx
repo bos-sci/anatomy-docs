@@ -4,7 +4,7 @@ import DefaultStyle from './DefaultStyle';
 import AccentStyle from './AccentStyle';
 import AssertiveStyle from './AssertiveStyle';
 
-const TagVariants = ({ variantId }: VariantProps): JSX.Element => {
+const TagController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Styles
     case 'tagDefault':
@@ -19,4 +19,4 @@ const TagVariants = ({ variantId }: VariantProps): JSX.Element => {
   }
 }
 
-export default TagVariants;
+export default TagController;

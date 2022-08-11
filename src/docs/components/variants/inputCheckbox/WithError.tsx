@@ -4,7 +4,7 @@ import Example from '../../../shared/components/Example';
 const WithError = (): JSX.Element => {
   return (
     <Example>
-      <div className="ads-form-control">
+      <div className="bsds-form-control">
         <InputCheckbox label="Checkbox" required forceValidation={true} />
       </div>
     </Example>

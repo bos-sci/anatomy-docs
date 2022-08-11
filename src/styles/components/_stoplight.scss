@@ -1,4 +1,4 @@
-[class*="ads-stoplight"]
+[class*="bsds-stoplight"]
 {
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@
     background-repeat: no-repeat;
   }
 
-  &.body-subtle
+  &.bsds-body-subtle
   {
     &::before
     {
@@ -27,7 +27,7 @@
   }
 }
 
-.ads-stoplight
+.bsds-stoplight
 {
   &-red
   {
@@ -36,7 +36,7 @@
       background-image: url("../../assets/images/icon-stoplight-red.svg");
     }
 
-    &.ads-stoplight-ghost
+    &.bsds-stoplight-ghost
     {
       &::before
       {

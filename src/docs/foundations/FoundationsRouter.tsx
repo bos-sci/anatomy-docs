@@ -1,18 +1,19 @@
+import { useContext } from 'react';
+import { useParams } from 'react-router';
+import { IdLookupContext } from '../App';
+import NotFound from '../shared/components/notFound/NotFound';
+import { IdLookup } from '../shared/types/docs';
 import Foundations from './Foundations';
-import { Redirect, Switch, Route, useRouteMatch } from 'react-router-dom';
 
 const FoundationsRouter = (): JSX.Element => {
-  const { path } = useRouteMatch();
+  const params = useParams();
+  const idLookup: IdLookup = useContext(IdLookupContext);
 
-  return (
-    <Switch>
-      <Route exact path={path}>
-        <Redirect to={`${path}/accessibility`} />
-      </Route>
-      <Route path={`${path}/iconography/:foundationName`} component={Foundations} />
-      <Route path={`${path}/:foundationName`} component={Foundations} />
-    </Switch>
-  );
+  if (params.foundationName && !Object.keys(idLookup.foundations).includes(params.foundationName)) {
+    return <NotFound />;
+  } else if (!params.group && idLookup.foundations[params.foundationName!].group) {
+    return <NotFound />;
+  } else return <Foundations />;
 }
 
 export default FoundationsRouter;

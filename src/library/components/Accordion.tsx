@@ -1,4 +1,4 @@
-// TODO: 
+// TODO:
 // make all panels collapsed on page load & allow multiple panels to be expanded at the same time
 // finish refactoring
 
@@ -47,10 +47,10 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
   }, [children, accordionPanels.length]);
 
   return (
-    <div className="ads-accordion">
+    <div className="bsds-accordion">
       {accordionPanels.map((accordionPanel, index) => (
         <>
-          <HeadingElement headingLevel={headingLevel} className="ads-accordion-heading">
+          <HeadingElement headingLevel={headingLevel} className="bsds-accordion-heading">
             <AccordionHeading
               key={`${accordionPanelId + index}Heading`}
               accordionHeading={accordionPanel.props.accordionHeading}
@@ -64,7 +64,7 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
           <div
             key={accordionPanelId + index}
             id={accordionPanelId + index}
-            className="ads-accordion-panel"
+            className="bsds-accordion-panel"
             hidden={index !== expandedPanel}
           >
             { accordionPanel }

@@ -1,18 +1,19 @@
+import { useContext } from 'react';
+import { useParams } from 'react-router';
+import { IdLookupContext } from '../App';
+import NotFound from '../shared/components/notFound/NotFound';
+import { IdLookup } from '../shared/types/docs';
 import Resources from './Resources';
-import { Redirect, Switch, Route, useRouteMatch } from 'react-router-dom';
 
 const ResourcesRouter = (): JSX.Element => {
-  const { path } = useRouteMatch();
+  const params = useParams();
+  const idLookup: IdLookup = useContext(IdLookupContext);
 
-  return (
-    <Switch>
-      <Route exact path={path}>
-        <Redirect to={`${path}/community`} />
-      </Route>
-      <Route path={`${path}/designers/:resourceName`} component={Resources} />
-      <Route path={`${path}/:resourceName`} component={Resources} />
-    </Switch>
-  );
+  if (params.resourceName && !Object.keys(idLookup.resources).includes(params.resourceName)) {
+    return <NotFound />;
+  } else if (!params.group && idLookup.resources[params.resourceName!].group) {
+    return <NotFound />;
+  } else return <Resources />;
 }
 
 export default ResourcesRouter;

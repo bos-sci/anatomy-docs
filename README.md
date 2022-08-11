@@ -67,6 +67,31 @@ REACT_EDITOR=code
 *See [PR naming](#branches) guidelines below.*
 5. PR can only be merged after it has been reviewed and all tests pass.
 
+#### Testing
+
+- Unit and component integration tests live in `src/library/components/__tests__`
+- End-to-end tests live in `cypress/e2e/`
+
+##### Unit and Component Integration
+
+To start the test runner, run
+
+```
+npm test
+```
+
+This will start the Jest test runner in watch mode. As you edit test files (and their corresponding component files), the runner re-runs your tests and notifies you of any failures.
+
+##### End-to-end
+
+To run E2E tests in Cypress, run
+
+```
+npm run cypress:open
+```
+
+This will open the Cypress app. In the home screen, choose "end to end" and run the appropriate test from the list.
+
 ##### Adding a primary section to the docs site
 Steps for adding a site section that will be accessible from the primary navigation.
 1. Create content model in Contentful (use singular name, e.g.: Content Guideline > Name, Description, Content).
@@ -83,6 +108,17 @@ Steps for adding a site section that will be accessible from the primary navigat
 6. Add site section link in `navPrimary.tsx`.
 7. Be sure to restart your local server to regen Contentful types and clear errors.
 
+##### Adding grouped items to secondary nav
+A grouped item is when you have nav items nested under a parent folder. The parent is not a location, it is a collapsible that reveals grouped items.
+
+If there are already grouped items in the secondary nav in question, no development work is needed. Simply create/add options to the group field in the corresponding Contentful content.
+
+If there are no grouped items then reference the following.
+
+1. In Contentful, create a text field titled "group" that accepts specific values (styled as select) in the page content model. Reference other group fields as examples.
+2. In code, add the group support in `App.tsx`. Follow the pattern for existing group capable sections.
+3. In code, add the additional conditional to check group value in the page router file. Reference other page router files for examples.
+
 ##### Adding a new field to an existing section
 Steps for adding a new field to an existing section.
 1. Add field to content model in Contentful, following naming conventions as outlined in [adding a primary section to the docs site](#adding-a-primary-section-to-the-docs-site).
@@ -91,11 +127,12 @@ Steps for adding a new field to an existing section.
 
 ##### Adding a component to the library
 1. Add component in `/library`.
-2. Add subfolder in `/docs/components` with a variants controller, e.g. `ButtonVariants.tsx`.
+2. Add subfolder in `/docs/components` with a variants controller, e.g. `_ButtonController.tsx`.
 3. Add variants.
     - Cases in switch case must match variant ids in Contentful (spacing and casing).
 4. Add component to `Preview.tsx`.
     - Case in switch case must match docs site route for that component.
+5. If the examples are external (e.g. primary nav), add the routes to those examples as ignores in SiteImprove.
 
 #### Deploy to Production
 1. In Contentful, point the master alias environment at the working environment.
@@ -112,6 +149,10 @@ new working environment.
 In the end we should have 4 environments including master, working environment, and the past 2 versions of master.
 
 ### Naming Conventions
+
+#### Prefixes
+ - Library classes should be prefixed with `bsds-`.
+ - Documentation classes should be prefixed with `docs-`.
 
 #### Git Naming
 
@@ -134,9 +175,9 @@ Pull requests should start with the branch name, followed by a brief description
 ### GraphQL
 You can build and test queries using GraphQL at the following link.
 
-https://graphql.contentful.com/content/v1/spaces/{spaceID}/explore?access_token={accessToken}
+https://graphql.contentful.com/content/v1/spaces/{spaceID}/environments/{environment}/explore?access_token={accessToken}
 
-spaceID and accessToken can be found in your .env file or through the contentful dashboard.
+spaceID, environment and accessToken can be found in your .env file or through the contentful dashboard.
 
 ## Scripts
 

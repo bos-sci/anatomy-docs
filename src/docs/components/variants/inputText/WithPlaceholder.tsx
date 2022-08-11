@@ -4,7 +4,7 @@ import Example from '../../../shared/components/Example';
 const WithPlaceholder = (): JSX.Element => {
   return (
     <Example>
-      <div className="ads-form-control">
+      <div className="bsds-form-control">
         <InputText label="Text input" placeholder="Placeholder text" />
       </div>
     </Example>

@@ -1,20 +1,47 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { NavItemTertiary } from '../../../library/components/navigation/navTertiary/NavTertiary';
 
 /*
 * @PARAM key: any - The value that triggers an update of the query selection when changed.
 * @PARAM depth: int - The depth of heading levels to return starting at h2. Default is 1.
 */
-const useHeadings = (key: any, depth = 1): Element[] => {
-  const [headings, setHeadings] = useState<Element[]>([]);
+const useHeadings = (depth = 1): NavItemTertiary[] => {
+  const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
+  const [observer, setObserver] = useState<MutationObserver | null>(null);
+  const [targetNode, setTargetNode] = useState<Element | null>(null);
 
   useEffect(() => {
-    if (key) {
-      setTimeout(() => {
-        const selector = Array.from(Array(depth)).map((_val, i) => '.page-content h' + (i + 2) + ':not(.nav-tertiary-title)').join(', ');
-        setHeadings(Array.from(document.querySelectorAll(selector)));
-      }, 0);
+    setTargetNode(document.querySelector('.docs-page-content'));
+  }, []);
+
+  const getHeadings = useCallback(() => {
+    const selector = Array.from(Array(depth)).map((_val, i) => '.docs-page-content h' + (i + 2) + ':not(.bsds-nav-tertiary-title)').join(', ');
+    setHeadings(
+      Array.from(document.querySelectorAll(selector)).map(heading => {
+        return {
+          id: heading.id as string,
+          text: heading.textContent as string
+        };
+      })
+    );
+  }, [depth]);
+
+  useEffect(() => {
+    const obs = new MutationObserver(getHeadings);
+    setObserver(obs);
+  }, [getHeadings, setObserver]);
+
+  useEffect(() => {
+    const config = { attributes: false, childList: true, subtree: true };
+    if (targetNode && observer) {
+      observer.observe(targetNode, config);
     }
-  }, [key, depth]);
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    }
+  }, [targetNode, depth, observer]);
 
   return headings;
 }

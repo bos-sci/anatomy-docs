@@ -112,17 +112,17 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
   }, []);
 
   const listItems = dropdownItems.map((item, i) => (
-    <li key={dropdownId + 'item' + i} className="ads-dropdown-item" role="none">
+    <li key={dropdownId + 'item' + i} className="bsds-dropdown-item" role="none">
       {item}
     </li>
   ));
 
   return (
-    <div ref={dropdownRef} className="ads-dropdown" onKeyDown={updateFocus}>
+    <div ref={dropdownRef} className="bsds-dropdown" onKeyDown={updateFocus}>
       <Button
         variant={variant}
         icon={icon}
-        className={`ads-dropdown-trigger${className ? ' ' + className : ''}`}
+        className={`bsds-dropdown-trigger${className ? ' ' + className : ''}`}
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -131,12 +131,12 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
       </Button>
       {isDropdownOpen && <>
         {listType === 'ul' && (
-          <ul className="ads-dropdown-menu" role="menu">
+          <ul className="bsds-dropdown-menu" role="menu">
             {listItems}
           </ul>
         )}
         {listType === 'ol' && (
-          <ol className="ads-dropdown-menu" role="menu">
+          <ol className="bsds-dropdown-menu" role="menu">
             {listItems}
           </ol>
         )}

@@ -1,16 +1,20 @@
 import Layout from '../shared/components/Layout';
 import useTitle from '../shared/hooks/useTitle';
 import "./Home.scss"
+import { Helmet } from 'react-helmet';
 
 const Home = (): JSX.Element => {
   useTitle({titlePrefix: `Home`});
 
   return (
     <Layout>
-      <main id="mainContent" className="app-home">
-        <h1 className="page-title u-margin-top-remove">
+      <Helmet>
+        <meta name="description" content="Boston Scientific Anatomy Design System website homepage"/>
+      </Helmet>
+      <main id="mainContent" className="docs-home">
+        <h1 className="docs-page-title bsds-margin-top-remove">
           <span>Introducing</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 55" className="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 55" className="docs-logo">
             <title>Anatomy</title>
             <polygon points="374.42 22.28 363.47 1.26 348.48 1.26 367.88 34.48 367.88 53.74 380.74 53.74 380.74 34.48 400 1.26 385.23 1.26 374.42 22.28" fill="#fff"/>
             <polygon points="309.48 41.39 309.26 41.39 301.25 1.26 279.79 1.26 279.79 53.74 291.48 53.74 291.48 12.21 291.62 12.21 301.18 53.74 317.2 53.74 326.68 12.21 326.83 12.21 326.83 53.74 338.96 53.74 338.96 1.26 317.35 1.26 309.48 41.39" fill="#fff"/>

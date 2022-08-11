@@ -25,7 +25,7 @@ $icon-size-sm: space(lg);
   }
 }
 
-.ads-nav-secondary
+.bsds-nav-secondary
 {
   position: relative;
   grid-area: nav-secondary;
@@ -33,7 +33,7 @@ $icon-size-sm: space(lg);
   width: 100%;
   transition: width .25s ease-out;
 
-  .ads-nav-secondary-menu-trigger
+  .bsds-nav-secondary-menu-trigger
   {
     position: relative;
     display: block;
@@ -71,7 +71,7 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .ads-nav-secondary-menu
+  .bsds-nav-secondary-menu
   {
     position: absolute;
     display: none;
@@ -86,37 +86,37 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .ads-nav
+  .bsds-nav
   {
     flex-direction: column;
     margin: 0;
     padding: 0;
     list-style: none;
 
-    &:not(.ads-nav-active-list)
+    &:not(.bsds-nav-active-list)
     {
-      & > .ads-nav-item:not(.ads-nav-item-parent),
-      & > .ads-nav-item-parent > .ads-nav-link
+      & > .bsds-nav-item:not(.bsds-nav-item-parent),
+      & > .bsds-nav-item-parent > .bsds-nav-link
       {
         display: none;
       }
     }
 
-    &.ads-nav-active-list
+    &.bsds-nav-active-list
     {
       width: 100%;
     }
   }
 
-  .ads-nav-item,
-  .ads-nav-item-parent
+  .bsds-nav-item,
+  .bsds-nav-item-parent
   {
     margin-top: 0;
   }
 
-  .ads-nav-item-parent
+  .bsds-nav-item-parent
   {
-    & > .ads-nav-link
+    & > .bsds-nav-link
     {
       position: relative;
 
@@ -134,8 +134,8 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .ads-nav-link,
-  .ads-nav-link-back
+  .bsds-nav-link,
+  .bsds-nav-link-back
   {
     align-items: center;
     padding: space(lg) space(2x);
@@ -148,7 +148,7 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .ads-nav-link
+  .bsds-nav-link
   {
     display: flex;
     justify-content: space-between;
@@ -170,29 +170,36 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .ads-nav-link-back
+  .bsds-nav-link-back
   {
     justify-content: flex-start;
     @include font-size($fs-small);
     fill: $action-primary-40; // TODO: revisit in xdc-1892 (fill vs stroke here or in mixin)
 
-    &:active
+    &:active,
+    &:hover
     {
       fill: $neutral-00;
+    }
+
+    &:hover
+    {
+      color: $action-primary-40;
+      background: transparent;
     }
   }
 }
 
 @media (min-width: 992px)
 {
-  .ads-nav-secondary
+  .bsds-nav-secondary
   {
-    .ads-nav-secondary-menu-trigger
+    .bsds-nav-secondary-menu-trigger
     {
       display: none;
     }
 
-    .ads-nav-secondary-menu
+    .bsds-nav-secondary-menu
     {
       position: relative;
       display: block;

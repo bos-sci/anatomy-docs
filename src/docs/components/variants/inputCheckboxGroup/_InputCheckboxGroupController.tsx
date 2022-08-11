@@ -5,8 +5,7 @@ import WithError from './WithError';
 import WithHelpError from './WithHelpError';
 import Disabled from './Disabled';
 
-
-const InputCheckboxVariants = ({ variantId }: VariantProps): JSX.Element => {
+const InputCheckboxController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
     case 'inputCheckboxGroupWithHelpText':
@@ -25,4 +24,4 @@ const InputCheckboxVariants = ({ variantId }: VariantProps): JSX.Element => {
   }
 }
 
-export default InputCheckboxVariants;
+export default InputCheckboxController;
