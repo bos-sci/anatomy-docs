@@ -21,11 +21,12 @@ describe("Checkbox Component", () => {
     expect(checkbox).toBeChecked();
   });
 
-  it("Has error node when required and not checked by default", () => {
-    // const user = userEvent.setup();
-
+  it("Has error node on blur when required and not checked", async () => {
     render(<Checkbox label="Test Checkbox" required />);
     const checkbox = screen.getByRole("checkbox");
+    await checkbox.focus();
+    await checkbox.blur();
+    const errorNode = screen.getByText("This is an example of an error message for a required form control.");
 
     expect(errorNode).toBeInTheDocument();
   });
