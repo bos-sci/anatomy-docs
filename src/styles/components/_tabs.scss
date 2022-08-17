@@ -3,23 +3,39 @@
   width: 100%;
 }
 
+.bsds-tab-controls
+{
+  display: flex;
+}
+
 .bsds-tab-list
 {
+  flex: 1;
   position: relative;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
   white-space: nowrap;
 
+  // NOTE: Never hide the scrollbar except under very specific situations.
+  // Reach out to UX team before hiding a scrollbar.
+  scrollbar-width: none; // Hide scrollbar in firefox
+
+  &::-webkit-scrollbar
+  {
+    display: none; // Hide scrollbar in Safari and Chrome
+  }
+
   &::after
   {
     // NOTE: this is a temporary solution for MVP overflow that depends on a white page background
     position: sticky;
-    right: - space(xxs);
+    right: 0;
     display: block;
     width: space(xxs);
     height: space(6x);
-    box-shadow: - space(sm) 0 space(lg) space(md) $neutral-100;
+    //box-shadow: $box-shadow-tertiary;
+    box-shadow: - space(xxs) 0 space(md) space(xs) rgba($neutral-00, 0.2); //0 0.125rem 0.625rem 0 rgba($neutral-00, 0.2)
     border-width: 0;
     content: '';
     pointer-events: none;
@@ -84,6 +100,30 @@
     color: $neutral-60;
     font-family: $font-family-base-regular;
     cursor: not-allowed;
+  }
+}
+
+.bsds-tab-overflow
+{
+  display: flex;
+  z-index: 10;
+
+  .bsds-tab-overflow-control
+  {
+    border-color: transparent;
+    padding: space(lg) space(2x);
+    border: 0;
+
+    &:focus
+    {
+      @include focus-default-inset;
+    }
+
+    &:disabled
+    {
+      color: $neutral-80;
+      background: $neutral-100;
+    }
   }
 }
 
