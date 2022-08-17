@@ -8,11 +8,14 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   isLabelVisible?: boolean;
   buttonAriaLabel?: string;
   buttonText?: string;
+  searchAriaLabel?: string;
+  searchInputAriaLabel?: string;
+  seachClearTextAriaLabel?: string;
 }
 
 let inputId = 0;
 
-const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholder, buttonAriaLabel, buttonText, onInvalid, onBlur, onChange, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
+const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholder, buttonAriaLabel, buttonText, searchAriaLabel, searchInputAriaLabel, seachClearTextAriaLabel, onInvalid, onBlur, onChange, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
 
   const [helpTextId, setHelpTextId] = useState('');
   const [value, setValue] = useState('');
@@ -26,7 +29,7 @@ const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholde
   }, []);
 
   return (
-    <form className="bsds-form-search" role="search" aria-label="site search">
+    <form className="bsds-form-search" role="search" aria-label={searchAriaLabel || "site search"}>
       <div className="bsds-input">
         <label className="bsds-search">
           {isLabelVisible &&
@@ -50,7 +53,7 @@ const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholde
                 type="search"
                 className="bsds-input-text-input"
                 placeholder={placeholder || 'Search'}
-                aria-label="search"
+                aria-label={searchInputAriaLabel || "search input"}
                 value={value}
                 aria-describedby={helpText || ''}
                 onChange={e => setValue(e.target.value)}
@@ -59,7 +62,7 @@ const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholde
               {value &&
                 <button
                   className="bsds-search-clear"
-                  aria-label="clear search text"
+                  aria-label={seachClearTextAriaLabel || "clear search text"}
                   onClick={() => setValue('')}>
                   <IconClose className="bsds-icon-lg" />
                 </button>

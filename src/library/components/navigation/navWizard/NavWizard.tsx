@@ -42,6 +42,7 @@ interface Props {
   navItems: NavItemWizard[];
   firstTitle?: string;
   firstDescription?: string;
+  wizardNavAriaLabel?: string;
   backButtonText?: string;
   backButtonAriaLabel?: string;
 }
@@ -115,7 +116,7 @@ const NavWizard = (props: Props) => {
   }, [props.navItems]);
 
   return (
-    <nav className="bsds-nav-wizard">
+    <nav className="bsds-nav-wizard" aria-label={props?.wizardNavAriaLabel}>
       <div className="bsds-nav-wizard-header">
         {history.length > 0 &&
           <Button

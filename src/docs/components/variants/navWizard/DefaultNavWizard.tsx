@@ -5,7 +5,7 @@ import navWizardData from './navWizardData-3Step';
 const DefaultNavWizard = (): JSX.Element => {
   return (
     <Example>
-      <NavWizard firstTitle="First step title" navItems={navWizardData} />
+      <NavWizard firstTitle="First step title" navItems={navWizardData} wizardNavAriaLabel="Wizard navigation"/>
     </Example>
   );
 }

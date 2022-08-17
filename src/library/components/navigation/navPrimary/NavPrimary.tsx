@@ -287,7 +287,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
           </ul>
         </div>
         <div className={'bsds-search-panel' + (isSearchOpen ? ' open' : '')}>
-          <Search label="Search" buttonText={texts?.searchButtonText} buttonAriaLabel={texts?.searchButtonAriaLabel} />
+          <Search label="Search" buttonText={texts?.searchButtonText} buttonAriaLabel={texts?.searchButtonAriaLabel} searchAriaLabel="primary navigation search"/>
         </div>
         {((navTree.length > 0 && !isRootOpen && isViewportSmall)) &&
           <NavPrimaryMenu
