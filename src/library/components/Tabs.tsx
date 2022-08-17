@@ -37,10 +37,18 @@ const Tabs = ({ children }: Props): JSX.Element => {
     }
   }, [tabListRef.current?.scrollWidth]);
 
-  const handleScroll = () => {
+  const scrollManager = useCallback(() => {
+    // Determines the index of the first and last visible tab
+    // A tab is deemed visible if 2/3 of it are in the scroll area
+    const tabsVisibility = tabRefs.map(ref => {
+      const rightEdge = ref.current?.offsetLeft! + (ref.current?.clientWidth! * 0.66);
+      const leftEdge = ref.current?.offsetLeft! + (ref.current?.clientWidth! * 0.33);
+      return rightEdge < tabListRef.current?.scrollLeft! + tabListRef.current?.clientWidth! && leftEdge > tabListRef.current?.scrollLeft!;
+    });
+    setVisibleRange([tabsVisibility.indexOf(true), tabsVisibility.lastIndexOf(true)]);
+
+    // Disable controls when scrolled all the way left or right
     if (tabListRef.current) {
-      updateRange();
-      // Disable controls when scrolled all the way left or right
       if (tabListRef.current?.scrollLeft === 0) {
         setScrollBtnStates([true, false]);
       } else if (tabListRef.current?.scrollLeft === tabListRef.current?.scrollWidth - tabListRef.current?.clientWidth) {
@@ -49,31 +57,20 @@ const Tabs = ({ children }: Props): JSX.Element => {
         setScrollBtnStates([false, false]);
       }
     }
-  }
-
-  // Determines the index of the first and last visible tab
-  // A tab is deemed visible if 2/3 of it are in the scroll area
-  const updateRange = useCallback(() => {
-    const tabsVisibility = tabRefs.map(ref => {
-      const rightEdge = ref.current?.offsetLeft! + (ref.current?.clientWidth! * 0.66);
-      const leftEdge = ref.current?.offsetLeft! + (ref.current?.clientWidth! * 0.33);
-      return rightEdge < tabListRef.current?.scrollLeft! + tabListRef.current?.clientWidth! && leftEdge > tabListRef.current?.scrollLeft!;
-    });
-    setVisibleRange([tabsVisibility.indexOf(true), tabsVisibility.lastIndexOf(true)]);
   }, [tabRefs])
 
   useEffect(() => {
-    updateRange();
-  }, [updateRange]);
+    scrollManager();
+  }, [scrollManager]);
 
   // Scrolls to the tab "distance" tabs away from the left or right most visible tab
   const scrollTabs = (distance: number) => {
     let currentTarget = distance < 0 ? visibleRange[0] : visibleRange[1];
     let newTarget = 0;
     if (currentTarget + distance > tabRefs.length - 1) {
-      newTarget = 0;
-    } else if (currentTarget + distance < 0) {
       newTarget = tabRefs.length - 1;
+    } else if (currentTarget + distance < 0) {
+      newTarget = 0;
     } else {
       newTarget = currentTarget + distance;
     }
@@ -150,7 +147,7 @@ const Tabs = ({ children }: Props): JSX.Element => {
   return (
     <div className="bsds-tabs">
       <div className="bsds-tab-controls">
-        <div ref={tabListRef} className="bsds-tab-list" role="tablist" onKeyDown={keyManager} onScroll={handleScroll}>
+        <div ref={tabListRef} className="bsds-tab-list" role="tablist" onKeyDown={keyManager} onScroll={scrollManager}>
           {tabPanels.map((tabPanel, index) => (
             <Tab
               key={`${tabPanelId + index}Tab`}
