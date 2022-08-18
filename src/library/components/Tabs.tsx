@@ -31,6 +31,14 @@ const Tabs = ({ children }: Props): JSX.Element => {
 
   const tabListRef = useRef<HTMLDivElement>(null);
 
+  const debounce = (fn: Function, ms = 30) => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    return function (this: any, ...args: any[]) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => fn.apply(this, args), ms);
+    };
+  };
+
   const scrollManager = useCallback(() => {
     if (tabListRef.current) {
       setHasOverflow(tabListRef.current.scrollWidth > tabListRef.current.clientWidth);
@@ -143,16 +151,16 @@ const Tabs = ({ children }: Props): JSX.Element => {
   }, [scrollManager, tabListRef.current?.scrollWidth]);
 
   useEffect(() => {
-    window.addEventListener('resize', scrollManager);
+    window.addEventListener('resize', debounce(scrollManager));
     return () => {
-      window.removeEventListener('resize', scrollManager);
+      window.removeEventListener('resize', debounce(scrollManager));
     }
   }, [scrollManager]);
 
   return (
     <div className={"bsds-tabs" + (hasOverflow ? " has-overflow" : "")}>
       <div className="bsds-tab-controls">
-        <div ref={tabListRef} className="bsds-tab-list" role="tablist" onKeyDown={keyManager} onScroll={scrollManager}>
+        <div ref={tabListRef} className="bsds-tab-list" role="tablist" onKeyDown={keyManager} onScroll={debounce(scrollManager)}>
           {tabPanels.map((tabPanel, index) => (
             <Tab
               key={`${tabPanelId + index}Tab`}
