@@ -31,13 +31,11 @@ const Tabs = ({ children }: Props): JSX.Element => {
 
   const tabListRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  const scrollManager = useCallback(() => {
     if (tabListRef.current) {
       setHasOverflow(tabListRef.current.scrollWidth > tabListRef.current.clientWidth);
     }
-  }, [tabListRef.current?.scrollWidth]);
 
-  const scrollManager = useCallback(() => {
     // Determines the index of the first and last visible tab
     // A tab is deemed visible if 2/3 of it are in the scroll area
     const tabsVisibility = tabRefs.map(ref => {
@@ -58,10 +56,6 @@ const Tabs = ({ children }: Props): JSX.Element => {
       }
     }
   }, [tabRefs])
-
-  useEffect(() => {
-    scrollManager();
-  }, [scrollManager]);
 
   // Scrolls to the tab "distance" tabs away from the left or right most visible tab
   const scrollTabs = (distance: number) => {
@@ -144,8 +138,19 @@ const Tabs = ({ children }: Props): JSX.Element => {
     setTabRefs(refs);
   }, [children, tabPanels.length]);
 
+  useEffect(() => {
+    scrollManager();
+  }, [scrollManager, tabListRef.current?.scrollWidth]);
+
+  useEffect(() => {
+    window.addEventListener('resize', scrollManager);
+    return () => {
+      window.removeEventListener('resize', scrollManager);
+    }
+  }, [scrollManager]);
+
   return (
-    <div className="bsds-tabs">
+    <div className={"bsds-tabs" + (hasOverflow ? " has-overflow" : "")}>
       <div className="bsds-tab-controls">
         <div ref={tabListRef} className="bsds-tab-list" role="tablist" onKeyDown={keyManager} onScroll={scrollManager}>
           {tabPanels.map((tabPanel, index) => (
@@ -160,26 +165,24 @@ const Tabs = ({ children }: Props): JSX.Element => {
             />
           ))}
         </div>
-        {hasOverflow &&
-          <div className="bsds-tab-overflow">
-            <button
-              className="bsds-tab-overflow-control"
-              disabled={scrollBtnStates[0]}
-              tabIndex={-1}
-              aria-hidden="true"
-              onClick={() => scrollTabs(-1)}>
-                <IconChevronLeft className="bsds-icon-2x" />
-            </button>
-            <button
-              className="bsds-tab-overflow-control"
-              disabled={scrollBtnStates[1]}
-              tabIndex={-1}
-              aria-hidden="true"
-              onClick={() => scrollTabs(1)}>
-                <IconChevronRight className="bsds-icon-2x" />
-            </button>
-          </div>
-        }
+        <div className="bsds-tab-overflow">
+          <button
+            className="bsds-tab-overflow-control"
+            disabled={scrollBtnStates[0]}
+            tabIndex={-1}
+            aria-hidden="true"
+            onClick={() => scrollTabs(-1)}>
+              <IconChevronLeft className="bsds-icon-2x" />
+          </button>
+          <button
+            className="bsds-tab-overflow-control"
+            disabled={scrollBtnStates[1]}
+            tabIndex={-1}
+            aria-hidden="true"
+            onClick={() => scrollTabs(1)}>
+              <IconChevronRight className="bsds-icon-2x" />
+          </button>
+        </div>
       </div>
       <div className="bsds-tab-panels">
         {tabPanels.map((tabPanel, index) => (

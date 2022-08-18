@@ -1,6 +1,15 @@
 .bsds-tabs
 {
   width: 100%;
+
+  &:not(.has-overflow)
+  {
+    .bsds-tab-overflow,
+    .bsds-tab-list::after
+    {
+      display: none;
+    }
+  }
 }
 
 .bsds-tab-controls
