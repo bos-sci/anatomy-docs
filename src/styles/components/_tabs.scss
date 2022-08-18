@@ -37,14 +37,12 @@
 
   &::after
   {
-    // NOTE: this is a temporary solution for MVP overflow that depends on a white page background
     position: sticky;
     right: 0;
     display: block;
     width: space(xxs);
     height: space(6x);
-    //box-shadow: $box-shadow-tertiary;
-    box-shadow: - space(xxs) 0 space(md) space(xs) rgba($neutral-00, 0.2); //0 0.125rem 0.625rem 0 rgba($neutral-00, 0.2)
+    box-shadow: - space(xxs) 0 space(md) space(xs) rgba($neutral-00, 0.2);
     border-width: 0;
     content: '';
     pointer-events: none;
@@ -115,7 +113,6 @@
 .bsds-tab-overflow
 {
   display: flex;
-  z-index: 10;
 
   .bsds-tab-overflow-control
   {
