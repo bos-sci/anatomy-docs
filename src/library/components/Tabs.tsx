@@ -16,11 +16,12 @@ import Tab from "./Tab";
 
 type Props = {
   children: ReactElement[] | ReactElement;
+  ariaLabel: string;
 };
 
 let tabsId = 0;
 
-const Tabs = ({ children }: Props): JSX.Element => {
+const Tabs = (props: Props): JSX.Element => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [tabPanelId, setTabPanelId] = useState("");
   const [tabPanels, setTabPanels] = useState<ReactElement[]>([]);
@@ -134,17 +135,17 @@ const Tabs = ({ children }: Props): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    if (Array.isArray(children)) {
-      setTabPanels(children);
+    if (Array.isArray(props.children)) {
+      setTabPanels(props.children);
     } else {
-      setTabPanels([children]);
+      setTabPanels([props.children]);
     }
     let refs: RefObject<HTMLButtonElement>[] = [];
     for (let i = 0; i < tabPanels.length; i++) {
       refs.push(createRef());
     }
     setTabRefs(refs);
-  }, [children, tabPanels.length]);
+  }, [props.children, tabPanels.length]);
 
   useEffect(() => {
     scrollManager();
@@ -160,7 +161,14 @@ const Tabs = ({ children }: Props): JSX.Element => {
   return (
     <div className={"bsds-tabs" + (hasOverflow ? " has-overflow" : "")}>
       <div className="bsds-tab-controls">
-        <div ref={tabListRef} className="bsds-tab-list" role="tablist" onKeyDown={keyManager} onScroll={debounce(scrollManager)}>
+        <div
+          ref={tabListRef}
+          className="bsds-tab-list"
+          role="tablist"
+          aria-label={props.ariaLabel}
+          onKeyDown={keyManager}
+          onScroll={debounce(scrollManager)}
+        >
           {tabPanels.map((tabPanel, index) => (
             <Tab
               key={`${tabPanelId + index}Tab`}
