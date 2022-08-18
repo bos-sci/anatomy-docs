@@ -70,11 +70,26 @@ const Tabs = (props: Props): JSX.Element => {
       newTarget = currentTarget + distance;
     }
 
-    tabRefs[newTarget].current?.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: no-preference)").matches ? 'smooth' : 'auto',
-      block: 'nearest',
-      inline: distance < 0 ? 'start' : 'end'
-    });
+    const behavior = window.matchMedia("(prefers-reduced-motion: no-preference)").matches ? 'smooth' : 'auto';
+    if (newTarget === 0) {
+      tabListRef.current?.scrollTo({
+        top: 0,
+        left: 0,
+        behavior
+      });
+    } else if (newTarget === tabRefs.length - 1) {
+      tabListRef.current?.scrollTo({
+        top: 0,
+        left: tabListRef.current.scrollWidth - tabListRef.current.clientWidth,
+        behavior
+      });
+    } else {
+      tabRefs[newTarget].current?.scrollIntoView({
+        behavior,
+        block: 'nearest',
+        inline: distance < 0 ? 'start' : 'end'
+      });
+    }
   }
 
   const selectTab = (index: number) => {
