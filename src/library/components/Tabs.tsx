@@ -32,14 +32,6 @@ const Tabs = (props: Props): JSX.Element => {
 
   const tabListRef = useRef<HTMLDivElement>(null);
 
-  const debounce = (fn: Function, ms = 30) => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-    return function (this: any, ...args: any[]) {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => fn.apply(this, args), ms);
-    };
-  };
-
   const scrollManager = useCallback(() => {
     if (tabListRef.current) {
       setHasOverflow(tabListRef.current.scrollWidth > tabListRef.current.clientWidth);
@@ -152,9 +144,9 @@ const Tabs = (props: Props): JSX.Element => {
   }, [scrollManager, tabListRef.current?.scrollWidth]);
 
   useEffect(() => {
-    window.addEventListener('resize', debounce(scrollManager));
+    window.addEventListener('resize', scrollManager);
     return () => {
-      window.removeEventListener('resize', debounce(scrollManager));
+      window.removeEventListener('resize', scrollManager);
     }
   }, [scrollManager]);
 
@@ -167,7 +159,7 @@ const Tabs = (props: Props): JSX.Element => {
           role="tablist"
           aria-label={props.ariaLabel}
           onKeyDown={keyManager}
-          onScroll={debounce(scrollManager)}
+          onScroll={scrollManager}
         >
           {tabPanels.map((tabPanel, index) => (
             <Tab
