@@ -141,7 +141,7 @@ export const simpleData: NavItemPrimary[] = [
   },
   {
     text: 'Current page',
-    slug: './'
+    slug: '.'
   },
   {
     text: 'Page',
@@ -166,7 +166,7 @@ export const intermediateData: NavItemPrimary[] = [
       },
       {
         text: 'Current page',
-        slug: './'
+        slug: '.'
       },
       {
         text: 'Child page',
