@@ -4,15 +4,20 @@ import IconClose from './icon/icons/IconClose';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  helpText?: string;
   isLabelVisible?: boolean;
-  buttonAriaLabel?: string;
-  buttonText?: string;
+  texts?: {
+    helpText?: string;
+    buttonAriaLabel?: string;
+    buttonText?: string;
+    searchAriaLabel?: string;
+    searchInputAriaLabel?: string;
+    seachClearTextAriaLabel?: string;
+  }
 }
 
 let inputId = 0;
 
-const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholder, buttonAriaLabel, buttonText, onInvalid, onBlur, onChange, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
+const Search = forwardRef(({ label, isLabelVisible = false, texts, placeholder, onInvalid, onBlur, onChange, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
 
   const [helpTextId, setHelpTextId] = useState('');
   const [value, setValue] = useState('');
@@ -26,7 +31,7 @@ const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholde
   }, []);
 
   return (
-    <form className="bsds-form-search" role="search" aria-label="site search">
+    <form className="bsds-form-search" role="search" aria-label={texts?.searchAriaLabel || "site search"}>
       <div className="bsds-input">
         <label className="bsds-search">
           {isLabelVisible &&
@@ -50,27 +55,27 @@ const Search = forwardRef(({ label, helpText, isLabelVisible = false, placeholde
                 type="search"
                 className="bsds-input-text-input"
                 placeholder={placeholder || 'Search'}
-                aria-label="search"
+                aria-label={texts?.searchInputAriaLabel || "search input"}
                 value={value}
-                aria-describedby={helpText || ''}
+                aria-describedby={texts?.helpText || ''}
                 onChange={e => setValue(e.target.value)}
                 {...inputAttrs} />
               {/* TODO: consider pulling these into an action mixin */}
               {value &&
                 <button
                   className="bsds-search-clear"
-                  aria-label="clear search text"
+                  aria-label={texts?.seachClearTextAriaLabel || "clear search text"}
                   onClick={() => setValue('')}>
                   <IconClose className="bsds-icon-lg" />
                 </button>
               }
             </div>
-            <Button variant="assertive" disabled={!value} aria-label={buttonAriaLabel || 'Search'}>
-              {buttonText || 'Search'}
+            <Button variant="assertive" disabled={!value} aria-label={texts?.buttonAriaLabel || 'Search'}>
+              {texts?.buttonText || 'Search'}
             </Button>
           </div>
         </label>
-        {helpText && <p id={helpTextId} className="bsds-input-help-text">{ helpText }</p>}
+        {texts?.helpText && <p id={helpTextId} className="bsds-input-help-text">{ texts?.helpText }</p>}
       </div>
     </form>
   );

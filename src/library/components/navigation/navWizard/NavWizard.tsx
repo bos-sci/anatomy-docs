@@ -40,10 +40,13 @@ export interface HistoryNode {
 
 interface Props {
   navItems: NavItemWizard[];
-  firstTitle?: string;
-  firstDescription?: string;
-  backButtonText?: string;
-  backButtonAriaLabel?: string;
+  texts: {
+    firstTitle?: string;
+    firstDescription?: string;
+    wizardNavAriaLabel: string;
+    backButtonText?: string;
+    backButtonAriaLabel?: string;
+  }
 }
 
 const NavWizard = (props: Props) => {
@@ -92,10 +95,10 @@ const NavWizard = (props: Props) => {
       setDescription(history[history.length - 1].node.description || '');
     } else {
       setBreadcrumb('');
-      setTitle(props.firstTitle || '');
-      setDescription(props.firstDescription || '');
+      setTitle(props.texts.firstTitle || '');
+      setDescription(props.texts.firstDescription || '');
     }
-  }, [history, props.firstTitle, props.firstDescription]);
+  }, [history, props.texts.firstTitle, props.texts.firstDescription]);
 
   useEffect(() => {
     const tree = [...props.navItems] as NavNode[];
@@ -115,7 +118,7 @@ const NavWizard = (props: Props) => {
   }, [props.navItems]);
 
   return (
-    <nav className="bsds-nav-wizard">
+    <nav className="bsds-nav-wizard" aria-label={props.texts.wizardNavAriaLabel}>
       <div className="bsds-nav-wizard-header">
         {history.length > 0 &&
           <Button
@@ -123,10 +126,10 @@ const NavWizard = (props: Props) => {
             variant="subtle"
             type="button"
             className="bsds-nav-back"
-            aria-label={props.backButtonAriaLabel ? props.backButtonAriaLabel : 'Back to previous step'}
+            aria-label={props.texts.backButtonAriaLabel ? props.texts.backButtonAriaLabel : 'Back to previous step'}
             onClick={backStep}>
             <IconChevronLeft className="bsds-icon-lg bsds-icon-left" />
-            {props.backButtonText ? props.backButtonText : 'Back'}
+            {props.texts.backButtonText ? props.texts.backButtonText : 'Back'}
           </Button>}
         {breadcrumb && <p className="bsds-nav-breadcrumb" aria-current="step">{breadcrumb}</p>}
         {title && <h2 className="bsds-nav-title">{title}</h2>}

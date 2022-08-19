@@ -1,5 +1,4 @@
 // TODO:
-// remove hardcoded english aria-label
 // add warning/error for href="#"
 
 import { useEffect, useState } from 'react';
@@ -18,10 +17,14 @@ export type Crumb = RequireOnlyOne<CrumbBase, 'href' | 'to'>;
 interface Props {
   crumbs: Crumb[];
   currentPage: string;
+  texts?: {
+    breadcrumbNavAriaLabel?: string;
+    breadcrumbDropdownAriaLabel?: string;
+  }
   hasOverflow?: boolean;
 }
 
-const Breadcrumb = ({ crumbs, currentPage, hasOverflow = true }: Props): JSX.Element => {
+const Breadcrumb = ({ crumbs, currentPage, texts, hasOverflow = true }: Props): JSX.Element => {
 
   const [overflowCrumbs, setOverflowCrumbs] = useState<Crumb[]>([]);
   const [visibleCrumbs, setVisibleCrumbs] = useState<Crumb[]>([]);
@@ -39,12 +42,12 @@ const Breadcrumb = ({ crumbs, currentPage, hasOverflow = true }: Props): JSX.Ele
   }, [crumbs, hasOverflow]);
 
   return (
-    <nav aria-label="breadcrumb">
+    <nav aria-label={texts?.breadcrumbNavAriaLabel || 'breadcrumbs'}>
       <ol className="bsds-breadcrumbs">
         {overflowCrumbs.length > 0 &&
           <li className="bsds-breadcrumb-overflow">
             {overflowCrumbs.length > 0 &&
-              <Dropdown variant="subtle" icon="ellipsis" listType="ol" aria-label="previous pages">
+              <Dropdown variant="subtle" icon="ellipsis" listType="ol" aria-label={texts?.breadcrumbDropdownAriaLabel || 'previous pages'}>
                 {overflowCrumbs.map(crumb => (
                   <Link key={`crumb${crumb.name}`} href={crumb.href} to={crumb.to}>{crumb.name}</Link>
                 ))}
