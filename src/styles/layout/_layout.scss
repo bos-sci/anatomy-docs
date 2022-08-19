@@ -67,6 +67,7 @@ main
 .docs-page-content
 {
   grid-area: page-content;
+  overflow-x: auto;
   width: 100%;
 
   & > .docs-preview-:first-of-type
