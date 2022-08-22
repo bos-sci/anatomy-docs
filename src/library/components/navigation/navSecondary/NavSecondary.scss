@@ -186,6 +186,8 @@ $icon-size-sm: space(lg);
     {
       color: $action-primary-40;
       background: transparent;
+      text-decoration-line: underline;
+      text-decoration-thickness: space(xs);
     }
   }
 }
