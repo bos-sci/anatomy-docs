@@ -24,7 +24,17 @@
   {
     grid-area: back;
     justify-self: start;
+    padding: 0;
     @include font-size($fs-body-subtle);
+
+    &:hover,
+    &:active
+    {
+      color: $action-primary-40;
+      background: transparent;
+      text-decoration-line: underline;
+      text-decoration-thickness: space(xs);
+    }
   }
 
   .bsds-nav-breadcrumb
