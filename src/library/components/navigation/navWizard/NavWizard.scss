@@ -25,6 +25,20 @@
     grid-area: back;
     justify-self: start;
     @include font-size($fs-body-subtle);
+
+    &:hover,
+    &:active
+    {
+      color: $action-primary-40;
+      background: transparent;
+      text-decoration-line: underline;
+      text-decoration-thickness: space(xs);
+    }
+
+    &:focus
+    {
+      outline: none;
+    }
   }
 
   .bsds-nav-breadcrumb
