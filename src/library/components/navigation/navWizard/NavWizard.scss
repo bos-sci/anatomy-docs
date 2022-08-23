@@ -157,6 +157,7 @@
     &:hover,
     &:active
     {
+      background: initial;
       border: space(xxs) solid $action-primary-40;
     }
 
