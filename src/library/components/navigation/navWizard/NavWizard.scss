@@ -24,7 +24,7 @@
   {
     grid-area: back;
     justify-self: start;
-    padding: space(xs);
+    padding: 0;
     @include font-size($fs-body-subtle);
 
     &:hover,
