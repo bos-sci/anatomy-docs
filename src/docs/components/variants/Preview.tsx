@@ -141,8 +141,8 @@ const Preview = ( props: Props ): JSX.Element => {
           break;
 
         case 'tabs':
-          const DefaultTabs = lazy(() => import('./tabs/DefaultTabs'));
-          setRenderedComponent(<DefaultTabs />);
+          const TabsController = lazy(() => import('./tabs/_TabsController'));
+          setRenderedComponent(<TabsController variantId={variantId} />);
           break;
 
         case 'tag':
