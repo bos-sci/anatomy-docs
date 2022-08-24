@@ -1,23 +1,18 @@
 // TODO: finish refactoring
 
-import { RefObject, useCallback } from 'react';
+import { RefObject } from 'react';
 import IconChevronDown from "./icon/icons/IconChevronDown";
 
 interface Props {
   accordionHeading: string;
   index: number;
-  setIsPanelExpanded: (index: number) => void;
+  togglePanel: (index: number) => void;
   isPanelExpanded?: boolean;
   accordionPanelId: string;
   accordionRef: RefObject<HTMLButtonElement>;
 }
 
-const AccordionHeading = ({ accordionHeading, setIsPanelExpanded, index, isPanelExpanded, accordionPanelId, accordionRef }: Props): JSX.Element => {
-
-  const onClick = useCallback(() => {
-    setIsPanelExpanded(index)
-  }, [setIsPanelExpanded, index])
-
+const AccordionHeading = ({ accordionHeading, togglePanel, index, isPanelExpanded, accordionPanelId, accordionRef }: Props): JSX.Element => {
   return (
     <button
       ref={accordionRef}
@@ -25,8 +20,7 @@ const AccordionHeading = ({ accordionHeading, setIsPanelExpanded, index, isPanel
       className="bsds-accordion-trigger"
       aria-controls={accordionPanelId}
       aria-expanded={isPanelExpanded}
-      onClick={onClick}
-      // onClick={() => setIsPanelExpanded(index)}
+      onClick={() => togglePanel(index)}
     >
       <span className="bsds-accordion-trigger-text">
         { accordionHeading }

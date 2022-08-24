@@ -23,10 +23,16 @@ let accordionId = 0;
 
 const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
 
-  const [expandedPanel, setIsPanelExpanded] = useState(0);
+  const [expandedPanels, setExpandedPanels] = useState(new Set<number>());
   const [accordionPanelId, setAccordionPanelId] = useState('');
   const [accordionPanels, setAccordionPanels] = useState<ReactElement[]>([]);
   const [accordionRefs, setAccordionRefs] = useState<RefObject<HTMLButtonElement>[]>([]);
+
+  const togglePanel = (index: number) => {
+    const newPanels = new Set<number>([...expandedPanels]);
+    newPanels.has(index) ? newPanels.delete(index) : newPanels.add(index);
+    setExpandedPanels(newPanels);
+  }
 
   useEffect(() => {
     const idNum = ++accordionId;
@@ -55,8 +61,8 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
               key={`${accordionPanelId + index}Heading`}
               accordionHeading={accordionPanel.props.accordionHeading}
               index={index}
-              setIsPanelExpanded={setIsPanelExpanded}
-              isPanelExpanded={index === expandedPanel}
+              togglePanel={togglePanel}
+              isPanelExpanded={expandedPanels.has(index)}
               accordionPanelId={accordionPanelId + index}
               accordionRef={accordionRefs[index]}
             />
@@ -65,7 +71,7 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
             key={accordionPanelId + index}
             id={accordionPanelId + index}
             className="bsds-accordion-panel"
-            hidden={index !== expandedPanel}
+            hidden={!expandedPanels.has(index)}
           >
             { accordionPanel }
           </div>
