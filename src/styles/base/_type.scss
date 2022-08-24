@@ -123,6 +123,7 @@ li:not(:first-of-type)
 
 figure
 {
+  position: relative;
   margin: space(4x) space(4x) 0;
 
   blockquote
@@ -133,11 +134,13 @@ figure
   figcaption
   {
     margin: space(md) 0 0;
+    padding-left: space(3x);
 
     &::before
     {
+      position: absolute;
+      left: 0;
       content: '—';
-      padding-right: space(sm);
     }
   }
 }
