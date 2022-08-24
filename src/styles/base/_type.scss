@@ -121,6 +121,35 @@ li:not(:first-of-type)
   margin: space(2x) 0 0;
 }
 
+figure
+{
+  position: relative;
+  margin: space(4x) space(4x) 0;
+
+  blockquote
+  {
+    margin: 0;
+  }
+
+  figcaption
+  {
+    margin: space(md) 0 0;
+    padding-left: space(3x);
+
+    &::before
+    {
+      position: absolute;
+      left: 0;
+      content: '—';
+    }
+  }
+}
+
+cite
+{
+  font-style: normal;
+}
+
 .bsds-display-1, .bsds-display-2, .bsds-display-3, .bsds-display-4,
 h1, h2, h3, h4, h5, h6,
 .bsds-h1, .bsds-h2, .bsds-h3, .bsds-h4, .bsds-h5, .bsds-h6
