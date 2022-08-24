@@ -4,26 +4,26 @@ import { RefObject } from 'react';
 import IconChevronDown from "./icon/icons/IconChevronDown";
 
 interface Props {
-  accordionHeading: string;
+  heading: string;
   index: number;
   togglePanel: (index: number) => void;
   isPanelExpanded?: boolean;
-  accordionPanelId: string;
+  panelId: string;
   accordionRef: RefObject<HTMLButtonElement>;
 }
 
-const AccordionHeading = ({ accordionHeading, togglePanel, index, isPanelExpanded, accordionPanelId, accordionRef }: Props): JSX.Element => {
+const AccordionHeading = ({ heading, togglePanel, index, isPanelExpanded, panelId, accordionRef }: Props): JSX.Element => {
   return (
     <button
       ref={accordionRef}
-      id={`${accordionPanelId}Heading`}
+      id={`${panelId}Heading`}
       className="bsds-accordion-trigger"
-      aria-controls={accordionPanelId}
+      aria-controls={panelId}
       aria-expanded={isPanelExpanded}
       onClick={() => togglePanel(index)}
     >
       <span className="bsds-accordion-trigger-text">
-        { accordionHeading }
+        { heading }
       </span>
       <IconChevronDown />
     </button>

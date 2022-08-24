@@ -25,10 +25,9 @@
   border-bottom: 0;
   border-left: 0;
   padding: space(3x);
+  color: $border-color-primary;
+  font-family: $font-family-base-regular;
   background: transparent;
-  color: $neutral-40;
-  color: $neutral-00;
-  font-family: $font-family-base-heavy;
   @include font-size($fs-base);
   text-align: left;
 
@@ -41,6 +40,7 @@
   &[aria-expanded="true"]
   {
     color: $neutral-00;
+    font-family: $font-family-base-heavy;
 
     svg
     {
@@ -90,5 +90,5 @@
 
 .bsds-accordion-panel
 {
-  padding: space(2x) space(3x) space(4x);
+  padding: space(3x) space(3x) space(4x);
 }

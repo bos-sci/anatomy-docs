@@ -8,13 +8,13 @@ const DefaultAccordion = (): JSX.Element => {
   return (
     <Example>
       <Accordion headingLevel="h2">
-        <AccordionPanel accordionHeading="Accordion heading">
+        <AccordionPanel heading="Accordion heading">
           Accordion panel 1
         </AccordionPanel>
-        <AccordionPanel accordionHeading="Accordion heading">
+        <AccordionPanel heading="Accordion heading">
           Accordion panel 2
         </AccordionPanel>
-        <AccordionPanel accordionHeading="Accordion heading">
+        <AccordionPanel heading="Accordion heading">
           Accordion panel 3
         </AccordionPanel>
       </Accordion>
