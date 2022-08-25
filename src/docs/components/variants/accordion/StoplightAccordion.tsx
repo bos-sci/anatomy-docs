@@ -6,13 +6,13 @@ const StoplightAccordion = (): JSX.Element => {
   return (
     <Example>
       <Accordion headingLevel="h4">
-        <AccordionPanel heading="Accordion heading" stoplightColor="red">
+        <AccordionPanel heading="Stoplight accordion 1" stoplightColor="red">
           Accordion panel 1
         </AccordionPanel>
-        <AccordionPanel heading="Accordion heading" stoplightColor="yellow">
+        <AccordionPanel heading="Stoplight accordion 2" stoplightColor="yellow">
           Accordion panel 2
         </AccordionPanel>
-        <AccordionPanel heading="Accordion heading" stoplightColor="green">
+        <AccordionPanel heading="Stoplight accordion 3" stoplightColor="green">
           Accordion panel 3
         </AccordionPanel>
       </Accordion>
