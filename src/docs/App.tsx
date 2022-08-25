@@ -83,7 +83,7 @@ const App = (): JSX.Element => {
               <Route path="/" element={<Home />} />
 
               <Route path="components">
-                <Route path='' element={<Navigate to="button" />} />
+                <Route path='' element={<Navigate to="accordion" />} />
                 <Route path=':componentName'>
                   <Route path='' element={<ComponentsRouter />} />
                   <Route path='example/:example' element={<ComponentsRouter isExternal />} />
