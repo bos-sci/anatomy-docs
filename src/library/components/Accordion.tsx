@@ -44,7 +44,9 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
             headingLevel={headingLevel}
             className={
               "bsds-accordion-heading"
-              + (accordionPanel.props.stoplight ? ` bsds-accordion-stoplight-${accordionPanel.props.stoplight}` : '')
+              + (accordionPanel.props.stoplightColor
+                  ? ` bsds-accordion-stoplight-${accordionPanel.props.stoplightColor}`
+                  : '')
             }
           >
             <AccordionHeading

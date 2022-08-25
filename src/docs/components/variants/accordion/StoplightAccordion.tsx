@@ -8,13 +8,13 @@ const StoplightAccordion = (): JSX.Element => {
   return (
     <Example>
       <Accordion headingLevel="h2">
-        <AccordionPanel heading="Accordion heading" stoplight="red">
+        <AccordionPanel heading="Accordion heading" stoplightColor="red">
           Accordion panel 1
         </AccordionPanel>
-        <AccordionPanel heading="Accordion heading" stoplight="yellow">
+        <AccordionPanel heading="Accordion heading" stoplightColor="yellow">
           Accordion panel 2
         </AccordionPanel>
-        <AccordionPanel heading="Accordion heading" stoplight="green">
+        <AccordionPanel heading="Accordion heading" stoplightColor="green">
           Accordion panel 3
         </AccordionPanel>
       </Accordion>
