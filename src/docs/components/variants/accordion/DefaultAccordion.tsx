@@ -1,5 +1,3 @@
-// TODO: exclude demo "Accordion heading" h2s from tertiary nav
-
 import Accordion from '../../../../library/components/Accordion';
 import AccordionPanel from '../../../../library/components/AccordionPanel';
 import Example from '../../../shared/components/Example';
