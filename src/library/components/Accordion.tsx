@@ -40,7 +40,13 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
     <div className="bsds-accordion">
       {accordionPanels.map((accordionPanel, index) => (
         <Fragment key={accordionId + index}>
-          <HeadingElement headingLevel={headingLevel} className="bsds-accordion-heading">
+          <HeadingElement
+            headingLevel={headingLevel}
+            className={
+              "bsds-accordion-heading"
+              + (accordionPanel.props.stoplight ? ` bsds-accordion-stoplight-${accordionPanel.props.stoplight}` : '')
+            }
+          >
             <AccordionHeading
               heading={accordionPanel.props.heading}
               index={index}

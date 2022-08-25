@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 interface Props {
   heading: string;
+  stoplight?: 'red' | 'yellow' | 'green';
   children: ReactNode;
 }
 
