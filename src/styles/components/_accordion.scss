@@ -122,6 +122,11 @@
       padding: space(3x) 0;
     }
 
+    svg
+    {
+      margin-right: space(3x);
+    }
+
     &:focus
     {
       @include focus-default;
