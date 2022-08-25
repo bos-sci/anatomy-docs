@@ -7,7 +7,7 @@ import Example from '../../../shared/components/Example';
 const StoplightAccordion = (): JSX.Element => {
   return (
     <Example>
-      <Accordion headingLevel="h2">
+      <Accordion headingLevel="h4">
         <AccordionPanel heading="Accordion heading" stoplightColor="red">
           Accordion panel 1
         </AccordionPanel>

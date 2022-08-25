@@ -1,5 +1,3 @@
-// TODO: finish refactoring
-
 import { RefObject } from 'react';
 import IconChevronDown from "./icon/icons/IconChevronDown";
 

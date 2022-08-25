@@ -4,7 +4,7 @@ import StoplightAccordion from './StoplightAccordion';
 
 const AccordionController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
-    // styles
+    // modifiers
     case 'accordionStoplight':
       return <StoplightAccordion />;
 
