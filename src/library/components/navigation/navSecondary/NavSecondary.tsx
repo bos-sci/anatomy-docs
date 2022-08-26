@@ -102,7 +102,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
 
   const openChild = (navItem: NavNode | null) => {
     setActiveParent(navItem);
-    setTimeout(() => backBtnRef.current?.focus(), 0)
+    setTimeout(() => backBtnRef.current?.focus(), 0);
   }
 
   useEffect(() => {
@@ -113,7 +113,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!nav.current?.contains(e.target as Node) && isOpen) {
         setIsOpen(false);
-      }
+      } 
     }
     window.addEventListener('focusin', onFocusWithinOut);
     window.addEventListener('pointerup', onFocusWithinOut);
@@ -123,6 +123,10 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
   return (
     <nav className="bsds-nav-secondary" aria-label={texts?.navAriaLabel || 'secondary navigation'} ref={nav}>
       <button
@@ -131,7 +135,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
         aria-controls={navSecondaryId}
         aria-label={texts?.menuToggleAriaLabel || 'Menu'}
         onClick={() => setIsOpen(!isOpen)}>
-        { texts?.menuToggleText || 'Menu' }
+        {texts?.menuToggleText || 'Menu'}
       </button>
       <div id={navSecondaryId} className={`bsds-nav-secondary-menu${isOpen ? ' open' : ''}`}>
         {activeParent &&
@@ -144,7 +148,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
             {texts?.backButtonText || 'Back'}
           </Button>
         }
-        <NavSecondaryList navItems={navTree} parent={null} activeParent={activeParent} activeParentRef={activeParentRef} setActiveParentRef={setActiveParentRef} openChild={openChild} />
+        <NavSecondaryList navItems={navTree} parent={null} activeParent={activeParent} activeParentRef={activeParentRef} setActiveParentRef={setActiveParentRef} openChild={openChild}/>
       </div>
     </nav>
   );
