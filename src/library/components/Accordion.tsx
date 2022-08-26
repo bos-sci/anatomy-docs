@@ -6,7 +6,7 @@
 //   https://www.w3.org/TR/wai-aria-practices-1.1/#wai-aria-roles-states-and-properties
 //   https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html
 
-import { createRef, Fragment, ReactElement, RefObject, useEffect, useId, useState } from 'react';
+import { Fragment, ReactElement, useEffect, useId, useState } from 'react';
 import HeadingElement from './Heading';
 import AccordionHeading from './AccordionHeading';
 
@@ -21,7 +21,6 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
 
   const [expandedPanels, setExpandedPanels] = useState(new Set<number>());
   const [accordionPanels, setAccordionPanels] = useState<ReactElement[]>([]);
-  const [accordionRefs, setAccordionRefs] = useState<RefObject<HTMLButtonElement>[]>([]);
 
   const togglePanel = (index: number) => {
     const newPanels = new Set<number>([...expandedPanels]);
@@ -31,10 +30,7 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
 
   useEffect(() => {
     setAccordionPanels(Array.isArray(children) ? children : [children]);
-    let refs: RefObject<HTMLButtonElement>[] = [];
-    accordionPanels.forEach(() => refs.push(createRef()));
-    setAccordionRefs(refs);
-  }, [children, accordionPanels]);
+  }, [children]);
 
   return (
     <div className="bsds-accordion">
@@ -55,7 +51,6 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
               togglePanel={togglePanel}
               isPanelExpanded={expandedPanels.has(index)}
               panelId={accordionId + '-panel' + index}
-              accordionRef={accordionRefs[index]}
             />
           </HeadingElement>
           <div
