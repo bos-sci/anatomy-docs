@@ -75,6 +75,10 @@
 {
   display: inline-block;
   margin-top: space(3x);
+
+  &:focus {
+    outline-offset: space(xs) - space(sm);
+  }
 }
 
 .docs-preview-external
