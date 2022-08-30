@@ -2,8 +2,10 @@ import { Children, cloneElement, createRef, HTMLAttributes, ReactElement, useEff
 import Button from './Button';
 import { Props as ButtonProps } from './Button';
 import { Props as LinkProps } from './Link';
+import { Props as DropdownMenuHeadingProps } from './DropdownMenuHeading';
+import DropdownMenuItem from './DropdownMenuItem';
 
-type DropdownItem = ReactElement<ButtonProps | LinkProps>;
+export type DropdownItem = ReactElement<ButtonProps | LinkProps | DropdownMenuHeadingProps>;
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   triggerText?: string;
@@ -11,13 +13,14 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
   icon?: string;
   variant?: string;
   children?: DropdownItem[] | DropdownItem;
+  highlightedAction?: ReactElement<ButtonProps | LinkProps>;
 }
 
 let dropdownIndex = 0;
 
 // TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
 
-const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], className = '', ...buttonAttrs}: Props) => {
+const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, children = [], className = '', highlightedAction, ...buttonAttrs}: Props) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownItems, setDropdownItems] = useState<DropdownItem[]>([]);
@@ -36,6 +39,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
           isFocusInMenu = true;
         }
       });
+
       if (isFocusInMenu) {
         let newIndex = currentIndex + distance;
         if (newIndex > dropdownItemRefs.current.length - 1) {
@@ -43,7 +47,11 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
         } else if (newIndex < 0) {
           newIndex = dropdownItemRefs.current.length - 1;
         }
-        dropdownItemRefs.current[newIndex].current?.focus();
+        if (dropdownItemRefs.current[newIndex].current?.tagName !== 'BUTTON' && dropdownItemRefs.current[newIndex].current?.tagName !== 'A') {
+          moveFocus(distance > 0 ? ++distance : --distance);
+        } else {
+          dropdownItemRefs.current[newIndex].current?.focus();
+        }
       } else {
         dropdownItemRefs.current[0].current?.focus();
       }
@@ -73,7 +81,16 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
   }
 
   useEffect(() => {
+    if(highlightedAction) {
+      dropdownItemRefs.current.push(createRef());
+    }
+
+  }, [highlightedAction, dropdownItemRefs]);
+
+  useEffect(() => {
     if (children) {
+      let dropdownItemClones: DropdownItem[] = [];
+
       if (Array.isArray(children)) {
         const newChildren = Children.map(children, (child: ReactElement, i) => {
           return cloneElement(child, {
@@ -81,17 +98,26 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
             role: 'menuitem'
           });
         });
-        setDropdownItems(newChildren as DropdownItem[]);
+        dropdownItemClones = newChildren as DropdownItem[];
       } else {
-        setDropdownItems([
-          cloneElement(children, {
-            id: `${dropdownId}Item`,
+        dropdownItemClones = [
+          cloneElement(children as ReactElement, {
+            ref: dropdownItemRefs.current[0],
             role: 'menuitem'
           })
-        ]);
+        ];
       }
+      
+      if (highlightedAction) {
+        dropdownItemClones.push(cloneElement(highlightedAction as ReactElement, {
+          ref: dropdownItemRefs.current[dropdownItemRefs.current.length - 1],
+          role: 'menuitem'
+        }));
+      }
+      
+      setDropdownItems(dropdownItemClones);
     }
-  }, [children, dropdownId]);
+  }, [children]);
 
   useEffect(() => {
     setDropdownId('dropdown' + dropdownIndex++);
@@ -112,9 +138,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
   }, []);
 
   const listItems = dropdownItems.map((item, i) => (
-    <li key={dropdownId + 'item' + i} className="bsds-dropdown-item" role="none">
-      {item}
-    </li>
+    <DropdownMenuItem key={dropdownId + 'item' + i} item={item} isHighlightAction={highlightedAction && i === dropdownItems.length - 1} />
   ));
 
   return (
@@ -145,4 +169,4 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
   );
 }
 
-export default Dropdown;
+export default DropdownMenu;

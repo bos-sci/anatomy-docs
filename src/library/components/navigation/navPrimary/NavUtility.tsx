@@ -1,4 +1,4 @@
-import Dropdown from '../../Dropdown';
+import DropdownMenu from '../../DropdownMenu';
 import Link from '../../Link';
 import { NavItemUtility } from './NavPrimary';
 
@@ -14,11 +14,11 @@ const NavUtility = ({utilityItems, ariaLabel}: Props): JSX.Element => {
         {utilityItems.map((utilityItem, i) =>
           <li key={'utilityItem' + i} className="bsds-nav-item">
             {utilityItem.children ?
-              <Dropdown triggerText={utilityItem.text} className="bsds-nav-link">
+              <DropdownMenu triggerText={utilityItem.text} className="bsds-nav-link">
                 {utilityItem.children.map((child, childI) => (
                   <Link key={child.text + childI} href={child.href} to={child.slug}>{child.text}</Link>
                 ))}
-              </Dropdown>
+              </DropdownMenu>
               : <Link to={utilityItem.slug} href={utilityItem.href} className="bsds-nav-link">{utilityItem.text}</Link>
             }
           </li>

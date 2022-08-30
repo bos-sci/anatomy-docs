@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { RequireOnlyOne } from '../types';
-import Dropdown from './Dropdown';
+import DropdownMenu from './DropdownMenu';
 import Link from './Link';
 
 interface CrumbBase {
@@ -47,11 +47,11 @@ const Breadcrumb = ({ crumbs, currentPage, texts, hasOverflow = true }: Props): 
         {overflowCrumbs.length > 0 &&
           <li className="bsds-breadcrumb-overflow">
             {overflowCrumbs.length > 0 &&
-              <Dropdown variant="subtle" icon="ellipsis" listType="ol" aria-label={texts?.breadcrumbDropdownAriaLabel || 'previous pages'}>
+              <DropdownMenu variant="subtle" icon="ellipsis" listType="ol" aria-label={texts?.breadcrumbDropdownAriaLabel || 'previous pages'}>
                 {overflowCrumbs.map(crumb => (
                   <Link key={`crumb${crumb.name}`} href={crumb.href} to={crumb.to}>{crumb.name}</Link>
                 ))}
-              </Dropdown>
+              </DropdownMenu>
             }
           </li>
         }
