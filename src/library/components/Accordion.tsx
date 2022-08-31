@@ -6,7 +6,7 @@
 //   https://www.w3.org/TR/wai-aria-practices-1.1/#wai-aria-roles-states-and-properties
 //   https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html
 
-import { Fragment, ReactElement, useEffect, useId, useState } from 'react';
+import { Children, createRef, Fragment, ReactElement, useEffect, useId, useRef, useState } from 'react';
 import HeadingElement from './Heading';
 import AccordionHeading from './AccordionHeading';
 
@@ -21,6 +21,12 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
 
   const [expandedPanels, setExpandedPanels] = useState(new Set<number>());
   const [accordionPanels, setAccordionPanels] = useState<ReactElement[]>([]);
+
+  const panelRefs = useRef(Children.map(children, () => createRef<HTMLDivElement>()));
+
+  useEffect(() => {
+    panelRefs.current = Children.map(children, () => createRef<HTMLDivElement>());
+  }, [children]);
 
   const togglePanel = (index: number) => {
     const newPanels = new Set<number>([...expandedPanels]);
@@ -54,11 +60,16 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
             />
           </HeadingElement>
           <div
+            ref={panelRefs.current[index]}
             id={accordionId + '-panel' + index}
             className="bsds-accordion-panel"
-            hidden={!expandedPanels.has(index)}
+            style={expandedPanels.has(index) ? {
+              maxHeight: panelRefs.current[index].current?.scrollHeight
+            } : undefined}
           >
-            { accordionPanel }
+            <div className="bsds-accordion-panel-body">
+              { accordionPanel }
+            </div>
           </div>
         </Fragment>
       ))}
