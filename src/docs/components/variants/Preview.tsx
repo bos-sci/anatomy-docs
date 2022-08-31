@@ -77,8 +77,8 @@ const Preview = ( props: Props ): JSX.Element => {
     } else {
       switch (params.componentName) {
         case 'accordion':
-          const DefaultAccordion = lazy(() => import('./accordion/DefaultAccordion'));
-          setRenderedComponent(<DefaultAccordion />);
+          const AccordionController = lazy(() => import('./accordion/_AccordionController'));
+          setRenderedComponent(<AccordionController variantId={variantId} />);
           break;
 
         case 'breadcrumbs':
