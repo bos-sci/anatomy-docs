@@ -4,6 +4,7 @@ import { Props as ButtonProps } from './Button';
 import { Props as LinkProps } from './Link';
 import { Props as DropdownMenuHeadingProps } from './DropdownMenuHeading';
 import DropdownMenuItem from './DropdownMenuItem';
+import Icon from './icon/Icon';
 
 export type DropdownItem = ReactElement<ButtonProps | LinkProps | DropdownMenuHeadingProps>;
 
@@ -159,12 +160,12 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition
     <div ref={dropdownRef} className="bsds-dropdown" onKeyDown={updateFocus}>
       <Button
         variant={variant}
-        icon={icon}
-        className={`bsds-dropdown-trigger${className ? ' ' + className : ''}`}
+        className={`bsds-dropdown-trigger${className ? ' ' + className : ''}${icon ? ' has-icon' : ''}`}
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         {...buttonAttrs}>
+          {icon && <Icon size="2x" name={icon} />}
           {triggerText}
       </Button>
       {isDropdownOpen && <>

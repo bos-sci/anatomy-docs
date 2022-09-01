@@ -9,6 +9,17 @@ $icon-size: 1em;
   {
     padding-right: calc(space(lg) + $icon-size + space(3x)); // gap + icon width + padding
 
+    &.has-icon
+    {
+      padding-left: space(lg);
+      padding-right: calc(space(md) + $icon-size + space(lg)); // gap + icon width + padding
+
+      &::after
+      {
+        right: space(lg);
+      }
+    }
+
     &::after
     {
       content: '';
@@ -16,11 +27,44 @@ $icon-size: 1em;
       mask: url("../../assets/images/icon-chevron-down.svg") no-repeat 50% 50%;
       -webkit-mask-size: cover;
       mask-size: cover;
-      background-color: $text-color-primary;
       position: absolute;
       right: space(3x);
       width: $icon-size;
       height: $icon-size;
+    }
+
+    &.bsds-button
+    {
+      &::after{
+        background-color: $action-primary-40;
+      }
+
+      &:hover::after,
+      &[aria-expanded="true"]::after {
+        background-color: $neutral-100;
+      }
+
+      &-assertive::after
+      {
+        background-color: $neutral-100;
+      }
+
+      &-subtle
+      {
+        &::after {
+          background-color: $action-primary-40;
+        }
+
+        &:hover::after,
+        &[aria-expanded="true"]::after {
+          background-color: $neutral-100;
+        }
+      }
+
+      &-ghost::after
+      {
+        background-color: $neutral-100;
+      }
     }
 
     &:active,
