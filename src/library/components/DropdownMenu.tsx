@@ -12,15 +12,16 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
   listType?: 'ol' | 'ul';
   icon?: string;
   variant?: string;
-  children?: DropdownItem[] | DropdownItem;
   highlightedAction?: ReactElement<ButtonProps | LinkProps>;
+  menuPosition?: 'left' | 'right' | 'full';
+  children?: DropdownItem[] | DropdownItem;
 }
 
 let dropdownIndex = 0;
 
 // TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
 
-const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, children = [], className = '', highlightedAction, ...buttonAttrs}: Props) => {
+const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition = 'left', children = [], className = '', highlightedAction, ...buttonAttrs}: Props) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownItems, setDropdownItems] = useState<DropdownItem[]>([]);
@@ -107,17 +108,17 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, children = [
           })
         ];
       }
-      
+
       if (highlightedAction) {
         dropdownItemClones.push(cloneElement(highlightedAction as ReactElement, {
           ref: dropdownItemRefs.current[dropdownItemRefs.current.length - 1],
           role: 'menuitem'
         }));
       }
-      
+
       setDropdownItems(dropdownItemClones);
     }
-  }, [children]);
+  }, [children, highlightedAction]);
 
   useEffect(() => {
     setDropdownId('dropdown' + dropdownIndex++);
@@ -141,6 +142,19 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, children = [
     <DropdownMenuItem key={dropdownId + 'item' + i} item={item} isHighlightAction={highlightedAction && i === dropdownItems.length - 1} />
   ));
 
+  let menuClasses = 'bsds-dropdown-menu';
+  switch (menuPosition) {
+    case 'right':
+      menuClasses += ' right';
+      break;
+    case 'full':
+      menuClasses += ' full';
+      break;
+
+    default:
+      break;
+  }
+
   return (
     <div ref={dropdownRef} className="bsds-dropdown" onKeyDown={updateFocus}>
       <Button
@@ -155,12 +169,12 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, children = [
       </Button>
       {isDropdownOpen && <>
         {listType === 'ul' && (
-          <ul className="bsds-dropdown-menu" role="menu">
+          <ul className={menuClasses} role="menu">
             {listItems}
           </ul>
         )}
         {listType === 'ol' && (
-          <ol className="bsds-dropdown-menu" role="menu">
+          <ol className={menuClasses} role="menu">
             {listItems}
           </ol>
         )}
