@@ -22,7 +22,7 @@ const Fallback = () => {
 
 const Icon = (props: Props): JSX.Element => {
   const [sizeClass, setSizeClass] = useState('');
-  const [icon, setIcon] = useState<ReactElement>();
+  const [icon, setIcon] = useState<ReactElement>(<></>);
 
   useEffect(() => {
     setSizeClass(`bsds-icon-${props.size ? props.size : '2x'}`);
