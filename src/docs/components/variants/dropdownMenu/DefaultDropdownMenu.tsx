@@ -1,6 +1,5 @@
 import Button from '../../../../library/components/Button';
 import DropdownMenu from '../../../../library/components/DropdownMenu';
-import DropdownMenuHeading from '../../../../library/components/DropdownMenuHeading';
 import Example from '../../../shared/components/Example';
 
 const DefaultDropdownMenu = (): JSX.Element => {
