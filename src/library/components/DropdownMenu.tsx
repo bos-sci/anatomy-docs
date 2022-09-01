@@ -1,4 +1,4 @@
-import { Children, cloneElement, createRef, HTMLAttributes, ReactElement, useEffect, useRef, useState } from 'react';
+import { Children, cloneElement, createRef, FunctionComponent, HTMLAttributes, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
 import Button from './Button';
 import { Props as ButtonProps } from './Button';
 import { Props as LinkProps } from './Link';
@@ -94,11 +94,33 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition
       let dropdownItemClones: DropdownItem[] = [];
 
       if (Array.isArray(children)) {
+        let lastHeading: number | null = null;
         const newChildren = Children.map(children, (child: ReactElement, i) => {
-          return cloneElement(child, {
-            ref: dropdownItemRefs.current[i],
-            role: 'menuitem'
-          });
+          const childComponent = child.type as FunctionComponent;
+          if (childComponent.displayName === 'DropdownMenuHeading') {
+            lastHeading = i;
+
+            // TODO: can we get rid of ref on section heading?
+            return cloneElement(child, {
+              ref: dropdownItemRefs.current[i],
+              id: dropdownId + 'sectionHeading' + i,
+              role: 'none',
+              'aria-hidden': true
+            });
+          } else {
+            const attrs: {
+              ref: RefObject<HTMLElement>;
+              role: string;
+              'aria-describedby'?: string;
+            } = {
+              ref: dropdownItemRefs.current[i],
+              role: 'menuitem'
+            }
+            if (lastHeading !== null) {
+              attrs['aria-describedby'] = dropdownId + 'sectionHeading' + lastHeading;
+            }
+            return cloneElement(child, attrs);
+          }
         });
         dropdownItemClones = newChildren as DropdownItem[];
       } else {
@@ -119,7 +141,7 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition
 
       setDropdownItems(dropdownItemClones);
     }
-  }, [children, highlightedAction]);
+  }, [children, dropdownId, highlightedAction]);
 
   useEffect(() => {
     setDropdownId('dropdown' + dropdownIndex++);

@@ -8,4 +8,5 @@ const DropdownMenuHeading = forwardRef(({ children, className, ...divAttrs }: Pr
   return <div ref={ref} className={"bsds-dropdown-menu-heading" + (className ? " " + className : "")} {...divAttrs}>{children}</div>
 });
 
+DropdownMenuHeading.displayName = 'DropdownMenuHeading';
 export default DropdownMenuHeading;
