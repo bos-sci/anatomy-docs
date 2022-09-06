@@ -33,7 +33,7 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition
 
   const moveFocus = (distance: number) => {
     if (dropdownItemRefs.current) {
-      let currentIndex = 0;
+      let currentIndex = distance > 0 ? 0 : dropdownItemRefs.current.length - 1;
       let isFocusInMenu = false;
       dropdownItemRefs.current.forEach((item, i) => {
         if (item.current === document.activeElement) {
@@ -55,7 +55,7 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition
           dropdownItemRefs.current[newIndex].current?.focus();
         }
       } else {
-        dropdownItemRefs.current[0].current?.focus();
+        dropdownItemRefs.current[currentIndex].current?.focus();
       }
     }
   }
