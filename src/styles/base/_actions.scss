@@ -19,7 +19,8 @@
 {
   &:not([disabled])
   {
-    &:active
+    &:active,
+    &[aria-expanded="true"]
     {
       border-color: transparent;
       background: $action-primary-20;
@@ -98,7 +99,8 @@
 
   &:not([disabled])
   {
-    &:active
+    &:active,
+    &[aria-expanded="true"]
     {
       text-decoration: underline;
     }
@@ -137,7 +139,8 @@
   &:not([disabled])
   {
     &:hover,
-    &:active
+    &:active,
+    &[aria-expanded="true"]
     {
       border-color: $neutral-100;
       background: rgba($neutral-100, 0.3);
