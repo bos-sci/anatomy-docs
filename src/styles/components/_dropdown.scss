@@ -35,13 +35,18 @@ $icon-size: 1em;
 
     &.bsds-button
     {
-      &::after{
+      &::after
+      {
         background-color: $action-primary-40;
       }
 
       &:hover::after,
-      &[aria-expanded="true"]::after {
-        background-color: $neutral-100;
+      &[aria-expanded="true"]
+      {
+        &::after
+        {
+          background-color: $neutral-100;
+        }
       }
 
       &-assertive::after
@@ -56,8 +61,11 @@ $icon-size: 1em;
         }
 
         &:hover::after,
-        &[aria-expanded="true"]::after {
-          background-color: $neutral-100;
+        &[aria-expanded="true"]{
+          &::after
+          {
+            background-color: $neutral-100;
+          }
         }
       }
 
@@ -78,7 +86,7 @@ $icon-size: 1em;
     position: absolute;
     margin: 0;
     padding: 0;
-    min-width: 10rem;
+    min-width: 10rem; // NOTE: This is a one off size.
     list-style: none;
     background: $neutral-100;
     box-shadow: $box-shadow-secondary;
@@ -128,7 +136,7 @@ $icon-size: 1em;
     .bsds-dropdown-menu-highlight
     {
       padding: space(lg) 0;
-      border-top: space(xxs) $border-color-subtle solid;
+      border-top: space(xxs) solid $border-color-subtle;
 
       .bsds-button,
       .bsds-link

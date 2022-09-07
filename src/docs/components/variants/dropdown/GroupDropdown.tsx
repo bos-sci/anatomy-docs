@@ -7,7 +7,7 @@ const GroupDropdown = (): JSX.Element => {
 
   return (
     <Example>
-      <Dropdown triggerText='Dropdown trigger'>
+      <Dropdown triggerText="Dropdown trigger">
         <DropdownHeading>Action group 1</DropdownHeading>
         <Button>Action 1a</Button>
         <Button>Action 1b</Button>

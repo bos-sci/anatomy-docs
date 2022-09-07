@@ -6,7 +6,7 @@ const HighlightDropdown = (): JSX.Element => {
 
   return (
     <Example>
-      <Dropdown triggerText='Dropdown trigger' highlightedAction={<Button>Highlighted action</Button>}>
+      <Dropdown triggerText="Dropdown trigger" highlightedAction={<Button>Highlighted action</Button>}>
         <Button>Action 1</Button>
         <Button>Action 2</Button>
         <Button>Action 3</Button>

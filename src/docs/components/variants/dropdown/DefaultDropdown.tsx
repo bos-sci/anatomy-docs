@@ -6,7 +6,7 @@ const DefaultDropdown = (): JSX.Element => {
 
   return (
     <Example>
-      <Dropdown triggerText='Dropdown trigger'>
+      <Dropdown triggerText="Dropdown trigger">
         <Button>Action 1</Button>
         <Button>Action 2</Button>
         <Button>Action 3</Button>

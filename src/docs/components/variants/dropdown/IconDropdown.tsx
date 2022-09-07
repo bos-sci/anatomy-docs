@@ -7,7 +7,7 @@ const IconDropdown = (): JSX.Element => {
 
   return (
     <Example>
-      <Dropdown icon='ellipsis'>
+      <Dropdown icon="ellipsis">
         <Button><Icon name="plus" size="2x" className="bsds-icon-left" />Action 1</Button>
         <Button><Icon name="plus" size="2x" className="bsds-icon-left" />Action 2</Button>
         <Button><Icon name="plus" size="2x" className="bsds-icon-left" />Action 3</Button>

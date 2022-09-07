@@ -17,7 +17,7 @@ describe("Dropdown", () => {
     expect(screen.getByText('Trigger menu text')).toBeInTheDocument();
   });
 
-  it("Dropdown menu should open on click on trigger.", async () => {
+  it("Dropdown menu should open on click of trigger.", async () => {
     const user = userEvent.setup();
 
     render(
@@ -34,7 +34,7 @@ describe("Dropdown", () => {
     expect(screen.getByText('Dropdown item 3')).toBeVisible();
   });
 
-  it("Should have aria-expanded='true' attribute on the trigger when menu is open", async () => {
+  it("Should have aria-expanded='true' attribute on the trigger when menu is open.", async () => {
     const user = userEvent.setup();
 
     render(
