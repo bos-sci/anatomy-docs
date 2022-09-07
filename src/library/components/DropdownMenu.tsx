@@ -190,18 +190,16 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition
           {icon && <Icon size="2x" name={icon} />}
           {triggerText}
       </Button>
-      {isDropdownOpen && <>
         {listType === 'ul' && (
-          <ul className={menuClasses} role="menu">
+          <ul hidden={!isDropdownOpen} className={menuClasses} role="menu">
             {listItems}
           </ul>
         )}
         {listType === 'ol' && (
-          <ol className={menuClasses} role="menu">
+          <ol hidden={!isDropdownOpen} className={menuClasses} role="menu">
             {listItems}
           </ol>
         )}
-      </>}
     </div>
   );
 }
