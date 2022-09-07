@@ -45,7 +45,7 @@ body
     justify-content: start;
     justify-items: start;
     overflow-y: auto;
-    padding: space(4x);
+    padding: space(4x) calc(space(4x) - space(md));
   }
 }
 
@@ -61,12 +61,15 @@ main
 .docs-page-header
 {
   grid-area: intro;
+  padding: 0 space(sm);
   width: 100%;
 }
 
 .docs-page-content
 {
   grid-area: page-content;
+  overflow-x: auto;
+  padding: 0 space(sm);
   width: 100%;
 
   & > .docs-preview-:first-of-type
