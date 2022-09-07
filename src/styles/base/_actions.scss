@@ -17,16 +17,9 @@
 
 @mixin button-active
 {
-  &:not([disabled])
-  {
-    &:active,
-    &[aria-expanded="true"]
-    {
-      border-color: transparent;
-      background: $action-primary-20;
-      color: $neutral-100;
-    }
-  }
+  border-color: transparent;
+  background: $action-primary-20;
+  color: $neutral-100;
 }
 
 @mixin button-focus
@@ -72,8 +65,15 @@
     text-align: left;
   }
 
+  &:not([disabled])
+  {
+    &:active
+    {
+      @include button-active;
+    }
+  }
+
   @include button-hover;
-  @include button-active;
 }
 
 @mixin button-default
@@ -85,6 +85,11 @@
   font-family: $font-family-base-heavy;
   @include button-focus;
   @include button-disabled;
+}
+
+@mixin button-subtle-active
+{
+  text-decoration: underline;
 }
 
 @mixin button-subtle
@@ -99,10 +104,9 @@
 
   &:not([disabled])
   {
-    &:active,
-    &[aria-expanded="true"]
+    &:active
     {
-      text-decoration: underline;
+      @include button-subtle-active;
     }
 
     &:hover
@@ -129,6 +133,12 @@
   @include button-disabled;
 }
 
+@mixin button-ghost-active
+{
+  border-color: $neutral-100;
+  background: rgba($neutral-100, 0.3);
+}
+
 @mixin button-ghost
 {
   @include button-base;
@@ -139,11 +149,9 @@
   &:not([disabled])
   {
     &:hover,
-    &:active,
-    &[aria-expanded="true"]
+    &:active
     {
-      border-color: $neutral-100;
-      background: rgba($neutral-100, 0.3);
+      @include button-ghost-active;
     }
 
     &:focus

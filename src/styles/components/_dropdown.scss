@@ -40,7 +40,12 @@ $icon-size: 1em;
         background-color: $action-primary-40;
       }
 
-      &:hover::after,
+      &[aria-expanded="true"]
+      {
+        @include button-active;
+      }
+
+      &:hover,
       &[aria-expanded="true"]
       {
         &::after
@@ -49,19 +54,35 @@ $icon-size: 1em;
         }
       }
 
-      &-assertive::after
+      &-assertive
       {
-        background-color: $neutral-100;
+        &[aria-expanded="true"]
+        {
+          @include button-active;
+        }
+
+        &::after
+        {
+          background-color: $neutral-100;
+        }
       }
 
       &-subtle
       {
-        &::after {
+        &::after
+        {
           background-color: $action-primary-40;
         }
 
-        &:hover::after,
-        &[aria-expanded="true"]{
+        &[aria-expanded="true"]
+        {
+          @include button-subtle-active;
+          @include button-active;
+        }
+
+        &:hover,
+        &[aria-expanded="true"]
+        {
           &::after
           {
             background-color: $neutral-100;
@@ -69,9 +90,17 @@ $icon-size: 1em;
         }
       }
 
-      &-ghost::after
+      &-ghost
       {
-        background-color: $neutral-100;
+        &[aria-expanded="true"]
+        {
+          @include button-ghost-active;
+        }
+
+        &::after
+        {
+          background-color: $neutral-100;
+        }
       }
     }
 
