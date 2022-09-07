@@ -92,8 +92,8 @@ const Preview = ( props: Props ): JSX.Element => {
           break;
 
         case 'dropdown-menu':
-          const DropdownMenuController = lazy(() => import('./dropdownMenu/_DropdownMenuController'));
-          setRenderedComponent(<DropdownMenuController variantId={variantId} />);
+          const DropdownController = lazy(() => import('./dropdown/_DropdownController'));
+          setRenderedComponent(<DropdownController variantId={variantId} />);
           break;
 
         case 'checkbox':

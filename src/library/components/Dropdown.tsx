@@ -2,11 +2,8 @@ import { Children, cloneElement, createRef, FunctionComponent, HTMLAttributes, R
 import Button from './Button';
 import { Props as ButtonProps } from './Button';
 import { Props as LinkProps } from './Link';
-import { Props as DropdownMenuHeadingProps } from './DropdownMenuHeading';
-import DropdownMenuItem from './DropdownMenuItem';
+import DropdownItem, { DropdownAction } from './DropdownItem';
 import Icon from './icon/Icon';
-
-export type DropdownItem = ReactElement<ButtonProps | LinkProps | DropdownMenuHeadingProps>;
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   triggerText?: string;
@@ -15,17 +12,17 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
   variant?: string;
   highlightedAction?: ReactElement<ButtonProps | LinkProps>;
   menuPosition?: 'left' | 'right' | 'full';
-  children?: DropdownItem[] | DropdownItem;
+  children?: DropdownAction[] | DropdownAction;
 }
 
 let dropdownIndex = 0;
 
 // TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
 
-const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition = 'left', children = [], className = '', highlightedAction, ...buttonAttrs}: Props) => {
+const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = 'left', children = [], className = '', highlightedAction, ...buttonAttrs}: Props) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [dropdownItems, setDropdownItems] = useState<DropdownItem[]>([]);
+  const [dropdownItems, setDropdownItems] = useState<DropdownAction[]>([]);
   const [dropdownId, setDropdownId] = useState('');
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -91,13 +88,13 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition
 
   useEffect(() => {
     if (children) {
-      let dropdownItemClones: DropdownItem[] = [];
+      let dropdownItemClones: DropdownAction[] = [];
 
       if (Array.isArray(children)) {
         let lastHeading: number | null = null;
         const newChildren = Children.map(children, (child: ReactElement, i) => {
           const childComponent = child.type as FunctionComponent;
-          if (childComponent.displayName === 'DropdownMenuHeading') {
+          if (childComponent.displayName === 'DropdownHeading') {
             lastHeading = i;
 
             // TODO: can we get rid of ref on section heading?
@@ -122,7 +119,7 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition
             return cloneElement(child, attrs);
           }
         });
-        dropdownItemClones = newChildren as DropdownItem[];
+        dropdownItemClones = newChildren as DropdownAction[];
       } else {
         dropdownItemClones = [
           cloneElement(children as ReactElement, {
@@ -162,7 +159,7 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition
   }, []);
 
   const listItems = dropdownItems.map((item, i) => (
-    <DropdownMenuItem key={dropdownId + 'item' + i} item={item} isHighlightAction={highlightedAction && i === dropdownItems.length - 1} />
+    <DropdownItem key={dropdownId + 'item' + i} item={item} isHighlightAction={highlightedAction && i === dropdownItems.length - 1} />
   ));
 
   let menuClasses = 'bsds-dropdown-menu';
@@ -204,4 +201,4 @@ const DropdownMenu = ({triggerText, listType = 'ul', icon, variant, menuPosition
   );
 }
 
-export default DropdownMenu;
+export default Dropdown;

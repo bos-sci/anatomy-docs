@@ -1,17 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Button from '../Button';
-import DropdownMenu from '../DropdownMenu';
-import DropdownMenuHeading from '../DropdownMenuHeading';
+import Dropdown from '../Dropdown';
+import DropdownHeading from '../DropdownHeading';
 
 describe("Dropdown", () => {
   it("Renders a standard dropdown when only triggerText prop is provided", () => {
     render(
-      <DropdownMenu triggerText='Trigger menu text'>
+      <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
-      </DropdownMenu>
+      </Dropdown>
     );
 
     expect(screen.getByText('Trigger menu text')).toBeInTheDocument();
@@ -21,11 +21,11 @@ describe("Dropdown", () => {
     const user = userEvent.setup();
 
     render(
-      <DropdownMenu triggerText='Trigger menu text'>
+      <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
-      </DropdownMenu>
+      </Dropdown>
     );
 
     await user.click(screen.getByText('Trigger menu text'));
@@ -38,11 +38,11 @@ describe("Dropdown", () => {
     const user = userEvent.setup();
 
     render(
-      <DropdownMenu triggerText='Trigger menu text'>
+      <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
-      </DropdownMenu>
+      </Dropdown>
     );
 
     const trigger = screen.getByText('Trigger menu text')
@@ -52,14 +52,14 @@ describe("Dropdown", () => {
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it("Renders a menu heading in the dropdown menu when DropdownMenuHeading child is provided.", async () => {
+  it("Renders a menu heading in the dropdown menu when DropdownHeading child is provided.", async () => {
     const user = userEvent.setup();
     render(
-      <DropdownMenu triggerText='Trigger menu text' highlightedAction={<Button>Highlighted Action</Button>}>
+      <Dropdown triggerText='Trigger menu text' highlightedAction={<Button>Highlighted Action</Button>}>
         <Button>Dropdown item 1</Button>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
-      </DropdownMenu>
+      </Dropdown>
     );
     await user.click(screen.getByText('Trigger menu text'));
 
@@ -70,12 +70,12 @@ describe("Dropdown", () => {
   it("Renders a highlighted action in the dropdown menu when highlightedAction prop is provided.", async () => {
     const user = userEvent.setup();
     render(
-      <DropdownMenu triggerText='Trigger menu text'>
+      <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
-        <DropdownMenuHeading>Section heading 1</DropdownMenuHeading>
+        <DropdownHeading>Section heading 1</DropdownHeading>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
-      </DropdownMenu>
+      </Dropdown>
     );
     await user.click(screen.getByText('Trigger menu text'));
 
@@ -87,14 +87,14 @@ describe("Dropdown", () => {
   it("Menu items should have aria-describedby attribute relating to closest previous heading.", async () => {
     const user = userEvent.setup();
     render(
-      <DropdownMenu triggerText='Trigger menu text'>
+      <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
-        <DropdownMenuHeading>Section heading 1</DropdownMenuHeading>
+        <DropdownHeading>Section heading 1</DropdownHeading>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
-        <DropdownMenuHeading>Section heading 2</DropdownMenuHeading>
+        <DropdownHeading>Section heading 2</DropdownHeading>
         <Button>Dropdown item 4</Button>
-      </DropdownMenu>
+      </Dropdown>
     );
     await user.click(screen.getByText('Trigger menu text'));
 
@@ -115,11 +115,11 @@ describe("Dropdown", () => {
   it("Focuses next item on press of down arrow, and loops back to top after last item.", async () => {
     const user = userEvent.setup();
     render(
-      <DropdownMenu triggerText='Trigger menu text'>
+      <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
-      </DropdownMenu>
+      </Dropdown>
     );
 
 
@@ -141,11 +141,11 @@ describe("Dropdown", () => {
   it("Focuses previous item on press of up arrow, and loops back to bottom after first item.", async () => {
     const user = userEvent.setup();
     render(
-      <DropdownMenu triggerText='Trigger menu text'>
+      <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
-      </DropdownMenu>
+      </Dropdown>
     );
 
 
@@ -167,11 +167,11 @@ describe("Dropdown", () => {
   it("Focus skips over headings.", async () => {
     const user = userEvent.setup();
     render(
-      <DropdownMenu triggerText='Trigger menu text'>
+      <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
-        <DropdownMenuHeading>Section heading 1</DropdownMenuHeading>
+        <DropdownHeading>Section heading 1</DropdownHeading>
         <Button>Dropdown item 2</Button>
-      </DropdownMenu>
+      </Dropdown>
     );
 
 
