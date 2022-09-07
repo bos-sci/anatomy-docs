@@ -95,7 +95,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
         let lastHeading: number | null = null;
         const newChildren = Children.map(children, (child: ReactElement, i) => {
           const childComponent = child.type as FunctionComponent;
-          if (childComponent.displayName === 'DropdownHeading') {
+          if (childComponent.displayName === 'DropdownGroupName') {
             lastHeading = i;
             return cloneElement(child, {
               ref: dropdownItemRefs.current[i],

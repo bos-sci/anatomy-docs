@@ -1,6 +1,6 @@
 import Button from '../../../../library/components/Button';
 import Dropdown from '../../../../library/components/Dropdown';
-import DropdownHeading from '../../../../library/components/DropdownHeading';
+import DropdownGroupName from '../../../../library/components/DropdownGroupName';
 import Example from '../../../shared/components/Example';
 
 const GroupDropdown = (): JSX.Element => {
@@ -8,10 +8,10 @@ const GroupDropdown = (): JSX.Element => {
   return (
     <Example>
       <Dropdown triggerText="Dropdown trigger">
-        <DropdownHeading>Action group 1</DropdownHeading>
+        <DropdownGroupName>Action group 1</DropdownGroupName>
         <Button>Action 1a</Button>
         <Button>Action 1b</Button>
-        <DropdownHeading>Action group 2</DropdownHeading>
+        <DropdownGroupName>Action group 2</DropdownGroupName>
         <Button>Action 2a</Button>
         <Button>Action 2b</Button>
       </Dropdown>

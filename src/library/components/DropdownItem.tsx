@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
 import { Props as ButtonProps } from './Button';
 import { Props as LinkProps } from './Link';
-import { Props as DropdownHeadingProps } from './DropdownHeading';
+import { Props as DropdownGroupNameProps } from './DropdownGroupName';
 
-export type DropdownAction = ReactElement<ButtonProps | LinkProps | DropdownHeadingProps>;
+export type DropdownAction = ReactElement<ButtonProps | LinkProps | DropdownGroupNameProps>;
 
 interface Props {
     item: DropdownAction;

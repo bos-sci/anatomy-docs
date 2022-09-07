@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Button from '../Button';
 import Dropdown from '../Dropdown';
-import DropdownHeading from '../DropdownHeading';
+import DropdownGroupName from '../DropdownGroupName';
 
 describe("Dropdown", () => {
   it("Renders a standard dropdown when only triggerText prop is provided", () => {
@@ -52,7 +52,7 @@ describe("Dropdown", () => {
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it("Renders a menu heading in the dropdown menu when DropdownHeading child is provided.", async () => {
+  it("Renders a menu heading in the dropdown menu when DropdownGroupName child is provided.", async () => {
     const user = userEvent.setup();
     render(
       <Dropdown triggerText='Trigger menu text' highlightedAction={<Button>Highlighted Action</Button>}>
@@ -72,7 +72,7 @@ describe("Dropdown", () => {
     render(
       <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
-        <DropdownHeading>Section heading 1</DropdownHeading>
+        <DropdownGroupName>Section heading 1</DropdownGroupName>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
       </Dropdown>
@@ -89,10 +89,10 @@ describe("Dropdown", () => {
     render(
       <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
-        <DropdownHeading>Section heading 1</DropdownHeading>
+        <DropdownGroupName>Section heading 1</DropdownGroupName>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
-        <DropdownHeading>Section heading 2</DropdownHeading>
+        <DropdownGroupName>Section heading 2</DropdownGroupName>
         <Button>Dropdown item 4</Button>
       </Dropdown>
     );
@@ -169,7 +169,7 @@ describe("Dropdown", () => {
     render(
       <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
-        <DropdownHeading>Section heading 1</DropdownHeading>
+        <DropdownGroupName>Section heading 1</DropdownGroupName>
         <Button>Dropdown item 2</Button>
       </Dropdown>
     );
