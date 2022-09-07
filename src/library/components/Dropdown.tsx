@@ -18,6 +18,7 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
 let dropdownIndex = 0;
 
 // TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
+// TODO: Reduce number of refs created for children.
 
 const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = 'left', children = [], className = '', highlightedAction, ...buttonAttrs}: Props) => {
 
@@ -96,8 +97,6 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
           const childComponent = child.type as FunctionComponent;
           if (childComponent.displayName === 'DropdownHeading') {
             lastHeading = i;
-
-            // TODO: can we get rid of ref on section heading?
             return cloneElement(child, {
               ref: dropdownItemRefs.current[i],
               id: dropdownId + 'sectionHeading' + i,
