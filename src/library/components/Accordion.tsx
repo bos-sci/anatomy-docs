@@ -1,7 +1,3 @@
-// TODO:
-// make all panels collapsed on page load & allow multiple panels to be expanded at the same time
-// finish refactoring
-
 // NOTE:
 // We could consider using <details> here
 // The current implementation is based on the example from aria practices
@@ -10,7 +6,7 @@
 //   https://www.w3.org/TR/wai-aria-practices-1.1/#wai-aria-roles-states-and-properties
 //   https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html
 
-import { createRef, ReactElement, RefObject, useEffect, useState } from 'react';
+import { Children, createRef, Fragment, ReactElement, useEffect, useId, useRef, useState } from 'react';
 import HeadingElement from './Heading';
 import AccordionHeading from './AccordionHeading';
 
@@ -19,57 +15,63 @@ type Props = {
   children: ReactElement[] | ReactElement;
 }
 
-let accordionId = 0;
-
 const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
 
-  const [expandedPanel, setIsPanelExpanded] = useState(0);
-  const [accordionPanelId, setAccordionPanelId] = useState('');
+  const accordionId = useId();
+
+  const [expandedPanels, setExpandedPanels] = useState(new Set<number>());
   const [accordionPanels, setAccordionPanels] = useState<ReactElement[]>([]);
-  const [accordionRefs, setAccordionRefs] = useState<RefObject<HTMLButtonElement>[]>([]);
+
+  const panelRefs = useRef(Children.map(children, () => createRef<HTMLDivElement>()));
 
   useEffect(() => {
-    const idNum = ++accordionId;
-    setAccordionPanelId('accordionPanel' + idNum);
-  }, []);
+    panelRefs.current = Children.map(children, () => createRef<HTMLDivElement>());
+  }, [children]);
+
+  const togglePanel = (index: number) => {
+    const newPanels = new Set<number>([...expandedPanels]);
+    newPanels.has(index) ? newPanels.delete(index) : newPanels.add(index);
+    setExpandedPanels(newPanels);
+  }
 
   useEffect(() => {
-    if (Array.isArray(children)) {
-      setAccordionPanels(children);
-    } else {
-      setAccordionPanels([children]);
-    }
-    let refs: RefObject<HTMLButtonElement>[] = [];
-    for (let i = 0; i < accordionPanels.length; i++) {
-      refs.push(createRef());
-    }
-    setAccordionRefs(refs);
-  }, [children, accordionPanels.length]);
+    setAccordionPanels(Array.isArray(children) ? children : [children]);
+  }, [children]);
 
   return (
     <div className="bsds-accordion">
       {accordionPanels.map((accordionPanel, index) => (
-        <>
-          <HeadingElement headingLevel={headingLevel} className="bsds-accordion-heading">
+        <Fragment key={accordionId + index}>
+          <HeadingElement
+            headingLevel={headingLevel}
+            className={
+              "bsds-accordion-heading"
+              + (accordionPanel.props.stoplightColor
+                  ? ` bsds-accordion-stoplight-${accordionPanel.props.stoplightColor}`
+                  : '')
+            }
+          >
             <AccordionHeading
-              key={`${accordionPanelId + index}Heading`}
-              accordionHeading={accordionPanel.props.accordionHeading}
+              heading={accordionPanel.props.heading}
               index={index}
-              setIsPanelExpanded={setIsPanelExpanded}
-              isPanelExpanded={index === expandedPanel}
-              accordionPanelId={accordionPanelId + index}
-              accordionRef={accordionRefs[index]}
+              togglePanel={togglePanel}
+              isPanelExpanded={expandedPanels.has(index)}
+              panelId={accordionId + '-panel' + index}
             />
           </HeadingElement>
           <div
-            key={accordionPanelId + index}
-            id={accordionPanelId + index}
+            ref={panelRefs.current[index]}
+            id={accordionId + '-panel' + index}
             className="bsds-accordion-panel"
-            hidden={index !== expandedPanel}
+            style={expandedPanels.has(index) ? {
+              maxHeight: panelRefs.current[index].current?.scrollHeight
+            } : undefined}
           >
-            { accordionPanel }
+            <div className="bsds-accordion-panel-body">
+              { accordionPanel }
+            </div>
           </div>
-        </>
+        </Fragment>
       ))}
     </div>
   )

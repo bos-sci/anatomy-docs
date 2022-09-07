@@ -4,16 +4,8 @@ interface Props extends React.HTMLAttributes<HTMLHeadingElement> {
   headingLevel: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-const HeadingElement = ({ headingLevel = "h2", children, className }: Props) => {
-
-  const Heading = ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) =>
-    React.createElement(headingLevel, props, children)
-
-  return (
-    <Heading className={className}>
-      {children}
-    </Heading>
-  )
+const HeadingElement = ({ headingLevel = "h2", children, ...attrs }: Props) => {
+  return React.createElement(headingLevel, attrs, children);
 }
 
 export default HeadingElement;

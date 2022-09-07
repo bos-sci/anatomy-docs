@@ -30,7 +30,7 @@ const navItems: NavItemPrimary[] = [
   },
   {
     text: 'Components',
-    slug: '/components/button',
+    slug: '/components/accordion',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'components';
     }
