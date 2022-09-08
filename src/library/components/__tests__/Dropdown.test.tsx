@@ -79,12 +79,12 @@ describe("Dropdown", () => {
     );
     await user.click(screen.getByText('Trigger menu text'));
 
-    const heading = screen.getByText('Group name 1');
-    expect(heading).toBeInTheDocument();
-    expect(heading).toBeVisible();
+    const groupname = screen.getByText('Group name 1');
+    expect(groupname).toBeInTheDocument();
+    expect(groupname).toBeVisible();
   });
 
-  it("Should have aria-describedby attribute on menu items with a value that relates to the closest previous heading.", async () => {
+  it("Should have aria-describedby attribute on menu items with a value that relates to the closest previous groupname.", async () => {
     const user = userEvent.setup();
     render(
       <Dropdown triggerText='Trigger menu text'>
@@ -92,7 +92,7 @@ describe("Dropdown", () => {
         <DropdownGroupName>Group name 1</DropdownGroupName>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
-        <DropdownGroupName>Section heading 2</DropdownGroupName>
+        <DropdownGroupName>Section groupname 2</DropdownGroupName>
         <Button>Dropdown item 4</Button>
       </Dropdown>
     );
@@ -100,15 +100,15 @@ describe("Dropdown", () => {
 
     expect(screen.getByText('Dropdown item 1')).not.toHaveAttribute('aria-describedby');
 
-    const heading1 = screen.getByText('Group name 1');
+    const groupname1 = screen.getByText('Group name 1');
     const item2 = screen.getByText('Dropdown item 2');
     const item3 = screen.getByText('Dropdown item 3');
-    expect(item2).toHaveAttribute('aria-describedby', heading1.id);
-    expect(item3).toHaveAttribute('aria-describedby', heading1.id);
+    expect(item2).toHaveAttribute('aria-describedby', groupname1.id);
+    expect(item3).toHaveAttribute('aria-describedby', groupname1.id);
 
-    const heading2 = screen.getByText('Section heading 2');
+    const groupname2 = screen.getByText('Section groupname 2');
     const item4 = screen.getByText('Dropdown item 4');
-    expect(item4).toHaveAttribute('aria-describedby', heading2.id);
+    expect(item4).toHaveAttribute('aria-describedby', groupname2.id);
   });
 
   // Keyboard management tests

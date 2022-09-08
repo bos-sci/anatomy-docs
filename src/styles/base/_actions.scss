@@ -17,9 +17,12 @@
 
 @mixin button-active
 {
-  border-color: transparent;
-  background: $action-primary-20;
-  color: $neutral-100;
+  &:not([disabled])
+  {
+    border-color: transparent;
+    background: $action-primary-20;
+    color: $neutral-100;
+  }
 }
 
 @mixin button-focus
@@ -65,12 +68,9 @@
     text-align: left;
   }
 
-  &:not([disabled])
+  &:active
   {
-    &:active
-    {
-      @include button-active;
-    }
+    @include button-active;
   }
 
   @include button-hover;

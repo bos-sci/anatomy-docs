@@ -92,11 +92,11 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
       let dropdownItemClones: DropdownAction[] = [];
 
       if (Array.isArray(children)) {
-        let lastHeading: number | null = null;
+        let lastGroupName: number | null = null;
         const newChildren = Children.map(children, (child: ReactElement, i) => {
           const childComponent = child.type as FunctionComponent;
           if (childComponent.displayName === 'DropdownGroupName') {
-            lastHeading = i;
+            lastGroupName = i;
             return cloneElement(child, {
               ref: dropdownItemRefs.current[i],
               id: dropdownId + 'group' + i,
@@ -112,8 +112,8 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
               ref: dropdownItemRefs.current[i],
               role: 'menuitem'
             }
-            if (lastHeading !== null) {
-              attrs['aria-describedby'] = dropdownId + 'group' + lastHeading;
+            if (lastGroupName !== null) {
+              attrs['aria-describedby'] = dropdownId + 'group' + lastGroupName;
             }
             return cloneElement(child, attrs);
           }
