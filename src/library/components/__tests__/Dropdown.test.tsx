@@ -17,7 +17,7 @@ describe("Dropdown", () => {
     expect(screen.getByText('Trigger menu text')).toBeInTheDocument();
   });
 
-  it("Dropdown menu should open on click of trigger.", async () => {
+  it("Should open dropdown menu on click of trigger.", async () => {
     const user = userEvent.setup();
 
     render(
@@ -52,7 +52,7 @@ describe("Dropdown", () => {
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it("Renders a menu heading in the dropdown menu when DropdownGroupName child is provided.", async () => {
+  it("Renders a highlighted action in the dropdown menu when highlightedAction prop is provided.", async () => {
     const user = userEvent.setup();
     render(
       <Dropdown triggerText='Trigger menu text' highlightedAction={<Button>Highlighted Action</Button>}>
@@ -67,29 +67,29 @@ describe("Dropdown", () => {
     expect(screen.getByText('Highlighted Action')).toBeVisible();
   });
 
-  it("Renders a highlighted action in the dropdown menu when highlightedAction prop is provided.", async () => {
+  it("Renders a group name in the dropdown menu when DropdownGroupName child is provided.", async () => {
     const user = userEvent.setup();
     render(
       <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
-        <DropdownGroupName>Section heading 1</DropdownGroupName>
+        <DropdownGroupName>Group name 1</DropdownGroupName>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
       </Dropdown>
     );
     await user.click(screen.getByText('Trigger menu text'));
 
-    const heading = screen.getByText('Section heading 1');
+    const heading = screen.getByText('Group name 1');
     expect(heading).toBeInTheDocument();
     expect(heading).toBeVisible();
   });
 
-  it("Menu items should have aria-describedby attribute relating to closest previous heading.", async () => {
+  it("Should have aria-describedby attribute on menu items with a value that relates to the closest previous heading.", async () => {
     const user = userEvent.setup();
     render(
       <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
-        <DropdownGroupName>Section heading 1</DropdownGroupName>
+        <DropdownGroupName>Group name 1</DropdownGroupName>
         <Button>Dropdown item 2</Button>
         <Button>Dropdown item 3</Button>
         <DropdownGroupName>Section heading 2</DropdownGroupName>
@@ -100,7 +100,7 @@ describe("Dropdown", () => {
 
     expect(screen.getByText('Dropdown item 1')).not.toHaveAttribute('aria-describedby');
 
-    const heading1 = screen.getByText('Section heading 1');
+    const heading1 = screen.getByText('Group name 1');
     const item2 = screen.getByText('Dropdown item 2');
     const item3 = screen.getByText('Dropdown item 3');
     expect(item2).toHaveAttribute('aria-describedby', heading1.id);
@@ -164,12 +164,12 @@ describe("Dropdown", () => {
     expect(item3).toHaveFocus();
   });
 
-  it("Focus skips over headings.", async () => {
+  it("Does not focus group names.", async () => {
     const user = userEvent.setup();
     render(
       <Dropdown triggerText='Trigger menu text'>
         <Button>Dropdown item 1</Button>
-        <DropdownGroupName>Section heading 1</DropdownGroupName>
+        <DropdownGroupName>Group name 1</DropdownGroupName>
         <Button>Dropdown item 2</Button>
       </Dropdown>
     );

@@ -5,7 +5,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 const DropdownGroupName = forwardRef(({ children, className, ...divAttrs }: Props, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
-  return <div ref={ref} className={"bsds-dropdown-menu-heading" + (className ? " " + className : "")} {...divAttrs}>{children}</div>
+  return <div ref={ref} className={"bsds-dropdown-group-name" + (className ? " " + className : "")} {...divAttrs}>{children}</div>
 });
 
 DropdownGroupName.displayName = 'DropdownGroupName';

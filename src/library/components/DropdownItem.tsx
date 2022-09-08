@@ -7,12 +7,12 @@ export type DropdownAction = ReactElement<ButtonProps | LinkProps | DropdownGrou
 
 interface Props {
     item: DropdownAction;
-    isHighlightAction?: boolean;
+    isHighlightedAction?: boolean;
 }
 
 const DropdownItem = (props: Props) => {
   return (
-    <li className={`bsds-dropdown-item${props.isHighlightAction ? ' bsds-dropdown-menu-highlight' : ''}`} role="none">
+    <li className={`bsds-dropdown-item${props.isHighlightedAction ? ' bsds-dropdown-item-highlighted' : ''}`} role="none">
       {props.item}
     </li>
   );

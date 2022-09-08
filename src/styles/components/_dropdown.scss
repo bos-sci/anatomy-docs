@@ -56,14 +56,14 @@ $icon-size: 1em;
 
       &-assertive
       {
-        &[aria-expanded="true"]
-        {
-          @include button-active;
-        }
-
         &::after
         {
           background-color: $neutral-100;
+        }
+
+        &[aria-expanded="true"]
+        {
+          @include button-active;
         }
       }
 
@@ -92,14 +92,14 @@ $icon-size: 1em;
 
       &-ghost
       {
-        &[aria-expanded="true"]
-        {
-          @include button-ghost-active;
-        }
-
         &::after
         {
           background-color: $neutral-100;
+        }
+
+        &[aria-expanded="true"]
+        {
+          @include button-ghost-active;
         }
       }
     }
@@ -139,7 +139,7 @@ $icon-size: 1em;
 
     .bsds-button,
     .bsds-link,
-    .bsds-dropdown-menu-heading
+    .bsds-dropdown-group-name
     {
       display: block;
       border: 0;
@@ -157,12 +157,12 @@ $icon-size: 1em;
       }
     }
 
-    .bsds-dropdown-menu-heading
+    .bsds-dropdown-group-name
     {
       font-family: $font-family-base-heavy;
     }
 
-    .bsds-dropdown-menu-highlight
+    .bsds-dropdown-item-highlighted
     {
       padding: space(lg) 0;
       border-top: space(xxs) solid $border-color-subtle;

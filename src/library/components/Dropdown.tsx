@@ -99,7 +99,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
             lastHeading = i;
             return cloneElement(child, {
               ref: dropdownItemRefs.current[i],
-              id: dropdownId + 'sectionHeading' + i,
+              id: dropdownId + 'group' + i,
               role: 'none',
               'aria-hidden': true
             });
@@ -113,7 +113,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
               role: 'menuitem'
             }
             if (lastHeading !== null) {
-              attrs['aria-describedby'] = dropdownId + 'sectionHeading' + lastHeading;
+              attrs['aria-describedby'] = dropdownId + 'group' + lastHeading;
             }
             return cloneElement(child, attrs);
           }
@@ -158,7 +158,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
   }, []);
 
   const listItems = dropdownItems.map((item, i) => (
-    <DropdownItem key={dropdownId + 'item' + i} item={item} isHighlightAction={highlightedAction && i === dropdownItems.length - 1} />
+    <DropdownItem key={dropdownId + 'item' + i} item={item} isHighlightedAction={highlightedAction && i === dropdownItems.length - 1} />
   ));
 
   let menuClasses = 'bsds-dropdown-menu';
