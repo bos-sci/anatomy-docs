@@ -157,7 +157,7 @@ In the end we should have 4 environments including master, working environment, 
 #### Git Naming
 
 ##### Branches
-If the work is tied to a ticket, the branch should be named using the pattern `feature/xdc-###` or `bug/xdc-###`.
+If the work is tied to a ticket, the branch should be named using the pattern `feature/ads-###` or `bug/ads-###`.
 In any case where the work doesn't have a ticket, the ticket name can be replaced with a brief kebab-cased description.
 If the changes are part of the deploy process, the branch should be named `deploy/{working-contentful-environment-name}`.
 
