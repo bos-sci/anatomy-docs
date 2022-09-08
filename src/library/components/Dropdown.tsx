@@ -2,7 +2,7 @@ import { Children, cloneElement, createRef, FunctionComponent, HTMLAttributes, R
 import Button from './Button';
 import { Props as ButtonProps } from './Button';
 import { Props as LinkProps } from './Link';
-import DropdownItem, { DropdownAction } from './DropdownItem';
+import DropdownItem, { DropdownItemElements } from './DropdownItem';
 import Icon from './icon/Icon';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
@@ -12,7 +12,7 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
   variant?: string;
   highlightedAction?: ReactElement<ButtonProps | LinkProps>;
   menuPosition?: 'left' | 'right' | 'full';
-  children?: DropdownAction[] | DropdownAction;
+  children?: DropdownItemElements[] | DropdownItemElements;
 }
 
 let dropdownIndex = 0;
@@ -23,7 +23,7 @@ let dropdownIndex = 0;
 const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = 'left', children = [], className = '', highlightedAction, ...buttonAttrs}: Props) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [dropdownItems, setDropdownItems] = useState<DropdownAction[]>([]);
+  const [dropdownItems, setDropdownItems] = useState<DropdownItemElements[]>([]);
   const [dropdownId, setDropdownId] = useState('');
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -89,7 +89,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
 
   useEffect(() => {
     if (children) {
-      let dropdownItemClones: DropdownAction[] = [];
+      let dropdownItemClones: DropdownItemElements[] = [];
 
       if (Array.isArray(children)) {
         let lastGroupName: number | null = null;
@@ -118,7 +118,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
             return cloneElement(child, attrs);
           }
         });
-        dropdownItemClones = newChildren as DropdownAction[];
+        dropdownItemClones = newChildren as DropdownItemElements[];
       } else {
         dropdownItemClones = [
           cloneElement(children as ReactElement, {
