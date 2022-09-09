@@ -12,7 +12,10 @@ interface Props {
 
 const DropdownItem = (props: Props) => {
   return (
-    <li className={`bsds-dropdown-item${props.isHighlightedAction ? ' bsds-dropdown-item-highlighted' : ''}`} role="none">
+    <li
+      className={`bsds-dropdown-item${props.isHighlightedAction ? ' bsds-dropdown-item-highlighted' : ''}`}
+      role="none"
+    >
       {props.item}
     </li>
   );
