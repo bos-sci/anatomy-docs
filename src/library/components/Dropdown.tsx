@@ -84,7 +84,6 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
     if(highlightedAction) {
       dropdownItemRefs.current.push(createRef());
     }
-
   }, [highlightedAction, dropdownItemRefs]);
 
   useEffect(() => {
