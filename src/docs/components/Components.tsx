@@ -42,6 +42,10 @@ const Components = (): JSX.Element => {
         slug: basePath + '/button',
       },
       {
+        text: 'Dropdown menu',
+        slug: basePath + '/dropdown-menu',
+      },
+      {
         text: 'Form controls',
         children: [
           {

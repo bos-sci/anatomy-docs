@@ -502,25 +502,28 @@ $menuPadding: space(md) 0;
       @include font-size($fs-base);
     }
 
-    .bsds-dropdown-trigger
+    .bsds-dropdown
     {
-      display: inline-flex;
-      padding-right: space(md) + $icon-size-sm + space(lg);
-
-      &[aria-expanded="true"],
-      &:hover,
-      &:active
+      .bsds-dropdown-trigger
       {
-        background: transparent;
-        color: $text-color-primary;
-      }
+        display: inline-flex;
+        padding-right: space(md) + $icon-size-sm + space(lg);
 
-      &::after
-      {
-        right: space(lg);
-        width: $icon-size-sm;
-        height: $icon-size-sm;
-        background-color: $neutral-40;
+        &[aria-expanded="true"],
+        &:hover,
+        &:active
+        {
+          background: transparent;
+          color: $text-color-primary;
+        }
+
+        &::after
+        {
+          right: space(lg);
+          width: $icon-size-sm;
+          height: $icon-size-sm;
+          background-color: $neutral-40;
+        }
       }
     }
   }

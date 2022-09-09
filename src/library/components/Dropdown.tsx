@@ -1,26 +1,29 @@
-import { Children, cloneElement, createRef, HTMLAttributes, ReactElement, useEffect, useRef, useState } from 'react';
+import { Children, cloneElement, createRef, FunctionComponent, HTMLAttributes, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
 import Button from './Button';
 import { Props as ButtonProps } from './Button';
 import { Props as LinkProps } from './Link';
-
-type DropdownItem = ReactElement<ButtonProps | LinkProps>;
+import DropdownItem, { DropdownItemElements } from './DropdownItem';
+import Icon from './icon/Icon';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   triggerText?: string;
   listType?: 'ol' | 'ul';
   icon?: string;
   variant?: string;
-  children?: DropdownItem[] | DropdownItem;
+  highlightedAction?: ReactElement<ButtonProps | LinkProps>;
+  menuPosition?: 'left' | 'right' | 'full';
+  children?: DropdownItemElements[] | DropdownItemElements;
 }
 
 let dropdownIndex = 0;
 
 // TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
+// TODO: Reduce number of refs created for children.
 
-const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], className = '', ...buttonAttrs}: Props) => {
+const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = 'left', children = [], className = '', highlightedAction, ...buttonAttrs}: Props) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [dropdownItems, setDropdownItems] = useState<DropdownItem[]>([]);
+  const [dropdownItems, setDropdownItems] = useState<DropdownItemElements[]>([]);
   const [dropdownId, setDropdownId] = useState('');
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -28,7 +31,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
 
   const moveFocus = (distance: number) => {
     if (dropdownItemRefs.current) {
-      let currentIndex = 0;
+      let currentIndex = distance > 0 ? 0 : dropdownItemRefs.current.length - 1;
       let isFocusInMenu = false;
       dropdownItemRefs.current.forEach((item, i) => {
         if (item.current === document.activeElement) {
@@ -36,6 +39,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
           isFocusInMenu = true;
         }
       });
+
       if (isFocusInMenu) {
         let newIndex = currentIndex + distance;
         if (newIndex > dropdownItemRefs.current.length - 1) {
@@ -43,9 +47,13 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
         } else if (newIndex < 0) {
           newIndex = dropdownItemRefs.current.length - 1;
         }
-        dropdownItemRefs.current[newIndex].current?.focus();
+        if (dropdownItemRefs.current[newIndex].current?.tagName !== 'BUTTON' && dropdownItemRefs.current[newIndex].current?.tagName !== 'A') {
+          moveFocus(distance > 0 ? ++distance : --distance);
+        } else {
+          dropdownItemRefs.current[newIndex].current?.focus();
+        }
       } else {
-        dropdownItemRefs.current[0].current?.focus();
+        dropdownItemRefs.current[currentIndex].current?.focus();
       }
     }
   }
@@ -73,25 +81,62 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
   }
 
   useEffect(() => {
+    if(highlightedAction) {
+      dropdownItemRefs.current.push(createRef());
+    }
+  }, [highlightedAction, dropdownItemRefs]);
+
+  useEffect(() => {
     if (children) {
+      let dropdownItemClones: DropdownItemElements[] = [];
+
       if (Array.isArray(children)) {
+        let lastGroupName: number | null = null;
         const newChildren = Children.map(children, (child: ReactElement, i) => {
-          return cloneElement(child, {
-            ref: dropdownItemRefs.current[i],
-            role: 'menuitem'
-          });
+          const childComponent = child.type as FunctionComponent;
+          if (childComponent.displayName === 'DropdownGroupName') {
+            lastGroupName = i;
+            return cloneElement(child, {
+              ref: dropdownItemRefs.current[i],
+              id: dropdownId + 'group' + i,
+              role: 'none',
+              'aria-hidden': true
+            });
+          } else {
+            const attrs: {
+              ref: RefObject<HTMLElement>;
+              role: string;
+              'aria-describedby'?: string;
+            } = {
+              ref: dropdownItemRefs.current[i],
+              role: 'menuitem'
+            }
+            if (lastGroupName !== null) {
+              attrs['aria-describedby'] = dropdownId + 'group' + lastGroupName;
+            }
+            return cloneElement(child, attrs);
+          }
         });
-        setDropdownItems(newChildren as DropdownItem[]);
+        dropdownItemClones = newChildren as DropdownItemElements[];
       } else {
-        setDropdownItems([
-          cloneElement(children, {
-            id: `${dropdownId}Item`,
+        dropdownItemClones = [
+          cloneElement(children as ReactElement, {
+            ref: dropdownItemRefs.current[0],
             role: 'menuitem'
           })
-        ]);
+        ];
       }
+
+      if (highlightedAction) {
+        dropdownItemClones.push(cloneElement(highlightedAction as ReactElement, {
+          ref: dropdownItemRefs.current[dropdownItemRefs.current.length - 1],
+          role: 'menuitem'
+        }));
+      }
+
+      setDropdownItems(dropdownItemClones);
     }
-  }, [children, dropdownId]);
+  }, [children, dropdownId, highlightedAction]);
 
   useEffect(() => {
     setDropdownId('dropdown' + dropdownIndex++);
@@ -112,35 +157,44 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, children = [], c
   }, []);
 
   const listItems = dropdownItems.map((item, i) => (
-    <li key={dropdownId + 'item' + i} className="bsds-dropdown-item" role="none">
-      {item}
-    </li>
+    <DropdownItem key={dropdownId + 'item' + i} item={item} isHighlightedAction={highlightedAction && i === dropdownItems.length - 1} />
   ));
+
+  let menuClasses = 'bsds-dropdown-menu';
+  switch (menuPosition) {
+    case 'right':
+      menuClasses += ' right';
+      break;
+    case 'full':
+      menuClasses += ' full';
+      break;
+
+    default:
+      break;
+  }
 
   return (
     <div ref={dropdownRef} className="bsds-dropdown" onKeyDown={updateFocus}>
       <Button
         variant={variant}
-        icon={icon}
-        className={`bsds-dropdown-trigger${className ? ' ' + className : ''}`}
+        className={`bsds-dropdown-trigger${className ? ' ' + className : ''}${icon ? ' has-icon' : ''}`}
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         {...buttonAttrs}>
+          {icon && <Icon size="2x" name={icon} />}
           {triggerText}
       </Button>
-      {isDropdownOpen && <>
         {listType === 'ul' && (
-          <ul className="bsds-dropdown-menu" role="menu">
+          <ul hidden={!isDropdownOpen} className={menuClasses} role="menu">
             {listItems}
           </ul>
         )}
         {listType === 'ol' && (
-          <ol className="bsds-dropdown-menu" role="menu">
+          <ol hidden={!isDropdownOpen} className={menuClasses} role="menu">
             {listItems}
           </ol>
         )}
-      </>}
     </div>
   );
 }
