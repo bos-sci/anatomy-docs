@@ -62,7 +62,7 @@ REACT_EDITOR=code
 1. Ensure you have the latest from develop.
 2. Branch off of develop.<br />
 *See [naming conventions](#naming-conventions) below on how to name your branch.*
-3. Reference Abstract for latest mockups then implement changes.
+3. Reference latest mockups then implement changes.
 4. Push your branch to origin and create a pull request (PR).<br />
 *See [PR naming](#branches) guidelines below.*
 5. PR can only be merged after it has been reviewed and all tests pass.
