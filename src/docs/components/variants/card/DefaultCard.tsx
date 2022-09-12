@@ -1,12 +1,11 @@
 import Example from '../../../shared/components/Example';
 import Card from '../../../../library/components/Card';
 
-const DefaultCard= (): JSX.Element => {
+const DefaultCard = (): JSX.Element => {
 
   return (
     <Example>
-      <Card>
-      </Card>
+      <Card />
     </Example>
   );
 }
