@@ -14,9 +14,8 @@ const Card = (props: Props): JSX.Element => {
             <img className="bsds-card-image" src={props.imageSrc} alt={props.imageAlt}/>
 
             <div className="bsds-card-body">
-            <h2>{props.cardTitle}</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
+                <h2>{props.cardTitle}</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
         </div>
     )

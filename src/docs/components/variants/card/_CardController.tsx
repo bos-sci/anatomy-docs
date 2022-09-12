@@ -5,8 +5,9 @@ const CardController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     case 'defaultCard':
       return <DefaultCard />;
+      
     default:
-        return <DefaultCard />;
+      return <DefaultCard />;
     }
 }
 
