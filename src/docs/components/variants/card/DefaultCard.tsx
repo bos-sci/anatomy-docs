@@ -6,7 +6,6 @@ const DefaultCard= (): JSX.Element => {
   return (
     <Example>
       <Card>
-        <p>Hello card body</p>
       </Card>
     </Example>
   );
