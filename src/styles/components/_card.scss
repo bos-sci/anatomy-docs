@@ -1,6 +1,6 @@
 .bsds-card {
-    width: 100%;
-    flex-flow: column wrap;
+    width: 6rem;
+    display: block;  
 }
 
 .bsds-card-image {
@@ -11,4 +11,8 @@
     max-height: unset;
     object-fit: cover;
     object-position: right top;
+}
+
+.bsds-card-body {
+    padding: space(sm) 0;
 }
