@@ -1,21 +1,23 @@
+import { ReactNode } from "react";
 import Link from "./Link";
 import Tag from "./Tag";
 
 interface Props {
+  children?: ReactNode,
   hasImage?: boolean,
   imageSrc?: string,
   imageAlt?: string,
   cardTitle?: string,
+  cardDescription?: string
 }
 
-const Card = (props: Props): JSX.Element => {
+const Card = ({children, hasImage, imageSrc, imageAlt, cardTitle, cardDescription}: Props): JSX.Element => {
     return (
         <div className="bsds-card">
-            <img className="bsds-card-image" src={props.imageSrc} alt={props.imageAlt}/>
-
+            <img className="bsds-card-image" src={imageSrc} alt={imageAlt}/>
             <div className="bsds-card-body">
-                <h2>{props.cardTitle}</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h2>{cardTitle}</h2>
+                <p>{cardDescription}</p>
             </div>
         </div>
     )

@@ -1,18 +1,20 @@
-.bsds-card {
-    width: 16rem;
-    display: block;  
-}
-
-.bsds-card-image {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 100%;
-    max-height: unset;
-    object-fit: cover;
-    object-position: right top;
-}
-
-.bsds-card-body {
-    padding: space(sm) 0;
-}
+  .bsds-card {
+    width: 26.188rem;
+    height: 16.688rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: auto;
+  
+    &-image {
+      height: 50%;
+      max-height: unset;
+      object-fit: cover;
+      object-position: top right;
+    }
+  
+    &-body {
+      padding: 1rem;
+    }
+  }
+  
