@@ -596,7 +596,7 @@ $menuPadding: space(md) 0;
 
 @media (min-width: $lg)
 {
-  $panelsWidth: 60rem; // NOTE: This is a one off size to match the layout widths.
+  //$panelsWidth: 60rem; // NOTE: This is a one off size to match the layout widths.
 
   .bsds-nav-utility .bsds-nav,
   .bsds-nav-bar,
@@ -819,7 +819,7 @@ $menuPadding: space(md) 0;
 
 @media (min-width: $xl)
 {
-  $panelsWidth: 71.25rem; // NOTE: This is a one off size to match the layout widths.
+  //$panelsWidth: 71.25rem; // NOTE: This is a one off size to match the layout widths.
 
   .bsds-nav-utility .bsds-nav,
   .bsds-nav-bar,
@@ -847,7 +847,7 @@ $menuPadding: space(md) 0;
 
 @media (min-width: $xxl)
 {
-  $panelsWidth: 82.5rem; // NOTE: This is a one off size to match the layout widths.
+  //$panelsWidth: 82.5rem; // NOTE: This is a one off size to match the layout widths.
 
   .bsds-nav-utility .bsds-nav,
   .bsds-nav-bar,
