@@ -61,7 +61,7 @@ const logo = {
 const Layout = (props: Props): JSX.Element => {
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>
-    <NavPrimary logo={logo} navItems={navItems} hasSearch={false} />
+    <NavPrimary logo={logo} navItems={navItems} hasSearch={false} isConstrained />
     { props.children }
     <footer className="docs-footer">
       <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>
