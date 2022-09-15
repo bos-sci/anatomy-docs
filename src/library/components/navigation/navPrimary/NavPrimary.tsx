@@ -66,11 +66,12 @@ interface Props {
   navItems: NavItemPrimary[];
   utilityItems?: NavItemUtility[];
   hasSearch?: boolean;
+  isConstrained?: boolean;
 }
 
 let navPrimaryMenuIndex = 0;
 
-const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: Props): JSX.Element => {
+const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isConstrained = false }: Props): JSX.Element => {
   const location = useLocation();
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
@@ -214,7 +215,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
   }
 
   return (
-    <header className="bsds-nav-header" ref={navRef}>
+    <header className={"bsds-nav-header" + (isConstrained ? ' is-constrained' : '')} ref={navRef}>
       {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
       <nav className="bsds-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="bsds-nav-bar">
@@ -287,8 +288,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
           </ul>
         </div>
         <div className={'bsds-search-panel' + (isSearchOpen ? ' open' : '')}>
-          <Search 
-            label="Search" 
+          <Search
+            label="Search"
             texts={{
               buttonText: texts?.searchButtonText,
               buttonAriaLabel: texts?.searchButtonAriaLabel,
