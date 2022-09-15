@@ -71,7 +71,7 @@ const Preview = ( props: Props ): JSX.Element => {
           className="docs-demo-link"
           to={`example/${props.variantId ? props.variantId : 'default'}`}
           target="_blank">
-          See {props.variant || 'example'}
+          See {props.variant?.toLowerCase() || 'example'}
         </Link>
       );
     } else {
