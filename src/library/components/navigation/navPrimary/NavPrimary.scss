@@ -261,6 +261,7 @@ $menuPadding: space(md) 0;
           border: 0;
 
           &.active,
+          &:active,
           &:hover,
           &[aria-expanded="true"]
           {
@@ -445,14 +446,16 @@ $menuPadding: space(md) 0;
       width: 100%;
       text-align: left;
 
-      &:hover
+      &:hover,
+      &:active
       {
         background: transparent;
         text-decoration: none;
       }
 
       &.active,
-      &:hover
+      &:hover,
+      &:active
       {
         background: $neutral-95;
       }
