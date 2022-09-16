@@ -272,7 +272,7 @@ $menuPadding: space(md) 0;
 
           &.active
           {
-            font-family: $font-family-base-heavy;
+            @include font-family-base-heavy;
           }
         }
       }
@@ -481,7 +481,7 @@ $menuPadding: space(md) 0;
       .bsds-nav-link-description
       {
         margin-top: space(md);
-        font-family: $font-family-base-regular;
+        @include font-family-base-regular;
         color: $neutral-40;
         width: 100%;
         text-align: left;

@@ -1,7 +1,7 @@
 @mixin tag-default
 {
+  @include font-family-base-heavy;
   @include font-size($fs-small);
-  font-family: $font-family-base-heavy;
   text-transform: uppercase;
   letter-spacing: 0.075rem; // NOTE: this is a one-off size
 }
