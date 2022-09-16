@@ -137,6 +137,7 @@ $menuPadding: space(md) 0;
 
   .bsds-nav-bar
   {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -531,7 +532,7 @@ $menuPadding: space(md) 0;
           right: space(lg);
           width: $icon-size-sm;
           height: $icon-size-sm;
-          background-color: $neutral-40;
+          background-color: $neutral-00;
         }
       }
     }
@@ -672,6 +673,8 @@ $menuPadding: space(md) 0;
   {
     .bsds-nav-bar
     {
+      position: static;
+
       .bsds-nav
       {
         .bsds-nav-item
