@@ -5,7 +5,25 @@ const DefaultCard = (): JSX.Element => {
 
   return (
     <Example>
-      <Card hasImage={true} imageSrc="https://www.bostonscientific.com/en-US/Home/_jcr_content/root/container/container/container_1729237318/teaser_copy.coreimg.90.1600.jpeg/1660295012015/corp-featured-stories-mental-well-being.jpeg" imageAlt="This is card alt text" cardTitle='This is a card title' />
+      <Card
+        texts={{
+          cardTitle: "Card title",
+          linkTitle: true,
+          linkHref: "#",
+          cardDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum.",
+        }} 
+
+        linked={{
+          actionLink: false,
+          linkActionText: "Default link"
+        }}
+
+        image={{
+          hasImage: false, 
+          imageSrc: "https://www.bostonscientific.com/en-US/Home/_jcr_content/root/container/container/container_1729237318/teaser_copy.coreimg.90.1600.jpeg/1660295012015/corp-featured-stories-mental-well-being.jpeg",
+          imageAlt: "Card image alt text"
+        }}
+      /> 
     </Example>
   );
 }

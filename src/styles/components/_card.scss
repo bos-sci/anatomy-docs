@@ -1,20 +1,62 @@
   .bsds-card {
-    width: 26.188rem;
-    height: 16.688rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     overflow: auto;
-  
+    max-width: 26.188rem;
+    height: auto;
+    border: 1px solid #ccc;
+    background-color: $neutral-100;
+
     &-image {
-      height: 50%;
+      height: 100%;
       max-height: unset;
       object-fit: cover;
-      object-position: top right;
+      object-position: top;
+      margin: 0;
     }
   
     &-body {
-      padding: 1rem;
+      padding: space(3x);
+    }
+
+    &-title {
+      margin: 0;
+    }
+
+    &-title-link {
+      @include link-default;
+      margin: 0;
+      width: max-content;
+      color: $neutral-00;
+      text-decoration-thickness: space(xs);
+
+      &:hover {
+        color: $action-primary-40;
+      }
+    }
+
+    &-text-content {
+        margin: space(2x) 0;
     }
   }
+
+  .bsds-link {
+  &.bsds-linked-card {
+    color: $text-color-primary;
+    font-family: $font-family-base-regular;
+    @include font-size($fs-base);
+    line-height: 1.5;
+    text-decoration: none;
+    
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited
+    {
+      text-decoration: none;
+      color: $neutral-00;
+    }
+  }
+}
   
