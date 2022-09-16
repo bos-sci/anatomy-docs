@@ -111,6 +111,13 @@ $menuPadding: space(md) 0;
           &:active
           {
             background: transparent;
+            color: $text-color-primary;
+            text-decoration: underline;
+
+            &::after
+            {
+              background-color: $text-color-primary;
+            }
           }
 
           &::after
@@ -509,7 +516,7 @@ $menuPadding: space(md) 0;
     .bsds-nav-link
     {
       border: 0;
-      @include font-size($fs-base);
+      @include font-size($fs-body-subtle);
     }
 
     .bsds-dropdown
@@ -532,7 +539,7 @@ $menuPadding: space(md) 0;
           right: space(lg);
           width: $icon-size-sm;
           height: $icon-size-sm;
-          background-color: $neutral-00;
+          background-color: $text-color-primary;
         }
       }
     }
