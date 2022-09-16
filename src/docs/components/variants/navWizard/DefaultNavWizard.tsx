@@ -8,7 +8,7 @@ const DefaultNavWizard = (): JSX.Element => {
       <NavWizard 
         texts={{
           firstTitle: 'First step title',
-          wizardNavAriaLabel: 'Wizard navigation'
+          wizardNavAriaLabel: 'wizard'
           }} 
         navItems={navWizardData}
       />
