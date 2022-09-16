@@ -338,6 +338,14 @@ $menuPadding: space(md) 0;
     box-shadow: $box-shadow-secondary;
     z-index: $navBackZIndex;
 
+    &:hover,
+    &:active
+    {
+      background-color: $neutral-100;
+      color: $action-primary-40;
+      text-decoration: underline;
+    }
+
     &:focus
     {
       @include focus-default-inset;
@@ -356,10 +364,6 @@ $menuPadding: space(md) 0;
       left: space(2x);
       width: $icon-size-sm;
       height: $icon-size-sm;
-    }
-    &:active::after
-    {
-      background-color: $text-color-primary;
     }
   }
 
