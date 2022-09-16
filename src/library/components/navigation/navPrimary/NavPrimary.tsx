@@ -55,7 +55,8 @@ interface Props {
   };
   texts?: {
     menuToggleAriaLabel?: string;
-    menuToggleText?: string;
+    menuToggleTextOpen?: string;
+    menuToggleTextClose?: string;
     searchToggleAriaLabel?: string;
     searchToggleText?: string;
     searchButtonText?: string;
@@ -282,7 +283,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                 aria-label={texts?.menuToggleAriaLabel || 'Toggle menu'}
                 aria-expanded={isMenuOpen}
                 onClick={toggleMenu}>
-                {texts?.menuToggleText || 'Menu'}
+                {isMenuOpen ? texts?.menuToggleTextClose || 'Close' : texts?.menuToggleTextOpen || 'Menu'}
               </Button>
             </li>
           </ul>
