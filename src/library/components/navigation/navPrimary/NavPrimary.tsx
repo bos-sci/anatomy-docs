@@ -6,7 +6,8 @@ import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { Location, NavLink, useLocation } from 'react-router-dom';
 import Link from '../../Link';
-import Search from '../../Search';
+import NavPrimarySearch from './NavPrimarySearch';
+import { SearchResult } from '../../Search';
 
 interface NavItem {
   text: string;
@@ -66,11 +67,13 @@ interface Props {
   navItems: NavItemPrimary[];
   utilityItems?: NavItemUtility[];
   hasSearch?: boolean;
+  searchResults?: SearchResult[];
+  onSearch?: (query: string) => void;
 }
 
 let navPrimaryMenuIndex = 0;
 
-const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: Props): JSX.Element => {
+const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, searchResults, onSearch }: Props): JSX.Element => {
   const location = useLocation();
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
@@ -286,16 +289,14 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true }: P
             </li>
           </ul>
         </div>
-        <div className={'bsds-search-panel' + (isSearchOpen ? ' open' : '')}>
-          <Search 
-            label="Search" 
-            texts={{
-              buttonText: texts?.searchButtonText,
-              buttonAriaLabel: texts?.searchButtonAriaLabel,
-              searchAriaLabel: "Primary navigation search"
-            }}
-          />
-        </div>
+        <NavPrimarySearch
+          labelText='Search'
+          buttonText={texts?.searchButtonText || 'Search'}
+          buttonAriaLabel={texts?.searchButtonAriaLabel || 'search'}
+          inputAriaLabel={"Primary navigation search"}
+          isOpen={isSearchOpen}
+          searchResults={searchResults}
+          onSearch={onSearch} />
         {((navTree.length > 0 && !isRootOpen && isViewportSmall)) &&
           <NavPrimaryMenu
             ref={menuRef}

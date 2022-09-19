@@ -14,6 +14,7 @@ $navBarZIndex: 700;
 $navBackZIndex: 600;
 $navMenuZIndex: 550;
 $navListZIndex: 500;
+$navSearchZIndex: 550;
 
 // Used in nav-menu nav-links
 $navLinkPadding: space(2x) space(3x);
@@ -535,6 +536,7 @@ $menuPadding: space(md) 0;
     margin: auto;
     border-bottom: space(xxs) solid $neutral-80;
     width: 100%;
+    z-index: $navSearchZIndex;
 
     &.open
     {
