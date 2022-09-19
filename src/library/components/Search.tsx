@@ -1,7 +1,8 @@
 import { ChangeEvent, ForwardedRef, forwardRef, InputHTMLAttributes, MutableRefObject, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Button from './Button';
 import IconClose from './icon/icons/IconClose';
+import Link from './Link';
+import StrongMatch from './StrongMatch';
 
 export interface SearchResult {
   url: string;
@@ -87,7 +88,11 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 <ul className="bsds-search-results">
                   {searchResults.map(result => (
                     <li key={result.url}>
-                      <Link to={result.url}>{result.text}</Link>
+                      <Link to={result.url} className="bsds-link-nav">
+                        <StrongMatch match={value}>
+                          {result.text}
+                        </StrongMatch>
+                      </Link>
                     </li>
                   ))}
                 </ul>
