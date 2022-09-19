@@ -178,12 +178,6 @@ $icon-size-sm: space(lg);
     @include font-size($fs-small);
     fill: $action-primary-40; // TODO: revisit in xdc-1892 (fill vs stroke here or in mixin)
 
-    &:active,
-    &:hover
-    {
-      fill: $neutral-00; // TOTO: Remove if we aren't setting a unique active state (currently this does nothing)
-    }
-
     &:hover,
     &:active
     {
