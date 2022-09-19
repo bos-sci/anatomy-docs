@@ -87,7 +87,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
               {(hasAutocomplete && searchResults && value) &&
                 <ul className="bsds-search-results">
                   {searchResults.map(result => (
-                    <li key={result.url}>
+                    <li key={result.url} className="bsds-search-result">
                       <Link to={result.url} className="bsds-link-nav">
                         <StrongMatch match={value}>
                           {result.text}
