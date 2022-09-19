@@ -81,10 +81,10 @@ const Layout = (props: Props): JSX.Element => {
 
   useEffect(() => {
     if (searchHits.length > 0) {
-      setSearchResults(searchHits.map((hit: any) => (
+      setSearchResults(searchHits.filter((hit: any) => hit.title !== 'Anatomy - Boston Scientific').map((hit: any) => (
         {
           url: hit.pathname,
-          text: hit.title
+          text: hit.title.replace(' - Anatomy - Boston Scientific', '')
         })
       ));
     }
