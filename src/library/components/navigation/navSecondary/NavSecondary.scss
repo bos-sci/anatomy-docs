@@ -45,7 +45,8 @@ $icon-size-sm: space(lg);
     text-align: left;
     color: $text-color-primary;
 
-    &:hover
+    &:hover,
+    &:active
     {
       background: $neutral-100;
       color: initial;
@@ -120,7 +121,8 @@ $icon-size-sm: space(lg);
     {
       position: relative;
 
-      &:hover
+      &:hover,
+      &:active
       {
         background: transparent;
       }
@@ -179,10 +181,11 @@ $icon-size-sm: space(lg);
     &:active,
     &:hover
     {
-      fill: $neutral-00;
+      fill: $neutral-00; // TOTO: Remove if we aren't setting a unique active state (currently this does nothing)
     }
 
-    &:hover
+    &:hover,
+    &:active
     {
       color: $action-primary-40;
       background: transparent;
