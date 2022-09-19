@@ -55,7 +55,8 @@ interface Props {
   };
   texts?: {
     menuToggleAriaLabel?: string;
-    menuToggleText?: string;
+    menuToggleTextOpen?: string;
+    menuToggleTextClose?: string;
     searchToggleAriaLabel?: string;
     searchToggleText?: string;
     searchButtonText?: string;
@@ -76,7 +77,6 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isRootOpen, setIsRootOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [history, setHistory] = useState<HistoryNode[]>([]);
   const [activeNode, setActiveNode] = useState<NavNode | null>(null);
@@ -114,11 +114,9 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
     if (history.length && history[0].node === navItem) {
       setHistory([]);
       setIsMenuOpen(false);
-      setIsRootOpen(false);
     } else {
       pushHistory(navItem, 0);
       setIsMenuOpen(true);
-      setIsRootOpen(true);
       setIsSearchOpen(false);
     }
   }
@@ -166,7 +164,6 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
       if (history.length === 0) {
         setIsMenuOpen(false);
       } else if (isMenuOpen) {
-        setIsRootOpen(true);
       }
     } else if (!isViewportSmall) {
       setIsViewportSmall(true);
@@ -202,7 +199,6 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
     if (isMenuOpen) {
       setHistory([]);
     }
-    setIsRootOpen(false);
     setIsMenuOpen(!isMenuOpen);
   }
 
@@ -246,7 +242,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                 {(navItem.slug || navItem.href) &&
                   <NavLink end={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className={`bsds-nav-link${navItem.isActive && navItem.isActive(location) ? ' active' : ''}`}>{navItem.text}</NavLink>
                 }
-                {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && isRootOpen && !isViewportSmall) &&
+                {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && !isViewportSmall) &&
                   <NavPrimaryMenu
                     ref={menuRef}
                     navItems={navTree}
@@ -282,7 +278,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                 aria-label={texts?.menuToggleAriaLabel || 'Toggle menu'}
                 aria-expanded={isMenuOpen}
                 onClick={toggleMenu}>
-                {texts?.menuToggleText || 'Menu'}
+                {isMenuOpen ? texts?.menuToggleTextClose || 'Close' : texts?.menuToggleTextOpen || 'Menu'}
               </Button>
             </li>
           </ul>
@@ -297,7 +293,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
             }}
           />
         </div>
-        {((navTree.length > 0 && !isRootOpen && isViewportSmall)) &&
+        {((navTree.length > 0 && isViewportSmall)) &&
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}

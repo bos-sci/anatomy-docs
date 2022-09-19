@@ -261,6 +261,7 @@ $menuPadding: space(md) 0;
           border: 0;
 
           &.active,
+          &:active,
           &:hover,
           &[aria-expanded="true"]
           {
@@ -338,6 +339,14 @@ $menuPadding: space(md) 0;
     box-shadow: $box-shadow-secondary;
     z-index: $navBackZIndex;
 
+    &:hover,
+    &:active
+    {
+      background-color: $neutral-100;
+      color: $action-primary-40;
+      text-decoration: underline;
+    }
+
     &:focus
     {
       @include focus-default-inset;
@@ -356,10 +365,6 @@ $menuPadding: space(md) 0;
       left: space(2x);
       width: $icon-size-sm;
       height: $icon-size-sm;
-    }
-    &:active::after
-    {
-      background-color: $text-color-primary;
     }
   }
 
@@ -430,7 +435,7 @@ $menuPadding: space(md) 0;
 
   .bsds-nav-menu-panel-header-link
   {
-    display: block;
+    display: inline-block;
     margin-top: space(3x);
   }
 
@@ -441,14 +446,16 @@ $menuPadding: space(md) 0;
       width: 100%;
       text-align: left;
 
-      &:hover
+      &:hover,
+      &:active
       {
         background: transparent;
         text-decoration: none;
       }
 
       &.active,
-      &:hover
+      &:hover,
+      &:active
       {
         background: $neutral-95;
       }
