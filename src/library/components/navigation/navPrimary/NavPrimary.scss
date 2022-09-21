@@ -260,7 +260,7 @@ $menuPadding: space(md) 0;
           padding: space(3x) space(2x);
           border: 0;
 
-          &.active,
+          &[aria-current="location"],
           &:active,
           &:hover,
           &[aria-expanded="true"]
@@ -279,7 +279,7 @@ $menuPadding: space(md) 0;
             }
           }
 
-          &.active
+          &[aria-current="location"]
           {
             @include font-family-base-heavy;
           }
@@ -465,6 +465,14 @@ $menuPadding: space(md) 0;
         .bsds-nav-link-description
         {
           color: $text-color-primary;
+        }
+      }
+
+      &[aria-current="location"]
+      {
+        .bsds-nav-link-text
+        {
+          @include font-family-base-heavy;
         }
       }
 
