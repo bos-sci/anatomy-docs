@@ -260,7 +260,7 @@ $menuPadding: space(md) 0;
           padding: space(3x) space(2x);
           border: 0;
 
-          &[aria-current="location"],
+          &[aria-current]:not([aria-current="false"]),
           &:active,
           &:hover,
           &[aria-expanded="true"]
@@ -279,7 +279,7 @@ $menuPadding: space(md) 0;
             }
           }
 
-          &[aria-current="location"]
+          &[aria-current]:not([aria-current="false"])
           {
             @include font-family-base-heavy;
           }
@@ -468,7 +468,7 @@ $menuPadding: space(md) 0;
         }
       }
 
-      &[aria-current="location"]
+      &[aria-current]:not([aria-current="false"])
       {
         .bsds-nav-link-text
         {
