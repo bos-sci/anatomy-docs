@@ -45,7 +45,8 @@ $icon-size-sm: space(lg);
     text-align: left;
     color: $text-color-primary;
 
-    &:hover
+    &:hover,
+    &:active
     {
       background: $neutral-100;
       color: initial;
@@ -120,7 +121,8 @@ $icon-size-sm: space(lg);
     {
       position: relative;
 
-      &:hover
+      &:hover,
+      &:active
       {
         background: transparent;
       }
@@ -176,13 +178,8 @@ $icon-size-sm: space(lg);
     @include font-size($fs-small);
     fill: $action-primary-40; // TODO: revisit in xdc-1892 (fill vs stroke here or in mixin)
 
-    &:active,
-    &:hover
-    {
-      fill: $neutral-00;
-    }
-
-    &:hover
+    &:hover,
+    &:active
     {
       color: $action-primary-40;
       background: transparent;
