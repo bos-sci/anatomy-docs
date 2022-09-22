@@ -46,9 +46,9 @@ const NavPrimaryListParent = (props: Props) => {
         className={
           'bsds-nav-link'
           + (isActive ? ' active' : '')
+          + (isLocationParent() ? ' current' : '')
         }
         aria-expanded={isActive}
-        aria-current={isLocationParent() ? 'location' : undefined}
         onClick={updateHistory}
       >
         <div className="bsds-nav-link-text">

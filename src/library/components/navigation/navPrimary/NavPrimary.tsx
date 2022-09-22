@@ -237,11 +237,10 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className="bsds-nav-link"
+                    className={"bsds-nav-link" + (navItem === getActiveRoot() ? ' current' : '')}
                     aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
                     aria-controls={menuId}
-                    aria-current={navItem === getActiveRoot() ? 'location' : undefined}
                     onClick={() => updateMenu(navItem)}>
                     {navItem.text}
                   </Button>
@@ -250,8 +249,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                   <NavLink
                     end={!!navItem.isExactMatch}
                     to={(navItem.slug ? navItem.slug : navItem.href) || ''}
-                    className={`bsds-nav-link${navItem.isActive && navItem.isActive(location) ? ' active' : ''}`}
-                    aria-current={navItem === getActiveRoot() ? 'page' : undefined}>
+                    className={`bsds-nav-link${navItem.isActive && navItem.isActive(location) ? ' current' : ''}`}
+                    aria-current={navItem.isActive && navItem.isActive(location) ? 'page' : undefined}>
                       {navItem.text}
                   </NavLink>
                 }

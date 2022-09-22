@@ -76,7 +76,7 @@ $menuPadding: space(md) 0;
 .bsds-nav-utility
 {
   display: none;
-  border-bottom: space(xxs) solid $neutral-80;
+  border-bottom: space(xxs) solid $border-color-subtle;
 
   .bsds-nav
   {
@@ -150,7 +150,7 @@ $menuPadding: space(md) 0;
     align-items: stretch;
     align-content: center;
     flex-direction: column;
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: space(xxs) solid $border-color-subtle;
     background-color: $neutral-100;
     z-index: $navBarZIndex;
 
@@ -260,7 +260,7 @@ $menuPadding: space(md) 0;
           padding: space(3x) space(2x);
           border: 0;
 
-          &[aria-current]:not([aria-current="false"]),
+          &.current,
           &:active,
           &:hover,
           &[aria-expanded="true"]
@@ -275,11 +275,11 @@ $menuPadding: space(md) 0;
               right: space(2x);
               bottom: 0;
               left: space(2x);
-              border-bottom: space(sm) solid $neutral-00;
+              border-bottom: space(sm) solid $border-color-primary;
             }
           }
 
-          &[aria-current]:not([aria-current="false"])
+          &.current
           {
             @include font-family-base-heavy;
           }
@@ -294,7 +294,7 @@ $menuPadding: space(md) 0;
   {
     position: absolute;
     left: 0;
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: space(xxs) solid $border-color-subtle;
     width: 100%;
     @include font-size($fs-base);
     z-index: $navMenuZIndex;
@@ -377,7 +377,7 @@ $menuPadding: space(md) 0;
 
     > :not(:last-child)
     {
-      border-right: space(xxs) solid $neutral-80;
+      border-right: space(xxs) solid $border-color-subtle;
     }
   }
 
@@ -423,7 +423,7 @@ $menuPadding: space(md) 0;
 
   .bsds-nav-menu-panel-header
   {
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: space(xxs) solid $border-color-subtle;
     padding: space(lg) space(3x) space(4x);
 
     .bsds-nav-menu-panel-title
@@ -468,7 +468,7 @@ $menuPadding: space(md) 0;
         }
       }
 
-      &[aria-current]:not([aria-current="false"])
+      &.current
       {
         .bsds-nav-link-text
         {
@@ -525,7 +525,7 @@ $menuPadding: space(md) 0;
     flex-direction: column;
     align-content: flex-start;
     align-items: flex-start;
-    border-top: space(xxs) solid $neutral-80;
+    border-top: space(xxs) solid $border-color-subtle;
     padding: $menuPadding;
 
     .bsds-nav-link
@@ -565,7 +565,7 @@ $menuPadding: space(md) 0;
     display: none;
     position: absolute;
     margin: auto;
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: space(xxs) solid $border-color-subtle;
     width: 100%;
 
     &.open
@@ -749,7 +749,7 @@ $menuPadding: space(md) 0;
 
     .bsds-nav-menu
     {
-      border-top: space(xxs) solid $neutral-80;
+      border-top: space(xxs) solid $border-color-subtle;
       height: 60vh;
 
       .bsds-nav
@@ -812,7 +812,7 @@ $menuPadding: space(md) 0;
       .bsds-nav-menu-panel-header
       {
         padding: space(4x) space(4x) space(3x);
-        border-right: space(xxs) solid $neutral-80;
+        border-right: space(xxs) solid $border-color-subtle;
         border-bottom: 0;
       }
 
@@ -834,12 +834,12 @@ $menuPadding: space(md) 0;
 
         &:first-child
         {
-          border-left: space(xxs) solid $neutral-80;
+          border-left: space(xxs) solid $border-color-subtle;
         }
 
         &:not(:first-child)
         {
-          border-right: space(xxs) solid $neutral-80;
+          border-right: space(xxs) solid $border-color-subtle;
         }
 
         &.bsds-nav-list-history
