@@ -6,6 +6,7 @@ import NavPrimaryLeaf from './NavPrimaryLeaf';
 
 interface Props {
   navItems: NavNode[];
+  activeNode: NavNode | null;
   setActiveNode: (node: NavNode) => void;
   depth: number;
   activeDepth: number;
@@ -42,6 +43,7 @@ const NavPrimaryList = (props: Props) => {
             return <NavPrimaryListParent
               key={navItem.text + i}
               navItem={navItem}
+              activeNode={props.activeNode}
               setActiveNode={props.setActiveNode}
               depth={props.depth}
               activeDepth={props.activeDepth}

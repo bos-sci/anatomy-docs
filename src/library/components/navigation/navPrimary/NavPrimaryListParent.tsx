@@ -5,6 +5,7 @@ import { HistoryNode } from './NavPrimary';
 
 interface Props {
   navItem: NavNode;
+  activeNode: NavNode | null;
   setActiveNode: (node: NavNode) => void;
   depth: number;
   activeDepth: number;
@@ -24,6 +25,18 @@ const NavPrimaryListParent = (props: Props) => {
     }
   }
 
+  const isLocationParent = (): boolean => {
+    let node = props.activeNode;
+    while (node?.parent) {
+      if (node === props.navItem) {
+        return true;
+      } else {
+        node = node.parent;
+      }
+    }
+    return false;
+  }
+
   const isActive = Array.from(props.history, h => h.node).includes(props.navItem);
   return (
     <li className="bsds-nav-item-parent">
@@ -35,6 +48,7 @@ const NavPrimaryListParent = (props: Props) => {
           + (isActive ? ' active' : '')
         }
         aria-expanded={isActive}
+        aria-current={isLocationParent() ? 'location' : undefined}
         onClick={updateHistory}
       >
         <div className="bsds-nav-link-text">
@@ -48,6 +62,7 @@ const NavPrimaryListParent = (props: Props) => {
       </Button>
       <NavPrimaryList
         navItems={props.navItem.children!}
+        activeNode={props.activeNode}
         setActiveNode={props.setActiveNode}
         depth={props.depth + 1}
         activeDepth={props.activeDepth}

@@ -83,6 +83,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
   const [menuId, setMenuId] = useState('');
   const [isViewportSmall, setIsViewportSmall] = useState(false);
   const [isIntermediateNav, setIsIntermediateNav] = useState(false);
+  const [isNavTouched, setIsNavTouched] = useState(false);
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -171,6 +172,12 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
   }, [history.length, isMenuOpen, isViewportSmall]);
 
   useEffect(() => {
+    if (isMenuOpen) {
+      setIsNavTouched(true);
+    }
+  }, [isMenuOpen]);
+
+  useEffect(() => {
     // Close menu on focus out or click out
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!navRef.current?.contains(e.target as Node)) {
@@ -230,23 +237,30 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className={"bsds-nav-link" + (navItem === getActiveRoot() ? ' active' : '')}
+                    className="bsds-nav-link"
                     aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
                     aria-controls={menuId}
-                    aria-current={navItem === getActiveRoot() ? 'location' : 'false'}
+                    aria-current={navItem === getActiveRoot() ? 'location' : undefined}
                     onClick={() => updateMenu(navItem)}>
                     {navItem.text}
                   </Button>
                 }
                 {(navItem.slug || navItem.href) &&
-                  <NavLink end={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className={`bsds-nav-link${navItem.isActive && navItem.isActive(location) ? ' active' : ''}`}>{navItem.text}</NavLink>
+                  <NavLink
+                    end={!!navItem.isExactMatch}
+                    to={(navItem.slug ? navItem.slug : navItem.href) || ''}
+                    className={`bsds-nav-link${navItem.isActive && navItem.isActive(location) ? ' active' : ''}`}
+                    aria-current={navItem === getActiveRoot() ? 'page' : undefined}>
+                      {navItem.text}
+                  </NavLink>
                 }
                 {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && !isViewportSmall) &&
                   <NavPrimaryMenu
                     ref={menuRef}
                     navItems={navTree}
                     utilityItems={utilityItems}
+                    activeNode={activeNode}
                     setActiveNode={setActiveNode}
                     menuId={menuId}
                     isMenuOpen={isMenuOpen}
@@ -293,11 +307,12 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
             }}
           />
         </div>
-        {((navTree.length > 0 && isViewportSmall)) &&
+        {((navTree.length > 0 && isViewportSmall) || (navTree.length > 0 && !isNavTouched)) &&
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
             utilityItems={utilityItems}
+            activeNode={activeNode}
             setActiveNode={setActiveNode}
             menuId={menuId}
             isMenuOpen={isMenuOpen}
