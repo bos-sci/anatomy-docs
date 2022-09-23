@@ -8,6 +8,7 @@ import NavPrimaryList from './NavPrimaryList';
 interface Props {
   navItems: NavNode[];
   utilityItems?: NavItemUtility[];
+  activeNode: NavNode | null;
   setActiveNode: (node: NavNode) => void;
   menuId: string;
   isMenuOpen: boolean;
@@ -35,6 +36,7 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
       <div className="bsds-nav-menu-panels">
         <NavPrimaryList
           navItems={ props.navItems }
+          activeNode={props.activeNode}
           setActiveNode={props.setActiveNode}
           depth={0}
           activeDepth={activeDepth}
