@@ -3,7 +3,6 @@ import NavWizardList from './NavWizardList';
 import './NavWizard.scss'
 import { RefObject, useEffect, useState, useRef } from 'react';
 import Button from '../../Button';
-import IconChevronLeft from '../../icon/icons/IconChevronLeft';
 
 interface NavItem {
   text: string;
