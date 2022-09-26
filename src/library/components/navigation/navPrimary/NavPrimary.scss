@@ -327,14 +327,10 @@ $menuPadding: space(md) 0;
     }
   }
 
-  .bsds-nav-menu-back
+  .bsds-button-nav-back
   {
-    position: relative;
     width: 100%;
     justify-content: flex-start;
-    border: 0;
-    padding: $navLinkPadding;
-    padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
     @include font-size($fs-base);
     box-shadow: $box-shadow-secondary;
     z-index: $navBackZIndex;
@@ -343,28 +339,11 @@ $menuPadding: space(md) 0;
     &:active
     {
       background-color: $neutral-100;
-      color: $action-primary-40;
-      text-decoration: underline;
     }
 
     &:focus
     {
       @include focus-default-inset;
-    }
-
-    &::after
-    {
-      content: '';
-      -webkit-mask: url("../../../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
-      mask: url("../../../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
-      -webkit-mask-size: cover;
-      mask-size: cover;
-      background-color: $action-primary-40;
-      position: absolute;
-      top: calc(50% - ($icon-size-sm / 2));
-      left: space(2x);
-      width: $icon-size-sm;
-      height: $icon-size-sm;
     }
   }
 
@@ -678,7 +657,7 @@ $menuPadding: space(md) 0;
     @include font-size($fs-body-subtle);
   }
 
-  .bsds-nav-menu-back
+  .bsds-button-nav-back
   {
     display: none;
   }
