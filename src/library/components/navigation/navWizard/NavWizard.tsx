@@ -3,7 +3,6 @@ import NavWizardList from './NavWizardList';
 import './NavWizard.scss'
 import { RefObject, useEffect, useState, useRef } from 'react';
 import Button from '../../Button';
-import IconChevronLeft from '../../icon/icons/IconChevronLeft';
 
 interface NavItem {
   text: string;
@@ -123,12 +122,10 @@ const NavWizard = (props: Props) => {
         {history.length > 0 &&
           <Button
             ref={backBtnRef}
-            variant="subtle"
             type="button"
-            className="bsds-nav-back"
+            className="bsds-button-nav-back"
             aria-label={props.texts.backButtonAriaLabel ? props.texts.backButtonAriaLabel : 'Back to previous step'}
             onClick={backStep}>
-            <IconChevronLeft className="bsds-icon-lg bsds-icon-left" />
             {props.texts.backButtonText ? props.texts.backButtonText : 'Back'}
           </Button>}
         {breadcrumb && <p className="bsds-nav-breadcrumb" aria-current="step">{breadcrumb}</p>}

@@ -137,10 +137,9 @@ $icon-size-sm: space(lg);
   }
 
   .bsds-nav-link,
-  .bsds-nav-link-back
+  .bsds-button-nav-back
   {
     align-items: center;
-    padding: space(lg) space(2x);
     width: 100%;
     text-align: left;
 
@@ -156,6 +155,7 @@ $icon-size-sm: space(lg);
     justify-content: space-between;
     position: relative;
     border-left: 0;
+    padding: space(lg) space(2x);
     @include link-navigation;
     @include font-size($fs-body-subtle);
 
@@ -172,20 +172,11 @@ $icon-size-sm: space(lg);
     }
   }
 
-  .bsds-nav-link-back
+  .bsds-button-nav-back
   {
+    display: flex;
     justify-content: flex-start;
     @include font-size($fs-small);
-    fill: $action-primary-40; // TODO: revisit in xdc-1892 (fill vs stroke here or in mixin)
-
-    &:hover,
-    &:active
-    {
-      color: $action-primary-40;
-      background: transparent;
-      text-decoration-line: underline;
-      text-decoration-thickness: space(xs);
-    }
   }
 }
 

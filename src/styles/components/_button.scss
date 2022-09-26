@@ -21,6 +21,41 @@
   {
     @include button-icon;
   }
+
+  &-nav-back
+  {
+    $icon-size: 1em;
+    @include button-subtle;
+    position: relative;
+    padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
+
+    &::before
+    {
+      position: absolute;
+      -webkit-mask: url("../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
+      mask: url("../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
+      -webkit-mask-size: cover;
+      mask-size: cover;
+      top: calc(50% - ($icon-size / 2));
+      left: space(2x);
+      width: $icon-size;
+      height: $icon-size;
+      content: '';
+      background-color: $action-primary-40;
+    }
+
+    &:not([disabled])
+    {
+      &:hover,
+      &:active
+      {
+        background: transparent;
+        color: $action-primary-40;
+        text-decoration-line: underline;
+        text-decoration-thickness: space(xs);
+      }
+    }
+  }
 }
 
 //
