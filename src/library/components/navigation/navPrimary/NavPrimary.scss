@@ -657,10 +657,6 @@ $menuPadding: space(md) 0;
     @include font-size($fs-body-subtle);
   }
 
-  .bsds-button-nav-back
-  {
-    display: none;
-  }
 
   .bsds-nav-primary
   {
@@ -847,8 +843,12 @@ $menuPadding: space(md) 0;
     {
       display: none;
     }
-  }
 
+    .bsds-button-nav-back
+    {
+      display: none;
+    }
+  }
 }
 
 @media (min-width: $xl)

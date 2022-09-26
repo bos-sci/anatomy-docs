@@ -29,7 +29,7 @@
     position: relative;
     padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
 
-    &::after
+    &::before
     {
       content: '';
       -webkit-mask: url("../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
@@ -51,7 +51,8 @@
       {
         background: transparent;
         color: $action-primary-40;
-        text-decoration: underline;
+        text-decoration-line: underline;
+        text-decoration-thickness: space(xs);
       }
     }
   }
