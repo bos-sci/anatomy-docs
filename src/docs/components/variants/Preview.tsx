@@ -121,6 +121,11 @@ const Preview = ( props: Props ): JSX.Element => {
           setRenderedComponent(<DefaultNavLink />);
           break;
 
+        case 'navigation-back':
+          const DefaultNavBack = lazy(() => import('./navBack/DefaultNavBack'));
+          setRenderedComponent(<DefaultNavBack />);
+          break;
+
         case 'primary-navigation':
           const NavPrimaryController = lazy(() => import('./navPrimary/_NavPrimaryController'));
           setRenderedComponent(<NavPrimaryController variantId={variantId} />);
