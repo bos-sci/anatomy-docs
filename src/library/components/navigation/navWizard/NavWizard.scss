@@ -26,7 +26,6 @@
     justify-self: start;
     padding: 0;
     padding-left: calc(1em + space(md)); // 1em is icon size from bsds-button-nav-back styles in _buttons.scss
-    @include font-size($fs-body-subtle);
 
     &::before
     {

@@ -31,17 +31,17 @@
 
     &::before
     {
-      content: '';
+      position: absolute;
       -webkit-mask: url("../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
       mask: url("../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
       -webkit-mask-size: cover;
       mask-size: cover;
-      background-color: $action-primary-40;
-      position: absolute;
       top: calc(50% - ($icon-size / 2));
       left: space(2x);
       width: $icon-size;
       height: $icon-size;
+      content: '';
+      background-color: $action-primary-40;
     }
 
     &:not([disabled])

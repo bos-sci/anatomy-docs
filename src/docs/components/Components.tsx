@@ -102,8 +102,8 @@ const Components = (): JSX.Element => {
             slug: basePath + '/navigation/navigation-link',
           },
           {
-            text: 'Navigation back',
-            slug: basePath + '/navigation/navigation-back',
+            text: 'Navigation back button',
+            slug: basePath + '/navigation/navigation-back-button',
           },
           {
             text: 'Skip link',

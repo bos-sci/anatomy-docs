@@ -174,7 +174,7 @@ $icon-size-sm: space(lg);
 
   .bsds-button-nav-back
   {
-    display:flex;
+    display: flex;
     justify-content: flex-start;
     @include font-size($fs-small);
   }
