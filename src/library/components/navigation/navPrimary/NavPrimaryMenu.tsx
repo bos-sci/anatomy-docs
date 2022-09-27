@@ -2,7 +2,7 @@ import { ForwardedRef, forwardRef, useState } from 'react';
 import Button from '../../Button';
 import Dropdown from '../../Dropdown';
 import Link from '../../Link';
-import { HistoryNode, NavItemUtility, NavNode } from './NavPrimary';
+import { HistoryNode, NavItemUtility, NavNode, Texts } from './NavPrimary';
 import NavPrimaryList from './NavPrimaryList';
 
 interface Props {
@@ -16,6 +16,7 @@ interface Props {
   history: HistoryNode[];
   pushHistory: (navItem: NavNode, depth: number) => void;
   popHistory: () => void;
+  texts?: Texts;
 }
 
 const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
@@ -25,7 +26,7 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
   return (
     <div ref={ref} id={props.menuId} className={"bsds-nav-menu" + (props.isMenuOpen ? ' open' : '') + (props.isIntermediateNav ? ' intermediate' : '')}>
       {props.history.length > 0 &&
-        <Button type="button" className="bsds-button-nav-back" onClick={() => props.popHistory()}>Back</Button>
+        <Button type="button" className="bsds-button-nav-back" onClick={() => props.popHistory()}>{props.texts?.menuBackButton ? props.texts.menuBackButton : 'Back'}</Button>
       }
       <div className="bsds-nav-menu-panels">
         <NavPrimaryList

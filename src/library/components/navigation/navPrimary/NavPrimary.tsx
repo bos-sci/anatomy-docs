@@ -46,6 +46,23 @@ export interface HistoryNode {
   depth: number;
 }
 
+export interface Texts {
+  menuToggleAriaLabel?: string;
+  menuToggleTextOpen?: string;
+  menuToggleTextClose?: string;
+  menuBackButton?: string;
+  searchLabel?: string;
+  searchAriaLabel?: string;
+  searchToggleAriaLabel?: string;
+  searchToggleText?: string;
+  searchButtonText?: string;
+  searchButtonAriaLabel?: string;
+  searchInputAriaLabel?: string;
+  searchClearTextAriaLabel?: string;
+  utilityNavAriaLabel?: string;
+  primaryNavAriaLabel?: string;
+}
+
 interface Props {
   logo: {
     src: string;
@@ -53,17 +70,7 @@ interface Props {
     href?: string;
     to?: string;
   };
-  texts?: {
-    menuToggleAriaLabel?: string;
-    menuToggleTextOpen?: string;
-    menuToggleTextClose?: string;
-    searchToggleAriaLabel?: string;
-    searchToggleText?: string;
-    searchButtonText?: string;
-    searchButtonAriaLabel?: string;
-    utilityNavAriaLabel?: string;
-    primaryNavAriaLabel?: string;
-  }
+  texts?: Texts;
   navItems: NavItemPrimary[];
   utilityItems?: NavItemUtility[];
   hasSearch?: boolean;
@@ -266,7 +273,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                     isIntermediateNav={isIntermediateNav}
                     history={history}
                     pushHistory={pushHistory}
-                    popHistory={popHistory} />
+                    popHistory={popHistory}
+                    texts={texts} />
                 }
               </li>
             ))}
@@ -298,11 +306,13 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
         </div>
         <div className={'bsds-search-panel' + (isSearchOpen ? ' open' : '')}>
           <Search
-            label="Search"
+            label={texts?.searchLabel ? texts?.searchLabel : 'Search'}
             texts={{
               buttonText: texts?.searchButtonText,
               buttonAriaLabel: texts?.searchButtonAriaLabel,
-              searchAriaLabel: "Primary navigation search"
+              searchInputAriaLabel: texts?.searchInputAriaLabel,
+              searchClearTextAriaLabel: texts?.searchClearTextAriaLabel,
+              searchAriaLabel: texts?.searchAriaLabel ? texts?.searchAriaLabel : 'Primary navigation search'
             }}
           />
         </div>
@@ -318,7 +328,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
             isIntermediateNav={isIntermediateNav}
             history={history}
             pushHistory={pushHistory}
-            popHistory={popHistory} />
+            popHistory={popHistory}
+            texts={texts} />
         }
       </nav>
     </header>

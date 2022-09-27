@@ -11,7 +11,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     buttonText?: string;
     searchAriaLabel?: string;
     searchInputAriaLabel?: string;
-    seachClearTextAriaLabel?: string;
+    searchClearTextAriaLabel?: string;
   }
 }
 
@@ -64,7 +64,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, texts, placeholder, 
               {value &&
                 <button
                   className="bsds-search-clear"
-                  aria-label={texts?.seachClearTextAriaLabel || "clear search text"}
+                  aria-label={texts?.searchClearTextAriaLabel || "clear search text"}
                   onClick={() => setValue('')}>
                   <IconClose className="bsds-icon-lg" />
                 </button>
