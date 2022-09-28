@@ -6,6 +6,7 @@ import NavPrimary, { NavItemPrimary } from '../../../library/components/navigati
 import algoliasearch from 'algoliasearch';
 import { SearchResult } from '../../../library/components/Search';
 import { useNavigate } from 'react-router-dom';
+import { indexSearch } from '../../helpers';
 
 interface Props {
   children: ReactNode;
@@ -71,7 +72,6 @@ const Layout = (props: Props): JSX.Element => {
   const navigate = useNavigate();
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchHits, setSearchHits] = useState<any>('');
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
 
   const onSearchChange = (query: string) => {
@@ -84,21 +84,10 @@ const Layout = (props: Props): JSX.Element => {
   }
 
   useEffect(() => {
-    index.search(searchQuery).then(({hits}) => {
-      setSearchHits(hits);
+    indexSearch(searchQuery).then((results) => {
+      setSearchResults(results);
     });
   }, [searchQuery]);
-
-  useEffect(() => {
-    if (searchHits.length > 0) {
-      setSearchResults(searchHits.filter((hit: any) => hit.title !== 'Anatomy - Boston Scientific').map((hit: any) => (
-        {
-          to: hit.pathname,
-          text: hit.title.replace(' - Anatomy - Boston Scientific', '')
-        })
-      ));
-    }
-  }, [searchHits]);
 
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>

@@ -28,25 +28,27 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   onFormSubmit?: (e: FormEvent<HTMLFormElement>) => void;
 }
 
-const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = true, searchResults, texts, placeholder, onInvalid, onBlur, onChange, onFormSubmit, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
+const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = true, searchResults, texts, placeholder, value, defaultValue, onInvalid, onBlur, onChange, onFormSubmit, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
 
   const searchId = useId();
 
-  const [value, setValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const [activeDescendant, setActiveDescendant] = useState<number>(0); // set to -1 to reset state
+  const [isDirty, setIsDirty] = useState(false);
 
-  const inputEl = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const searchControlRef = useRef<HTMLDivElement>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setIsDirty(true);
+    setInputValue(e.target.value);
     if (onChange) {
       onChange(e);
     }
   }
 
   const moveActiveDesc = (distance: number) => {
-    if (searchControlRef.current?.contains(document.activeElement) && searchResults && value.length) {
+    if (searchControlRef.current?.contains(document.activeElement) && searchResults && inputValue.length) {
       if (activeDescendant + distance > searchResults?.length - 1) {
         setActiveDescendant(0);
       } else if (activeDescendant + distance < 0) {
@@ -71,7 +73,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
 
       case 'Escape':
         e.preventDefault();
-        setValue('');
+        setInputValue('');
         break;
 
       case 'Enter':
@@ -86,7 +88,15 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
 
   useEffect(() => {
     setActiveDescendant(-1);
-  }, [value]);
+  }, [inputValue]);
+
+  useEffect(() => {
+    if (defaultValue && !isDirty) {
+      setInputValue(defaultValue as string);
+    } else if (value) {
+      setInputValue(value as string);
+    }
+  }, [value, defaultValue, isDirty]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     if (onFormSubmit) {
@@ -108,7 +118,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
               <input
                 ref={node => {
                   if (node) {
-                    (inputEl as MutableRefObject<HTMLInputElement>).current = node;
+                    (inputRef as MutableRefObject<HTMLInputElement>).current = node;
                     if (typeof ref === 'function') {
                       ref(node);
                     } else if (ref) {
@@ -119,7 +129,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 type="search"
                 className="bsds-input-text-input"
                 placeholder={placeholder || 'Search'}
-                value={value}
+                value={inputValue}
                 name="query"
                 role={hasAutocomplete ? 'combobox' : undefined}
                 aria-label={texts?.searchInputAriaLabel || "search input"}
@@ -127,26 +137,26 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 aria-controls={hasAutocomplete ? searchId + '-results' : undefined}
                 aria-autocomplete={hasAutocomplete ? 'list' : undefined}
                 aria-haspopup={hasAutocomplete ? 'listbox' : undefined}
-                aria-expanded={hasAutocomplete && !!value}
+                aria-expanded={hasAutocomplete && !!inputValue}
                 aria-describedby={texts?.helpText || ''}
                 aria-activedescendant={activeDescendant >= 0 ? searchId + '-result-' + activeDescendant : undefined}
                 onChange={handleChange}
                 {...inputAttrs} />
               {/* TODO: consider pulling these into an action mixin */}
-              {value &&
+              {inputValue &&
                 <button
                   className="bsds-search-clear"
                   aria-label={texts?.searchClearTextAriaLabel || "clear search text"}
-                  onClick={() => setValue('')}>
+                  onClick={() => setInputValue('')}>
                   <IconClose className="bsds-icon-lg" />
                 </button>
               }
               {(hasAutocomplete && searchResults) &&
-                <ul id={searchId + '-results'} className="bsds-search-results" hidden={!value}>
+                <ul id={searchId + '-results'} className="bsds-search-results" hidden={!inputValue}>
                   {searchResults.map((result, i) => (
                     <li key={result.text + i} className={'bsds-search-result' + (i === activeDescendant ? ' active' : '')}>
                       <Link id={searchId + '-result-' + i} to={result.to} href={result.href} className="bsds-link-nav">
-                        <StrongMatch match={value}>
+                        <StrongMatch match={inputValue}>
                           {result.text}
                         </StrongMatch>
                       </Link>
@@ -155,7 +165,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 </ul>
               }
             </div>
-            <Button variant="assertive" disabled={!value} aria-label={texts?.buttonAriaLabel || 'Search'}>
+            <Button variant="assertive" disabled={!inputValue} aria-label={texts?.buttonAriaLabel || 'Search'}>
               {texts?.buttonText || 'Search'}
             </Button>
           </div>
