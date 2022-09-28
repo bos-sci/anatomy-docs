@@ -1,10 +1,11 @@
-import { FormEvent, ReactNode, useEffect, useState } from 'react';
+import { createContext, FormEvent, ReactNode, useEffect, useState } from 'react';
 import SkipLink from '../../../library/components/SkipLink';
 import logoADS from "../../../assets/images/logo-anatomy.svg";
 import logoBSC from "../../../assets/images/logo-bsc.svg";
 import NavPrimary, { NavItemPrimary } from '../../../library/components/navigation/navPrimary/NavPrimary';
 import algoliasearch from 'algoliasearch';
 import { SearchResult } from '../../../library/components/Search';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   children: ReactNode;
@@ -63,7 +64,11 @@ const logo = {
 const searchClient = algoliasearch('R538RETIHH', '57937335fdbc8f462f7e8ad277b4ed00');
 const index = searchClient.initIndex('netlify_61a5e8e4-0f4e-44c7-a2a2-1d9013d824e5_feature-ads-165_all');
 
+export const SearchIndexContext = createContext(index);
+
 const Layout = (props: Props): JSX.Element => {
+
+  const navigate = useNavigate();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchHits, setSearchHits] = useState<any>('');
@@ -75,8 +80,7 @@ const Layout = (props: Props): JSX.Element => {
 
   const onSearch = (query: string, e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSearchQuery(query);
-    console.log('submit');
+    navigate(`/search?query=${query}`);
   }
 
   useEffect(() => {
@@ -89,7 +93,7 @@ const Layout = (props: Props): JSX.Element => {
     if (searchHits.length > 0) {
       setSearchResults(searchHits.filter((hit: any) => hit.title !== 'Anatomy - Boston Scientific').map((hit: any) => (
         {
-          url: hit.pathname,
+          to: hit.pathname,
           text: hit.title.replace(' - Anatomy - Boston Scientific', '')
         })
       ));
@@ -99,7 +103,9 @@ const Layout = (props: Props): JSX.Element => {
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>
     <NavPrimary logo={logo} navItems={navItems} searchResults={searchResults} onSearchChange={onSearchChange} onSearch={onSearch} isConstrained />
-    { props.children }
+    <SearchIndexContext.Provider value={index}>
+      { props.children }
+    </SearchIndexContext.Provider>
     <footer className="docs-footer">
       <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>
     </footer>

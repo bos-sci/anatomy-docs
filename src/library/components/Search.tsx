@@ -74,6 +74,11 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
         setValue('');
         break;
 
+      case 'Enter':
+        // TODO: click option on enter
+        e.preventDefault();
+        break;
+
       default:
         break;
     }
@@ -115,6 +120,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 className="bsds-input-text-input"
                 placeholder={placeholder || 'Search'}
                 value={value}
+                name="query"
                 role={hasAutocomplete ? 'combobox' : undefined}
                 aria-label={texts?.searchInputAriaLabel || "search input"}
                 aria-owns={hasAutocomplete ? searchId + '-results' : undefined}
