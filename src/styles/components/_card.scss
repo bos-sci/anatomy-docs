@@ -1,14 +1,28 @@
-  .bsds-card {
+   .bsds-card 
+   {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     overflow: auto;
-    max-width: 26.188rem;
+    max-width: max-content;
     height: auto;
-    border: 1px solid #ccc;
-    background-color: $neutral-100;
+    padding: 0 0 0 space(sm);
 
-    &-image {
+    &-ghost 
+    { 
+      background-color: $neutral-00;
+      color: $neutral-100;
+    }
+
+    &-border-light 
+    {
+      border: space(xxs) solid $border-color-subtle;
+      background-color: $neutral-100;
+    }
+
+    &-image 
+    {
       height: 100%;
       max-height: unset;
       object-fit: cover;
@@ -16,47 +30,40 @@
       margin: 0;
     }
   
-    &-body {
-      padding: space(3x);
-    }
+    // &-content
+    // {
+    //   padding: space(3x);
+    // }
 
-    &-title {
+    &-title 
+    {
       margin: 0;
+      color: inherit;
     }
 
-    &-title-link {
-      @include link-default;
+    &-title-link 
+    {
+      @include link-subtle;
       margin: 0;
       width: max-content;
-      color: $neutral-00;
       text-decoration-thickness: space(xs);
-
-      &:hover {
-        color: $action-primary-40;
-      }
     }
 
-    &-text-content {
-        margin: space(2x) 0;
-    }
-  }
-
-  .bsds-link {
-  &.bsds-linked-card {
-    color: $text-color-primary;
-    font-family: $font-family-base-regular;
-    @include font-size($fs-base);
-    line-height: 1.5;
-    text-decoration: none;
-    
-    &:hover,
-    &:focus,
-    &:active,
-    &:visited
+    &-description 
     {
-      text-decoration: none;
-      color: $neutral-00;
+      margin: space(2x) 0;
     }
   }
-}
+
+  .link-hitbox::before
+  {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+
   
