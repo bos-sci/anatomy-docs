@@ -10,6 +10,7 @@ import { useGetCollectionsQuery } from './shared/types/contentful';
 import { IdLookup, IdLookupEntry } from './shared/types/docs';
 import Home from './home/Home';
 import NotFound from './shared/components/notFound/NotFound';
+import SearchResults from './searchResults/SearchResults';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
@@ -119,6 +120,8 @@ const App = (): JSX.Element => {
                 <Route path=':group/:resourceName' element={<ResourcesRouter />} />
                 <Route path="developers/code-standards/general" element={<Navigate to="../../code-standards" />} />
               </Route>
+
+              <Route path="search" element={<SearchResults />}/>
 
               <Route path="*" element={<NotFound />}/>
             </Routes>

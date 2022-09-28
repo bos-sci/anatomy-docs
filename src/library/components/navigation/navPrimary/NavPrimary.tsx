@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
@@ -70,12 +70,13 @@ interface Props {
   hasSearch?: boolean;
   isConstrained?: boolean;
   searchResults?: SearchResult[];
-  onSearch?: (query: string) => void;
+  onSearch?: (query: string, e: FormEvent<HTMLFormElement>) => void;
+  onSearchChange?: (query: string, e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 let navPrimaryMenuIndex = 0;
 
-const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isConstrained = false, searchResults, onSearch }: Props): JSX.Element => {
+const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isConstrained = false, searchResults, onSearchChange, onSearch }: Props): JSX.Element => {
   const location = useLocation();
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
@@ -306,6 +307,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
           inputAriaLabel={"Primary navigation search"}
           isOpen={isSearchOpen}
           searchResults={searchResults}
+          onSearchChange={onSearchChange}
           onSearch={onSearch} />
         {((navTree.length > 0 && isViewportSmall) || (navTree.length > 0 && !isNavTouched)) &&
           <NavPrimaryMenu

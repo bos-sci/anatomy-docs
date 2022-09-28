@@ -1,4 +1,4 @@
-import { ChangeEvent, ForwardedRef, forwardRef, InputHTMLAttributes, MutableRefObject, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, ForwardedRef, forwardRef, InputHTMLAttributes, MutableRefObject, useEffect, useRef, useState } from 'react';
 import Button from './Button';
 import IconClose from './icon/icons/IconClose';
 import Link from './Link';
@@ -21,11 +21,12 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     searchInputAriaLabel?: string;
     seachClearTextAriaLabel?: string;
   }
+  onFormSubmit?: (e: FormEvent<HTMLFormElement>) => void;
 }
 
 let inputId = 0;
 
-const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = true, searchResults, texts, placeholder, onInvalid, onBlur, onChange, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
+const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = true, searchResults, texts, placeholder, onInvalid, onBlur, onChange, onFormSubmit, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
 
   const [helpTextId, setHelpTextId] = useState('');
   const [value, setValue] = useState('');
@@ -45,8 +46,14 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
     }
   }
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    if (onFormSubmit) {
+      onFormSubmit(e);
+    }
+  }
+
   return (
-    <form className="bsds-form-search" role="search" aria-label={texts?.searchAriaLabel || "site search"}>
+    <form className="bsds-form-search" role="search" aria-label={texts?.searchAriaLabel || "site search"} onSubmit={handleSubmit}>
       <div className="bsds-input">
         <label className="bsds-search">
           {isLabelVisible &&

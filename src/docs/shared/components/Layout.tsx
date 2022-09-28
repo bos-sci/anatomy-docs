@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { FormEvent, ReactNode, useEffect, useState } from 'react';
 import SkipLink from '../../../library/components/SkipLink';
 import logoADS from "../../../assets/images/logo-anatomy.svg";
 import logoBSC from "../../../assets/images/logo-bsc.svg";
@@ -69,8 +69,14 @@ const Layout = (props: Props): JSX.Element => {
   const [searchHits, setSearchHits] = useState<any>('');
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
 
-  const onSearch = (query: string) => {
+  const onSearchChange = (query: string) => {
     setSearchQuery(query);
+  }
+
+  const onSearch = (query: string, e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSearchQuery(query);
+    console.log('submit');
   }
 
   useEffect(() => {
@@ -92,7 +98,7 @@ const Layout = (props: Props): JSX.Element => {
 
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>
-    <NavPrimary logo={logo} navItems={navItems} searchResults={searchResults} onSearch={onSearch} isConstrained />
+    <NavPrimary logo={logo} navItems={navItems} searchResults={searchResults} onSearchChange={onSearchChange} onSearch={onSearch} isConstrained />
     { props.children }
     <footer className="docs-footer">
       <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>
