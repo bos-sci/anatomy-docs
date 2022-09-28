@@ -6,7 +6,7 @@ import NavPrimary, { NavItemPrimary } from '../../../library/components/navigati
 import algoliasearch from 'algoliasearch';
 import { SearchResult } from '../../../library/components/Search';
 import { useNavigate } from 'react-router-dom';
-import { indexSearch } from '../../helpers';
+import { indexSearch } from '../helpers';
 
 interface Props {
   children: ReactNode;

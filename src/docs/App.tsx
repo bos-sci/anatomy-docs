@@ -5,7 +5,7 @@ import {
   Route,
   Navigate
 } from "react-router-dom";
-import { slugify } from './helpers';
+import { slugify } from './shared/helpers';
 import { useGetCollectionsQuery } from './shared/types/contentful';
 import { IdLookup, IdLookupEntry } from './shared/types/docs';
 import Home from './home/Home';

@@ -4,7 +4,7 @@ import Link from '../../library/components/Link';
 import Search, { SearchResult } from '../../library/components/Search';
 import Layout from '../shared/components/Layout';
 import PageTemplate from '../shared/components/PageTemplate';
-import { indexSearch } from '../helpers';
+import { indexSearch } from '../shared/helpers';
 
 import './SearchResults.scss';
 

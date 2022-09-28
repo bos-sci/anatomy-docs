@@ -1,5 +1,5 @@
 import algoliasearch from 'algoliasearch';
-import { SearchResult } from '../library/components/Search';
+import { SearchResult } from '../../library/components/Search';
 
 export const slugify = (text: string): string => {
   return text
