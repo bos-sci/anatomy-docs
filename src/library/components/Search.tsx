@@ -1,13 +1,17 @@
-import { ChangeEvent, FormEvent, ForwardedRef, forwardRef, InputHTMLAttributes, MutableRefObject, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, ForwardedRef, forwardRef, InputHTMLAttributes, MutableRefObject, useEffect, useId, useRef, useState } from 'react';
+import { RequireOnlyOne } from '../types';
 import Button from './Button';
 import IconClose from './icon/icons/IconClose';
 import Link from './Link';
 import StrongMatch from './StrongMatch';
 
-export interface SearchResult {
-  url: string;
+interface Result {
+  to?: string;
+  href?: string;
   text: string;
 }
+
+export type SearchResult = RequireOnlyOne<Result, 'href' | 'to'>;
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   isLabelVisible?: boolean;
@@ -19,25 +23,20 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     buttonText?: string;
     searchAriaLabel?: string;
     searchInputAriaLabel?: string;
-    seachClearTextAriaLabel?: string;
+    searchClearTextAriaLabel?: string;
   }
   onFormSubmit?: (e: FormEvent<HTMLFormElement>) => void;
 }
 
-let inputId = 0;
-
 const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = true, searchResults, texts, placeholder, onInvalid, onBlur, onChange, onFormSubmit, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
 
-  const [helpTextId, setHelpTextId] = useState('');
+  const searchId = useId();
+
   const [value, setValue] = useState('');
+  const [activeDescendant, setActiveDescendant] = useState<number>(0); // set to -1 to reset state
 
   const inputEl = useRef<HTMLInputElement>(null);
-
-  // On component mount
-  useEffect(() => {
-    const idNum = ++inputId;
-    setHelpTextId('inputHelpText' + idNum);
-  }, []);
+  const searchControlRef = useRef<HTMLDivElement>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -45,6 +44,44 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
       onChange(e);
     }
   }
+
+  const moveActiveDesc = (distance: number) => {
+    if (searchControlRef.current?.contains(document.activeElement) && searchResults && value.length) {
+      if (activeDescendant + distance > searchResults?.length - 1) {
+        setActiveDescendant(0);
+      } else if (activeDescendant + distance < 0) {
+        setActiveDescendant(searchResults.length - 1);
+      } else {
+        setActiveDescendant(activeDescendant + distance)
+      }
+    }
+  }
+
+  const updateActiveDesc = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    switch (e.key) {
+      case 'ArrowUp':
+        e.preventDefault();
+        moveActiveDesc(-1);
+        break;
+
+      case 'ArrowDown':
+        e.preventDefault();
+        moveActiveDesc(1);
+        break;
+
+      case 'Escape':
+        e.preventDefault();
+        setValue('');
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  useEffect(() => {
+    setActiveDescendant(-1);
+  }, [value]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     if (onFormSubmit) {
@@ -61,7 +98,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
               { label }
             </div>
           }
-          <div className="bsds-search-control">
+          <div className="bsds-search-control" onKeyDown={updateActiveDesc} ref={searchControlRef}>
             <div className="bsds-input-search">
               <input
                 ref={node => {
@@ -77,25 +114,32 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 type="search"
                 className="bsds-input-text-input"
                 placeholder={placeholder || 'Search'}
-                aria-label={texts?.searchInputAriaLabel || "search input"}
                 value={value}
+                role={hasAutocomplete ? 'combobox' : undefined}
+                aria-label={texts?.searchInputAriaLabel || "search input"}
+                aria-owns={hasAutocomplete ? searchId + '-results' : undefined}
+                aria-controls={hasAutocomplete ? searchId + '-results' : undefined}
+                aria-autocomplete={hasAutocomplete ? 'list' : undefined}
+                aria-haspopup={hasAutocomplete ? 'listbox' : undefined}
+                aria-expanded={hasAutocomplete && !!value}
                 aria-describedby={texts?.helpText || ''}
+                aria-activedescendant={activeDescendant >= 0 ? searchId + '-result-' + activeDescendant : undefined}
                 onChange={handleChange}
                 {...inputAttrs} />
               {/* TODO: consider pulling these into an action mixin */}
               {value &&
                 <button
                   className="bsds-search-clear"
-                  aria-label={texts?.seachClearTextAriaLabel || "clear search text"}
+                  aria-label={texts?.searchClearTextAriaLabel || "clear search text"}
                   onClick={() => setValue('')}>
                   <IconClose className="bsds-icon-lg" />
                 </button>
               }
-              {(hasAutocomplete && searchResults && value) &&
-                <ul className="bsds-search-results">
-                  {searchResults.map(result => (
-                    <li key={result.url} className="bsds-search-result">
-                      <Link to={result.url} className="bsds-link-nav">
+              {(hasAutocomplete && searchResults) &&
+                <ul id={searchId + '-results'} className="bsds-search-results" hidden={!value}>
+                  {searchResults.map((result, i) => (
+                    <li key={result.text + i} className={'bsds-search-result' + (i === activeDescendant ? ' active' : '')}>
+                      <Link id={searchId + '-result-' + i} to={result.to} href={result.href} className="bsds-link-nav">
                         <StrongMatch match={value}>
                           {result.text}
                         </StrongMatch>
@@ -110,7 +154,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
             </Button>
           </div>
         </label>
-        {texts?.helpText && <p id={helpTextId} className="bsds-input-help-text">{ texts?.helpText }</p>}
+        {texts?.helpText && <p id={'inputHelpText' + searchId} className="bsds-input-help-text">{ texts?.helpText }</p>}
       </div>
     </form>
   );

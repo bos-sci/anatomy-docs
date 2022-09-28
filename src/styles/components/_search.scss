@@ -69,6 +69,11 @@
   {
     margin: 0;
   }
+
+  &.active
+  {
+    @include focus-default-inset;
+  }
 }
 
 @media (min-width: $sm)

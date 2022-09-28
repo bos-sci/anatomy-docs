@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState, useEffect, Fragment } from 'react';
 
 interface Props {
   match: string;
@@ -17,11 +17,11 @@ const StrongMatch = (props: Props): JSX.Element => {
   }, [props]);
 
   return <>
-    {matchArray.map(match => {
+    {matchArray.map((match, i) => {
       if (match.toLowerCase() === props.match.toLowerCase()) {
-        return <strong>{match}</strong>;
+        return <strong key={match + i}>{match}</strong>;
       } else {
-        return <>{match}</>;
+        return <Fragment key={match + i}>{match}</Fragment>;
       }
     })}
   </>;
