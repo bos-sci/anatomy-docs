@@ -56,7 +56,8 @@ interface Props {
   };
   texts?: {
     menuToggleAriaLabel?: string;
-    menuToggleText?: string;
+    menuToggleTextOpen?: string;
+    menuToggleTextClose?: string;
     searchToggleAriaLabel?: string;
     searchToggleText?: string;
     searchButtonText?: string;
@@ -67,24 +68,25 @@ interface Props {
   navItems: NavItemPrimary[];
   utilityItems?: NavItemUtility[];
   hasSearch?: boolean;
+  isConstrained?: boolean;
   searchResults?: SearchResult[];
   onSearch?: (query: string) => void;
 }
 
 let navPrimaryMenuIndex = 0;
 
-const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, searchResults, onSearch }: Props): JSX.Element => {
+const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isConstrained = false, searchResults, onSearch }: Props): JSX.Element => {
   const location = useLocation();
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isRootOpen, setIsRootOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [history, setHistory] = useState<HistoryNode[]>([]);
   const [activeNode, setActiveNode] = useState<NavNode | null>(null);
   const [menuId, setMenuId] = useState('');
   const [isViewportSmall, setIsViewportSmall] = useState(false);
   const [isIntermediateNav, setIsIntermediateNav] = useState(false);
+  const [isNavTouched, setIsNavTouched] = useState(false);
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -116,11 +118,9 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, sea
     if (history.length && history[0].node === navItem) {
       setHistory([]);
       setIsMenuOpen(false);
-      setIsRootOpen(false);
     } else {
       pushHistory(navItem, 0);
       setIsMenuOpen(true);
-      setIsRootOpen(true);
       setIsSearchOpen(false);
     }
   }
@@ -168,12 +168,17 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, sea
       if (history.length === 0) {
         setIsMenuOpen(false);
       } else if (isMenuOpen) {
-        setIsRootOpen(true);
       }
     } else if (!isViewportSmall) {
       setIsViewportSmall(true);
     }
   }, [history.length, isMenuOpen, isViewportSmall]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      setIsNavTouched(true);
+    }
+  }, [isMenuOpen]);
 
   useEffect(() => {
     // Close menu on focus out or click out
@@ -204,7 +209,6 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, sea
     if (isMenuOpen) {
       setHistory([]);
     }
-    setIsRootOpen(false);
     setIsMenuOpen(!isMenuOpen);
   }
 
@@ -217,7 +221,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, sea
   }
 
   return (
-    <header className="bsds-nav-header" ref={navRef}>
+    <header className={"bsds-nav-header" + (isConstrained ? ' is-constrained' : '')} ref={navRef}>
       {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
       <nav className="bsds-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="bsds-nav-bar">
@@ -236,23 +240,29 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, sea
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className={"bsds-nav-link" + (navItem === getActiveRoot() ? ' active' : '')}
+                    className={"bsds-nav-link" + (navItem === getActiveRoot() ? ' current' : '')}
                     aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
                     aria-controls={menuId}
-                    aria-current={navItem === getActiveRoot() ? 'location' : 'false'}
                     onClick={() => updateMenu(navItem)}>
                     {navItem.text}
                   </Button>
                 }
                 {(navItem.slug || navItem.href) &&
-                  <NavLink end={!!navItem.isExactMatch} to={(navItem.slug ? navItem.slug : navItem.href) || ''} className={`bsds-nav-link${navItem.isActive && navItem.isActive(location) ? ' active' : ''}`}>{navItem.text}</NavLink>
+                  <NavLink
+                    end={!!navItem.isExactMatch}
+                    to={(navItem.slug ? navItem.slug : navItem.href) || ''}
+                    className={`bsds-nav-link${navItem.isActive && navItem.isActive(location) ? ' current' : ''}`}
+                    aria-current={navItem.isActive && navItem.isActive(location) ? 'page' : undefined}>
+                      {navItem.text}
+                  </NavLink>
                 }
-                {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && isRootOpen && !isViewportSmall) &&
+                {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && !isViewportSmall) &&
                   <NavPrimaryMenu
                     ref={menuRef}
                     navItems={navTree}
                     utilityItems={utilityItems}
+                    activeNode={activeNode}
                     setActiveNode={setActiveNode}
                     menuId={menuId}
                     isMenuOpen={isMenuOpen}
@@ -284,7 +294,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, sea
                 aria-label={texts?.menuToggleAriaLabel || 'Toggle menu'}
                 aria-expanded={isMenuOpen}
                 onClick={toggleMenu}>
-                {texts?.menuToggleText || 'Menu'}
+                {isMenuOpen ? texts?.menuToggleTextClose || 'Close' : texts?.menuToggleTextOpen || 'Menu'}
               </Button>
             </li>
           </ul>
@@ -297,11 +307,12 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, sea
           isOpen={isSearchOpen}
           searchResults={searchResults}
           onSearch={onSearch} />
-        {((navTree.length > 0 && !isRootOpen && isViewportSmall)) &&
+        {((navTree.length > 0 && isViewportSmall) || (navTree.length > 0 && !isNavTouched)) &&
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
             utilityItems={utilityItems}
+            activeNode={activeNode}
             setActiveNode={setActiveNode}
             menuId={menuId}
             isMenuOpen={isMenuOpen}

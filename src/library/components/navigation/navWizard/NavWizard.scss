@@ -20,20 +20,16 @@
       'description';
   }
 
-  .bsds-nav-back
+  .bsds-button-nav-back
   {
     grid-area: back;
     justify-self: start;
     padding: 0;
-    @include font-size($fs-body-subtle);
+    padding-left: calc(1em + space(md)); // 1em is icon size from bsds-button-nav-back styles in _buttons.scss
 
-    &:hover,
-    &:active
+    &::before
     {
-      color: $action-primary-40;
-      background: transparent;
-      text-decoration-line: underline;
-      text-decoration-thickness: space(xs);
+      left: 0;
     }
   }
 

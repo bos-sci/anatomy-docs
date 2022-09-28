@@ -31,7 +31,7 @@
   .docs-team-member-name
   {
     margin: 0;
-    font-family: $font-family-base-heavy;
+    @include font-family-base-heavy;
   }
 
   .docs-team-member-title

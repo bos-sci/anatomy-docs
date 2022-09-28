@@ -3,7 +3,6 @@ import { RequireOnlyOne } from '../../../types';
 import NavSecondaryList from './NavSecondaryList';
 import "./NavSecondary.scss"
 import Button from '../../Button';
-import IconChevronLeft from '../../icon/icons/IconChevronLeft';
 import { useLocation } from 'react-router-dom';
 
 interface NavItem {
@@ -113,7 +112,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!nav.current?.contains(e.target as Node) && isOpen) {
         setIsOpen(false);
-      } 
+      }
     }
     window.addEventListener('focusin', onFocusWithinOut);
     window.addEventListener('pointerup', onFocusWithinOut);
@@ -128,7 +127,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
   }, [location.pathname]);
 
   return (
-    <nav className="bsds-nav-secondary" aria-label={texts?.navAriaLabel || 'secondary navigation'} ref={nav}>
+    <nav className="bsds-nav-secondary" aria-label={texts?.navAriaLabel || 'secondary'} ref={nav}>
       <button
         className="bsds-nav-secondary-menu-trigger"
         aria-expanded={isOpen}
@@ -141,11 +140,10 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
         {activeParent &&
           <Button
             ref={backBtnRef}
-            className="bsds-nav-link-back"
-            variant="subtle"
+            type="button"
+            className="bsds-button-nav-back"
             onClick={goBack}>
-            <IconChevronLeft className="bsds-icon-md bsds-icon-left" />
-            {texts?.backButtonText || 'Back'}
+              {texts?.backButtonText || 'Back'}
           </Button>
         }
         <NavSecondaryList navItems={navTree} parent={null} activeParent={activeParent} activeParentRef={activeParentRef} setActiveParentRef={setActiveParentRef} openChild={openChild}/>

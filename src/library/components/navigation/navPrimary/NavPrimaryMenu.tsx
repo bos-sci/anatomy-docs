@@ -8,6 +8,7 @@ import NavPrimaryList from './NavPrimaryList';
 interface Props {
   navItems: NavNode[];
   utilityItems?: NavItemUtility[];
+  activeNode: NavNode | null;
   setActiveNode: (node: NavNode) => void;
   menuId: string;
   isMenuOpen: boolean;
@@ -24,17 +25,12 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
   return (
     <div ref={ref} id={props.menuId} className={"bsds-nav-menu" + (props.isMenuOpen ? ' open' : '') + (props.isIntermediateNav ? ' intermediate' : '')}>
       {props.history.length > 0 &&
-        <Button
-          type="button"
-          variant="subtle"
-          className="bsds-nav-menu-back"
-          onClick={() => props.popHistory()}>
-          Back
-        </Button>
+        <Button type="button" className="bsds-button-nav-back" onClick={() => props.popHistory()}>Back</Button>
       }
       <div className="bsds-nav-menu-panels">
         <NavPrimaryList
           navItems={ props.navItems }
+          activeNode={props.activeNode}
           setActiveNode={props.setActiveNode}
           depth={0}
           activeDepth={activeDepth}

@@ -22,7 +22,7 @@
   position: relative;
   display: block;
   padding-left: space(2x) + space(sm);
-  font-family: $font-family-base-heavy;
+  @include font-family-base-heavy;
   text-transform: uppercase;
 
   code {

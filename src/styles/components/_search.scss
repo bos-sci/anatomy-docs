@@ -37,7 +37,8 @@
     @include focus-default-inset;
   }
 
-  &:hover:not(:disabled)
+  &:hover:not(:disabled),
+  &:active:not(:disabled)
   {
     background: transparent;
 

@@ -6,7 +6,7 @@
     url('/assets/fonts/SST-Roman/SST-Roman.ttf') format('truetype'),
     url('/assets/fonts/SST-Roman/SST-Roman.svg#SST-Roman') format('svg'),
     url('/assets/fonts/SST-Roman/SST-Roman.eot?#iefix') format('embedded-opentype');
-  font-weight: $font-weight-regular;
+  font-weight: normal;
   font-style: normal;
   font-display: fallback;
 }
@@ -19,7 +19,7 @@
     url('/assets/fonts/SST-Heavy/SST-Heavy.ttf') format('truetype'),
     url('/assets/fonts/SST-Heavy/SST-Heavy.svg#SST-Heavy') format('svg'),
     url('/assets/fonts/SST-Heavy/SST-Heavy.eot?#iefix') format('embedded-opentype');
-  font-weight: $font-weight-heavy;
+  font-weight: 500 900;
   font-style: normal;
   font-display: fallback;
 }

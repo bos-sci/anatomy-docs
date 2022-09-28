@@ -92,7 +92,7 @@ const Layout = (props: Props): JSX.Element => {
 
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>
-    <NavPrimary logo={logo} navItems={navItems} searchResults={searchResults} onSearch={onSearch} />
+    <NavPrimary logo={logo} navItems={navItems} searchResults={searchResults} onSearch={onSearch} isConstrained />
     { props.children }
     <footer className="docs-footer">
       <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>

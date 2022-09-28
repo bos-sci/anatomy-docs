@@ -71,7 +71,7 @@ const Preview = ( props: Props ): JSX.Element => {
           className="docs-demo-link"
           to={`example/${props.variantId ? props.variantId : 'default'}`}
           target="_blank">
-          See {props.variant || 'example'}
+          See {props.variant?.toLowerCase() || 'example'}
         </Link>
       );
     } else {
@@ -119,6 +119,11 @@ const Preview = ( props: Props ): JSX.Element => {
         case 'navigation-link':
           const DefaultNavLink = lazy(() => import('./navLink/DefaultNavLink'));
           setRenderedComponent(<DefaultNavLink />);
+          break;
+
+        case 'navigation-back-button':
+          const NavBackController = lazy(() => import('./navBack/_NavBackController'));
+          setRenderedComponent(<NavBackController variantId={variantId} />);
           break;
 
         case 'primary-navigation':
