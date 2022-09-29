@@ -63,16 +63,20 @@
 
 .bsds-search-result
 {
-  padding: space(lg) space(2x);
-
   &:not(:first-of-type)
   {
     margin: 0;
   }
 
-  &.active
+  .bsds-link
   {
-    @include focus-default-inset;
+    display: block;
+    padding: space(lg) space(2x);
+
+    &.active-descendant
+    {
+      @include focus-default-inset;
+    }
   }
 }
 
