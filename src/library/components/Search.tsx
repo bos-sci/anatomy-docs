@@ -4,7 +4,7 @@ import { RequireOnlyOne } from '../types';
 import Button from './Button';
 import IconClose from './icon/icons/IconClose';
 import Link from './Link';
-import StrongMatch from './StrongMatch';
+import BoldMatch from './BoldMatch';
 
 interface Result {
   to?: string;
@@ -157,6 +157,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
               {/* TODO: consider pulling these into an action mixin */}
               {inputValue &&
                 <button
+                  type="button"
                   className="bsds-search-clear"
                   aria-label={texts?.searchClearTextAriaLabel || "clear search text"}
                   onClick={() => setInputValue('')}>
@@ -167,10 +168,15 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 <ul id={searchId + '-results'} className="bsds-search-results" hidden={!inputValue}>
                   {searchResults.length > 0 && searchResults.map((result, i) => (
                     <li key={result.text + i} className="bsds-search-result">
-                      <Link id={searchId + '-result-' + i} to={result.to} href={result.href} className={'bsds-link-nav' + (i === activeDescendant ? ' active-descendant' : '')}>
-                        <StrongMatch match={inputValue}>
+                      <Link
+                        id={searchId + '-result-' + i}
+                        to={result.to}
+                        href={result.href}
+                        className={'bsds-link-nav' + (i === activeDescendant ? ' active-descendant' : '')}
+                        aria-label={result.text}>
+                        <BoldMatch match={inputValue}>
                           {result.text}
-                        </StrongMatch>
+                        </BoldMatch>
                       </Link>
                     </li>
                   ))}

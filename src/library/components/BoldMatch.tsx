@@ -5,7 +5,7 @@ interface Props {
   children: ReactNode;
 }
 
-const StrongMatch = (props: Props): JSX.Element => {
+const BoldMatch = (props: Props): JSX.Element => {
   const [matchArray, setMatchArray] = useState<string[]>([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const StrongMatch = (props: Props): JSX.Element => {
   return <>
     {matchArray.map((match, i) => {
       if (match.toLowerCase() === props.match.toLowerCase()) {
-        return <strong key={match + i}>{match}</strong>;
+        return <span key={match + i} className="bsds-font-weight-heavy">{match}</span>;
       } else {
         return <Fragment key={match + i}>{match}</Fragment>;
       }
@@ -27,4 +27,4 @@ const StrongMatch = (props: Props): JSX.Element => {
   </>;
 }
 
-export default StrongMatch;
+export default BoldMatch;
