@@ -143,7 +143,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 value={inputValue}
                 name="query"
                 role={hasAutocomplete ? 'combobox' : undefined}
-                autoComplete="false"
+                autoComplete="off"
                 aria-label={texts?.searchInputAriaLabel || "search input"}
                 aria-owns={hasAutocomplete ? searchId + '-results' : undefined}
                 aria-controls={hasAutocomplete ? searchId + '-results' : undefined}
