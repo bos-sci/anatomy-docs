@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, ForwardedRef, forwardRef, InputHTMLAttributes, MutableRefObject, useEffect, useId, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { RequireOnlyOne } from '../types';
 import Button from './Button';
 import IconClose from './icon/icons/IconClose';
@@ -29,6 +30,8 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = true, searchResults, texts, placeholder, value, defaultValue, onInvalid, onBlur, onChange, onFormSubmit, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
+
+  const navigate = useNavigate();
 
   const searchId = useId();
 
@@ -77,8 +80,16 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
         break;
 
       case 'Enter':
-        // TODO: click option on enter
         e.preventDefault();
+        // TODO: Using navigate() here makes react-router-dom (v6) a dependency of Anatomy.
+        // Find another solution if we don't want that dependency.
+        if(searchResults && inputValue) {
+          if (searchResults[activeDescendant].to) {
+            navigate(searchResults[activeDescendant].to as string);
+          } else if (searchResults[activeDescendant].href) {
+            navigate(searchResults[activeDescendant].href as string);
+          }
+        }
         break;
 
       default:
@@ -132,6 +143,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 value={inputValue}
                 name="query"
                 role={hasAutocomplete ? 'combobox' : undefined}
+                autoComplete="false"
                 aria-label={texts?.searchInputAriaLabel || "search input"}
                 aria-owns={hasAutocomplete ? searchId + '-results' : undefined}
                 aria-controls={hasAutocomplete ? searchId + '-results' : undefined}
@@ -153,15 +165,16 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
               }
               {(hasAutocomplete && searchResults) &&
                 <ul id={searchId + '-results'} className="bsds-search-results" hidden={!inputValue}>
-                  {searchResults.map((result, i) => (
-                    <li key={result.text + i} className={'bsds-search-result' + (i === activeDescendant ? ' active' : '')}>
-                      <Link id={searchId + '-result-' + i} to={result.to} href={result.href} className="bsds-link-nav">
+                  {searchResults.length > 0 && searchResults.map((result, i) => (
+                    <li key={result.text + i} className="bsds-search-result">
+                      <Link id={searchId + '-result-' + i} to={result.to} href={result.href} className={'bsds-link-nav' + (i === activeDescendant ? ' active-descendant' : '')}>
                         <StrongMatch match={inputValue}>
                           {result.text}
                         </StrongMatch>
                       </Link>
                     </li>
                   ))}
+                  {searchResults.length === 0 && <li id={searchId + '-result-0'} className="bsds-search-result">No results found.</li>}
                 </ul>
               }
             </div>
