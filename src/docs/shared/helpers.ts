@@ -26,6 +26,7 @@ export const indexSearch = (query: string) => {
       index.search(query).then(({hits}) => {
         resolve(hits
           .filter((hit: any) => hit.title !== 'Anatomy - Boston Scientific')
+          .filter((hit: any) => !hit.pathname.includes('/example/'))
           .map((hit: any) => ({
               to: hit.pathname,
               text: hit.title.replace(' - Anatomy - Boston Scientific', ''),
