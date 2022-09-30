@@ -24,7 +24,7 @@ type LinkedCardProps =
     linkActionText?: string
   }
 
-type HoverCardProps = 
+type HoverProps = 
   | {
     brandGradient?: boolean,
     dropShadow?: never
@@ -35,7 +35,7 @@ type HoverCardProps =
   }
 
 type Props = PlainCardProps & LinkedCardProps;
-type AllProps = Props & HoverCardProps;
+type AllProps = Props & HoverProps;
   
 const Card = (props : AllProps): JSX.Element => {
   const {texts, variant, headingLevel, linkTitle, linkHref, actionLink, linkActionText, brandGradient, dropShadow } = props;
@@ -69,10 +69,17 @@ const Card = (props : AllProps): JSX.Element => {
   };
 
   let decorativeState = '';
-  if(brandGradient) {
+  if(brandGradient && linkHref) {
     decorativeState = 'bsds-card-gradient';
-  } else if(dropShadow) {
+    classes = 'bsds-card-border-light';
+    titleLinkClasses = 'bsds-link-subtle';
+    linkClasses = 'bsds-link';
+
+  } else if(dropShadow && linkHref) {
     decorativeState = 'bsds-card-shadow';
+    classes = 'bsds-card-border-light';
+    titleLinkClasses = 'bsds-link-subtle';
+    linkClasses = 'bsds-link';
   }
 
   const cardContent = ( 
