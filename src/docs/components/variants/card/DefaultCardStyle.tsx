@@ -5,6 +5,7 @@ import CardGroup from '../../../../library/components/CardGroup';
 const DefaultCard = (): JSX.Element => {
 
   return (
+    <>
       <Example>
         <CardGroup cardLayout='2up'>
           <Card
@@ -17,6 +18,21 @@ const DefaultCard = (): JSX.Element => {
           /> 
         </CardGroup>
       </Example>
+
+      <Example isDarkTheme={true}>
+        <CardGroup cardLayout='2up'>
+          <Card
+            texts={{
+              cardTitle: "Card title",
+              cardDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
+            }}
+            variant='ghost'
+            linkTitle={false} 
+            headingLevel="h4"
+          /> 
+        </CardGroup>
+      </Example>
+    </>
   );
 }
 

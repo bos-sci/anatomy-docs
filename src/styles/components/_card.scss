@@ -11,14 +11,23 @@
 
     &-ghost 
     { 
-      background-color: $neutral-00;
+      position: relative; //this is for the pseudo hover class .link-hitbox
       color: $neutral-100;
     }
 
     &-border-light 
     {
+      position: relative;
+      padding: space(3x);
       border: space(xxs) solid $border-color-subtle;
       background-color: $neutral-100;
+    }
+
+    &-border-ghost
+    {
+      padding: space(3x);
+      color: $neutral-100;
+      border: space(xxs) solid $border-color-subtle;
     }
 
     &-image 
@@ -29,11 +38,6 @@
       object-position: top;
       margin: 0;
     }
-  
-    // &-content
-    // {
-    //   padding: space(3x);
-    // }
 
     &-title 
     {
@@ -41,17 +45,32 @@
       color: inherit;
     }
 
-    &-title-link 
-    {
-      @include link-subtle;
-      margin: 0;
-      width: max-content;
-      text-decoration-thickness: space(xs);
-    }
-
     &-description 
     {
       margin: space(2x) 0;
+    }
+
+    &-gradient:hover::before,
+    &-gradient:focus::before 
+    {
+      @include animated-gradient-brand;
+      bottom: 0;
+    }
+
+    &-shadow::before 
+    {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      box-shadow: $box-shadow-secondary;
+    }
+
+    &-shadow:hover::before
+    {
+      box-shadow: $box-shadow-tertiary;
     }
   }
 
@@ -63,7 +82,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 2;
+    cursor: pointer;
   }
+
+  .link-hitbox:focus::before 
+  {
+    @include focus-default;
+  }
+
 
   
