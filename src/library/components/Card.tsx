@@ -40,62 +40,76 @@ type AllProps = Props & HoverProps;
 const Card = (props : AllProps): JSX.Element => {
   const {texts, variant, headingLevel, linkTitle, linkHref, actionLink, linkActionText, brandGradient, dropShadow } = props;
 
-  let classes = '';
-  let titleLinkClasses = '';
-  let linkClasses = '';
+  let cardStyles = {
+    classes: '',
+    titleLinkClasses: '',
+    linkClasses: ''
+  }
+
+  const defaultStyle = {
+    classes: 'bsds-card',
+    titleLinkClasses: 'bsds-link-subtle',
+    linkClasses: 'bsds-link'
+  }
+
+  const ghostStyle = {
+    classes: 'bsds-card-ghost',
+    titleLinkClasses: 'bsds-link-ghost',
+    linkClasses: 'bsds-link-ghost'
+  }
+
+  const borderLightStyle = {
+    classes: 'bsds-card-border-light',
+    titleLinkClasses: 'bsds-link-subtle',
+    linkClasses: 'bsds-link'
+  }
+
+  const borderGhostStyle = {
+    classes: 'bsds-card-border-ghost',
+    titleLinkClasses: 'bsds-link-ghost',
+    linkClasses: 'bsds-link-ghost'
+  }
 
   switch(variant) {
     case 'ghost':
-      classes = 'bsds-card-ghost';
-      titleLinkClasses = 'bsds-link-ghost';
-      linkClasses = 'bsds-link-ghost';
+      cardStyles = {...ghostStyle};
       break;
     case 'border-light':
-      classes = 'bsds-card-border-light';
-      titleLinkClasses = 'bsds-link-subtle';
-      linkClasses = 'bsds-link';
+      cardStyles = {...borderLightStyle};
       break;
     case 'border-ghost':
-      classes = 'bsds-card-border-ghost';
-      titleLinkClasses = 'bsds-link-ghost';
-      linkClasses = 'bsds-link-ghost';
+      cardStyles = {...borderGhostStyle};
       break;
 
     default: 
-      classes = 'bsds-card';
-      titleLinkClasses = 'bsds-link-subtle';
-      linkClasses = 'bsds-link';
+      cardStyles = {...defaultStyle};
       break;
   };
 
   let decorativeState = '';
   if(brandGradient && linkHref) {
     decorativeState = 'bsds-card-gradient';
-    classes = 'bsds-card-border-light';
-    titleLinkClasses = 'bsds-link-subtle';
-    linkClasses = 'bsds-link';
+    cardStyles = {...borderLightStyle};
 
   } else if(dropShadow && linkHref) {
     decorativeState = 'bsds-card-shadow';
-    classes = 'bsds-card-border-light';
-    titleLinkClasses = 'bsds-link-subtle';
-    linkClasses = 'bsds-link';
+    cardStyles = {...borderLightStyle};
   }
 
   const cardContent = ( 
     <div className="bsds-card-content">
       <HeadingElement headingLevel={headingLevel} className={`${'bsds-card-title'} ${decorativeState}`}>
-        {linkTitle ? <Link className={`${titleLinkClasses} ${'link-hitbox'}`} href={linkHref}>{texts.cardTitle}</Link> : <>{texts.cardTitle}</>}
+        {linkTitle ? <Link className={`${cardStyles.titleLinkClasses} ${'link-hitbox'}`} href={linkHref}>{texts.cardTitle}</Link> : <>{texts.cardTitle}</>}
         </HeadingElement> 
         <p className="bsds-card-description">{texts?.cardDescription}</p>
           { actionLink ? (
-            <Link href={linkHref} className={`${linkClasses} ${decorativeState}`}>{linkActionText}</Link>
+            <Link href={linkHref} className={`${cardStyles.linkClasses} ${decorativeState}`}>{linkActionText}</Link>
           ) : null }
     </div>    
   ); 
 
     return (
-      <div className={`${classes}`}>
+      <div className={cardStyles.classes}>
         {cardContent}
       </div>
     );
