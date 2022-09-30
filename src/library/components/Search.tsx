@@ -180,7 +180,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                       </Link>
                     </li>
                   ))}
-                  {searchResults.length === 0 && <li id={searchId + '-result-0'} className="bsds-search-result">No results found.</li>}
+                  {searchResults.length === 0 && <li id={searchId + '-result-0'} className="bsds-search-result bsds-search-result-none">No results found.</li>}
                 </ul>
               }
             </div>

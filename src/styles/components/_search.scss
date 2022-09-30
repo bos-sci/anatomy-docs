@@ -68,10 +68,15 @@
     margin: 0;
   }
 
+  &.bsds-search-result-none,
+  .bsds-link
+  {
+    padding: space(lg) space(2x);
+  }
+
   .bsds-link
   {
     display: block;
-    padding: space(lg) space(2x);
 
     &.active-descendant
     {
