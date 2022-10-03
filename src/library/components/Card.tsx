@@ -1,5 +1,6 @@
 import HeadingElement from "./Heading";
 import Link from "./Link";
+import Icon from "./icon/Icon";
 
 interface PlainCardProps {
  texts: {
@@ -7,7 +8,9 @@ interface PlainCardProps {
   cardDescription: string,
 }
   variant?: string,
-  headingLevel: "h2" | "h3" | "h4" | "h5" | "h6"
+  headingLevel: "h2" | "h3" | "h4" | "h5" | "h6",
+  icon?: boolean, 
+  iconName?: string
 }
 
 type LinkedCardProps = 
@@ -38,7 +41,7 @@ type Props = PlainCardProps & LinkedCardProps;
 type AllProps = Props & HoverProps;
   
 const Card = (props : AllProps): JSX.Element => {
-  const {texts, variant, headingLevel, linkTitle, linkHref, actionLink, linkActionText, brandGradient, dropShadow } = props;
+  const {texts, variant, headingLevel, icon, iconName, linkTitle, linkHref, actionLink, linkActionText, brandGradient, dropShadow } = props;
 
   let cardStyles = {
     classes: '',
@@ -98,6 +101,7 @@ const Card = (props : AllProps): JSX.Element => {
 
   const cardContent = ( 
     <div className="bsds-card-content">
+      {icon ? <Icon name={`${iconName}`} className='bsds-icon-card'/> : null}
       <HeadingElement headingLevel={headingLevel} className={`${'bsds-card-title'} ${decorativeState}`}>
         {linkTitle ? <Link className={`${cardStyles.titleLinkClasses} ${'link-hitbox'}`} href={linkHref}>{texts.cardTitle}</Link> : <>{texts.cardTitle}</>}
         </HeadingElement> 

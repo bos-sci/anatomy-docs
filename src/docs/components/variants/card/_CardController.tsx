@@ -5,6 +5,7 @@ import WithLinkedTitle from './WithLinkedTitle';
 import WithLinkOrAction from './WithLinkOrAction';
 import BorderStyleCard from './BorderStyleCard';
 import WithBrandGradient from './WithBrandGradient';
+import WithIcon from './WithIcon';
 
 const CardController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
@@ -15,6 +16,8 @@ const CardController = ({ variantId }: VariantProps): JSX.Element => {
       return <WithLinkOrAction />;
     case 'withDecorativeTreatment':
       return <WithBrandGradient />;
+    case 'withIcon':
+      return <WithIcon />;
 
     // Styles  
     case 'defaultCardStyle':
