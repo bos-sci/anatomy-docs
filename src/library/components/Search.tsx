@@ -25,6 +25,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     searchAriaLabel?: string;
     searchInputAriaLabel?: string;
     searchClearTextAriaLabel?: string;
+    noResultsFound?: string;
   }
   onFormSubmit?: (e: FormEvent<HTMLFormElement>) => void;
 }
@@ -82,7 +83,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
       case 'Enter':
         e.preventDefault();
         // TODO: Using navigate() here makes react-router-dom (v6) a dependency of Anatomy.
-        // Find another solution if we don't want that dependency.
+        // Find another solution if we don't want that dependency, and address when we split lib from docs.
         if(searchResults && inputValue) {
           if (searchResults[activeDescendant].to) {
             navigate(searchResults[activeDescendant].to as string);
@@ -154,7 +155,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 aria-activedescendant={activeDescendant >= 0 ? searchId + '-result-' + activeDescendant : undefined}
                 onChange={handleChange}
                 {...inputAttrs} />
-              {/* TODO: consider pulling these into an action mixin */}
+              {/* TODO: consider pulling this into an input addon component/variant */}
               {inputValue &&
                 <button
                   type="button"
@@ -173,14 +174,15 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                         to={result.to}
                         href={result.href}
                         className={'bsds-link-nav' + (i === activeDescendant ? ' active-descendant' : '')}
-                        aria-label={result.text}>
+                        aria-label={result.text}
+                        tabIndex={-1}>
                         <BoldMatch match={inputValue}>
                           {result.text}
                         </BoldMatch>
                       </Link>
                     </li>
                   ))}
-                  {searchResults.length === 0 && <li id={searchId + '-result-0'} className="bsds-search-result bsds-search-result-none">No results found.</li>}
+                  {searchResults.length === 0 && <li id={searchId + '-result-0'} className="bsds-search-result bsds-search-result-none">{texts?.noResultsFound || 'No results found'}</li>}
                 </ul>
               }
             </div>
