@@ -19,6 +19,7 @@ const SearchResults = (): JSX.Element => {
 
   const [value, setValue] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [ariaText, setAriaText] = useState('');
   const [searchResults, setSearchResults] = useState<Result[]>();
 
   useTitle({titlePrefix: `${searchQuery} - Search results`});
@@ -33,11 +34,13 @@ const SearchResults = (): JSX.Element => {
   useEffect(() => {
     indexSearch(searchQuery).then((results) => {
       setSearchResults(results);
+      setAriaText(`We found ${results.length} results for your search.`);
     });
   }, [searchQuery]);
 
   const updateQuery = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setAriaText('');
     setSearchQuery(value);
   }
 
@@ -48,8 +51,9 @@ const SearchResults = (): JSX.Element => {
         seoMetaDescription={`Search results for ${searchQuery}`}>
         <div className="docs-search-results-page">
           <Search label="Search" value={value} hasAutocomplete={false} onChange={e => setValue(e.target.value)} onFormSubmit={updateQuery} />
-          <p className="bsds-body-subtle">We found <strong>{searchResults?.length}</strong> results for your search.</p>
-          {!searchResults && <p>Loading results...</p>}
+          <p aria-hidden="true" className="bsds-body-subtle">We found <strong>{searchResults?.length}</strong> results for your search.</p>
+          <p role="alert" aria-live="assertive" aria-atomic="true" className="bsds-visually-hidden">{ariaText}</p>
+          {!searchResults && <p role="alert" aria-live="assertive">Loading results...</p>}
           {(searchResults && searchResults.length > 0) &&
             <ul className="docs-search-results" hidden={!searchQuery}>
               {searchResults.map((result, i) => (
