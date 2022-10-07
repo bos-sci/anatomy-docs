@@ -119,12 +119,10 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
   return (
     <form className="bsds-form-search" role="search" aria-label={texts?.searchAriaLabel || "site search"} onSubmit={handleSubmit}>
       <div className="bsds-input">
-        <label className="bsds-search">
-          {isLabelVisible &&
-            <div className="bsds-input-text-label">
-              { label }
-            </div>
-          }
+        <div className="bsds-search">
+          <label htmlFor={searchId} className={"bsds-input-text-label" + (!isLabelVisible ? ' bsds-visually-hidden' : '')}>
+            { label }
+          </label>
           <div className="bsds-search-control" onKeyDown={updateActiveDesc} ref={searchControlRef}>
             <div className="bsds-input-search">
               <input
@@ -138,6 +136,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                     }
                   }
                 }}
+                id={searchId}
                 type="search"
                 className="bsds-input-text-input"
                 placeholder={placeholder || 'Search'}
@@ -190,7 +189,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
               {texts?.buttonText || 'Search'}
             </Button>
           </div>
-        </label>
+        </div>
         {texts?.helpText && <p id={'inputHelpText' + searchId} className="bsds-input-help-text">{ texts?.helpText }</p>}
       </div>
     </form>
