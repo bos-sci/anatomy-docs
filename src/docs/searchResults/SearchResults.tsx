@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Link from '../../library/components/Link';
 import Search, { SearchResult } from '../../library/components/Search';
 import Layout from '../shared/components/Layout';
@@ -16,6 +16,7 @@ type Result = SearchResult & {
 const SearchResults = (): JSX.Element => {
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [value, setValue] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -42,6 +43,7 @@ const SearchResults = (): JSX.Element => {
     e.preventDefault();
     setAriaText('');
     setSearchQuery(value);
+    navigate(`?query=${value}`);
   }
 
   return (
