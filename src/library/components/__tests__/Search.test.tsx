@@ -25,7 +25,7 @@ describe('Search', () => {
     render(<Router><Search label="Search" /></Router>);
 
     expect(screen.getByRole('combobox')).toBeInTheDocument();
-    expect(screen.getByText('Search')).toBeInTheDocument();
+    expect(screen.getAllByText('Search')[1]).toBeInTheDocument();
   });
 
   it('Should render clear button only when there is a value', () => {
@@ -61,7 +61,7 @@ describe('Search', () => {
     const user = userEvent.setup();
     render(<Router><Search label="Search" value="test" onFormSubmit={onFormSubmit} /></Router>);
 
-    const searchBtn = screen.getByText('Search');
+    const searchBtn = screen.getAllByText('Search')[1];
     await user.click(searchBtn);
     expect(onFormSubmit).toBeCalled();
   });
