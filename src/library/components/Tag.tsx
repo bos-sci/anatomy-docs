@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-interface Props {
+export interface Props {
   children: ReactNode;
   variant?: string;
 }

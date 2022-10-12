@@ -3,7 +3,6 @@ import Card from "../../../../library/components/Card";
 import CardGroup from "../../../../library/components/CardGroup";
 
 const WithIcon = (): JSX.Element => {
-
   return (
     <Example>
       <CardGroup cardLayout='2up'>
@@ -14,7 +13,7 @@ const WithIcon = (): JSX.Element => {
           }}
           headingLevel="h4"
           icon={true}
-          iconName='icon-browser-with-cursor' 
+          iconName={'demo-card-icon'}
         />
       </CardGroup>
     </Example>
