@@ -182,6 +182,14 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
   }, [isMenuOpen]);
 
   useEffect(() => {
+    if (location) {
+      setIsSearchOpen(false);
+      setIsMenuOpen(false);
+      setHistory([]);
+    }
+  }, [location]);
+
+  useEffect(() => {
     // Close menu on focus out or click out
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!navRef.current?.contains(e.target as Node)) {
