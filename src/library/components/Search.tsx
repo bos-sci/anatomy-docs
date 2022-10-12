@@ -41,7 +41,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
   const [isDirty, setIsDirty] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const searchControlRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIsDirty(true);
@@ -52,7 +52,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
   }
 
   const moveActiveDesc = (distance: number) => {
-    if (searchControlRef.current?.contains(document.activeElement) && searchResults && inputValue.length) {
+    if (searchRef.current?.contains(document.activeElement) && searchResults && inputValue.length) {
       if (activeDescendant + distance > searchResults?.length - 1) {
         setActiveDescendant(0);
       } else if (activeDescendant + distance < 0) {
@@ -123,8 +123,8 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
           <label htmlFor={searchId} className={"bsds-input-text-label" + (!isLabelVisible ? ' bsds-visually-hidden' : '')}>
             { label }
           </label>
-          <div className="bsds-search-control" onKeyDown={updateActiveDesc} ref={searchControlRef}>
-            <div className="bsds-input-search">
+          <div className="bsds-search-control">
+            <div ref={searchRef} className="bsds-input-search" onKeyDown={updateActiveDesc}>
               <input
                 ref={node => {
                   if (node) {
