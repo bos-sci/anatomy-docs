@@ -33,8 +33,13 @@ const createSitemap = async () => {
   const entries = await client.getEntries({
     content_type: contentTypeIds,
   });
+
   const urls = entries.items
-    .filter((entry) => entry.fields.name !== undefined)
+    .filter(
+      (entry) =>
+        entry.fields.name !== undefined &&
+        MAIN_NAVIGATION[entry.sys.contentType.sys.id] !== undefined
+    )
     .map((entry) => {
       if (entry.fields.group) {
         return {
@@ -62,7 +67,7 @@ const createSitemap = async () => {
     sitemap.write(url);
   });
   sitemap.end();
-  
+
   console.log("Sitemap generated successfully");
 };
 
