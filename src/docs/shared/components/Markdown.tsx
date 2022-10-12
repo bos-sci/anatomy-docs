@@ -1,7 +1,7 @@
 import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import { useEffect, useState } from 'react';
-import { slugify } from '../../helpers';
+import { slugify } from '../helpers';
 
 interface Props {
   markdown: string;

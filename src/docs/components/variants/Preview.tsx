@@ -136,6 +136,11 @@ const Preview = ( props: Props ): JSX.Element => {
           setRenderedComponent(<InputRadioGroupController variantId={variantId} />);
           break;
 
+        case 'search':
+          const DefaultSearch = lazy(() => import('./search/DefaultSearch'));
+          setRenderedComponent(<DefaultSearch />);
+          break;
+
         case 'secondary-navigation':
           const DefaultNavSecondary = lazy(() => import('./navSecondary/DefaultNavSecondary'));
           setRenderedComponent(<DefaultNavSecondary />);

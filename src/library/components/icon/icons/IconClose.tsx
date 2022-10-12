@@ -1,7 +1,7 @@
 import { IconProps } from './iconTypes';
 
 const IconClose = (props: IconProps): JSX.Element => {
-  return <svg aria-hidden="true" className={`${props.className}`} focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M12.41,9l5.12-5.12a1.6,1.6,0,0,0,0-2.27L16.39.47a1.6,1.6,0,0,0-2.27,0L9,5.59,3.88.47a1.6,1.6,0,0,0-2.27,0L.47,1.61a1.6,1.6,0,0,0,0,2.27L5.59,9,.47,14.12a1.6,1.6,0,0,0,0,2.27l1.14,1.14a1.6,1.6,0,0,0,2.27,0L9,12.41l5.12,5.12a1.6,1.6,0,0,0,2.27,0l1.14-1.14a1.6,1.6,0,0,0,0-2.27Z"/></svg>;
+  return <svg aria-hidden="true" className={`${props.className}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" role="img" focusable="false"><path id="b" d="M10.42,9L17.71,1.71c.39-.39,.39-1.03,0-1.42s-1.03-.39-1.42,0l-7.29,7.29L1.71,.29C1.32-.1,.69-.1,.29,.29S-.1,1.32,.29,1.71l7.29,7.29L.29,16.29c-.39,.39-.39,1.03,0,1.42s1.03,.39,1.42,0l7.29-7.29,7.29,7.29c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29c.39-.39,.39-1.03,0-1.42l-7.29-7.29Z"/></svg>;
 }
 
 export default IconClose;

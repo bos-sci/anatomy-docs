@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
@@ -6,7 +6,8 @@ import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { Location, NavLink, useLocation } from 'react-router-dom';
 import Link from '../../Link';
-import Search from '../../Search';
+import NavPrimarySearch from './NavPrimarySearch';
+import { SearchResult } from '../../Search';
 
 interface NavItem {
   text: string;
@@ -68,11 +69,14 @@ interface Props {
   utilityItems?: NavItemUtility[];
   hasSearch?: boolean;
   isConstrained?: boolean;
+  searchResults?: SearchResult[];
+  onSearch?: (query: string, e: FormEvent<HTMLFormElement>) => void;
+  onSearchChange?: (query: string, e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 let navPrimaryMenuIndex = 0;
 
-const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isConstrained = false }: Props): JSX.Element => {
+const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isConstrained = false, searchResults, onSearchChange, onSearch }: Props): JSX.Element => {
   const location = useLocation();
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
@@ -176,6 +180,14 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
       setIsNavTouched(true);
     }
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (location) {
+      setIsSearchOpen(false);
+      setIsMenuOpen(false);
+      setHistory([]);
+    }
+  }, [location]);
 
   useEffect(() => {
     // Close menu on focus out or click out
@@ -296,16 +308,15 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
             </li>
           </ul>
         </div>
-        <div className={'bsds-search-panel' + (isSearchOpen ? ' open' : '')}>
-          <Search
-            label="Search"
-            texts={{
-              buttonText: texts?.searchButtonText,
-              buttonAriaLabel: texts?.searchButtonAriaLabel,
-              searchAriaLabel: "Primary navigation search"
-            }}
-          />
-        </div>
+        <NavPrimarySearch
+          labelText='Search'
+          buttonText={texts?.searchButtonText || 'Search'}
+          buttonAriaLabel={texts?.searchButtonAriaLabel || 'search'}
+          inputAriaLabel={"Primary navigation search"}
+          isOpen={isSearchOpen}
+          searchResults={searchResults}
+          onSearchChange={onSearchChange}
+          onSearch={onSearch} />
         {((navTree.length > 0 && isViewportSmall) || (navTree.length > 0 && !isNavTouched)) &&
           <NavPrimaryMenu
             ref={menuRef}
