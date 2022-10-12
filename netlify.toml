@@ -15,5 +15,5 @@
 [[plugins]]
 package = "@algolia/netlify-plugin-crawler"
   [plugins.inputs]
-  branches = ['master', 'develop', 'feature/ads-165'] # TODO: Remove 'feature/ads-165' before merging this branch
+  branches = ['master', 'develop']
   renderJavaScript = true
