@@ -1,0 +1,27 @@
+@import "/src/styles/abstracts/abstracts";
+@import "/src/styles/base/base";
+
+.docs-search-results
+{
+  margin: 0;
+  margin-top: space(6x);
+  padding: 0;
+}
+
+.docs-search-result
+{
+  list-style: none;
+
+  &:not(:first-of-type)
+  {
+    margin-top: space(4x);
+  }
+}
+
+.docs-search-results-page
+{
+  .bsds-form-search
+  {
+    margin-top: space(4x);
+  }
+}

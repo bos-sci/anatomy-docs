@@ -74,6 +74,10 @@ const Foundations = (): JSX.Element => {
         text: 'Typography',
         slug: basePath + '/typography'
       },
+      {
+        text: 'Web sustainability',
+        slug: basePath + '/web-sustainability'
+      },
     ]);
   }, [location]);
 
