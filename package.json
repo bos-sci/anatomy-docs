@@ -22,7 +22,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-types": "graphql-codegen --config codegen.yml --require dotenv/config",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "sitemap": "node src/utils/generateSitemap.js"
   },
   "eslintConfig": {
     "extends": [
@@ -67,9 +68,13 @@
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
     "axe-core": "^4.4.2",
+    "contentful": "^9.2.5",
     "cypress": "^10.3.0",
     "cypress-axe": "^1.0.0",
     "cypress-real-events": "^1.7.1",
-    "graphql": "^16.5.0"
+    "dotenv": "^10.0.0",
+    "fs": "^0.0.1-security",
+    "graphql": "^16.5.0",
+    "sitemap": "^7.1.1"
   }
 }
