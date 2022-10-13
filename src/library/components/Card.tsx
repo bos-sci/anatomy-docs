@@ -1,15 +1,14 @@
-import { ReactElement, cloneElement} from 'react';
+import { ReactElement, cloneElement, useState, useEffect} from 'react';
 import HeadingElement from "./Heading";
 import {Props as TagProps} from "./Tag";
 import Link from "./Link";
 import Icon from "./icon/Icon";
-import Tag from "./Tag";
 
 interface PlainCardProps {
- texts: {
-  cardTitle: string,
-  cardDescription: string,
-}
+  texts: {
+    cardTitle: string,
+    cardDescription: string,
+  }
   variant?: string,
   headingLevel: "h2" | "h3" | "h4" | "h5" | "h6",
   tag?: ReactElement< TagProps >,
@@ -43,9 +42,9 @@ type HoverProps =
   }
 
 type BaseProps = PlainCardProps & LinkedCardProps;
-type AllProps = BaseProps & HoverProps;
+type Props = BaseProps & HoverProps;
   
-const Card = (props : AllProps): JSX.Element => {
+const Card = (props : Props): JSX.Element => {
   const {texts, variant, headingLevel, tag, tagStyle = 'default', icon, iconName, linkTitle, linkHref, actionLink, linkActionText, brandGradient, dropShadow } = props;
 
   let cardStyles = {
@@ -103,39 +102,41 @@ const Card = (props : AllProps): JSX.Element => {
     decorativeState = 'bsds-card-shadow';
     cardStyles = {...borderLightStyle};
   }
-
+  
   let tagVariant = '';
-  if(tag) {
-    cloneElement(tag as ReactElement, {
-      children: [],
-      variant: props.variant
-    })
+  switch(tagStyle) {
+    case 'default':
+      if(variant !== 'ghost') {
+        tagVariant = 'default'
+      } else {
+        tagVariant = 'ghost'
+      }
+      break;
+    case 'assertive':
+      if(variant !== 'ghost' && variant !== 'border-ghost') {
+        tagVariant = 'assertive'
+      } else {
+        tagVariant = 'assertive-ghost'
+      }
+      break;
     
-    switch(tagStyle) {
-      case 'default':
-        if(variant !== 'ghost') {
-          tagVariant = 'default'
-        } else {
-          tagVariant = 'ghost'
-        }
-        break;
-      case 'assertive':
-        if(variant !== 'ghost' && variant !== 'border-ghost') {
-          tagVariant = 'assertive'
-        } else {
-          tagVariant = 'assertive-ghost'
-        }
-        break;
-      
-      default:
-        tagVariant = 'default';
-        break;
-    }
+    default:
+      tagVariant = 'default';
+      break;
   }
+
+  const [clonedTag, setClonedTag] = useState<ReactElement>();
+  useEffect(() => {
+    if(tag) {
+        setClonedTag(cloneElement(tag as ReactElement, {
+        variant: tagVariant
+      }));
+    }
+  }, [tag, tagVariant])
 
   const cardContent = ( 
     <div className='bsds-card-content'>
-      { tag && <Tag variant={tagVariant}>{tag.props.children}</Tag> }
+      { clonedTag }
       { icon && <Icon name={`${iconName}`} className='bsds-icon-card'/> }
       <HeadingElement headingLevel={headingLevel} className='bsds-card-title'>
         { linkTitle ? <Link className={`${cardStyles.titleLinkClasses} ${'link-hitbox'}`} href={linkHref}>{texts.cardTitle}</Link> : <>{texts.cardTitle}</> }

@@ -42,6 +42,10 @@ const Components = (): JSX.Element => {
         slug: basePath + '/button',
       },
       {
+        text: 'Card',
+        slug: basePath + '/card',
+      },
+      {
         text: 'Dropdown menu',
         slug: basePath + '/dropdown-menu',
       },

@@ -5,17 +5,15 @@ import Tag from "../../../../library/components/Tag";
 
 const WithTag = (): JSX.Element => {
   return (
-    <Example isDarkTheme={true}>
+    <Example>
       <CardGroup cardLayout='2up'>
         <Card
           texts={{
             cardTitle: "Card title",
-            cardDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum." 
+            cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum." 
           }}
-          variant="ghost"
           headingLevel="h4"
           tag={<Tag>Default Tag</Tag>}
-          tagStyle="assertive"
         />
       </CardGroup>
     </Example>

@@ -7,7 +7,7 @@
   overflow: auto;
   max-width: max-content;
   height: auto;
-  padding: 0 0 0 space(sm);
+  padding: space(sm);
 
   &-content 
   {
@@ -84,8 +84,9 @@
     bottom: 0;
   }
 
-  &focus::before  
+  &:focus
   {
     @include focus-default;
+    width: max-content;
   }      
 }

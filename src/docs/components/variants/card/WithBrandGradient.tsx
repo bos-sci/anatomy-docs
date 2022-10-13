@@ -9,10 +9,9 @@ const WithBrandGradient = (): JSX.Element => {
         <Card
           texts={{
             cardTitle: "Card title",
-            cardDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
+            cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
           }}
           headingLevel="h4"
-          variant=""
           actionLink={true}
           linkActionText="Default link"
           linkHref="#"
@@ -21,10 +20,9 @@ const WithBrandGradient = (): JSX.Element => {
        <Card
           texts={{
             cardTitle: "Card title",
-            cardDescription:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
+            cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
           }}
           headingLevel="h4"
-          variant=""
           actionLink={true}
           linkActionText="Default link"
           linkHref="#"
