@@ -159,7 +159,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 <button
                   type="button"
                   className="bsds-search-clear"
-                  aria-label={texts?.searchClearTextAriaLabel || "clear search text"}
+                  aria-label={texts?.searchClearTextAriaLabel || "clear search query"}
                   onClick={() => setInputValue('')}>
                   <IconClose className="bsds-icon-lg" />
                 </button>
