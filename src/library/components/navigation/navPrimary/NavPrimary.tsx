@@ -317,7 +317,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
           searchResults={searchResults}
           onSearchChange={onSearchChange}
           onSearch={onSearch} />
-        {((navTree.length > 0 && isViewportSmall) || (navTree.length > 0 && !isNavTouched)) &&
+        {(navTree.length > 0 && (isViewportSmall || !isNavTouched)) &&
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
