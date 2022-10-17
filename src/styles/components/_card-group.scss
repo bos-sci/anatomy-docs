@@ -1,43 +1,38 @@
 .bsds-card-group 
 { 
   display: grid;
+  grid-template-columns: repeat(1, 1fr);
   grid-template-rows: auto;
   grid-gap: space(4x);
 
-  &-2up 
+  &-2up,
+  &-3up, 
+  &-4up 
   {
     @extend .bsds-card-group;
-    grid-template-columns: repeat(2, 1fr);
   }
 
-  &-3up
+  @media (min-width: $md)
   {
-    @extend .bsds-card-group;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  &-4up
-  {
-    @extend .bsds-card-group;
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-    @media (max-width: $md)
+    &-2up,
+    &-3up, 
+    &-4up 
     {
-      &-3up, 
-      &-4up 
-      {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
+
+  @media (min-width: $lg)
+  {
+    &-3up
+    {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &-4up 
+    {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
     
-    @media (max-width: $sm)
-    {
-      &-2up,
-      &-3up, 
-      &-4up 
-      {
-        grid-template-columns: repeat(1, 1fr);
-      }
-    }
 }

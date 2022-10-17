@@ -2,7 +2,7 @@ import Card from "../../../../library/components/Card"
 import CardGroup from "../../../../library/components/CardGroup"
 import Example from "../../../shared/components/Example"
 
-const WithBrandGradient = (): JSX.Element => {
+const DecorativeStyle = (): JSX.Element => {
   return (
     <Example>
       <CardGroup cardLayout="2up">
@@ -13,7 +13,7 @@ const WithBrandGradient = (): JSX.Element => {
           }}
           headingLevel="h4"
           actionLink={true}
-          linkActionText="Default link"
+          actionLinkText="Default link"
           linkHref="#"
           dropShadow={true}
        />
@@ -24,13 +24,13 @@ const WithBrandGradient = (): JSX.Element => {
           }}
           headingLevel="h4"
           actionLink={true}
-          linkActionText="Default link"
+          actionLinkText="Default link"
           linkHref="#"
-          brandGradient={true}
+          gradientBrand={true}
        />
       </CardGroup>
     </Example>
   )
 };
 
-export default WithBrandGradient;
+export default DecorativeStyle;

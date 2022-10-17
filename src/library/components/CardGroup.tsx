@@ -2,25 +2,21 @@ import { ReactNode } from "react"
 
 interface Props {
   children: ReactNode,
-  cardLayout: string;
+  cardLayout?: string;
 }
 
 const CardGroup = ({children, cardLayout}: Props): JSX.Element => {
 
-let gridLayout = '';
+let gridLayout = "";
 switch(cardLayout) {
-  case '2up':
-    gridLayout = '-2up';
+  case "2up":
+    gridLayout = "-2up";
     break;
-  case '3up':
-    gridLayout = '-3up';
+  case "3up":
+    gridLayout = "-3up";
     break;
-  case '4up':
-    gridLayout = '-4up';
-    break;
-
-  default:
-    gridLayout = '-2up';
+  case "4up":
+    gridLayout = "-4up";
     break;
 }
 

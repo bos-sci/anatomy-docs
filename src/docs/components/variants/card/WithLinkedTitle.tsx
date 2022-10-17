@@ -1,12 +1,12 @@
-import Example from '../../../shared/components/Example';
-import Card from '../../../../library/components/Card';
-import CardGroup from '../../../../library/components/CardGroup';
+import Example from "../../../shared/components/Example";
+import Card from "../../../../library/components/Card";
+import CardGroup from "../../../../library/components/CardGroup";
 
 const WithLinkedTitle = (): JSX.Element => {
 
   return (
       <Example>
-        <CardGroup cardLayout='2up'>
+        <CardGroup>
           <Card
             texts={{
               cardTitle: "Card title",

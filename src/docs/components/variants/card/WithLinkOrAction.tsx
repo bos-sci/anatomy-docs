@@ -1,12 +1,12 @@
-import Example from '../../../shared/components/Example';
-import Card from '../../../../library/components/Card';
-import CardGroup from '../../../../library/components/CardGroup';
+import Example from "../../../shared/components/Example";
+import Card from "../../../../library/components/Card";
+import CardGroup from "../../../../library/components/CardGroup";
 
 const WithLinkOrAction = (): JSX.Element => {
 
   return (
       <Example>
-        <CardGroup cardLayout='2up'>
+        <CardGroup cardLayout="2up">
           <Card
             texts={{
               cardTitle: "Card title",
@@ -15,7 +15,7 @@ const WithLinkOrAction = (): JSX.Element => {
             headingLevel="h4"
             linkHref="#"
             actionLink={true}
-            linkActionText="Default link"
+            actionLinkText="Default link"
           />
           <Card
             texts={{

@@ -5,9 +5,6 @@
   flex-direction: column;
   justify-content: flex-start;
   overflow: auto;
-  max-width: max-content;
-  height: auto;
-  padding: space(sm);
 
   &-content 
   {
@@ -43,45 +40,69 @@
 
   &-description 
   {
-    margin: space(2x) 0;
+    margin: space(2x) 0 0 0;
   }
 
-  &-gradient:hover::before,
-  &-gradient:focus::before 
+  &-gradient
   {
-    @include animated-gradient-brand;
-    bottom: 0;
+    &:hover,
+    &:focus 
+    {
+      &::before 
+      {
+        @include animated-gradient-brand;
+        bottom: 0;
+      }
+    }
   }
 
   &-shadow
   {
     @extend .link-hitbox;
     box-shadow: $box-shadow-secondary;
-  }
 
-  &-shadow:hover
-  {
-    @extend .link-hitbox;
-    box-shadow: $box-shadow-tertiary;
+    &:hover
+    {
+      box-shadow: $box-shadow-tertiary;
+    }
   }
 }
 
-[class*='bsds-tag'] 
+[class*="bsds-card"]
+[class*="bsds-link"] 
 {
-  width: fit-content;
-  margin: 0 0 space(lg) 0;
+  margin: space(2x) 0 0 0;
+}
+
+[class*="bsds-tag"]
+{
+  width: max-content;
+  margin: 0;
+
+  ~ .bsds-card-title  
+  {
+    margin: space(lg) 0 0 0;
+  }
+}
+
+.bsds-icon-8x 
+{
+  ~ .bsds-card-title 
+  {
+    margin: calc(space(2x) + space(sm)) 0 0 0;
+  } 
 }
 
 .link-hitbox 
 {
   &::before 
   {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
   }
 
   &:focus

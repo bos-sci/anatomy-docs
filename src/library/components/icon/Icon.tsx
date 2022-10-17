@@ -87,7 +87,7 @@ const Icon = (props: Props): JSX.Element => {
         );
         break;
 
-      case 'demo-card-icon':
+      case 'demoCardIcon':
         const IconCardDemo = lazy(() => import('./icons/IconCardDemo'));
         setIcon(
           <Suspense fallback={<Fallback />}>

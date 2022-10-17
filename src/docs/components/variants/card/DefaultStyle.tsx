@@ -1,13 +1,13 @@
-import Example from '../../../shared/components/Example';
-import Card from '../../../../library/components/Card';
-import CardGroup from '../../../../library/components/CardGroup';
+import Example from "../../../shared/components/Example";
+import Card from "../../../../library/components/Card";
+import CardGroup from "../../../../library/components/CardGroup";
 
-const DefaultCard = (): JSX.Element => {
+const DefaultStyle = (): JSX.Element => {
 
   return (
     <>
       <Example>
-        <CardGroup cardLayout='2up'>
+        <CardGroup>
           <Card
             texts={{
               cardTitle: "Card title",
@@ -20,13 +20,13 @@ const DefaultCard = (): JSX.Element => {
       </Example>
 
       <Example isDarkTheme={true}>
-        <CardGroup cardLayout='2up'>
+        <CardGroup>
           <Card
             texts={{
               cardTitle: "Card title",
               cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
             }}
-            variant='ghost'
+            variant="ghost"
             linkTitle={false} 
             headingLevel="h4"
           /> 
@@ -36,4 +36,4 @@ const DefaultCard = (): JSX.Element => {
   );
 }
 
-export default DefaultCard;
+export default DefaultStyle;

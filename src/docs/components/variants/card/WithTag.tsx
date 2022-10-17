@@ -6,7 +6,7 @@ import Tag from "../../../../library/components/Tag";
 const WithTag = (): JSX.Element => {
   return (
     <Example>
-      <CardGroup cardLayout='2up'>
+      <CardGroup>
         <Card
           texts={{
             cardTitle: "Card title",
@@ -14,6 +14,7 @@ const WithTag = (): JSX.Element => {
           }}
           headingLevel="h4"
           tag={<Tag>Default Tag</Tag>}
+          tagStyle='assertive'
         />
       </CardGroup>
     </Example>

@@ -1,32 +1,32 @@
-import { VariantProps } from '../Preview';
+import { VariantProps } from "../Preview";
 import DefaultCard from "./DefaultCard";
-import DefaultCardStyle from "./DefaultCardStyle";
-import WithLinkedTitle from './WithLinkedTitle';
-import WithLinkOrAction from './WithLinkOrAction';
-import BorderStyleCard from './BorderStyleCard';
-import WithBrandGradient from './WithBrandGradient';
-import WithIcon from './WithIcon';
-import WithTag from './WithTag';
+import WithLinkedTitle from "./WithLinkedTitle";
+import WithLinkOrAction from "./WithLinkOrAction";
+import WithTag from "./WithTag";
+import WithIcon from "./WithIcon";
+import DefaultStyle from "./DefaultStyle";
+import BorderStyle from "./BorderStyle";
+import DecorativeStyle from "./DecorativeStyle";
 
 const CardController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
-    case 'withLinkedTitle':
+    case "withLinkedTitle":
       return <WithLinkedTitle />;
-    case 'withLinkOrAction':
+    case "withLinkOrAction":
       return <WithLinkOrAction />;
-    case 'withTag':
+    case "withTag":
       return <WithTag />;
-    case 'withDecorativeTreatment':
-      return <WithBrandGradient />;
-    case 'withIcon':
+    case "withIcon":
       return <WithIcon />;
-
+        
     // Styles  
-    case 'defaultCardStyle':
-      return <DefaultCardStyle />;
-    case 'borderStyleCard':
-      return <BorderStyleCard />;
+    case "defaultCardStyle":
+      return <DefaultStyle />;
+    case "borderStyleCard":
+      return <BorderStyle />;
+    case "withDecorativeTreatment":
+      return <DecorativeStyle />;
       
     default:
       return <DefaultCard />;

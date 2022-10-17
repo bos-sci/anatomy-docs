@@ -5,7 +5,7 @@ import CardGroup from "../../../../library/components/CardGroup";
 const WithIcon = (): JSX.Element => {
   return (
     <Example>
-      <CardGroup cardLayout='2up'>
+      <CardGroup>
         <Card
           texts={{
             cardTitle: "Card title",
@@ -13,7 +13,7 @@ const WithIcon = (): JSX.Element => {
           }}
           headingLevel="h4"
           icon={true}
-          iconName='demo-card-icon'
+          iconName="demoCardIcon"
         />
       </CardGroup>
     </Example>
