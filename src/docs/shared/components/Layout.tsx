@@ -62,6 +62,10 @@ const logo = {
   ariaLabel: 'Anatomy design system home'
 };
 
+const primaryNavTexts = {
+  searchAriaLabel: 'Search Anatomy site'
+};
+
 const searchClient = algoliasearch('R538RETIHH', '57937335fdbc8f462f7e8ad277b4ed00');
 const index = searchClient.initIndex('netlify_61a5e8e4-0f4e-44c7-a2a2-1d9013d824e5_feature-ads-165_all');
 
@@ -91,7 +95,7 @@ const Layout = (props: Props): JSX.Element => {
 
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>
-    <NavPrimary logo={logo} navItems={navItems} searchResults={searchResults} onSearchChange={onSearchChange} onSearch={onSearch} isConstrained />
+    <NavPrimary texts={primaryNavTexts} logo={logo} navItems={navItems} searchResults={searchResults} onSearchChange={onSearchChange} onSearch={onSearch} isConstrained />
     <SearchIndexContext.Provider value={index}>
       { props.children }
     </SearchIndexContext.Provider>
