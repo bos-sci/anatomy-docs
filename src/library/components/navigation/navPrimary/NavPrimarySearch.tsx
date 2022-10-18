@@ -1,12 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import Search from '../../Search';
 import { SearchResult } from '../../Search';
+import { Texts } from './NavPrimary';
 
 interface Props {
-  labelText: string;
-  buttonText: string;
-  buttonAriaLabel: string;
-  inputAriaLabel: string;
+  texts?: Texts;
   isOpen: boolean;
   searchResults?: SearchResult[];
   onSearch?: (query: string, e: FormEvent<HTMLFormElement>) => void;
@@ -33,15 +31,18 @@ const NavPrimarySearch = (props: Props): JSX.Element => {
   return (
     <div className={'bsds-search-panel' + (props.isOpen ? ' open' : '')}>
       <Search
+        label={props.texts?.searchLabel}
+        texts={{
+          buttonText: props.texts?.searchButtonText,
+          buttonAriaLabel: props.texts?.searchButtonAriaLabel,
+          searchAriaLabel: props.texts?.searchAriaLabel,
+          searchInputAriaLabel: props.texts?.searchInputAriaLabel,
+          searchClearTextAriaLabel: props.texts?.searchClearTextAriaLabel,
+          noResultsFound: props.texts?.searchNoResults
+        }}
+        searchResults={props.searchResults}
         onChange={e => emitChange(e)}
         onFormSubmit={e => emitSearch(e)}
-        label={props.labelText}
-        searchResults={props.searchResults}
-        texts={{
-          buttonText: props.buttonText,
-          buttonAriaLabel: props.buttonAriaLabel,
-          searchAriaLabel: props.inputAriaLabel
-        }}
       />
     </div>
   );

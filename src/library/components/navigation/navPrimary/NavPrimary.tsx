@@ -47,6 +47,24 @@ export interface HistoryNode {
   depth: number;
 }
 
+export interface Texts {
+  menuToggleAriaLabel?: string;
+  menuToggleTextOpen?: string;
+  menuToggleTextClose?: string;
+  menuBackButton?: string;
+  searchLabel?: string;
+  searchAriaLabel?: string;
+  searchToggleAriaLabel?: string;
+  searchToggleText?: string;
+  searchButtonText?: string;
+  searchButtonAriaLabel?: string;
+  searchInputAriaLabel?: string;
+  searchClearTextAriaLabel?: string;
+  searchNoResults?: string;
+  utilityNavAriaLabel?: string;
+  primaryNavAriaLabel?: string;
+}
+
 interface Props {
   logo: {
     src: string;
@@ -54,17 +72,7 @@ interface Props {
     href?: string;
     to?: string;
   };
-  texts?: {
-    menuToggleAriaLabel?: string;
-    menuToggleTextOpen?: string;
-    menuToggleTextClose?: string;
-    searchToggleAriaLabel?: string;
-    searchToggleText?: string;
-    searchButtonText?: string;
-    searchButtonAriaLabel?: string;
-    utilityNavAriaLabel?: string;
-    primaryNavAriaLabel?: string;
-  }
+  texts?: Texts;
   navItems: NavItemPrimary[];
   utilityItems?: NavItemUtility[];
   hasSearch?: boolean;
@@ -285,7 +293,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                     isIntermediateNav={isIntermediateNav}
                     history={history}
                     pushHistory={pushHistory}
-                    popHistory={popHistory} />
+                    popHistory={popHistory}
+                    texts={texts} />
                 }
               </li>
             ))}
@@ -302,10 +311,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                   </span>
                 </Button>
                 <NavPrimarySearch
-                  labelText='Search'
-                  buttonText={texts?.searchButtonText || 'Search'}
-                  buttonAriaLabel={texts?.searchButtonAriaLabel || 'search'}
-                  inputAriaLabel={"Primary navigation search"}
+                  texts={texts}
                   isOpen={isSearchOpen}
                   searchResults={searchResults}
                   onSearchChange={onSearchChange}
@@ -336,7 +342,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
             isIntermediateNav={isIntermediateNav}
             history={history}
             pushHistory={pushHistory}
-            popHistory={popHistory} />
+            popHistory={popHistory}
+            texts={texts} />
         }
       </nav>
     </header>
