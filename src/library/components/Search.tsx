@@ -14,7 +14,7 @@ interface Result {
 
 export type SearchResult = RequireOnlyOne<Result, 'href' | 'to'>;
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
   isLabelVisible?: boolean;
   hasAutocomplete?: boolean;
   searchResults?: SearchResult[];
@@ -121,7 +121,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
       <div className="bsds-input">
         <div className="bsds-search">
           <label htmlFor={searchId} className={"bsds-input-text-label" + (!isLabelVisible ? ' bsds-visually-hidden' : '')}>
-            { label }
+            { label || 'Search' }
           </label>
           <div className="bsds-search-control">
             <div ref={searchRef} className="bsds-input-search" onKeyDown={updateActiveDesc}>
@@ -159,7 +159,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 <button
                   type="button"
                   className="bsds-search-clear"
-                  aria-label={texts?.searchClearTextAriaLabel || "clear search text"}
+                  aria-label={texts?.searchClearTextAriaLabel || "clear search query"}
                   onClick={() => setInputValue('')}>
                   <IconClose className="bsds-icon-lg" />
                 </button>
