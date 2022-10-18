@@ -294,6 +294,15 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                     {texts?.searchToggleText || 'Search'}
                   </span>
                 </Button>
+                <NavPrimarySearch
+                  labelText='Search'
+                  buttonText={texts?.searchButtonText || 'Search'}
+                  buttonAriaLabel={texts?.searchButtonAriaLabel || 'search'}
+                  inputAriaLabel={"Primary navigation search"}
+                  isOpen={isSearchOpen}
+                  searchResults={searchResults}
+                  onSearchChange={onSearchChange}
+                  onSearch={onSearch} />
               </li>
             }
             <li className="bsds-nav-item bsds-nav-item-toggle">
@@ -308,15 +317,6 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
             </li>
           </ul>
         </div>
-        <NavPrimarySearch
-          labelText='Search'
-          buttonText={texts?.searchButtonText || 'Search'}
-          buttonAriaLabel={texts?.searchButtonAriaLabel || 'search'}
-          inputAriaLabel={"Primary navigation search"}
-          isOpen={isSearchOpen}
-          searchResults={searchResults}
-          onSearchChange={onSearchChange}
-          onSearch={onSearch} />
         {(navTree.length > 0 && (isViewportSmall || !isNavTouched)) &&
           <NavPrimaryMenu
             ref={menuRef}
