@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
@@ -211,6 +211,13 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
     }
   }, [onResize]);
 
+  const handleKeyUp = ((e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setIsMenuOpen(false);
+      setHistory([]);
+    }
+  });
+
   const toggleMenu = () => {
     if (!isMenuOpen && isSearchOpen) {
       setIsSearchOpen(false);
@@ -230,7 +237,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
   }
 
   return (
-    <header className={"bsds-nav-header" + (isConstrained ? ' is-constrained' : '')} ref={navRef}>
+    <header className={"bsds-nav-header" + (isConstrained ? ' is-constrained' : '')} ref={navRef} onKeyUp={handleKeyUp}>
       {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
       <nav className="bsds-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="bsds-nav-bar">
