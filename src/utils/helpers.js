@@ -1,10 +1,8 @@
-import { slugify } from "../docs/shared/helpers";
-
 const environment = (envVar) => {
   return process.env[envVar] || "";
 };
 
-const toSlug = (string) => slugify(string);
+const toSlug = (string) => string.toLowerCase().replace(/\s+/g, "-");
 module.exports = {
   environment,
   toSlug,
