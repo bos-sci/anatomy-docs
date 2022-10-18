@@ -140,7 +140,7 @@ const Card = (props : Props): JSX.Element => {
       { icon && <Icon name={`${iconName}`} className="bsds-icon-8x"/> }
         <HeadingElement headingLevel={headingLevel} className="bsds-card-title">
           { linkTitle ? 
-            <Link className={`${cardStyles.titleLinkClasses} ${"link-hitbox"}`} href={linkHref}>
+            <Link href={linkHref} className={`${cardStyles.titleLinkClasses} ${"link-hitbox"}`}>
               {texts.cardTitle}
             </Link> : 
             <>{texts.cardTitle}</> 

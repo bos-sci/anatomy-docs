@@ -8,7 +8,7 @@ const WithIcon = (): JSX.Element => {
       <CardGroup>
         <Card
           texts={{
-            cardTitle: "Card title",
+            cardTitle: "Card with icon",
             cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
           }}
           headingLevel="h4"

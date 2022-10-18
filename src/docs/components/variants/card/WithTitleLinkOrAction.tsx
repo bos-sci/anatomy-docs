@@ -9,7 +9,7 @@ const WithLinkOrAction = (): JSX.Element => {
         <CardGroup cardLayout="2up">
           <Card
             texts={{
-              cardTitle: "Card title",
+              cardTitle: "Default card title",
               cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
             }} 
             headingLevel="h4"
@@ -19,7 +19,7 @@ const WithLinkOrAction = (): JSX.Element => {
           />
           <Card
             texts={{
-              cardTitle: "Card title",
+              cardTitle: "Linked card title",
               cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
             }} 
             linkTitle={true}

@@ -8,7 +8,7 @@ const DecorativeStyle = (): JSX.Element => {
       <CardGroup cardLayout="2up">
         <Card
           texts={{
-            cardTitle: "Card title",
+            cardTitle: "Card with shadow",
             cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
           }}
           headingLevel="h4"
@@ -19,7 +19,7 @@ const DecorativeStyle = (): JSX.Element => {
        />
        <Card
           texts={{
-            cardTitle: "Card title",
+            cardTitle: "Card with brand gradient",
             cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
           }}
           headingLevel="h4"

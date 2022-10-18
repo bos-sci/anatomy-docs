@@ -10,7 +10,7 @@ const DefaultStyle = (): JSX.Element => {
         <CardGroup>
           <Card
             texts={{
-              cardTitle: "Card title",
+              cardTitle: "Default card style",
               cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
             }}
             linkTitle={false} 
@@ -23,7 +23,7 @@ const DefaultStyle = (): JSX.Element => {
         <CardGroup>
           <Card
             texts={{
-              cardTitle: "Card title",
+              cardTitle: "Default ghost card style",
               cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
             }}
             variant="ghost"

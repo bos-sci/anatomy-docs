@@ -9,12 +9,12 @@ const WithTag = (): JSX.Element => {
       <CardGroup>
         <Card
           texts={{
-            cardTitle: "Card title",
+            cardTitle: "Card with tag",
             cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum." 
           }}
           headingLevel="h4"
           tag={<Tag>Default Tag</Tag>}
-          tagStyle='assertive'
+          tagStyle='default'
         />
       </CardGroup>
     </Example>

@@ -1,7 +1,6 @@
 import { VariantProps } from "../Preview";
 import DefaultCard from "./DefaultCard";
-import WithLinkedTitle from "./WithLinkedTitle";
-import WithLinkOrAction from "./WithLinkOrAction";
+import WithTitleLinkOrAction from "./WithTitleLinkOrAction";
 import WithTag from "./WithTag";
 import WithIcon from "./WithIcon";
 import DefaultStyle from "./DefaultStyle";
@@ -11,10 +10,8 @@ import DecorativeStyle from "./DecorativeStyle";
 const CardController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
-    case "withLinkedTitle":
-      return <WithLinkedTitle />;
     case "withLinkOrAction":
-      return <WithLinkOrAction />;
+      return <WithTitleLinkOrAction />;
     case "withTag":
       return <WithTag />;
     case "withIcon":
