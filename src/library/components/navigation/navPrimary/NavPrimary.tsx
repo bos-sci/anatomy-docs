@@ -223,6 +223,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
     if (e.key === 'Escape') {
       setIsMenuOpen(false);
       setHistory([]);
+      setIsSearchOpen(false);
     }
   });
 
