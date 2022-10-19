@@ -1,21 +1,20 @@
 import Example from "../../../shared/components/Example";
 import Card from "../../../../library/components/Card";
-import Tag from "../../../../library/components/Tag";
 
-const WithTag = (): JSX.Element => {
+const WithLinkedTitle = (): JSX.Element => {
   return (
     <Example>
       <Card
         texts={{
-          cardTitle: "Card title",
+          cardTitle: "Linked card title",
           cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
         }}
+        linkTitle={true}
         headingLevel="h4"
-        tag={<Tag>Default Tag</Tag>}
-        tagStyle='default'
+        linkHref="#"
       />
     </Example>
   );
 }
 
-export default WithTag;
+export default WithLinkedTitle;

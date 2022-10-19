@@ -1,30 +1,35 @@
 import { VariantProps } from "../Preview";
 import DefaultCard from "./DefaultCard";
-import WithTitleLinkOrAction from "./WithTitleLinkOrAction";
+import WithLink from "./WithLink";
+import WithLinkedTitle from "./WithLinkedTitle";
 import WithTag from "./WithTag";
 import WithIcon from "./WithIcon";
 import DefaultStyle from "./DefaultStyle";
 import BorderStyle from "./BorderStyle";
-import DecorativeStyle from "./DecorativeStyle";
+import WithShadow from "./WithShadow";
+import WithGradient from "./WithGradient";
 
 const CardController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
-    case "withLinkOrAction":
-      return <WithTitleLinkOrAction />;
+    case "withLink":
+      return <WithLink />;
+    case "withLinkedTitle":
+      return <WithLinkedTitle />;
     case "withTag":
       return <WithTag />;
     case "withIcon":
       return <WithIcon />;
-        
-    // Styles  
+    // Styles
     case "defaultCardStyle":
       return <DefaultStyle />;
     case "borderStyleCard":
       return <BorderStyle />;
-    case "withDecorativeTreatment":
-      return <DecorativeStyle />;
-      
+    case "withShadow":
+      return <WithShadow />;
+    case "withGradient":
+      return <WithGradient />;
+
     default:
       return <DefaultCard />;
     }

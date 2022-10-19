@@ -12,18 +12,18 @@ interface PlainCardProps {
   variant?: string,
   headingLevel: "h2" | "h3" | "h4" | "h5" | "h6",
   tag?: ReactElement< TagProps >,
-  tagStyle?: "default" | "assertive", //TO DO: add "featured" tag style
-  icon?: boolean, 
+  tagStyle?: "default" | "assertive", //TODO: add "featured" tag style
+  icon?: boolean,
   iconName?: string,
 }
 
-type LinkedCardProps = 
+type LinkedCardProps =
   | {
     linkTitle?: boolean,
     linkHref?: string,
     actionLink?: never,
     actionLinkText?: never
-  } 
+  }
   | {
     linkTitle?: never,
     linkHref?: string,
@@ -31,7 +31,7 @@ type LinkedCardProps =
     actionLinkText?: string
   }
 
-type HoverProps = 
+type HoverProps =
   | {
     gradientBrand?: boolean,
     dropShadow?: never
@@ -43,7 +43,7 @@ type HoverProps =
 
 type BaseProps = PlainCardProps & LinkedCardProps;
 type Props = BaseProps & HoverProps;
-  
+
 const Card = (props : Props): JSX.Element => {
   const {texts, variant, headingLevel, tag, tagStyle = "default", icon, iconName, linkTitle, linkHref, actionLink, actionLinkText, gradientBrand, dropShadow } = props;
 
@@ -88,7 +88,7 @@ const Card = (props : Props): JSX.Element => {
       cardStyles = {...borderGhostStyle};
       break;
 
-    default: 
+    default:
       cardStyles = {...defaultStyle};
       break;
   };
@@ -102,7 +102,7 @@ const Card = (props : Props): JSX.Element => {
     decorativeState = "bsds-card-shadow";
     cardStyles = {...borderLightStyle};
   }
-  
+
   let tagVariant = "";
   switch(tagStyle) {
     case "default":
@@ -119,7 +119,7 @@ const Card = (props : Props): JSX.Element => {
         tagVariant = "assertive-ghost"
       }
       break;
-    
+
     default:
       tagVariant = "default";
       break;
@@ -134,31 +134,27 @@ const Card = (props : Props): JSX.Element => {
     }
   }, [tag, tagVariant])
 
-  const cardContent = ( 
+  const cardContent = (
     <div className="bsds-card-content">
       { clonedTag }
       { icon && <Icon name={`${iconName}`} className="bsds-icon-8x"/> }
-        <HeadingElement headingLevel={headingLevel} className="bsds-card-title">
-          { linkTitle ? 
-            <Link href={linkHref} className={`${cardStyles.titleLinkClasses} ${"link-hitbox"}`}>
-              {texts.cardTitle}
-            </Link> : 
-            <>{texts.cardTitle}</> 
-          }
-        </HeadingElement> 
-          <p className="bsds-card-description">{texts?.cardDescription}</p>
-            { actionLink && 
-              <Link href={linkHref} className={`${cardStyles.linkClasses} ${"link-hitbox"}`}>
-                {actionLinkText}
-              </Link> }
-    </div>    
-  ); 
+      <HeadingElement headingLevel={headingLevel} className="bsds-card-title">
+        { linkTitle ? <Link href={linkHref} className={`${cardStyles.titleLinkClasses} ${"link-hitbox"}`}>
+          {texts.cardTitle}
+        </Link> : <>{texts.cardTitle}</> }
+      </HeadingElement>
+      <p className="bsds-card-description">{texts?.cardDescription}</p>
+      { actionLink && <Link href={linkHref} className={`${cardStyles.linkClasses} ${"link-hitbox"}`}>
+        {actionLinkText}
+      </Link> }
+    </div>
+  );
 
-    return (
-      <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes}>
-        {cardContent}
-      </div>
-    );
+  return (
+    <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes}>
+      {cardContent}
+    </div>
+  );
 }
 
 export default Card;

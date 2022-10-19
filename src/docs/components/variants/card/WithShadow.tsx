@@ -1,8 +1,7 @@
-import Example from "../../../shared/components/Example";
-import Card from "../../../../library/components/Card";
-import Tag from "../../../../library/components/Tag";
+import Card from "../../../../library/components/Card"
+import Example from "../../../shared/components/Example"
 
-const WithTag = (): JSX.Element => {
+const WithShadow = (): JSX.Element => {
   return (
     <Example>
       <Card
@@ -11,11 +10,13 @@ const WithTag = (): JSX.Element => {
           cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
         }}
         headingLevel="h4"
-        tag={<Tag>Default Tag</Tag>}
-        tagStyle='default'
+        actionLink={true}
+        actionLinkText="Call-to-action"
+        linkHref="#"
+        dropShadow={true}
       />
     </Example>
-  );
-}
+  )
+};
 
-export default WithTag;
+export default WithShadow;
