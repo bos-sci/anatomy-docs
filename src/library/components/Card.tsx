@@ -12,7 +12,6 @@ interface PlainCardProps {
   variant?: string,
   headingLevel: "h2" | "h3" | "h4" | "h5" | "h6",
   tag?: ReactElement< TagProps >,
-  tagStyle?: "default" | "assertive", //TODO: add "featured" tag style
   icon?: boolean,
   iconName?: string,
 }
@@ -45,7 +44,7 @@ type BaseProps = PlainCardProps & LinkedCardProps;
 type Props = BaseProps & HoverProps;
 
 const Card = (props : Props): JSX.Element => {
-  const {texts, variant, headingLevel, tag, tagStyle = "default", icon, iconName, linkTitle, linkHref, actionLink, actionLinkText, gradientBrand, dropShadow } = props;
+  const {texts, variant, headingLevel, tag, icon, iconName, linkTitle, linkHref, actionLink, actionLinkText, gradientBrand, dropShadow } = props;
 
   let cardStyles = {
     classes: "",
@@ -103,36 +102,14 @@ const Card = (props : Props): JSX.Element => {
     cardStyles = {...borderLightStyle};
   }
 
-  let tagVariant = "";
-  switch(tagStyle) {
-    case "default":
-      if(variant !== "ghost") {
-        tagVariant = "default"
-      } else {
-        tagVariant = "ghost"
-      }
-      break;
-    case "assertive":
-      if(variant !== "ghost" && variant !== "border-ghost") {
-        tagVariant = "assertive"
-      } else {
-        tagVariant = "assertive-ghost"
-      }
-      break;
-
-    default:
-      tagVariant = "default";
-      break;
-  }
-
   const [clonedTag, setClonedTag] = useState<ReactElement>();
   useEffect(() => {
     if(tag) {
-        setClonedTag(cloneElement(tag as ReactElement, {
-        variant: tagVariant
+      setClonedTag(cloneElement(tag as ReactElement, {
+        isGhost: (variant === "ghost" || variant === "border-ghost")
       }));
     }
-  }, [tag, tagVariant])
+  }, [tag, variant])
 
   const cardContent = (
     <div className="bsds-card-content">
