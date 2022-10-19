@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, KeyboardEvent, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
@@ -96,6 +96,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
   const [isViewportSmall, setIsViewportSmall] = useState(false);
   const [isIntermediateNav, setIsIntermediateNav] = useState(false);
   const [isNavTouched, setIsNavTouched] = useState(false);
+  const [rootButton, setRootButton] = useState<HTMLButtonElement>();
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -123,7 +124,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
   }
 
   // Open menu to right place or close menu on click of root item
-  const updateMenu = (navItem: NavNode): void => {
+  const updateMenu = (e: MouseEvent<HTMLButtonElement>, navItem: NavNode): void => {
+    setRootButton(e.target as HTMLButtonElement);
     if (history.length && history[0].node === navItem) {
       setHistory([]);
       setIsMenuOpen(false);
@@ -221,13 +223,17 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
 
   const handleKeyUp = ((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
+      if (isMenuOpen || isSearchOpen) {
+        rootButton?.focus();
+      }
       setIsMenuOpen(false);
       setHistory([]);
       setIsSearchOpen(false);
     }
   });
 
-  const toggleMenu = () => {
+  const toggleMenu = (e: MouseEvent<HTMLButtonElement>) => {
+    setRootButton(e.target as HTMLButtonElement);
     if (!isMenuOpen && isSearchOpen) {
       setIsSearchOpen(false);
     }
@@ -237,7 +243,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
     setIsMenuOpen(!isMenuOpen);
   }
 
-  const toggleSearch = () => {
+  const toggleSearch = (e: MouseEvent<HTMLButtonElement>) => {
+    setRootButton(e.target as HTMLButtonElement);
     if (!isSearchOpen && isMenuOpen) {
       setIsMenuOpen(false);
       setHistory([]);
@@ -269,7 +276,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                     aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
                     aria-controls={menuId}
-                    onClick={() => updateMenu(navItem)}>
+                    onClick={e => updateMenu(e, navItem)}>
                     {navItem.text}
                   </Button>
                 }
