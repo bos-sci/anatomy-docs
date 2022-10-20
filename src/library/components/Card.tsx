@@ -128,7 +128,7 @@ const Card = (props : Props): JSX.Element => {
   );
 
   return (
-    <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes}>
+    <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
       {cardContent}
     </div>
   );
