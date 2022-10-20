@@ -544,6 +544,8 @@ $menuPadding: space(md) 0;
   {
     display: none;
     position: absolute;
+    top: calc(100% + space(xxs)); // adding space(xxs) to account for border
+    left: 0;
     margin: auto;
     border-bottom: space(xxs) solid $border-color-subtle;
     width: 100%;
@@ -623,15 +625,6 @@ $menuPadding: space(md) 0;
 
     .bsds-nav-menu
     {
-      &.intermediate
-      {
-        .bsds-nav-menu-panels .bsds-nav-menu-panel.has-header .bsds-nav-menu-panel-header
-        {
-          width: calc($panelsWidth / $numPanels);
-          flex: unset;
-        }
-      }
-
       &:not(.intermediate)
       {
         .bsds-nav-menu-panels
@@ -755,12 +748,11 @@ $menuPadding: space(md) 0;
         .bsds-nav-menu-panel
         {
           width: 100%;
-        }
 
-        .bsds-nav-menu-panels .bsds-nav-menu-panel.has-header .bsds-nav-menu-panel-header
-        {
-          width: calc($panelsWidth / $numPanels);
-          flex: unset;
+          &.has-header
+          {
+            grid-template-columns: 1fr 3fr;
+          }
         }
 
         .bsds-nav

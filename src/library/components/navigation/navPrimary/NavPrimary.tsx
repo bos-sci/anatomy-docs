@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, KeyboardEvent, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
@@ -96,6 +96,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
   const [isViewportSmall, setIsViewportSmall] = useState(false);
   const [isIntermediateNav, setIsIntermediateNav] = useState(false);
   const [isNavTouched, setIsNavTouched] = useState(false);
+  const [rootButton, setRootButton] = useState<HTMLButtonElement>();
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -123,7 +124,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
   }
 
   // Open menu to right place or close menu on click of root item
-  const updateMenu = (navItem: NavNode): void => {
+  const updateMenu = (e: MouseEvent<HTMLButtonElement>, navItem: NavNode): void => {
+    setRootButton(e.target as HTMLButtonElement);
     if (history.length && history[0].node === navItem) {
       setHistory([]);
       setIsMenuOpen(false);
@@ -219,7 +221,19 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
     }
   }, [onResize]);
 
-  const toggleMenu = () => {
+  const handleKeyUp = ((e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      if (isMenuOpen || isSearchOpen) {
+        rootButton?.focus();
+      }
+      setIsMenuOpen(false);
+      setHistory([]);
+      setIsSearchOpen(false);
+    }
+  });
+
+  const toggleMenu = (e: MouseEvent<HTMLButtonElement>) => {
+    setRootButton(e.target as HTMLButtonElement);
     if (!isMenuOpen && isSearchOpen) {
       setIsSearchOpen(false);
     }
@@ -229,7 +243,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
     setIsMenuOpen(!isMenuOpen);
   }
 
-  const toggleSearch = () => {
+  const toggleSearch = (e: MouseEvent<HTMLButtonElement>) => {
+    setRootButton(e.target as HTMLButtonElement);
     if (!isSearchOpen && isMenuOpen) {
       setIsMenuOpen(false);
       setHistory([]);
@@ -238,7 +253,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
   }
 
   return (
-    <header className={"bsds-nav-header" + (isConstrained ? ' is-constrained' : '')} ref={navRef}>
+    <header className={"bsds-nav-header" + (isConstrained ? ' is-constrained' : '')} ref={navRef} onKeyUp={handleKeyUp}>
       {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
       <nav className="bsds-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="bsds-nav-bar">
@@ -261,7 +276,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                     aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
                     aria-controls={menuId}
-                    onClick={() => updateMenu(navItem)}>
+                    onClick={e => updateMenu(e, navItem)}>
                     {navItem.text}
                   </Button>
                 }
@@ -303,6 +318,12 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                     {texts?.searchToggleText || 'Search'}
                   </span>
                 </Button>
+                <NavPrimarySearch
+                  texts={texts}
+                  isOpen={isSearchOpen}
+                  searchResults={searchResults}
+                  onSearchChange={onSearchChange}
+                  onSearch={onSearch} />
               </li>
             }
             <li className="bsds-nav-item bsds-nav-item-toggle">
@@ -317,13 +338,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
             </li>
           </ul>
         </div>
-        <NavPrimarySearch
-          texts={texts}
-          isOpen={isSearchOpen}
-          searchResults={searchResults}
-          onSearchChange={onSearchChange}
-          onSearch={onSearch} />
-        {((navTree.length > 0 && isViewportSmall) || (navTree.length > 0 && !isNavTouched)) &&
+        {(navTree.length > 0 && (isViewportSmall || !isNavTouched)) &&
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
