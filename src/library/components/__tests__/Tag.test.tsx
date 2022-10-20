@@ -11,7 +11,7 @@ describe("Tag", () => {
   });
 
   it("Renders ghost variant", () => {
-    render(<Tag variant="ghost">Variant Tag!</Tag>);
+    render(<Tag isGhost>Variant Tag!</Tag>);
 
     expect(screen.getByText("Variant Tag!")).toBeInTheDocument();
     expect(screen.getByText("Variant Tag!")).toHaveClass("bsds-tag-ghost");
@@ -27,7 +27,7 @@ describe("Tag", () => {
 
   it("Renders accent-ghost variation", () => {
     render(
-      <Tag variant="accent-ghost">Sample Tag!</Tag>
+      <Tag variant="accent" isGhost>Sample Tag!</Tag>
     );
 
     expect(screen.getByText("Sample Tag!")).toBeInTheDocument();
@@ -47,7 +47,7 @@ describe("Tag", () => {
 
   it("Renders assertive-ghost variation", () => {
     render(
-      <Tag variant="assertive-ghost">Variant Tag!</Tag>
+      <Tag variant="assertive" isGhost>Variant Tag!</Tag>
     );
 
     expect(screen.getByText("Variant Tag!")).toBeInTheDocument();
