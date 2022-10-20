@@ -46,6 +46,7 @@ $icon-size: 1em;
       }
 
       &:hover,
+      &:active,
       &[aria-expanded="true"]
       {
         &::after
@@ -76,11 +77,11 @@ $icon-size: 1em;
 
         &[aria-expanded="true"]
         {
-          @include button-subtle-active;
           @include button-active;
         }
 
         &:hover,
+        &:active,
         &[aria-expanded="true"]
         {
           &::after
@@ -177,9 +178,14 @@ $icon-size: 1em;
 
     .bsds-button
     {
-      &:hover
+      &:hover,
+      &:active
       {
         color: $neutral-100;
+      }
+
+      &:hover
+      {
         background: $action-primary-40;
       }
 
