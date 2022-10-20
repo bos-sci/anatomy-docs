@@ -87,11 +87,6 @@
   @include button-disabled;
 }
 
-@mixin button-subtle-active
-{
-  text-decoration: underline;
-}
-
 @mixin button-subtle
 {
   @include link-default;
@@ -104,11 +99,6 @@
 
   &:not([disabled])
   {
-    &:active
-    {
-      @include button-subtle-active;
-    }
-
     &:hover
     {
       @include link-hover;
