@@ -60,7 +60,7 @@ const createSitemap = async () => {
     hostname: MAIN_NAVIGATION.root,
   });
 
-  const writeStream = createWriteStream("./sitemap.xml");
+  const writeStream = createWriteStream("./public/sitemap.xml");
   sitemap.pipe(writeStream);
 
   urls.forEach((url) => {
