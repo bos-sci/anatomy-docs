@@ -26,6 +26,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
   const [dropdownItems, setDropdownItems] = useState<DropdownItemElements[]>([]);
   const [dropdownId, setDropdownId] = useState('');
 
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownItemRefs = useRef(Children.map(children, () => createRef<HTMLElement>()));
 
@@ -73,6 +74,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
       case 'Escape':
         e.preventDefault();
         setIsDropdownOpen(false);
+        triggerRef.current?.focus();
         break;
 
       default:
@@ -94,6 +96,8 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
         let lastGroupName: number | null = null;
         const newChildren = Children.map(children, (child: ReactElement, i) => {
           const childComponent = child.type as FunctionComponent;
+
+          // Dropdown group clone
           if (childComponent.displayName === 'DropdownGroupName') {
             lastGroupName = i;
             return cloneElement(child, {
@@ -102,15 +106,18 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
               role: 'none',
               'aria-hidden': true
             });
-          } else {
+          } else { // Dropdown item (button or link) clone
             const attrs: {
               ref: RefObject<HTMLElement>;
               role: string;
               'aria-describedby'?: string;
+              tabindex: number;
             } = {
               ref: dropdownItemRefs.current[i],
-              role: 'menuitem'
+              role: 'menuitem',
+              tabindex: -1
             }
+            // If nested under group
             if (lastGroupName !== null) {
               attrs['aria-describedby'] = dropdownId + 'group' + lastGroupName;
             }
@@ -127,10 +134,12 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
         ];
       }
 
+      // Highlighted action
       if (highlightedAction) {
         dropdownItemClones.push(cloneElement(highlightedAction as ReactElement, {
           ref: dropdownItemRefs.current[dropdownItemRefs.current.length - 1],
-          role: 'menuitem'
+          role: 'menuitem',
+          tabindex: -1
         }));
       }
 
@@ -176,6 +185,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
   return (
     <div ref={dropdownRef} className="bsds-dropdown" onKeyDown={updateFocus}>
       <Button
+        ref={triggerRef}
         variant={variant}
         className={`bsds-dropdown-trigger${className ? ' ' + className : ''}${icon ? ' has-icon' : ''}`}
         aria-haspopup="true"
