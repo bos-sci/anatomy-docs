@@ -87,6 +87,15 @@ const Icon = (props: Props): JSX.Element => {
         );
         break;
 
+      case 'demoCardIcon':
+        const IconCardDemo = lazy(() => import('./icons/IconCardDemo'));
+        setIcon(
+          <Suspense fallback={<Fallback />}>
+            <IconCardDemo className={props.className}/>
+          </Suspense>
+        );
+        break;
+
       default:
         setIcon(<p>Failed to load icon</p>);
     }

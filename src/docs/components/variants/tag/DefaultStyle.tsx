@@ -8,7 +8,7 @@ const DefaultStyle = (): JSX.Element => {
         <Tag>Default tag</Tag>
       </Example>
       <Example isDarkTheme={true}>
-        <Tag variant="ghost">Default tag</Tag>
+        <Tag isGhost>Default tag</Tag>
       </Example>
     </>
   );
