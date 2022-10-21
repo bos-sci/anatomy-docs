@@ -112,6 +112,20 @@ describe("Dropdown", () => {
   });
 
   // Keyboard management tests
+  it("Should focus first item when opening dropdown.", async () => {
+    const user = userEvent.setup();
+    render(
+      <Dropdown triggerText='Trigger menu text'>
+        <Button>Dropdown item 1</Button>
+        <Button>Dropdown item 2</Button>
+        <Button>Dropdown item 3</Button>
+      </Dropdown>
+    );
+
+    await user.click(screen.getByText('Trigger menu text'));
+    expect(screen.getByText('Dropdown item 1')).toHaveFocus();
+  });
+
   it("Focuses next item on press of down arrow, and loops back to top after last item.", async () => {
     const user = userEvent.setup();
     render(
@@ -128,8 +142,6 @@ describe("Dropdown", () => {
     const item2 = screen.getByText('Dropdown item 2');
     const item3 = screen.getByText('Dropdown item 3');
 
-    await user.keyboard('{ArrowDown}');
-    expect(item1).toHaveFocus();
     await user.keyboard('{ArrowDown}');
     expect(item2).toHaveFocus();
     await user.keyboard('{ArrowDown}');
@@ -179,8 +191,6 @@ describe("Dropdown", () => {
     const item1 = screen.getByText('Dropdown item 1');
     const item2 = screen.getByText('Dropdown item 2');
 
-    await user.keyboard('{ArrowDown}');
-    expect(item1).toHaveFocus();
     await user.keyboard('{ArrowDown}');
     expect(item2).toHaveFocus();
     await user.keyboard('{ArrowUp}');

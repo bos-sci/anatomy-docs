@@ -30,31 +30,36 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownItemRefs = useRef(Children.map(children, () => createRef<HTMLElement>()));
 
+  useEffect(() => {
+    if (isDropdownOpen) {
+      const firstAction = dropdownItemRefs.current.find(ref => ref.current?.tagName === 'BUTTON' || ref.current?.tagName === 'A');
+      if (firstAction) {
+        firstAction.current?.focus();
+      } else {
+        console.error('Dropdown must contain at least one button or link.');
+      }
+    }
+  }, [isDropdownOpen]);
+
   const moveFocus = (distance: number) => {
     if (dropdownItemRefs.current) {
       let currentIndex = distance > 0 ? 0 : dropdownItemRefs.current.length - 1;
-      let isFocusInMenu = false;
       dropdownItemRefs.current.forEach((item, i) => {
         if (item.current === document.activeElement) {
           currentIndex = i;
-          isFocusInMenu = true;
         }
       });
 
-      if (isFocusInMenu) {
-        let newIndex = currentIndex + distance;
-        if (newIndex > dropdownItemRefs.current.length - 1) {
-          newIndex = 0;
-        } else if (newIndex < 0) {
-          newIndex = dropdownItemRefs.current.length - 1;
-        }
-        if (dropdownItemRefs.current[newIndex].current?.tagName !== 'BUTTON' && dropdownItemRefs.current[newIndex].current?.tagName !== 'A') {
-          moveFocus(distance > 0 ? ++distance : --distance);
-        } else {
-          dropdownItemRefs.current[newIndex].current?.focus();
-        }
+      let newIndex = currentIndex + distance;
+      if (newIndex > dropdownItemRefs.current.length - 1) {
+        newIndex -= dropdownItemRefs.current.length;
+      } else if (newIndex < 0) {
+        newIndex += dropdownItemRefs.current.length;
+      }
+      if (dropdownItemRefs.current[newIndex].current?.tagName !== 'BUTTON' && dropdownItemRefs.current[newIndex].current?.tagName !== 'A') {
+        moveFocus(distance > 0 ? ++distance : --distance);
       } else {
-        dropdownItemRefs.current[currentIndex].current?.focus();
+        dropdownItemRefs.current[newIndex].current?.focus();
       }
     }
   }
@@ -111,11 +116,11 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
               ref: RefObject<HTMLElement>;
               role: string;
               'aria-describedby'?: string;
-              tabindex: number;
+              tabIndex: number;
             } = {
               ref: dropdownItemRefs.current[i],
               role: 'menuitem',
-              tabindex: -1
+              tabIndex: -1
             }
             // If nested under group
             if (lastGroupName !== null) {
@@ -139,7 +144,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
         dropdownItemClones.push(cloneElement(highlightedAction as ReactElement, {
           ref: dropdownItemRefs.current[dropdownItemRefs.current.length - 1],
           role: 'menuitem',
-          tabindex: -1
+          tabIndex: -1
         }));
       }
 
