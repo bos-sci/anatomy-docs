@@ -544,9 +544,10 @@ $menuPadding: space(md) 0;
   {
     display: none;
     position: absolute;
-    top: calc(100% + space(xxs)); // adding space(xxs) to account for border
+    top: 100%;
     left: 0;
     margin: auto;
+    border-top: space(xxs) solid $border-color-subtle;
     border-bottom: space(xxs) solid $border-color-subtle;
     width: 100%;
     z-index: $navSearchZIndex;
@@ -611,6 +612,14 @@ $menuPadding: space(md) 0;
 
 @media (min-width: $lg)
 {
+  .bsds-nav-primary
+  {
+    .bsds-search-panel
+    {
+      border-top: 0;
+    }
+  }
+
   .bsds-nav-header.is-constrained
   {
     $panelsWidth: 60rem; // NOTE: This is a one off size to match the layout widths.
