@@ -147,7 +147,8 @@ const Preview = ( props: Props ): JSX.Element => {
           break;
 
         case 'skip-link':
-          setRenderedComponent(<Link className="docs-demo-link" to="/components/skip-link/example" target="_blank">See example</Link>);
+          const DefaultSkipLink = lazy(() => import('./skipLink/DefaultSkipLink'));
+          setRenderedComponent(<DefaultSkipLink />);
           break;
 
         case 'stoplight':
