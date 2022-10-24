@@ -1,5 +1,6 @@
 @mixin tag-default
 {
+  display: block;
   @include font-family-base-heavy;
   @include font-size($fs-small);
   text-transform: uppercase;
