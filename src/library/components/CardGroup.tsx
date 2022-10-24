@@ -2,10 +2,10 @@ import { ReactNode } from "react"
 
 interface Props {
   children: ReactNode,
-  cardLayout?: string;
+  cardLayout?: "2up" | "3up" | "4up";
 }
 
-const CardGroup = ({children, cardLayout}: Props): JSX.Element => {
+const CardGroup = ({children, cardLayout = "2up"}: Props): JSX.Element => {
 
 let gridLayout = "";
 switch(cardLayout) {
@@ -21,7 +21,7 @@ switch(cardLayout) {
 }
 
   return (
-    <div className={`${"bsds-card-group"}${gridLayout}`}>
+    <div className={`${"bsds-card-group"}${gridLayout}`} data-testid="bsdsCardGroup">
       {children}
     </div>
   )
