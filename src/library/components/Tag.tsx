@@ -31,7 +31,7 @@ const Tag = (props: Props): JSX.Element => {
   }, [props.isGhost, props.variant]);
 
   return (
-    <p className={classes}>{props.children}</p>
+    <b className={classes}>{props.children}</b>
   );
 };
 
