@@ -6,11 +6,11 @@ import FourUp from "./FourUp";
 const CardGroupController =({ variantId }: VariantProps) : JSX.Element => {
   switch (variantId) {
     // Styles
-    case "2up":
+    case "twoUp":
       return <TwoUp />;
-    case "3up":
+    case "threeUp":
       return <ThreeUp />;
-    case "4up":
+    case "fourUp":
       return <FourUp />;
 
     default:
