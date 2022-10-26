@@ -41,7 +41,7 @@ type HoverProps =
   }
 
 type BaseProps = PlainCardProps & LinkedCardProps;
-type Props = BaseProps & HoverProps;
+export type Props = BaseProps & HoverProps;
 
 const Card = (props : Props): JSX.Element => {
   const {texts, variant, headingLevel, tag, icon, iconName, linkTitle, linkHref, actionLink, actionLinkText, gradientBrand, dropShadow } = props;

@@ -1,27 +1,28 @@
-import { ReactNode } from "react"
+import { ReactElement } from "react";
+import {Props as CardProps} from "./Card";
 
 interface Props {
-  children: ReactNode,
-  cardLayout?: string;
+  children: ReactElement<CardProps> | ReactElement<CardProps>[],
+  cardLayout?: "twoUp" | "threeUp" | "fourUp";
 }
 
-const CardGroup = ({children, cardLayout}: Props): JSX.Element => {
+const CardGroup = ({children, cardLayout = "twoUp"}: Props): JSX.Element => {
 
-let gridLayout = "";
-switch(cardLayout) {
-  case "2up":
-    gridLayout = "-2up";
-    break;
-  case "3up":
-    gridLayout = "-3up";
-    break;
-  case "4up":
-    gridLayout = "-4up";
-    break;
-}
+  let gridLayout = "";
+  switch(cardLayout) {
+    case "twoUp":
+      gridLayout = "-two-up";
+      break;
+    case "threeUp":
+      gridLayout = "-three-up";
+      break;
+    case "fourUp":
+      gridLayout = "-four-up";
+      break;
+  }
 
   return (
-    <div className={`${"bsds-card-group"}${gridLayout}`}>
+    <div className={`${"bsds-card-group"}${gridLayout}`} data-testid="bsdsCardGroup">
       {children}
     </div>
   )
