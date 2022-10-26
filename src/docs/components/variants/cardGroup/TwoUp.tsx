@@ -4,7 +4,7 @@ import CardGroup from "../../../../library/components/CardGroup";
 const TwoUp = (): JSX.Element => {
   return (
     <Example>
-      <CardGroup cardLayout="2up">
+      <CardGroup cardLayout="twoUp">
         <div className="docs-wire-card">
           Card 1
         </div>

@@ -3,21 +3,21 @@ import {Props as CardProps} from "./Card";
 
 interface Props {
   children: ReactElement<CardProps> | ReactElement<CardProps>[],
-  cardLayout?: "2up" | "3up" | "4up";
+  cardLayout?: "twoUp" | "threeUp" | "fourUp";
 }
 
-const CardGroup = ({children, cardLayout = "2up"}: Props): JSX.Element => {
+const CardGroup = ({children, cardLayout = "twoUp"}: Props): JSX.Element => {
 
   let gridLayout = "";
   switch(cardLayout) {
-    case "2up":
-      gridLayout = "-2up";
+    case "twoUp":
+      gridLayout = "-twoUp";
       break;
-    case "3up":
-      gridLayout = "-3up";
+    case "threeUp":
+      gridLayout = "-threeUp";
       break;
-    case "4up":
-      gridLayout = "-4up";
+    case "fourUp":
+      gridLayout = "-fourUp";
       break;
   }
 
