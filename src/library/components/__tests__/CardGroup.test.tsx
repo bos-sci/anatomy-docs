@@ -14,31 +14,31 @@ describe("CardGroup", () => {
 
   it("Adds class 'bsds-card-group-2up' to card group when '2up' cardLayout is selected", () => {
     render(
-      <CardGroup cardLayout="2up">
+      <CardGroup cardLayout="twoUp">
         <div>Demo card</div>
       </CardGroup>
     );
 
-    expect(screen.getByTestId("bsdsCardGroup")).toHaveClass("bsds-card-group-2up");
+    expect(screen.getByTestId("bsdsCardGroup")).toHaveClass("bsds-card-group-twoUp");
   });
 
   it("Adds class 'bsds-card-group-3up' to card group when '3up' cardLayout is selected", () => {
     render(
-      <CardGroup cardLayout="3up">
+      <CardGroup cardLayout="threeUp">
         <div>Demo card</div>
       </CardGroup>
     );
 
-    expect(screen.getByTestId("bsdsCardGroup")).toHaveClass("bsds-card-group-3up");
+    expect(screen.getByTestId("bsdsCardGroup")).toHaveClass("bsds-card-group-threeUp");
   });
 
   it("Adds class 'bsds-card-group-4up' to card group when '4up' cardLayout is selected", () => {
     render(
-      <CardGroup cardLayout="4up">
+      <CardGroup cardLayout="fourUp">
         <div>Demo card</div>
       </CardGroup>
     );
 
-    expect(screen.getByTestId("bsdsCardGroup")).toHaveClass("bsds-card-group-4up");
+    expect(screen.getByTestId("bsdsCardGroup")).toHaveClass("bsds-card-group-fourUp");
   });
 })
