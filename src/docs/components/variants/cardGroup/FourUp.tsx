@@ -6,16 +6,16 @@ const FourUp = (): JSX.Element => {
     <Example>
       <CardGroup cardLayout="4up">
         <div className="docs-wire-card">
-          Card
+          Card 1
         </div>
         <div className="docs-wire-card">
-          Card
+          Card 2
         </div>
         <div className="docs-wire-card">
-          Card
+          Card 3
         </div>
         <div className="docs-wire-card">
-          Card
+          Card 4
         </div>
       </CardGroup>
     </Example>

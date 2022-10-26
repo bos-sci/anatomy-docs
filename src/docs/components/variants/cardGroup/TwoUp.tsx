@@ -6,10 +6,10 @@ const TwoUp = (): JSX.Element => {
     <Example>
       <CardGroup cardLayout="2up">
         <div className="docs-wire-card">
-          Card
+          Card 1
         </div>
         <div className="docs-wire-card">
-          Card
+          Card 2
         </div>
       </CardGroup>
     </Example>

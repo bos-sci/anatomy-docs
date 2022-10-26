@@ -6,13 +6,13 @@ const ThreeUp = (): JSX.Element => {
     <Example>
       <CardGroup cardLayout="3up">
         <div className="docs-wire-card">
-          Card
+          Card 1
         </div>
         <div className="docs-wire-card">
-          Card
+          Card 2
         </div>
         <div className="docs-wire-card">
-          Card
+          Card 3
         </div>
       </CardGroup>
     </Example>

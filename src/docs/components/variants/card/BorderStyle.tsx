@@ -1,12 +1,10 @@
 import Example from "../../../shared/components/Example";
 import Card from "../../../../library/components/Card";
-import CardGroup from "../../../../library/components/CardGroup";
 
 const BorderStyle = (): JSX.Element => {
   return (
     <>
       <Example>
-        <CardGroup>
           <Card
             texts={{
               cardTitle: "Card title",
@@ -16,11 +14,9 @@ const BorderStyle = (): JSX.Element => {
             variant="border-light"
             headingLevel="h4"
           />
-        </CardGroup>
       </Example>
 
       <Example isDarkTheme={true}>
-        <CardGroup>
           <Card
             texts={{
               cardTitle: "Card title",
@@ -30,7 +26,6 @@ const BorderStyle = (): JSX.Element => {
             linkTitle={false}
             headingLevel="h4"
           />
-        </CardGroup>
       </Example>
     </>
   );
