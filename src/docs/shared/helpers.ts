@@ -12,6 +12,12 @@ export const slugify = (text: string): string => {
   .replace(/-+$/, "");
 }
 
+export const toCamelCase = (text: string): string => {
+  return slugify(text).replace(/-([a-z])/g, (letter, index) => {
+    return index === 0 ? letter[1].toLowerCase() : letter[1].toUpperCase();
+  });
+}
+
 // Index search
 const searchClient = algoliasearch(process.env.REACT_APP_ALGOLIA_ID!, process.env.REACT_APP_ALGOLIA_KEY!);
 const index = searchClient.initIndex(process.env.REACT_APP_ALGOLIA_INDEX!);

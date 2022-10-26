@@ -1,7 +1,7 @@
 import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import { useEffect, useState } from 'react';
-import { slugify } from '../helpers';
+import { toCamelCase } from '../helpers';
 
 interface Props {
   markdown: string;
@@ -28,6 +28,22 @@ const Markdown = ({ markdown, headingOffset = 0, className }: Props): JSX.Elemen
     const headings = mdDom.querySelectorAll('h1, h2, h3, h4, h5, h6');
     if (headings.length > 0) {
       const getLevel = (heading: Element): Number => Number(heading.tagName.charAt(1));
+      const trimText = (text: string): string => {
+        const softMax = 10;
+        const words = text.split(' ');
+        let charSum = 0;
+        let lastIndex = 0;
+        for (let i = 0; i < words.length; i++) {
+          if (charSum >= softMax) {
+            lastIndex = i;
+            break;
+          } else if (i === words.length - 1) {
+            lastIndex = words.length;
+          }
+          charSum += words[i].length;
+        }
+        return words.slice(0, lastIndex).join(' ');
+      }
       headings.forEach((h, index) => {
         let steps = [h];
         for (let i = index; i >= 0; i--) {
@@ -35,7 +51,7 @@ const Markdown = ({ markdown, headingOffset = 0, className }: Props): JSX.Elemen
             steps.push(headings[i]);
           }
         }
-        h.id = slugify(Array.from(steps, s => s.textContent).join('_'));
+        h.id = Array.from(steps, s => toCamelCase(trimText(s.textContent || ''))).join('_');
       });
     }
 
