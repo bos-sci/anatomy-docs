@@ -5,18 +5,18 @@
   grid-template-rows: auto;
   grid-gap: space(4x);
 
-  &-twoUp,
-  &-threeUp,
-  &-fourUp
+  &-two-up,
+  &-three-up,
+  &-four-up
   {
     @extend .bsds-card-group;
   }
 
   @media (min-width: $md)
   {
-    &-twoUp,
-    &-threeUp,
-    &-fourUp
+    &-two-up,
+    &-three-up,
+    &-four-up
     {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -24,12 +24,12 @@
 
   @media (min-width: $lg)
   {
-    &-threeUp
+    &-three-up
     {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    &-fourUp
+    &-four-up
     {
       grid-template-columns: repeat(4, 1fr);
     }

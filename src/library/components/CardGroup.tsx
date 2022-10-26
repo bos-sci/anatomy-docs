@@ -11,13 +11,13 @@ const CardGroup = ({children, cardLayout = "twoUp"}: Props): JSX.Element => {
   let gridLayout = "";
   switch(cardLayout) {
     case "twoUp":
-      gridLayout = "-twoUp";
+      gridLayout = "-two-up";
       break;
     case "threeUp":
-      gridLayout = "-threeUp";
+      gridLayout = "-three-up";
       break;
     case "fourUp":
-      gridLayout = "-fourUp";
+      gridLayout = "-four-up";
       break;
   }
 
