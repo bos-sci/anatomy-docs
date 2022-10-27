@@ -51,7 +51,7 @@ const Markdown = ({ markdown, headingOffset = 0, className }: Props): JSX.Elemen
             steps.push(headings[i]);
           }
         }
-        h.id = Array.from(steps, s => toCamelCase(trimText(s.textContent || ''))).join('_');
+        h.id = Array.from(steps, s => toCamelCase(trimText(s.textContent || ''))).reverse().join('_');
       });
     }
 
