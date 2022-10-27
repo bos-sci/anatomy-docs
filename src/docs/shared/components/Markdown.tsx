@@ -1,7 +1,6 @@
 import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import { useEffect, useState } from 'react';
-import { slugify } from '../helpers';
 
 interface Props {
   markdown: string;
@@ -23,11 +22,6 @@ const Markdown = ({ markdown, headingOffset = 0, className }: Props): JSX.Elemen
       wrapperDiv.classList.add('docs-table-responsive');
       table.parentNode?.insertBefore(wrapperDiv, table);
       wrapperDiv.appendChild(table);
-    });
-    mdDom.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
-      if (!heading.id) {
-        heading.id = slugify(heading.textContent || '');
-      }
     });
 
     setCleanMarkdown(mdDom.body.innerHTML);
