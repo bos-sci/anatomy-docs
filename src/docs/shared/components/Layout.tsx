@@ -7,6 +7,7 @@ import algoliasearch from 'algoliasearch';
 import { SearchResult } from '../../../library/components/Search';
 import { useNavigate } from 'react-router-dom';
 import { indexSearch } from '../helpers';
+import useHeadingIds from '../hooks/useHeadingIds';
 
 interface Props {
   children: ReactNode;
@@ -92,6 +93,8 @@ const Layout = (props: Props): JSX.Element => {
       setSearchResults(results);
     });
   }, [searchQuery]);
+
+  useHeadingIds();
 
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>
