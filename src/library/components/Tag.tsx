@@ -2,7 +2,7 @@ import { ReactNode, useState, useEffect } from "react";
 
 export interface Props {
   children: ReactNode;
-  variant?: 'accent' | 'assertive' | '';
+  variant?: 'accent' | 'assertive' | 'featured' | '';
   isGhost?: boolean;
 }
 
@@ -17,6 +17,9 @@ const Tag = (props: Props): JSX.Element => {
         break;
       case 'assertive':
         variantClass = 'bsds-tag-assertive';
+        break;
+      case 'featured':
+        variantClass = 'bsds-tag-featured';
         break;
       default:
         variantClass = 'bsds-tag';

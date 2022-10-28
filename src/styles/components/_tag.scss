@@ -64,4 +64,18 @@
     background: $neutral-100;
     color: $neutral-00;
   }
+
+  &-featured
+  {
+    @include tag-assertive;
+    background-color: $accent-primary-30;
+    color: $neutral-100;
+  }
+
+  &-featured-ghost
+  {
+    @include tag-assertive;
+    background-color: $accent-primary-80;
+    color: $neutral-00;
+  }
 }
