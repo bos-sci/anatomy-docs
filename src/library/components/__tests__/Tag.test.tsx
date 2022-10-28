@@ -54,21 +54,21 @@ describe("Tag", () => {
     expect(screen.getByText("Variant Tag!")).toHaveClass("bsds-tag-assertive-ghost");
   });
 
-  it("Renders featured variation", () => {
+  it("Renders featured variation with 'featured' as tag text", () => {
     render(
       <Tag variant="featured">Variant Tag!</Tag>
     );
 
-    expect(screen.getByText("Variant Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Variant Tag!")).toHaveClass("bsds-tag-featured");
+    expect(screen.getByText("Featured")).toBeInTheDocument();
+    expect(screen.getByText("Featured")).toHaveClass("bsds-tag-featured");
   });
 
-  it("Renders featured-ghost variation", () => {
+  it("Renders featured-ghost variation with 'featured' as tag text", () => {
     render(
       <Tag variant="featured" isGhost>Variant Tag!</Tag>
     );
 
-    expect(screen.getByText("Variant Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Variant Tag!")).toHaveClass("bsds-tag-featured-ghost");
+    expect(screen.getByText("Featured")).toBeInTheDocument();
+    expect(screen.getByText("Featured")).toHaveClass("bsds-tag-featured-ghost");
   });
 });
