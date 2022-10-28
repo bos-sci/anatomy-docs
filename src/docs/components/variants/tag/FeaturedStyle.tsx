@@ -5,10 +5,10 @@ const FeaturedStyle = (): JSX.Element => {
   return (
     <>
       <Example>
-        <Tag variant="featured">Featured tag</Tag>
+        <Tag variant="featured">Tag</Tag>
       </Example>
       <Example isDarkTheme={true}>
-        <Tag variant="featured" isGhost>Featured tag</Tag>
+        <Tag variant="featured" isGhost>Tag</Tag>
       </Example>
     </>
   );
