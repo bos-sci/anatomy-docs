@@ -34,7 +34,7 @@
   &-ghost
   {
     @include tag-default;
-    color: $neutral-100;
+    color: $text-color-ghost;
   }
 
   &-accent
@@ -48,34 +48,34 @@
   {
     @include tag-accent;
     border-color: $accent-secondary-60;
-    color: $neutral-100;
+    color: $text-color-ghost;
   }
 
   &-assertive
   {
     @include tag-assertive;
     background: $action-primary-20;
-    color: $neutral-100;
+    color: $text-color-ghost;
   }
 
   &-assertive-ghost
   {
     @include tag-assertive;
     background: $neutral-100;
-    color: $neutral-00;
+    color: $text-color-primary;
   }
 
   &-featured
   {
     @include tag-assertive;
     background-color: $accent-primary-30;
-    color: $neutral-100;
+    color: $text-color-ghost;
   }
 
   &-featured-ghost
   {
     @include tag-assertive;
     background-color: $accent-primary-80;
-    color: $neutral-00;
+    color: $text-color-primary;
   }
 }
