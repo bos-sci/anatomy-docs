@@ -28,7 +28,7 @@ const PageTemplate = (props: Props) => {
   return (
     <div className="docs-body">
      <Helmet>
-      <meta name="description" content={props.seoMetaDescription || 'Boston Scientific Anatomy Design System website'} />
+      <meta name="description" content={props.seoMetaDescription.length > 0 ? props.seoMetaDescription : props.seoMetaDescription.length === 0 ? props.leadParagraph : "Boston Scientific Anatomy Design System website"} />
      </Helmet>
     { (props.navSecondaryItems && props.navSecondaryMenuTrigger) &&
       <NavSecondary
