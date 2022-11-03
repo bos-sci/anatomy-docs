@@ -44,7 +44,7 @@ const Dropdown = (props: Props) => {
   const {x, y, reference, floating, strategy, refs} = useFloating({
     whileElementsMounted: autoUpdate,
     placement: menuPosition,
-    strategy: 'absolute',
+    strategy: 'fixed',
     middleware: [flip(), shift()]
   });
 
