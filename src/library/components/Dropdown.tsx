@@ -21,7 +21,18 @@ let dropdownIndex = 0;
 // TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
 // TODO: Reduce number of refs created for children.
 
-const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = 'left', children = [], className = '', highlightedAction, ...buttonAttrs}: Props) => {
+const Dropdown = (props: Props) => {
+  const {
+    triggerText,
+    listType = 'ul',
+    icon,
+    variant,
+    menuPosition = 'bottom-start',
+    children = [],
+    className = '',
+    highlightedAction,
+    ...buttonAttrs
+  } = props;
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownItems, setDropdownItems] = useState<DropdownItemElements[]>([]);
@@ -32,7 +43,7 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
 
   const {x, y, reference, floating, strategy, refs} = useFloating({
     whileElementsMounted: autoUpdate,
-    placement: menuPosition ?? 'bottom-start',
+    placement: menuPosition,
     strategy: 'absolute',
     middleware: [flip(), shift()]
   });
