@@ -1,0 +1,14 @@
+.bsds-image-fig {
+
+  &-caption {
+    color: $neutral-00;
+
+    &-center {
+      text-align: center;
+    }
+
+    &-left {
+      text-align: inherit;
+    }
+  }
+}

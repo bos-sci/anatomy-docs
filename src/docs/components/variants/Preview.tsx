@@ -121,6 +121,11 @@ const Preview = ( props: Props ): JSX.Element => {
           setRenderedComponent(<DefaultForm />);
           break;
 
+        case 'image':
+          const ImageController = lazy(() => import('./image/_ImageController'));
+          setRenderedComponent(<ImageController variantId={variantId} />);
+          break;
+
         case 'link':
           const LinkController = lazy(() => import('./link/_LinkController'));
           setRenderedComponent(<LinkController variantId={variantId} />);
