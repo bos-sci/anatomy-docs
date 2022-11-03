@@ -4,6 +4,7 @@ import { Props as ButtonProps } from './Button';
 import { Props as LinkProps } from './Link';
 import DropdownItem, { DropdownItemElements } from './DropdownItem';
 import Icon from './icon/Icon';
+import { autoUpdate, flip, Placement, shift, useFloating } from '@floating-ui/react-dom';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   triggerText?: string;
@@ -11,7 +12,7 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
   icon?: string;
   variant?: string;
   highlightedAction?: ReactElement<ButtonProps | LinkProps>;
-  menuPosition?: 'left' | 'right' | 'full';
+  menuPosition?: Placement;
   children?: DropdownItemElements[] | DropdownItemElements;
 }
 
@@ -26,9 +27,15 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
   const [dropdownItems, setDropdownItems] = useState<DropdownItemElements[]>([]);
   const [dropdownId, setDropdownId] = useState('');
 
-  const triggerRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownItemRefs = useRef(Children.map(children, () => createRef<HTMLElement>()));
+
+  const {x, y, reference, floating, strategy, refs} = useFloating({
+    whileElementsMounted: autoUpdate,
+    placement: menuPosition ?? 'bottom-start',
+    strategy: 'absolute',
+    middleware: [flip(), shift()]
+  });
 
   useEffect(() => {
     if (isDropdownOpen) {
@@ -79,7 +86,8 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
       case 'Escape':
         e.preventDefault();
         setIsDropdownOpen(false);
-        triggerRef.current?.focus();
+        const trigger = refs.reference.current as HTMLButtonElement;
+        trigger.focus();
         break;
 
       default:
@@ -174,23 +182,10 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
     <DropdownItem key={dropdownId + 'item' + i} item={item} isHighlightedAction={highlightedAction && i === dropdownItems.length - 1} />
   ));
 
-  let menuClasses = 'bsds-dropdown-menu';
-  switch (menuPosition) {
-    case 'right':
-      menuClasses += ' right';
-      break;
-    case 'full':
-      menuClasses += ' full';
-      break;
-
-    default:
-      break;
-  }
-
   return (
     <div ref={dropdownRef} className="bsds-dropdown" onKeyDown={updateFocus}>
       <Button
-        ref={triggerRef}
+        ref={reference}
         variant={variant}
         className={`bsds-dropdown-trigger${className ? ' ' + className : ''}${icon ? ' has-icon' : ''}`}
         aria-haspopup="true"
@@ -201,12 +196,32 @@ const Dropdown = ({triggerText, listType = 'ul', icon, variant, menuPosition = '
           {triggerText}
       </Button>
         {listType === 'ul' && (
-          <ul hidden={!isDropdownOpen} className={menuClasses} role="menu">
+          <ul
+            ref={floating}
+            style={{
+              position: strategy,
+              top: y ?? 0,
+              left: x ?? 0,
+              width: 'max-content'
+           }}
+           hidden={!isDropdownOpen}
+           className="bsds-dropdown-menu"
+           role="menu">
             {listItems}
           </ul>
         )}
         {listType === 'ol' && (
-          <ol hidden={!isDropdownOpen} className={menuClasses} role="menu">
+          <ol
+            ref={floating}
+            style={{
+              position: strategy,
+              top: y ?? 0,
+              left: x ?? 0,
+              width: 'max-content'
+            }}
+            hidden={!isDropdownOpen}
+            className="bsds-dropdown-menu"
+            role="menu">
             {listItems}
           </ol>
         )}
