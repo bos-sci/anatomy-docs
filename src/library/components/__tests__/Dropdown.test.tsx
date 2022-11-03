@@ -4,6 +4,19 @@ import Button from '../Button';
 import Dropdown from '../Dropdown';
 import DropdownGroupName from '../DropdownGroupName';
 
+class ResizeObserver {
+  observe() {
+      // do nothing
+  }
+  unobserve() {
+      // do nothing
+  }
+  disconnect() {
+      // do nothing
+  }
+}
+window.ResizeObserver = ResizeObserver;
+
 describe("Dropdown", () => {
   it("Renders a standard dropdown when only triggerText prop is provided", () => {
     render(
