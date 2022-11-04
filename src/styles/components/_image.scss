@@ -1,5 +1,33 @@
 .bsds-image-fig
 {
+  margin: 0;
+
+  & img
+  {
+    margin-top: 0;
+    object-fit: cover;
+    object-position: top center;
+
+    &.image1x1
+    {
+      aspect-ratio: 1/1;
+    }
+
+    &.image4x3
+    {
+      aspect-ratio: 4/3;
+    }
+
+    &.image16x9
+    {
+      aspect-ratio: 16/9;
+    }
+
+    &.image21x9
+    {
+      aspect-ratio: 21/9;
+    }
+  }
 
   &-caption
   {

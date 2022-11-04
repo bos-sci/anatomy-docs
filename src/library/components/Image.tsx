@@ -12,18 +12,23 @@ interface Props {
   }
 }
 
+let imageElId = 0;
 let imageCaptionId = 0;
 
 const ImageElement = (props : Props): JSX.Element => {
   const {imageSrc, imageRatio = "1x1", isDecorative, isCaptioned, texts} = props;
 
-  const [captionId, setCaptionId] = useState('');
-  let captionAlignment = "";
+  const [captionId, setCaptionId] = useState("");
+  const [imageId, setImageId] = useState("")
 
   useEffect(() => {
+    const imageIdNum = ++imageElId;
     const captionIdNum = ++imageCaptionId;
+    setImageId('image' + imageIdNum);
     setCaptionId('imageCaption' + captionIdNum);
   }, []);
+
+  let captionAlignment = "";
 
   if (props.centerCaption) {
     captionAlignment = "-center";
@@ -32,8 +37,8 @@ const ImageElement = (props : Props): JSX.Element => {
   }
 
   return (
-    <figure className="bsds-image-fig" aria-labelledby={captionId ? captionId : ""}>
-      <img src={imageSrc} className={imageRatio} alt={isDecorative ? "" : texts?.imageAlt} />
+    <figure className="bsds-image-fig" aria-labelledby={isCaptioned ? captionId : imageId}>
+      <img src={imageSrc} className={`image${imageRatio}`} alt={isDecorative ? "" : texts?.imageAlt} id={imageId} />
       { isCaptioned && <figcaption className={`${"bsds-image-fig-caption"}${captionAlignment}`} id={captionId ? captionId : ""}>
         {texts?.imageCaption}
       </figcaption> }
