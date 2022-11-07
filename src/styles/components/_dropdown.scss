@@ -142,6 +142,7 @@ $icon-size: 1em;
     .bsds-link,
     .bsds-dropdown-group-name
     {
+      position: relative;
       display: block;
       border: 0;
       padding: space(lg) space(2x);
@@ -155,6 +156,17 @@ $icon-size: 1em;
       &:focus
       {
         @include focus-default-inset;
+
+        &::before
+        {
+          position: absolute;
+          top: space(xs);
+          right: space(xs);
+          bottom: space(xs);
+          left: space(xs);
+          border: space(xs) solid $border-color-ghost;
+          content: '';
+        }
       }
     }
 
