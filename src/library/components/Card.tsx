@@ -1,5 +1,6 @@
 import { ReactElement, cloneElement, useState, useEffect } from "react";
 import HeadingElement from "./Heading";
+import { Props as ImageProps } from "./Image";
 import { Props as TagProps } from "./Tag";
 import Link from "./Link";
 import Icon from "./icon/Icon";
@@ -12,6 +13,7 @@ interface PlainCardProps {
   variant?: string,
   headingLevel: "h2" | "h3" | "h4" | "h5" | "h6",
   tag?: ReactElement< TagProps >,
+  image?: ReactElement< ImageProps >,
   icon?: boolean,
   iconName?: string,
 }
@@ -44,7 +46,7 @@ type BaseProps = PlainCardProps & LinkedCardProps;
 export type Props = BaseProps & HoverProps;
 
 const Card = (props : Props): JSX.Element => {
-  const {texts, variant, headingLevel, tag, icon, iconName, linkTitle, linkHref, actionLink, actionLinkText, gradientBrand, dropShadow } = props;
+  const {texts, variant, headingLevel, tag, image, icon, iconName, linkTitle, linkHref, actionLink, actionLinkText, gradientBrand, dropShadow } = props;
 
   let cardStyles = {
     classes: "",
@@ -102,7 +104,24 @@ const Card = (props : Props): JSX.Element => {
     cardStyles = {...borderLightStyle};
   }
 
+  const [clonedImage, setClonedImage] = useState<ReactElement>();
   const [clonedTag, setClonedTag] = useState<ReactElement>();
+  let imageClass = '';
+
+  useEffect(() => {
+    if(image) {
+      setClonedImage(cloneElement(image as ReactElement, {
+      isGhost: (variant === "ghost" || variant === "border-ghost")
+     }));
+    }
+  },[image, variant])
+
+  if(image?.props.imageRatio === "even-split"){
+    imageClass = "bsds-image-card-even";
+  } else {
+    imageClass = "bsds-image-card";
+  }
+
   useEffect(() => {
     if(tag) {
       setClonedTag(cloneElement(tag as ReactElement, {
@@ -127,10 +146,19 @@ const Card = (props : Props): JSX.Element => {
     </div>
   );
 
-  return (
-    <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
-      {cardContent}
+  if (clonedImage) {
+    return <div className={imageClass}>
+      { clonedImage }
+      <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
+        {cardContent}
+      </div>
     </div>
+  }
+
+  return (
+      <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
+        {cardContent}
+      </div>
   );
 }
 

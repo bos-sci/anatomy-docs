@@ -1,6 +1,7 @@
 .bsds-image-fig
 {
   margin: 0;
+  line-height: 0;
 
   & img
   {
@@ -8,22 +9,31 @@
     object-fit: cover;
     object-position: top center;
 
-    &.image1x1
+    &.image-even-split
+    {
+      margin-top: 0;
+      height: 0;
+      min-height: 100%;
+      object-position: center;
+      overflow: auto;
+    }
+
+    &.image-1x1
     {
       aspect-ratio: 1/1;
     }
 
-    &.image4x3
+    &.image-4x3
     {
       aspect-ratio: 4/3;
     }
 
-    &.image16x9
+    &.image-16x9
     {
       aspect-ratio: 16/9;
     }
 
-    &.image21x9
+    &.image-21x9
     {
       aspect-ratio: 21/9;
     }
@@ -31,16 +41,38 @@
 
   &-caption
   {
-    color: $neutral-00;
+    @include font-size($fs-small);
+    margin-top: space(2x);
+    padding-left: 0;
+    color: $text-color-primary;
+
+    &::before
+    {
+      content: "";
+    }
 
     &-center
     {
+      @extend .bsds-image-fig-caption;
       text-align: center;
+
+      &-ghost
+      {
+        @extend .bsds-image-fig-caption-center;
+        color: $text-color-ghost;
+      }
     }
 
     &-left
     {
+      @extend .bsds-image-fig-caption;
       text-align: inherit;
+
+      &-ghost
+      {
+        @extend .bsds-image-fig-caption-left;
+        color: $text-color-ghost;
+      }
     }
   }
 }
