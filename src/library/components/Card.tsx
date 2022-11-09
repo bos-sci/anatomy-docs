@@ -92,7 +92,7 @@ const Card = (props : Props): JSX.Element => {
     default:
       cardStyles = {...defaultStyle};
       break;
-  };
+  }
 
   let decorativeState = "";
   if(gradientBrand && linkHref) {

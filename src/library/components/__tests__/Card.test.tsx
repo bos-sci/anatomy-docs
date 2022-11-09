@@ -85,8 +85,8 @@ describe("Card", () => {
       />
     );
 
-    expect(screen.getByRole("figure")).toBeInTheDocument();
-    expect(screen.getByRole("figure")).toHaveClass("bsds-figure-image");
+    expect(screen.getByRole("img")).toBeInTheDocument();
+    expect(screen.getByRole("img")).toHaveClass("bsds-image-16to9");
   });
 
   it("Adds class 'bsds-card-border-light' and 'bsds-card-shadow' when dropShadow is true", () => {

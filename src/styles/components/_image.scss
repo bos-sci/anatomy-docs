@@ -1,43 +1,10 @@
 .bsds-figure-image
 {
   margin: 0;
-  line-height: 0;
-
-  .bsds-image
-  {
-    margin-top: 0;
-    object-fit: cover;
-    object-position: top center;
-
-    &-1to1
-    {
-      @extend .bsds-image;
-      aspect-ratio: 1/1;
-    }
-
-    &-4to3
-    {
-      @extend .bsds-image;
-      aspect-ratio: 4/3;
-    }
-
-    &-16to9
-    {
-      @extend .bsds-image;
-      aspect-ratio: 16/9;
-    }
-
-    &-21to9
-    {
-      @extend .bsds-image;
-      aspect-ratio: 21/9;
-    }
-  }
 
   &-caption
   {
     @include font-size($fs-small);
-    margin-top: space(2x);
     padding-left: 0;
     color: $text-color-primary;
     text-align: inherit;
@@ -64,6 +31,37 @@
         @extend .bsds-figure-image-caption;
         color: $text-color-ghost;
       }
+  }
+}
 
+.bsds-image
+{
+  margin-top: 0;
+  object-fit: cover;
+  object-position: top center;
+  line-height: 0;
+
+  &-1to1
+  {
+    @extend .bsds-image;
+    aspect-ratio: 1/1;
+  }
+
+  &-4to3
+  {
+    @extend .bsds-image;
+    aspect-ratio: 4/3;
+  }
+
+  &-16to9
+  {
+    @extend .bsds-image;
+    aspect-ratio: 16/9;
+  }
+
+  &-21to9
+  {
+    @extend .bsds-image;
+    aspect-ratio: 21/9;
   }
 }

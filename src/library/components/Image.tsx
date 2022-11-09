@@ -68,7 +68,7 @@ const Image = (props : Props): JSX.Element => {
 
   if (hasCaption && texts?.caption) {
     return captionedImage;
-  };
+  }
 
   return (
     plainImage
