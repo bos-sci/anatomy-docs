@@ -5,7 +5,7 @@ import image4to3 from "../../../../assets/images/4to3.jpg"
 const ImageStyle4to3 = (): JSX.Element => {
   return (
     <Example>
-      <Image src={image4to3} ratio="4:3" texts={{alt: "A brown tabby cat surveying his abode from a high vantage point, he has light-colored whiskers and dark eyebrows."}} />
+      <Image src={image4to3} ratio="4:3" texts={{alt: "A brown tabby cat with yellow eyes and majestic whiskers looming over his abode with a sense of superiority."}} />
     </Example>
   );
 }
