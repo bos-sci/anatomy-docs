@@ -79,6 +79,10 @@ const Components = (): JSX.Element => {
         ]
       },
       {
+        text: 'Image',
+        slug: basePath + '/image',
+      },
+      {
         text: 'Link',
         slug: basePath + '/link',
       },

@@ -4,6 +4,7 @@ import WithLink from "./WithLink";
 import WithLinkedTitle from "./WithLinkedTitle";
 import WithTag from "./WithTag";
 import WithIcon from "./WithIcon";
+import WithImage from "./WithImage";
 import DefaultStyle from "./DefaultStyle";
 import BorderStyle from "./BorderStyle";
 import WithShadow from "./WithShadow";
@@ -20,6 +21,8 @@ const CardController = ({ variantId }: VariantProps): JSX.Element => {
       return <WithTag />;
     case "withIcon":
       return <WithIcon />;
+    case "withImage":
+      return <WithImage />;
     // Styles
     case "defaultCardStyle":
       return <DefaultStyle />;

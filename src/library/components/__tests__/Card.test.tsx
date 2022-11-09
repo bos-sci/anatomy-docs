@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import Card from "../Card";
+import Image from "../Image";
 import Tag from "../Tag";
 
 describe("Card", () => {
@@ -70,6 +71,22 @@ describe("Card", () => {
 
     expect(screen.getByText("Default tag")).toBeInTheDocument();
     expect(screen.getByText("Default tag")).toHaveClass("bsds-tag");
+  });
+
+  it("Renders an image as the first child inside bsds-card when image is provided", () => {
+    render(
+      <Card
+        texts={{
+          cardTitle: "Card title",
+          cardDescription: "Card description"
+        }}
+        headingLevel="h2"
+        image={<Image src=""/>}
+      />
+    );
+
+    expect(screen.getByRole("img")).toBeInTheDocument();
+    expect(screen.getByRole("img")).toHaveClass("bsds-image-16to9");
   });
 
   it("Adds class 'bsds-card-border-light' and 'bsds-card-shadow' when dropShadow is true", () => {

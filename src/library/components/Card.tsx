@@ -1,5 +1,6 @@
 import { ReactElement, cloneElement, useState, useEffect } from "react";
 import HeadingElement from "./Heading";
+import { Props as ImageProps } from "./Image";
 import { Props as TagProps } from "./Tag";
 import Link from "./Link";
 import Icon from "./icon/Icon";
@@ -12,6 +13,7 @@ interface PlainCardProps {
   variant?: string,
   headingLevel: "h2" | "h3" | "h4" | "h5" | "h6",
   tag?: ReactElement< TagProps >,
+  image?: ReactElement< ImageProps >,
   icon?: boolean,
   iconName?: string,
 }
@@ -44,7 +46,7 @@ type BaseProps = PlainCardProps & LinkedCardProps;
 export type Props = BaseProps & HoverProps;
 
 const Card = (props : Props): JSX.Element => {
-  const {texts, variant, headingLevel, tag, icon, iconName, linkTitle, linkHref, actionLink, actionLinkText, gradientBrand, dropShadow } = props;
+  const {texts, variant, headingLevel, tag, image, icon, iconName, linkTitle, linkHref, actionLink, actionLinkText, gradientBrand, dropShadow } = props;
 
   let cardStyles = {
     classes: "",
@@ -90,7 +92,7 @@ const Card = (props : Props): JSX.Element => {
     default:
       cardStyles = {...defaultStyle};
       break;
-  };
+  }
 
   let decorativeState = "";
   if(gradientBrand && linkHref) {
@@ -102,11 +104,21 @@ const Card = (props : Props): JSX.Element => {
     cardStyles = {...borderLightStyle};
   }
 
+  const [clonedImage, setClonedImage] = useState<ReactElement>();
   const [clonedTag, setClonedTag] = useState<ReactElement>();
+
+  useEffect(() => {
+    if(image) {
+      setClonedImage(cloneElement(image as ReactElement, {
+        isGhost: (variant === "ghost" || variant === "border-ghost")
+     }));
+    }
+  },[image, variant])
+
   useEffect(() => {
     if(tag) {
       setClonedTag(cloneElement(tag as ReactElement, {
-        isGhost: (variant === "ghost" || variant === "border-ghost")
+        isGhost: (variant === "ghost" || variant === "border-ghost"),
       }));
     }
   }, [tag, variant])
@@ -127,11 +139,20 @@ const Card = (props : Props): JSX.Element => {
     </div>
   );
 
-  return (
+  const cardContentWrapper = (
     <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
       {cardContent}
     </div>
   );
+
+  if (clonedImage) {
+    return <div className="bsds-card-with-image">
+      { clonedImage }
+      { cardContentWrapper }
+    </div>
+  }
+
+  return cardContentWrapper;
 }
 
 export default Card;
