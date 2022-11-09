@@ -7,10 +7,10 @@
   REACT_APP_CONTENTFUL_ENVIRONMENT = "master"
 
 [context.branch-deploy.environment]
-  REACT_APP_CONTENTFUL_ENVIRONMENT = "2022-08-11-Luna" # Update to new working env
+  REACT_APP_CONTENTFUL_ENVIRONMENT = "2022-11-09-Missy" # Update to new working env
 
 [context.deploy-preview.environment]
-  REACT_APP_CONTENTFUL_ENVIRONMENT = "2022-08-11-Luna" # Update to new working env
+  REACT_APP_CONTENTFUL_ENVIRONMENT = "2022-11-09-Missy" # Update to new working env
 
 [[plugins]]
 package = "@algolia/netlify-plugin-crawler"
