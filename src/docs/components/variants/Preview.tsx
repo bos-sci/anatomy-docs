@@ -71,14 +71,14 @@ const Preview = ( props: Props ): JSX.Element => {
           className="docs-demo-link"
           to={`example/${props.variantId ? props.variantId : 'default'}`}
           target="_blank">
-          See {props.variant || 'example'}
+          See {props.variant?.toLowerCase() || 'example'}
         </Link>
       );
     } else {
       switch (params.componentName) {
         case 'accordion':
-          const DefaultAccordion = lazy(() => import('./accordion/DefaultAccordion'));
-          setRenderedComponent(<DefaultAccordion />);
+          const AccordionController = lazy(() => import('./accordion/_AccordionController'));
+          setRenderedComponent(<AccordionController variantId={variantId} />);
           break;
 
         case 'breadcrumbs':
@@ -89,6 +89,21 @@ const Preview = ( props: Props ): JSX.Element => {
         case 'button':
           const ButtonController = lazy(() => import('./buttons/_ButtonController'));
           setRenderedComponent(<ButtonController variantId={variantId} />);
+          break;
+
+        case 'card':
+          const CardController = lazy(() => import('./card/_CardController'));
+          setRenderedComponent(<CardController variantId={variantId} />);
+          break;
+
+        case 'card-group':
+          const CardGroupController = lazy(() => import('./cardGroup/_CardGroupController'));
+          setRenderedComponent(<CardGroupController variantId={variantId} />);
+          break;
+
+        case 'dropdown-menu':
+          const DropdownController = lazy(() => import('./dropdown/_DropdownController'));
+          setRenderedComponent(<DropdownController variantId={variantId} />);
           break;
 
         case 'checkbox':
@@ -106,6 +121,11 @@ const Preview = ( props: Props ): JSX.Element => {
           setRenderedComponent(<DefaultForm />);
           break;
 
+        case 'image':
+          const ImageController = lazy(() => import('./image/_ImageController'));
+          setRenderedComponent(<ImageController variantId={variantId} />);
+          break;
+
         case 'link':
           const LinkController = lazy(() => import('./link/_LinkController'));
           setRenderedComponent(<LinkController variantId={variantId} />);
@@ -114,6 +134,11 @@ const Preview = ( props: Props ): JSX.Element => {
         case 'navigation-link':
           const DefaultNavLink = lazy(() => import('./navLink/DefaultNavLink'));
           setRenderedComponent(<DefaultNavLink />);
+          break;
+
+        case 'navigation-back-button':
+          const NavBackController = lazy(() => import('./navBack/_NavBackController'));
+          setRenderedComponent(<NavBackController variantId={variantId} />);
           break;
 
         case 'primary-navigation':
@@ -126,13 +151,19 @@ const Preview = ( props: Props ): JSX.Element => {
           setRenderedComponent(<InputRadioGroupController variantId={variantId} />);
           break;
 
+        case 'search':
+          const DefaultSearch = lazy(() => import('./search/DefaultSearch'));
+          setRenderedComponent(<DefaultSearch />);
+          break;
+
         case 'secondary-navigation':
           const DefaultNavSecondary = lazy(() => import('./navSecondary/DefaultNavSecondary'));
           setRenderedComponent(<DefaultNavSecondary />);
           break;
 
         case 'skip-link':
-          setRenderedComponent(<Link className="docs-demo-link" to="/components/skip-link/example" target="_blank">See example</Link>);
+          const DefaultSkipLink = lazy(() => import('./skipLink/DefaultSkipLink'));
+          setRenderedComponent(<DefaultSkipLink />);
           break;
 
         case 'stoplight':
@@ -141,8 +172,8 @@ const Preview = ( props: Props ): JSX.Element => {
           break;
 
         case 'tabs':
-          const DefaultTabs = lazy(() => import('./tabs/DefaultTabs'));
-          setRenderedComponent(<DefaultTabs />);
+          const TabsController = lazy(() => import('./tabs/_TabsController'));
+          setRenderedComponent(<TabsController variantId={variantId} />);
           break;
 
         case 'tag':

@@ -10,6 +10,7 @@
 body
 {
   margin: 0;
+  background: $neutral-100;
 }
 
 .docs-root
@@ -45,7 +46,7 @@ body
     justify-content: start;
     justify-items: start;
     overflow-y: auto;
-    padding: space(4x);
+    padding: space(4x) calc(space(4x) - space(md));
   }
 }
 
@@ -61,12 +62,15 @@ main
 .docs-page-header
 {
   grid-area: intro;
+  padding: 0 space(sm);
   width: 100%;
 }
 
 .docs-page-content
 {
   grid-area: page-content;
+  overflow-x: auto;
+  padding: 0 space(sm);
   width: 100%;
 
   & > .docs-preview-:first-of-type
@@ -98,7 +102,7 @@ main
     margin-left: auto;
     grid-template-columns: 1fr 4fr;
     grid-template-areas: "nav-secondary main";
-    grid-column-gap: space(4x);
+    grid-column-gap: space(4x) - space(md);
     grid-row-gap: 0;
 
     main
@@ -114,7 +118,7 @@ main
       justify-content: start;
       justify-items: start;
       margin-top: space(4x);
-      padding: 0;
+      padding: 0 space(sm);
     }
 
     & > .bsds-nav-secondary

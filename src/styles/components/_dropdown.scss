@@ -2,10 +2,23 @@ $icon-size: 1em;
 
 .bsds-dropdown
 {
+  position: relative;
+  display: inline-block;
+
   .bsds-dropdown-trigger
   {
-    position: relative;
     padding-right: calc(space(lg) + $icon-size + space(3x)); // gap + icon width + padding
+
+    &.has-icon
+    {
+      padding-left: space(lg);
+      padding-right: calc(space(md) + $icon-size + space(lg)); // gap + icon width + padding
+
+      &::after
+      {
+        right: space(lg);
+      }
+    }
 
     &::after
     {
@@ -14,19 +27,82 @@ $icon-size: 1em;
       mask: url("../../assets/images/icon-chevron-down.svg") no-repeat 50% 50%;
       -webkit-mask-size: cover;
       mask-size: cover;
-      background-color: $text-color-primary;
       position: absolute;
       right: space(3x);
       width: $icon-size;
       height: $icon-size;
     }
 
-    &:active,
-    &[aria-expanded="true"]
+    &.bsds-button
     {
-      color: $neutral-100;
-      fill: $neutral-100;
-      background-color: $action-primary-20;
+      &::after
+      {
+        background-color: $action-primary-40;
+      }
+
+      &[aria-expanded="true"]
+      {
+        @include button-active;
+      }
+
+      &:hover,
+      &:active,
+      &[aria-expanded="true"]
+      {
+        &::after
+        {
+          background-color: $neutral-100;
+        }
+      }
+
+      &-assertive
+      {
+        &::after
+        {
+          background-color: $neutral-100;
+        }
+
+        &[aria-expanded="true"]
+        {
+          @include button-active;
+        }
+      }
+
+      &-subtle
+      {
+        &::after
+        {
+          background-color: $action-primary-40;
+        }
+
+        &[aria-expanded="true"]
+        {
+          @include button-active;
+        }
+
+        &:hover,
+        &:active,
+        &[aria-expanded="true"]
+        {
+          &::after
+          {
+            background-color: $neutral-100;
+          }
+        }
+      }
+
+      &-ghost
+      {
+        &::after
+        {
+          background-color: $neutral-100;
+        }
+
+        &[aria-expanded="true"]
+        {
+          @include button-ghost-active;
+        }
+      }
     }
 
     &[aria-expanded="true"]::after
@@ -40,10 +116,22 @@ $icon-size: 1em;
     position: absolute;
     margin: 0;
     padding: 0;
+    min-width: 10rem; // NOTE: This is a one off size.
     list-style: none;
     background: $neutral-100;
     box-shadow: $box-shadow-secondary;
     z-index: 1000;
+
+    &.right
+    {
+      right: 0;
+    }
+
+    &.full
+    {
+      left: 0;
+      right: 0;
+    }
 
     .bsds-dropdown-item
     {
@@ -51,27 +139,65 @@ $icon-size: 1em;
     }
 
     .bsds-button,
-    .bsds-link
+    .bsds-link,
+    .bsds-dropdown-group-name
     {
+      position: relative;
       display: block;
       border: 0;
       padding: space(lg) space(2x);
-      font-family: $font-family-base-regular;
-      @include font-size($fs-base);
+      width: 100%;
       color: $text-color-primary;
+      @include font-family-base-regular;
+      @include font-size($fs-base);
       text-decoration: none;
+      text-align: inherit;
 
       &:focus
       {
         @include focus-default-inset;
+
+        &::before
+        {
+          position: absolute;
+          top: space(xs);
+          right: space(xs);
+          bottom: space(xs);
+          left: space(xs);
+          border: space(xs) solid $border-color-ghost;
+          content: '';
+        }
+      }
+    }
+
+    .bsds-dropdown-group-name
+    {
+      @include font-family-base-heavy;
+    }
+
+    .bsds-dropdown-item-highlighted
+    {
+      border-top: space(xxs) solid $border-color-subtle;
+      padding: space(lg) 0;
+
+      .bsds-button,
+      .bsds-link
+      {
+        color: $action-primary-40;
+        @include font-family-base-heavy;
       }
     }
 
     .bsds-button
     {
-      &:hover
+      &:hover,
+      &:active
       {
         color: $neutral-100;
+      }
+
+      &:hover
+      {
         background: $action-primary-40;
       }
 

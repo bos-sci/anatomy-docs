@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 
 interface Props {
-  accordionHeading: string;
+  heading: string;
+  stoplightColor?: 'red' | 'yellow' | 'green';
   children: ReactNode;
 }
 

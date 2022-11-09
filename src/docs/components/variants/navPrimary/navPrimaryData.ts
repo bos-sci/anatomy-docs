@@ -141,7 +141,7 @@ export const simpleData: NavItemPrimary[] = [
   },
   {
     text: 'Current page',
-    slug: './'
+    slug: '.'
   },
   {
     text: 'Page',
@@ -166,7 +166,7 @@ export const intermediateData: NavItemPrimary[] = [
       },
       {
         text: 'Current page',
-        slug: './'
+        slug: '.'
       },
       {
         text: 'Child page',
@@ -238,7 +238,7 @@ export const intermediateData: NavItemPrimary[] = [
 
 export const complexData: NavItemPrimary[] = [
   {
-    text: 'Navigation section',
+    text: 'Navigation section 1',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altHref: 'docs-demo-link',
     altLinkText: 'All pages',
@@ -343,7 +343,7 @@ export const complexData: NavItemPrimary[] = [
     ]
   },
   {
-    text: 'Navigation section',
+    text: 'Navigation section 2',
     description: `Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.`,
     altTo: 'docs-demo-link',
     altLinkText: 'All pages',
@@ -490,7 +490,7 @@ export const complexData: NavItemPrimary[] = [
     ]
   },
   {
-    text: 'Navigation section',
+    text: 'Navigation section 3',
     description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altHref: 'docs-demo-link',
     altLinkText: 'All pages',

@@ -14,7 +14,7 @@ const useHashScroll = (isContentLoaded = false): void => {
           if (element) {
             element.scrollIntoView({behavior: 'smooth'});
           }
-        }, 0);
+        }, 1);
       }
     }
   }, [pathname, hash, key, isContentLoaded]);

@@ -1,6 +1,6 @@
 # Anatomy
 
-Anatomy is Boston Scientific's design system. It's goal is to create a unified look and feel accross Boston Scientific applications. It also promotes design and development best practices and accessibility standards.
+Anatomy is Boston Scientific's design system. It's goal is to create a unified look and feel across Boston Scientific applications. It also promotes design and development best practices and accessibility standards.
 
 ## Table of Contents
 
@@ -62,7 +62,7 @@ REACT_EDITOR=code
 1. Ensure you have the latest from develop.
 2. Branch off of develop.<br />
 *See [naming conventions](#naming-conventions) below on how to name your branch.*
-3. Reference Abstract for latest mockups then implement changes.
+3. Reference latest mockups then implement changes.
 4. Push your branch to origin and create a pull request (PR).<br />
 *See [PR naming](#branches) guidelines below.*
 5. PR can only be merged after it has been reviewed and all tests pass.
@@ -142,7 +142,7 @@ This environment is now the production environment.
 4. Go to the master environment then `Settings > API Keys > Anatomy Docs > Environments` and give the API access to the
 new working environment.
 5. Update local .env files with the new working environment name.
-6. Update `netlify.toml` with new working environment name in a branch i.e. `deploy/{environment-name}`. Commit/push changes and create/merge branch into develop.
+6. Update `netlify.toml` with new working environment name in a branch i.e. `deploy/{new-environment-name}`. Commit/push changes and create/merge branch into develop.
 7. Create pull request from develop into master.
 8. Once all tests have passed and the preview is built and reviewed, the PR can be merged.
 
@@ -157,7 +157,7 @@ In the end we should have 4 environments including master, working environment, 
 #### Git Naming
 
 ##### Branches
-If the work is tied to a ticket, the branch should be named using the pattern `feature/xdc-###` or `bug/xdc-###`.
+If the work is tied to a ticket, the branch should be named using the pattern `feature/ads-###` or `bug/ads-###`.
 In any case where the work doesn't have a ticket, the ticket name can be replaced with a brief kebab-cased description.
 If the changes are part of the deploy process, the branch should be named `deploy/{working-contentful-environment-name}`.
 

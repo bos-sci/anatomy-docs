@@ -1,37 +1,45 @@
-import { ReactNode } from "react";
+import { ReactNode, useState, useEffect } from "react";
 
-interface Props {
+export interface Props {
   children: ReactNode;
-  variant?: string;
+  variant?: 'accent' | 'assertive' | 'featured' | '';
+  isGhost?: boolean;
+  texts?: {
+    featuredTag?: string;
+  }
 }
 
 const Tag = (props: Props): JSX.Element => {
-  const { variant } = props;
+  const [classes, setClasses] = useState('');
 
-  let classes = '';
-  switch (variant) {
-    case 'accent':
-      classes = 'bsds-tag-accent'
-      break;
-    case 'accent-ghost':
-      classes = 'bsds-tag-accent-ghost'
-      break;
-    case 'assertive':
-      classes = 'bsds-tag-assertive'
-      break;
-    case 'assertive-ghost':
-      classes = 'bsds-tag-assertive-ghost'
-      break;
-    case 'ghost':
-      classes = 'bsds-tag-ghost'
-      break;
-    default:
-      classes = 'bsds-tag';
-      break;
-  }
+  useEffect(() => {
+    let variantClass = '';
+    switch (props.variant) {
+      case 'accent':
+        variantClass = 'bsds-tag-accent';
+        break;
+      case 'assertive':
+        variantClass = 'bsds-tag-assertive';
+        break;
+      case 'featured':
+        variantClass = 'bsds-tag-featured';
+        break;
+      default:
+        variantClass = 'bsds-tag';
+        break;
+    }
+
+    if (props.isGhost) {
+      variantClass ? variantClass += '-ghost' : variantClass += 'ghost';
+    }
+
+    setClasses(variantClass);
+  }, [props.isGhost, props.variant]);
 
   return (
-    <p className={classes}>{props.children}</p>
+    <b className={classes}>
+      {props.variant !== 'featured' ? props.children : props.texts?.featuredTag || 'Featured' }
+    </b>
   );
 };
 

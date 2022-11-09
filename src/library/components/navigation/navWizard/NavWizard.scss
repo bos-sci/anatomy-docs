@@ -20,11 +20,17 @@
       'description';
   }
 
-  .bsds-nav-back
+  .bsds-button-nav-back
   {
     grid-area: back;
     justify-self: start;
-    @include font-size($fs-body-subtle);
+    padding: 0;
+    padding-left: calc(1em + space(md)); // 1em is icon size from bsds-button-nav-back styles in _buttons.scss
+
+    &::before
+    {
+      left: 0;
+    }
   }
 
   .bsds-nav-breadcrumb
@@ -147,6 +153,7 @@
     &:hover,
     &:active
     {
+      background: initial;
       border: space(xxs) solid $action-primary-40;
     }
 

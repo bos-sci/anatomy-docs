@@ -14,6 +14,7 @@ $navBarZIndex: 700;
 $navBackZIndex: 600;
 $navMenuZIndex: 550;
 $navListZIndex: 500;
+$navSearchZIndex: 550;
 
 // Used in nav-menu nav-links
 $navLinkPadding: space(2x) space(3x);
@@ -28,6 +29,15 @@ $menuPadding: space(md) 0;
   border-left: 0;
   border-right: 0;
   border-bottom: 0;
+
+  &:not(.is-constrained)
+  {
+    .bsds-nav-utility .bsds-nav,
+    .bsds-nav-primary .bsds-nav-bar
+    {
+      padding: 0 space(md);
+    }
+  }
 }
 
 .bsds-nav-utility,
@@ -67,7 +77,7 @@ $menuPadding: space(md) 0;
 .bsds-nav-utility
 {
   display: none;
-  border-bottom: space(xxs) solid $neutral-80;
+  border-bottom: space(xxs) solid $border-color-subtle;
 
   .bsds-nav
   {
@@ -102,6 +112,13 @@ $menuPadding: space(md) 0;
           &:active
           {
             background: transparent;
+            color: $text-color-primary;
+            text-decoration: underline;
+
+            &::after
+            {
+              background-color: $text-color-primary;
+            }
           }
 
           &::after
@@ -128,12 +145,13 @@ $menuPadding: space(md) 0;
 
   .bsds-nav-bar
   {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     align-content: center;
     flex-direction: column;
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: space(xxs) solid $border-color-subtle;
     background-color: $neutral-100;
     z-index: $navBarZIndex;
 
@@ -243,7 +261,8 @@ $menuPadding: space(md) 0;
           padding: space(3x) space(2x);
           border: 0;
 
-          &.active,
+          &.current,
+          &:active,
           &:hover,
           &[aria-expanded="true"]
           {
@@ -257,13 +276,13 @@ $menuPadding: space(md) 0;
               right: space(2x);
               bottom: 0;
               left: space(2x);
-              border-bottom: space(sm) solid $neutral-00;
+              border-bottom: space(sm) solid $border-color-primary;
             }
           }
 
-          &.active
+          &.current
           {
-            font-family: $font-family-base-heavy;
+            @include font-family-base-heavy;
           }
         }
       }
@@ -276,7 +295,7 @@ $menuPadding: space(md) 0;
   {
     position: absolute;
     left: 0;
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: space(xxs) solid $border-color-subtle;
     width: 100%;
     @include font-size($fs-base);
     z-index: $navMenuZIndex;
@@ -309,40 +328,23 @@ $menuPadding: space(md) 0;
     }
   }
 
-  .bsds-nav-menu-back
+  .bsds-button-nav-back
   {
-    position: relative;
     width: 100%;
     justify-content: flex-start;
-    border: 0;
-    padding: $navLinkPadding;
-    padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
     @include font-size($fs-base);
     box-shadow: $box-shadow-secondary;
     z-index: $navBackZIndex;
 
+    &:hover,
+    &:active
+    {
+      background-color: $neutral-100;
+    }
+
     &:focus
     {
       @include focus-default-inset;
-    }
-
-    &::after
-    {
-      content: '';
-      -webkit-mask: url("../../../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
-      mask: url("../../../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
-      -webkit-mask-size: cover;
-      mask-size: cover;
-      background-color: $action-primary-40;
-      position: absolute;
-      top: calc(50% - ($icon-size-sm / 2));
-      left: space(2x);
-      width: $icon-size-sm;
-      height: $icon-size-sm;
-    }
-    &:active::after
-    {
-      background-color: $text-color-primary;
     }
   }
 
@@ -355,7 +357,7 @@ $menuPadding: space(md) 0;
 
     > :not(:last-child)
     {
-      border-right: space(xxs) solid $neutral-80;
+      border-right: space(xxs) solid $border-color-subtle;
     }
   }
 
@@ -401,7 +403,7 @@ $menuPadding: space(md) 0;
 
   .bsds-nav-menu-panel-header
   {
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: space(xxs) solid $border-color-subtle;
     padding: space(lg) space(3x) space(4x);
 
     .bsds-nav-menu-panel-title
@@ -413,7 +415,7 @@ $menuPadding: space(md) 0;
 
   .bsds-nav-menu-panel-header-link
   {
-    display: block;
+    display: inline-block;
     margin-top: space(3x);
   }
 
@@ -424,14 +426,16 @@ $menuPadding: space(md) 0;
       width: 100%;
       text-align: left;
 
-      &:hover
+      &:hover,
+      &:active
       {
         background: transparent;
         text-decoration: none;
       }
 
       &.active,
-      &:hover
+      &:hover,
+      &:active
       {
         background: $neutral-95;
       }
@@ -441,6 +445,14 @@ $menuPadding: space(md) 0;
         .bsds-nav-link-description
         {
           color: $text-color-primary;
+        }
+      }
+
+      &.current
+      {
+        .bsds-nav-link-text
+        {
+          @include font-family-base-heavy;
         }
       }
 
@@ -472,7 +484,7 @@ $menuPadding: space(md) 0;
       .bsds-nav-link-description
       {
         margin-top: space(md);
-        font-family: $font-family-base-regular;
+        @include font-family-base-regular;
         color: $neutral-40;
         width: 100%;
         text-align: left;
@@ -493,34 +505,37 @@ $menuPadding: space(md) 0;
     flex-direction: column;
     align-content: flex-start;
     align-items: flex-start;
-    border-top: space(xxs) solid $neutral-80;
+    border-top: space(xxs) solid $border-color-subtle;
     padding: $menuPadding;
 
     .bsds-nav-link
     {
       border: 0;
-      @include font-size($fs-base);
+      @include font-size($fs-body-subtle);
     }
 
-    .bsds-dropdown-trigger
+    .bsds-dropdown
     {
-      display: inline-flex;
-      padding-right: space(md) + $icon-size-sm + space(lg);
-
-      &[aria-expanded="true"],
-      &:hover,
-      &:active
+      .bsds-dropdown-trigger
       {
-        background: transparent;
-        color: $text-color-primary;
-      }
+        display: inline-flex;
+        padding-right: space(md) + $icon-size-sm + space(lg);
 
-      &::after
-      {
-        right: space(lg);
-        width: $icon-size-sm;
-        height: $icon-size-sm;
-        background-color: $neutral-40;
+        &[aria-expanded="true"],
+        &:hover,
+        &:active
+        {
+          background: transparent;
+          color: $text-color-primary;
+        }
+
+        &::after
+        {
+          right: space(lg);
+          width: $icon-size-sm;
+          height: $icon-size-sm;
+          background-color: $text-color-primary;
+        }
       }
     }
   }
@@ -529,9 +544,13 @@ $menuPadding: space(md) 0;
   {
     display: none;
     position: absolute;
+    top: 100%;
+    left: 0;
     margin: auto;
-    border-bottom: space(xxs) solid $neutral-80;
+    border-top: space(xxs) solid $border-color-subtle;
+    border-bottom: space(xxs) solid $border-color-subtle;
     width: 100%;
+    z-index: $navSearchZIndex;
 
     &.open
     {
@@ -593,14 +612,48 @@ $menuPadding: space(md) 0;
 
 @media (min-width: $lg)
 {
-  $panelsWidth: 60rem; // NOTE: This is a one off size to match the layout widths.
+  .bsds-nav-primary
+  {
+    .bsds-search-panel
+    {
+      border-top: 0;
+    }
+  }
+
+  .bsds-nav-header.is-constrained
+  {
+    $panelsWidth: 60rem; // NOTE: This is a one off size to match the layout widths.
+
+    .bsds-nav-utility .bsds-nav,
+    .bsds-nav-bar,
+    .bsds-nav-menu-panels,
+    .bsds-search-panel .bsds-form-search
+    {
+      width: $panelsWidth;
+    }
+
+    .bsds-nav-menu
+    {
+      &:not(.intermediate)
+      {
+        .bsds-nav-menu-panels
+        {
+          @include panelSettings($panelsWidth);
+        }
+      }
+    }
+
+    .bsds-nav-menu-panels
+    {
+      width: $panelsWidth;
+    }
+  }
 
   .bsds-nav-utility .bsds-nav,
   .bsds-nav-bar,
   .bsds-nav-menu-panels,
   .bsds-search-panel .bsds-form-search
   {
-    width: $panelsWidth;
     margin-right: auto;
     margin-left: auto;
   }
@@ -616,15 +669,13 @@ $menuPadding: space(md) 0;
     @include font-size($fs-body-subtle);
   }
 
-  .bsds-nav-menu-back
-  {
-    display: none;
-  }
 
   .bsds-nav-primary
   {
     .bsds-nav-bar
     {
+      position: static;
+
       .bsds-nav
       {
         .bsds-nav-item
@@ -677,7 +728,7 @@ $menuPadding: space(md) 0;
 
     .bsds-nav-menu
     {
-      border-top: space(xxs) solid $neutral-80;
+      border-top: space(xxs) solid $border-color-subtle;
       height: 60vh;
 
       .bsds-nav
@@ -706,12 +757,11 @@ $menuPadding: space(md) 0;
         .bsds-nav-menu-panel
         {
           width: 100%;
-        }
 
-        .bsds-nav-menu-panels .bsds-nav-menu-panel.has-header .bsds-nav-menu-panel-header
-        {
-          width: calc($panelsWidth / $numPanels);
-          flex: unset;
+          &.has-header
+          {
+            grid-template-columns: 1fr 3fr;
+          }
         }
 
         .bsds-nav
@@ -727,7 +777,6 @@ $menuPadding: space(md) 0;
 
     .bsds-nav-menu-panels
     {
-      width: $panelsWidth;
       height: 100%;
 
       & > .bsds-nav-active-list
@@ -741,7 +790,7 @@ $menuPadding: space(md) 0;
       .bsds-nav-menu-panel-header
       {
         padding: space(4x) space(4x) space(3x);
-        border-right: space(xxs) solid $neutral-80;
+        border-right: space(xxs) solid $border-color-subtle;
         border-bottom: 0;
       }
 
@@ -763,12 +812,12 @@ $menuPadding: space(md) 0;
 
         &:first-child
         {
-          border-left: space(xxs) solid $neutral-80;
+          border-left: space(xxs) solid $border-color-subtle;
         }
 
         &:not(:first-child)
         {
-          border-right: space(xxs) solid $neutral-80;
+          border-right: space(xxs) solid $border-color-subtle;
         }
 
         &.bsds-nav-list-history
@@ -790,13 +839,8 @@ $menuPadding: space(md) 0;
 
         &.has-header
         {
-          display: flex;
-          flex-direction: row;
-
-          > *
-          {
-            flex: 1;
-          }
+          display: grid;
+          grid-template-columns: 1fr 1fr;
         }
       }
     }
@@ -810,62 +854,71 @@ $menuPadding: space(md) 0;
     {
       display: none;
     }
-  }
 
+    .bsds-button-nav-back
+    {
+      display: none;
+    }
+  }
 }
 
 @media (min-width: $xl)
 {
-  $panelsWidth: 71.25rem; // NOTE: This is a one off size to match the layout widths.
-
-  .bsds-nav-utility .bsds-nav,
-  .bsds-nav-bar,
-  .bsds-search-panel .bsds-form-search
+  .bsds-nav-header.is-constrained
   {
-    width: $panelsWidth;
-  }
+    $panelsWidth: 71.25rem; // NOTE: This is a one off size to match the layout widths.
 
-  .bsds-nav-primary
-  {
-    .bsds-nav-menu:not(.intermediate)
-    {
-      .bsds-nav-menu-panels
-      {
-        @include panelSettings($panelsWidth);
-      }
-    }
-
-    .bsds-nav-menu-panels
+    .bsds-nav-utility .bsds-nav,
+    .bsds-nav-bar,
+    .bsds-search-panel .bsds-form-search
     {
       width: $panelsWidth;
+    }
+
+    .bsds-nav-primary
+    {
+      .bsds-nav-menu:not(.intermediate)
+      {
+        .bsds-nav-menu-panels
+        {
+          @include panelSettings($panelsWidth);
+        }
+      }
+
+      .bsds-nav-menu-panels
+      {
+        width: $panelsWidth;
+      }
     }
   }
 }
 
 @media (min-width: $xxl)
 {
-  $panelsWidth: 82.5rem; // NOTE: This is a one off size to match the layout widths.
-
-  .bsds-nav-utility .bsds-nav,
-  .bsds-nav-bar,
-  .bsds-search-panel .bsds-form-search
+  .bsds-nav-header.is-constrained
   {
-    width: $panelsWidth;
-  }
-
-  .bsds-nav-primary
-  {
-    .bsds-nav-menu:not(.intermediate)
-    {
-      .bsds-nav-menu-panels
-      {
-        @include panelSettings($panelsWidth);
-      }
-    }
-
-    .bsds-nav-menu-panels
+    $panelsWidth: 82.5rem; // NOTE: This is a one off size to match the layout widths.
+    .bsds-nav-utility .bsds-nav,
+    .bsds-nav-bar,
+    .bsds-search-panel .bsds-form-search
     {
       width: $panelsWidth;
+    }
+
+    .bsds-nav-primary
+    {
+      .bsds-nav-menu:not(.intermediate)
+      {
+        .bsds-nav-menu-panels
+        {
+          @include panelSettings($panelsWidth);
+        }
+      }
+
+      .bsds-nav-menu-panels
+      {
+        width: $panelsWidth;
+      }
     }
   }
 }

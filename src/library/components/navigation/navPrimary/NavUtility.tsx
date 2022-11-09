@@ -14,7 +14,7 @@ const NavUtility = ({utilityItems, ariaLabel}: Props): JSX.Element => {
         {utilityItems.map((utilityItem, i) =>
           <li key={'utilityItem' + i} className="bsds-nav-item">
             {utilityItem.children ?
-              <Dropdown triggerText={utilityItem.text} className="bsds-nav-link">
+              <Dropdown triggerText={utilityItem.text} className="bsds-nav-link" menuPosition="bottom-end">
                 {utilityItem.children.map((child, childI) => (
                   <Link key={child.text + childI} href={child.href} to={child.slug}>{child.text}</Link>
                 ))}

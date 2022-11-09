@@ -6,12 +6,12 @@ import { Helmet } from 'react-helmet'
 
 interface Props {
   name: string;
-  lastUpdated: string;
-  leadParagraph: string;
+  lastUpdated?: string;
+  leadParagraph?: string;
   seoMetaDescription: string;
   navSecondaryItems?: NavItemSecondary[];
   navSecondaryMenuTrigger?: string;
-  navTertiaryItems: NavItemTertiary[];
+  navTertiaryItems?: NavItemTertiary[];
   children: ReactNode;
 }
 
@@ -28,7 +28,7 @@ const PageTemplate = (props: Props) => {
   return (
     <div className="docs-body">
      <Helmet>
-      <meta name="description" content={props.seoMetaDescription || 'Boston Scientific Anatomy Design System website'} />
+      <meta name="description" content={props.seoMetaDescription.length > 0 ? props.seoMetaDescription : props.seoMetaDescription.length === 0 ? props.leadParagraph : "Boston Scientific Anatomy Design System website"} />
      </Helmet>
     { (props.navSecondaryItems && props.navSecondaryMenuTrigger) &&
       <NavSecondary
@@ -39,14 +39,16 @@ const PageTemplate = (props: Props) => {
         <div className="docs-page-header">
           <div className="docs-metadata">
             <h1 className="docs-title">{ props.name }</h1>
-            <dl className="docs-datestamp">
-              <dt>Last Updated:</dt>
-              <dd>{ props.lastUpdated ? new Date(props.lastUpdated).toLocaleDateString() : 'Draft' }</dd>
-            </dl>
+            {props.lastUpdated &&
+              <dl className="docs-datestamp">
+                <dt>Last Updated:</dt>
+                <dd>{ props.lastUpdated ? new Date(props.lastUpdated).toLocaleDateString() : 'Draft' }</dd>
+              </dl>
+            }
           </div>
-          <Markdown markdown={ props.leadParagraph } className="bsds-body-assertive" />
+          {props.leadParagraph && <Markdown markdown={ props.leadParagraph } className="bsds-body-assertive" /> }
         </div>
-        <NavTertiary navTertiaryItems={ props.navTertiaryItems } />
+        {props.navTertiaryItems && <NavTertiary navTertiaryItems={ props.navTertiaryItems } />}
         <div className="docs-page-content">
           { props.children }
         </div>

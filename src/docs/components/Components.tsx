@@ -33,14 +33,25 @@ const Components = (): JSX.Element => {
       .replace('/form-controls', '')
       .replace('/navigation', '');
     setNavItems([
-      // TODO: uncomment when accordion is finished
-      // {
-      //   text: 'Accordion',
-      //   slug: basePath + '/accordion',
-      // },
+      {
+        text: 'Accordion',
+        slug: basePath + '/accordion',
+      },
       {
         text: 'Button',
         slug: basePath + '/button',
+      },
+      {
+        text: 'Card',
+        slug: basePath + '/card',
+      },
+      {
+        text: 'Card group',
+        slug: basePath + '/card-group',
+      },
+      {
+        text: 'Dropdown menu',
+        slug: basePath + '/dropdown-menu',
       },
       {
         text: 'Form controls',
@@ -66,6 +77,10 @@ const Components = (): JSX.Element => {
             slug: basePath + '/form-controls/text-input'
           }
         ]
+      },
+      {
+        text: 'Image',
+        slug: basePath + '/image',
       },
       {
         text: 'Link',
@@ -97,6 +112,14 @@ const Components = (): JSX.Element => {
           {
             text: 'Navigation link',
             slug: basePath + '/navigation/navigation-link',
+          },
+          {
+            text: 'Navigation back button',
+            slug: basePath + '/navigation/navigation-back-button',
+          },
+          {
+            text: 'Search',
+            slug: basePath + '/navigation/search',
           },
           {
             text: 'Skip link',

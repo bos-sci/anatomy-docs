@@ -26,21 +26,20 @@
   border-left: 0;
   padding: space(3x);
   background: transparent;
-  color: $neutral-40;
-  color: $neutral-00;
-  font-family: $font-family-base-heavy;
+  color: $border-color-primary;
+  @include font-family-base-regular;
   @include font-size($fs-base);
   text-align: left;
 
   svg
   {
-    width: space(2x);
     margin-left: space(3x);
   }
 
   &[aria-expanded="true"]
   {
     color: $neutral-00;
+    @include font-family-base-heavy;
 
     svg
     {
@@ -55,6 +54,7 @@
       border-color: $neutral-80;
       background: transparent;
       color: $action-primary-40;
+      text-decoration: underline;
 
       svg
       {
@@ -90,5 +90,96 @@
 
 .bsds-accordion-panel
 {
-  padding: space(2x) space(3x) space(4x);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease;
+}
+
+.bsds-accordion-panel-body
+{
+  padding: space(3x) space(3x) space(4x);
+}
+
+// Stoplight styles
+
+[class*="bsds-accordion-stoplight"]
+{
+  .bsds-accordion-trigger
+  {
+    position: relative;
+    padding: 0;
+
+    &::before
+    {
+      content: '';
+      align-self: stretch;
+      width: space(3x) + space(2x) + space(sm);
+      margin-right: space(2x);
+      border-left-width: space(sm);
+      border-left-style: solid;
+      padding: space(3x) space(md);
+      background-size: space(3x);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .bsds-accordion-trigger-text
+    {
+      flex: 1;
+      padding: space(3x) 0;
+    }
+
+    svg
+    {
+      margin-right: space(3x);
+    }
+
+    &:focus
+    {
+      @include focus-default;
+      z-index: 2;
+    }
+  }
+}
+
+.bsds-accordion-stoplight
+{
+  &-red
+  {
+    .bsds-accordion-trigger
+    {
+      &::before
+      {
+        border-left-color: $feedback-error-40;
+        background-color: $feedback-error-95;
+        background-image: url("../../assets/images/icon-stoplight-red.svg");
+      }
+    }
+  }
+
+  &-yellow
+  {
+    .bsds-accordion-trigger
+    {
+      &::before
+      {
+        border-left-color: $feedback-warning-60;
+        background-color: $feedback-warning-95;
+        background-image: url("../../assets/images/icon-stoplight-yellow.svg");
+      }
+    }
+  }
+
+  &-green
+  {
+    .bsds-accordion-trigger
+    {
+      &::before
+      {
+        border-left-color: $feedback-success-40;
+        background-color: $feedback-success-95;
+        background-image: url("../../assets/images/icon-stoplight-green.svg");
+      }
+    }
+  }
 }

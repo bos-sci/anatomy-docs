@@ -9,11 +9,12 @@ export interface NavItemTertiary {
 interface Props {
   depth?: number;
   navTertiaryItems?: NavItemTertiary[];
+  tertiaryNavAriaLabel?: string;
 }
 
-const NavTertiary = ({ navTertiaryItems }: Props): JSX.Element => {
+const NavTertiary = ({ navTertiaryItems, tertiaryNavAriaLabel }: Props): JSX.Element => {
   return (
-    <nav className="bsds-nav-tertiary" aria-label="Table of contents">
+    <nav className="bsds-nav-tertiary" aria-label={tertiaryNavAriaLabel || 'Table of contents'}>
       <h2 className="bsds-nav-tertiary-title" aria-hidden="true">
         On this page
       </h2>
