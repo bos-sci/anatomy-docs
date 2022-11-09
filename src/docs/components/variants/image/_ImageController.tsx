@@ -12,13 +12,13 @@ const ImageController = ({ variantId }: VariantProps): JSX.Element => {
     case "withCaption":
       return <WithCaption />
     //Styles
-    case "image1x1":
+    case "image1to1":
       return <ImageStyle1to1 />;
-    case "image4x3":
+    case "image4to3":
       return <ImageStyle4to3 />;
-    case "image16x9":
+    case "image16to9":
       return <ImageStyle16to9 />;
-    case "image21x9":
+    case "image21to9":
       return <ImageStyle21to9 />;
 
     default:

@@ -101,6 +101,14 @@
   }
 }
 
+.bsds-card-with-image
+{
+  .bsds-card-title
+  {
+    margin-top: space(md);
+  }
+}
+
 .link-hitbox
 {
   &::before
@@ -117,13 +125,5 @@
   {
     @include focus-default;
     width: max-content;
-  }
-}
-
-.bsds-card-with-image
-{
-  .bsds-card-title
-  {
-    margin-top: space(md);
   }
 }

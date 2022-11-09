@@ -1,22 +1,30 @@
-import { useId } from "react";
+import { ImgHTMLAttributes, useId } from "react";
 
-export interface Props {
-  src: string,
+interface BaseProps extends ImgHTMLAttributes<HTMLImageElement> {
   ratio?: Ratio,
-  isDecorative?: boolean,
   hasCaption?: boolean,
   isCaptionCentered?: boolean,
   isGhost?: boolean,
   texts?: {
-    alt?: string,
     caption?: string
   }
 }
 
+type AltTextProps =
+| {
+  isDecorative: boolean,
+  alt?: never
+}
+| {
+  isDecorative?: never,
+  alt: string
+}
+
 export type Ratio = "1:1" | "4:3" | "16:9" | "21:9";
+export type Props = BaseProps & AltTextProps;
 
 const Image = (props : Props): JSX.Element => {
-  const {src, ratio = "16:9", isDecorative, hasCaption, texts} = props;
+  const {alt, ratio = "16:9", isDecorative, hasCaption, texts, className, ...imgAttrs} = props;
 
   const captionId = useId();
   const imageId = useId();
@@ -48,31 +56,23 @@ const Image = (props : Props): JSX.Element => {
     captionAlignment = "-ghost";
   }
 
-  const plainImage = (
-    <img
-      src={src}
-      className={`bsds-image${ratioClasses}`}
-      alt={isDecorative ? "" : texts?.alt}
-      id={imageId}
-    />
-  )
-
-  const captionedImage = (
-    <figure className="bsds-figure-image" aria-labelledby={"imageCaption" + captionId}>
-      { plainImage }
-       <figcaption className={`${"bsds-figure-image-caption"}${captionAlignment}`} id={"imageCaption" + captionId}>
-          {texts?.caption}
-      </figcaption>
-    </figure>
-  )
-
-  if (hasCaption && texts?.caption) {
-    return captionedImage;
-  }
-
   return (
-    plainImage
-  );
+    <>
+      <img
+        className={`bsds-image${ratioClasses}${className ? " " + className : ""}`}
+        alt={isDecorative ? "" : alt}
+        id={"image" + imageId}
+        aria-describedby={hasCaption && texts?.caption ? `imageCaption${captionId}` : undefined}
+        {...imgAttrs}
+      />
+      { hasCaption && texts?.caption &&
+        <p className={`${"bsds-image-caption"}${captionAlignment}`} id={"imageCaption" + captionId}>
+          {texts?.caption}
+        </p>
+      }
+    </>
+  )
+
 }
 
 export default Image;

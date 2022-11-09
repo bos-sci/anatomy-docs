@@ -139,7 +139,7 @@ const Card = (props : Props): JSX.Element => {
     </div>
   );
 
-  const cardWrapper = (
+  const cardContentWrapper = (
     <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
       {cardContent}
     </div>
@@ -148,13 +148,11 @@ const Card = (props : Props): JSX.Element => {
   if (clonedImage) {
     return <div className="bsds-card-with-image">
       { clonedImage }
-      { cardWrapper }
+      { cardContentWrapper }
     </div>
   }
 
-  return (
-    cardWrapper
-  );
+  return cardContentWrapper;
 }
 
 export default Card;

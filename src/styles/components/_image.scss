@@ -1,45 +1,9 @@
-.bsds-figure-image
-{
-  margin: 0;
-
-  &-caption
-  {
-    @include font-size($fs-small);
-    padding-left: 0;
-    color: $text-color-primary;
-    text-align: inherit;
-
-    &::before
-    {
-      content: "";
-    }
-
-    &-center
-    {
-      @extend .bsds-figure-image-caption;
-      text-align: center;
-
-      &-ghost
-      {
-        @extend .bsds-figure-image-caption-center;
-        color: $text-color-ghost;
-      }
-    }
-
-      &-ghost
-      {
-        @extend .bsds-figure-image-caption;
-        color: $text-color-ghost;
-      }
-  }
-}
-
 .bsds-image
 {
+  display: block;
   margin-top: 0;
   object-fit: cover;
   object-position: top center;
-  line-height: 0;
 
   &-1to1
   {
@@ -63,5 +27,30 @@
   {
     @extend .bsds-image;
     aspect-ratio: 21/9;
+  }
+}
+
+.bsds-image-caption
+{
+  @include font-size($fs-small);
+  margin-top: space(md);
+  color: $text-color-primary;
+
+  &-center
+  {
+    @extend .bsds-image-caption;
+    text-align: center;
+
+    &-ghost
+    {
+      @extend .bsds-image-caption-center;
+      color: $text-color-ghost;
+    }
+  }
+
+  &-ghost
+  {
+    @extend .bsds-image-caption;
+    color: $text-color-ghost;
   }
 }

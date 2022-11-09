@@ -6,10 +6,16 @@ const WithCaption = (): JSX.Element => {
   return (
     <>
       <Example>
-        <Image src={image16to9} isDecorative hasCaption texts={{caption: "This is an image caption."}} />
+        <Image src={image16to9} hasCaption
+          alt="A perfect pitbull puppy with baby blue eyes, a black nose, a white horn-shaped marking on his face, and a very curious ear, laying on a black couch with his front paws crossed."
+          texts={{caption: "This is an image caption."}}
+        />
       </Example>
       <Example isDarkTheme>
-        <Image src={image16to9} isDecorative hasCaption isGhost texts={{caption: "This is an image caption."}} />
+        <Image src={image16to9} hasCaption isGhost
+          alt="A perfect pitbull puppy with baby blue eyes, a black nose, a white horn-shaped marking on his face, and a very curious ear, laying on a black couch with his front paws crossed."
+          texts={{caption: "This is an image caption."}}
+        />
       </Example>
     </>
   );
