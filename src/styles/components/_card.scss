@@ -120,16 +120,8 @@
   }
 }
 
-.bsds-image-card
+.bsds-card-with-image
 {
-  display: grid;
-
-  &-even
-  {
-    @extend .bsds-image-card;
-    grid-auto-rows: 1fr;
-  }
-
   .bsds-card-title
   {
     margin-top: space(md);

@@ -1,40 +1,35 @@
-.bsds-image-fig
+.bsds-figure-image
 {
   margin: 0;
   line-height: 0;
 
-  & img
+  .bsds-image
   {
     margin-top: 0;
     object-fit: cover;
     object-position: top center;
 
-    &.image-even-split
+    &-1to1
     {
-      margin-top: 0;
-      height: 0;
-      min-height: 100%;
-      object-position: center;
-      overflow: auto;
-    }
-
-    &.image-1x1
-    {
+      @extend .bsds-image;
       aspect-ratio: 1/1;
     }
 
-    &.image-4x3
+    &-4to3
     {
+      @extend .bsds-image;
       aspect-ratio: 4/3;
     }
 
-    &.image-16x9
+    &-16to9
     {
+      @extend .bsds-image;
       aspect-ratio: 16/9;
     }
 
-    &.image-21x9
+    &-21to9
     {
+      @extend .bsds-image;
       aspect-ratio: 21/9;
     }
   }
@@ -45,6 +40,7 @@
     margin-top: space(2x);
     padding-left: 0;
     color: $text-color-primary;
+    text-align: inherit;
 
     &::before
     {
@@ -53,26 +49,21 @@
 
     &-center
     {
-      @extend .bsds-image-fig-caption;
+      @extend .bsds-figure-image-caption;
       text-align: center;
 
       &-ghost
       {
-        @extend .bsds-image-fig-caption-center;
+        @extend .bsds-figure-image-caption-center;
         color: $text-color-ghost;
       }
     }
-
-    &-left
-    {
-      @extend .bsds-image-fig-caption;
-      text-align: inherit;
 
       &-ghost
       {
-        @extend .bsds-image-fig-caption-left;
+        @extend .bsds-figure-image-caption;
         color: $text-color-ghost;
       }
-    }
+
   }
 }

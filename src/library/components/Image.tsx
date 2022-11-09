@@ -1,54 +1,78 @@
-import { useEffect, useState } from "react";
+import { useId } from "react";
 
 export interface Props {
-  imageSrc: string,
-  imageRatio?: "even-split" | "1x1" | "4x3" | "16x9" | "21x9",
+  src: string,
+  ratio?: Ratio,
   isDecorative?: boolean,
-  isCaptioned?: boolean,
-  centerCaption?: boolean,
+  hasCaption?: boolean,
+  isCaptionCentered?: boolean,
   isGhost?: boolean,
   texts?: {
-    imageAlt?: string,
-    imageCaption?: string
+    alt?: string,
+    caption?: string
   }
 }
 
-let imageElId = 0;
-let imageCaptionId = 0;
+export type Ratio = "1:1" | "4:3" | "16:9" | "21:9";
 
-const ImageElement = (props : Props): JSX.Element => {
-  const {imageSrc, imageRatio = "16x9", isDecorative, isCaptioned, texts} = props;
+const Image = (props : Props): JSX.Element => {
+  const {src, ratio = "16:9", isDecorative, hasCaption, texts} = props;
 
-  const [captionId, setCaptionId] = useState("");
-  const [imageId, setImageId] = useState("")
+  const captionId = useId();
+  const imageId = useId();
 
-  useEffect(() => {
-    const imageIdNum = ++imageElId;
-    const captionIdNum = ++imageCaptionId;
-    setImageId("image" + imageIdNum);
-    setCaptionId("imageCaption" + captionIdNum);
-  }, []);
+  let ratioClasses = "";
+
+  switch(ratio) {
+    case "1:1":
+      ratioClasses = "-1to1";
+      break;
+    case "4:3":
+      ratioClasses = "-4to3";
+      break;
+    case "16:9":
+      ratioClasses = "-16to9";
+      break;
+    case "21:9":
+      ratioClasses = "-21to9";
+      break;
+  };
 
   let captionAlignment = "";
 
-  if (props.centerCaption && !props.isGhost) {
+  if (props.isCaptionCentered && !props.isGhost) {
     captionAlignment = "-center";
-  } else if (props.centerCaption && props.isGhost) {
+  } else if (props.isCaptionCentered && props.isGhost) {
     captionAlignment = "-center-ghost";
   } else if (props.isGhost) {
-    captionAlignment = "-left-ghost";
-  } else {
-    captionAlignment = "-left";
+    captionAlignment = "-ghost";
   }
 
-  return (
-    <figure className="bsds-image-fig" aria-labelledby={isCaptioned ? captionId : imageId}>
-      <img src={imageSrc} className={`image-${imageRatio}`} alt={isDecorative ? "" : texts?.imageAlt} id={imageId} />
-      { isCaptioned && <figcaption className={`${"bsds-image-fig-caption"}${captionAlignment}`} id={captionId ? captionId : ""}>
-        {texts?.imageCaption}
-      </figcaption> }
+  const plainImage = (
+    <img
+      src={src}
+      className={`bsds-image${ratioClasses}`}
+      alt={isDecorative ? "" : texts?.alt}
+      id={imageId}
+    />
+  )
+
+  const captionedImage = (
+    <figure className="bsds-figure-image" aria-labelledby={"imageCaption" + captionId}>
+      { plainImage }
+       <figcaption className={`${"bsds-figure-image-caption"}${captionAlignment}`} id={"imageCaption" + captionId}>
+          {texts?.caption}
+      </figcaption>
     </figure>
+  )
+
+  if (hasCaption && texts?.caption) {
+    return captionedImage;
+  };
+
+  return (
+    plainImage
   );
 }
 
-export default ImageElement;
+export default Image;

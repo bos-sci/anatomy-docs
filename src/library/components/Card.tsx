@@ -106,26 +106,19 @@ const Card = (props : Props): JSX.Element => {
 
   const [clonedImage, setClonedImage] = useState<ReactElement>();
   const [clonedTag, setClonedTag] = useState<ReactElement>();
-  let imageClass = '';
 
   useEffect(() => {
     if(image) {
       setClonedImage(cloneElement(image as ReactElement, {
-      isGhost: (variant === "ghost" || variant === "border-ghost")
+        isGhost: (variant === "ghost" || variant === "border-ghost")
      }));
     }
   },[image, variant])
 
-  if(image?.props.imageRatio === "even-split"){
-    imageClass = "bsds-image-card-even";
-  } else {
-    imageClass = "bsds-image-card";
-  }
-
   useEffect(() => {
     if(tag) {
       setClonedTag(cloneElement(tag as ReactElement, {
-        isGhost: (variant === "ghost" || variant === "border-ghost")
+        isGhost: (variant === "ghost" || variant === "border-ghost"),
       }));
     }
   }, [tag, variant])
@@ -146,19 +139,21 @@ const Card = (props : Props): JSX.Element => {
     </div>
   );
 
+  const cardWrapper = (
+    <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
+      {cardContent}
+    </div>
+  );
+
   if (clonedImage) {
-    return <div className={imageClass}>
+    return <div className="bsds-card-with-image">
       { clonedImage }
-      <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
-        {cardContent}
-      </div>
+      { cardWrapper }
     </div>
   }
 
   return (
-      <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
-        {cardContent}
-      </div>
+    cardWrapper
   );
 }
 
