@@ -14,7 +14,7 @@ const useHeadingIds = () => {
     if (headings.length > 0) {
       const getLevel = (heading: Element): Number => Number(heading.tagName.charAt(1));
       const trimText = (text: string): string => {
-        const softMax = 10;
+        const softMax = 20;
         const words = text.split(' ');
         let charSum = 0;
         let lastIndex = 0;
@@ -36,7 +36,9 @@ const useHeadingIds = () => {
             steps.push(headings[i]);
           }
         }
-        h.id = Array.from(steps, s => toCamelCase(trimText(s.textContent || ''))).reverse().join('_');
+        if (h.id === '') {
+          h.id = Array.from(steps, s => toCamelCase(trimText(s.textContent || ''))).reverse().join('_');
+        }
       });
     }
   }, []);
