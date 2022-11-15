@@ -1,4 +1,4 @@
-import { ReactElement, cloneElement, useState, useEffect } from "react";
+import { ReactElement, cloneElement, useState, useEffect, useId } from "react";
 import HeadingElement from "./Heading";
 import { Props as ImageProps } from "./Image";
 import { Props as TagProps } from "./Tag";
@@ -47,6 +47,8 @@ export type Props = BaseProps & HoverProps;
 
 const Card = (props : Props): JSX.Element => {
   const {texts, variant, headingLevel, tag, image, icon, iconName, linkTitle, linkHref, actionLink, actionLinkText, gradientBrand, dropShadow } = props;
+
+  const cardTitleId = useId();
 
   let cardStyles = {
     classes: "",
@@ -127,7 +129,7 @@ const Card = (props : Props): JSX.Element => {
     <div className="bsds-card-content">
       { clonedTag }
       { icon && <Icon name={`${iconName}`} className="bsds-icon-8x"/> }
-      <HeadingElement headingLevel={headingLevel} className="bsds-card-title">
+      <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"cardTitle" + cardTitleId}>
         { linkTitle ? <Link href={linkHref} className={`${cardStyles.titleLinkClasses} ${"link-hitbox"}`}>
           {texts.cardTitle}
         </Link> : <>{texts.cardTitle}</> }
