@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, ForwardedRef, forwardRef, InputHTMLAttributes, MutableRefObject, useEffect, useId, useRef, useState } from 'react';
+import { ChangeEvent, FocusEvent, FormEvent, FormHTMLAttributes, ForwardedRef, forwardRef, InputHTMLAttributes, MutableRefObject, useEffect, useId, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RequireOnlyOne } from '../types';
 import Button from './Button';
@@ -18,6 +18,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   isLabelVisible?: boolean;
   hasAutocomplete?: boolean;
   searchResults?: SearchResult[];
+  formAttributes?: FormHTMLAttributes<HTMLFormElement>
   texts?: {
     helpText?: string;
     buttonAriaLabel?: string;
@@ -30,7 +31,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   onFormSubmit?: (e: FormEvent<HTMLFormElement>) => void;
 }
 
-const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = true, searchResults, texts, placeholder, value, defaultValue, onInvalid, onBlur, onChange, onFormSubmit, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
+const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = true, searchResults, texts, placeholder, value, defaultValue, onInvalid, onBlur, onChange, onFocus, onFormSubmit, formAttributes, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
 
   const navigate = useNavigate();
 
@@ -39,17 +40,10 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
   const [inputValue, setInputValue] = useState('');
   const [activeDescendant, setActiveDescendant] = useState<number>(0); // set to -1 to reset state
   const [isDirty, setIsDirty] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsDirty(true);
-    setInputValue(e.target.value);
-    if (onChange) {
-      onChange(e);
-    }
-  }
 
   const moveActiveDesc = (distance: number) => {
     if (searchRef.current?.contains(document.activeElement) && searchResults && inputValue.length) {
@@ -81,7 +75,6 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
         break;
 
       case 'Enter':
-        e.preventDefault();
         // TODO: Using navigate() here makes react-router-dom (v6) a dependency of Anatomy.
         // Find another solution if we don't want that dependency, and address when we split lib from docs.
         if(searchResults && inputValue) {
@@ -98,8 +91,32 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
     }
   }
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    if (onFormSubmit) {
+      onFormSubmit(e);
+    }
+  }
+
+  const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
+    if (onFocus) {
+      onFocus(e);
+    }
+    if (hasAutocomplete && inputValue) {
+      setIsOpen(true);
+    }
+  }
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setIsDirty(true);
+    setInputValue(e.target.value);
+    if (onChange) {
+      onChange(e);
+    }
+  }
+
   useEffect(() => {
     setActiveDescendant(-1);
+    setIsOpen(!!inputValue);
   }, [inputValue]);
 
   useEffect(() => {
@@ -110,14 +127,21 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
     }
   }, [value, defaultValue, isDirty]);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    if (onFormSubmit) {
-      onFormSubmit(e);
+  useEffect(() => {
+    const closeOnClick = (e: PointerEvent) => {
+      if (!searchRef.current?.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
     }
-  }
+
+    window.addEventListener('pointerup', closeOnClick);
+    return () => {
+      window.removeEventListener('pointerup', closeOnClick);
+    }
+  });
 
   return (
-    <form className="bsds-form-search" role="search" aria-label={texts?.searchAriaLabel || "site search"} onSubmit={handleSubmit}>
+    <form action="." className="bsds-form-search" role="search" aria-label={texts?.searchAriaLabel || "site search"} onSubmit={handleSubmit} {...formAttributes}>
       <div className="bsds-input">
         <div className="bsds-search">
           <label htmlFor={searchId} className={"bsds-input-text-label" + (!isLabelVisible ? ' bsds-visually-hidden' : '')}>
@@ -149,10 +173,11 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 aria-controls={hasAutocomplete ? searchId + '-results' : undefined}
                 aria-autocomplete={hasAutocomplete ? 'list' : undefined}
                 aria-haspopup={hasAutocomplete ? 'listbox' : undefined}
-                aria-expanded={hasAutocomplete && !!inputValue}
+                aria-expanded={hasAutocomplete && isOpen}
                 aria-describedby={texts?.helpText || ''}
                 aria-activedescendant={activeDescendant >= 0 ? searchId + '-result-' + activeDescendant : undefined}
                 onChange={handleChange}
+                onFocus={handleFocus}
                 {...inputAttrs} />
               {/* TODO: consider pulling this into an input addon component/variant */}
               {inputValue &&
@@ -165,7 +190,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 </button>
               }
               {(hasAutocomplete && searchResults) &&
-                <ul id={searchId + '-results'} className="bsds-search-results" hidden={!inputValue}>
+                <ul id={searchId + '-results'} className="bsds-search-results" hidden={!isOpen}>
                   {searchResults.length > 0 && searchResults.map((result, i) => (
                     <li key={result.text + i} className="bsds-search-result">
                       <Link
