@@ -47,7 +47,7 @@ const Breadcrumb = ({ crumbs, currentPage, texts, hasOverflow = true }: Props): 
         {overflowCrumbs.length > 0 &&
           <li className="bsds-breadcrumb-overflow">
             {overflowCrumbs.length > 0 &&
-              <Dropdown variant="subtle" icon="ellipsis" listType="ol" aria-label={texts?.breadcrumbDropdownAriaLabel || 'previous pages'}>
+              <Dropdown variant="subtle" triggerText={texts?.breadcrumbDropdownAriaLabel || 'previous pages'} icon="ellipsis" listType="ol">
                 {overflowCrumbs.map(crumb => (
                   <Link key={`crumb${crumb.name}`} href={crumb.href} to={crumb.to}>{crumb.name}</Link>
                 ))}
