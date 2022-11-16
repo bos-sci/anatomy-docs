@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent, FormEvent, ForwardedRef, forwardRef, InputHTMLAttributes, MutableRefObject, useEffect, useId, useRef, useState } from 'react';
+import { ChangeEvent, FocusEvent, FormEvent, FormHTMLAttributes, ForwardedRef, forwardRef, InputHTMLAttributes, MutableRefObject, useEffect, useId, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RequireOnlyOne } from '../types';
 import Button from './Button';
@@ -18,6 +18,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   isLabelVisible?: boolean;
   hasAutocomplete?: boolean;
   searchResults?: SearchResult[];
+  formAttributes?: FormHTMLAttributes<HTMLFormElement>
   texts?: {
     helpText?: string;
     buttonAriaLabel?: string;
@@ -30,7 +31,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   onFormSubmit?: (e: FormEvent<HTMLFormElement>) => void;
 }
 
-const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = true, searchResults, texts, placeholder, value, defaultValue, onInvalid, onBlur, onChange, onFocus, onFormSubmit, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
+const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = true, searchResults, texts, placeholder, value, defaultValue, onInvalid, onBlur, onChange, onFocus, onFormSubmit, formAttributes, ...inputAttrs }: Props, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
 
   const navigate = useNavigate();
 
@@ -74,7 +75,6 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
         break;
 
       case 'Enter':
-        e.preventDefault();
         // TODO: Using navigate() here makes react-router-dom (v6) a dependency of Anatomy.
         // Find another solution if we don't want that dependency, and address when we split lib from docs.
         if(searchResults && inputValue) {
@@ -141,7 +141,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
   });
 
   return (
-    <form className="bsds-form-search" role="search" aria-label={texts?.searchAriaLabel || "site search"} onSubmit={handleSubmit}>
+    <form action="." className="bsds-form-search" role="search" aria-label={texts?.searchAriaLabel || "site search"} onSubmit={handleSubmit} {...formAttributes}>
       <div className="bsds-input">
         <div className="bsds-search">
           <label htmlFor={searchId} className={"bsds-input-text-label" + (!isLabelVisible ? ' bsds-visually-hidden' : '')}>
