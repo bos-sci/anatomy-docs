@@ -36,7 +36,7 @@ const useHeadingIds = () => {
             steps.push(headings[i]);
           }
         }
-        if (h.id === '') {
+        if (!h.id || h.id.includes('-')) {
           h.id = Array.from(steps, s => toCamelCase(trimText(s.textContent || ''))).reverse().join('_');
         }
       });
