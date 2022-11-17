@@ -10,11 +10,12 @@ const useHeadingIds = () => {
   }, []);
 
   const setIds = useCallback(() => {
-    let headings = document.querySelectorAll('h2, h3, h4, h5, h6');
+    const headings = document.querySelectorAll('h2, h3, h4, h5, h6');
     if (headings.length > 0) {
       const getLevel = (heading: Element): Number => Number(heading.tagName.charAt(1));
       const trimText = (text: string): string => {
         const softMax = 20;
+        // eslint-disable-next-line no-useless-escape
         const words = text.split(/[\s\.]/);
         let charSum = 0;
         let lastIndex = 0;
@@ -37,8 +38,10 @@ const useHeadingIds = () => {
           }
         }
         if (!h.id.includes(':')) {
-          h.id = Array.from(steps, s => toCamelCase(trimText(s.textContent || ''))).reverse().join('_');
-          h.id = h.id.replaceAll('-', '_');
+          h.id = Array.from(steps, s => toCamelCase(trimText(s.textContent || '')))
+          .reverse()
+          .join('_')
+          .replaceAll('-', '_');
         }
       });
     }
