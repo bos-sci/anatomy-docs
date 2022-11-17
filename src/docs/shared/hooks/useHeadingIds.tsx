@@ -11,14 +11,11 @@ const useHeadingIds = () => {
 
   const setIds = useCallback(() => {
     let headings = document.querySelectorAll('h2, h3, h4, h5, h6');
-    if (window.location.href.indexOf("release-notes") !== -1) {
-      headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-    }
     if (headings.length > 0) {
       const getLevel = (heading: Element): Number => Number(heading.tagName.charAt(1));
       const trimText = (text: string): string => {
         const softMax = 20;
-        const words = text.split(/(\s\d)/);
+        const words = text.split(/[\s\.]/);
         let charSum = 0;
         let lastIndex = 0;
         for (let i = 0; i < words.length; i++) {
