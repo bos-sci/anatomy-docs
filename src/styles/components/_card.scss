@@ -61,6 +61,22 @@
         opacity: 1;
       }
     }
+
+    &.bsds-card-shadow
+    {
+      box-shadow: none;
+
+      &::before
+      {
+        top: unset;
+      }
+
+      &:hover
+      {
+        box-shadow: none;
+      }
+    }
+
   }
 
   &-shadow

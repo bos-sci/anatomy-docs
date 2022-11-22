@@ -81,15 +81,16 @@ describe("Card", () => {
           cardDescription: "Card description"
         }}
         headingLevel="h2"
-        image={<Image src=""/>}
+        image={<Image src="https://images.unsplash.com/photo-1583160247711-2191776b4b91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80" alt="Golden retriever puppy."/>}
       />
     );
 
     expect(screen.getByRole("img")).toBeInTheDocument();
     expect(screen.getByRole("img")).toHaveClass("bsds-image-16to9");
+    expect(screen.getByAltText("Golden retriever puppy.")).toBeInTheDocument();
   });
 
-  it("Adds class 'bsds-card-border-light' and 'bsds-card-shadow' when dropShadow is true", () => {
+  it("Adds class 'bsds-card-shadow' when dropShadow is true and card has an actionLink", () => {
     render(
       <Card
         texts={{
@@ -97,16 +98,17 @@ describe("Card", () => {
           cardDescription: "Card description"
         }}
         headingLevel="h2"
+        actionLink={true}
+        actionLinkText="Link text"
+        linkHref="#"
         dropShadow={true}
-        linkTitle={true}
-        linkHref="#"
       />
     );
 
-    expect(screen.getByTestId("bsdsCard")).toHaveClass("bsds-card-shadow", "bsds-card-border-light");
+    expect(screen.getByTestId("bsdsCard")).toHaveClass("bsds-card-shadow");
   });
 
-  it("Renders a gradient on hover with border-light card variant when gradientBrand is true", () => {
+  it("Renders a gradient on hover when gradientBrand is true and card has an actionLink", () => {
     render(
       <Card
         texts={{
@@ -114,13 +116,14 @@ describe("Card", () => {
           cardDescription: "Card description"
         }}
         headingLevel="h2"
-        gradientBrand={true}
-        linkTitle={true}
+        actionLink={true}
+        actionLinkText="Link text"
         linkHref="#"
+        gradientBrand={true}
       />
     );
 
-    expect(screen.getByTestId("bsdsCard")).toHaveClass("bsds-card-gradient", "bsds-card-border-light");
+    expect(screen.getByTestId("bsdsCard")).toHaveClass("bsds-card-gradient");
   });
 
   it("Renders an icon above card title when icon and iconName is provided", async () => {
