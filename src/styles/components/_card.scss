@@ -42,7 +42,7 @@
     margin: space(2x) 0 0 0;
   }
 
-  &-gradient:not(.bsds-card-shadow)
+  &-gradient:is(.bsds-card-border-light, .bsds-card-border-ghost):not(.bsds-card-shadow)
   {
     &::before
       {
@@ -63,7 +63,7 @@
     }
   }
 
-  &-shadow:not(.bsds-card-gradient)
+  &-shadow:is(.bsds-card-border-light, .bsds-card-border-ghost):not(.bsds-card-gradient)
   {
     @extend .link-hitbox;
     box-shadow: $box-shadow-secondary;
