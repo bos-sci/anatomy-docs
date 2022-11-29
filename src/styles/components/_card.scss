@@ -8,6 +8,11 @@
   &-content
   {
     display: contents;
+
+    [class*="bsds-tag"]:not(:first-child)
+    {
+      display: none;
+    }
   }
 
   &-ghost
@@ -106,6 +111,30 @@
   .bsds-card-title
   {
     margin-top: space(md);
+  }
+
+  .bsds-icon-8x
+  {
+    display: none;
+
+    ~ .bsds-card-content
+    {
+      &::before
+      {
+        content: "Image and icon modifiers cannot be combined.";
+        color: $feedback-error-40;
+      }
+    }
+
+    ~ .bsds-card-title
+    {
+      &::before
+      {
+        content: "Image and icon modifiers cannot be combined.\A";
+        white-space: pre-wrap;
+        color: $feedback-error-40;
+      }
+    }
   }
 }
 
