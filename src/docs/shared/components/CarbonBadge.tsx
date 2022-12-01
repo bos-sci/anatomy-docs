@@ -13,7 +13,6 @@ interface Props {
 
 const CarbonBadge = (props: Props) => {
 
-  const [badgeTxt, setBadgeText] = useState('No Result');
   const [score, setScore] = useState<CarbonScore>();
 
   useEffect(() => {
@@ -83,7 +82,7 @@ const CarbonBadge = (props: Props) => {
             <span>{score.carbon}g of CO<sub>2</sub>/view</span>
             : <span id="wcb_g">No results</span>
         }
-        <a id="wcb_a" target="_blank" rel="noopener" href="https://websitecarbon.com">Website Carbon</a>
+        <a id="wcb_a" target="_blank" rel="noreferrer" href="https://websitecarbon.com">Website Carbon</a>
       </div>
       <span id="wcb_2">{(score && score.percent >= 0) && <>Cleaner than {score?.percent}% of pages tested</>}</span>
     </div>
