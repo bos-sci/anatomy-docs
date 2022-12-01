@@ -83,6 +83,9 @@ main
 {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: space(4x);
   margin-top: space(8x);
   border-top: space(xxs) solid $neutral-80;
   padding: space(4x);
