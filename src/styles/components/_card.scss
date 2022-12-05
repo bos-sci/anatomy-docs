@@ -9,9 +9,12 @@
   {
     display: contents;
 
-    [class*="bsds-tag"]:not(:first-child)
+    [class*="bsds-tag"]
     {
-      display: none;
+      &:not(:first-child)
+      {
+        display: none;
+      }
     }
   }
 
@@ -47,35 +50,47 @@
     margin: space(2x) 0 0 0;
   }
 
-  &-gradient:is(.bsds-card-border-light, .bsds-card-border-ghost):not(.bsds-card-shadow)
+  &-gradient
   {
-    &::before
-      {
-        @include animated-gradient-brand;
-        bottom: 0;
-        opacity: 0;
-        transition: opacity 0.4s linear;
-        -webkit-transition: opacity 0.4s linear;
-      }
-
-    &:hover,
-    &:focus
+    &:is(.bsds-card-border-light, .bsds-card-border-ghost)
     {
-      &::before
+      &:not(.bsds-card-shadow)
       {
-        opacity: 1;
+        &::before
+          {
+            @include animated-gradient-brand;
+            bottom: 0;
+            opacity: 0;
+            transition: opacity 0.4s linear;
+            -webkit-transition: opacity 0.4s linear;
+          }
+
+        &:hover,
+        &:focus
+        {
+          &::before
+          {
+            opacity: 1;
+          }
+        }
       }
     }
   }
 
-  &-shadow:is(.bsds-card-border-light, .bsds-card-border-ghost):not(.bsds-card-gradient)
+  &-shadow
   {
-    @extend .link-hitbox;
-    box-shadow: $box-shadow-secondary;
-
-    &:hover
+    &:is(.bsds-card-border-light, .bsds-card-border-ghost)
     {
-      box-shadow: $box-shadow-tertiary;
+      &:not(.bsds-card-gradient)
+      {
+        @extend .link-hitbox;
+        box-shadow: $box-shadow-secondary;
+
+        &:hover
+        {
+          box-shadow: $box-shadow-tertiary;
+        }
+      }
     }
   }
 }
@@ -106,6 +121,16 @@
   }
 }
 
+@mixin bsds-style-error-text {
+  @include font-family-base-regular;
+  @include font-size($fs-base);
+  color: $feedback-error-40;
+  background-image: url("../../assets/images/icon-error.svg");
+  background-size: space(2x);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
 .bsds-card-with-image
 {
   .bsds-card-title
@@ -121,8 +146,9 @@
     {
       &::before
       {
+        @include bsds-style-error-text;
         content: "Image and icon modifiers cannot be combined.";
-        color: $feedback-error-40;
+        padding: 0 0 0 space(3x);
       }
     }
 
@@ -130,9 +156,10 @@
     {
       &::before
       {
+        @include bsds-style-error-text;
         content: "Image and icon modifiers cannot be combined.\A";
         white-space: pre-wrap;
-        color: $feedback-error-40;
+        padding: 0 0 0 space(3x);
       }
     }
   }
