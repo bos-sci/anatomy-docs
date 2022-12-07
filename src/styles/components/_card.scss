@@ -59,10 +59,9 @@
         &::before
           {
             @include animated-gradient-brand;
-            bottom: 0;
-            opacity: 0;
-            transition: opacity 0.4s linear;
-            -webkit-transition: opacity 0.4s linear;
+              bottom: 0;
+              opacity: 0;
+              transition: opacity 0.4s linear;
           }
 
         &:hover,
@@ -121,17 +120,6 @@
   }
 }
 
-@mixin bsds-modifier-error-text {
-  @include font-family-base-regular;
-  @include font-size($fs-base);
-  color: $feedback-error-40;
-  background-image: url("../../assets/images/icon-error.svg");
-  background-size: space(2x);
-  background-repeat: no-repeat;
-  background-position: left;
-  padding: 0 0 0 space(3x);
-}
-
 .bsds-card-with-image
 {
   .bsds-card-title
@@ -158,7 +146,6 @@
       {
         @include bsds-modifier-error-text;
         content: "Image and icon modifiers cannot be combined.\A";
-        white-space: pre-wrap;
       }
     }
   }
