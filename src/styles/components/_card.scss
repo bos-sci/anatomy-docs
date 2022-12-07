@@ -8,6 +8,14 @@
   &-content
   {
     display: contents;
+
+    [class*="bsds-tag"]
+    {
+      &:not(:first-child)
+      {
+        display: none;
+      }
+    }
   }
 
   &-ghost
@@ -44,33 +52,44 @@
 
   &-gradient
   {
-    &::before
-      {
-        @include animated-gradient-brand;
-        bottom: 0;
-        opacity: 0;
-        transition: opacity 0.4s linear;
-        -webkit-transition: opacity 0.4s linear;
-      }
-
-    &:hover,
-    &:focus
+    &:is(.bsds-card-border-light, .bsds-card-border-ghost)
     {
-      &::before
+      &:not(.bsds-card-shadow)
       {
-        opacity: 1;
+        &::before
+        {
+          @include animated-gradient-brand;
+          bottom: 0;
+          opacity: 0;
+          transition: opacity 0.4s linear;
+        }
+
+        &:hover,
+        &:focus
+        {
+          &::before
+          {
+            opacity: 1;
+          }
+        }
       }
     }
   }
 
   &-shadow
   {
-    @extend .link-hitbox;
-    box-shadow: $box-shadow-secondary;
-
-    &:hover
+    &:is(.bsds-card-border-light, .bsds-card-border-ghost)
     {
-      box-shadow: $box-shadow-tertiary;
+      &:not(.bsds-card-gradient)
+      {
+        @extend .link-hitbox;
+        box-shadow: $box-shadow-secondary;
+
+        &:hover
+        {
+          box-shadow: $box-shadow-tertiary;
+        }
+      }
     }
   }
 }
@@ -106,6 +125,29 @@
   .bsds-card-title
   {
     margin-top: space(md);
+  }
+
+  .bsds-icon-8x
+  {
+    display: none;
+
+    ~ .bsds-card-content
+    {
+      &::before
+      {
+        @include bsds-modifier-error-text;
+        content: "Image and icon modifiers cannot be combined.";
+      }
+    }
+
+    ~ .bsds-card-title
+    {
+      &::before
+      {
+        @include bsds-modifier-error-text;
+        content: "Image and icon modifiers cannot be combined.\A";
+      }
+    }
   }
 }
 

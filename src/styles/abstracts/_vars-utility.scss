@@ -69,3 +69,18 @@ $xxl: 87.5rem; // 1400px
     --app-width: 82.5rem;
   }
 }
+
+// Modifier Warning Utility Mixin
+
+@mixin bsds-modifier-error-text
+{
+  display: block;
+  padding: 0 0 0 space(3x);
+  background-image: url("../../assets/images/icon-error.svg");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: space(2x);
+  color: $feedback-error-40;
+  @include font-size($fs-base);
+  @include font-family-base-regular;
+}
