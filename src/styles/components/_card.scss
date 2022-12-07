@@ -57,12 +57,12 @@
       &:not(.bsds-card-shadow)
       {
         &::before
-          {
-            @include animated-gradient-brand;
-            bottom: 0;
-            opacity: 0;
-            transition: opacity 0.4s linear;
-          }
+        {
+          @include animated-gradient-brand;
+          bottom: 0;
+          opacity: 0;
+          transition: opacity 0.4s linear;
+        }
 
         &:hover,
         &:focus
