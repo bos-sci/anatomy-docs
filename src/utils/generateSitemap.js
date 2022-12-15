@@ -43,19 +43,32 @@ const createSitemap = async () => {
         && MAIN_NAVIGATION[entry.sys.contentType.sys.id] !== undefined
     )
     .map((entry) => {
-      if (entry.fields.group) {
-        return {
-          url: `/${MAIN_NAVIGATION[entry.sys.contentType.sys.id]}/${toSlug(
-            entry.fields.group
-          )}/${toSlug(entry.fields.name)}`,
-        };
+      const getUrl = () => {
+        if (entry.fields.group) {
+          return `/${MAIN_NAVIGATION[entry.sys.contentType.sys.id]}/${toSlug(entry.fields.group)}/${toSlug(entry.fields.name)}`;
+        }
+        return `/${MAIN_NAVIGATION[entry.sys.contentType.sys.id]}/${toSlug(entry.fields.name)}`;
       }
-      return {
-        url: `/${MAIN_NAVIGATION[entry.sys.contentType.sys.id]}/${toSlug(
-          entry.fields.name
-        )}`,
+
+      const site = {
+        url: getUrl()
       };
+      if (entry.sys.updatedAt) {
+        site.lastmod = entry.sys.updatedAt
+      }
+      return site;
     });
+
+  const customPages = [
+    MAIN_NAVIGATION.root
+    // When creating custom pages (not tied to contentful), add urls to this array
+  ];
+
+  customPages.forEach(page => {
+    urls.push({
+      url: page
+    });
+  });
 
   // Create a stream to write to
   const sitemap = new SitemapStream({
