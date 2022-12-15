@@ -15,7 +15,7 @@ const MAIN_NAVIGATION = {
 
 const client = contentful.createClient({
   accessToken: environment("CONTENTFUL_API_TOKEN"),
-  space: environment("REACT_APP_CONTENTFUL_SPACE_ID"),
+  space: environment("REACT_APP_CONTENTFUL_SPACE_ID")
 });
 
 const createSitemap = async () => {
@@ -30,15 +30,17 @@ const createSitemap = async () => {
         "componentStyle",
       ].includes(entry);
     });
+
   const entries = await client.getEntries({
     content_type: contentTypeIds,
+    limit: 1000
   });
 
   const urls = entries.items
     .filter(
       (entry) =>
-        entry.fields.name !== undefined &&
-        MAIN_NAVIGATION[entry.sys.contentType.sys.id] !== undefined
+        entry.fields.name !== undefined
+        && MAIN_NAVIGATION[entry.sys.contentType.sys.id] !== undefined
     )
     .map((entry) => {
       if (entry.fields.group) {
