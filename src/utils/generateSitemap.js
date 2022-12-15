@@ -15,7 +15,7 @@ const MAIN_NAVIGATION = {
 
 const client = contentful.createClient({
   accessToken: environment("CONTENTFUL_API_TOKEN"),
-  space: environment("REACT_APP_CONTENTFUL_SPACE_ID"),
+  space: environment("REACT_APP_CONTENTFUL_SPACE_ID")
 });
 
 const createSitemap = async () => {
@@ -30,30 +30,45 @@ const createSitemap = async () => {
         "componentStyle",
       ].includes(entry);
     });
+
   const entries = await client.getEntries({
     content_type: contentTypeIds,
+    limit: 1000
   });
 
   const urls = entries.items
     .filter(
       (entry) =>
-        entry.fields.name !== undefined &&
-        MAIN_NAVIGATION[entry.sys.contentType.sys.id] !== undefined
+        entry.fields.name !== undefined
+        && MAIN_NAVIGATION[entry.sys.contentType.sys.id] !== undefined
     )
     .map((entry) => {
-      if (entry.fields.group) {
-        return {
-          url: `/${MAIN_NAVIGATION[entry.sys.contentType.sys.id]}/${toSlug(
-            entry.fields.group
-          )}/${toSlug(entry.fields.name)}`,
-        };
+      const getUrl = () => {
+        if (entry.fields.group) {
+          return `/${MAIN_NAVIGATION[entry.sys.contentType.sys.id]}/${toSlug(entry.fields.group)}/${toSlug(entry.fields.name)}`;
+        }
+        return `/${MAIN_NAVIGATION[entry.sys.contentType.sys.id]}/${toSlug(entry.fields.name)}`;
       }
-      return {
-        url: `/${MAIN_NAVIGATION[entry.sys.contentType.sys.id]}/${toSlug(
-          entry.fields.name
-        )}`,
+
+      const site = {
+        url: getUrl()
       };
+      if (entry.sys.updatedAt) {
+        site.lastmod = entry.sys.updatedAt
+      }
+      return site;
     });
+
+  const customPages = [
+    MAIN_NAVIGATION.root
+    // When creating custom pages (not tied to contentful), add urls to this array
+  ];
+
+  customPages.forEach(page => {
+    urls.push({
+      url: page
+    });
+  });
 
   // Create a stream to write to
   const sitemap = new SitemapStream({
