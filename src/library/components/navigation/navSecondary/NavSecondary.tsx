@@ -132,7 +132,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
         className="bsds-nav-secondary-menu-trigger"
         aria-expanded={isOpen}
         aria-controls={navSecondaryId}
-        aria-label={texts?.menuToggleAriaLabel || 'Menu'}
+        aria-label={texts?.menuToggleAriaLabel || texts?.menuToggleText || 'Secondary menu'}
         onClick={() => setIsOpen(!isOpen)}>
         {texts?.menuToggleText || 'Menu'}
       </button>
@@ -146,7 +146,14 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
               {texts?.backButtonText || 'Back'}
           </Button>
         }
-        <NavSecondaryList navItems={navTree} parent={null} activeParent={activeParent} activeParentRef={activeParentRef} setActiveParentRef={setActiveParentRef} openChild={openChild}/>
+        <NavSecondaryList
+          navItems={navTree}
+          parent={null}
+          activeParent={activeParent}
+          activeParentRef={activeParentRef}
+          setActiveParentRef={setActiveParentRef}
+          openChild={openChild}
+        />
       </div>
     </nav>
   );
