@@ -8,7 +8,7 @@ import { SearchResult } from '../../../library/components/Search';
 import { useNavigate } from 'react-router-dom';
 import { indexSearch } from '../helpers';
 import useHeadingIds from '../hooks/useHeadingIds';
-import CarbonBadge from './CarbonBadge';
+import { WebsiteCarbonBadge } from 'react-websitecarbon-badge';
 
 interface Props {
   children: ReactNode;
@@ -105,7 +105,7 @@ const Layout = (props: Props): JSX.Element => {
     </SearchIndexContext.Provider>
     <footer className="docs-footer">
       <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>
-      <CarbonBadge className="docs-footer-badge" />
+      <WebsiteCarbonBadge />
     </footer>
   </>;
 }
