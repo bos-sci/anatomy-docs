@@ -28,7 +28,6 @@ const useIP = () => {
 
   }, [ip, searchAnalytics])
 
-  console.log('Hook ' + searchAnalytics );
   return searchAnalytics;
 };
 

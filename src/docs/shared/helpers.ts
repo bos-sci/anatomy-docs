@@ -45,6 +45,5 @@ export const indexSearch = (query: string) => {
       );
     }
   });
-  console.log( 'Algolia ' + algoliaAnalytics);
   return results;
 }
