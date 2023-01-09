@@ -1,5 +1,6 @@
 import algoliasearch from 'algoliasearch';
 import { SearchResult } from '../../library/components/Search';
+import searchAnalytics from '../../docs/shared/components/Layout'
 
 export const slugify = (text: string): string => {
   return text
@@ -26,10 +27,12 @@ type Result = SearchResult & {
   description?: string;
 }
 
+const algoliaAnalytics = !searchAnalytics;
+
 export const indexSearch = (query: string) => {
   const results = new Promise<Result[]>((resolve, reject) => {
     if (query) {
-      index.search(query).then(({hits}) => {
+      index.search(query, {analytics: algoliaAnalytics}).then(({hits}) => {
         resolve(hits
           .filter((hit: any) => hit.title !== 'Anatomy - Boston Scientific')
           .filter((hit: any) => !hit.pathname.includes('/example/'))
@@ -42,5 +45,6 @@ export const indexSearch = (query: string) => {
       );
     }
   });
+  console.log( 'Algolia ' + algoliaAnalytics);
   return results;
 }
