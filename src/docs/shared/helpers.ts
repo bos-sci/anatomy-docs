@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch';
 import { SearchResult } from '../../library/components/Search';
-import searchAnalytics from '../../docs/shared/components/Layout'
+import axios from 'axios';
 
 export const slugify = (text: string): string => {
   return text
@@ -27,12 +27,30 @@ type Result = SearchResult & {
   description?: string;
 }
 
-const algoliaAnalytics = !searchAnalytics;
+//Block search analytics by team IP
+const teamIPs = [
+  '165.225.57.60',
+  '165.225.57.43',
+  '165.225.57.38',
+  '66.31.42.9',
+  '96.237.115.225',
+  '192.168.1.155',
+  '192.168.1.6',
+  '72.87.85.30'
+];
 
-export const indexSearch = (query: string) => {
+export const indexSearch = async (query: string) => {
+
+  const getIP = async () => {
+    const res = await axios.get('https://geolocation-db.com/json/')
+    return (res.data.IPv4);
+  }
+
+  const ip = await getIP();
+
   const results = new Promise<Result[]>((resolve, reject) => {
     if (query) {
-      index.search(query, {analytics: algoliaAnalytics}).then(({hits}) => {
+      index.search(query, {analytics: !teamIPs.includes(ip)}).then(({hits}) => {
         resolve(hits
           .filter((hit: any) => hit.title !== 'Anatomy - Boston Scientific')
           .filter((hit: any) => !hit.pathname.includes('/example/'))
@@ -45,5 +63,6 @@ export const indexSearch = (query: string) => {
       );
     }
   });
+
   return results;
 }

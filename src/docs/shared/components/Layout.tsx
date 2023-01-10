@@ -8,7 +8,6 @@ import { SearchResult } from '../../../library/components/Search';
 import { useNavigate } from 'react-router-dom';
 import { indexSearch } from '../helpers';
 import useHeadingIds from '../hooks/useHeadingIds';
-import useIP from '../hooks/useIP';
 
 interface Props {
   children: ReactNode;
@@ -96,7 +95,6 @@ const Layout = (props: Props): JSX.Element => {
   }, [searchQuery]);
 
   useHeadingIds();
-  useIP();
 
   return <>
     <SkipLink destinationId="mainContent" destination="main content"/>
