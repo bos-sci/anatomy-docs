@@ -3,18 +3,6 @@
   to = "/index.html"
   status = 200
 
-[context.production.environment]
-  REACT_APP_CONTENTFUL_ENVIRONMENT = "master"
-  REACT_APP_ALGOLIA_INDEX = "netlify_61a5e8e4-0f4e-44c7-a2a2-1d9013d824e5_master_all"
-
-[context.branch-deploy.environment]
-  REACT_APP_CONTENTFUL_ENVIRONMENT = "2022-11-09-Missy" # Update to new working env
-  REACT_APP_ALGOLIA_INDEX = "netlify_61a5e8e4-0f4e-44c7-a2a2-1d9013d824e5_develop_all"
-
-[context.deploy-preview.environment]
-  REACT_APP_CONTENTFUL_ENVIRONMENT = "2022-11-09-Missy" # Update to new working env
-  REACT_APP_ALGOLIA_INDEX = "netlify_61a5e8e4-0f4e-44c7-a2a2-1d9013d824e5_develop_all"
-
 [[plugins]]
 package = "@algolia/netlify-plugin-crawler"
   [plugins.inputs]
