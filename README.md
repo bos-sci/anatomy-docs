@@ -141,8 +141,8 @@ This environment is now the production environment.
 3. Create a new environment off of master. This is the new working environment.
 4. Go to the master environment then `Settings > API Keys > Anatomy Docs > Environments` and give the API access to the
 new working environment.
-5. Update local .env files with the new working environment name.
-6. Update `netlify.toml` with new working environment name in a branch i.e. `deploy/{new-environment-name}`. Commit/push changes and create/merge branch into develop.
+5. Update local .env files with the new working environment name for `REACT_APP_CONTENTFUL_ENVIRONMENT`.
+6. Update `REACT_APP_CONTENTFUL_ENVIRONMENT` environment variable in Netlify with new working environment name for deploy previews, branch deploys, and local development.
 7. Create pull request from develop into master.
 8. Once all tests have passed and the preview is built and reviewed, the PR can be merged.
 
