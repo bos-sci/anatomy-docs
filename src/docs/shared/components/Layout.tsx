@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { indexSearch } from '../helpers';
 import useHeadingIds from '../hooks/useHeadingIds';
 import { WebsiteCarbonBadge } from 'react-websitecarbon-badge';
+import { useLocation } from 'react-router';
 
 interface Props {
   children: ReactNode;
@@ -75,6 +76,7 @@ export const SearchIndexContext = createContext(index);
 
 const Layout = (props: Props): JSX.Element => {
 
+  const location = useLocation();
   const navigate = useNavigate();
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -105,7 +107,7 @@ const Layout = (props: Props): JSX.Element => {
     </SearchIndexContext.Provider>
     <footer className="docs-footer">
       <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>
-      <WebsiteCarbonBadge />
+      <WebsiteCarbonBadge url={"https://www.anatomydesignsystem.com" + location.pathname} />
     </footer>
   </>;
 }
