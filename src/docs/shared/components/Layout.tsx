@@ -107,7 +107,9 @@ const Layout = (props: Props): JSX.Element => {
     </SearchIndexContext.Provider>
     <footer className="docs-footer">
       <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>
-      <WebsiteCarbonBadge url={"https://www.anatomydesignsystem.com" + location.pathname} />
+      <WebsiteCarbonBadge
+        url={"https://www.anatomydesignsystem.com" + (location.pathname === '/' ? '' :  location.pathname)}
+      />
     </footer>
   </>;
 }
