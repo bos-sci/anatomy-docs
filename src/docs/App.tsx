@@ -11,6 +11,7 @@ import { IdLookup, IdLookupEntry } from './shared/types/docs';
 import Home from './home/Home';
 import NotFound from './shared/components/notFound/NotFound';
 import SearchResults from './searchResults/SearchResults';
+import LandingPage from './shared/components/LandingPage';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
@@ -25,6 +26,7 @@ interface Collection {
     }
     name: string;
     group?: string;
+    leadParagraph?: string;
   }[];
 }
 
@@ -56,7 +58,8 @@ const App = (): JSX.Element => {
       destination[slugify(item?.name as string)] = {
         id: item?.sys.id,
         name: item?.name,
-        group: item?.group ? slugify(item.group) : null
+        group: item?.group ? slugify(item.group) : null,
+        leadParagraph: item?.leadParagraph
       })
     );
   }, []);
@@ -84,7 +87,7 @@ const App = (): JSX.Element => {
               <Route path="/" element={<Home />} />
 
               <Route path="components">
-                <Route path='' element={<Navigate to="accordion" />} />
+                <Route path='' element={<LandingPage heading="Components" collection="components" />} />
                 <Route path=':componentName'>
                   <Route path='' element={<ComponentsRouter />} />
                   <Route path='example/:example' element={<ComponentsRouter isExternal />} />
@@ -99,23 +102,23 @@ const App = (): JSX.Element => {
               </Route>
 
               <Route path="code-standards">
-                <Route path='' element={<Navigate to='general' />} />
+                <Route path='' element={<LandingPage heading="Code standards" collection="codeStandards" />} />
                 <Route path=':standardName' element={<CodeStandardsRouter />} />
               </Route>
 
               <Route path="content">
-                <Route path='' element={<Navigate to='audiences' />} />
+                <Route path='' element={<LandingPage heading="Content" collection="contentGuidelines" />} />
                 <Route path=':contentName' element={<ContentGuidelinesRouter />} />
               </Route>
 
               <Route path="foundations">
-                <Route path='' element={<Navigate to='accessibility' />} />
+                <Route path='' element={<LandingPage heading="Foundations" collection="foundations" />} />
                 <Route path=':foundationName' element={<FoundationsRouter />} />
                 <Route path=':group/:foundationName' element={<FoundationsRouter />} />
               </Route>
 
               <Route path="resources">
-                <Route path='' element={<Navigate to='community' />} />
+                <Route path='' element={<LandingPage heading="Resources" collection="resources" />} />
                 <Route path=':resourceName' element={<ResourcesRouter />} />
                 <Route path=':group/:resourceName' element={<ResourcesRouter />} />
                 <Route path="developers/code-standards/general" element={<Navigate to="../../code-standards" />} />

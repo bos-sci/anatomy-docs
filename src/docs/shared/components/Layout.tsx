@@ -21,21 +21,21 @@ const navItems: NavItemPrimary[] = [
   },
   {
     text: 'Content',
-    slug: '/content/audiences',
+    slug: '/content',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'content';
     }
   },
   {
     text: 'Foundations',
-    slug: '/foundations/accessibility',
+    slug: '/foundations',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'foundations';
     }
   },
   {
     text: 'Components',
-    slug: '/components/accordion',
+    slug: '/components',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'components';
     }
@@ -49,7 +49,7 @@ const navItems: NavItemPrimary[] = [
   },
   {
     text: 'Resources',
-    slug: '/resources/community',
+    slug: '/resources',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'resources';
     }
