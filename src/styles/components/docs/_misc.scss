@@ -69,15 +69,3 @@ code
 {
   white-space: nowrap;
 }
-
-.docs-layout-minimal
-{
-  flex: 1;
-  margin: 0 auto;
-  width: var(--app-width);
-
-  h1
-  {
-    margin-top: space(4x);
-  }
-}

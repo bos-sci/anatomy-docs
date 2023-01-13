@@ -93,6 +93,23 @@ main
   width: space(12x);
 }
 
+.docs-layout-minimal
+{
+  flex: 1;
+  margin: 0 auto;
+  width: var(--app-width);
+
+  main
+  {
+    padding: space(4x) calc(space(4x) - space(md));
+  }
+
+  h1
+  {
+    margin-top: 0;
+  }
+}
+
 @media (min-width: $lg)
 {
   .docs-body
@@ -131,6 +148,15 @@ main
     {
       margin-top: space(lg);
       width: 12rem;
+    }
+  }
+
+  .docs-body-minimal
+  {
+    main
+    {
+      margin-top: space(4x);
+      padding: 0 space(sm);
     }
   }
 }
