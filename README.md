@@ -145,6 +145,7 @@ new working environment.
 6. Update `REACT_APP_CONTENTFUL_ENVIRONMENT` environment variable in Netlify with new working environment name for deploy previews, branch deploys, and local development.
 7. Create pull request from develop into master.
 8. Once all tests have passed and the preview is built and reviewed, the PR can be merged.
+9. Checkout and pull master locally, create a tag for the release, `git tag -a vX.Y.Z -m "Summary of release"`, and push `git push origin vX.Y.Z`.
 
 In the end we should have 4 environments including master, working environment, and the past 2 versions of master.
 
