@@ -6,6 +6,7 @@ import Card from '../../../library/components/Card';
 import CardGroup from '../../../library/components/CardGroup';
 import { slugify } from '../helpers';
 import { useLocation } from 'react-router';
+import useTitle from '../hooks/useTitle';
 
 interface Props {
   heading: string;
@@ -21,9 +22,11 @@ const LandingPage = (props: Props): JSX.Element => {
     return '.' + location.pathname + (item.group ? '/' + item.group : '') + '/' + slugify(item.name);
   }
 
+  useTitle({titlePrefix: props.heading});
+
   return (
     <Layout>
-      <div className="docs-layout-minimal">
+      <div className="docs-body-minimal">
         <main id="mainContent">
           <h1>{props.heading}</h1>
           <CardGroup cardLayout="threeUp" className="bsds-mt-6x">
