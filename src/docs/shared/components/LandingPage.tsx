@@ -7,6 +7,7 @@ import CardGroup from '../../../library/components/CardGroup';
 import { slugify } from '../helpers';
 import { useLocation } from 'react-router';
 import useTitle from '../hooks/useTitle';
+import Tag from '../../../library/components/Tag';
 
 interface Props {
   heading: string;
@@ -30,13 +31,14 @@ const LandingPage = (props: Props): JSX.Element => {
         <main id="mainContent">
           <h1>{props.heading}</h1>
           <CardGroup cardLayout="threeUp" className="bsds-mt-6x">
-            {Object.keys(listItems).map(key =>
+            {Object.keys(listItems).sort((a, b) => (listItems[a].group || '') > (listItems[b].group || '') ? 1 : -1).map(key =>
               <Card
                 key={listItems[key].id}
                 texts={{
                   cardTitle: listItems[key].name,
                   cardDescription: listItems[key].leadParagraph as string
                 }}
+                tag={<Tag>{listItems[key].group}</Tag>}
                 headingLevel="h2"
                 variant="border-light"
                 linkHref={getUrl(listItems[key])}
