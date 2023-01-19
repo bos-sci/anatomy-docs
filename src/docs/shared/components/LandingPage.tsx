@@ -1,7 +1,7 @@
 import Layout from './Layout';
 import { IdLookupContext } from '../../App';
 import { IdLookup, IdLookupProperties } from '../types/docs';
-import { useContext } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import Card from '../../../library/components/Card';
 import CardGroup from '../../../library/components/CardGroup';
 import { slugify } from '../helpers';
@@ -19,11 +19,27 @@ const LandingPage = (props: Props): JSX.Element => {
   const idLookup: IdLookup = useContext(IdLookupContext);
   const listItems = idLookup[props.collection as keyof IdLookup];
 
+  const [groupedItems, setGroupedItems] = useState<IdLookupProperties[][]>([]);
+
   const getUrl = (item: IdLookupProperties) => {
     return '.' + location.pathname + (item.group ? '/' + item.group : '') + '/' + slugify(item.name);
   }
 
   useTitle({titlePrefix: props.heading});
+
+  useEffect(() => {
+    const groups = new Set(Array.from(Object.keys(listItems), key => listItems[key].group));
+    const byGroup = Array.from(groups).map(group => {
+      const entries: IdLookupProperties[] = [];
+      Object.keys(listItems).forEach((key, i) => {
+        if (listItems[key].group === group) {
+          entries.push(listItems[key])
+        }
+      });
+      return entries;
+    });
+    setGroupedItems(byGroup);
+  }, [listItems]);
 
   return (
     <Layout>
@@ -31,19 +47,22 @@ const LandingPage = (props: Props): JSX.Element => {
         <main id="mainContent">
           <h1>{props.heading}</h1>
           <CardGroup cardLayout="threeUp" className="bsds-mt-6x">
-            {Object.keys(listItems).sort((a, b) => (listItems[a].group || '') > (listItems[b].group || '') ? 1 : -1).map(key =>
-              <Card
-                key={listItems[key].id}
-                texts={{
-                  cardTitle: listItems[key].name,
-                  cardDescription: listItems[key].leadParagraph as string
-                }}
-                tag={<Tag>{listItems[key].group}</Tag>}
-                headingLevel="h2"
-                variant="border-light"
-                linkHref={getUrl(listItems[key])}
-                linkTitle
-              />
+            {groupedItems.map((group, i) => <Fragment key={`group${i}`}>
+              {group.map(entry =>
+                <Card
+                  key={entry.id}
+                  texts={{
+                    cardTitle: entry.name,
+                    cardDescription: entry.leadParagraph as string
+                  }}
+                  tag={<Tag>{entry.group}</Tag>}
+                  headingLevel="h2"
+                  variant="border-light"
+                  linkHref={getUrl(entry)}
+                  linkTitle
+                />
+              )}
+            </Fragment>
             )}
           </CardGroup>
         </main>
