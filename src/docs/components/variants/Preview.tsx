@@ -1,7 +1,7 @@
 import { Suspense, lazy, useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import NotFound from '../../shared/components/notFound/NotFound';
+import NotFound from '../../shared/components/NotFound';
 import useTitle from '../../shared/hooks/useTitle';
 import { ComponentModifier, GetComponentQuery } from '../../shared/types/contentful';
 import { ComponentContext } from '../ComponentsController';
