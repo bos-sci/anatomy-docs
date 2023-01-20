@@ -15,7 +15,6 @@ const useHeadings = (depth = 1): NavItemTertiary[] => {
   }, []);
 
   const getHeadings = useCallback(() => {
-    // TODO: exclude all headings from previews
     const selector = Array.from(Array(depth)).map((_val, i) => '.docs-page-content h' + (i + 2) + ':not(.docs-preview h2 )').join(', ');
     setHeadings(
       Array.from(document.querySelectorAll(selector)).map(heading => {

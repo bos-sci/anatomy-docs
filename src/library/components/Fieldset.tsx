@@ -1,6 +1,3 @@
-// TODO:
-// - Revisit what to relate help and error text to
-
 import { FieldsetHTMLAttributes, useEffect, useState } from 'react';
 
 interface Props extends FieldsetHTMLAttributes<HTMLFieldSetElement> {

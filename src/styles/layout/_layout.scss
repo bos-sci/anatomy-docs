@@ -1,4 +1,4 @@
-// TODO: fix layout imports
+// TODO: ADS-129 fix layout imports
 
 *,
 ::after,
@@ -52,7 +52,7 @@ body
 
 main
 {
-  & img // TODO: find a better place for this
+  & img // TODO: ADS-198 and ADS-297 find a better place for this
   {
     width: 100%;
     margin-top: space(3x);
