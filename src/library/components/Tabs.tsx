@@ -1,4 +1,4 @@
-// TODO: ADS-384 add aria-label or aria-labelledby on the tablist
+// TODO: ADS-384 conditionally add aria-labelledby or aria-label on the tablist
 
 import {
   createRef,
