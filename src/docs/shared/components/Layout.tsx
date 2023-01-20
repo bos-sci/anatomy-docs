@@ -81,6 +81,7 @@ const Layout = (props: Props): JSX.Element => {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [pathname, setPathname] = useState('');
 
   const onSearchChange = (query: string) => {
     setSearchQuery(query);
@@ -97,6 +98,10 @@ const Layout = (props: Props): JSX.Element => {
     });
   }, [searchQuery]);
 
+  useEffect(() => {
+    setPathname("https://www.anatomydesignsystem.com" + (location.pathname === '/' ? '' :  location.pathname));
+  }, [location]);
+
   useHeadingIds();
 
   return <>
@@ -107,9 +112,7 @@ const Layout = (props: Props): JSX.Element => {
     </SearchIndexContext.Provider>
     <footer className="docs-footer">
       <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>
-      <WebsiteCarbonBadge
-        url={"https://www.anatomydesignsystem.com" + (location.pathname === '/' ? '' :  location.pathname)}
-      />
+      { pathname && <WebsiteCarbonBadge url={pathname} /> }
     </footer>
   </>;
 }
