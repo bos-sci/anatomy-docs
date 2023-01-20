@@ -179,7 +179,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 onChange={handleChange}
                 onFocus={handleFocus}
                 {...inputAttrs} />
-              {/* TODO: consider pulling this into an input addon component/variant */}
+              {/* TODO: ADS-96 consider pulling this into an input addon component/variant */}
               {inputValue &&
                 <button
                   type="button"

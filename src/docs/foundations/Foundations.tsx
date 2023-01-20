@@ -38,7 +38,7 @@ const Foundations = (): JSX.Element => {
   }, [data]);
 
   useEffect(() => {
-    // TODO: get rid of .replace()
+    // TODO: ADS-380 get rid of .replace()
     const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/')).replace('/iconography', '');
     setNavItems([
       {

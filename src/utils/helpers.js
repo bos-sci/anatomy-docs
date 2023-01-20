@@ -4,7 +4,8 @@ const environment = (envVar) => {
 
 // toSlug is a copy of slugify in src/docs/shared/helpers.ts
 // Do not update without also updating slugify
-// @TODO: Make helpers.ts a CommonJS module or enable module loading for node.
+// TODO: ADS-ShrugBucket
+// Make helpers.ts a CommonJS module or enable module loading for node.
 const toSlug = (string) =>
   string
     .toString()

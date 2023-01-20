@@ -1,4 +1,4 @@
-// TODO: figure out why bsds-icon-2x svgs also getting undefined
+// TODO: ADS-385 figure out why bsds-icon-2x svgs also getting undefined
 
 import { lazy, ReactElement, Suspense, useEffect, useState } from 'react';
 
