@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/role-supports-aria-props */
-// TODO: look at how we handle ids
-
 import { ChangeEvent, FocusEvent, ForwardedRef, forwardRef, InputHTMLAttributes, InvalidEvent, MutableRefObject, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { getValidationMessage } from '../helpers/validation';
 import { AddonProps, RadioAddonPropsContext } from './RadioGroup';

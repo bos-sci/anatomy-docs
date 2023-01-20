@@ -38,6 +38,7 @@ const Resources = (): JSX.Element => {
   }, [data]);
 
   useEffect(() => {
+    // TODO: get rid of .replace()
     const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/')).replace('/designers', '');
     setNavItems([
       {

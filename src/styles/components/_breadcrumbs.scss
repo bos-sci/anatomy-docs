@@ -13,7 +13,7 @@ $bsds-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
 
 .bsds-breadcrumb-item.bsds-breadcrumb-item
 {
-  margin-top: 0; // TODO: reduce specificity when we look at how we apply spacing outside of components
+  margin-top: 0; // TODO: ADS-101 reduce specificity when we look at how we apply spacing outside of components
   @include font-size($fs-body-subtle);
 
   &:not(:first-child)

@@ -135,7 +135,7 @@ $inner-circle-diameter: space(md);
 
   &:disabled
   {
-    + .bsds-input-radio-label.bsds-input-radio-label // TODO: lower specificity after we refactor for form groups & validation
+    + .bsds-input-radio-label
     {
       cursor: not-allowed;
 
@@ -150,7 +150,7 @@ $inner-circle-diameter: space(md);
     &:checked,
     &[aria-checked="true"]
     {
-      + .bsds-input-radio-label.bsds-input-radio-label // TODO: lower specificity after we refactor for form groups & validation
+      + .bsds-input-radio-label
       {
         &::after
         {

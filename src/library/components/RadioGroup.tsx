@@ -1,6 +1,3 @@
-// TODO:
-// - Revisit what to relate help and error text to
-
 import { createContext, FieldsetHTMLAttributes, useEffect, useState } from 'react';
 
 export const RadioAddonPropsContext = createContext({

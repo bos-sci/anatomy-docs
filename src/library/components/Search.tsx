@@ -75,7 +75,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
         break;
 
       case 'Enter':
-        // TODO: Using navigate() here makes react-router-dom (v6) a dependency of Anatomy.
+        // TODO: ADS-95 Using navigate() here makes react-router-dom (v6) a dependency of Anatomy.
         // Find another solution if we don't want that dependency, and address when we split lib from docs.
         if(searchResults && inputValue) {
           if (searchResults[activeDescendant].to) {

@@ -168,7 +168,7 @@
     justify-content: flex-start;
     padding-left: 0;
     @include font-size($fs-small);
-    fill: $action-primary-40; // TODO: revisit in xdc-1892 (fill vs stroke here or in mixin)
+    fill: $action-primary-40; // TODO: ADS-341 (revisit fill vs stroke here or in mixin)
 
     &:active
     {
