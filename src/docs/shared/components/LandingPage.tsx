@@ -7,7 +7,6 @@ import CardGroup from '../../../library/components/CardGroup';
 import { slugify } from '../helpers';
 import { useLocation } from 'react-router';
 import useTitle from '../hooks/useTitle';
-import Tag from '../../../library/components/Tag';
 
 interface Props {
   heading: string;
