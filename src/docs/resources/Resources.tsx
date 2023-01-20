@@ -41,6 +41,10 @@ const Resources = (): JSX.Element => {
     const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/')).replace('/designers', '');
     setNavItems([
       {
+        text: 'About Anatomy',
+        slug: basePath + '/about-anatomy'
+      },
+      {
         text: 'Community',
         slug: basePath + '/community'
       },
