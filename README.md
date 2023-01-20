@@ -94,7 +94,7 @@ This will open the Cypress app. In the home screen, choose "end to end" and run 
 
 ##### Adding a primary section to the docs site
 Steps for adding a site section that will be accessible from the primary navigation.
-1. Create content model in Contentful, [https://bsc-ux-ui-creative.quip.com/EGl5AnVvgBua/Contentful-docs-site-authoring-guide](reference authoring guide).
+1. Create content model in Contentful, [reference authoring guide](https://bsc-ux-ui-creative.quip.com/EGl5AnVvgBua/Contentful-docs-site-authoring-guide).
 2. Get idLookup data working for query in App component.
     1. Update `getCollections.graphql` following existing pattern.
     2. Update the TS interface IdLookup in `/types/docs.ts`.
@@ -121,7 +121,7 @@ If there are no grouped items then reference the following.
 
 ##### Adding a new field to an existing section
 Steps for adding a new field to an existing section.
-1. Add field to content model in Contentful, [https://bsc-ux-ui-creative.quip.com/EGl5AnVvgBua/Contentful-docs-site-authoring-guide](reference authoring guide).
+1. Add field to content model in Contentful, [reference authoring guide](https://bsc-ux-ui-creative.quip.com/EGl5AnVvgBua/Contentful-docs-site-authoring-guide).
 2. Update `get{Collection}.graphql`.
 3. Be sure to restart your local server to regen Contentful types and clear errors.
 
