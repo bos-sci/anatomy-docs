@@ -18,7 +18,7 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
 
 let dropdownIndex = 0;
 
-// TODO: ADS-382 Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
+// TODO: ADS-382 allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
 
 const Dropdown = (props: Props) => {
   const {

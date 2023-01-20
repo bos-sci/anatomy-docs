@@ -75,8 +75,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
         break;
 
       case 'Enter':
-        // TODO: ADS-95 Using navigate() here makes react-router-dom (v6) a dependency of Anatomy.
-        // Find another solution if we don't want that dependency, and address when we split lib from docs.
+        // TODO: ADS-95 find another solution if we don't want react-router-dom (v6) a dependency of Anatomy due to the use of navigate(), and address when we split lib from docs.
         if(searchResults && inputValue) {
           if (searchResults[activeDescendant].to) {
             navigate(searchResults[activeDescendant].to as string);
@@ -179,7 +178,7 @@ const Search = forwardRef(({ label, isLabelVisible = false, hasAutocomplete = tr
                 onChange={handleChange}
                 onFocus={handleFocus}
                 {...inputAttrs} />
-              {/* TODO: ADS-96 consider pulling this into an input addon component/variant */}
+              {/* TODO: ADS-96 pull this into an input addon component */}
               {inputValue &&
                 <button
                   type="button"
