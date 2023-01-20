@@ -8,8 +8,8 @@ import { SearchResult } from '../../../library/components/Search';
 import { useNavigate } from 'react-router-dom';
 import { indexSearch } from '../helpers';
 import useHeadingIds from '../hooks/useHeadingIds';
-import { WebsiteCarbonBadge } from 'react-websitecarbon-badge';
 import { useLocation } from 'react-router';
+import CarbonBadge from './carbonBadge/CarbonBadge';
 
 interface Props {
   children: ReactNode;
@@ -83,6 +83,14 @@ const Layout = (props: Props): JSX.Element => {
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [pathname, setPathname] = useState('');
 
+  const getData = async () => {
+    const res = await fetch('https://api.websitecarbon.com/b?url=' + pathname);
+    const data = await res.json();
+    console.log(data);
+  }
+
+  getData();
+
   const onSearchChange = (query: string) => {
     setSearchQuery(query);
   }
@@ -112,7 +120,7 @@ const Layout = (props: Props): JSX.Element => {
     </SearchIndexContext.Provider>
     <footer className="docs-footer">
       <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>
-      { pathname && <WebsiteCarbonBadge url={pathname} /> }
+      { pathname && <CarbonBadge url={pathname} /> }
     </footer>
   </>;
 }
