@@ -94,7 +94,7 @@ This will open the Cypress app. In the home screen, choose "end to end" and run 
 
 ##### Adding a primary section to the docs site
 Steps for adding a site section that will be accessible from the primary navigation.
-1. Create content model in Contentful (use singular name, e.g.: Content Guideline > Name, Description, Content).
+1. In Contentful, create a content model. [Reference authoring guide](https://bsc-ux-ui-creative.quip.com/EGl5AnVvgBua/Contentful-docs-site-authoring-guide).
 2. Get idLookup data working for query in App component.
     1. Update `getCollections.graphql` following existing pattern.
     2. Update the TS interface IdLookup in `/types/docs.ts`.
@@ -113,15 +113,14 @@ A grouped item is when you have nav items nested under a parent folder. The pare
 
 If there are already grouped items in the secondary nav in question, no development work is needed. Simply create/add options to the group field in the corresponding Contentful content.
 
-If there are no grouped items then reference the following.
-
-1. In Contentful, create a text field titled "group" that accepts specific values (styled as select) in the page content model. Reference other group fields as examples.
+If there are no grouped items then reference the following steps for adding a new secondary nav group.
+1. In Contentful, create a group in the content model. [Reference authoring guide](https://bsc-ux-ui-creative.quip.com/EGl5AnVvgBua/Contentful-docs-site-authoring-guide).
 2. In code, add the group support in `App.tsx`. Follow the pattern for existing group capable sections.
 3. In code, add the additional conditional to check group value in the page router file. Reference other page router files for examples.
 
 ##### Adding a new field to an existing section
 Steps for adding a new field to an existing section.
-1. Add field to content model in Contentful, following naming conventions as outlined in [adding a primary section to the docs site](#adding-a-primary-section-to-the-docs-site).
+1. In Contentful, add field to content model. [Reference authoring guide](https://bsc-ux-ui-creative.quip.com/EGl5AnVvgBua/Contentful-docs-site-authoring-guide).
 2. Update `get{Collection}.graphql`.
 3. Be sure to restart your local server to regen Contentful types and clear errors.
 
