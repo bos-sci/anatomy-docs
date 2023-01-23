@@ -20,12 +20,13 @@
   },
   "scripts": {
     "start": "npm run generate-types && react-scripts start",
-    "build": "npm run sitemap && npm run generate-types && react-scripts build",
+    "build": "npm run sitemap && npm run generate-types && npm run release-date && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-types": "graphql-codegen --config codegen.yml --require dotenv/config",
     "cypress:open": "cypress open",
-    "sitemap": "node src/utils/generateSitemap.js"
+    "sitemap": "node src/utils/generateSitemap.js",
+    "release-date": "echo \"// This file is automatically updated on release\nexport const releaseDate = new Date('$(date)');\" > ./src/utils/release-date.ts"
   },
   "eslintConfig": {
     "extends": [

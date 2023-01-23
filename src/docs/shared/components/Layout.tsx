@@ -83,14 +83,6 @@ const Layout = (props: Props): JSX.Element => {
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [pathname, setPathname] = useState('');
 
-  const getData = async () => {
-    const res = await fetch('https://api.websitecarbon.com/b?url=' + pathname);
-    const data = await res.json();
-    console.log(data);
-  }
-
-  getData();
-
   const onSearchChange = (query: string) => {
     setSearchQuery(query);
   }

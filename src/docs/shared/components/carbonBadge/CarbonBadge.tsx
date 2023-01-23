@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { getStorage, setStorage } from '../../helpers';
 import './CarbonBadge.scss';
 
 interface CarbonData {
@@ -9,8 +10,6 @@ interface CarbonData {
 
 interface Props {
   url: string;
-  carbon?: number;
-  percent?: number;
   isDarkMode?: boolean;
 }
 
@@ -20,18 +19,29 @@ const CarbonBadge = (props: Props): JSX.Element => {
   const [carbon, setCarbon] = useState<JSX.Element>(<>Measuring CO<sub>2</sub>&hellip;</>);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch('https://api.websitecarbon.com/b?url=' + encodeURIComponent(props.url));
-        const data = await res.json();
-        setCarbonData(data);
-        setCarbon(<>{data.c}g of CO<sub>2</sub>/view</>);
-      } catch(e) {
-        setCarbonData(undefined);
-        setCarbon(<>No Result</>);
-      }
-    })();
+    const maybeCarbon = getStorage(`carbon-${props.url}`);
+    if (maybeCarbon) {
+      setCarbonData(JSON.parse(maybeCarbon));
+    } else {
+      (async () => {
+        try {
+          const res = await fetch('https://api.websitecarbon.com/b?url=' + encodeURIComponent(props.url));
+          const data: CarbonData = await res.json();
+          setCarbonData(data);
+          setStorage(`carbon-${props.url}`, JSON.stringify(data), 'release');
+        } catch(e) {
+          setCarbonData(undefined);
+          setCarbon(<>No Result</>);
+        }
+      })();
+    }
   }, [props.url]);
+
+  useEffect(() => {
+    if (carbonData) {
+      setCarbon(<>{carbonData.c}g of CO<sub>2</sub>/view</>);
+    }
+  }, [carbonData]);
 
   return (
     <div id="wcb" className={`carbonbadge wcb${props.isDarkMode ? '-d' : ''}`}>
