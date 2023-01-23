@@ -10,7 +10,6 @@ interface CarbonData {
 
 interface Props {
   url: string;
-  isDarkMode?: boolean;
 }
 
 const CarbonBadge = (props: Props): JSX.Element => {
@@ -44,14 +43,14 @@ const CarbonBadge = (props: Props): JSX.Element => {
   }, [carbonData]);
 
   return (
-    <div className={`carbon-badge wcb${props.isDarkMode ? '-d' : ''}`}>
-      <div className="wcb_p">
-        <span className="wcb_g">
+    <div className="carbon-badge">
+      <div className="carbon-badge-data">
+        <span className="carbon-badge-co2">
           { carbon }
         </span>
-        <a className="wcb_a" target="_blank" rel="noopener noreferrer" href="https://websitecarbon.com">Website Carbon</a>
+        <a className="carbon-badge-link" target="_blank" rel="noopener noreferrer" href="https://websitecarbon.com">Website Carbon</a>
       </div>
-      <span className="wcb_2">
+      <span className="carbon-badge-percent">
         { !(carbonData && carbonData.p) && <>&nbsp;</> }
         { (carbonData && carbonData.p) && <>Cleaner than {carbonData.p}% of pages tested</> }
       </span>
