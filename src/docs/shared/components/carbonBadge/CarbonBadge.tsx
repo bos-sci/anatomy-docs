@@ -44,14 +44,14 @@ const CarbonBadge = (props: Props): JSX.Element => {
   }, [carbonData]);
 
   return (
-    <div id="wcb" className={`carbonbadge wcb${props.isDarkMode ? '-d' : ''}`}>
-      <div id="wcb_p">
-        <span id="wcb_g">
+    <div className={`carbon-badge wcb${props.isDarkMode ? '-d' : ''}`}>
+      <div className="wcb_p">
+        <span className="wcb_g">
           { carbon }
         </span>
-        <a id="wcb_a" target="_blank" rel="noopener noreferrer" href="https://websitecarbon.com">Website Carbon</a>
+        <a className="wcb_a" target="_blank" rel="noopener noreferrer" href="https://websitecarbon.com">Website Carbon</a>
       </div>
-      <span id="wcb_2">
+      <span className="wcb_2">
         { !(carbonData && carbonData.p) && <>&nbsp;</> }
         { (carbonData && carbonData.p) && <>Cleaner than {carbonData.p}% of pages tested</> }
       </span>
