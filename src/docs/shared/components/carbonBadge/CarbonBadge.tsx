@@ -1,4 +1,4 @@
-// TODO: Do we want to add internationalization to this component and include it in the library?
+// TODO: ADS-153 Do we want to add internationalization to this component and include it in the library?
 
 import { useEffect, useState } from 'react';
 import { getStorage, setStorage } from '../../helpers';
