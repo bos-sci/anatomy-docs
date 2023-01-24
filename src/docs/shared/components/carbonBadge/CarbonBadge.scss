@@ -9,27 +9,28 @@
   .carbon-badge-data
   {
     display: flex;
-    align-items: baseline;
     margin-bottom: space(sm);
     border: space(xxs) solid $action-primary-40;
     background: $action-primary-95;
-  }
-
-  .carbon-badge-link
-  {
-    @include font-family-base-heavy;
-    color: $text-color-primary;
-  }
-
-  .carbon-badge-co2
-  {
-    border-right: space(xxs) solid $action-primary-40;
-    background: $neutral-100;
   }
 
   .carbon-badge-link,
   .carbon-badge-co2
   {
     padding: space(xs) space(md);
+  }
+
+  .carbon-badge-co2
+  {
+    border-right: space(xxs) solid $action-primary-40;
+    padding-bottom: space(xs) + space(xxs);
+    background: $neutral-100;
+  }
+
+  .carbon-badge-link
+  {
+    padding-top: space(xs) + space(xxs);
+    @include font-family-base-heavy;
+    color: $text-color-primary;
   }
 }
