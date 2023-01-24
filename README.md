@@ -217,7 +217,7 @@ Creates a file `src/utils/release-date.ts` with an exported date variable. This 
 should expire on each release.\
 This script runs on build, and also on start to avoid local storage issues in local
 development.\
-Try running this (or re-running start) if you suspect data not updating due to local storage.
+Try running this (or re-running start) if you suspect data is not updating due to local storage.
 
 ### `npm run sitemap`
 

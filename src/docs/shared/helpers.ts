@@ -71,7 +71,7 @@ export const indexSearch = async (query: string) => {
   return results;
 }
 
-// Stores data in local storage with option to add a TTL. TTL can either "release" or a number (in days). Setting
+// Stores data in local storage with option to add a TTL. TTL can either be "release" or a number (in days). Setting
 // to release will have the data expire when a new release is pushed.
 export const setStorage = (key: string, value: string, ttl: 'release' | number) => {
   const data = {
