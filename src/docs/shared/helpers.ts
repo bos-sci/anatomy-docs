@@ -76,7 +76,7 @@ export const indexSearch = async (query: string) => {
 export const setStorage = (key: string, value: string, ttl: 'release' | number) => {
   const data = {
     value: value,
-    ttl: ttl === 'release' ? releaseDate : Date.now() + (ttl * 8.64e7)
+    ttl: ttl === 'release' ? releaseDate : Date.now() + (ttl * 8.64e7) // 8.64e7 is the number of ms in a day
   }
   localStorage.setItem(key, JSON.stringify(data));
 }
@@ -85,7 +85,7 @@ export const getStorage = (key: string) => {
   const raw = localStorage.getItem(key);
   if (raw) {
     const data = JSON.parse(raw);
-    if (data.ttl && typeof data.ttl === 'string' && process.env.NODE_ENV === 'production') {
+    if (data.ttl && typeof data.ttl === 'string') {
       if (releaseDate > new Date(data.ttl)) {
         localStorage.removeItem(key);
         return null;
