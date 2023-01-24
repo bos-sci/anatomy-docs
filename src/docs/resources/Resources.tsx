@@ -38,8 +38,13 @@ const Resources = (): JSX.Element => {
   }, [data]);
 
   useEffect(() => {
+    // TODO: ADS-380 get rid of .replace()
     const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/')).replace('/designers', '');
     setNavItems([
+      {
+        text: 'About Anatomy',
+        slug: basePath + '/about-anatomy'
+      },
       {
         text: 'Community',
         slug: basePath + '/community'

@@ -1,4 +1,4 @@
-// TODO: fix layout imports
+// TODO: ADS-129 fix layout imports
 
 *,
 ::after,
@@ -52,7 +52,7 @@ body
 
 main
 {
-  & img // TODO: find a better place for this
+  & img // TODO: ADS-198 and ADS-297 find a better place for this
   {
     width: 100%;
     margin-top: space(3x);
@@ -96,6 +96,23 @@ main
   width: space(12x);
 }
 
+.docs-body-minimal
+{
+  flex: 1;
+  margin: 0 auto;
+  width: var(--app-width);
+
+  main
+  {
+    padding: space(4x) calc(space(4x) - space(md));
+  }
+
+  h1
+  {
+    margin-top: 0;
+  }
+}
+
 @media (min-width: $lg)
 {
   .docs-body
@@ -134,6 +151,15 @@ main
     {
       margin-top: space(lg);
       width: 12rem;
+    }
+  }
+
+  .docs-body-minimal
+  {
+    main
+    {
+      margin-top: space(4x);
+      padding: 0 space(sm);
     }
   }
 }

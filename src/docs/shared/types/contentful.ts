@@ -1905,7 +1905,7 @@ export type GetCollectionsQueryVariables = Exact<{
 }>;
 
 
-export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, group?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
+export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, group?: string | null, leadParagraph?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, leadParagraph?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, leadParagraph?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, group?: string | null, leadParagraph?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, group?: string | null, leadParagraph?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type GetResourceQueryVariables = Exact<{
   id: Scalars['String'];
@@ -2136,6 +2136,7 @@ export const GetCollectionsDocument = gql`
     items {
       name
       group
+      leadParagraph
       sys {
         id
       }
@@ -2144,6 +2145,7 @@ export const GetCollectionsDocument = gql`
   contentGuidelineCollection(order: name_ASC, preview: $preview) {
     items {
       name
+      leadParagraph
       sys {
         id
       }
@@ -2152,6 +2154,7 @@ export const GetCollectionsDocument = gql`
   codeStandardCollection(preview: $preview) {
     items {
       name
+      leadParagraph
       sys {
         id
       }
@@ -2161,6 +2164,7 @@ export const GetCollectionsDocument = gql`
     items {
       name
       group
+      leadParagraph
       sys {
         id
       }
@@ -2170,6 +2174,7 @@ export const GetCollectionsDocument = gql`
     items {
       name
       group
+      leadParagraph
       sys {
         id
       }

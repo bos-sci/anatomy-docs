@@ -27,9 +27,9 @@ type LinkedCardProps =
   }
   | {
     linkTitle?: never,
-    linkHref?: string,
-    actionLink?: boolean,
-    actionLinkText?: string
+    linkHref: string,
+    actionLink: boolean,
+    actionLinkText: string
   }
 
 type HoverProps =
@@ -97,11 +97,16 @@ const Card = (props : Props): JSX.Element => {
   }
 
   let decorativeState = "";
-  if(gradientBrand && linkHref) {
+  if (gradientBrand && variant?.includes("ghost")) {
+    decorativeState = "bsds-card-gradient";
+    cardStyles = {...borderGhostStyle};
+  } else if (gradientBrand) {
     decorativeState = "bsds-card-gradient";
     cardStyles = {...borderLightStyle};
-
-  } else if(dropShadow && linkHref) {
+  } else if (dropShadow && variant?.includes("ghost")) {
+    decorativeState = "bsds-card-shadow";
+    cardStyles = {...borderGhostStyle};
+  } else if (dropShadow) {
     decorativeState = "bsds-card-shadow";
     cardStyles = {...borderLightStyle};
   }
@@ -142,7 +147,7 @@ const Card = (props : Props): JSX.Element => {
   );
 
   const cardContentWrapper = (
-    <div className={decorativeState && linkHref ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
+    <div className={decorativeState && actionLink ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
       {cardContent}
     </div>
   );

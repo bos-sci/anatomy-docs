@@ -1,4 +1,5 @@
 import algoliasearch from 'algoliasearch';
+import axios from 'axios';
 import { SearchResult } from '../../library/components/Search';
 import { releaseDate } from '../../utils/release-date';
 
@@ -27,10 +28,33 @@ type Result = SearchResult & {
   description?: string;
 }
 
-export const indexSearch = (query: string) => {
+//Block search analytics by team IP
+const teamIPs = [
+  '165.225.57.60',
+  '165.225.57.43',
+  '165.225.57.38',
+  '66.31.42.9',
+  '71.233.188.227',
+  '96.230.190.163',
+  '72.87.85.30',
+  '192.168.1.6',
+  '146.115.148.218',
+  '75.31.18.108',
+  '96.237.59.87'
+];
+
+export const indexSearch = async (query: string) => {
+
+  const getIP = async () => {
+    const res = await axios.get('https://geolocation-db.com/json/')
+    return (res.data.IPv4);
+  }
+
+  const ip = await getIP();
+
   const results = new Promise<Result[]>((resolve, reject) => {
     if (query) {
-      index.search(query).then(({hits}) => {
+      index.search(query, {analytics: !teamIPs.includes(ip)}).then(({hits}) => {
         resolve(hits
           .filter((hit: any) => hit.title !== 'Anatomy - Boston Scientific')
           .filter((hit: any) => !hit.pathname.includes('/example/'))
@@ -43,6 +67,7 @@ export const indexSearch = (query: string) => {
       );
     }
   });
+
   return results;
 }
 
