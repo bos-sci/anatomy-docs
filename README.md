@@ -208,7 +208,21 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run generate-types`
 
-Gets the typescript type interfaces from contentful to be used to properly type contentful data. This is run on start and build but can also be run manually.
+Gets the typescript type interfaces from contentful to be used to properly type contentful data.\
+This is run on start and build but can also be run manually.
+
+### `npm run release-date`
+
+Creates a file `src/utils/release-date.ts` with an exported date variable. This date is used for local storage data that
+should expire on each release.\
+This script runs on build, and also on start to avoid local storage issues in local
+development.\
+Try running this (or re-running start) if you suspect data is not updating due to local storage.
+
+### `npm run sitemap`
+
+Creates a sitemap in `public/sitemap.xml`. This runs on build.
+
 
 ### `npm run eject`
 

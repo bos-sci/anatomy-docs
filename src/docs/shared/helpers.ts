@@ -1,6 +1,7 @@
 import algoliasearch from 'algoliasearch';
-import { SearchResult } from '../../library/components/Search';
 import axios from 'axios';
+import { SearchResult } from '../../library/components/Search';
+import { releaseDate } from '../../utils/release-date';
 
 export const slugify = (text: string): string => {
   return text
@@ -68,4 +69,35 @@ export const indexSearch = async (query: string) => {
   });
 
   return results;
+}
+
+// Stores data in local storage with option to add a TTL. TTL can either be "release" or a number (in days). Setting
+// to release will have the data expire when a new release is pushed.
+export const setStorage = (key: string, value: string, ttl: 'release' | number) => {
+  const data = {
+    value: value,
+    ttl: ttl === 'release' ? releaseDate : Date.now() + (ttl * 8.64e7) // 8.64e7 is the number of ms in a day
+  }
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+export const getStorage = (key: string) => {
+  const raw = localStorage.getItem(key);
+  if (raw) {
+    const data = JSON.parse(raw);
+    if (data.ttl && typeof data.ttl === 'string') {
+      if (releaseDate > new Date(data.ttl)) {
+        localStorage.removeItem(key);
+        return null;
+      }
+      return data.value;
+    } else if (data.ttl) {
+      if (Date.now() >= data.ttl) {
+        localStorage.removeItem(key);
+        return null;
+      }
+      return data.value;
+    }
+    return data;
+  }
 }

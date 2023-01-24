@@ -8,6 +8,8 @@ import { SearchResult } from '../../../library/components/Search';
 import { useNavigate } from 'react-router-dom';
 import { indexSearch } from '../helpers';
 import useHeadingIds from '../hooks/useHeadingIds';
+import { useLocation } from 'react-router';
+import CarbonBadge from './carbonBadge/CarbonBadge';
 
 interface Props {
   children: ReactNode;
@@ -74,10 +76,12 @@ export const SearchIndexContext = createContext(index);
 
 const Layout = (props: Props): JSX.Element => {
 
+  const location = useLocation();
   const navigate = useNavigate();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [pathname, setPathname] = useState('');
 
   const onSearchChange = (query: string) => {
     setSearchQuery(query);
@@ -94,6 +98,10 @@ const Layout = (props: Props): JSX.Element => {
     });
   }, [searchQuery]);
 
+  useEffect(() => {
+    setPathname("https://www.anatomydesignsystem.com" + (location.pathname === '/' ? '' :  location.pathname));
+  }, [location]);
+
   useHeadingIds();
 
   return <>
@@ -104,6 +112,7 @@ const Layout = (props: Props): JSX.Element => {
     </SearchIndexContext.Provider>
     <footer className="docs-footer">
       <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>
+      { pathname && <CarbonBadge url={pathname} /> }
     </footer>
   </>;
 }
