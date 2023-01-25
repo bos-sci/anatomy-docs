@@ -6,3 +6,4 @@
 * Other Editors
   - Prettier: https://prettier.io/docs/en/editors.html
   - EditorConfig: https://editorconfig.org/#download
+  - ESLint: https://eslint.org/docs/latest/user-guide/integrations#editors
