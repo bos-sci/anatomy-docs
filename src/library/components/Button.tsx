@@ -33,7 +33,7 @@ const Button = forwardRef(({ children, variant, icon, iconAlignment = 'left', ic
   }
 
   if (icon && !children) {
-    return <button ref={ref} className={`bsds-button-icon ${classes} ${className || ''}`} {...buttonAttrs}><Icon name={icon} size={iconSize} className={className || ''}/></button>;
+    return <button ref={ref} className={`bsds-button-icon ${classes} ${className || ''}`} {...buttonAttrs}><Icon name={icon} size={iconSize}/></button>;
   }
 
   return (
