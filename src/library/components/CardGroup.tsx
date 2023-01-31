@@ -1,12 +1,12 @@
-import { ReactElement } from "react";
+import { HTMLAttributes, ReactElement } from "react";
 import {Props as CardProps} from "./Card";
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement<CardProps> | ReactElement<CardProps>[],
   cardLayout?: "twoUp" | "threeUp" | "fourUp";
 }
 
-const CardGroup = ({children, cardLayout = "twoUp"}: Props): JSX.Element => {
+const CardGroup = ({children, cardLayout = "twoUp", className}: Props): JSX.Element => {
 
   let gridLayout = "";
   switch(cardLayout) {
@@ -22,7 +22,7 @@ const CardGroup = ({children, cardLayout = "twoUp"}: Props): JSX.Element => {
   }
 
   return (
-    <div className={`${"bsds-card-group"}${gridLayout}`} data-testid="bsdsCardGroup">
+    <div className={`${"bsds-card-group"}${gridLayout}${className ? ' ' + className : ''}`} data-testid="bsdsCardGroup">
       {children}
     </div>
   )

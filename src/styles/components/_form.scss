@@ -14,7 +14,6 @@
 
 .bsds-legend
 {
-  margin: 0; // TODO: look at this after we rip out bootstrap
   @include font-family-base-heavy;
   @include font-size($fs-base);
 }

@@ -4,8 +4,10 @@ const { SitemapStream } = require("sitemap");
 const { environment, toSlug } = require("./helpers");
 const { createWriteStream } = require("fs");
 
+const ROOT = "https://www.anatomydesignsystem.com"
+
 const MAIN_NAVIGATION = {
-  root: "https://www.anatomydesignsystem.com",
+  home: '',
   contentGuideline: "content",
   foundation: "foundations",
   component: "components",
@@ -60,7 +62,7 @@ const createSitemap = async () => {
     });
 
   const customPages = [
-    MAIN_NAVIGATION.root
+    ...Object.values(MAIN_NAVIGATION).map(nav => ROOT + '/' + nav)
     // When creating custom pages (not tied to contentful), add urls to this array
   ];
 
@@ -72,7 +74,7 @@ const createSitemap = async () => {
 
   // Create a stream to write to
   const sitemap = new SitemapStream({
-    hostname: MAIN_NAVIGATION.root,
+    hostname: ROOT,
   });
 
   const writeStream = createWriteStream("./public/sitemap.xml");

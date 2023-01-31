@@ -11,6 +11,9 @@
 # production
 /build
 
+# release date file
+/src/utils/release-date.ts
+
 # misc
 .DS_Store
 .env
