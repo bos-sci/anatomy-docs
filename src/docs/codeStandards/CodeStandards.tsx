@@ -103,9 +103,6 @@ const CodeStandards = (): JSX.Element => {
         navTertiaryItems={headings}
       >
         <Markdown markdown={codeStandardData?.content || ""} />
-        <a href="/some-page" rel="invalid">
-          Yay
-        </a>
       </PageTemplate>
     </Layout>
   );
