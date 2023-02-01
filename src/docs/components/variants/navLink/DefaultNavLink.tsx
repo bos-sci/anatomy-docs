@@ -4,7 +4,7 @@ import Example from '../../../shared/components/Example';
 const DefaultLink = (): JSX.Element => {
   return (
     <Example>
-      <Link href="#" className="bsds-link-nav">Navigation link</Link>
+      <Link href="docs-demo-link" className="bsds-link-nav">Navigation link</Link>
     </Example>
   );
 }
