@@ -31,7 +31,7 @@ const Link = forwardRef(({ variant, href, to, isNavLink, className, children, ..
 
   useEffect(() => {
     if (href === '#') {
-      console.warn('Do not use empty hash value in link href.')
+      console.warn('Do not use invalid href attribute values.')
     };
   }, [href]);
 
