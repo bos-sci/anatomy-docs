@@ -1,6 +1,6 @@
 // TODO: ADS-383 pass down NavLink props e.g. "end"
 
-import { AnchorHTMLAttributes, ForwardedRef, forwardRef, ReactNode } from 'react';
+import { AnchorHTMLAttributes, ForwardedRef, forwardRef, ReactNode, useEffect } from 'react';
 import { NavLink, Link as RouterLink } from 'react-router-dom';
 
 export interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -28,6 +28,12 @@ const Link = forwardRef(({ variant, href, to, isNavLink, className, children, ..
       classes = 'bsds-link';
       break;
   }
+
+  useEffect(() => {
+    if (href === '#') {
+      console.warn('Do not use invalid href attribute values.')
+    };
+  }, [href]);
 
   if (to) {
     if (isNavLink) {

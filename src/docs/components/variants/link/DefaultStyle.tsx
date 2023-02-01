@@ -4,7 +4,7 @@ import Example from '../../../shared/components/Example';
 const DefaultStyle = (): JSX.Element => {
   return (
     <Example>
-      <Link href="#">Default link</Link>
+      <Link href="docs-demo-link">Default link</Link>
     </Example>
   );
 }

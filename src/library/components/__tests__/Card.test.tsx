@@ -30,14 +30,14 @@ describe("Card", () => {
         headingLevel="h2"
         actionLink={true}
         actionLinkText="Link text"
-        linkHref="#"
+        linkHref="docs-demo-link"
       />
     );
     const cardLink = screen.getByText("Link text");
 
     expect(screen.getByRole("link")).toBeInTheDocument();
     expect(cardLink).toBeInTheDocument();
-    expect(cardLink).toHaveAttribute("href", "#");
+    expect(cardLink).toHaveAttribute("href", "docs-demo-link");
   });
 
   it("Renders a linked card title when linkTitle and linkHref are provided", () => {
@@ -49,12 +49,12 @@ describe("Card", () => {
         }}
         headingLevel="h2"
         linkTitle={true}
-        linkHref="#"
+        linkHref="docs-demo-link"
       />
     );
 
     expect(screen.getByRole("link")).toBeInTheDocument();
-    expect(screen.getByText("Card title")).toHaveAttribute("href", "#");
+    expect(screen.getByText("Card title")).toHaveAttribute("href", "docs-demo-link");
   });
 
   it("Renders a Tag when tag is provided", () => {
@@ -100,7 +100,7 @@ describe("Card", () => {
         headingLevel="h2"
         actionLink={true}
         actionLinkText="Link text"
-        linkHref="#"
+        linkHref="docs-demo-link"
         dropShadow={true}
       />
     );
@@ -118,7 +118,7 @@ describe("Card", () => {
         headingLevel="h2"
         actionLink={true}
         actionLinkText="Link text"
-        linkHref="#"
+        linkHref="docs-demo-link"
         gradientBrand={true}
       />
     );
