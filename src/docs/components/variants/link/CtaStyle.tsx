@@ -5,7 +5,7 @@ import IconArrowRight from '../../../../library/components/icon/icons/IconArrowR
 const CtaStyle = (): JSX.Element => {
   return (
     <Example>
-      <Link href="#" variant="cta">
+      <Link href="docs-demo-link" variant="cta">
         CTA link
         <IconArrowRight className="bsds-link-cta-icon"/>
       </Link>

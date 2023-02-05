@@ -4,7 +4,7 @@ import Example from '../../../shared/components/Example';
 const SubtleStyle = (): JSX.Element => {
   return (
     <Example>
-      <Link href="#" variant="subtle">Subtle link</Link>
+      <Link href="docs-demo-link" variant="subtle">Subtle link</Link>
     </Example>
   );
 }

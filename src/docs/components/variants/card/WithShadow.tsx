@@ -12,7 +12,7 @@ const WithShadow = (): JSX.Element => {
         headingLevel="h4"
         actionLink={true}
         actionLinkText="Call-to-action"
-        linkHref="#"
+        linkHref="docs-demo-link"
         dropShadow={true}
       />
     </Example>

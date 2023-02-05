@@ -1,5 +1,3 @@
-// TODO: ADS-381 add warning/error for href="#"
-
 import { useEffect, useState } from 'react';
 import { RequireOnlyOne } from '../types';
 import Dropdown from './Dropdown';
