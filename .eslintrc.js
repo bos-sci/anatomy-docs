@@ -9,7 +9,9 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
   ],
   overrides: [],
@@ -89,8 +91,31 @@ module.exports = {
         reservedFirst: true,
       },
     ],
-    "no-array-index-key": 1,
+    "react/no-array-index-key": 1,
     "react/no-danger": 1,
-    "react/no-invalid-html-attribute": ["rel", "step"],
+    "react/no-invalid-html-attribute": 1, // Figure out more options here
+    "react/no-this-in-sfc": 1,
+    "react/no-unstable-nested-components": 1,
+    "react/no-unused-prop-types": 2, // Making this an error off the bat since I don't forsee a reason to leave unused props out.
+    "react/prefer-es6-class": 1,
+    "react/self-closing-comp": [
+      1,
+      {
+        component: true,
+        html: false,
+      },
+    ],
+    "react/static-property-placement": 1,
+    "react/style-prop-object": 1,
+    "react/void-dom-elements-no-children": 1,
+    "jsx-a11y/anchor-ambiguous-text": [
+      1,
+      {
+        words: ["read more"],
+      },
+    ],
+    "jsx-a11y/control-has-associated-label": 1,
+    "jsx-a11y/lang": 1,
+    "jsx-a11y/prefer-tag-over-role": 1,
   },
 };
