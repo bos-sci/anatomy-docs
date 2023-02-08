@@ -30,7 +30,7 @@ $box-shadow-tertiary: 0 0.125rem 0.625rem 0 rgba($neutral-00, 0.2);
 
 
 // Breakpoint Utility Variables
-// TODO: set up mixins for media queries
+// TODO: ADS-197 set up mixins for media queries
 
 $sm: 36rem; // 576px
 $md: 48rem; // 768px
@@ -68,4 +68,19 @@ $xxl: 87.5rem; // 1400px
   {
     --app-width: 82.5rem;
   }
+}
+
+// Modifier Warning Utility Mixin
+
+@mixin bsds-modifier-error-text
+{
+  display: block;
+  padding: 0 0 0 space(3x);
+  background-image: url("../../assets/images/icon-error.svg");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: space(2x);
+  color: $feedback-error-40;
+  @include font-size($fs-base);
+  @include font-family-base-regular;
 }

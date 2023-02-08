@@ -75,7 +75,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            href: '#'
+            href: 'docs-demo-link'
           }
         ]
       },

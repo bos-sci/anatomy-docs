@@ -7,7 +7,7 @@ import Icon from './icon/Icon';
 import { autoUpdate, flip, Placement, shift, useFloating } from '@floating-ui/react-dom';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
-  triggerText?: string;
+  triggerText: string;
   listType?: 'ol' | 'ul';
   icon?: string;
   variant?: string;
@@ -18,8 +18,7 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
 
 let dropdownIndex = 0;
 
-// TODO: Allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
-// TODO: Reduce number of refs created for children.
+// TODO: ADS-382 allow implementer to add refs to dropdown children. Currently they are being removed in the clone process.
 
 const Dropdown = (props: Props) => {
   const {
@@ -201,10 +200,11 @@ const Dropdown = (props: Props) => {
         className={`bsds-dropdown-trigger${className ? ' ' + className : ''}${icon ? ' has-icon' : ''}`}
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}
+        aria-label={icon ? triggerText : undefined}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         {...buttonAttrs}>
           {icon && <Icon size="2x" name={icon} />}
-          {triggerText}
+          {!icon && triggerText}
       </Button>
         {listType === 'ul' && (
           <ul

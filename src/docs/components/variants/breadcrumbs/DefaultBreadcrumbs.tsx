@@ -5,15 +5,15 @@ const DefaultBreadcrumbs = (): JSX.Element => {
   const crumbs: Crumb[] = [
     {
       name: 'Great grandparent page',
-      href: '#'
+      href: 'docs-demo-link'
     },
     {
       name: 'Grandparent page',
-      href: '#'
+      href: 'docs-demo-link'
     },
     {
       name: 'Parent page',
-      href: '#'
+      href: 'docs-demo-link'
     },
   ];
 

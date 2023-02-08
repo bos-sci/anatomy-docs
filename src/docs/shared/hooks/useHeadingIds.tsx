@@ -14,8 +14,9 @@ const useHeadingIds = () => {
     if (headings.length > 0) {
       const getLevel = (heading: Element): Number => Number(heading.tagName.charAt(1));
       const trimText = (text: string): string => {
-        const softMax = 10;
-        const words = text.split(' ');
+        const softMax = 20;
+        // eslint-disable-next-line no-useless-escape
+        const words = text.split(/[\s\.]/);
         let charSum = 0;
         let lastIndex = 0;
         for (let i = 0; i < words.length; i++) {
@@ -36,7 +37,12 @@ const useHeadingIds = () => {
             steps.push(headings[i]);
           }
         }
-        h.id = Array.from(steps, s => toCamelCase(trimText(s.textContent || ''))).reverse().join('_');
+        if (!h.id.includes(':')) {
+          h.id = Array.from(steps, s => toCamelCase(trimText(s.textContent || '')))
+          .reverse()
+          .join('_')
+          .replaceAll('-', '_');
+        }
       });
     }
   }, []);

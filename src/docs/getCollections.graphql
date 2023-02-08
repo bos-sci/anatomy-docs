@@ -3,6 +3,7 @@ query getCollections($preview: Boolean) {
     items {
       name
       group
+      leadParagraph
       sys {
         id
       }
@@ -11,6 +12,7 @@ query getCollections($preview: Boolean) {
   contentGuidelineCollection(order: name_ASC, preview: $preview) {
     items {
       name
+      leadParagraph
       sys {
         id
       }
@@ -19,6 +21,7 @@ query getCollections($preview: Boolean) {
   codeStandardCollection(preview: $preview) {
     items {
       name
+      leadParagraph
       sys {
         id
       }
@@ -28,6 +31,7 @@ query getCollections($preview: Boolean) {
     items {
       name
       group
+      leadParagraph
       sys {
         id
       }
@@ -37,6 +41,7 @@ query getCollections($preview: Boolean) {
     items {
       name
       group
+      leadParagraph
       sys {
         id
       }

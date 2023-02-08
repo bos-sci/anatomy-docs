@@ -1,5 +1,3 @@
-// TODO: look at how we handle ids
-
 import { ChangeEvent, FocusEvent, ForwardedRef, forwardRef, InputHTMLAttributes, InvalidEvent, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { getValidationMessage } from '../helpers/validation';
 

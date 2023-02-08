@@ -1,5 +1,3 @@
-// TODO: programmatically associate helpText with input (aria-describedby = uniqueHelpTextId)
-
 import InputRadio from '../../../../library/components/InputRadio';
 import RadioGroup from '../../../../library/components/RadioGroup';
 import Example from '../../../shared/components/Example';

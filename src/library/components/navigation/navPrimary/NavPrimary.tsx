@@ -252,6 +252,14 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
     setIsSearchOpen(!isSearchOpen);
   }
 
+  const isCurrent = (isActive: boolean, navItem: NavItemPrimary): boolean => {
+    if (navItem.isActive) {
+      return navItem.isActive(location);
+    } else {
+      return isActive;
+    }
+  }
+
   return (
     <header className={"bsds-nav-header" + (isConstrained ? ' is-constrained' : '')} ref={navRef} onKeyUp={handleKeyUp}>
       {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
@@ -276,7 +284,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                     aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
                     aria-controls={menuId}
-                    onClick={e => updateMenu(e, navItem)}>
+                    onClick={e => updateMenu(e, navItem)}
+                  >
                     {navItem.text}
                   </Button>
                 }
@@ -284,13 +293,17 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                   <NavLink
                     end={!!navItem.isExactMatch}
                     to={(navItem.slug ? navItem.slug : navItem.href) || ''}
-                    className={`bsds-nav-link${navItem.isActive && navItem.isActive(location) ? ' current' : ''}`}
-                    aria-current={navItem.isActive && navItem.isActive(location) ? 'page' : undefined}>
+                    className={({ isActive }) => `bsds-nav-link${isCurrent(isActive, navItem) ? ' current' : ''}`}
+                    aria-current={navItem.isActive && navItem.isActive(location) ? 'page' : undefined}
+                  >
                       {navItem.text}
                   </NavLink>
                 }
-                {(navTree.length > 0 && history.length > 0 && history[0].node.text === navItem.text && !isViewportSmall) &&
-                  <NavPrimaryMenu
+                {(navTree.length > 0
+                  && history.length > 0
+                  && history[0].node.text === navItem.text
+                  && !isViewportSmall)
+                  && <NavPrimaryMenu
                     ref={menuRef}
                     navItems={navTree}
                     utilityItems={utilityItems}
@@ -313,7 +326,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                   className="bsds-nav-link"
                   aria-label={texts?.searchToggleAriaLabel || 'Toggle search'}
                   aria-expanded={isSearchOpen}
-                  onClick={toggleSearch}>
+                  onClick={toggleSearch}
+                >
                   <span className="bsds-nav-link-search-text">
                     {texts?.searchToggleText || 'Search'}
                   </span>
@@ -332,7 +346,8 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                 className="bsds-nav-link"
                 aria-label={texts?.menuToggleAriaLabel || 'Toggle menu'}
                 aria-expanded={isMenuOpen}
-                onClick={toggleMenu}>
+                onClick={toggleMenu}
+              >
                 {isMenuOpen ? texts?.menuToggleTextClose || 'Close' : texts?.menuToggleTextOpen || 'Menu'}
               </Button>
             </li>

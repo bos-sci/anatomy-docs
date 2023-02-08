@@ -11,7 +11,7 @@ const WithLinkedTitle = (): JSX.Element => {
         }}
         linkTitle={true}
         headingLevel="h4"
-        linkHref="#"
+        linkHref="docs-demo-link"
       />
     </Example>
   );

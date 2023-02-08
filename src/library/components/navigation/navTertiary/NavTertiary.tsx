@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { Link } from "react-router-dom";
 import "./NavTertiary.scss"
 
@@ -13,9 +14,12 @@ interface Props {
 }
 
 const NavTertiary = ({ navTertiaryItems, tertiaryNavAriaLabel }: Props): JSX.Element => {
+
+  const navTitleId = useId();
+
   return (
     <nav className="bsds-nav-tertiary" aria-label={tertiaryNavAriaLabel || 'Table of contents'}>
-      <h2 className="bsds-nav-tertiary-title" aria-hidden="true">
+      <h2 className="bsds-nav-tertiary-title" aria-hidden="true" id={"tertiaryNav" + navTitleId}>
         On this page
       </h2>
       <ul className="bsds-nav">

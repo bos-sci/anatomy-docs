@@ -1,5 +1,3 @@
-// TODO: figure out why bsds-icon-2x svgs also getting undefined
-
 import { lazy, ReactElement, Suspense, useEffect, useState } from 'react';
 
 import './Icon.scss';
@@ -21,20 +19,21 @@ const Fallback = () => {
 }
 
 const Icon = (props: Props): JSX.Element => {
+  const {name, size, className = ''} = props;
   const [sizeClass, setSizeClass] = useState('');
   const [icon, setIcon] = useState<ReactElement>(<></>);
 
   useEffect(() => {
-    setSizeClass(`bsds-icon-${props.size ? props.size : '2x'}`);
-  }, [props.size]);
+    setSizeClass(`bsds-icon-${size ? size : '2x'}`);
+  }, [size]);
 
   useEffect(() => {
-    switch (props.name) {
+    switch (name) {
       case 'ellipsis':
         const IconEllipsis = lazy(() => import('./icons/IconEllipsis'));
         setIcon(
           <Suspense fallback={<Fallback />}>
-            <IconEllipsis className={sizeClass + ' ' + props.className} />
+            <IconEllipsis className={sizeClass + ' ' + className} />
           </Suspense>
         );
         break;
@@ -42,7 +41,7 @@ const Icon = (props: Props): JSX.Element => {
         const IconPlus = lazy(() => import('./icons/IconPlus'));
         setIcon(
           <Suspense fallback={<Fallback />}>
-            <IconPlus className={sizeClass + ' ' + props.className} />
+            <IconPlus className={sizeClass + ' ' + className} />
           </Suspense>
         );
         break;
@@ -50,7 +49,7 @@ const Icon = (props: Props): JSX.Element => {
         const IconMenu = lazy(() => import('./icons/IconMenu'));
         setIcon(
           <Suspense fallback={<Fallback />}>
-            <IconMenu className={sizeClass + ' ' + props.className} />
+            <IconMenu className={sizeClass + ' ' + className} />
           </Suspense>
         );
         break;
@@ -58,7 +57,7 @@ const Icon = (props: Props): JSX.Element => {
         const IconChevronRight = lazy(() => import('./icons/IconChevronRight'));
         setIcon(
           <Suspense fallback={<Fallback />}>
-            <IconChevronRight className={sizeClass + ' ' + props.className} />
+            <IconChevronRight className={sizeClass + ' ' + className} />
           </Suspense>
         );
         break;
@@ -66,7 +65,7 @@ const Icon = (props: Props): JSX.Element => {
         const IconChevronLeft = lazy(() => import('./icons/IconChevronLeft'));
         setIcon(
           <Suspense fallback={<Fallback />}>
-            <IconChevronLeft className={sizeClass + ' ' + props.className} />
+            <IconChevronLeft className={sizeClass + ' ' + className} />
           </Suspense>
         );
         break;
@@ -74,7 +73,7 @@ const Icon = (props: Props): JSX.Element => {
         const IconChevronDown = lazy(() => import('./icons/IconChevronDown'));
         setIcon(
           <Suspense fallback={<Fallback />}>
-           <IconChevronDown className={sizeClass + ' ' + props.className} />
+           <IconChevronDown className={sizeClass + ' ' + className} />
           </Suspense>
         );
         break;
@@ -82,7 +81,7 @@ const Icon = (props: Props): JSX.Element => {
         const IconChevronUp = lazy(() => import('./icons/IconChevronUp'));
         setIcon(
           <Suspense fallback={<Fallback />}>
-            <IconChevronUp className={sizeClass + ' ' + props.className} />
+            <IconChevronUp className={sizeClass + ' ' + className} />
           </Suspense>
         );
         break;
@@ -91,7 +90,7 @@ const Icon = (props: Props): JSX.Element => {
         const IconCardDemo = lazy(() => import('./icons/IconCardDemo'));
         setIcon(
           <Suspense fallback={<Fallback />}>
-            <IconCardDemo className={props.className}/>
+            <IconCardDemo className={className}/>
           </Suspense>
         );
         break;
@@ -99,7 +98,7 @@ const Icon = (props: Props): JSX.Element => {
       default:
         setIcon(<p>Failed to load icon</p>);
     }
-  }, [props.className, props.name, sizeClass]);
+  }, [className, name, sizeClass]);
 
   return <>{icon}</>;
 }
