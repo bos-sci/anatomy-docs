@@ -4,7 +4,6 @@
     "stylelint-config-prettier-scss"
   ],
   "plugins": [
-    "stylelint-scss",
     "stylelint-order"
   ],
   "rules": {

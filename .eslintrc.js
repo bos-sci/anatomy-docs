@@ -22,7 +22,8 @@ module.exports = {
   },
   plugins: ["@typescript-eslint", "react"],
   rules: {
-    // Legend: 0 = off, 1 = warning, 2 = error
+    // Legend: 0 = off, 1 = warn, 2 = error
+    "prettier/prettier": 1,
     "curly": ["warn", "all"],
     "react/default-props-match-prop-types": 2,
     "react/jsx-no-useless-fragment": 1,
@@ -34,7 +35,7 @@ module.exports = {
           "Boolean props like ({{ propName }}) need to start with one of the following auxiliary verbs: is, has, should, can, did.",
       },
     ],
-    // "react/forbid-elements": [1, { forbid: deprecatedElements() }],
+    // "react/forbid-elements": [1, { forbid: deprecatedElements() }], -> Need to upgrade ESLint config to do this one this way.
 
     "react/function-component-definition": [
       1,
