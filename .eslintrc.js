@@ -137,5 +137,6 @@ module.exports = {
     "@typescript-eslint/no-non-null-asserted-optional-chain": 1,
     "jsx-a11y/interactive-supports-focus": 1,
     "no-empty": 1,
+    "jsx-a11y/no-static-element-interactions": 1,
   },
 };
