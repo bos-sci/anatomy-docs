@@ -103,7 +103,9 @@ module.exports = {
     "react/no-invalid-html-attribute": 1, // Figure out more options here
     "react/no-this-in-sfc": 1,
     "react/no-unstable-nested-components": 1,
-    "react/no-unused-prop-types": 2, // Making this an error off the bat since I don't forsee a reason to leave unused props out.
+    // We should make this an error once the build runs.
+    // Barring objections, I don't see a case where we'd want unused prop types.
+    "react/no-unused-prop-types": 1,
     "react/prefer-es6-class": 1,
     "react/self-closing-comp": [
       1,
@@ -124,5 +126,16 @@ module.exports = {
     "jsx-a11y/control-has-associated-label": 1,
     "jsx-a11y/lang": 1,
     "jsx-a11y/prefer-tag-over-role": 1,
+    // The following rules from the "recommended" config have been lowered to "warning" for the sake of building the project.
+    // Once we fix the issues, we'd want to turne the back to "error".
+    "react/no-unescaped-entities": 1,
+    "no-case-declarations": 1,
+    "@typescript-eslint/ban-types": 1,
+    "prefer-const": 1,
+    "react/display-name": 1,
+    "@typescript-eslint/no-empty-function": 1,
+    "@typescript-eslint/no-non-null-asserted-optional-chain": 1,
+    "jsx-a11y/interactive-supports-focus": 1,
+    "no-empty": 1,
   },
 };
