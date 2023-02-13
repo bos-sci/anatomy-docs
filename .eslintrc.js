@@ -7,6 +7,9 @@ module.exports = {
     node: true,
   },
   extends: [
+    "react-app",
+    "react-app/jest",
+    "plugin:testing-library/react",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
@@ -19,6 +22,9 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   plugins: ["@typescript-eslint", "react"],
   rules: {
