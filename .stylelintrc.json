@@ -8,7 +8,7 @@
     "alpha-value-notation": "number",
     "annotation-no-unknown": true,
     "at-rule-no-vendor-prefix": true,
-    "at-rule-whitelist": [
+    "at-rule-allowed-list": [
       "debug",
       "each",
       "error",
@@ -53,7 +53,7 @@
     "declaration-property-unit-disallowed-list": {
       "/^border/": ["%"]
     },
-    "declaration-property-value-blacklist": [
+    "declaration-property-value-disallowed-list": [
       {
         "/^border/": ["none"]
       }
@@ -62,14 +62,13 @@
     "font-family-no-duplicate-names": true,
     "font-family-no-missing-generic-family-keyword": true,
     "font-weight-notation": "numeric",
-    "function-calc-no-invalid": true,
     "function-calc-no-unspaced-operator": true,
     "function-linear-gradient-no-nonstandard-direction": true,
     "function-name-case": "lower",
     "function-no-unknown": null,
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
-    "function-url-scheme-blacklist": [
+    "function-url-scheme-disallowed-list": [
       "/ftp/",
       "/^http/",
       "/^www/",
@@ -84,11 +83,11 @@
     "length-zero-no-unit": true,
     "media-feature-name-no-unknown": true,
     "media-feature-name-no-vendor-prefix": true,
-    "media-feature-name-value-whitelist": {
+    "media-feature-name-value-allowed-list": {
       "min-width": ["576px", "768px", "992px", "1200px"],
       "max-width": ["575px", "767px", "991px", "1199px"]
     },
-    "media-feature-name-whitelist": ["min-width", "max-width"],
+    "media-feature-name-allowed-list": ["min-width", "max-width"],
     "media-feature-range-notation": "prefix",
     "named-grid-areas-no-invalid": true,
     "no-descending-specificity": true,
@@ -238,7 +237,7 @@
       "scroll-behavior",
       "cursor"
     ],
-    "property-blacklist": [
+    "property-disallowed-list": [
       "-webkit-line-clamp",
       "additive-symbols",
       "bleed",
@@ -302,7 +301,7 @@
     "selector-type-no-unknown": true,
     "shorthand-property-no-redundant-values": true,
     "string-no-newline": true,
-    "unit-blacklist": ["cm", "mm", "Q", "in", "pc", "pt", "ex", "lh"],
+    "unit-disallowed-list": ["cm", "mm", "Q", "in", "pc", "pt", "ex", "lh"],
     "unit-no-unknown": true,
     "value-keyword-case": "lower",
     "value-no-vendor-prefix": true,
@@ -362,7 +361,6 @@
     "scss/function-no-unknown": true,
     "scss/function-quote-no-quoted-strings-inside": true,
     "scss/function-unquote-no-unquoted-strings-inside": true,
-    "scss/map-keys-quotes": "never",
     "scss/operator-no-newline-after": true,
     "scss/operator-no-newline-before": true,
     "scss/operator-no-unspaced": true,

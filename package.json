@@ -28,7 +28,8 @@
     "sitemap": "node src/utils/generateSitemap.js",
     "stylelint:check": "stylelint-config-prettier-scss-check",
     "release-date": "echo \"// This file is automatically updated on release\nexport const releaseDate = new Date('$(date)');\" > ./src/utils/release-date.ts",
-    "lint:style": "stylelint \"**/*.scss\""
+    "lint:style": "stylelint \"**/*.scss\"",
+    "lint:test": "stylelint \"src/styles/components/_accordion.scss\""
   },
   "browserslist": {
     "production": [
