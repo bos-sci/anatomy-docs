@@ -17,6 +17,7 @@ describe("Helpers", () => {
     it("returns a slug version of a given string", () => {
       expect(toSlug("some string")).toBe("some-string");
       expect(toSlug("SoMe-O ther StriN g")).toBe("some-o-ther-strin-g");
+      expect(toSlug("SoMe-o ther StriN g")).toBe("some-o-ther-strin-g");
     });
   });
 });
