@@ -1,0 +1,57 @@
+.bsds-modal
+{
+  box-shadow: $box-shadow-primary;
+  border: 0;
+  padding: space(4x);
+  background: $neutral-100;
+  max-width: 90vw;
+  min-width: min(600px, 100vw);
+
+
+  .bsds-modal-header
+  {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "logo close"
+      "title close";
+    align-items: start;
+    gap: space(3x);
+  }
+
+  .bsds-modal-logo
+  {
+    margin-top: 0;
+    width: auto;
+    height: space(8x);
+
+    & + .bsds-modal-title{
+      grid-row: span 1;
+    }
+  }
+
+  .bsds-modal-title
+  {
+    grid-row: span 2;
+    align-self: center;
+    margin-top: 0;
+  }
+
+  .bsds-modal-close
+  {
+    grid-area: close;
+  }
+
+  .bsds-modal-body
+  {
+    margin-top: space(4x);
+  }
+
+  .bsds-modal-footer
+  {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(2x);
+    margin-top: space(8x);
+  }
+}
