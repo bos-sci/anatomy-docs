@@ -2,6 +2,7 @@ import { VariantProps } from '../Preview';
 import SingleActionModal from './SingleActionModal';
 import LogoModal from './LogoModal';
 import RequiredActionModal from './RequiredAcitonModal';
+import DefaultModal from './DefaultModal';
 
 const ModalController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
@@ -13,7 +14,7 @@ const ModalController = ({ variantId }: VariantProps): JSX.Element => {
     case 'modalSingleAction':
       return <SingleActionModal />
     default:
-      return <SingleActionModal />;
+      return <DefaultModal />;
   }
 }
 

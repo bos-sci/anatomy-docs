@@ -7,16 +7,13 @@ const SingleActionModal = (): JSX.Element => {
 
   const modalRef = useRef<HTMLDialogElement>(null);
 
-  const actions = <>
-    <Button variant="assertive">Confirm</Button>
-    <Button variant="subtle" onClick={() => modalRef.current?.close()}>Cancel</Button>
-  </>;
+  const actions = <Button variant="assertive">Positive action</Button>;
 
   return (
     <Example isFlex>
       <Button type="button" onClick={() => modalRef.current?.showModal()}>Open single action modal</Button>
       <Modal title="Modal title" actions={actions} ref={modalRef}>
-        This is an example of a modal.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet varius sapien. Nullam diam nisl, congue bibendum orci eu, fermentum consequat nulla. Nunc luctus placerat mauris, eu convallis ante sollicitudin in. Maecenas orci eros, placerat bibendum rhoncus a, tincidunt vitae lectus.
       </Modal>
     </Example>
   );
