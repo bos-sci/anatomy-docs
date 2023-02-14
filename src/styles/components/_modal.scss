@@ -7,6 +7,11 @@
   max-width: 90vw;
   min-width: min(600px, 100vw);
 
+  &::backdrop
+  {
+    background: rgba($neutral-00, 0.6);
+  }
+
 
   .bsds-modal-header
   {
