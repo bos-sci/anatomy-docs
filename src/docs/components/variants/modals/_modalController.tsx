@@ -1,10 +1,19 @@
 import { VariantProps } from '../Preview';
-import DefaultModal from './DefaultModal';
+import SingleActionModal from './SingleActionModal';
+import LogoModal from './LogoModal';
+import RequiredActionModal from './RequiredAcitonModal';
 
 const ModalController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
+    // Modifiers
+    case 'modalLogo':
+      return <LogoModal />
+    case 'modalRequiredAction':
+      return <RequiredActionModal />
+    case 'modalSingleAction':
+      return <SingleActionModal />
     default:
-      return <DefaultModal />;
+      return <SingleActionModal />;
   }
 }
 
