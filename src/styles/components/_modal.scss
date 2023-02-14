@@ -26,6 +26,7 @@
 
   .bsds-modal-logo
   {
+    grid-area: logo;
     margin-top: 0;
     width: auto;
     height: space(6x);
@@ -37,6 +38,7 @@
 
   .bsds-modal-title
   {
+    grid-area: title;
     grid-row: span 2;
     align-self: center;
     margin-top: 0;
