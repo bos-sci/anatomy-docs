@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef, MutableRefObject, ReactNode, useCallback, useEffect, useId, useRef, useState } from 'react';
+import { ForwardedRef, forwardRef, MutableRefObject, ReactNode, useEffect, useId, useRef } from 'react';
 import Button from './Button';
 
 interface Props {
@@ -16,7 +16,28 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
   const dialogId = useId();
 
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const closeBtnRef = useRef<HTMLButtonElement>(null);
+
+  const handleFocus = (e: KeyboardEvent) => {
+    if (dialogRef.current) {
+      const focusableElements = [...dialogRef.current?.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')] as HTMLElement[];
+      if (e.key === 'Tab') {
+        if (document.activeElement === focusableElements.at(-1) && !e.shiftKey) {
+          focusableElements[0].focus();
+          e.preventDefault();
+        } else if (document.activeElement === focusableElements[0] && e.shiftKey) {
+          focusableElements.at(-1)?.focus();
+          e.preventDefault();
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleFocus);
+    return () => {
+      document.removeEventListener('keydown', handleFocus);
+    }
+  }, []);
 
   return (
     // Disabling as adding role="dialog" is required for some screen readers to announce properly
@@ -44,7 +65,6 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
         <h2 id={dialogId + '-heading'} className="bsds-modal-title">{ title }</h2>
         { hasClose &&
           <Button
-            ref={closeBtnRef}
             variant="subtle"
             icon="close"
             className="bsds-modal-close"
