@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef, MutableRefObject, ReactNode, useEffect, useId, useRef } from 'react';
+import { ForwardedRef, forwardRef, MutableRefObject, PointerEvent, ReactNode, useEffect, useId, useRef } from 'react';
 import Button from './Button';
 
 interface Props {
@@ -16,6 +16,21 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
   const dialogId = useId();
 
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const clickOut = (e: PointerEvent) => {
+    const dialogBox = dialogRef.current?.getBoundingClientRect();
+    if (dialogBox) {
+      const isInDialog = (
+        dialogBox.top <= e.clientY
+        && e.clientY <= dialogBox.top + dialogBox.height
+        && dialogBox.left <= e.clientX
+        && e.clientX <= dialogBox.left + dialogBox.width
+      );
+      if (!isInDialog) {
+        dialogRef.current?.close();
+      }
+    }
+  }
 
   const handleFocus = (e: KeyboardEvent) => {
     if (dialogRef.current) {
@@ -59,6 +74,7 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
       aria-labelledby={dialogId + '-heading'}
       aria-describedby={dialogId + '-body'}
       aria-modal="true"
+      onPointerUp={clickOut}
     >
       <div className="bsds-modal-header">
         { logo && <img src={logo} alt={logoAlt} className="bsds-modal-logo" /> }
