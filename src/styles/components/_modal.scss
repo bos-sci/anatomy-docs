@@ -62,3 +62,10 @@
     margin-top: space(8x);
   }
 }
+
+@media (min-width: $xl) {
+  .bsds-modal
+  {
+    max-width: 80ch;
+  }
+}
