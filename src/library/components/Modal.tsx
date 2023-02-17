@@ -1,21 +1,53 @@
-import { ForwardedRef, forwardRef, MutableRefObject, PointerEvent, ReactNode, useEffect, useId, useRef } from 'react';
+import { ForwardedRef, forwardRef, MutableRefObject, PointerEvent, ReactNode, useEffect, useId, useImperativeHandle, useRef } from 'react';
+import "wicg-inert";
 import Button from './Button';
+
+export interface ModalRef {
+  showModal: () => void;
+  close: () => void;
+  isOpen: boolean;
+}
 
 interface Props {
   hasClose?: boolean;
+  closeAriaLabel?: string;
   logo?: string;
   logoAlt?: string;
-  closeAriaLabel?: string;
   title: string;
   actions: ReactNode;
   children: ReactNode;
 }
 
-const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Close modal', title, actions, children}: Props, ref: ForwardedRef<HTMLDialogElement>): JSX.Element => {
+const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Close modal', title, actions, children}: Props, ref: ForwardedRef<ModalRef>): JSX.Element => {
 
   const dialogId = useId();
 
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const showDialog = (shouldShow: boolean) => {
+    const body = document.querySelector('body');
+    if (body) {
+      if (shouldShow) {
+        dialogRef.current?.showModal();
+        body.style.overflowY = 'hidden';
+      } else {
+        dialogRef.current?.close();
+        body.style.overflowY = 'auto';
+      }
+    }
+  }
+
+  useImperativeHandle(ref, () => {
+    return {
+      showModal() {
+        showDialog(true);
+      },
+      close() {
+        showDialog(false);
+      },
+      isOpen: dialogRef.current?.open || false
+    }
+  }, []);
 
   const clickOut = (e: PointerEvent) => {
     const dialogBox = dialogRef.current?.getBoundingClientRect();
@@ -27,13 +59,16 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
         && e.clientX <= dialogBox.left + dialogBox.width
       );
       if (!isInDialog) {
-        dialogRef.current?.close();
+        showDialog(false);
       }
     }
   }
 
   const handleFocus = (e: KeyboardEvent) => {
     if (dialogRef.current) {
+      if (e.key === 'Escape') {
+        showDialog(false);
+      }
       const focusableElements = [...dialogRef.current?.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')] as HTMLElement[];
       if (e.key === 'Tab') {
         if (document.activeElement === focusableElements.at(-1) && !e.shiftKey) {
@@ -58,7 +93,8 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
     // Disabling as adding role="dialog" is required for some screen readers to announce properly
     // eslint-disable-next-line jsx-a11y/no-redundant-roles
     <dialog
-      ref={node => {
+      ref={dialogRef}
+      /* ref={node => {
         if (node) {
           (dialogRef as MutableRefObject<HTMLDialogElement>).current = node;
           if (typeof ref === 'function') {
@@ -67,7 +103,7 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
             (ref as MutableRefObject<HTMLDialogElement>).current = node;
           }
         }
-      }}
+      }} */
       role="dialog"
       id={dialogId}
       className="bsds-modal"
@@ -85,7 +121,7 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
             icon="close"
             className="bsds-modal-close"
             aria-label={closeAriaLabel}
-            onClick={() => dialogRef.current?.close()}
+            onClick={() => showDialog(false)}
           />
         }
       </div>

@@ -1,15 +1,16 @@
 import { useRef } from 'react';
 import Button from '../../../../library/components/Button';
-import Modal from '../../../../library/components/Modal';
+import Modal, { ModalRef } from '../../../../library/components/Modal';
 import Example from '../../../shared/components/Example';
 import BSCLogo from '../../../../assets/images/logo-bsc-tagline.svg';
+import Link from '../../../../library/components/Link';
 
 const LogoModal = (): JSX.Element => {
 
-  const modalRef = useRef<HTMLDialogElement>(null);
+  const modalRef = useRef<ModalRef>(null);
 
   const actions = <>
-    <Button variant="assertive">Positive action</Button>
+    <Link href="www.google.com">Positive action</Link>
     <Button variant="subtle" onClick={() => modalRef.current?.close()}>Cancel</Button>
   </>;
 

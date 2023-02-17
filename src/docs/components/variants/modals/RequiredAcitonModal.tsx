@@ -1,15 +1,15 @@
 import { useRef } from 'react';
 import Button from '../../../../library/components/Button';
-import Modal from '../../../../library/components/Modal';
+import Modal, { ModalRef } from '../../../../library/components/Modal';
 import Example from '../../../shared/components/Example';
 
 const RequiredActionModal = (): JSX.Element => {
 
-  const modalRef = useRef<HTMLDialogElement>(null);
+  const modalRef = useRef<ModalRef>(null);
 
   const actions = <>
     <Button variant="assertive">Positive action</Button>
-    <Button variant="subtle" onClick={() => modalRef.current?.close()}>Cancel</Button>
+    <Button onClick={() => modalRef.current?.close()}>Cancel</Button>
   </>;
 
   return (
