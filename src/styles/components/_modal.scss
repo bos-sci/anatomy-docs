@@ -60,6 +60,11 @@
     flex-wrap: wrap;
     gap: space(2x);
     margin-top: space(8x);
+
+    a.bsds-button-assertive
+    {
+      color: $neutral-100;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
-import { ForwardedRef, forwardRef, PointerEvent, ReactNode, useCallback, useEffect, useId, useImperativeHandle, useRef } from 'react';
-import "wicg-inert";
-import Button from './Button';
+import { cloneElement, ForwardedRef, forwardRef, FunctionComponent, PointerEvent, ReactElement, ReactNode, useCallback, useEffect, useId, useImperativeHandle, useRef, useState } from 'react';
+import Button, { Props as ButtonProps } from './Button';
+import { Props as LinkProps } from './Link';
 
 export interface ModalRef {
   showModal: () => void;
@@ -14,15 +14,47 @@ interface Props {
   logo?: string;
   logoAlt?: string;
   title: string;
-  actions: ReactNode;
+  positiveAction: ReactElement<ButtonProps | LinkProps>;
+  negativeAction?: ReactElement<ButtonProps | LinkProps>;
   children: ReactNode;
 }
 
-const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Close modal', title, actions, children}: Props, ref: ForwardedRef<ModalRef>): JSX.Element => {
+const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Close modal', title, positiveAction, negativeAction, children}: Props, ref: ForwardedRef<ModalRef>): JSX.Element => {
 
   const dialogId = useId();
 
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const [positive, setPositive] = useState<ReactElement<ButtonProps | LinkProps>>();
+  const [negative, setNegative] = useState<ReactElement<ButtonProps | LinkProps>>();
+
+  // Clone positive action to force assertive button style
+  useEffect(() => {
+    if (positiveAction) {
+      const attrs = {
+        variant: 'assertive',
+        className: ''
+      };
+      if ((positiveAction.type as FunctionComponent).displayName === 'Link') {
+        attrs.className = 'bsds-button-assertive'
+      }
+      setPositive(cloneElement(positiveAction, attrs));
+    }
+  }, [positiveAction]);
+
+  // Clone negative action to force default button when close not present and subtle when close present
+  useEffect(() => {
+    if (negativeAction) {
+      const attrs = {
+        variant: hasClose ? 'subtle' : 'default',
+        className: ''
+      };
+      if ((negativeAction.type as FunctionComponent).displayName === 'Link') {
+        attrs.className = hasClose ? 'bsds-button-subtle' : 'bsds-button'
+      }
+      setNegative(cloneElement(negativeAction, attrs));
+    }
+  }, [negativeAction, hasClose]);
 
   /**
    * Opens or closes the modal, and manages overflowY on body.
@@ -133,7 +165,8 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
         { children }
       </div>
       <div className="bsds-modal-footer">
-        { actions }
+        { positive }
+        { negative }
       </div>
     </dialog>
   );
