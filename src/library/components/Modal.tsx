@@ -25,10 +25,10 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
 
   const dialogId = useId();
 
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
   const [positive, setPositive] = useState<ReactElement<ButtonProps | LinkProps>>();
   const [negative, setNegative] = useState<ReactElement<ButtonProps | LinkProps>>();
+
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   // Clone positive action to force assertive button style
   useEffect(() => {
@@ -161,6 +161,7 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
         <h2 id={dialogId + '-heading'} className="bsds-modal-title">{ title }</h2>
         { hasClose &&
           <Button
+            data-testid="modalCloseBtn"
             variant="subtle"
             icon="close"
             className="bsds-modal-close"
