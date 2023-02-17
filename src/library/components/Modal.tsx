@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef, MutableRefObject, PointerEvent, ReactNode, useEffect, useId, useImperativeHandle, useRef } from 'react';
+import { ForwardedRef, forwardRef, PointerEvent, ReactNode, useCallback, useEffect, useId, useImperativeHandle, useRef } from 'react';
 import "wicg-inert";
 import Button from './Button';
 
@@ -64,7 +64,7 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
     }
   }
 
-  const handleFocus = (e: KeyboardEvent) => {
+  const handleFocus = useCallback((e: KeyboardEvent) => {
     if (dialogRef.current) {
       if (e.key === 'Escape') {
         showDialog(false);
@@ -80,30 +80,20 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
         }
       }
     }
-  }
+  }, []);
 
   useEffect(() => {
     document.addEventListener('keydown', handleFocus);
     return () => {
       document.removeEventListener('keydown', handleFocus);
     }
-  }, []);
+  }, [handleFocus]);
 
   return (
     // Disabling as adding role="dialog" is required for some screen readers to announce properly
     // eslint-disable-next-line jsx-a11y/no-redundant-roles
     <dialog
       ref={dialogRef}
-      /* ref={node => {
-        if (node) {
-          (dialogRef as MutableRefObject<HTMLDialogElement>).current = node;
-          if (typeof ref === 'function') {
-            ref(node);
-          } else if (ref) {
-            (ref as MutableRefObject<HTMLDialogElement>).current = node;
-          }
-        }
-      }} */
       role="dialog"
       id={dialogId}
       className="bsds-modal"
