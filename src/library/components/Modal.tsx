@@ -17,9 +17,11 @@ interface Props {
   positiveAction: ReactElement<ButtonProps | LinkProps>;
   negativeAction?: ReactElement<ButtonProps | LinkProps>;
   children: ReactNode;
+  onClose?: () => void;
+  onShowModal?: () => void;
 }
 
-const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Close modal', title, positiveAction, negativeAction, children}: Props, ref: ForwardedRef<ModalRef>): JSX.Element => {
+const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Close modal', title, positiveAction, negativeAction, children, onClose, onShowModal}: Props, ref: ForwardedRef<ModalRef>): JSX.Element => {
 
   const dialogId = useId();
 
@@ -61,18 +63,24 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
    * When modal is open overflowY is hidden, when modal is closed overflowY is auto.
    * @param {boolean} shouldShow - Modal opens when true, closes when false.
    */
-  const showDialog = (shouldShow: boolean) => {
+  const showDialog = useCallback((shouldShow: boolean) => {
     const body = document.querySelector('body');
     if (body) {
       if (shouldShow) {
         dialogRef.current?.showModal();
         body.style.overflowY = 'hidden';
+        if (onShowModal) {
+          onShowModal();
+        }
       } else {
         dialogRef.current?.close();
         body.style.overflowY = 'auto';
+        if (onClose) {
+          onClose();
+        }
       }
     }
-  }
+  }, [onClose, onShowModal]);
 
   // Defines the methods and properties on the ModalRef.
   useImperativeHandle(ref, () => {
@@ -85,7 +93,7 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
       },
       isOpen: dialogRef.current?.open || false
     }
-  }, []);
+  }, [showDialog]);
 
   /**
    * Closes the modal when clicking anywhere outside of the modal.
