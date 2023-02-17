@@ -24,6 +24,11 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
+  /**
+   * Opens or closes the modal, and manages overflowY on body.
+   * When modal is open overflowY is hidden, when modal is closed overflowY is auto.
+   * @param {boolean} shouldShow - Modal opens when true, closes when false.
+   */
   const showDialog = (shouldShow: boolean) => {
     const body = document.querySelector('body');
     if (body) {
@@ -37,6 +42,7 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
     }
   }
 
+  // Defines the methods and properties on the ModalRef.
   useImperativeHandle(ref, () => {
     return {
       showModal() {
@@ -49,6 +55,10 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
     }
   }, []);
 
+  /**
+   * Closes the modal when clicking anywhere outside of the modal.
+   * @param {PointerEvent} e - Pointer event
+   */
   const clickOut = (e: PointerEvent) => {
     const dialogBox = dialogRef.current?.getBoundingClientRect();
     if (dialogBox) {
@@ -64,6 +74,10 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
     }
   }
 
+  /**
+   * Loops the focus back around when you are on the last element and tab, or first element and shift-tab.
+   * @param {KeyboardEvent} e - Keyboard event
+   */
   const handleFocus = useCallback((e: KeyboardEvent) => {
     if (dialogRef.current) {
       if (e.key === 'Escape') {
