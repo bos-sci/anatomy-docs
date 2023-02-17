@@ -5,7 +5,7 @@
   padding: space(4x);
   background: $neutral-100;
   max-width: 90vw;
-  min-width: min(600px, 100vw);
+  min-width: min(37.5rem, 100vw); // NOTE: This is a one off size. We can keep an eye out as we build more modal/panel type components to see if this is a dimension we want to flip to a variable.
 
   &::backdrop
   {
@@ -31,7 +31,8 @@
     width: auto;
     height: space(6x);
 
-    & + .bsds-modal-title{
+    & + .bsds-modal-title
+    {
       grid-row: span 1;
     }
   }
@@ -65,10 +66,16 @@
     {
       color: $neutral-100;
     }
+
+    a.bsds-button-subtle
+    {
+      color: $action-primary-40;
+    }
   }
 }
 
-@media (min-width: $xl) {
+@media (min-width: $xl)
+{
   .bsds-modal
   {
     max-width: 80ch;
