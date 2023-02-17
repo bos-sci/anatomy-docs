@@ -12,7 +12,7 @@ const SingleActionModal = (): JSX.Element => {
   return (
     <Example isFlex>
       <Button type="button" onClick={() => modalRef.current?.showModal()}>Open single action modal</Button>
-      <Modal title="Modal title" positiveAction={positiveAction} ref={modalRef}>
+      <Modal ref={modalRef} title="Modal title" positiveAction={positiveAction}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet varius sapien. Nullam diam nisl, congue bibendum orci eu, fermentum consequat nulla. Nunc luctus placerat mauris, eu convallis ante sollicitudin in. Maecenas orci eros, placerat bibendum rhoncus a, tincidunt vitae lectus.
       </Modal>
     </Example>

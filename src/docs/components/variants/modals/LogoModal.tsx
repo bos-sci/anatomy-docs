@@ -15,7 +15,7 @@ const LogoModal = (): JSX.Element => {
   return (
     <Example>
       <Button type="button" aria-haspopup="true" onClick={() => modalRef.current?.showModal()}>Open modal with logo</Button>
-      <Modal logo={BSCLogo} logoAlt="Boston scientific logo" title="Modal title" positiveAction={positiveAction} negativeAction={negativeAction} ref={modalRef}>
+      <Modal ref={modalRef} logo={BSCLogo} logoAlt="Boston scientific logo" title="Modal title" positiveAction={positiveAction} negativeAction={negativeAction}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet varius sapien. Nullam diam nisl, congue bibendum orci eu, fermentum consequat nulla. Nunc luctus placerat mauris, eu convallis ante sollicitudin in. Maecenas orci eros, placerat bibendum rhoncus a, tincidunt vitae lectus.
       </Modal>
     </Example>
