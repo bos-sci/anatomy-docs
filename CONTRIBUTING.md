@@ -2,10 +2,10 @@
 * VS Code Extensions:
   - Install "[EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)"
   - Install "[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)"
-  - Install "[Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)"
+  - Install "[Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.Prettier-vscode)"
   - Install "[Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 * Other Editors
-  - Prettier: https://prettier.io/docs/en/editors.html
+  - Prettier: https://Prettier.io/docs/en/editors.html
   - EditorConfig: https://editorconfig.org/#download
   - ESLint: https://eslint.org/docs/latest/user-guide/integrations#editors
   - Stylelint: https://stylelint.io/user-guide/integrations/editor
@@ -14,12 +14,12 @@ __Note: You shouldn't need to customize the extensions, as each should read thei
 
 #### Formatting Options
 * Manual
-  - Run `npm run format <file path>` on the command line for every file you change.
-  - Use Prettier's shortcut in your editor of choice. Ex.: option + shift + f for VS Code on Macs
+  - Use Prettier's shortcut in your editor of choice. 
+  - Ex.: option + shift + f for VS Code on Macs
 * Automated
   - Configure Prettier to format your code after each save.
   - VS Code: Settings > Format on Save. 
-  - You must ensure a default formatter is available. Make prettier your default formatter by using the command pallette (cmd + shift + P) > format document > configure default formatter > choose prettier
+  - You must ensure a default formatter is available. Make Prettier your default formatter by using the command palette (cmd + shift + P) > format document > configure default formatter > choose Prettier
 
 ### Linting Options
 * Manual
