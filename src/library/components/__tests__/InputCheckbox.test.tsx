@@ -1,4 +1,4 @@
-import { render, screen, act } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Checkbox from "../InputCheckbox";
 
@@ -26,8 +26,8 @@ describe("Checkbox Component", () => {
   it("Has error node on blur when required and not checked", async () => {
     render(<Checkbox label="Test Checkbox" required />);
     const checkbox = screen.getByRole("checkbox");
-    await act(() => checkbox.focus());
-    await act(() => checkbox.blur());
+    await waitFor(() => checkbox.focus());
+    await waitFor(() => checkbox.blur());
     const errorNode = screen.getByText(
       "This is an example of an error message for a required form control."
     );
