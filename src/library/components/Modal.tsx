@@ -65,15 +65,15 @@ const Modal = forwardRef(({hasClose = true, logo, logoAlt, closeAriaLabel = 'Clo
    */
   const showDialog = useCallback((shouldShow: boolean) => {
     const body = document.querySelector('body');
-    if (body) {
+    if (body && dialogRef.current) {
       if (shouldShow) {
-        dialogRef.current?.showModal();
+        dialogRef.current.showModal();
         body.style.overflowY = 'hidden';
         if (onShowModal) {
           onShowModal();
         }
       } else {
-        dialogRef.current?.close();
+        dialogRef.current.close();
         body.style.overflowY = 'auto';
         if (onClose) {
           onClose();

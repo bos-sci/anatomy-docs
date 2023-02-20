@@ -56,7 +56,9 @@ describe('Modal', () => {
   });
 
   // Open and closing interactions
-  // TODO: Figure out how to use refs in testing to test these.
+  // TODO: The can not be properly tested until this is resolved
+  // https://github.com/jsdom/jsdom/issues/3294
+  // Currently the modal can not be opened or closed in jest
 
   it('Should open on call of showModal', () => {
 
