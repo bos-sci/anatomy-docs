@@ -9,8 +9,21 @@ const LogoModal = (): JSX.Element => {
 
   const modalRef = useRef<ModalRef>(null);
 
-  const positiveAction = <Link href="www.google.com">Positive action</Link>;
-  const negativeAction = <Button onClick={() => modalRef.current?.close()}>Cancel</Button>;
+  const positiveAction = <Link to="docs-demo-link">Positive action</Link>;
+  const negativeAction = (
+    <Link
+      to="docs-demo-link"
+      onClick={
+        (e) => {
+          // Overriding link behavior so it behaves like a button while allowing us to visually test link styles
+          e.preventDefault();
+          modalRef.current?.close();
+        }
+      }
+    >
+      Cancel
+    </Link>
+  );
 
   return (
     <Example>
