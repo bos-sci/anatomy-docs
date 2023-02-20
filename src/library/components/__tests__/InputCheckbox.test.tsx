@@ -1,18 +1,20 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Checkbox from "../InputCheckbox";
 
 describe("Checkbox Component", () => {
   it("Renders correctly with default props", () => {
-    render(<Checkbox label="Test Checkbox" />);
-    expect(screen.getByLabelText("Test Checkbox")).toBeInTheDocument();
+    render(<Checkbox label="Test Checkbox 2" />);
+    expect(screen.getByLabelText("Test Checkbox 2")).toBeInTheDocument();
   });
 
   it("Calls onChange when clicked", async () => {
     const onChange = jest.fn();
-    const user = userEvent.setup();
 
     render(<Checkbox label="Test Checkbox" onChange={onChange} />);
+
+    const user = userEvent.setup();
+
     const checkbox = screen.getByRole("checkbox");
 
     await user.click(checkbox);
@@ -24,9 +26,11 @@ describe("Checkbox Component", () => {
   it("Has error node on blur when required and not checked", async () => {
     render(<Checkbox label="Test Checkbox" required />);
     const checkbox = screen.getByRole("checkbox");
-    await checkbox.focus();
-    await checkbox.blur();
-    const errorNode = screen.getByText("This is an example of an error message for a required form control.");
+    await act(() => checkbox.focus());
+    await act(() => checkbox.blur());
+    const errorNode = screen.getByText(
+      "This is an example of an error message for a required form control."
+    );
 
     expect(errorNode).toBeInTheDocument();
   });
