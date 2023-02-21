@@ -128,7 +128,7 @@ const Components = (): JSX.Element => {
         ]
       },
       {
-        text: 'Product Card',
+        text: 'Product card',
         slug: basePath + '/product-card',
       },
       {
