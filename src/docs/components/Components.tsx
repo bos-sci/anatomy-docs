@@ -128,6 +128,10 @@ const Components = (): JSX.Element => {
         ]
       },
       {
+        text: 'Product Card',
+        slug: basePath + '/product-card',
+      },
+      {
         text: 'Stoplight',
         slug: basePath + '/stoplight',
       },
