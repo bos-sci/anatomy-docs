@@ -131,6 +131,11 @@ const Preview = ( props: Props ): JSX.Element => {
           setRenderedComponent(<LinkController variantId={variantId} />);
           break;
 
+        case 'modal':
+          const ModalController = lazy(() => import('./modals/_modalController'));
+          setRenderedComponent(<ModalController variantId={variantId} />);
+          break;
+
         case 'navigation-link':
           const DefaultNavLink = lazy(() => import('./navLink/DefaultNavLink'));
           setRenderedComponent(<DefaultNavLink />);
