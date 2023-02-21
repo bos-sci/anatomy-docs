@@ -146,14 +146,14 @@ const Preview = ( props: Props ): JSX.Element => {
           setRenderedComponent(<NavPrimaryController variantId={variantId} />);
           break;
 
-        case 'radio-group':
-          const InputRadioGroupController = lazy(() => import('./inputRadioGroup/_InputRadioGroupController'));
-          setRenderedComponent(<InputRadioGroupController variantId={variantId} />);
-          break;
-
         case 'product-card':
           const ProductCardController = lazy(() => import('./productCard/_ProductCardController'));
           setRenderedComponent(<ProductCardController variantId={variantId}/>);
+          break;
+
+        case 'radio-group':
+          const InputRadioGroupController = lazy(() => import('./inputRadioGroup/_InputRadioGroupController'));
+          setRenderedComponent(<InputRadioGroupController variantId={variantId} />);
           break;
 
         case 'search':
