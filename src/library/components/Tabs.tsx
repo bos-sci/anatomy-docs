@@ -1,5 +1,3 @@
-// TODO: ADS-384 conditionally add aria-labelledby or aria-label on the tablist
-
 import {
   createRef,
   KeyboardEvent,
@@ -9,6 +7,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useId
 } from "react";
 import IconChevronLeft from './icon/icons/IconChevronLeft';
 import IconChevronRight from './icon/icons/IconChevronRight';
@@ -16,7 +15,7 @@ import Tab from "./Tab";
 
 type Props = {
   children: ReactElement[] | ReactElement;
-  ariaLabel: string;
+  tablistLabel: string;
 };
 
 let tabsId = 0;
@@ -31,6 +30,7 @@ const Tabs = (props: Props): JSX.Element => {
   const [scrollBtnStates, setScrollBtnStates] = useState([false, false]); // [leftScrollBtn, rightScrollBtn] disabled when true
 
   const tabListRef = useRef<HTMLDivElement>(null);
+  const tablistLabelId = useId();
 
   const scrollManager = useCallback(() => {
     if (tabListRef.current) {
@@ -167,12 +167,13 @@ const Tabs = (props: Props): JSX.Element => {
 
   return (
     <div className={"bsds-tabs" + (hasOverflow ? " has-overflow" : "")}>
+      <p className="bsds-visually-hidden" id={tablistLabelId}>{props.tablistLabel}</p>
       <div className="bsds-tab-controls">
         <div
           ref={tabListRef}
           className="bsds-tab-list"
           role="tablist"
-          aria-label={props.ariaLabel}
+          aria-labelledby={tablistLabelId}
           onKeyDown={keyManager}
           onScroll={scrollManager}
         >
