@@ -31,7 +31,9 @@ const Image = (props: Props): JSX.Element => {
     hasCaption,
     texts,
     className,
-    ...imgAttrs // Warning on the test file stems from spreading props here.
+    isGhost,
+    isCaptionCentered,
+    ...imgAttrs
   } = props;
   const captionId = useId();
   const imageId = useId();
@@ -55,11 +57,11 @@ const Image = (props: Props): JSX.Element => {
 
   let captionAlignment = "";
 
-  if (props.isCaptionCentered && !props.isGhost) {
+  if (isCaptionCentered && !isGhost) {
     captionAlignment = "-center";
-  } else if (props.isCaptionCentered && props.isGhost) {
+  } else if (isCaptionCentered && isGhost) {
     captionAlignment = "-center-ghost";
-  } else if (props.isGhost) {
+  } else if (isGhost) {
     captionAlignment = "-ghost";
   }
 
@@ -74,7 +76,6 @@ const Image = (props: Props): JSX.Element => {
         aria-describedby={
           hasCaption && texts?.caption ? `imageCaption${captionId}` : undefined
         }
-        // As a result, isGhost and isCaptionCentered are making it here.
         {...imgAttrs}
       />
       {hasCaption && texts?.caption && (
