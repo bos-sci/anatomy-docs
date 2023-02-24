@@ -30,6 +30,7 @@
     border: space(xxs) solid $border-color-subtle;
     padding: space(3x);
     background-color: $neutral-100;
+    box-sizing: border-box;
   }
 
   &-border-ghost
@@ -98,7 +99,10 @@
 [class*="bsds-card"]
 [class*="bsds-link"]
 {
+  &:not(.bsds-product-card-ns-title)
+  {
   margin: space(2x) 0 0 0;
+  }
 }
 
 [class*="bsds-card"]
@@ -107,7 +111,8 @@
   width: max-content;
   margin: 0;
 
-  ~ .bsds-card-title
+  ~ .bsds-card-title,
+  ~ .bsds-product-card-ns-title
   {
     margin: space(lg) 0 0 0;
   }
@@ -157,11 +162,13 @@
   &::before
   {
     content: "";
+    display: block;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    // z-index: 2;
   }
 
   &:focus

@@ -5,22 +5,21 @@ import { Props as TagProps } from "./Tag";
 import { Props as ImageProps } from "./Image";
 
 interface Props {
-  tag: ReactElement< TagProps >,
+  tag?: ReactElement< TagProps >,
   texts: {
-    title: string,
-    description: string,
+    title: string;
+    description: string;
   }
-  linkTo: string,
-  headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6",
-  variant?: "ghost" | "border-light" | "border-ghost",
-  image?: ReactElement< ImageProps >,
-  imageAlt?: string,
-  gradientBrand?: boolean,
-  dropShadow?: boolean
+  linkTo: string;
+  headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
+  variant?: "ghost" | "border-light" | "border-ghost";
+  image?: ReactElement< ImageProps >;
+  gradientBrand?: boolean;
+  dropShadow?: boolean;
 }
 
 const ProductCard = (props: Props): JSX.Element => {
-  const { tag, texts, headingLevel, linkTo, variant, image, imageAlt} = props;
+  const { tag, texts, headingLevel, linkTo, variant, image, gradientBrand, dropShadow} = props;
 
   const [clonedImage, setClonedImage] = useState<ReactElement>();
   const [clonedTag, setClonedTag] = useState<ReactElement>();
@@ -73,6 +72,21 @@ const ProductCard = (props: Props): JSX.Element => {
       break;
   }
 
+  let decorativeState = "";
+  if (gradientBrand && variant?.includes("ghost")) {
+    decorativeState = "bsds-card-gradient";
+    cardStyles = {...borderGhostStyle};
+  } else if (gradientBrand) {
+    decorativeState = "bsds-card-gradient";
+    cardStyles = {...borderLightStyle};
+  } else if (dropShadow && variant?.includes("ghost")) {
+    decorativeState = "bsds-card-shadow";
+    cardStyles = {...borderGhostStyle};
+  } else if (dropShadow) {
+    decorativeState = "bsds-card-shadow";
+    cardStyles = {...borderLightStyle};
+  }
+
   useEffect(() => {
     if(tag) {
       setClonedTag(cloneElement(tag as ReactElement, {
@@ -89,28 +103,25 @@ const ProductCard = (props: Props): JSX.Element => {
         isGhost: (variant === "ghost" || variant === "border-ghost"),
      }));
     }
-  },[image, imageAlt, linkTo, variant])
+  },[image, linkTo, variant])
 
   const productCardContent = (
-    <div className={"bsds-card-with-image"}>
-      <div className={`"bsds-card-content" ${cardStyles.classes}`}>
+    <div className={decorativeState ? `${"bsds-p-card-content"} ${cardStyles.classes} ${decorativeState}` : `${"bsds-p-card-content"} ${cardStyles.classes}`}>
       { image && clonedImage }
-      { clonedTag }
+      { tag && clonedTag }
       { headingLevel ? <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
-        <Link href={linkTo} className={`${cardStyles.titleLinkClasses} ${"link-hitbox"}`}>
+        <Link href={linkTo} className={`${cardStyles.titleLinkClasses} ${"bsds-product-card-ns-title"}`}>
           { texts.title }
-        </Link></HeadingElement> : <Link href={linkTo} className={`${"font-family-base-heavy"} ${cardStyles.titleLinkClasses} ${"link-hitbox"}`} id={"productTitle" + productNameId}>
+        </Link></HeadingElement> : <Link href={linkTo} className={`${"bsds-product-card-ns-title"} ${cardStyles.titleLinkClasses}`} id={"productTitle" + productNameId}>
           { texts.title }
-        </Link>
-      }
-        <p className="bsds-card-description">{texts?.description}</p>
-        </div>
+      </Link> }
+      <p className="bsds-card-description">{texts?.description}</p>
     </div>
   )
 
   const productCardContentWrapper = (
     <div data-testid="bsdsProductCard">
-      {productCardContent}
+      { productCardContent }
     </div>
   );
 

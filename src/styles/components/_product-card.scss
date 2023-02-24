@@ -1,0 +1,67 @@
+.bsds-p-card-content
+{
+  position: relative;
+
+    a[href]::after,
+    a[href]::before
+    {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .bsds-product-card-ns-title
+    {
+      text-decoration: none;
+    }
+
+    img
+    {
+      ~.bsds-card-title
+      {
+        margin-top: space(md);
+      }
+    }
+
+}
+
+.bsds-card-border-light
+{
+  &.bsds-p-card-content
+  {
+    padding: 0;
+
+    [class*="bsds-tag"]
+    {
+      padding: space(3x) space(3x) 0 space(3x);
+
+      ~[class*="bsds-card-title"]
+      {
+        padding-top: space(sm);
+      }
+    }
+
+    [class*="bsds-card-title"]
+    {
+      padding: space(3x) space(3x) 0 space(3x);
+    }
+
+    .bsds-card-description
+    {
+      padding: 0 space(3x) space(3x) space(3x);
+    }
+
+    img
+    {
+      ~.bsds-card-title
+      {
+        margin-top: 0;
+      }
+    }
+  }
+
+}
