@@ -17,7 +17,7 @@ describe("Image", () => {
     render(
       <Image
         src="https://images.unsplash.com/photo-1583160247711-2191776b4b91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80"
-        isDecorative={true}
+        isDecorative
       />
     );
 
@@ -42,15 +42,17 @@ describe("Image", () => {
       <Image
         src="https://images.unsplash.com/photo-1583160247711-2191776b4b91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80"
         isDecorative
-        hasCaption={true}
+        hasCaption
         texts={{
-          caption: "Image caption text"
+          caption: "Image caption text",
         }}
       />
     );
 
     expect(screen.getByText("Image caption text")).toBeInTheDocument();
-    expect(screen.getByText("Image caption text")).toHaveClass("bsds-image-caption");
+    expect(screen.getByText("Image caption text")).toHaveClass(
+      "bsds-image-caption"
+    );
   });
 
   it("Renders image caption with center alignment if isCaptionCentered is true", () => {
@@ -58,16 +60,18 @@ describe("Image", () => {
       <Image
         src="https://images.unsplash.com/photo-1583160247711-2191776b4b91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80"
         isDecorative
-        hasCaption={true}
-        isCaptionCentered={true}
+        hasCaption
+        isCaptionCentered
         texts={{
-          caption: "Image caption text"
+          caption: "Image caption text",
         }}
       />
     );
 
     expect(screen.getByText("Image caption text")).toBeInTheDocument();
-    expect(screen.getByText("Image caption text")).toHaveClass("bsds-image-caption-center");
+    expect(screen.getByText("Image caption text")).toHaveClass(
+      "bsds-image-caption-center"
+    );
   });
 
   it("Renders ghost-style image caption if isGhost is true", () => {
@@ -75,16 +79,18 @@ describe("Image", () => {
       <Image
         src="https://images.unsplash.com/photo-1583160247711-2191776b4b91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80"
         isDecorative
-        hasCaption={true}
-        isGhost={true}
+        hasCaption
+        isGhost
         texts={{
-          caption: "Image caption text"
+          caption: "Image caption text",
         }}
       />
     );
 
     expect(screen.getByText("Image caption text")).toBeInTheDocument();
-    expect(screen.getByText("Image caption text")).toHaveClass("bsds-image-caption-ghost");
+    expect(screen.getByText("Image caption text")).toHaveClass(
+      "bsds-image-caption-ghost"
+    );
   });
 
   it("Renders default image ratio of 16:9 when ratio isn't specified", () => {
