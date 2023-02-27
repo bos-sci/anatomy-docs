@@ -110,7 +110,7 @@ const ProductCard = (props: Props): JSX.Element => {
       { image && clonedImage }
       { tag && clonedTag }
       { headingLevel ? <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
-        <Link href={linkTo} className={`${cardStyles.titleLinkClasses} ${"bsds-product-card-ns-title"}`}>
+        <Link href={linkTo} className={`${cardStyles.titleLinkClasses}`}>
           { texts.title }
         </Link></HeadingElement> : <Link href={linkTo} className={`${"bsds-product-card-ns-title"} ${cardStyles.titleLinkClasses}`} id={"productTitle" + productNameId}>
           { texts.title }

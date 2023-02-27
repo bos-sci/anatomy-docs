@@ -7,7 +7,7 @@ const WithShadow = (): JSX.Element => {
       <ProductCard
         texts={{title: "Product card title",
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."}}
-        headingLevel="h3"
+        headingLevel="h4"
         linkTo="docs-demo-link"
         dropShadow
       />
