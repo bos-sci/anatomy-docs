@@ -98,15 +98,35 @@ const ProductCard = (props: Props): JSX.Element => {
   useEffect(() => {
     if(image) {
       setClonedImage(cloneElement(image as ReactElement, {
-        ratio: "1:1",
         isDecorative: false,
         isGhost: (variant === "ghost" || variant === "border-ghost"),
      }));
     }
   },[image, linkTo, variant])
 
+  const productCardLinks = document.querySelectorAll(".bsds-product-card-with-image");
+  Array.prototype.forEach.call(productCardLinks, productCardLink => {
+    let link = productCardLink.querySelector('a');
+    productCardLink.onmouseup = () => {
+      link.click();
+    }
+  });
+
   const productCardContent = (
-    <div className={decorativeState ? `${"bsds-p-card-content"} ${cardStyles.classes} ${decorativeState}` : `${"bsds-p-card-content"} ${cardStyles.classes}`}>
+    <div className={decorativeState ? `${"bsds-product-card"} ${cardStyles.classes} ${decorativeState}` : `${"bsds-product-card"} ${cardStyles.classes}`}>
+      { tag && clonedTag }
+      { headingLevel ? <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
+        <Link href={linkTo} className={`${cardStyles.titleLinkClasses}`}>
+          { texts.title }
+        </Link></HeadingElement> : <Link href={linkTo} className={`${"bsds-product-card-ns-title"} ${cardStyles.titleLinkClasses}`} id={"productTitle" + productNameId}>
+          { texts.title }
+      </Link> }
+      <p className="bsds-card-description">{texts?.description}</p>
+    </div>
+  )
+
+  const imageProductCard = (
+    <div className={decorativeState ? `${"bsds-product-card"} ${cardStyles.classes} ${decorativeState}` : `${"bsds-product-card"} ${cardStyles.classes}`}>
       { image && clonedImage }
       { tag && clonedTag }
       { headingLevel ? <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
@@ -119,14 +139,16 @@ const ProductCard = (props: Props): JSX.Element => {
     </div>
   )
 
-  const productCardContentWrapper = (
-    <div data-testid="bsdsProductCard">
-      { productCardContent }
-    </div>
-  );
+  if (image?.props.ratio === "even-split") {
+    return (
+      <div data-testid="bsdsProductCard" className="bsds-product-card-with-image">
+        { image && clonedImage }
+        { productCardContent }
+      </div> )
+  }
 
   return (
-    productCardContentWrapper
+    imageProductCard
   );
 }
 
