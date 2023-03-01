@@ -87,6 +87,10 @@ const Components = (): JSX.Element => {
         slug: basePath + '/link',
       },
       {
+        text: 'Modal',
+        slug: basePath + '/modal',
+      },
+      {
         text: 'Navigation',
         children: [
           {

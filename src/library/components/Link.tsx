@@ -47,4 +47,5 @@ const Link = forwardRef(({ variant, href, to, isNavLink, className, children, ..
 
 });
 
+Link.displayName = 'Link';
 export default Link;

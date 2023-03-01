@@ -29,6 +29,14 @@ const Icon = (props: Props): JSX.Element => {
 
   useEffect(() => {
     switch (name) {
+      case 'close':
+        const IconClose = lazy(() => import('./icons/IconClose'));
+        setIcon(
+          <Suspense fallback={<Fallback />}>
+            <IconClose className={sizeClass + ' ' + className} />
+          </Suspense>
+        );
+        break;
       case 'ellipsis':
         const IconEllipsis = lazy(() => import('./icons/IconEllipsis'));
         setIcon(
