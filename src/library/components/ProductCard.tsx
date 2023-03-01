@@ -104,6 +104,7 @@ const ProductCard = (props: Props): JSX.Element => {
     }
   },[image, linkTo, variant])
 
+  //This is to expand the link hitbox for 50% split image
   const productCardLinks = document.querySelectorAll(".bsds-product-card-with-image");
   Array.prototype.forEach.call(productCardLinks, productCardLink => {
     let link = productCardLink.querySelector('a');
@@ -139,7 +140,7 @@ const ProductCard = (props: Props): JSX.Element => {
     </div>
   )
 
-  if (image?.props.ratio === "even-split") {
+  if (image?.props.ratio === "50:50") {
     return (
       <div data-testid="bsdsProductCard" className="bsds-product-card-with-image">
         { image && clonedImage }

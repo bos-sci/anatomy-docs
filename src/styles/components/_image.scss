@@ -29,12 +29,13 @@
     aspect-ratio: 21/9;
   }
 
-  &-even-split
+  &-50-split
   {
     @extend .bsds-image;
-    overflow: hidden;
     height: 0;
     min-height: 100%;
+    object-position: center center;
+    overflow: hidden;
   }
 }
 
