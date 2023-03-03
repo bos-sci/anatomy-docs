@@ -6,10 +6,12 @@ const BorderStyle = (): JSX.Element => {
     <>
       <Example>
           <Card
-            texts={{
-              cardTitle: "Card title",
-              cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
-            }}
+            texts={
+              {
+                cardTitle: "Card title",
+                cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
+              }
+            }
             linkTitle={false}
             variant="border-light"
             headingLevel="h4"
@@ -18,10 +20,12 @@ const BorderStyle = (): JSX.Element => {
 
       <Example isDarkTheme={true}>
           <Card
-            texts={{
-              cardTitle: "Card title",
-              cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
-            }}
+            texts={
+              {
+                cardTitle: "Card title",
+                cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
+              }
+            }
             variant="border-ghost"
             linkTitle={false}
             headingLevel="h4"

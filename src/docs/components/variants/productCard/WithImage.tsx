@@ -9,8 +9,12 @@ const WithImage = (): JSX.Element => {
     <>
       <Example>
         <ProductCard
-          texts={{title: "Product card title",
-                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."}}
+          texts={
+            {
+              title: "Product card title",
+              description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
+            }
+          }
           headingLevel="h4"
           linkTo="docs-demo-link"
           image={<Image ratio="50:50" src={image5050} alt="Abstract splash painting in a variety of blue and pink colors."/>}
@@ -18,8 +22,12 @@ const WithImage = (): JSX.Element => {
       </Example>
       <Example>
         <ProductCard
-          texts={{title: "Product card title",
-                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."}}
+          texts={
+            {
+              title: "Product card title",
+              description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
+            }
+          }
           headingLevel="h4"
           linkTo="docs-demo-link"
           image={<Image ratio="1:1" src={image1to1} alt="A very cute grey pitbull with brown eyes, a black nose, a white horn-shaped marking on his face, and a very curious ear, wearing his buffalo plaid hoodie."/>}
