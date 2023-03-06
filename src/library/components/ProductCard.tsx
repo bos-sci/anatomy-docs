@@ -107,56 +107,59 @@ const ProductCard = (props: Props): JSX.Element => {
 
   useEffect(() => {
     //This is to expand the link hitbox for 50% split image
-    if(image?.props.ratio === "50:50") {
-      const productCardLinks = document.querySelectorAll(".bsds-product-card-with-image");
+    if(clonedImage?.props.ratio === "50:50") {
+      const productCardLinks = document.querySelectorAll(".bsds-product-card-even-split");
       Array.prototype.forEach.call(productCardLinks, productCardLink => {
-        let keyDown:number, keyUp:number, link = productCardLink.querySelector("a");
-        productCardLink.onmousedown = () => keyDown = +new Date();
-        productCardLink.onmouseup = () => {
-          keyUp = +new Date();
-          if((keyUp - keyDown) < 200) {
-            link.click();
-          }
-        }
+        let link = productCardLink.querySelector("a");
+        let cardImg = productCardLink.querySelector("img");
+        cardImg.onmouseup = () => { link.click() };
       });
     }
-  }, [image?.props.ratio])
+  }, [clonedImage?.props.ratio])
 
   const defaultProductCard = (
     <div className={decorativeState ? `${"bsds-product-card"} ${cardStyles.classes} ${decorativeState}` : `${"bsds-product-card"} ${cardStyles.classes}`} data-testid="bsdsProductCard">
       { image && clonedImage }
       { tag && clonedTag }
-      { headingLevel ? <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
-        <Link href={linkTo} className={`${cardStyles.titleLinkClasses}`}>
+      { headingLevel ?
+        <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
+          <Link href={linkTo} className={`${cardStyles.titleLinkClasses}`}>
+            { texts.title }
+          </Link>
+        </HeadingElement>
+        :
+        <Link href={linkTo} className={`${"bsds-product-card-ns-title"} ${cardStyles.titleLinkClasses}`} id=  {"productTitle" + productNameId}>
           { texts.title }
-        </Link></HeadingElement> : <Link href={linkTo} className={`${"bsds-product-card-ns-title"} ${cardStyles.titleLinkClasses}`} id={"productTitle" + productNameId}>
-          { texts.title }
-      </Link> }
+        </Link>
+      }
       <p className="bsds-card-description">{texts?.description}</p>
     </div>
   )
 
   if (image?.props.ratio === "50:50") {
     return (
-      <div data-testid="bsdsProductCard" className="bsds-even-split-image-product-card">
+      <div data-testid="bsdsProductCard" className="bsds-product-card-even-split">
         { image && clonedImage }
         <div className={decorativeState ? `${"bsds-product-card"} ${cardStyles.classes} ${decorativeState}` : `${"bsds-product-card"} ${cardStyles.classes}`}>
           { tag && clonedTag }
-          { headingLevel ? <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
-            <Link href={linkTo} className={`${cardStyles.titleLinkClasses}`}>
+          { headingLevel ?
+            <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
+              <Link href={linkTo} className={`${cardStyles.titleLinkClasses}`}>
+                { texts.title }
+              </Link>
+            </HeadingElement>
+            :
+            <Link href={linkTo} className={`${"bsds-product-card-ns-title"} ${cardStyles.titleLinkClasses}`} id={"productTitle" + productNameId}>
               { texts.title }
-            </Link></HeadingElement> : <Link href={linkTo} className={`${"bsds-product-card-ns-title"} ${cardStyles.titleLinkClasses}`} id={"productTitle" + productNameId}>
-              { texts.title }
-          </Link> }
+            </Link>
+          }
           <p className="bsds-card-description">{texts?.description}</p>
         </div>
       </div>
     )
   }
 
-  return (
-    defaultProductCard
-  );
+  return (defaultProductCard);
 }
 
 export default ProductCard;
