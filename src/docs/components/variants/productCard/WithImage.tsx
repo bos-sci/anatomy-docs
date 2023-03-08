@@ -2,7 +2,6 @@ import Example from "../../../shared/components/Example";
 import ProductCard from "../../../../library/components/ProductCard";
 import Image from "../../../../library/components/Image";
 import image5050 from "../../../../assets/images/50-50-split.jpg"
-import image1to1 from "../../../../assets/images/1to1.jpg"
 
 const WithImage = (): JSX.Element => {
   return (
@@ -30,7 +29,7 @@ const WithImage = (): JSX.Element => {
           }
           headingLevel="h4"
           linkTo="docs-demo-link"
-          image={<Image ratio="1:1" src={image1to1} alt="A very cute grey pitbull with brown eyes, a black nose, a white horn-shaped marking on his face, and a very curious ear, wearing his buffalo plaid hoodie."/>}
+          image={<Image ratio="1:1" src={image5050} alt="A very cute grey pitbull with brown eyes, a black nose, a white horn-shaped marking on his face, and a very curious ear, wearing his buffalo plaid hoodie."/>}
         />
       </Example>
     </>
