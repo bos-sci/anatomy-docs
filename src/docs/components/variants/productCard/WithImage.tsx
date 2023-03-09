@@ -16,7 +16,7 @@ const WithImage = (): JSX.Element => {
           }
           headingLevel="h4"
           linkTo="docs-demo-link"
-          image={<Image ratio="50:50" src={image5050} alt="Abstract splash painting in a variety of blue and pink colors."/>}
+          image={<Image ratio="50:50" src={image5050} alt="Demo placeholder for a product image."/>}
         />
       </Example>
       <Example>
@@ -29,7 +29,7 @@ const WithImage = (): JSX.Element => {
           }
           headingLevel="h4"
           linkTo="docs-demo-link"
-          image={<Image ratio="1:1" src={image5050} alt="A very cute grey pitbull with brown eyes, a black nose, a white horn-shaped marking on his face, and a very curious ear, wearing his buffalo plaid hoodie."/>}
+          image={<Image ratio="1:1" src={image5050} alt="Demo placeholder for a product image."/>}
         />
       </Example>
     </>
