@@ -36,6 +36,35 @@ describe("Product Card", () => {
     expect(screen.getByRole("heading", {level: 2})).toBeInTheDocument();
   });
 
+  it("Renders a product card with a non-semantic card title when no headingLevel is provided", () => {
+    render(
+      <ProductCard
+        texts={{
+          title: "Product card title",
+          description: "Product card description"
+        }}
+        linkTo="docs-demo-link"
+      />
+    );
+
+    expect(screen.getByText("Product card title")).toHaveClass("bsds-product-card-ns-title");
+  });
+
+  it("Renders a product card with an assertive non-semantic card title when no headingLevel is provided and assertiveTitle is true", () => {
+    render(
+      <ProductCard
+        texts={{
+          title: "Product card title",
+          description: "Product card description"
+        }}
+        linkTo="docs-demo-link"
+        assertiveTitle={true}
+      />
+    );
+
+    expect(screen.getByText("Product card title")).toHaveClass("bsds-product-card-ns-title-assertive");
+  });
+
   it("Renders a product card with a Tag when tag is provided", () => {
     render(
       <ProductCard

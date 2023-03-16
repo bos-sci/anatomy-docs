@@ -15,31 +15,48 @@
 
   .bsds-product-card-ns-title
   {
-    @extend .bsds-link;
-    margin: 0;
+    @include font-size($fs-base);
     width: fit-content;
+    margin: 0;
 
-    &[href]
+    &-assertive
     {
-      text-decoration: none;
+      @extend .bsds-product-card-ns-title;
+      @include font-size($fs-body-assertive);
+    }
 
-      &:hover
+    &-ghost {
+      @extend .bsds-product-card-ns-title;
+      @extend .bsds-link-ghost;
+
+      &-assertive
       {
-        @extend .bsds-link;
+        @extend .bsds-product-card-ns-title-assertive;
+        @extend .bsds-product-card-ns-title-ghost;
       }
     }
   }
 
-  .bsds-card-title
-  {
-    [class*="bsds-link"]
-    {
-      text-decoration: none;
 
-      &:hover
-      {
-        @extend .bsds-link;
-      }
+  [class*="bsds-link"]:not([class*="ghost"])
+  {
+    text-decoration: none;
+    @extend .bsds-link;
+
+    &:hover
+    {
+      @extend .bsds-link;
+    }
+  }
+
+  [class*="-ghost"]
+  {
+    text-decoration: none;
+    @extend .bsds-link-ghost;
+
+    &:hover
+    {
+      @extend .bsds-link-ghost;
     }
   }
 

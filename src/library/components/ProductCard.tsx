@@ -12,6 +12,7 @@ interface Props {
   }
   linkTo: string;
   headingLevel?: "h2" | "h3" | "h4" | "h5" | "h6";
+  assertiveTitle?: boolean;
   variant?: "ghost" | "border-light" | "border-ghost";
   image?: ReactElement< ImageProps >;
   gradientBrand?: boolean;
@@ -19,7 +20,7 @@ interface Props {
 }
 
 const ProductCard = (props: Props): JSX.Element => {
-  const { tag, texts, headingLevel, linkTo, variant, image, gradientBrand, dropShadow} = props;
+  const { tag, texts, headingLevel, linkTo, variant, assertiveTitle = false, image, gradientBrand, dropShadow} = props;
 
   const [clonedImage, setClonedImage] = useState<ReactElement>();
   const [clonedTag, setClonedTag] = useState<ReactElement>();
@@ -34,26 +35,26 @@ const ProductCard = (props: Props): JSX.Element => {
 
   const defaultStyle = {
     classes: "bsds-card",
-    titleLinkClasses: "bsds-link-subtle",
-    linkClasses: ""
+    titleLinkClasses: "bsds-link",
+    linkClasses: "bsds-product-card-ns-title"
   }
 
   const ghostStyle = {
     classes: "bsds-card-ghost",
     titleLinkClasses: "bsds-link-ghost",
-    linkClasses: "bsds-link-ghost"
+    linkClasses: "bsds-product-card-ns-title-ghost"
   }
 
   const borderLightStyle = {
     classes: "bsds-card-border-light",
     titleLinkClasses: "bsds-link-subtle",
-    linkClasses: ""
+    linkClasses: "bsds-product-card-ns-title"
   }
 
   const borderGhostStyle = {
     classes: "bsds-card-border-ghost",
     titleLinkClasses: "bsds-link-ghost",
-    linkClasses: "bsds-link-ghost"
+    linkClasses: "bsds-product-card-ns-title-ghost"
   }
 
   switch(variant) {
@@ -128,7 +129,7 @@ const ProductCard = (props: Props): JSX.Element => {
           </Link>
         </HeadingElement>
         :
-        <Link href={linkTo} className={`${"bsds-product-card-ns-title"} ${cardStyles.titleLinkClasses}`} id=  {"productTitle" + productNameId}>
+        <Link href={linkTo} className={assertiveTitle ? `${cardStyles.linkClasses}${"-assertive"}` : `${cardStyles.linkClasses}`} id={"productTitle" + productNameId}>
           { texts.title }
         </Link>
       }
@@ -144,12 +145,12 @@ const ProductCard = (props: Props): JSX.Element => {
           { tag && clonedTag }
           { headingLevel ?
             <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
-              <Link href={linkTo} className={`${cardStyles.titleLinkClasses}`}>
+              <Link href={linkTo} className={cardStyles.titleLinkClasses}>
                 { texts.title }
               </Link>
             </HeadingElement>
             :
-            <Link href={linkTo} className={`${"bsds-product-card-ns-title"} ${cardStyles.titleLinkClasses}`} id={"productTitle" + productNameId}>
+            <Link href={linkTo} className={assertiveTitle ? `${cardStyles.linkClasses}${"-assertive"}` : `${cardStyles.linkClasses}`} id={"productTitle" + productNameId}>
               { texts.title }
             </Link>
           }
