@@ -4,6 +4,7 @@
     "stylelint-config-prettier-scss"
   ],
   "plugins": ["stylelint-order"],
+  "defaultSeverity": "warning",
   "rules": {
     "alpha-value-notation": "number",
     "annotation-no-unknown": true,

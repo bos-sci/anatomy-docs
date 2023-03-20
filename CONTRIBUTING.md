@@ -24,5 +24,16 @@ __Note: You shouldn't need to customize the extensions, as each should read thei
 ### Linting Options
 * Manual
   - Run `npx eslint <file path>` on the command line for every file you change.
+  - Run `npm run lint:style` for stylelint.
 * Automated
   - If you installed the ESlint and Stylelint extensions for your editor, you should be getting linting options already.
+  - Please note: If you don't see stylelint errors in VS Code:
+    - Go to settings
+    - Search for "stylelint.config"
+    - The option will not load, but will prompt you to open `settings.json`, open it.
+    - Set the following rules:
+        - "stylelint.config": null,
+        - "css.validate": false,
+        - "less.validate": false,
+        - "scss.validate": false,
+        - "stylelint.validate": ["css", "less", "postcss", "scss"]
