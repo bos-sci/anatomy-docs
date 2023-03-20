@@ -1,4 +1,4 @@
-import { ReactElement, useState, useEffect, cloneElement, useId } from 'react';
+import { ReactElement, useState, useEffect, cloneElement, useId, useRef } from 'react';
 import HeadingElement from "./Heading";
 import Link from './Link';
 import { Props as TagProps } from "./Tag";
@@ -20,12 +20,14 @@ interface Props {
 }
 
 const ProductCard = (props: Props): JSX.Element => {
-  const { tag, texts, headingLevel, linkTo, variant, assertiveTitle = false, image, gradientBrand, dropShadow} = props;
+  const { tag, texts, headingLevel, linkTo, variant, assertiveTitle = false, image, gradientBrand, dropShadow } = props;
 
   const [clonedImage, setClonedImage] = useState<ReactElement>();
   const [clonedTag, setClonedTag] = useState<ReactElement>();
 
   const productNameId = useId();
+  const imageLink = useRef<HTMLAnchorElement>(null);
+  const imageClick = () => { imageLink.current?.click() };
 
   let cardStyles = {
     classes: "",
@@ -102,21 +104,10 @@ const ProductCard = (props: Props): JSX.Element => {
         ratio: (image.props.ratio ? image.props.ratio : "1:1"),
         isDecorative: false,
         isGhost: (variant === "ghost" || variant === "border-ghost"),
+        onClick: imageClick
      }));
     }
   },[image, linkTo, variant])
-
-  useEffect(() => {
-    //This is to expand the link hitbox for 50% split image
-    if(clonedImage?.props.ratio === "50:50") {
-      const productCardLinks = document.querySelectorAll(".bsds-product-card-even-split");
-      Array.prototype.forEach.call(productCardLinks, productCardLink => {
-        let link = productCardLink.querySelector("a");
-        let cardImg = productCardLink.querySelector("img");
-        cardImg.onmouseup = () => { link.click() };
-      });
-    }
-  }, [clonedImage?.props.ratio])
 
   const defaultProductCard = (
     <div className={decorativeState ? `${"bsds-product-card"} ${cardStyles.classes} ${decorativeState}` : `${"bsds-product-card"} ${cardStyles.classes}`} data-testid="bsdsProductCard">
@@ -124,12 +115,12 @@ const ProductCard = (props: Props): JSX.Element => {
       { tag && clonedTag }
       { headingLevel ?
         <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
-          <Link href={linkTo} className={`${cardStyles.titleLinkClasses}`}>
+          <Link href={linkTo} className={`${cardStyles.titleLinkClasses}`} ref={imageLink}>
             { texts.title }
           </Link>
         </HeadingElement>
         :
-        <Link href={linkTo} className={assertiveTitle ? `${cardStyles.linkClasses}${"-assertive"}` : `${cardStyles.linkClasses}`} id={"productTitle" + productNameId}>
+        <Link href={linkTo} className={assertiveTitle ? `${cardStyles.linkClasses}${"-assertive"}` : `${cardStyles.linkClasses}`} id={"productTitle" + productNameId} ref={imageLink}>
           { texts.title }
         </Link>
       }
@@ -145,12 +136,12 @@ const ProductCard = (props: Props): JSX.Element => {
           { tag && clonedTag }
           { headingLevel ?
             <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
-              <Link href={linkTo} className={cardStyles.titleLinkClasses}>
+              <Link href={linkTo} className={cardStyles.titleLinkClasses} ref={imageLink}>
                 { texts.title }
               </Link>
             </HeadingElement>
             :
-            <Link href={linkTo} className={assertiveTitle ? `${cardStyles.linkClasses}${"-assertive"}` : `${cardStyles.linkClasses}`} id={"productTitle" + productNameId}>
+            <Link href={linkTo} className={assertiveTitle ? `${cardStyles.linkClasses}${"-assertive"}` : `${cardStyles.linkClasses}`} id={"productTitle" + productNameId} ref={imageLink}>
               { texts.title }
             </Link>
           }

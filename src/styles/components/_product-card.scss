@@ -1,18 +1,5 @@
 .bsds-product-card
 {
-
-  a[href]::after,
-  a[href]::before
-  {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-
   .bsds-product-card-ns-title
   {
     @include font-size($fs-base);
@@ -25,7 +12,8 @@
       @include font-size($fs-body-assertive);
     }
 
-    &-ghost {
+    &-ghost
+    {
       @extend .bsds-product-card-ns-title;
       @extend .bsds-link-ghost;
 
@@ -62,6 +50,8 @@
 
   img
   {
+    cursor: pointer;
+
     ~[class$="title"]
     {
       margin-top: space(md);
@@ -81,7 +71,7 @@
 
       ~[class$="title"]
       {
-          margin-top: space(lg);
+        margin-top: space(lg);
       }
     }
 
