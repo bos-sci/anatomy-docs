@@ -1,11 +1,11 @@
 import Example from "../../../shared/components/Example";
-import Card from "../../../../library/components/Card";
+import ContentCard from "../../../../library/components/ContentCard";
 
 const BorderStyle = (): JSX.Element => {
   return (
     <>
       <Example>
-          <Card
+          <ContentCard
             texts={
               {
                 cardTitle: "Card title",
@@ -19,7 +19,7 @@ const BorderStyle = (): JSX.Element => {
       </Example>
 
       <Example isDarkTheme={true}>
-          <Card
+          <ContentCard
             texts={
               {
                 cardTitle: "Card title",

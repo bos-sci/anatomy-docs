@@ -1,11 +1,10 @@
-import Example from "../../../shared/components/Example";
-import Card from "../../../../library/components/Card";
-import Tag from "../../../../library/components/Tag";
+import ContentCard from "../../../../library/components/ContentCard"
+import Example from "../../../shared/components/Example"
 
-const WithTag = (): JSX.Element => {
+const WithGradient = (): JSX.Element => {
   return (
     <Example>
-      <Card
+      <ContentCard
         texts={
           {
             cardTitle: "Card title",
@@ -13,10 +12,13 @@ const WithTag = (): JSX.Element => {
           }
         }
         headingLevel="h4"
-        tag={<Tag variant="">Default Tag</Tag>}
+        actionLink={true}
+        actionLinkText="Call-to-action"
+        linkHref="docs-demo-link"
+        gradientBrand={true}
       />
     </Example>
-  );
-}
+  )
+};
 
-export default WithTag;
+export default WithGradient;

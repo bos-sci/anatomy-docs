@@ -31,7 +31,8 @@ const Components = (): JSX.Element => {
     // TODO: ADS-380 get rid of .replace()
     const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/'))
       .replace('/form-controls', '')
-      .replace('/navigation', '');
+      .replace('/navigation', '')
+      .replace('/cards', '');
     setNavItems([
       {
         text: 'Accordion',
@@ -45,16 +46,16 @@ const Components = (): JSX.Element => {
         text: 'Cards',
         children: [
           {
-            text: 'Card',
-            slug: basePath + '/card',
+            text: 'Content card',
+            slug: basePath + '/cards/content-card',
           },
           {
             text: 'Card group',
-            slug: basePath + '/card-group',
+            slug: basePath + '/cards/card-group',
           },
           {
             text: 'Product card',
-            slug: basePath + '/product-card',
+            slug: basePath + '/cards/product-card',
           }
         ]
       },

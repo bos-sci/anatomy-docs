@@ -1,10 +1,10 @@
-import Example from "../../../shared/components/Example";
-import Card from "../../../../library/components/Card";
+import ContentCard from "../../../../library/components/ContentCard"
+import Example from "../../../shared/components/Example"
 
-const WithIcon = (): JSX.Element => {
+const WithShadow = (): JSX.Element => {
   return (
     <Example>
-      <Card
+      <ContentCard
         texts={
           {
             cardTitle: "Card title",
@@ -12,11 +12,13 @@ const WithIcon = (): JSX.Element => {
           }
         }
         headingLevel="h4"
-        icon={true}
-        iconName="demoCardIcon"
+        actionLink={true}
+        actionLinkText="Call-to-action"
+        linkHref="docs-demo-link"
+        dropShadow={true}
       />
     </Example>
   )
 };
 
-export default WithIcon;
+export default WithShadow;

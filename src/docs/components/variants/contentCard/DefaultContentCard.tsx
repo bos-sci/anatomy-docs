@@ -1,25 +1,21 @@
 import Example from "../../../shared/components/Example";
-import Card from "../../../../library/components/Card";
-import Image from "../../../../library/components/Image";
-import image16to9 from "../../../../assets/images/16to9.jpg"
+import ContentCard from "../../../../library/components/ContentCard";
 
-const WithImage = (): JSX.Element => {
+const DefaultContentCard = (): JSX.Element => {
   return (
     <Example>
-      <Card
+      <ContentCard
         texts={
           {
             cardTitle: "Card title",
             cardDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum."
           }
         }
-        headingLevel="h4"
-        image={<Image
-          src={image16to9}
-          isDecorative />}
+        linkTitle={false}
+        headingLevel="h2"
       />
     </Example>
   );
 }
 
-export default WithImage;
+export default DefaultContentCard;

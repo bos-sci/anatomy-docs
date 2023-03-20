@@ -2,7 +2,7 @@ import Layout from './Layout';
 import { IdLookupContext } from '../../App';
 import { IdLookup, IdLookupProperties } from '../types/docs';
 import { Fragment, useContext, useEffect, useState } from 'react';
-import Card from '../../../library/components/Card';
+import ContentCard from '../../../library/components/ContentCard';
 import CardGroup from '../../../library/components/CardGroup';
 import { slugify } from '../helpers';
 import { useLocation } from 'react-router';
@@ -49,7 +49,7 @@ const LandingPage = (props: Props): JSX.Element => {
             {groupedItems.map((group, i) =>
               <Fragment key={`group${i}`}>
                 {group.map(entry =>
-                  <Card
+                  <ContentCard
                     key={entry.id}
                     texts={{
                       cardTitle: entry.name,
