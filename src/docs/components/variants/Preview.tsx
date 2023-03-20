@@ -91,9 +91,9 @@ const Preview = ( props: Props ): JSX.Element => {
           setRenderedComponent(<ButtonController variantId={variantId} />);
           break;
 
-        case 'card':
-          const CardController = lazy(() => import('./card/_CardController'));
-          setRenderedComponent(<CardController variantId={variantId} />);
+        case 'content-card':
+          const ContentCardController = lazy(() => import('./contentCard/_ContentCardController'));
+          setRenderedComponent(<ContentCardController variantId={variantId} />);
           break;
 
         case 'card-group':

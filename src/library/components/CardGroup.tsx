@@ -1,5 +1,5 @@
 import { HTMLAttributes, ReactElement } from "react";
-import {Props as CardProps} from "./Card";
+import {Props as CardProps} from "./ContentCard";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement<CardProps> | ReactElement<CardProps>[],

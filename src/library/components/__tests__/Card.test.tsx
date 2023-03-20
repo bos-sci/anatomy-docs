@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Card from "../Card";
+import Card from "../ContentCard";
 import Image from "../Image";
 import Tag from "../Tag";
 

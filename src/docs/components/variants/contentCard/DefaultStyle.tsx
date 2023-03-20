@@ -1,11 +1,11 @@
 import Example from "../../../shared/components/Example";
-import Card from "../../../../library/components/Card";
+import ContentCard from "../../../../library/components/ContentCard";
 
 const DefaultStyle = (): JSX.Element => {
   return (
     <>
       <Example>
-          <Card
+          <ContentCard
             texts={
               {
                 cardTitle: "Card title",
@@ -18,7 +18,7 @@ const DefaultStyle = (): JSX.Element => {
       </Example>
 
       <Example isDarkTheme={true}>
-          <Card
+          <ContentCard
             texts={
               {
                 cardTitle: "Card title",
