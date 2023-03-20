@@ -42,12 +42,21 @@ const Components = (): JSX.Element => {
         slug: basePath + '/button',
       },
       {
-        text: 'Card',
-        slug: basePath + '/card',
-      },
-      {
-        text: 'Card group',
-        slug: basePath + '/card-group',
+        text: 'Cards',
+        children: [
+          {
+            text: 'Card',
+            slug: basePath + '/card',
+          },
+          {
+            text: 'Card group',
+            slug: basePath + '/card-group',
+          },
+          {
+            text: 'Product card',
+            slug: basePath + '/product-card',
+          }
+        ]
       },
       {
         text: 'Dropdown menu',

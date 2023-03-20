@@ -28,6 +28,15 @@
     @extend .bsds-image;
     aspect-ratio: 21/9;
   }
+
+  &-50-split
+  {
+    @extend .bsds-image;
+    height: 0;
+    min-height: 100%;
+    object-position: center center;
+    overflow: hidden;
+  }
 }
 
 .bsds-image-caption

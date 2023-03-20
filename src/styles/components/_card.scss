@@ -30,6 +30,7 @@
     border: space(xxs) solid $border-color-subtle;
     padding: space(3x);
     background-color: $neutral-100;
+    box-sizing: border-box;
   }
 
   &-border-ghost

@@ -20,7 +20,7 @@ type AltTextProps =
       alt: string;
     };
 
-export type Ratio = "1:1" | "4:3" | "16:9" | "21:9";
+export type Ratio = "1:1" | "4:3" | "16:9" | "21:9" | "50:50";
 export type Props = BaseProps & AltTextProps;
 
 const Image = (props: Props): JSX.Element => {
@@ -53,7 +53,9 @@ const Image = (props: Props): JSX.Element => {
     case "21:9":
       ratioClasses = "-21to9";
       break;
-  }
+    case "50:50":
+      ratioClasses = "-50-split";
+  };
 
   let captionAlignment = "";
 
@@ -77,15 +79,12 @@ const Image = (props: Props): JSX.Element => {
           hasCaption && texts?.caption ? `imageCaption${captionId}` : undefined
         }
         {...imgAttrs}
-      />
-      {hasCaption && texts?.caption && (
-        <p
-          className={`${"bsds-image-caption"}${captionAlignment}`}
-          id={"imageCaption" + captionId}
-        >
+    />
+      { hasCaption && texts?.caption &&
+        <p className={`${"bsds-image-caption"}${captionAlignment}`} id={"imageCaption" + captionId}>
           {texts?.caption}
         </p>
-      )}
+      }
     </>
   );
 };
