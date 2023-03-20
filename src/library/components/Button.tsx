@@ -45,4 +45,5 @@ const Button = forwardRef(({ children, variant, icon, iconAlignment = 'left', ic
   );
 });
 
+Button.displayName = 'Button';
 export default Button;
