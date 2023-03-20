@@ -27,7 +27,6 @@ const ProductCard = (props: Props): JSX.Element => {
 
   const productNameId = useId();
   const imageLink = useRef<HTMLAnchorElement>(null);
-  const imageClick = () => { imageLink.current?.click() };
 
   let cardStyles = {
     classes: "",
@@ -104,7 +103,7 @@ const ProductCard = (props: Props): JSX.Element => {
         ratio: (image.props.ratio ? image.props.ratio : "1:1"),
         isDecorative: false,
         isGhost: (variant === "ghost" || variant === "border-ghost"),
-        onClick: imageClick
+        onClick: () => imageLink.current?.click()
      }));
     }
   },[image, linkTo, variant])
