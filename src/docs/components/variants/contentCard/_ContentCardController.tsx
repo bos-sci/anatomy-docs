@@ -1,5 +1,5 @@
 import { VariantProps } from "../Preview";
-import DefaultCard from "./DefaultCard";
+import DefaultContentCard from "./DefaultContentCard";
 import WithLink from "./WithLink";
 import WithLinkedTitle from "./WithLinkedTitle";
 import WithTag from "./WithTag";
@@ -10,7 +10,7 @@ import BorderStyle from "./BorderStyle";
 import WithShadow from "./WithShadow";
 import WithGradient from "./WithGradient";
 
-const CardController = ({ variantId }: VariantProps): JSX.Element => {
+const ContentCardController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
     case "withLink":
@@ -34,8 +34,8 @@ const CardController = ({ variantId }: VariantProps): JSX.Element => {
       return <WithGradient />;
 
     default:
-      return <DefaultCard />;
+      return <DefaultContentCard />;
     }
 }
 
-export default CardController;
+export default ContentCardController;
