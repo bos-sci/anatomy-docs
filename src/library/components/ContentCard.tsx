@@ -140,7 +140,7 @@ const ContentCard = (props : Props): JSX.Element => {
         </Link> : <>{texts.cardTitle}</> }
       </HeadingElement>
       <p className="bsds-card-description">{texts?.cardDescription}</p>
-      { actionLink && <Link href={linkHref} className={`${cardStyles.linkClasses} ${"link-hitbox"}`}>
+      { actionLink && <Link href={linkHref} className={`${cardStyles.linkClasses}`}>
         {actionLinkText}
       </Link> }
     </div>
