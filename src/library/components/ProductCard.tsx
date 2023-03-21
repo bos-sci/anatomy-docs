@@ -36,7 +36,7 @@ const ProductCard = (props: Props): JSX.Element => {
 
   const defaultStyle = {
     classes: "bsds-card",
-    titleLinkClasses: "bsds-link",
+    titleLinkClasses: "bsds-link-subtle",
     linkClasses: "bsds-product-card-ns-title"
   }
 

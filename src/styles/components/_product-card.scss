@@ -29,11 +29,11 @@
   [class*="bsds-link"]:not([class*="ghost"])
   {
     text-decoration: none;
-    @extend .bsds-link;
+    @extend .bsds-link-subtle;
 
     &:hover
     {
-      @extend .bsds-link;
+      @extend .bsds-link-subtle;
     }
   }
 
