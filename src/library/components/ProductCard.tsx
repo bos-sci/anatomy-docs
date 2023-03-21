@@ -36,7 +36,7 @@ const ProductCard = (props: Props): JSX.Element => {
 
   const defaultStyle = {
     classes: "bsds-card",
-    titleLinkClasses: "bsds-link",
+    titleLinkClasses: "bsds-link-subtle",
     linkClasses: "bsds-product-card-ns-title"
   }
 
@@ -114,12 +114,12 @@ const ProductCard = (props: Props): JSX.Element => {
       { tag && clonedTag }
       { headingLevel ?
         <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
-          <Link href={linkTo} className={`${cardStyles.titleLinkClasses}`} ref={imageLink}>
+          <Link href={linkTo} className={`${cardStyles.titleLinkClasses} ${"link-hitbox"}`} ref={imageLink}>
             { texts.title }
           </Link>
         </HeadingElement>
         :
-        <Link href={linkTo} className={assertiveTitle ? `${cardStyles.linkClasses}${"-assertive"}` : `${cardStyles.linkClasses}`} id={"productTitle" + productNameId} ref={imageLink}>
+        <Link href={linkTo} className={assertiveTitle ? `${cardStyles.linkClasses}${"-assertive"} ${"link-hitbox"}` : `${cardStyles.linkClasses} ${"link-hitbox"}`} id={"productTitle" + productNameId} ref={imageLink}>
           { texts.title }
         </Link>
       }
@@ -135,12 +135,12 @@ const ProductCard = (props: Props): JSX.Element => {
           { tag && clonedTag }
           { headingLevel ?
             <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"productTitle" + productNameId}>
-              <Link href={linkTo} className={cardStyles.titleLinkClasses} ref={imageLink}>
+              <Link href={linkTo} className={`${cardStyles.titleLinkClasses} ${"link-hitbox"}`} ref={imageLink}>
                 { texts.title }
               </Link>
             </HeadingElement>
             :
-            <Link href={linkTo} className={assertiveTitle ? `${cardStyles.linkClasses}${"-assertive"}` : `${cardStyles.linkClasses}`} id={"productTitle" + productNameId} ref={imageLink}>
+            <Link href={linkTo} className={assertiveTitle ? `${cardStyles.linkClasses}${"-assertive"} ${"link-hitbox"}` : `${cardStyles.linkClasses} ${"link-hitbox"}`} id={"productTitle" + productNameId} ref={imageLink}>
               { texts.title }
             </Link>
           }

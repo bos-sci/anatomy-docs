@@ -1,5 +1,7 @@
 .bsds-product-card
 {
+  position: relative;
+
   .bsds-product-card-ns-title
   {
     @include font-size($fs-base);
@@ -23,17 +25,22 @@
         @extend .bsds-product-card-ns-title-ghost;
       }
     }
+
+    ~.bsds-card-description
+    {
+      margin-top: calc(space(lg) + space(xs));
+    }
   }
 
 
   [class*="bsds-link"]:not([class*="ghost"])
   {
     text-decoration: none;
-    @extend .bsds-link;
+    @extend .bsds-link-subtle;
 
     &:hover
     {
-      @extend .bsds-link;
+      @extend .bsds-link-subtle;
     }
   }
 
