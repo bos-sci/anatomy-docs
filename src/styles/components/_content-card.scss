@@ -49,7 +49,6 @@
   &-description
   {
     margin: space(2x) 0 0 0;
-    z-index: 2;
   }
 
   &-gradient
@@ -90,6 +89,20 @@
         {
           box-shadow: $box-shadow-tertiary;
         }
+      }
+    }
+  }
+}
+
+[class*="bsds-card"]
+{
+  &:not(.bsds-product-card)
+  {
+    & [class*="bsds-card-title"]
+    {
+      ~.bsds-card-description
+      {
+        z-index: 2;
       }
     }
   }
