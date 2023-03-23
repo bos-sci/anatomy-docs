@@ -91,9 +91,9 @@ const Preview = ( props: Props ): JSX.Element => {
           setRenderedComponent(<ButtonController variantId={variantId} />);
           break;
 
-        case 'card':
-          const CardController = lazy(() => import('./card/_CardController'));
-          setRenderedComponent(<CardController variantId={variantId} />);
+        case 'content-card':
+          const ContentCardController = lazy(() => import('./contentCard/_ContentCardController'));
+          setRenderedComponent(<ContentCardController variantId={variantId} />);
           break;
 
         case 'card-group':
@@ -131,6 +131,11 @@ const Preview = ( props: Props ): JSX.Element => {
           setRenderedComponent(<LinkController variantId={variantId} />);
           break;
 
+        case 'modal':
+          const ModalController = lazy(() => import('./modals/_modalController'));
+          setRenderedComponent(<ModalController variantId={variantId} />);
+          break;
+
         case 'navigation-link':
           const DefaultNavLink = lazy(() => import('./navLink/DefaultNavLink'));
           setRenderedComponent(<DefaultNavLink />);
@@ -144,6 +149,11 @@ const Preview = ( props: Props ): JSX.Element => {
         case 'primary-navigation':
           const NavPrimaryController = lazy(() => import('./navPrimary/_NavPrimaryController'));
           setRenderedComponent(<NavPrimaryController variantId={variantId} />);
+          break;
+
+        case 'product-card':
+          const ProductCardController = lazy(() => import('./productCard/_ProductCardController'));
+          setRenderedComponent(<ProductCardController variantId={variantId}/>);
           break;
 
         case 'radio-group':

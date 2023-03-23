@@ -30,6 +30,7 @@
     border: space(xxs) solid $border-color-subtle;
     padding: space(3x);
     background-color: $neutral-100;
+    box-sizing: border-box;
   }
 
   &-border-ghost
@@ -48,7 +49,6 @@
   &-description
   {
     margin: space(2x) 0 0 0;
-    z-index: 1;
   }
 
   &-gradient
@@ -83,13 +83,26 @@
     {
       &:not(.bsds-card-gradient)
       {
-        @extend .link-hitbox;
         box-shadow: $box-shadow-secondary;
 
         &:hover
         {
           box-shadow: $box-shadow-tertiary;
         }
+      }
+    }
+  }
+}
+
+[class*="bsds-card"]
+{
+  &:not(.bsds-product-card)
+  {
+    & [class*="bsds-card-title"]
+    {
+      ~.bsds-card-description
+      {
+        z-index: 2;
       }
     }
   }
@@ -157,11 +170,13 @@
   &::before
   {
     content: "";
+    display: block;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 1;
   }
 
   &:focus
