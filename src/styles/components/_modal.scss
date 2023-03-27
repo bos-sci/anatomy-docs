@@ -1,88 +1,76 @@
-.bsds-modal
-{
+.bsds-modal {
+  min-width: min(
+    37.5rem,
+    100vw
+  ); // NOTE: This is a one off size. We can keep an eye out as we build more modal/panel type components to see if this is a dimension we want to flip to a variable.
   box-shadow: $box-shadow-primary;
   border: 0;
   padding: space(4x);
   background: $neutral-100;
   max-width: 90vw;
-  min-width: min(37.5rem, 100vw); // NOTE: This is a one off size. We can keep an eye out as we build more modal/panel type components to see if this is a dimension we want to flip to a variable.
 
-  &::backdrop
-  {
+  &::backdrop {
     background: rgba($neutral-00, 0.6);
   }
 
-
-  .bsds-modal-header
-  {
+  .bsds-modal-header {
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-areas:
-      "logo close"
-      "title close";
+      'logo close'
+      'title close';
     align-items: start;
     gap: space(3x);
   }
 
-  .bsds-modal-logo
-  {
-    grid-area: logo;
-    margin-top: 0;
+  .bsds-modal-logo {
     width: auto;
     height: space(6x);
+    margin-top: 0;
+    grid-area: logo;
 
-    & + .bsds-modal-title
-    {
+    & + .bsds-modal-title {
       grid-row: span 1;
     }
   }
 
-  .bsds-modal-title
-  {
+  .bsds-modal-title {
     grid-area: title;
     grid-row: span 2;
     align-self: center;
     margin-top: 0;
   }
 
-  .bsds-modal-close
-  {
+  .bsds-modal-close {
     grid-area: close;
   }
 
-  .bsds-modal-body
-  {
+  .bsds-modal-body {
     margin-top: space(4x);
   }
 
-  .bsds-modal-footer
-  {
+  .bsds-modal-footer {
     display: flex;
     flex-wrap: wrap;
     gap: space(2x);
     margin-top: space(8x);
 
-    a.bsds-button-assertive
-    {
+    a.bsds-button-assertive {
       color: $neutral-100;
     }
 
-    a.bsds-button-subtle
-    {
+    a.bsds-button-subtle {
       color: $action-primary-40;
 
-      &:hover
-      {
+      &:hover {
         @include button-hover;
       }
     }
   }
 }
 
-@media (min-width: $xl)
-{
-  .bsds-modal
-  {
+@media (min-width: $xl) {
+  .bsds-modal {
     max-width: 80ch;
   }
 }

@@ -1,135 +1,118 @@
-@import "/src/styles/abstracts/abstracts";
-@import "/src/styles/base/base";
-@import "/src/styles/utilities/utilities";
+@import '/src/styles/abstracts/abstracts';
+@import '/src/styles/base/base';
+@import '/src/styles/utilities/utilities';
 
 $icon-size-sm: space(lg);
 
 @mixin icon-background($icon-size, $alignment: right) {
-  content: '';
-  box-sizing: content-box;
   position: absolute;
+  box-sizing: content-box;
+
   // These are one offs for sizing/aligning icons
   width: 1em;
   height: 1em;
   background-position: center;
-  background-size: $icon-size;
   background-repeat: no-repeat;
+  background-size: $icon-size;
+  content: '';
 
-  @if $alignment == left
-  {
+  @if $alignment == left {
     left: 0;
-  }
-  @else if $alignment == right
-  {
+  } @else if $alignment == right {
     right: 0;
   }
 }
 
-.bsds-nav-secondary
-{
+.bsds-nav-secondary {
   position: relative;
   grid-area: nav-secondary;
   z-index: 10;
   width: 100%;
-  transition: width .25s ease-out;
+  transition: width 0.25s ease-out;
 
-  .bsds-nav-secondary-menu-trigger
-  {
+  .bsds-nav-secondary-menu-trigger {
     position: relative;
     display: block;
+    width: 100%;
     border: 0;
     border-bottom: space(xxs) solid $neutral-80;
-    padding-left: space(4x);
     padding-right: space(4x);
-    width: 100%;
-    text-align: left;
+    padding-left: space(4x);
     color: $text-color-primary;
+    text-align: left;
 
     &:hover,
-    &:active
-    {
+    &:active {
+      border-color: $neutral-80;
       background: $neutral-100;
       color: initial;
-      border-color: $neutral-80;
     }
 
-    &:focus
-    {
+    &:focus {
       @include focus-default-inset;
     }
 
-    &::after
-    {
+    &::after {
       @include icon-background($icon-size-sm);
+
       top: 0;
       padding: space(2x) space(4x);
       background-image: url('../../../../assets/images/icon-chevron-down.svg');
     }
 
-    &[aria-expanded="true"]::after
-    {
+    &[aria-expanded='true']::after {
       transform: rotate(180deg);
     }
   }
 
-  .bsds-nav-secondary-menu
-  {
+  .bsds-nav-secondary-menu {
     position: absolute;
     display: none;
+    width: 100%;
     border-bottom: space(xxs) solid $neutral-80;
     padding: space(lg) space(2x);
-    width: 100%;
     background: $neutral-100;
 
-    &.open
-    {
+    &.open {
       display: block;
     }
   }
 
-  .bsds-nav
-  {
+  .bsds-nav {
     flex-direction: column;
     margin: 0;
     padding: 0;
     list-style: none;
 
-    &:not(.bsds-nav-active-list)
-    {
+    &:not(.bsds-nav-active-list) {
       & > .bsds-nav-item:not(.bsds-nav-item-parent),
-      & > .bsds-nav-item-parent > .bsds-nav-link
-      {
+      & > .bsds-nav-item-parent > .bsds-nav-link {
         display: none;
       }
     }
 
-    &.bsds-nav-active-list
-    {
+    &.bsds-nav-active-list {
       width: 100%;
     }
   }
 
   .bsds-nav-item,
-  .bsds-nav-item-parent
-  {
+  .bsds-nav-item-parent {
     margin-top: 0;
   }
 
-  .bsds-nav-item-parent
-  {
-    & > .bsds-nav-link
-    {
+  .bsds-nav-item-parent {
+    & > .bsds-nav-link {
       position: relative;
 
       &:hover,
-      &:active
-      {
+      &:active {
         background: transparent;
       }
 
-      &::after
-      {
+      &::after {
         @include icon-background($icon-size-sm);
+
         padding: space(lg);
         background-image: url('../../../../assets/images/icon-chevron-right.svg');
       }
@@ -137,60 +120,50 @@ $icon-size-sm: space(lg);
   }
 
   .bsds-nav-link,
-  .bsds-button-nav-back
-  {
+  .bsds-button-nav-back {
     align-items: center;
     width: 100%;
     text-align: left;
 
-    &:focus
-    {
+    &:focus {
       @include focus-default-inset;
     }
   }
 
-  .bsds-nav-link
-  {
+  .bsds-nav-link {
+    position: relative;
     display: flex;
     justify-content: space-between;
-    position: relative;
     border-left: 0;
     padding: space(lg) space(2x);
     @include link-navigation;
     @include font-size($fs-body-subtle);
 
-    &.active
-    {
-      &::before
-      {
-        content: '';
+    &.active {
+      &::before {
         position: absolute;
         left: 0;
         height: space(3x);
         border-left: space(sm) solid $neutral-00;
+        content: '';
       }
     }
   }
 
-  .bsds-button-nav-back
-  {
+  .bsds-button-nav-back {
     display: flex;
     justify-content: flex-start;
     @include font-size($fs-small);
   }
 }
 
-@media (min-width: 992px)
-{
-  .bsds-nav-secondary
-  {
-    .bsds-nav-secondary-menu-trigger
-    {
+@media (min-width: 992px) {
+  .bsds-nav-secondary {
+    .bsds-nav-secondary-menu-trigger {
       display: none;
     }
 
-    .bsds-nav-secondary-menu
-    {
+    .bsds-nav-secondary-menu {
       position: relative;
       display: block;
       border-bottom: 0;

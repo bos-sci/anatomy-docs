@@ -6,10 +6,8 @@
 $icon-size-sm: space(lg);
 $icon-size: 1em;
 $icon-size-lg: space(2x);
-
 $panelsWidth: 100vw;
 $numPanels: 4;
-
 $navBarZIndex: 700;
 $navBackZIndex: 600;
 $navMenuZIndex: 550;
@@ -20,21 +18,18 @@ $navSearchZIndex: 550;
 $navLinkPadding: space(2x) space(3x);
 $menuPadding: space(md) 0;
 
-.bsds-nav-header
-{
-  border-image-source: $gradient-brand;
-  border-image-slice: 1;
+.bsds-nav-header {
   border-top-width: space(xs);
   border-top-style: solid;
-  border-left: 0;
   border-right: 0;
   border-bottom: 0;
+  border-left: 0;
+  border-image-source: $gradient-brand;
+  border-image-slice: 1;
 
-  &:not(.is-constrained)
-  {
+  &:not(.is-constrained) {
     .bsds-nav-utility .bsds-nav,
-    .bsds-nav-primary .bsds-nav-bar
-    {
+    .bsds-nav-primary .bsds-nav-bar {
       padding: 0 space(md);
     }
   }
@@ -43,16 +38,13 @@ $menuPadding: space(md) 0;
 .bsds-nav-utility,
 .bsds-nav-primary,
 .bsds-nav-menu,
-.bsds-search-panel
-{
+.bsds-search-panel {
   background-color: $neutral-100;
 }
 
 .bsds-nav-utility,
-.bsds-nav-primary
-{
-  .bsds-nav
-  {
+.bsds-nav-primary {
+  .bsds-nav {
     display: flex;
     align-items: center;
     margin: 0;
@@ -60,69 +52,57 @@ $menuPadding: space(md) 0;
     list-style: none;
   }
 
-  .bsds-nav-link
-  {
+  .bsds-nav-link {
     display: block;
     @include font-size($fs-base);
     @include link-navigation;
 
-    &:focus
-    {
+    &:focus {
       @include focus-default-inset;
     }
   }
 }
 
 // Utility Nav
-.bsds-nav-utility
-{
+.bsds-nav-utility {
   display: none;
   border-bottom: space(xxs) solid $border-color-subtle;
 
-  .bsds-nav
-  {
+  .bsds-nav {
     justify-content: flex-end;
 
-    .bsds-nav-item
-    {
+    .bsds-nav-item {
       margin-top: 0;
 
-      .bsds-nav-link
-      {
+      .bsds-nav-link {
         border: 0;
         padding: space(md) space(lg);
         color: $neutral-40;
 
-        &:hover
-        {
+        &:hover {
           color: $text-color-primary;
         }
       }
 
-      .bsds-dropdown
-      {
-        .bsds-dropdown-trigger
-        {
+      .bsds-dropdown {
+        .bsds-dropdown-trigger {
           display: inline-flex;
           padding: space(md) space(lg);
           padding-right: calc(space(md) + $icon-size-sm + space(lg));
 
-          &[aria-expanded="true"],
+          &[aria-expanded='true'],
           &:hover,
-          &:active
-          {
+          &:active {
             background: transparent;
             color: $text-color-primary;
             text-decoration: underline;
 
-            &::after
-            {
+            &::after {
               background-color: $text-color-primary;
             }
           }
 
-          &::after
-          {
+          &::after {
             right: space(lg);
             width: $icon-size-sm;
             height: $icon-size-sm;
@@ -136,152 +116,131 @@ $menuPadding: space(md) 0;
 
 // Primary Nav
 
-.bsds-nav-primary
-{
+.bsds-nav-primary {
   position: relative;
   box-shadow: inset 0 calc(0rem - space(xxs)) $border-color-subtle;
 
   // Primary Nav Top Bar
 
-  .bsds-nav-bar
-  {
+  .bsds-nav-bar {
     position: relative;
+    z-index: $navBarZIndex;
     display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    align-content: center;
     flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    align-items: stretch;
     border-bottom: space(xxs) solid $border-color-subtle;
     background-color: $neutral-100;
-    z-index: $navBarZIndex;
 
-    .bsds-nav-link-logo
-    {
+    .bsds-nav-link-logo {
       display: flex;
       flex-wrap: wrap;
       margin: auto;
       padding: space(2x);
 
-      &:focus
-      {
+      &:focus {
         @include focus-default-inset;
       }
     }
 
-    & > .bsds-nav
-    {
+    & > .bsds-nav {
       justify-content: center;
 
-       & > .bsds-nav-item
-      {
+      & > .bsds-nav-item {
         margin-top: 0;
 
-        &.bsds-nav-item-root
-        {
+        &.bsds-nav-item-root {
           display: none;
 
-          & > button.bsds-nav-link
-          {
-            padding-right: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
+          & > button.bsds-nav-link {
+            padding-right: calc(
+              space(2x) + $icon-size + space(md)
+            ); // Padding + icon width + space between icon and text
 
-            &::after
-            {
-              content: url("../../../../assets/images/icon-chevron-down.svg");
+            &::after {
               position: absolute;
               top: calc(50% - ($icon-size / 2));
               right: space(2x);
               width: $icon-size;
               height: $icon-size;
+              content: url('../../../../assets/images/icon-chevron-down.svg');
             }
 
-            &[aria-expanded="true"]
-            {
-              &::after
-              {
-                content: url("../../../../assets/images/icon-chevron-up.svg");
+            &[aria-expanded='true'] {
+              &::after {
+                content: url('../../../../assets/images/icon-chevron-up.svg');
               }
             }
           }
         }
 
-
         &.bsds-nav-item-toggle,
-        &.bsds-nav-item-search
-        {
-          .bsds-nav-link
-          {
+        &.bsds-nav-item-search {
+          .bsds-nav-link {
             border: 0;
-            padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
             padding-right: space(2x);
+            padding-left: calc(
+              space(2x) + $icon-size + space(md)
+            ); // Padding + icon width + space between icon and text
 
-            &::after
-            {
-              content: '';
+            &::after {
               position: absolute;
-              left: space(2x);
               top: calc(50% - ($icon-size / 2));
+              left: space(2x);
               width: $icon-size;
               height: $icon-size;
               background-position: center;
-              background-size: cover;
               background-repeat: no-repeat;
+              background-size: cover;
+              content: '';
             }
           }
         }
 
-        &.bsds-nav-item-search
-        {
+        &.bsds-nav-item-search {
           .bsds-nav-link::after,
-          .bsds-nav-link[aria-expanded="true"]::after
-          {
+          .bsds-nav-link[aria-expanded='true']::after {
+            background-image: url('../../../../assets/images/icon-search.svg');
             content: '';
-            background-image: url("../../../../assets/images/icon-search.svg");
           }
         }
 
-        &.bsds-nav-item-toggle
-        {
-          .bsds-nav-link
-          {
-            &::after
-            {
-              background-image: url("../../../../assets/images/icon-menu.svg");
+        &.bsds-nav-item-toggle {
+          .bsds-nav-link {
+            &::after {
+              background-image: url('../../../../assets/images/icon-menu.svg');
             }
 
-            &[aria-expanded="true"]::after
-            {
-              background-image: url("../../../../assets/images/icon-close.svg");
+            &[aria-expanded='true']::after {
+              background-image: url('../../../../assets/images/icon-close.svg');
             }
           }
         }
 
-        & > .bsds-nav-link
-        {
+        & > .bsds-nav-link {
           position: relative;
-          padding: space(3x) space(2x);
           border: 0;
+          padding: space(3x) space(2x);
 
           &.current,
           &:active,
           &:hover,
-          &[aria-expanded="true"]
-          {
-            text-decoration: none;
+          &[aria-expanded='true'] {
             background: initial;
+            text-decoration: none;
 
-            &::before
-            {
-              content: '';
+            &::before {
               position: absolute;
               right: space(2x);
               bottom: 0;
               left: space(2x);
               border-bottom: space(sm) solid $border-color-primary;
+              content: '';
             }
           }
 
-          &.current
-          {
+          &.current {
             @include font-family-base-heavy;
           }
         }
@@ -291,36 +250,30 @@ $menuPadding: space(md) 0;
 
   // Primary Nav Menu
 
-  .bsds-nav-menu
-  {
+  .bsds-nav-menu {
     position: absolute;
     left: 0;
-    border-bottom: space(xxs) solid $border-color-subtle;
-    width: 100%;
-    @include font-size($fs-base);
     z-index: $navMenuZIndex;
+    width: 100%;
+    border-bottom: space(xxs) solid $border-color-subtle;
+    @include font-size($fs-base);
 
-    &:not(.open)
-    {
+    &:not(.open) {
       display: none;
     }
 
     .bsds-nav-item,
-    .bsds-nav-item-parent
-    {
+    .bsds-nav-item-parent {
       margin-top: 0;
 
-      &:last-of-type
-      {
-        .bsds-nav-link
-        {
+      &:last-of-type {
+        .bsds-nav-link {
           border-bottom: 0;
         }
       }
     }
 
-    .bsds-nav-link
-    {
+    .bsds-nav-link {
       flex-wrap: wrap;
       border: 0;
       padding: $navLinkPadding;
@@ -328,209 +281,176 @@ $menuPadding: space(md) 0;
     }
   }
 
-  .bsds-button-nav-back
-  {
-    width: 100%;
-    justify-content: flex-start;
-    @include font-size($fs-base);
-    box-shadow: $box-shadow-secondary;
+  .bsds-button-nav-back {
     z-index: $navBackZIndex;
+    justify-content: flex-start;
+    width: 100%;
+    box-shadow: $box-shadow-secondary;
+    @include font-size($fs-base);
 
     &:hover,
-    &:active
-    {
+    &:active {
       background-color: $neutral-100;
     }
 
-    &:focus
-    {
+    &:focus {
       @include focus-default-inset;
     }
   }
 
-  .bsds-nav-menu-panels
-  {
+  .bsds-nav-menu-panels {
     position: relative;
+    width: $panelsWidth;
     margin: auto;
     padding: $menuPadding;
-    width: $panelsWidth;
 
-    > :not(:last-child)
-    {
+    > :not(:last-child) {
       border-right: space(xxs) solid $border-color-subtle;
     }
   }
 
-  .bsds-nav-menu-panel
-  {
+  .bsds-nav-menu-panel {
     display: none;
-    margin-top: 0;
     width: $panelsWidth;
+    margin-top: 0;
 
-    .bsds-nav-menu-panel
-    {
+    .bsds-nav-menu-panel {
       left: 0;
     }
 
-
-    &:not(.bsds-nav-active-list)
-    {
-      > .bsds-nav
-      {
+    &:not(.bsds-nav-active-list) {
+      > .bsds-nav {
         padding: 0;
       }
 
       & > .bsds-nav > .bsds-nav-item:not(.bsds-nav-item-parent),
       & > .bsds-nav > .bsds-nav-item-parent > .bsds-nav-link,
-      > .bsds-nav-menu-panel-header
-      {
+      > .bsds-nav-menu-panel-header {
         display: none;
       }
     }
 
-    .bsds-nav
-    {
+    .bsds-nav {
       display: block;
       margin: 0;
     }
 
-    &:last-of-type
-    {
+    &:last-of-type {
       display: flex;
       flex-direction: column;
     }
   }
 
-  .bsds-nav-menu-panel-header
-  {
+  .bsds-nav-menu-panel-header {
     border-bottom: space(xxs) solid $border-color-subtle;
     padding: space(lg) space(3x) space(4x);
 
-    .bsds-nav-menu-panel-title
-    {
+    .bsds-nav-menu-panel-title {
       @extend .bsds-h3;
+
       margin-top: 0;
     }
   }
 
-  .bsds-nav-menu-panel-header-link
-  {
+  .bsds-nav-menu-panel-header-link {
     display: inline-block;
     margin-top: space(3x);
   }
 
-  .bsds-nav-item-parent
-  {
-    > .bsds-nav-link
-    {
+  .bsds-nav-item-parent {
+    > .bsds-nav-link {
       width: 100%;
       text-align: left;
 
       &:hover,
-      &:active
-      {
+      &:active {
         background: transparent;
         text-decoration: none;
       }
 
       &.active,
       &:hover,
-      &:active
-      {
+      &:active {
         background: $neutral-95;
       }
 
-      &[aria-expanded="true"]
-      {
-        .bsds-nav-link-description
-        {
+      &[aria-expanded='true'] {
+        .bsds-nav-link-description {
           color: $text-color-primary;
         }
       }
 
-      &.current
-      {
-        .bsds-nav-link-text
-        {
+      &.current {
+        .bsds-nav-link-text {
           @include font-family-base-heavy;
         }
       }
 
-      .bsds-nav-link-description
-      {
+      .bsds-nav-link-description {
         @include font-size($fs-body-subtle);
       }
 
-      .bsds-nav-link-text
-      {
+      .bsds-nav-link-text {
         position: relative;
         padding-right: calc($icon-size-sm + space(md)); // Padding + icon width + space between icon and text;
 
-        &::after
-        {
-          content: '';
+        &::after {
           position: absolute;
           top: calc(50% - ($icon-size-sm / 2));
           right: 0;
           width: $icon-size-sm;
           height: $icon-size-sm;
-          background-image: url("../../../../assets/images/icon-chevron-right.svg");
+          background-image: url('../../../../assets/images/icon-chevron-right.svg');
           background-position: center;
-          background-size: cover;
           background-repeat: no-repeat;
+          background-size: cover;
+          content: '';
         }
       }
 
-      .bsds-nav-link-description
-      {
-        margin-top: space(md);
-        @include font-family-base-regular;
-        color: $neutral-40;
+      .bsds-nav-link-description {
         width: 100%;
+        margin-top: space(md);
+        color: $neutral-40;
         text-align: left;
+        @include font-family-base-regular;
       }
     }
   }
 
-  .bsds-nav-link-see-all
-  {
+  .bsds-nav-link-see-all {
     @include link-default;
+
     display: block;
     border-bottom: 0;
     padding: $navLinkPadding;
   }
 
-  .bsds-nav-block
-  {
+  .bsds-nav-block {
     flex-direction: column;
     align-content: flex-start;
     align-items: flex-start;
     border-top: space(xxs) solid $border-color-subtle;
     padding: $menuPadding;
 
-    .bsds-nav-link
-    {
+    .bsds-nav-link {
       border: 0;
       @include font-size($fs-body-subtle);
     }
 
-    .bsds-dropdown
-    {
-      .bsds-dropdown-trigger
-      {
+    .bsds-dropdown {
+      .bsds-dropdown-trigger {
         display: inline-flex;
         padding-right: space(md) + $icon-size-sm + space(lg);
 
-        &[aria-expanded="true"],
+        &[aria-expanded='true'],
         &:hover,
-        &:active
-        {
+        &:active {
           background: transparent;
           color: $text-color-primary;
         }
 
-        &::after
-        {
+        &::after {
           right: space(lg);
           width: $icon-size-sm;
           height: $icon-size-sm;
@@ -540,52 +460,44 @@ $menuPadding: space(md) 0;
     }
   }
 
-  .bsds-search-panel
-  {
-    display: none;
+  .bsds-search-panel {
     position: absolute;
     top: 100%;
     left: 0;
+    z-index: $navSearchZIndex;
+    display: none;
+    width: 100%;
     margin: auto;
     border-top: space(xxs) solid $border-color-subtle;
     border-bottom: space(xxs) solid $border-color-subtle;
-    width: 100%;
-    z-index: $navSearchZIndex;
 
-    &.open
-    {
+    &.open {
       display: block;
     }
 
-    .bsds-form-search
-    {
+    .bsds-form-search {
       padding: space(2x) space(3x);
     }
   }
 }
 
 @mixin panelSettings($menuWidth) {
-  .bsds-nav-menu-panel
-  {
+  .bsds-nav-menu-panel {
     width: calc($menuWidth / $numPanels);
 
-    .bsds-nav-menu-panel
-    {
+    .bsds-nav-menu-panel {
       left: calc($menuWidth / $numPanels);
     }
 
-    &.has-header
-    {
-      width: calc(($menuWidth / $numPanels) * 2);
+    &.has-header {
       left: 0;
+      width: calc(($menuWidth / $numPanels) * 2);
 
-      .bsds-nav-menu-panel
-      {
+      .bsds-nav-menu-panel {
         left: calc(($menuWidth / $numPanels) * 2);
         width: calc($menuWidth / $numPanels);
 
-        .bsds-nav-menu-panel
-        {
+        .bsds-nav-menu-panel {
           left: calc(($menuWidth / $numPanels));
         }
       }
@@ -593,16 +505,12 @@ $menuPadding: space(md) 0;
   }
 }
 
-@media (min-width: $sm)
-{
-  .bsds-nav-primary
-  {
-    .bsds-nav-bar
-    {
+@media (min-width: $sm) {
+  .bsds-nav-primary {
+    .bsds-nav-bar {
       flex-direction: row;
 
-      .bsds-nav-link-logo
-      {
+      .bsds-nav-link-logo {
         margin: 0;
         padding: space(sm) space(2x);
       }
@@ -610,41 +518,32 @@ $menuPadding: space(md) 0;
   }
 }
 
-@media (min-width: $lg)
-{
-  .bsds-nav-primary
-  {
-    .bsds-search-panel
-    {
+@media (min-width: $lg) {
+  .bsds-nav-primary {
+    .bsds-search-panel {
       border-top: 0;
     }
   }
 
-  .bsds-nav-header.is-constrained
-  {
+  .bsds-nav-header.is-constrained {
     $panelsWidth: 60rem; // NOTE: This is a one off size to match the layout widths.
 
     .bsds-nav-utility .bsds-nav,
     .bsds-nav-bar,
     .bsds-nav-menu-panels,
-    .bsds-search-panel .bsds-form-search
-    {
+    .bsds-search-panel .bsds-form-search {
       width: $panelsWidth;
     }
 
-    .bsds-nav-menu
-    {
-      &:not(.intermediate)
-      {
-        .bsds-nav-menu-panels
-        {
+    .bsds-nav-menu {
+      &:not(.intermediate) {
+        .bsds-nav-menu-panels {
           @include panelSettings($panelsWidth);
         }
       }
     }
 
-    .bsds-nav-menu-panels
-    {
+    .bsds-nav-menu-panels {
       width: $panelsWidth;
     }
   }
@@ -652,73 +551,58 @@ $menuPadding: space(md) 0;
   .bsds-nav-utility .bsds-nav,
   .bsds-nav-bar,
   .bsds-nav-menu-panels,
-  .bsds-search-panel .bsds-form-search
-  {
+  .bsds-search-panel .bsds-form-search {
     margin-right: auto;
     margin-left: auto;
   }
 
-  .bsds-nav-utility
-  {
+  .bsds-nav-utility {
     display: block;
   }
 
   .bsds-nav-utility .bsds-nav-link,
-  .bsds-nav-primary .bsds-nav-bar > .bsds-nav > .bsds-nav-item > .bsds-nav-link
-  {
+  .bsds-nav-primary .bsds-nav-bar > .bsds-nav > .bsds-nav-item > .bsds-nav-link {
     @include font-size($fs-body-subtle);
   }
 
-
-  .bsds-nav-primary
-  {
-    .bsds-nav-bar
-    {
+  .bsds-nav-primary {
+    .bsds-nav-bar {
       position: static;
 
-      .bsds-nav
-      {
-        .bsds-nav-item
-        {
-          &.bsds-nav-item-root
-          {
+      .bsds-nav {
+        .bsds-nav-item {
+          &.bsds-nav-item-root {
             display: block;
           }
 
-          &.bsds-nav-item-toggle
-          {
+          &.bsds-nav-item-toggle {
             display: none;
           }
 
-          &.bsds-nav-item-search
-          {
-            .bsds-nav-link
-            {
+          &.bsds-nav-item-search {
+            .bsds-nav-link {
               box-sizing: content-box;
-              padding: space(2x);
               width: $icon-size;
               height: $icon-size;
-              background-image: url("../../../../assets/images/icon-search.svg");
+              padding: space(2x);
+              background-image: url('../../../../assets/images/icon-search.svg');
               background-position: center;
-              background-size: $icon-size;
               background-repeat: no-repeat;
+              background-size: $icon-size;
 
               &::after,
-              &::before
-              {
+              &::before {
                 display: none;
               }
 
               &:hover,
               &:focus,
-              &[aria-expanded="true"]
-              {
+              &[aria-expanded='true'] {
                 background-color: $action-primary-95;
               }
             }
 
-            .bsds-nav-link-search-text
-            {
+            .bsds-nav-link-search-text {
               @include visually-hidden;
             }
           }
@@ -726,46 +610,37 @@ $menuPadding: space(md) 0;
       }
     }
 
-    .bsds-nav-menu
-    {
-      border-top: space(xxs) solid $border-color-subtle;
+    .bsds-nav-menu {
       height: 60vh;
+      border-top: space(xxs) solid $border-color-subtle;
 
-      .bsds-nav
-      {
-        padding: space(4x) 0 space(3x);
+      .bsds-nav {
         height: 100%;
         overflow-y: auto;
+        padding: space(4x) 0 space(3x);
       }
 
-      .bsds-nav-link
-      {
+      .bsds-nav-link {
         border: 0;
         word-wrap: break-word;
       }
 
-      &:not(.intermediate)
-      {
-        .bsds-nav-menu-panels
-        {
+      &:not(.intermediate) {
+        .bsds-nav-menu-panels {
           @include panelSettings($panelsWidth);
         }
       }
 
-      &.intermediate
-      {
-        .bsds-nav-menu-panel
-        {
+      &.intermediate {
+        .bsds-nav-menu-panel {
           width: 100%;
 
-          &.has-header
-          {
+          &.has-header {
             grid-template-columns: 1fr 3fr;
           }
         }
 
-        .bsds-nav
-        {
+        .bsds-nav {
           display: flex;
           flex-direction: column;
           flex-wrap: wrap;
@@ -775,148 +650,118 @@ $menuPadding: space(md) 0;
       }
     }
 
-    .bsds-nav-menu-panels
-    {
+    .bsds-nav-menu-panels {
       height: 100%;
 
-      & > .bsds-nav-active-list
-      {
-        .bsds-nav-menu-panel
-        {
+      & > .bsds-nav-active-list {
+        .bsds-nav-menu-panel {
           z-index: -1;
         }
       }
 
-      .bsds-nav-menu-panel-header
-      {
-        padding: space(4x) space(4x) space(3x);
+      .bsds-nav-menu-panel-header {
         border-right: space(xxs) solid $border-color-subtle;
         border-bottom: 0;
+        padding: space(4x) space(4x) space(3x);
       }
 
-      & > .bsds-nav-menu-panel .bsds-nav-menu-panel .bsds-nav-menu-panel
-      {
-        .bsds-nav-link
-        {
+      & > .bsds-nav-menu-panel .bsds-nav-menu-panel .bsds-nav-menu-panel {
+        .bsds-nav-link {
           @include font-size($fs-body-subtle);
         }
       }
 
-      .bsds-nav-menu-panel
-      {
+      .bsds-nav-menu-panel {
         position: absolute;
         top: 0;
         display: block;
-        border-bottom: 0;
         height: 100%;
+        border-bottom: 0;
 
-        &:first-child
-        {
+        &:first-child {
           border-left: space(xxs) solid $border-color-subtle;
         }
 
-        &:not(:first-child)
-        {
+        &:not(:first-child) {
           border-right: space(xxs) solid $border-color-subtle;
         }
 
-        &.bsds-nav-list-history
-        {
+        &.bsds-nav-list-history {
           z-index: $navListZIndex;
 
-          > .bsds-nav
-          {
+          > .bsds-nav {
             padding: space(4x) 0 space(3x);
           }
 
           & > .bsds-nav > .bsds-nav-item:not(.bsds-nav-item-parent),
           & > .bsds-nav > .bsds-nav-item-parent > .bsds-nav-link,
-          > .bsds-nav-menu-panel-header
-          {
+          > .bsds-nav-menu-panel-header {
             display: block;
           }
         }
 
-        &.has-header
-        {
+        &.has-header {
           display: grid;
           grid-template-columns: 1fr 1fr;
         }
       }
     }
 
-    .bsds-nav-link-see-all
-    {
+    .bsds-nav-link-see-all {
       @include font-size($fs-body-subtle);
     }
 
-    .bsds-nav-block
-    {
+    .bsds-nav-block {
       display: none;
     }
 
-    .bsds-button-nav-back
-    {
+    .bsds-button-nav-back {
       display: none;
     }
   }
 }
 
-@media (min-width: $xl)
-{
-  .bsds-nav-header.is-constrained
-  {
+@media (min-width: $xl) {
+  .bsds-nav-header.is-constrained {
     $panelsWidth: 71.25rem; // NOTE: This is a one off size to match the layout widths.
 
     .bsds-nav-utility .bsds-nav,
     .bsds-nav-bar,
-    .bsds-search-panel .bsds-form-search
-    {
+    .bsds-search-panel .bsds-form-search {
       width: $panelsWidth;
     }
 
-    .bsds-nav-primary
-    {
-      .bsds-nav-menu:not(.intermediate)
-      {
-        .bsds-nav-menu-panels
-        {
+    .bsds-nav-primary {
+      .bsds-nav-menu:not(.intermediate) {
+        .bsds-nav-menu-panels {
           @include panelSettings($panelsWidth);
         }
       }
 
-      .bsds-nav-menu-panels
-      {
+      .bsds-nav-menu-panels {
         width: $panelsWidth;
       }
     }
   }
 }
 
-@media (min-width: $xxl)
-{
-  .bsds-nav-header.is-constrained
-  {
+@media (min-width: $xxl) {
+  .bsds-nav-header.is-constrained {
     $panelsWidth: 82.5rem; // NOTE: This is a one off size to match the layout widths.
     .bsds-nav-utility .bsds-nav,
     .bsds-nav-bar,
-    .bsds-search-panel .bsds-form-search
-    {
+    .bsds-search-panel .bsds-form-search {
       width: $panelsWidth;
     }
 
-    .bsds-nav-primary
-    {
-      .bsds-nav-menu:not(.intermediate)
-      {
-        .bsds-nav-menu-panels
-        {
+    .bsds-nav-primary {
+      .bsds-nav-menu:not(.intermediate) {
+        .bsds-nav-menu-panels {
           @include panelSettings($panelsWidth);
         }
       }
 
-      .bsds-nav-menu-panels
-      {
+      .bsds-nav-menu-panels {
         width: $panelsWidth;
       }
     }

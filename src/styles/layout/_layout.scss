@@ -2,45 +2,39 @@
 
 *,
 ::after,
-::before
-{
+::before {
   box-sizing: border-box;
 }
 
-body
-{
+body {
   margin: 0;
   background: $neutral-100;
 }
 
-.docs-root
-{
+.docs-root {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-.docs-body
-{
+.docs-body {
   flex: 1;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
-  grid-template-areas: "nav-secondary" "main";
+  grid-template-areas: 'nav-secondary' 'main';
 
-  .bsds-nav-secondary
-  {
+  .bsds-nav-secondary {
     grid-area: nav-secondary;
   }
 
-  main
-  {
+  main {
     grid-area: main;
     display: grid;
     grid-template-areas:
-      "intro"
-      "nav-tertiary"
-      "page-content";
+      'intro'
+      'nav-tertiary'
+      'page-content';
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
     justify-content: start;
@@ -50,8 +44,7 @@ body
   }
 }
 
-main
-{
+main {
   & img // TODO: ADS-198 and ADS-297 find a better place for this
   {
     width: 100%;
@@ -59,78 +52,67 @@ main
   }
 }
 
-.docs-page-header
-{
-  grid-area: intro;
-  padding: 0 space(sm);
+.docs-page-header {
   width: 100%;
+  padding: 0 space(sm);
+  grid-area: intro;
 }
 
-.docs-page-content
-{
-  grid-area: page-content;
+.docs-page-content {
+  width: 100%;
   overflow-x: auto;
   padding: 0 space(sm);
-  width: 100%;
+  grid-area: page-content;
 
-  & > .docs-preview-:first-of-type
-  {
+  & > .docs-preview-:first-of-type {
     margin-top: space(6x);
   }
 }
 
-.docs-footer
-{
+.docs-footer {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: space(4x);
   margin-top: space(8x);
   border-top: space(xxs) solid $neutral-80;
   padding: space(4x);
+  gap: space(4x);
 }
 
-.docs-footer-logo
-{
+.docs-footer-logo {
   width: space(12x);
 }
 
-.docs-body-minimal
-{
-  flex: 1;
-  margin: 0 auto;
+.docs-body-minimal {
   width: var(--app-width);
+  margin: 0 auto;
+  flex: 1;
 
-  main
-  {
+  main {
     padding: space(4x) calc(space(4x) - space(md));
   }
 
-  h1
-  {
+  h1 {
     margin-top: 0;
   }
 }
 
-@media (min-width: $lg)
-{
-  .docs-body
-  {
+@media (min-width: $lg) {
+  .docs-body {
     width: var(--app-width);
     margin-right: auto;
     margin-left: auto;
     grid-template-columns: 1fr 4fr;
-    grid-template-areas: "nav-secondary main";
+    grid-template-areas: 'nav-secondary main';
     grid-column-gap: space(4x) - space(md);
     grid-row-gap: 0;
 
-    main
-    {
+    main {
       display: grid;
       grid-template-areas:
-        "intro nav-tertiary"
-        "page-content nav-tertiary";
+        'intro nav-tertiary'
+        'page-content nav-tertiary';
       grid-template-columns: 4fr 1fr;
       grid-template-rows: auto 1fr;
       grid-column-gap: space(4x);
@@ -141,42 +123,34 @@ main
       padding: 0 space(sm);
     }
 
-    & > .bsds-nav-secondary
-    {
+    & > .bsds-nav-secondary {
       width: 12rem;
       margin-top: space(4x);
     }
 
-    .bsds-nav-tertiary
-    {
-      margin-top: space(lg);
+    .bsds-nav-tertiary {
       width: 12rem;
+      margin-top: space(lg);
     }
   }
 
-  .docs-body-minimal
-  {
-    main
-    {
+  .docs-body-minimal {
+    main {
       margin-top: space(4x);
       padding: 0 space(sm);
     }
   }
 }
 
-@media (min-width: $xl)
-{
-  .docs-body
-  {
+@media (min-width: $xl) {
+  .docs-body {
     grid-template-columns: 1fr 5fr;
     width: var(--app-width);
   }
 }
 
-@media (min-width: $xxl)
-{
-  .docs-body
-  {
+@media (min-width: $xxl) {
+  .docs-body {
     width: var(--app-width);
   }
 }

@@ -1,119 +1,96 @@
-.bsds-product-card
-{
+.bsds-product-card {
   position: relative;
 
-  .bsds-product-card-ns-title
-  {
+  .bsds-product-card-ns-title {
     @include font-size($fs-base);
+
     width: fit-content;
     margin: 0;
 
-    &-assertive
-    {
+    &-assertive {
       @extend .bsds-product-card-ns-title;
       @include font-size($fs-body-assertive);
     }
 
-    &-ghost
-    {
+    &-ghost {
       @extend .bsds-product-card-ns-title;
       @extend .bsds-link-ghost;
 
-      &-assertive
-      {
+      &-assertive {
         @extend .bsds-product-card-ns-title-assertive;
         @extend .bsds-product-card-ns-title-ghost;
       }
     }
 
-    ~.bsds-card-description
-    {
+    ~ .bsds-card-description {
       margin-top: calc(space(lg) + space(xs));
     }
   }
 
-
-  [class*="bsds-link"]:not([class*="ghost"])
-  {
+  [class*='bsds-link']:not([class*='ghost']) {
     text-decoration: none;
     @extend .bsds-link-subtle;
 
-    &:hover
-    {
+    &:hover {
       @extend .bsds-link-subtle;
     }
   }
 
-  [class*="-ghost"]
-  {
+  [class*='-ghost'] {
     text-decoration: none;
     @extend .bsds-link-ghost;
 
-    &:hover
-    {
+    &:hover {
       @extend .bsds-link-ghost;
     }
   }
 
-  img
-  {
+  img {
     cursor: pointer;
 
-    ~[class$="title"]
-    {
+    ~ [class$='title'] {
       margin-top: space(md);
     }
   }
 }
 
-.bsds-card-border-light
-{
-  &.bsds-product-card
-  {
+.bsds-card-border-light {
+  &.bsds-product-card {
     padding: 0;
 
-    [class*="bsds-tag"]
-    {
+    [class*='bsds-tag'] {
       padding: space(3x) space(3x) 0 space(3x);
 
-      ~[class$="title"]
-      {
+      ~ [class$='title'] {
         margin-top: space(lg);
       }
     }
 
-    [class$="title"]
-    {
+    [class$='title'] {
       margin: space(3x) space(3x) 0;
     }
 
-    .bsds-card-description
-    {
+    .bsds-card-description {
       padding: 0 space(3x) space(3x) space(3x);
     }
   }
 }
 
-[class*="bsds-tag"]
-{
-  & ~.bsds-product-card-ns-title
-  {
+[class*='bsds-tag'] {
+  & ~ .bsds-product-card-ns-title {
     margin-top: space(lg);
   }
 }
 
-.bsds-product-card-even-split
-{
+.bsds-product-card-even-split {
   display: grid;
   grid-auto-rows: 1fr;
 
-  .bsds-image-50-split
-  {
+  .bsds-image-50-split {
     cursor: pointer;
   }
 
-  [class$="title"]
-  {
+  [class$='title'] {
     margin-top: space(md);
   }
 }

@@ -2,7 +2,6 @@
 
 $brand-primary: #003c71;
 
-
 // Neutral Range
 
 $neutral-00: #000000;
@@ -12,7 +11,6 @@ $neutral-60: #999999;
 $neutral-80: #cccccc;
 $neutral-95: #f2f2f2;
 $neutral-100: #ffffff;
-
 
 // Action Color Range
 
@@ -24,7 +22,6 @@ $action-primary-80: #9ac2fe;
 $action-primary-95: #e6f0ff;
 $action-primary-97: #f2f7ff;
 
-
 // Accent Color Ranges
 
 $accent-primary-20: #440066;
@@ -33,19 +30,16 @@ $accent-primary-40: #8800cc;
 $accent-primary-60: #bb33ff;
 $accent-primary-80: #dd99ff;
 $accent-primary-95: #f7e6ff;
-
 $accent-secondary-20: #005f66;
 $accent-secondary-40: #00becc;
 $accent-secondary-60: #00eeff;
 $accent-secondary-80: #99f8ff;
 $accent-secondary-95: #e6fdff;
-
 $accent-tertiary-20: #356600;
 $accent-tertiary-40: #69cc00;
 $accent-tertiary-60: #9cff33;
 $accent-tertiary-80: #ceff99;
 $accent-tertiary-95: #f3ffe6;
-
 
 // Feedback Color Ranges
 
@@ -54,26 +48,32 @@ $feedback-success-40: #2d9f9f;
 $feedback-success-60: #60d2d2;
 $feedback-success-80: #afe9e9;
 $feedback-success-95: #ebf9f9;
-
 $feedback-warning-20: #57450f;
 $feedback-warning-40: #ad8a1f;
 $feedback-warning-60: #e0bd52;
 $feedback-warning-80: #f0dea8;
 $feedback-warning-95: #fbf7e9;
-
 $feedback-error-20: #590d11;
 $feedback-error-40: #b31921;
 $feedback-error-60: #e64d54;
 $feedback-error-80: #f2a6aa;
 $feedback-error-95: #fce9ea;
 
-
 // Gradients
 
-$gradient-brand: linear-gradient(90deg, $brand-primary, $accent-primary-60, $accent-secondary-60); // NOTE: only approved for limited use
+$gradient-brand: linear-gradient(
+  90deg,
+  $brand-primary,
+  $accent-primary-60,
+  $accent-secondary-60
+); // NOTE: only approved for limited use
 $gradient-primary: linear-gradient(90deg, $accent-secondary-60, $action-primary-40);
 $gradient-secondary: linear-gradient(90deg, $accent-primary-60, $action-primary-20);
 $gradient-accent: linear-gradient(90deg, $action-primary-60, $accent-primary-60);
-$gradient-accent-vertical: linear-gradient(180deg, $accent-primary-60, $action-primary-60); // NOTE: accent gradient with different angle for tag
+$gradient-accent-vertical: linear-gradient(
+  180deg,
+  $accent-primary-60,
+  $action-primary-60
+); // NOTE: accent gradient with different angle for tag
 $gradient-assertive: linear-gradient(36deg, $neutral-00, $action-primary-20);
 $gradient-subtle: linear-gradient(322deg, $neutral-100, $neutral-95);

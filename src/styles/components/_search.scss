@@ -1,103 +1,99 @@
-.bsds-search
-{
+.bsds-search {
   width: 100%;
 
-  .bsds-input-text-input
-  {
-    margin-top: 0;
+  .bsds-input-text-input {
     height: 100%;
+    margin-top: 0;
   }
 }
 
-.bsds-search-control
-{
+.bsds-search-control {
   display: flex;
   flex-direction: column;
   gap: space(2x);
 }
 
-.bsds-input-search
-{
+.bsds-input-search {
   position: relative;
   flex: 1;
 }
 
-.bsds-search-clear
-{
+.bsds-search-clear {
   position: absolute;
   right: 0;
+  height: 100%;
   border: 0;
   padding: space(2x);
-  height: 100%;
-  aspect-ratio: 1 / 1;
   background: transparent;
+  aspect-ratio: 1 / 1;
 
-  &:focus
-  {
+  &:focus {
     @include focus-default-inset;
   }
 
   &:hover:not(:disabled),
-  &:active:not(:disabled)
-  {
+  &:active:not(:disabled) {
     background: transparent;
 
-    &:not(:active)
-    {
+    &:not(:active) {
       fill: $action-primary-40;
     }
   }
 }
 
-.bsds-search-results
-{
+.bsds-search-results {
   position: absolute;
+  width: 100%;
   margin: 0;
+  box-shadow: $box-shadow-secondary;
   border: space(xxs) solid $border-color-subtle;
   padding: space(md) 0;
-  width: 100%;
-  list-style: none;
   background-color: $neutral-100;
-  box-shadow: $box-shadow-secondary;
+  list-style: none;
 }
 
-.bsds-search-result
-{
-  &:not(:first-of-type)
-  {
+.bsds-search-result {
+  &:not(:first-of-type) {
     margin: 0;
   }
 
   &.bsds-search-result-none,
-  .bsds-link
-  {
+  .bsds-link {
     padding: space(lg) space(2x);
   }
 
-  .bsds-link
-  {
+  .bsds-link {
     display: block;
 
-    &.active-descendant
-    {
+    &.active-descendant {
       @include focus-default-inset;
     }
   }
 }
 
-@media (min-width: $sm)
-{
-  .bsds-search-control
-  {
+@media (min-width: $sm) {
+  .bsds-search-control {
     flex-direction: row;
   }
 }
 
 /* clears the ‘X’ from Internet Explorer */
-input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+input[type='search']::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type='search']::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 /* clears the ‘X’ from Chrome */
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
+}

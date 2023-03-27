@@ -1,24 +1,24 @@
-@mixin tag-default
-{
+@mixin tag-default {
   display: block;
   @include font-family-base-heavy;
   @include font-size($fs-small);
+
   text-transform: uppercase;
   letter-spacing: 0.075rem; // NOTE: this is a one-off size
 }
 
-@mixin tag-assertive
-{
+@mixin tag-assertive {
   @include tag-default;
+
   display: inline;
   padding: space(md) space(lg);
-  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
-@mixin tag-accent
-{
+@mixin tag-accent {
   @include tag-default;
+
   border-style: solid;
   border-top-width: 0;
   border-right-width: 0;
@@ -27,54 +27,53 @@
   padding: space(xs) 0 space(xs) space(md);
 }
 
-.bsds-tag
-{
+.bsds-tag {
   @include tag-default;
 
-  &-ghost
-  {
+  &-ghost {
     @include tag-default;
+
     color: $text-color-ghost;
   }
 
-  &-accent
-  {
+  &-accent {
     @include tag-accent;
+
     border-image-source: $gradient-accent-vertical;
     border-image-slice: 1;
   }
 
-  &-accent-ghost
-  {
+  &-accent-ghost {
     @include tag-accent;
+
     border-color: $accent-secondary-60;
     color: $text-color-ghost;
   }
 
-  &-assertive
-  {
+  &-assertive {
     @include tag-assertive;
+
     background: $action-primary-20;
     color: $text-color-ghost;
   }
 
-  &-assertive-ghost
-  {
+  &-assertive-ghost {
     @include tag-assertive;
+
     background: $neutral-100;
     color: $text-color-primary;
   }
 
-  &-featured
-  {
+  &-featured {
     @include tag-assertive;
+
     background-color: $accent-primary-30;
     color: $text-color-ghost;
   }
 
-  &-featured-ghost
-  {
+  &-featured-ghost {
     @include tag-assertive;
+
     background-color: $accent-primary-80;
     color: $text-color-primary;
   }

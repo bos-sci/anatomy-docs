@@ -1,24 +1,19 @@
-.bsds-tabs
-{
+.bsds-tabs {
   width: 100%;
 
-  &:not(.has-overflow)
-  {
+  &:not(.has-overflow) {
     .bsds-tab-overflow,
-    .bsds-tab-list::after
-    {
+    .bsds-tab-list::after {
       display: none;
     }
   }
 }
 
-.bsds-tab-controls
-{
+.bsds-tab-controls {
   display: flex;
 }
 
-.bsds-tab-list
-{
+.bsds-tab-list {
   flex: 1;
   position: relative;
   display: flex;
@@ -30,27 +25,24 @@
   // Reach out to UX team before hiding a scrollbar.
   scrollbar-width: none; // Hide scrollbar in firefox
 
-  &::-webkit-scrollbar
-  {
+  &::-webkit-scrollbar {
     display: none; // Hide scrollbar in Safari and Chrome
   }
 
-  &::after
-  {
+  &::after {
     position: sticky;
     right: 0;
     display: block;
     width: space(xxs);
     height: space(6x);
-    box-shadow: - space(xxs) 0 space(md) space(xs) rgba($neutral-00, 0.2);
+    box-shadow: -space(xxs) 0 space(md) space(xs) rgba($neutral-00, 0.2);
     border-width: 0;
     content: '';
     pointer-events: none;
   }
 }
 
-.bsds-tab
-{
+.bsds-tab {
   position: relative;
   margin-right: space(2x);
   border: 0;
@@ -59,8 +51,7 @@
   color: $neutral-40;
   @include font-family-base-regular;
 
-  &::after
-  {
+  &::after {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -69,77 +60,65 @@
     content: '';
   }
 
-  &:not([disabled])
-  {
+  &:not([disabled]) {
     &:hover,
-    &:active
-    {
+    &:active {
       background: transparent;
       color: $action-primary-40;
 
-      &::after
-      {
+      &::after {
         background: $action-primary-40;
       }
     }
 
-    &:focus
-    {
+    &:focus {
       @include focus-default-inset;
     }
   }
 
-  &[aria-selected="true"]
-  {
+  &[aria-selected='true'] {
     color: $neutral-00;
     @include font-family-base-heavy;
 
-    &::after
-    {
+    &::after {
       height: space(sm);
       background: $neutral-00;
     }
   }
 
-  &[disabled]
-  {
+  &[disabled] {
     background: transparent;
     color: $neutral-60;
     @include font-family-base-regular;
+
     cursor: not-allowed;
   }
 }
 
-.bsds-tab-overflow
-{
+.bsds-tab-overflow {
   display: flex;
 
-  .bsds-tab-overflow-control
-  {
+  .bsds-tab-overflow-control {
+    border: 0;
     border-color: transparent;
     padding: space(lg) space(2x);
-    border: 0;
 
-    &:focus
-    {
+    &:focus {
       @include focus-default-inset;
     }
 
-    &:disabled
-    {
-      color: $neutral-80;
+    &:disabled {
       background: $neutral-100;
+      color: $neutral-80;
     }
   }
 }
 
-.bsds-tab-panels
-{
+.bsds-tab-panels {
   border-top: space(xxs) solid $neutral-80;
   padding-top: space(3x);
 }
 
-.bsds-tab-panel:not([disabled]):focus
-{
+.bsds-tab-panel:not([disabled]):focus {
   @include focus-default;
 }

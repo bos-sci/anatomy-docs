@@ -1,7 +1,6 @@
-$bsds-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
+$bsds-breadcrumb-divider: url('../../assets/images/icon-slash.svg');
 
-.bsds-breadcrumbs
-{
+.bsds-breadcrumbs {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -11,51 +10,42 @@ $bsds-breadcrumb-divider: url("../../assets/images/icon-slash.svg");
   list-style: none;
 }
 
-.bsds-breadcrumb-item.bsds-breadcrumb-item
-{
+.bsds-breadcrumb-item.bsds-breadcrumb-item {
   margin-top: 0; // TODO: ADS-101 reduce specificity when we revisit default spacing on elements
   @include font-size($fs-body-subtle);
 
-  &:not(:first-child)
-  {
+  &:not(:first-child) {
     display: flex;
     align-items: center;
 
-    &::before
-    {
-      content: "";
+    &::before {
       display: inline-block;
-      margin-right: space(md);
       width: 1ch;
       height: 1em;
+      margin-right: space(md);
       background-image: $bsds-breadcrumb-divider;
-      background-repeat: no-repeat;
       background-position: center;
+      background-repeat: no-repeat;
+      content: '';
     }
   }
 
-  &[aria-current]
-  {
+  &[aria-current] {
     @include font-family-base-heavy;
   }
 }
 
-.bsds-link.bsds-breadcrumb-link
-{
+.bsds-link.bsds-breadcrumb-link {
   @include link-navigation;
 }
 
-.bsds-breadcrumb-overflow
-{
-  .bsds-dropdown
-  {
-    .bsds-dropdown-trigger.has-icon
-    {
+.bsds-breadcrumb-overflow {
+  .bsds-dropdown {
+    .bsds-dropdown-trigger.has-icon {
       border-radius: 0;
       padding: space(lg) space(sm);
 
-      &::after
-      {
+      &::after {
         display: none;
       }
     }
