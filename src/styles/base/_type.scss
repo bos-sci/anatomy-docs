@@ -233,7 +233,7 @@ h6,
   margin: space(3x) 0 0;
   @include font-size($fs-body-assertive);
 
-  & li:not(:first-of-type) {
+  li:not(:first-of-type) {
     margin: space(3x) 0 0;
   }
 }
@@ -247,7 +247,7 @@ small,
   display: block;
   @include font-size($fs-small);
 
-  & li:not(:first-of-type) {
+  li:not(:first-of-type) {
     margin: space(md) 0 0;
   }
 }

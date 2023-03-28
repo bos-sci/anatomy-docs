@@ -17,6 +17,14 @@ body {
   height: 100vh;
 }
 
+main {
+  // TODO: ADS-198 and ADS-297 find a better place for this
+  img {
+    width: 100%;
+    margin-top: space(3x);
+  }
+}
+
 .docs-body {
   flex: 1;
   display: grid;
@@ -44,14 +52,6 @@ body {
   }
 }
 
-main {
-  & img // TODO: ADS-198 and ADS-297 find a better place for this
-  {
-    width: 100%;
-    margin-top: space(3x);
-  }
-}
-
 .docs-page-header {
   width: 100%;
   padding: 0 space(sm);
@@ -64,7 +64,7 @@ main {
   padding: 0 space(sm);
   grid-area: page-content;
 
-  & > .docs-preview-:first-of-type {
+  > .docs-preview-:first-of-type {
     margin-top: space(6x);
   }
 }

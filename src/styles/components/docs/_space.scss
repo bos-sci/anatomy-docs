@@ -1,6 +1,7 @@
 // NOTE: changes to the space class names will need to be done in code and contentful (foundations > spacing)
 
 @mixin space {
+  /* stylelint-disable-next-line color-no-hex */
   background: rgba(#ff00b4, 0.3); // NOTE: this is a one-off to match sketch swatch
 }
 

@@ -77,7 +77,7 @@
 }
 
 [class*='bsds-tag'] {
-  & ~ .bsds-product-card-ns-title {
+  ~ .bsds-product-card-ns-title {
     margin-top: space(lg);
   }
 }

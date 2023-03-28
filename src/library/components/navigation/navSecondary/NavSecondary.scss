@@ -102,7 +102,7 @@ $icon-size-sm: space(lg);
   }
 
   .bsds-nav-item-parent {
-    & > .bsds-nav-link {
+    > .bsds-nav-link {
       position: relative;
 
       &:hover,

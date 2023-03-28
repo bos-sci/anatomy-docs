@@ -18,11 +18,8 @@
 @mixin tag-accent {
   @include tag-default;
 
+  border-width: 0 0 0 space(sm);
   border-style: solid;
-  border-top-width: 0;
-  border-right-width: 0;
-  border-bottom-width: 0;
-  border-left-width: space(sm);
   padding: space(xs) 0 space(xs) space(md);
 }
 

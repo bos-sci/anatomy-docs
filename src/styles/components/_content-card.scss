@@ -81,7 +81,7 @@
 
 [class*='bsds-card'] {
   &:not(.bsds-product-card) {
-    & [class*='bsds-card-title'] {
+    [class*='bsds-card-title'] {
       ~ .bsds-card-description {
         z-index: 2;
       }

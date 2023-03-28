@@ -29,16 +29,19 @@
     margin-top: 0;
   }
 
-  & .bsds-nav-tertiary {
+  .bsds-nav-tertiary {
     width: 100%; // TODO: remove this when we remove the fixed widths from the page layout
   }
 
-  & .docs-icon-decorative > * {
-    margin-top: 0;
+  .docs-icon-decorative {
+    > * {
+      margin-top: 0;
+    }
   }
 }
 
 .bsds-margin-top-remove {
+  /* stylelint-disable-next-line declaration-no-important */
   margin-top: 0 !important; // Important is used here to ensure utility class overrides existing styles
 }
 
@@ -46,10 +49,7 @@
   markdown {
     pre[class*='language-'] {
       margin: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: $border-radius;
-      border-bottom-left-radius: $border-radius;
+      border-radius: 0 0 $border-radius $border-radius;
     }
 
     :not(pre) > code[class*='language-'] {

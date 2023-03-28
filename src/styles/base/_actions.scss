@@ -86,16 +86,16 @@
   @include button-disabled;
 
   &:not([disabled]) {
+    &:disabled {
+      border: 0;
+      background: transparent;
+    }
+
     &:hover {
       @include link-hover;
 
       color: $neutral-100;
     }
-  }
-
-  &:disabled {
-    border: 0;
-    background: transparent;
   }
 }
 
@@ -147,18 +147,12 @@
   padding: space(2x) + space(xxs);
 }
 
-//
 // Default Button Styles
-//
-
 button {
   @include button-default;
 }
 
-//
 // Link Mixins
-//
-
 @mixin link-hover {
   text-decoration-thickness: space(xs);
   cursor: pointer;
@@ -264,10 +258,7 @@ button {
   }
 }
 
-//
 // Default Link Styles
-//
-
 a {
   @include link-default;
 }

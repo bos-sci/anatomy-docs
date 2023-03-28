@@ -53,26 +53,28 @@
 // This is not recommended -- we should use button styles on button elements, and link styles on link elements
 // NOTE: these will need to be updated if we modify the link mixins
 
-a[class*='bsds-button'] {
-  text-decoration: none;
-
-  &:hover,
-  &:focus,
-  &:active {
+a {
+  &[class*='bsds-button'] {
     text-decoration: none;
-  }
-}
 
-a.bsds-button,
-a.bsds-button-subtle {
-  &:visited {
-    color: $action-primary-40;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
   }
-}
 
-a.bsds-button-assertive,
-a.bsds-button-ghost {
-  &:visited {
-    color: $neutral-100;
+  &.bsds-button,
+  &.bsds-button-subtle {
+    &:visited {
+      color: $action-primary-40;
+    }
+  }
+
+  &.bsds-button-assertive,
+  &.bsds-button-ghost {
+    &:visited {
+      color: $neutral-100;
+    }
   }
 }

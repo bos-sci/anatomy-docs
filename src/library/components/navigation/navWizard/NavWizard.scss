@@ -71,8 +71,8 @@
     }
 
     &:not(.bsds-nav-active-list) {
-      & > .bsds-nav-item:not(.bsds-nav-item-parent),
-      & > .bsds-nav-item-parent > .bsds-nav-link {
+      > .bsds-nav-item:not(.bsds-nav-item-parent),
+      > .bsds-nav-item-parent > .bsds-nav-link {
         display: none;
       }
     }
@@ -84,16 +84,16 @@
   }
 
   .bsds-nav-item-parent {
-    & > .bsds-nav-link {
+    > .bsds-nav-link {
       display: flex;
       padding: 0;
 
-      & > .bsds-nav-link-text,
-      & > .bsds-nav-link-addon {
+      > .bsds-nav-link-text,
+      > .bsds-nav-link-addon {
         padding: space(3x);
       }
 
-      & > .bsds-nav-link-addon {
+      > .bsds-nav-link-addon {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -105,11 +105,11 @@
       &:active {
         text-decoration: none;
 
-        & > .bsds-nav-link-text {
+        > .bsds-nav-link-text {
           border-right: 0;
         }
 
-        & > .bsds-nav-link-addon {
+        > .bsds-nav-link-addon {
           background-color: $action-primary-40;
           color: $neutral-100;
         }
