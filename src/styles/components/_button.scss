@@ -34,8 +34,6 @@
       background-color: $action-primary-40;
       content: '';
       mask: url('../../assets/images/icon-chevron-left.svg') no-repeat 50% 50%;
-      mask: url('../../assets/images/icon-chevron-left.svg') no-repeat 50% 50%;
-      mask-size: cover;
       mask-size: cover;
     }
 
@@ -51,11 +49,9 @@
   }
 }
 
-//
 // Link buttons
 // This is not recommended -- we should use button styles on button elements, and link styles on link elements
 // NOTE: these will need to be updated if we modify the link mixins
-//
 
 a[class*='bsds-button'] {
   text-decoration: none;

@@ -56,9 +56,6 @@
   background-size: 400% 100%;
   content: '';
   animation: animatedGradient 10s linear infinite;
-  animation: animatedGradient 10s linear infinite;
-  animation: animatedGradient 10s linear infinite;
-  animation: animatedGradient 10s linear infinite;
 
   @media (prefers-reduced-motion: reduce) {
     background-image: $gradient-brand;
@@ -81,9 +78,6 @@
   background-image: $gradient-primary-animated;
   background-size: 300% 100%;
   animation: animatedGradient 10s linear infinite;
-  animation: animatedGradient 10s linear infinite;
-  animation: animatedGradient 10s linear infinite;
-  animation: animatedGradient 10s linear infinite;
 
   @media (prefers-reduced-motion: reduce) {
     background-image: $gradient-primary;
@@ -105,9 +99,6 @@
   background: $gradient-secondary;
   background-image: $gradient-secondary-animated;
   background-size: 300% 100%;
-  animation: animatedGradient 10s linear infinite;
-  animation: animatedGradient 10s linear infinite;
-  animation: animatedGradient 10s linear infinite;
   animation: animatedGradient 10s linear infinite;
 
   @media (prefers-reduced-motion: reduce) {

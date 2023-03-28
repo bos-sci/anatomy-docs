@@ -3,9 +3,7 @@ $font-family-base-heavy: 'SST-Heavy', sans-serif;
 $font-weight-regular: 400;
 $font-weight-heavy: 900;
 
-//
 // Fixed font size variables
 // These exist to set a fixed font-size inside components (e.g.: buttons) across breakpoints so the component maintains the same height across breakpoints
-//
 
 $ffs-body-assertive: 1.125rem; // NOTE: this is a one-off size
