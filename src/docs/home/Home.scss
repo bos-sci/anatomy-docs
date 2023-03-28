@@ -9,7 +9,7 @@
   background: $gradient-assertive;
 
   &::after {
-    bottom: calc(0 - space(sm));
+    bottom: calc(0rem - space(sm));
     @include animated-gradient-brand;
   }
 

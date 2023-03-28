@@ -36,7 +36,7 @@
     display: block;
     width: space(xxs);
     height: space(6x);
-    box-shadow: calc(0 - space(xxs)) 0 space(md) space(xs) rgba($neutral-00, 0.2);
+    box-shadow: calc(0rem - space(xxs)) 0 space(md) space(xs) rgba($neutral-00, 0.2);
     border-width: 0;
     content: '';
     pointer-events: none;
