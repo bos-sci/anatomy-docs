@@ -25,7 +25,6 @@
   color: $border-color-primary;
   @include font-family-base-regular;
   @include font-size($fs-base);
-
   text-align: left;
 
   svg {
@@ -116,7 +115,6 @@
 
     &:focus {
       @include focus-default;
-
       z-index: 2;
     }
   }

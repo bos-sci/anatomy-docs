@@ -21,6 +21,13 @@
     gap: space(3x);
   }
 
+  .bsds-modal-title {
+    grid-area: title;
+    grid-row: span 2;
+    align-self: center;
+    margin-top: 0;
+  }
+
   .bsds-modal-logo {
     width: auto;
     height: space(6x);
@@ -30,13 +37,6 @@
     + .bsds-modal-title {
       grid-row: span 1;
     }
-  }
-
-  .bsds-modal-title {
-    grid-area: title;
-    grid-row: span 2;
-    align-self: center;
-    margin-top: 0;
   }
 
   .bsds-modal-close {
@@ -53,15 +53,17 @@
     gap: space(2x);
     margin-top: space(8x);
 
-    a.bsds-button-assertive {
-      color: $neutral-100;
-    }
+    a {
+      &.bsds-button-assertive {
+        color: $neutral-100;
+      }
 
-    a.bsds-button-subtle {
-      color: $action-primary-40;
+      &.bsds-button-subtle {
+        color: $action-primary-40;
 
-      &:hover {
-        @include button-hover;
+        &:hover {
+          @include button-hover;
+        }
       }
     }
   }

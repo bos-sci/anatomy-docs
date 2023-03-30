@@ -11,13 +11,6 @@
   line-height: inherit;
   font-family: inherit;
 
-  &:not(:disabled):not(:read-only) {
-    &:hover,
-    &:focus {
-      border-color: $action-primary-40;
-    }
-  }
-
   &:focus {
     @include focus-default;
   }
@@ -45,15 +38,24 @@
     }
   }
 
-  &:not(:disabled):not(:read-only) {
-    &[aria-invalid='true'],
-    &[aria-invalid='true']:hover,
-    &[aria-invalid='true']:focus {
-      border: space(xxs) solid $feedback-error-40;
+  &:not(:disabled) {
+    &[aria-invalid='true'] {
+      &:focus {
+        @include focus-invalid;
+      }
     }
 
-    &[aria-invalid='true']:focus {
-      @include focus-invalid;
+    &:not(:read-only) {
+      &[aria-invalid='true'],
+      &[aria-invalid='true']:hover,
+      &[aria-invalid='true']:focus {
+        border: space(xxs) solid $feedback-error-40;
+      }
+
+      &:hover,
+      &:focus {
+        border-color: $action-primary-40;
+      }
     }
   }
 }

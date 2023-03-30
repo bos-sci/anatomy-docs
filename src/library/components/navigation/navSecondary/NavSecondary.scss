@@ -54,7 +54,6 @@ $icon-size-sm: space(lg);
 
     &::after {
       @include icon-background($icon-size-sm);
-
       top: 0;
       padding: space(2x) space(4x);
       background-image: url('../../../../assets/images/icon-chevron-down.svg');
@@ -85,8 +84,8 @@ $icon-size-sm: space(lg);
     list-style: none;
 
     &:not(.bsds-nav-active-list) {
-      & > .bsds-nav-item:not(.bsds-nav-item-parent),
-      & > .bsds-nav-item-parent > .bsds-nav-link {
+      > .bsds-nav-item:not(.bsds-nav-item-parent),
+      > .bsds-nav-item-parent > .bsds-nav-link {
         display: none;
       }
     }
@@ -112,7 +111,6 @@ $icon-size-sm: space(lg);
 
       &::after {
         @include icon-background($icon-size-sm);
-
         padding: space(lg);
         background-image: url('../../../../assets/images/icon-chevron-right.svg');
       }

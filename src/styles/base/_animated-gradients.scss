@@ -1,4 +1,4 @@
-@keyframes animatedGradient {
+@keyframes animated-gradient {
   0% {
     background-position: 100% 0;
   }
@@ -7,7 +7,7 @@
     background-position: 0 0;
   }
 }
-@keyframes animatedGradient {
+@keyframes animated-gradient {
   0% {
     background-position: 100% 0;
   }
@@ -16,7 +16,7 @@
     background-position: 0 0;
   }
 }
-@keyframes animatedGradient {
+@keyframes animated-gradient {
   0% {
     background-position: 100% 0;
   }
@@ -25,7 +25,7 @@
     background-position: 0 0;
   }
 }
-@keyframes animatedGradient {
+@keyframes animated-gradient {
   0% {
     background-position: 100% 0;
   }
@@ -45,7 +45,6 @@
     $brand-primary,
     $accent-primary-60
   );
-
   position: absolute;
   right: 0;
   left: 0;
@@ -55,7 +54,7 @@
   background-image: $gradient-brand-animated;
   background-size: 400% 100%;
   content: '';
-  animation: animatedGradient 10s linear infinite;
+  animation: animated-gradient 10s linear infinite;
 
   @media (prefers-reduced-motion: reduce) {
     background-image: $gradient-brand;
@@ -72,12 +71,11 @@
     $accent-secondary-60,
     $action-primary-40
   );
-
   z-index: 1;
   background: $gradient-primary;
   background-image: $gradient-primary-animated;
   background-size: 300% 100%;
-  animation: animatedGradient 10s linear infinite;
+  animation: animated-gradient 10s linear infinite;
 
   @media (prefers-reduced-motion: reduce) {
     background-image: $gradient-primary;
@@ -94,12 +92,11 @@
     $accent-primary-60,
     $action-primary-20
   );
-
   z-index: 1;
   background: $gradient-secondary;
   background-image: $gradient-secondary-animated;
   background-size: 300% 100%;
-  animation: animatedGradient 10s linear infinite;
+  animation: animated-gradient 10s linear infinite;
 
   @media (prefers-reduced-motion: reduce) {
     background-image: $gradient-secondary;

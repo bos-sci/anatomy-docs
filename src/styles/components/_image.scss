@@ -6,31 +6,26 @@
 
   &-1to1 {
     @extend .bsds-image;
-
     aspect-ratio: 1/1;
   }
 
   &-4to3 {
     @extend .bsds-image;
-
     aspect-ratio: 4/3;
   }
 
   &-16to9 {
     @extend .bsds-image;
-
     aspect-ratio: 16/9;
   }
 
   &-21to9 {
     @extend .bsds-image;
-
     aspect-ratio: 21/9;
   }
 
   &-50-split {
     @extend .bsds-image;
-
     height: 0;
     min-height: 100%;
     object-position: center center;
@@ -40,25 +35,21 @@
 
 .bsds-image-caption {
   @include font-size($fs-small);
-
   margin-top: space(md);
   color: $text-color-primary;
 
   &-center {
     @extend .bsds-image-caption;
-
     text-align: center;
 
     &-ghost {
       @extend .bsds-image-caption-center;
-
       color: $text-color-ghost;
     }
   }
 
   &-ghost {
     @extend .bsds-image-caption;
-
     color: $text-color-ghost;
   }
 }

@@ -13,7 +13,6 @@
     color: $neutral-40;
     @include font-family-base-regular;
     @include font-size($fs-small);
-
     line-height: 1.5; // NOTE: overriding h2's default line height
   }
 

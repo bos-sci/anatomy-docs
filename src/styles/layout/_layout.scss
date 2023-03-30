@@ -64,8 +64,11 @@ main {
   padding: 0 space(sm);
   grid-area: page-content;
 
-  > .docs-preview-:first-of-type {
-    margin-top: space(6x);
+  /* stylelint-disable-next-line selector-class-pattern */
+  > .docs-preview- {
+    &:first-of-type {
+      margin-top: space(6x);
+    }
   }
 }
 
@@ -105,8 +108,7 @@ main {
     margin-left: auto;
     grid-template-columns: 1fr 4fr;
     grid-template-areas: 'nav-secondary main';
-    grid-column-gap: space(4x) - space(md);
-    grid-row-gap: 0;
+    gap: 0 space(4x) - space(md);
 
     main {
       display: grid;
@@ -115,15 +117,14 @@ main {
         'page-content nav-tertiary';
       grid-template-columns: 4fr 1fr;
       grid-template-rows: auto 1fr;
-      grid-column-gap: space(4x);
-      grid-row-gap: 0;
+      gap: 0 space(4x);
       justify-content: start;
       justify-items: start;
       margin-top: space(4x);
       padding: 0 space(sm);
     }
 
-    & > .bsds-nav-secondary {
+    > .bsds-nav-secondary {
       width: 12rem;
       margin-top: space(4x);
     }

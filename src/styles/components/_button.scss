@@ -21,7 +21,6 @@
     $icon-size: 1em;
 
     @include button-subtle;
-
     position: relative;
     padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
 

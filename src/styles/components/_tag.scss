@@ -2,14 +2,12 @@
   display: block;
   @include font-family-base-heavy;
   @include font-size($fs-small);
-
   text-transform: uppercase;
   letter-spacing: 0.075rem; // NOTE: this is a one-off size
 }
 
 @mixin tag-assertive {
   @include tag-default;
-
   display: inline;
   padding: space(md) space(lg);
   box-decoration-break: clone;
@@ -17,7 +15,6 @@
 
 @mixin tag-accent {
   @include tag-default;
-
   border-width: 0 0 0 space(sm);
   border-style: solid;
   padding: space(xs) 0 space(xs) space(md);
@@ -28,48 +25,41 @@
 
   &-ghost {
     @include tag-default;
-
     color: $text-color-ghost;
   }
 
   &-accent {
     @include tag-accent;
-
     border-image-source: $gradient-accent-vertical;
     border-image-slice: 1;
   }
 
   &-accent-ghost {
     @include tag-accent;
-
     border-color: $accent-secondary-60;
     color: $text-color-ghost;
   }
 
   &-assertive {
     @include tag-assertive;
-
     background: $action-primary-20;
     color: $text-color-ghost;
   }
 
   &-assertive-ghost {
     @include tag-assertive;
-
     background: $neutral-100;
     color: $text-color-primary;
   }
 
   &-featured {
     @include tag-assertive;
-
     background-color: $accent-primary-30;
     color: $text-color-ghost;
   }
 
   &-featured-ghost {
     @include tag-assertive;
-
     background-color: $accent-primary-80;
     color: $text-color-primary;
   }

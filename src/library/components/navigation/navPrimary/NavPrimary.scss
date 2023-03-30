@@ -347,7 +347,6 @@ $menu-padding: space(md) 0;
 
     .bsds-nav-menu-panel-title {
       @extend .bsds-h3;
-
       margin-top: 0;
     }
   }
@@ -420,7 +419,6 @@ $menu-padding: space(md) 0;
 
   .bsds-nav-link-see-all {
     @include link-default;
-
     display: block;
     border-bottom: 0;
     padding: $nav-link-padding;
