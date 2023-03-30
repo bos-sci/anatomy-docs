@@ -50,11 +50,11 @@ $inner-circle-diameter: space(md);
 .bsds-input-radio-input {
   position: absolute;
   box-sizing: border-box;
+  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
   overflow: hidden;
   margin: 0;
   opacity: 0;
   padding: 0;
-  clip: rect(0, 0, 0, 0);
   appearance: none;
   pointer-events: none;
 
