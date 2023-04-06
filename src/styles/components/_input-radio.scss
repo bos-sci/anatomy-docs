@@ -1,50 +1,18 @@
 $outer-circle-diameter: $ffs-body-assertive;
 $inner-circle-diameter: space(md);
 
-.bsds-input-radio-input {
-  &[aria-invalid='true'] {
-    + .bsds-input-radio-label {
-      &::before {
-        border: space(xs) solid $feedback-error-40;
-        background: $neutral-100;
-      }
-    }
-
-    &:checked,
-    &[aria-checked='true'] {
-      + .bsds-input-radio-label {
-        &::before {
-          border: transparent;
-          background: $feedback-error-40;
-        }
-
-        &::after {
-          background: $neutral-100;
-        }
-      }
-    }
-
-    &:focus,
-    &:focus:checked {
-      + .bsds-input-radio-label {
-        &::before {
-          @include focus-invalid;
-        }
-      }
-    }
-  }
+.bsds-input-radio {
+  display: flex;
 }
 
 .bsds-fieldset {
-  > .bsds-input:not(:first-child) {
-    .bsds-input-radio {
-      margin-top: space(2x);
+  > .bsds-input {
+    &:not(:first-child) {
+      .bsds-input-radio {
+        margin-top: space(2x);
+      }
     }
   }
-}
-
-.bsds-input-radio {
-  display: flex;
 }
 
 .bsds-input-radio-input {
@@ -74,6 +42,38 @@ $inner-circle-diameter: space(md);
       border: space(xxs) solid $neutral-00;
       background: $neutral-100;
       content: '';
+    }
+  }
+
+  &[aria-invalid='true'] {
+    + .bsds-input-radio-label {
+      &::before {
+        border: space(xs) solid $feedback-error-40;
+        background: $neutral-100;
+      }
+    }
+
+    &:checked,
+    &[aria-checked='true'] {
+      + .bsds-input-radio-label {
+        &::before {
+          border: transparent;
+          background: $feedback-error-40;
+        }
+
+        &::after {
+          background: $neutral-100;
+        }
+      }
+    }
+
+    &:focus,
+    &:focus:checked {
+      + .bsds-input-radio-label {
+        &::before {
+          @include focus-invalid;
+        }
+      }
     }
   }
 
