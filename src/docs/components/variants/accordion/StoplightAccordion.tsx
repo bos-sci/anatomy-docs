@@ -18,6 +18,6 @@ const StoplightAccordion = (): JSX.Element => {
       </Accordion>
     </Example>
   );
-}
+};
 
 export default StoplightAccordion;

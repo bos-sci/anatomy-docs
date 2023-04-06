@@ -16,20 +16,23 @@ const Components = (): JSX.Element => {
   const location = useLocation();
 
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
-  const [componentData, setComponentData] = useState<GetComponentQuery['component']>({} as GetComponentQuery['component']);
+  const [componentData, setComponentData] = useState<GetComponentQuery['component']>(
+    {} as GetComponentQuery['component']
+  );
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const data = useContext(ComponentContext);
 
   useEffect(() => {
-    if(data) {
+    if (data) {
       setComponentData(data);
     }
   }, [data]);
 
   useEffect(() => {
     // TODO: ADS-380 get rid of .replace()
-    const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/'))
+    const basePath = location.pathname
+      .slice(0, location.pathname.lastIndexOf('/'))
       .replace('/form-controls', '')
       .replace('/navigation', '')
       .replace('/cards', '');
@@ -56,8 +59,8 @@ const Components = (): JSX.Element => {
           {
             text: 'Product card',
             slug: basePath + '/cards/product-card',
-          }
-        ]
+          },
+        ],
       },
       {
         text: 'Dropdown menu',
@@ -68,25 +71,25 @@ const Components = (): JSX.Element => {
         children: [
           {
             text: 'Form',
-            slug: basePath + '/form-controls/form'
+            slug: basePath + '/form-controls/form',
           },
           {
             text: 'Checkbox',
-            slug: basePath + '/form-controls/checkbox'
+            slug: basePath + '/form-controls/checkbox',
           },
           {
             text: 'Checkbox group',
-            slug: basePath + '/form-controls/checkbox-group'
+            slug: basePath + '/form-controls/checkbox-group',
           },
           {
             text: 'Radio group',
-            slug: basePath + '/form-controls/radio-group'
+            slug: basePath + '/form-controls/radio-group',
           },
           {
             text: 'Text input',
-            slug: basePath + '/form-controls/text-input'
-          }
-        ]
+            slug: basePath + '/form-controls/text-input',
+          },
+        ],
       },
       {
         text: 'Image',
@@ -138,8 +141,8 @@ const Components = (): JSX.Element => {
           {
             text: 'Skip link',
             slug: basePath + '/navigation/skip-link',
-          }
-        ]
+          },
+        ],
       },
       {
         text: 'Stoplight',
@@ -156,9 +159,9 @@ const Components = (): JSX.Element => {
     ]);
   }, [location]);
 
-  const nameForTitle = (componentData?.name || '');
+  const nameForTitle = componentData?.name || '';
 
-  useTitle({titlePrefix: `${nameForTitle} - Components`});
+  useTitle({ titlePrefix: `${nameForTitle} - Components` });
   useHashScroll(!!componentData?.name);
 
   const pageHeadings = useHeadings();
@@ -178,66 +181,68 @@ const Components = (): JSX.Element => {
           seoMetaDescription={componentData?.pageProperties?.seoMetaDescription || ''}
           navSecondaryMenuTrigger="Components"
           navSecondaryItems={navItems}
-          navTertiaryItems={headings}>
-
+          navTertiaryItems={headings}
+        >
           {/* Default Preview */}
-          {componentData.name && <Preview shouldLinkToExamples={ componentData.shouldLinkToExamples || false }  /> }
+          {componentData.name && <Preview shouldLinkToExamples={componentData.shouldLinkToExamples || false} />}
 
           {/* Modifiers */}
-          {(componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0) && <>
-            <h2 id="modifiers">Modifiers</h2>
-              { componentData.modifiersCollection.items.map((modifier) => (
-                <Fragment key={ modifier?.modifierId }>
-                  <h3>{ modifier?.name }</h3>
+          {componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0 && (
+            <>
+              <h2 id="modifiers">Modifiers</h2>
+              {componentData.modifiersCollection.items.map((modifier) => (
+                <Fragment key={modifier?.modifierId}>
+                  <h3>{modifier?.name}</h3>
                   <Markdown markdown={modifier?.description || ''} />
                   <Preview
                     variant={modifier?.name as string}
                     variantId={modifier?.modifierId as string}
-                    shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
+                    shouldLinkToExamples={componentData.shouldLinkToExamples || false}
+                  />
                 </Fragment>
               ))}
             </>
-          }
+          )}
 
           {/* Styles */}
-          {(componentData.stylesCollection?.items && componentData.stylesCollection.items.length > 0) && <>
-            <h2 id="styles">Styles</h2>
-              { componentData.stylesCollection.items.map((style) => (
-                <Fragment key={ style?.styleId }>
-                  <h3>{ style?.name }</h3>
+          {componentData.stylesCollection?.items && componentData.stylesCollection.items.length > 0 && (
+            <>
+              <h2 id="styles">Styles</h2>
+              {componentData.stylesCollection.items.map((style) => (
+                <Fragment key={style?.styleId}>
+                  <h3>{style?.name}</h3>
                   <Markdown markdown={style?.description || ''} />
                   <Preview
                     variant={style?.name as string}
                     variantId={style?.styleId as string}
-                    shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
+                    shouldLinkToExamples={componentData.shouldLinkToExamples || false}
+                  />
                 </Fragment>
               ))}
             </>
-          }
+          )}
 
           {/* States */}
-          {(componentData.statesCollection?.items && componentData.statesCollection.items.length > 0) && <>
-            <h2 id="states">States</h2>
-              { componentData.statesCollection.items.map((state) => (
-                <Fragment key={ state?.stateId }>
-                  <h3>{ state?.name }</h3>
+          {componentData.statesCollection?.items && componentData.statesCollection.items.length > 0 && (
+            <>
+              <h2 id="states">States</h2>
+              {componentData.statesCollection.items.map((state) => (
+                <Fragment key={state?.stateId}>
+                  <h3>{state?.name}</h3>
                   <Markdown markdown={state?.description || ''} />
                   <Preview
                     variant={state?.name as string}
                     variantId={state?.stateId as string}
-                    shouldLinkToExamples={ componentData.shouldLinkToExamples || false } />
+                    shouldLinkToExamples={componentData.shouldLinkToExamples || false}
+                  />
                 </Fragment>
               ))}
             </>
-          }
+          )}
 
-          {(componentData.usage
-            || componentData.usageDo
-            || componentData.usageDont) &&
-            <h2 id="usage">Usage</h2>
-          }
-          { componentData.usage && <Markdown markdown={ componentData.usage } />}
-          {(componentData.usageDo || componentData.usageDont) &&
+          {(componentData.usage || componentData.usageDo || componentData.usageDont) && <h2 id="usage">Usage</h2>}
+          {componentData.usage && <Markdown markdown={componentData.usage} />}
+          {(componentData.usageDo || componentData.usageDont) && (
             <div className="docs-list-flex">
               <div className="docs-list-flex-item">
                 <h3>Do:</h3>
@@ -248,18 +253,18 @@ const Components = (): JSX.Element => {
                 <Markdown markdown={componentData.usageDont || ''} />
               </div>
             </div>
-          }
-          {componentData.interactions && <>
-            <h2 id="interactions">Interactions</h2>
-            <Markdown markdown={ componentData.interactions } headingOffset={ 2 } />
-          </>}
-          {(componentData.contentGuidelines
-            || componentData.contentGuidelinesDo
-            || componentData.contentGuidelinesDont) &&
-            <h2 id="content-guidelines">Content guidelines</h2>
-          }
-          { componentData.contentGuidelines && <Markdown markdown={ componentData.contentGuidelines } />}
-          {(componentData.contentGuidelinesDo || componentData.contentGuidelinesDont) &&
+          )}
+          {componentData.interactions && (
+            <>
+              <h2 id="interactions">Interactions</h2>
+              <Markdown markdown={componentData.interactions} headingOffset={2} />
+            </>
+          )}
+          {(componentData.contentGuidelines ||
+            componentData.contentGuidelinesDo ||
+            componentData.contentGuidelinesDont) && <h2 id="content-guidelines">Content guidelines</h2>}
+          {componentData.contentGuidelines && <Markdown markdown={componentData.contentGuidelines} />}
+          {(componentData.contentGuidelinesDo || componentData.contentGuidelinesDont) && (
             <div className="docs-list-flex">
               <div className="docs-list-flex-item">
                 <h3>Do:</h3>
@@ -270,19 +275,28 @@ const Components = (): JSX.Element => {
                 <Markdown markdown={componentData.contentGuidelinesDont || ''} />
               </div>
             </div>
-          }
-          {componentData.userResearch && <>
-            <h2 id="user-research">User research</h2>
-            <Markdown markdown={ componentData.userResearch } headingOffset={ 2 } />
-          </>}
-          {componentData.accessibility && <>
-            <h2 id="accessibility">Accessibility</h2>
-            <Markdown markdown={ componentData.accessibility } headingOffset={ 2 } />
-          </>}
+          )}
+          {componentData.userResearch && (
+            <>
+              <h2 id="user-research">User research</h2>
+              <Markdown markdown={componentData.userResearch} headingOffset={2} />
+            </>
+          )}
+          {componentData.accessibility && (
+            <>
+              <h2 id="accessibility">Accessibility</h2>
+              <Markdown markdown={componentData.accessibility} headingOffset={2} />
+            </>
+          )}
         </PageTemplate>
       </Layout>
     );
-  } else return <Layout><main id="mainContent">Loading...</main></Layout>;
-}
+  } else
+    return (
+      <Layout>
+        <main id="mainContent">Loading...</main>
+      </Layout>
+    );
+};
 
 export default Components;

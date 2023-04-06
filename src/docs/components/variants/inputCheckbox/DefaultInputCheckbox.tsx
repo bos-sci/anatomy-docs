@@ -9,6 +9,6 @@ const DefaultInputCheckbox = (): JSX.Element => {
       </div>
     </Example>
   );
-}
+};
 
 export default DefaultInputCheckbox;

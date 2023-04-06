@@ -16,16 +16,18 @@ const CodeStandards = (): JSX.Element => {
   const location = useLocation();
   const params = useParams();
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
-  const [codeStandardData, setCodeStandardData] = useState<GetCodeStandardQuery['codeStandard']>({} as GetCodeStandardQuery['codeStandard']);
+  const [codeStandardData, setCodeStandardData] = useState<GetCodeStandardQuery['codeStandard']>(
+    {} as GetCodeStandardQuery['codeStandard']
+  );
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
-  const {data, error} = useGetCodeStandardQuery({
+  const { data, error } = useGetCodeStandardQuery({
     variables: {
       id: idLookup.codeStandards[params.standardName!].id,
-      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
-    }
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
+    },
   });
 
   if (error) {
@@ -41,33 +43,33 @@ const CodeStandards = (): JSX.Element => {
     const navItems = [
       {
         text: 'General',
-        slug: pathPrefix + 'general'
+        slug: pathPrefix + 'general',
       },
       {
         text: 'Accessibility',
-        slug: pathPrefix + 'accessibility'
+        slug: pathPrefix + 'accessibility',
       },
       {
         text: 'HTML',
-        slug: pathPrefix + 'html'
+        slug: pathPrefix + 'html',
       },
       {
         text: 'CSS',
-        slug: pathPrefix + 'css'
+        slug: pathPrefix + 'css',
       },
       {
         text: 'JavaScript',
-        slug: pathPrefix + 'javascript'
+        slug: pathPrefix + 'javascript',
       },
       {
         text: 'DevOps',
-        slug: pathPrefix + 'devops'
+        slug: pathPrefix + 'devops',
       },
     ];
     setNavItems(navItems);
   }, [data, idLookup, location]);
 
-  useTitle({titlePrefix: `${codeStandardData?.name} - Code Standards`});
+  useTitle({ titlePrefix: `${codeStandardData?.name} - Code Standards` });
   useHashScroll(!!codeStandardData?.content);
 
   const pageHeadings = useHeadings();
@@ -86,11 +88,12 @@ const CodeStandards = (): JSX.Element => {
         seoMetaDescription={codeStandardData?.pageProperties?.seoMetaDescription || ''}
         navSecondaryMenuTrigger="Code standards"
         navSecondaryItems={navItems}
-        navTertiaryItems={headings}>
-        <Markdown markdown={ codeStandardData?.content || '' } />
+        navTertiaryItems={headings}
+      >
+        <Markdown markdown={codeStandardData?.content || ''} />
       </PageTemplate>
     </Layout>
   );
-}
+};
 
 export default CodeStandards;

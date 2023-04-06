@@ -16,16 +16,18 @@ const ContentGuidelines = (): JSX.Element => {
   const params = useParams();
   const location = useLocation();
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
-  const [contentGuidelineData, setContentGuidelineData] = useState<GetContentGuidelineQuery['contentGuideline']>({} as GetContentGuidelineQuery['contentGuideline']);
+  const [contentGuidelineData, setContentGuidelineData] = useState<GetContentGuidelineQuery['contentGuideline']>(
+    {} as GetContentGuidelineQuery['contentGuideline']
+  );
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
-  const {data, error} = useGetContentGuidelineQuery({
+  const { data, error } = useGetContentGuidelineQuery({
     variables: {
       id: idLookup.contentGuidelines[params.contentName!].id,
-      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
-    }
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
+    },
   });
 
   if (error) {
@@ -37,14 +39,14 @@ const ContentGuidelines = (): JSX.Element => {
       setContentGuidelineData(data.contentGuideline);
     }
     const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/'));
-    const navItems = Object.keys(idLookup.contentGuidelines).map(entry => ({
+    const navItems = Object.keys(idLookup.contentGuidelines).map((entry) => ({
       text: idLookup.contentGuidelines[entry].name,
-      slug: basePath + '/' + entry
+      slug: basePath + '/' + entry,
     }));
     setNavItems(navItems);
   }, [data, idLookup, location]);
 
-  useTitle({titlePrefix: `${contentGuidelineData?.name} - Content`});
+  useTitle({ titlePrefix: `${contentGuidelineData?.name} - Content` });
   useHashScroll(!!contentGuidelineData?.content);
 
   const pageHeadings = useHeadings();
@@ -63,11 +65,12 @@ const ContentGuidelines = (): JSX.Element => {
         seoMetaDescription={contentGuidelineData?.pageProperties?.seoMetaDescription || ''}
         navSecondaryMenuTrigger="Content"
         navSecondaryItems={navItems}
-        navTertiaryItems={headings}>
+        navTertiaryItems={headings}
+      >
         <Markdown markdown={contentGuidelineData?.content || ''} headingOffset={1} />
       </PageTemplate>
     </Layout>
   );
-}
+};
 
 export default ContentGuidelines;

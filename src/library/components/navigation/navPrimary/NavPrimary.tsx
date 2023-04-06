@@ -84,7 +84,17 @@ interface Props {
 
 let navPrimaryMenuIndex = 0;
 
-const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isConstrained = false, searchResults, onSearchChange, onSearch }: Props): JSX.Element => {
+const NavPrimary = ({
+  logo,
+  texts,
+  utilityItems,
+  navItems,
+  hasSearch = true,
+  isConstrained = false,
+  searchResults,
+  onSearchChange,
+  onSearch,
+}: Props): JSX.Element => {
   const location = useLocation();
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
@@ -112,16 +122,16 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
     }
     newHistory.push({
       node: navItem,
-      depth: depth
+      depth: depth,
     });
     setHistory(newHistory);
-  }
+  };
 
   const popHistory = () => {
     const newHistory = [...history];
     newHistory.pop();
     setHistory(newHistory);
-  }
+  };
 
   // Open menu to right place or close menu on click of root item
   const updateMenu = (e: MouseEvent<HTMLButtonElement>, navItem: NavNode): void => {
@@ -134,7 +144,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
       setIsMenuOpen(true);
       setIsSearchOpen(false);
     }
-  }
+  };
 
   // Travels up the tree from the active node to get the root item
   const getActiveRoot = (): NavNode | null => {
@@ -143,7 +153,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
       node = node.parent;
     }
     return node;
-  }
+  };
 
   useEffect(() => {
     const tree = [...navItems] as NavNode[];
@@ -162,11 +172,10 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
           populateParents(node.children as NavNode[], node, ++index);
         }
       });
-    }
+    };
     populateParents(tree);
     setNavTree(tree);
     setIsIntermediateNav(treeDepth + 1 === 2);
-
   }, [navItems]);
 
   // Close menu when viewport goes from small to large before making a root item selection
@@ -207,7 +216,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
         setIsMenuOpen(false);
         setHistory([]);
       }
-    }
+    };
 
     onResize();
 
@@ -218,10 +227,10 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
       window.removeEventListener('focusin', onFocusWithinOut);
       window.removeEventListener('pointerup', onFocusWithinOut);
       window.removeEventListener('resize', onResize);
-    }
+    };
   }, [onResize]);
 
-  const handleKeyUp = ((e: KeyboardEvent) => {
+  const handleKeyUp = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       if (isMenuOpen || isSearchOpen) {
         rootButton?.focus();
@@ -230,7 +239,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
       setHistory([]);
       setIsSearchOpen(false);
     }
-  });
+  };
 
   const toggleMenu = (e: MouseEvent<HTMLButtonElement>) => {
     setRootButton(e.target as HTMLButtonElement);
@@ -241,7 +250,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
       setHistory([]);
     }
     setIsMenuOpen(!isMenuOpen);
-  }
+  };
 
   const toggleSearch = (e: MouseEvent<HTMLButtonElement>) => {
     setRootButton(e.target as HTMLButtonElement);
@@ -250,7 +259,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
       setHistory([]);
     }
     setIsSearchOpen(!isSearchOpen);
-  }
+  };
 
   const isCurrent = (isActive: boolean, navItem: NavItemPrimary): boolean => {
     if (navItem.isActive) {
@@ -258,68 +267,69 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
     } else {
       return isActive;
     }
-  }
+  };
 
   return (
-    <header className={"bsds-nav-header" + (isConstrained ? ' is-constrained' : '')} ref={navRef} onKeyUp={handleKeyUp}>
+    <header className={'bsds-nav-header' + (isConstrained ? ' is-constrained' : '')} ref={navRef} onKeyUp={handleKeyUp}>
       {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
       <nav className="bsds-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="bsds-nav-bar">
-          {(logo.to || logo.href) ?
+          {logo.to || logo.href ? (
             <Link to={logo.to} href={logo.href} isNavLink={true} className="bsds-nav-link-logo">
               <img src={logo.src} alt={logo.alt} />
             </Link>
-            :
+          ) : (
             <img className="bsds-nav-link-logo" src={logo.src} alt={logo.alt} />
-          }
+          )}
           <ul className="bsds-nav">
             {navTree.map((navItem, i) => (
               <li key={navItem.text + i} className="bsds-nav-item bsds-nav-item-root">
-                {navItem.children &&
+                {navItem.children && (
                   <Button
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className={"bsds-nav-link" + (navItem === getActiveRoot() ? ' current' : '')}
+                    className={'bsds-nav-link' + (navItem === getActiveRoot() ? ' current' : '')}
                     aria-haspopup="true"
                     aria-expanded={history[0] && navItem === history[0].node}
                     aria-controls={menuId}
-                    onClick={e => updateMenu(e, navItem)}
+                    onClick={(e) => updateMenu(e, navItem)}
                   >
                     {navItem.text}
                   </Button>
-                }
-                {(navItem.slug || navItem.href) &&
+                )}
+                {(navItem.slug || navItem.href) && (
                   <NavLink
                     end={!!navItem.isExactMatch}
                     to={(navItem.slug ? navItem.slug : navItem.href) || ''}
                     className={({ isActive }) => `bsds-nav-link${isCurrent(isActive, navItem) ? ' current' : ''}`}
                     aria-current={navItem.isActive && navItem.isActive(location) ? 'page' : undefined}
                   >
-                      {navItem.text}
+                    {navItem.text}
                   </NavLink>
-                }
-                {(navTree.length > 0
-                  && history.length > 0
-                  && history[0].node.text === navItem.text
-                  && !isViewportSmall)
-                  && <NavPrimaryMenu
-                    ref={menuRef}
-                    navItems={navTree}
-                    utilityItems={utilityItems}
-                    activeNode={activeNode}
-                    setActiveNode={setActiveNode}
-                    menuId={menuId}
-                    isMenuOpen={isMenuOpen}
-                    isIntermediateNav={isIntermediateNav}
-                    history={history}
-                    pushHistory={pushHistory}
-                    popHistory={popHistory}
-                    texts={texts} />
-                }
+                )}
+                {navTree.length > 0 &&
+                  history.length > 0 &&
+                  history[0].node.text === navItem.text &&
+                  !isViewportSmall && (
+                    <NavPrimaryMenu
+                      ref={menuRef}
+                      navItems={navTree}
+                      utilityItems={utilityItems}
+                      activeNode={activeNode}
+                      setActiveNode={setActiveNode}
+                      menuId={menuId}
+                      isMenuOpen={isMenuOpen}
+                      isIntermediateNav={isIntermediateNav}
+                      history={history}
+                      pushHistory={pushHistory}
+                      popHistory={popHistory}
+                      texts={texts}
+                    />
+                  )}
               </li>
             ))}
-            {hasSearch &&
+            {hasSearch && (
               <li className="bsds-nav-item bsds-nav-item-search">
                 <Button
                   variant="subtle"
@@ -328,18 +338,17 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
                   aria-expanded={isSearchOpen}
                   onClick={toggleSearch}
                 >
-                  <span className="bsds-nav-link-search-text">
-                    {texts?.searchToggleText || 'Search'}
-                  </span>
+                  <span className="bsds-nav-link-search-text">{texts?.searchToggleText || 'Search'}</span>
                 </Button>
                 <NavPrimarySearch
                   texts={texts}
                   isOpen={isSearchOpen}
                   searchResults={searchResults}
                   onSearchChange={onSearchChange}
-                  onSearch={onSearch} />
+                  onSearch={onSearch}
+                />
               </li>
-            }
+            )}
             <li className="bsds-nav-item bsds-nav-item-toggle">
               <Button
                 variant="subtle"
@@ -353,7 +362,7 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
             </li>
           </ul>
         </div>
-        {(navTree.length > 0 && (isViewportSmall || !isNavTouched)) &&
+        {navTree.length > 0 && (isViewportSmall || !isNavTouched) && (
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}
@@ -366,11 +375,12 @@ const NavPrimary = ({ logo, texts, utilityItems, navItems, hasSearch = true, isC
             history={history}
             pushHistory={pushHistory}
             popHistory={popHistory}
-            texts={texts} />
-        }
+            texts={texts}
+          />
+        )}
       </nav>
     </header>
   );
-}
+};
 
 export default NavPrimary;

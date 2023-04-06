@@ -7,6 +7,6 @@ const DefaultStyle = (): JSX.Element => {
       <Link href="docs-demo-link">Default link</Link>
     </Example>
   );
-}
+};
 
 export default DefaultStyle;

@@ -7,8 +7,8 @@ import Example from '../../../shared/components/Example';
 const logo = {
   src: logoBSC,
   alt: 'Boston Scientific logo',
-  to: '/'
-}
+  to: '/',
+};
 
 const ConstrainedNavPrimary = (): JSX.Element => {
   return (
@@ -16,6 +16,6 @@ const ConstrainedNavPrimary = (): JSX.Element => {
       <NavPrimary logo={logo} navItems={intermediateData} utilityItems={utilityData} isConstrained />
     </Example>
   );
-}
+};
 
 export default ConstrainedNavPrimary;

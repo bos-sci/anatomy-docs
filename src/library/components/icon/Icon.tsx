@@ -4,22 +4,16 @@ import './Icon.scss';
 
 interface Props {
   name: string;
-  size?: 'sm'
-    | 'md'
-    | 'lg'
-    | '2x'
-    | '3x'
-    | '4x'
-    | 'base';
+  size?: 'sm' | 'md' | 'lg' | '2x' | '3x' | '4x' | 'base';
   className?: string;
 }
 
 const Fallback = () => {
-  return <></>
-}
+  return <></>;
+};
 
 const Icon = (props: Props): JSX.Element => {
-  const {name, size, className = ''} = props;
+  const { name, size, className = '' } = props;
   const [sizeClass, setSizeClass] = useState('');
   const [icon, setIcon] = useState<ReactElement>(<></>);
 
@@ -81,7 +75,7 @@ const Icon = (props: Props): JSX.Element => {
         const IconChevronDown = lazy(() => import('./icons/IconChevronDown'));
         setIcon(
           <Suspense fallback={<Fallback />}>
-           <IconChevronDown className={sizeClass + ' ' + className} />
+            <IconChevronDown className={sizeClass + ' ' + className} />
           </Suspense>
         );
         break;
@@ -98,7 +92,7 @@ const Icon = (props: Props): JSX.Element => {
         const IconCardDemo = lazy(() => import('./icons/IconCardDemo'));
         setIcon(
           <Suspense fallback={<Fallback />}>
-            <IconCardDemo className={className}/>
+            <IconCardDemo className={className} />
           </Suspense>
         );
         break;
@@ -109,6 +103,6 @@ const Icon = (props: Props): JSX.Element => {
   }, [className, name, sizeClass]);
 
   return <>{icon}</>;
-}
+};
 
 export default Icon;

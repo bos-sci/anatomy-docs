@@ -14,6 +14,6 @@ const FoundationsRouter = (): JSX.Element => {
   } else if (!params.group && idLookup.foundations[params.foundationName!].group) {
     return <NotFound />;
   } else return <Foundations />;
-}
+};
 
 export default FoundationsRouter;

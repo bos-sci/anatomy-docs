@@ -10,10 +10,9 @@ interface Props {
 }
 
 const Tab = ({ tabName, setSelectedTab, index, isActive, tabPanelId, tabRef }: Props): JSX.Element => {
-
   const onClick = useCallback(() => {
-    setSelectedTab(index)
-  }, [setSelectedTab, index])
+    setSelectedTab(index);
+  }, [setSelectedTab, index]);
 
   return (
     <button
@@ -26,9 +25,9 @@ const Tab = ({ tabName, setSelectedTab, index, isActive, tabPanelId, tabRef }: P
       onClick={onClick}
       tabIndex={isActive ? 0 : -1}
     >
-      { tabName }
+      {tabName}
     </button>
-  )
-}
+  );
+};
 
 export default Tab;

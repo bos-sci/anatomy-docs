@@ -5,20 +5,20 @@ import { releaseDate } from '../../utils/release-date';
 
 export const slugify = (text: string): string => {
   return text
-  .toString()
-  .toLowerCase()
-  .replace(/\s+/g, "-")
-  .replace(/[^\w-]+/g, "")
-  .replace(/--+/g, "-")
-  .replace(/^-+/, "")
-  .replace(/-+$/, "");
-}
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
+};
 
 export const toCamelCase = (text: string): string => {
   return slugify(text).replace(/-([a-z])/g, (letter, index) => {
     return index === 0 ? letter[1].toLowerCase() : letter[1].toUpperCase();
   });
-}
+};
 
 // Index search
 const searchClient = algoliasearch(process.env.REACT_APP_ALGOLIA_ID!, process.env.REACT_APP_ALGOLIA_KEY!);
@@ -26,7 +26,7 @@ const index = searchClient.initIndex(process.env.REACT_APP_ALGOLIA_INDEX!);
 
 type Result = SearchResult & {
   description?: string;
-}
+};
 
 //Block search analytics by team IP
 const teamIPs = [
@@ -40,46 +40,46 @@ const teamIPs = [
   '192.168.1.6',
   '146.115.148.218',
   '75.31.18.108',
-  '96.237.59.87'
+  '96.237.59.87',
 ];
 
 export const indexSearch = async (query: string) => {
-
   const getIP = async () => {
-    const res = await axios.get('https://geolocation-db.com/json/')
-    return (res.data.IPv4);
-  }
+    const res = await axios.get('https://geolocation-db.com/json/');
+    return res.data.IPv4;
+  };
 
   const ip = await getIP();
 
   const results = new Promise<Result[]>((resolve, reject) => {
     if (query) {
-      index.search(query, {analytics: !teamIPs.includes(ip)}).then(({hits}) => {
-        resolve(hits
-          .filter((hit: any) => hit.title !== 'Anatomy - Boston Scientific')
-          .filter((hit: any) => !hit.pathname.includes('/example/'))
-          .map((hit: any) => ({
+      index.search(query, { analytics: !teamIPs.includes(ip) }).then(({ hits }) => {
+        resolve(
+          hits
+            .filter((hit: any) => hit.title !== 'Anatomy - Boston Scientific')
+            .filter((hit: any) => !hit.pathname.includes('/example/'))
+            .map((hit: any) => ({
               to: hit.pathname,
               text: hit.title.replace(' - Anatomy - Boston Scientific', ''),
-              description: hit.description
-            })));
-        }
-      );
+              description: hit.description,
+            }))
+        );
+      });
     }
   });
 
   return results;
-}
+};
 
 // Stores data in local storage with option to add a TTL. TTL can either be "release" or a number (in days). Setting
 // to release will have the data expire when a new release is pushed.
 export const setStorage = (key: string, value: string, ttl: 'release' | number) => {
   const data = {
     value: value,
-    ttl: ttl === 'release' ? releaseDate : Date.now() + (ttl * 8.64e7) // 8.64e7 is the number of ms in a day
-  }
+    ttl: ttl === 'release' ? releaseDate : Date.now() + ttl * 8.64e7, // 8.64e7 is the number of ms in a day
+  };
   localStorage.setItem(key, JSON.stringify(data));
-}
+};
 
 export const getStorage = (key: string) => {
   const raw = localStorage.getItem(key);
@@ -100,4 +100,4 @@ export const getStorage = (key: string) => {
     }
     return data;
   }
-}
+};

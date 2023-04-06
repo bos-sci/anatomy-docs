@@ -7,25 +7,30 @@ interface Props {
   ariaLabel?: string;
 }
 
-const NavUtility = ({utilityItems, ariaLabel}: Props): JSX.Element => {
+const NavUtility = ({ utilityItems, ariaLabel }: Props): JSX.Element => {
   return (
     <nav className="bsds-nav-utility" aria-label={ariaLabel || 'Utility'}>
       <ul className="bsds-nav">
-        {utilityItems.map((utilityItem, i) =>
+        {utilityItems.map((utilityItem, i) => (
           <li key={'utilityItem' + i} className="bsds-nav-item">
-            {utilityItem.children ?
+            {utilityItem.children ? (
               <Dropdown triggerText={utilityItem.text} className="bsds-nav-link" menuPosition="bottom-end">
                 {utilityItem.children.map((child, childI) => (
-                  <Link key={child.text + childI} href={child.href} to={child.slug}>{child.text}</Link>
+                  <Link key={child.text + childI} href={child.href} to={child.slug}>
+                    {child.text}
+                  </Link>
                 ))}
               </Dropdown>
-              : <Link to={utilityItem.slug} href={utilityItem.href} className="bsds-nav-link">{utilityItem.text}</Link>
-            }
+            ) : (
+              <Link to={utilityItem.slug} href={utilityItem.href} className="bsds-nav-link">
+                {utilityItem.text}
+              </Link>
+            )}
           </li>
-        )}
+        ))}
       </ul>
     </nav>
   );
-}
+};
 
 export default NavUtility;

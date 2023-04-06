@@ -1,165 +1,194 @@
-import { ReactElement, cloneElement, useState, useEffect, useId } from "react";
-import HeadingElement from "./Heading";
-import { Props as ImageProps } from "./Image";
-import { Props as TagProps } from "./Tag";
-import Link from "./Link";
-import Icon from "./icon/Icon";
+import { ReactElement, cloneElement, useState, useEffect, useId } from 'react';
+import HeadingElement from './Heading';
+import { Props as ImageProps } from './Image';
+import { Props as TagProps } from './Tag';
+import Link from './Link';
+import Icon from './icon/Icon';
 
 interface PlainCardProps {
   texts: {
-    cardTitle: string,
-    cardDescription: string,
-  }
-  variant?: string,
-  headingLevel: "h2" | "h3" | "h4" | "h5" | "h6",
-  tag?: ReactElement< TagProps >,
-  image?: ReactElement< ImageProps >,
-  icon?: boolean,
-  iconName?: string,
+    cardTitle: string;
+    cardDescription: string;
+  };
+  variant?: string;
+  headingLevel: 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  tag?: ReactElement<TagProps>;
+  image?: ReactElement<ImageProps>;
+  icon?: boolean;
+  iconName?: string;
 }
 
 type LinkedCardProps =
   | {
-    linkTitle?: boolean,
-    linkHref?: string,
-    actionLink?: never,
-    actionLinkText?: never
-  }
+      linkTitle?: boolean;
+      linkHref?: string;
+      actionLink?: never;
+      actionLinkText?: never;
+    }
   | {
-    linkTitle?: never,
-    linkHref: string,
-    actionLink: boolean,
-    actionLinkText: string
-  }
+      linkTitle?: never;
+      linkHref: string;
+      actionLink: boolean;
+      actionLinkText: string;
+    };
 
 type HoverProps =
   | {
-    gradientBrand?: boolean,
-    dropShadow?: never
-  }
+      gradientBrand?: boolean;
+      dropShadow?: never;
+    }
   | {
-    gradientBrand?: never,
-    dropShadow?: boolean
-  }
+      gradientBrand?: never;
+      dropShadow?: boolean;
+    };
 
 type BaseProps = PlainCardProps & LinkedCardProps;
 export type Props = BaseProps & HoverProps;
 
-const ContentCard = (props : Props): JSX.Element => {
-  const {texts, variant, headingLevel, tag, image, icon, iconName, linkTitle, linkHref, actionLink, actionLinkText, gradientBrand, dropShadow } = props;
+const ContentCard = (props: Props): JSX.Element => {
+  const {
+    texts,
+    variant,
+    headingLevel,
+    tag,
+    image,
+    icon,
+    iconName,
+    linkTitle,
+    linkHref,
+    actionLink,
+    actionLinkText,
+    gradientBrand,
+    dropShadow,
+  } = props;
 
   const cardTitleId = useId();
 
   let cardStyles = {
-    classes: "",
-    titleLinkClasses: "",
-    linkClasses: ""
-  }
+    classes: '',
+    titleLinkClasses: '',
+    linkClasses: '',
+  };
 
   const defaultStyle = {
-    classes: "bsds-card",
-    titleLinkClasses: "bsds-link-subtle",
-    linkClasses: ""
-  }
+    classes: 'bsds-card',
+    titleLinkClasses: 'bsds-link-subtle',
+    linkClasses: '',
+  };
 
   const ghostStyle = {
-    classes: "bsds-card-ghost",
-    titleLinkClasses: "bsds-link-ghost",
-    linkClasses: "bsds-link-ghost"
-  }
+    classes: 'bsds-card-ghost',
+    titleLinkClasses: 'bsds-link-ghost',
+    linkClasses: 'bsds-link-ghost',
+  };
 
   const borderLightStyle = {
-    classes: "bsds-card-border-light",
-    titleLinkClasses: "bsds-link-subtle",
-    linkClasses: ""
-  }
+    classes: 'bsds-card-border-light',
+    titleLinkClasses: 'bsds-link-subtle',
+    linkClasses: '',
+  };
 
   const borderGhostStyle = {
-    classes: "bsds-card-border-ghost",
-    titleLinkClasses: "bsds-link-ghost",
-    linkClasses: "bsds-link-ghost"
-  }
+    classes: 'bsds-card-border-ghost',
+    titleLinkClasses: 'bsds-link-ghost',
+    linkClasses: 'bsds-link-ghost',
+  };
 
-  switch(variant) {
-    case "ghost":
-      cardStyles = {...ghostStyle};
+  switch (variant) {
+    case 'ghost':
+      cardStyles = { ...ghostStyle };
       break;
-    case "border-light":
-      cardStyles = {...borderLightStyle};
+    case 'border-light':
+      cardStyles = { ...borderLightStyle };
       break;
-    case "border-ghost":
-      cardStyles = {...borderGhostStyle};
+    case 'border-ghost':
+      cardStyles = { ...borderGhostStyle };
       break;
 
     default:
-      cardStyles = {...defaultStyle};
+      cardStyles = { ...defaultStyle };
       break;
   }
 
-  let decorativeState = "";
-  if (gradientBrand && variant?.includes("ghost")) {
-    decorativeState = "bsds-card-gradient";
-    cardStyles = {...borderGhostStyle};
+  let decorativeState = '';
+  if (gradientBrand && variant?.includes('ghost')) {
+    decorativeState = 'bsds-card-gradient';
+    cardStyles = { ...borderGhostStyle };
   } else if (gradientBrand) {
-    decorativeState = "bsds-card-gradient";
-    cardStyles = {...borderLightStyle};
-  } else if (dropShadow && variant?.includes("ghost")) {
-    decorativeState = "bsds-card-shadow";
-    cardStyles = {...borderGhostStyle};
+    decorativeState = 'bsds-card-gradient';
+    cardStyles = { ...borderLightStyle };
+  } else if (dropShadow && variant?.includes('ghost')) {
+    decorativeState = 'bsds-card-shadow';
+    cardStyles = { ...borderGhostStyle };
   } else if (dropShadow) {
-    decorativeState = "bsds-card-shadow";
-    cardStyles = {...borderLightStyle};
+    decorativeState = 'bsds-card-shadow';
+    cardStyles = { ...borderLightStyle };
   }
 
   const [clonedImage, setClonedImage] = useState<ReactElement>();
   const [clonedTag, setClonedTag] = useState<ReactElement>();
 
   useEffect(() => {
-    if(image) {
-      setClonedImage(cloneElement(image as ReactElement, {
-        isGhost: (variant === "ghost" || variant === "border-ghost")
-     }));
+    if (image) {
+      setClonedImage(
+        cloneElement(image as ReactElement, {
+          isGhost: variant === 'ghost' || variant === 'border-ghost',
+        })
+      );
     }
-  },[image, variant])
+  }, [image, variant]);
 
   useEffect(() => {
-    if(tag) {
-      setClonedTag(cloneElement(tag as ReactElement, {
-        isGhost: (variant === "ghost" || variant === "border-ghost"),
-      }));
+    if (tag) {
+      setClonedTag(
+        cloneElement(tag as ReactElement, {
+          isGhost: variant === 'ghost' || variant === 'border-ghost',
+        })
+      );
     }
-  }, [tag, variant])
+  }, [tag, variant]);
 
   const cardContent = (
     <div className="bsds-card-content">
-      { clonedTag }
-      { icon && <Icon name={`${iconName}`} className="bsds-icon-8x"/> }
-      <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={"cardTitle" + cardTitleId}>
-        { linkTitle ? <Link href={linkHref} className={`${cardStyles.titleLinkClasses} ${"link-hitbox"}`}>
-          {texts.cardTitle}
-        </Link> : <>{texts.cardTitle}</> }
+      {clonedTag}
+      {icon && <Icon name={`${iconName}`} className="bsds-icon-8x" />}
+      <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={'cardTitle' + cardTitleId}>
+        {linkTitle ? (
+          <Link href={linkHref} className={`${cardStyles.titleLinkClasses} ${'link-hitbox'}`}>
+            {texts.cardTitle}
+          </Link>
+        ) : (
+          <>{texts.cardTitle}</>
+        )}
       </HeadingElement>
       <p className="bsds-card-description">{texts?.cardDescription}</p>
-      { actionLink && <Link href={linkHref} className={`${cardStyles.linkClasses}`}>
-        {actionLinkText}
-      </Link> }
+      {actionLink && (
+        <Link href={linkHref} className={`${cardStyles.linkClasses}`}>
+          {actionLinkText}
+        </Link>
+      )}
     </div>
   );
 
   const cardContentWrapper = (
-    <div className={decorativeState && actionLink ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes} data-testid="bsdsCard">
+    <div
+      className={decorativeState && actionLink ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes}
+      data-testid="bsdsCard"
+    >
       {cardContent}
     </div>
   );
 
   if (clonedImage) {
-    return <div className="bsds-card-with-image">
-      { clonedImage }
-      { cardContentWrapper }
-    </div>
+    return (
+      <div className="bsds-card-with-image">
+        {clonedImage}
+        {cardContentWrapper}
+      </div>
+    );
   }
 
   return cardContentWrapper;
-}
+};
 
 export default ContentCard;

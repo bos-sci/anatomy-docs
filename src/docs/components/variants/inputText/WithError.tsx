@@ -3,7 +3,6 @@ import InputText from '../../../../library/components/InputText';
 import Example from '../../../shared/components/Example';
 
 const WithError = (): JSX.Element => {
-
   const errorMessage = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(errorMessage);
 
@@ -13,15 +12,21 @@ const WithError = (): JSX.Element => {
     } else {
       setErrorText('');
     }
-  }
+  };
 
   return (
     <Example>
       <div className="bsds-form-control">
-        <InputText label="Text input" errorText={errorText} onChange={handleChange} defaultValue="Invalid value" forceValidation />
+        <InputText
+          label="Text input"
+          errorText={errorText}
+          onChange={handleChange}
+          defaultValue="Invalid value"
+          forceValidation
+        />
       </div>
     </Example>
   );
-}
+};
 
 export default WithError;

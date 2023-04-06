@@ -1,10 +1,5 @@
 import { useState, useEffect, createContext, Suspense, useCallback, lazy } from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { slugify } from './shared/helpers';
 import { useGetCollectionsQuery } from './shared/types/contentful';
 import { IdLookup, IdLookupEntry } from './shared/types/docs';
@@ -23,7 +18,7 @@ interface Collection {
   items: {
     sys: {
       id: string;
-    }
+    };
     name: string;
     group?: string;
     leadParagraph?: string;
@@ -35,7 +30,7 @@ const initialIdLookup: IdLookup = {
   components: {},
   codeStandards: {},
   foundations: {},
-  resources: {}
+  resources: {},
 };
 
 export const IdLookupContext = createContext<IdLookup>(initialIdLookup);
@@ -43,10 +38,10 @@ export const IdLookupContext = createContext<IdLookup>(initialIdLookup);
 const App = (): JSX.Element => {
   const [idLookup, setIdLookup] = useState<IdLookup>({} as IdLookup);
   const [isLookupReady, setIsLookupReady] = useState(false);
-  const {data, error} = useGetCollectionsQuery({
+  const { data, error } = useGetCollectionsQuery({
     variables: {
-      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
-    }
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
+    },
   });
 
   if (error) {
@@ -54,13 +49,14 @@ const App = (): JSX.Element => {
   }
 
   const createLookup = useCallback((collection: Collection, destination: IdLookupEntry) => {
-    collection.items.forEach((item) => (
-      destination[slugify(item?.name as string)] = {
-        id: item?.sys.id,
-        name: item?.name,
-        group: item?.group ? slugify(item.group) : null,
-        leadParagraph: item?.leadParagraph
-      })
+    collection.items.forEach(
+      (item) =>
+        (destination[slugify(item?.name as string)] = {
+          id: item?.sys.id,
+          name: item?.name,
+          group: item?.group ? slugify(item.group) : null,
+          leadParagraph: item?.leadParagraph,
+        })
     );
   }, []);
 
@@ -81,58 +77,64 @@ const App = (): JSX.Element => {
   return (
     <Router>
       <IdLookupContext.Provider value={idLookup}>
-        {isLookupReady &&
-          <Suspense fallback={<main id="mainContent"><p>Loading...</p></main>}>
+        {isLookupReady && (
+          <Suspense
+            fallback={
+              <main id="mainContent">
+                <p>Loading...</p>
+              </main>
+            }
+          >
             <Routes>
               <Route path="/" element={<Home />} />
 
               <Route path="components">
-                <Route path='' element={<LandingPage heading="Components" collection="components" />} />
-                <Route path=':componentName'>
-                  <Route path='' element={<ComponentsRouter />} />
-                  <Route path='example/:example' element={<ComponentsRouter isExternal />} />
+                <Route path="" element={<LandingPage heading="Components" collection="components" />} />
+                <Route path=":componentName">
+                  <Route path="" element={<ComponentsRouter />} />
+                  <Route path="example/:example" element={<ComponentsRouter isExternal />} />
                 </Route>
 
-                <Route path=':group'>
-                  <Route path=':componentName'>
-                    <Route path='' element={<ComponentsRouter />} />
-                    <Route path='example/:example' element={ <ComponentsRouter isExternal />} />
+                <Route path=":group">
+                  <Route path=":componentName">
+                    <Route path="" element={<ComponentsRouter />} />
+                    <Route path="example/:example" element={<ComponentsRouter isExternal />} />
                   </Route>
                 </Route>
               </Route>
 
               <Route path="code-standards">
-                <Route path='' element={<LandingPage heading="Code standards" collection="codeStandards" />} />
-                <Route path=':standardName' element={<CodeStandardsRouter />} />
+                <Route path="" element={<LandingPage heading="Code standards" collection="codeStandards" />} />
+                <Route path=":standardName" element={<CodeStandardsRouter />} />
               </Route>
 
               <Route path="content">
-                <Route path='' element={<LandingPage heading="Content" collection="contentGuidelines" />} />
-                <Route path=':contentName' element={<ContentGuidelinesRouter />} />
+                <Route path="" element={<LandingPage heading="Content" collection="contentGuidelines" />} />
+                <Route path=":contentName" element={<ContentGuidelinesRouter />} />
               </Route>
 
               <Route path="foundations">
-                <Route path='' element={<LandingPage heading="Foundations" collection="foundations" />} />
-                <Route path=':foundationName' element={<FoundationsRouter />} />
-                <Route path=':group/:foundationName' element={<FoundationsRouter />} />
+                <Route path="" element={<LandingPage heading="Foundations" collection="foundations" />} />
+                <Route path=":foundationName" element={<FoundationsRouter />} />
+                <Route path=":group/:foundationName" element={<FoundationsRouter />} />
               </Route>
 
               <Route path="resources">
-                <Route path='' element={<LandingPage heading="Resources" collection="resources" />} />
-                <Route path=':resourceName' element={<ResourcesRouter />} />
-                <Route path=':group/:resourceName' element={<ResourcesRouter />} />
+                <Route path="" element={<LandingPage heading="Resources" collection="resources" />} />
+                <Route path=":resourceName" element={<ResourcesRouter />} />
+                <Route path=":group/:resourceName" element={<ResourcesRouter />} />
                 <Route path="developers/code-standards/general" element={<Navigate to="../../code-standards" />} />
               </Route>
 
-              <Route path="search" element={<SearchResults />}/>
+              <Route path="search" element={<SearchResults />} />
 
-              <Route path="*" element={<NotFound />}/>
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
-        }
+        )}
       </IdLookupContext.Provider>
     </Router>
   );
-}
+};
 
 export default App;

@@ -5,15 +5,18 @@ interface Props extends FormHTMLAttributes<HTMLFormElement> {
 }
 
 const Form = ({ children, onInvalid, ...formAttrs }: Props): JSX.Element => {
-
   const handleInvalid = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (onInvalid) {
       onInvalid(e);
     }
-  }
+  };
 
-  return <form className="bsds-form" onInvalid={handleInvalid} {...formAttrs}>{children}</form>;
-}
+  return (
+    <form className="bsds-form" onInvalid={handleInvalid} {...formAttrs}>
+      {children}
+    </form>
+  );
+};
 
 export default Form;

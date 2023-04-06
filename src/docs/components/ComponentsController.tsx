@@ -16,15 +16,17 @@ const ComponentsController = (props: Props): JSX.Element => {
   const params = useParams();
   const idLookup: IdLookup = useContext(IdLookupContext);
 
-  const [componentData, setComponentData] = useState<GetComponentQuery['component']>({} as GetComponentQuery['component']);
+  const [componentData, setComponentData] = useState<GetComponentQuery['component']>(
+    {} as GetComponentQuery['component']
+  );
 
   const componentFromId = idLookup.components[params.componentName!];
 
-  const {data, error} = useGetComponentQuery({
+  const { data, error } = useGetComponentQuery({
     variables: {
       id: componentFromId.id,
-      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
-    }
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
+    },
   });
 
   if (error) {
@@ -35,8 +37,7 @@ const ComponentsController = (props: Props): JSX.Element => {
     if (data) {
       setComponentData(data.component);
     }
-  }, [data])
-
+  }, [data]);
 
   if (props.isExternal) {
     return (
@@ -51,6 +52,6 @@ const ComponentsController = (props: Props): JSX.Element => {
       <Components />
     </ComponentContext.Provider>
   );
-}
+};
 
 export default ComponentsController;

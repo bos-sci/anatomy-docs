@@ -4,13 +4,12 @@ import InputText from '../../../../library/components/InputText';
 import Example from '../../../shared/components/Example';
 
 const Required = (): JSX.Element => {
-
   const [didSubmit, setDidSubmit] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setDidSubmit(true);
-  }
+  };
 
   return (
     <Example>
@@ -21,6 +20,6 @@ const Required = (): JSX.Element => {
       </Form>
     </Example>
   );
-}
+};
 
 export default Required;

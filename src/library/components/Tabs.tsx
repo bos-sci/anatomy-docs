@@ -7,11 +7,11 @@ import {
   useEffect,
   useRef,
   useState,
-  useId
-} from "react";
+  useId,
+} from 'react';
 import IconChevronLeft from './icon/icons/IconChevronLeft';
 import IconChevronRight from './icon/icons/IconChevronRight';
-import Tab from "./Tab";
+import Tab from './Tab';
 
 type Props = {
   children: ReactElement[] | ReactElement;
@@ -22,7 +22,7 @@ let tabsId = 0;
 
 const Tabs = (props: Props): JSX.Element => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const [tabPanelId, setTabPanelId] = useState("");
+  const [tabPanelId, setTabPanelId] = useState('');
   const [tabPanels, setTabPanels] = useState<ReactElement[]>([]);
   const [tabRefs, setTabRefs] = useState<RefObject<HTMLButtonElement>[]>([]);
   const [hasOverflow, setHasOverflow] = useState(false);
@@ -39,10 +39,13 @@ const Tabs = (props: Props): JSX.Element => {
 
     // Determines the index of the first and last visible tab
     // A tab is deemed visible if 2/3 of it are in the scroll area
-    const tabsVisibility = tabRefs.map(ref => {
-      const rightEdge = ref.current?.offsetLeft! + (ref.current?.clientWidth! * 0.66);
-      const leftEdge = ref.current?.offsetLeft! + (ref.current?.clientWidth! * 0.33);
-      return rightEdge < tabListRef.current?.scrollLeft! + tabListRef.current?.clientWidth! && leftEdge > tabListRef.current?.scrollLeft!;
+    const tabsVisibility = tabRefs.map((ref) => {
+      const rightEdge = ref.current?.offsetLeft! + ref.current?.clientWidth! * 0.66;
+      const leftEdge = ref.current?.offsetLeft! + ref.current?.clientWidth! * 0.33;
+      return (
+        rightEdge < tabListRef.current?.scrollLeft! + tabListRef.current?.clientWidth! &&
+        leftEdge > tabListRef.current?.scrollLeft!
+      );
     });
     setVisibleRange([tabsVisibility.indexOf(true), tabsVisibility.lastIndexOf(true)]);
 
@@ -56,7 +59,7 @@ const Tabs = (props: Props): JSX.Element => {
         setScrollBtnStates([false, false]);
       }
     }
-  }, [tabRefs])
+  }, [tabRefs]);
 
   // Scrolls to the tab "distance" tabs away from the left or right most visible tab
   const scrollTabs = (distance: number) => {
@@ -70,27 +73,27 @@ const Tabs = (props: Props): JSX.Element => {
       newTarget = currentTarget + distance;
     }
 
-    const behavior = window.matchMedia("(prefers-reduced-motion: no-preference)").matches ? 'smooth' : 'auto';
+    const behavior = window.matchMedia('(prefers-reduced-motion: no-preference)').matches ? 'smooth' : 'auto';
     if (newTarget === 0) {
       tabListRef.current?.scrollTo({
         top: 0,
         left: 0,
-        behavior
+        behavior,
       });
     } else if (newTarget === tabRefs.length - 1) {
       tabListRef.current?.scrollTo({
         top: 0,
         left: tabListRef.current.scrollWidth - tabListRef.current.clientWidth,
-        behavior
+        behavior,
       });
     } else {
       tabRefs[newTarget].current?.scrollIntoView({
         behavior,
         block: 'nearest',
-        inline: distance < 0 ? 'start' : 'end'
+        inline: distance < 0 ? 'start' : 'end',
       });
     }
-  }
+  };
 
   const selectTab = (index: number) => {
     const tabRef = tabRefs[index];
@@ -101,7 +104,7 @@ const Tabs = (props: Props): JSX.Element => {
   const keyManager = (e: KeyboardEvent<HTMLDivElement>) => {
     let nextTab = 0;
     switch (e.key) {
-      case "ArrowLeft":
+      case 'ArrowLeft':
         e.preventDefault();
         if (selectedTab === 0) {
           nextTab = tabPanels.length - 1;
@@ -111,7 +114,7 @@ const Tabs = (props: Props): JSX.Element => {
         selectTab(nextTab);
         break;
 
-      case "ArrowRight":
+      case 'ArrowRight':
         e.preventDefault();
         if (selectedTab === tabPanels.length - 1) {
           nextTab = 0;
@@ -121,12 +124,12 @@ const Tabs = (props: Props): JSX.Element => {
         selectTab(nextTab);
         break;
 
-      case "Home":
+      case 'Home':
         e.preventDefault();
         selectTab(0);
         break;
 
-      case "End":
+      case 'End':
         e.preventDefault();
         selectTab(tabPanels.length - 1);
         break;
@@ -138,7 +141,7 @@ const Tabs = (props: Props): JSX.Element => {
 
   useEffect(() => {
     const idNum = ++tabsId;
-    setTabPanelId("tabPanel" + idNum);
+    setTabPanelId('tabPanel' + idNum);
   }, []);
 
   useEffect(() => {
@@ -162,12 +165,14 @@ const Tabs = (props: Props): JSX.Element => {
     window.addEventListener('resize', scrollManager);
     return () => {
       window.removeEventListener('resize', scrollManager);
-    }
+    };
   }, [scrollManager]);
 
   return (
-    <div className={"bsds-tabs" + (hasOverflow ? " has-overflow" : "")}>
-      <p className="bsds-visually-hidden" id={tablistLabelId}>{props.tablistLabel}</p>
+    <div className={'bsds-tabs' + (hasOverflow ? ' has-overflow' : '')}>
+      <p className="bsds-visually-hidden" id={tablistLabelId}>
+        {props.tablistLabel}
+      </p>
       <div className="bsds-tab-controls">
         <div
           ref={tabListRef}
@@ -195,16 +200,18 @@ const Tabs = (props: Props): JSX.Element => {
             disabled={scrollBtnStates[0]}
             tabIndex={-1}
             aria-hidden="true"
-            onClick={() => scrollTabs(-1)}>
-              <IconChevronLeft className="bsds-icon-2x" />
+            onClick={() => scrollTabs(-1)}
+          >
+            <IconChevronLeft className="bsds-icon-2x" />
           </button>
           <button
             className="bsds-tab-overflow-control"
             disabled={scrollBtnStates[1]}
             tabIndex={-1}
             aria-hidden="true"
-            onClick={() => scrollTabs(1)}>
-              <IconChevronRight className="bsds-icon-2x" />
+            onClick={() => scrollTabs(1)}
+          >
+            <IconChevronRight className="bsds-icon-2x" />
           </button>
         </div>
       </div>

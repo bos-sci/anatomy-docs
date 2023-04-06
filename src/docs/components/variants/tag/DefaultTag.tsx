@@ -7,6 +7,6 @@ const DefaultTag = (): JSX.Element => {
       <Tag>Default tag</Tag>
     </Example>
   );
-}
+};
 
 export default DefaultTag;

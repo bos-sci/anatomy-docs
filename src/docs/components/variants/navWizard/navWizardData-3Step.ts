@@ -14,41 +14,41 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: '.'
+            slug: '.',
           },
           {
             text: 'Page 2',
-            slug: 'docs-demo-link'
+            slug: 'docs-demo-link',
           },
           {
             text: 'Page 3',
-            slug: 'docs-demo-link'
+            slug: 'docs-demo-link',
           },
           {
             text: 'Page 4',
-            slug: 'docs-demo-link'
+            slug: 'docs-demo-link',
           },
           {
             text: 'Page 5',
-            slug: 'docs-demo-link'
+            slug: 'docs-demo-link',
           },
           {
             text: 'Page 6',
-            slug: 'docs-demo-link'
+            slug: 'docs-demo-link',
           },
           {
             text: 'Page 7',
-            slug: 'docs-demo-link'
+            slug: 'docs-demo-link',
           },
           {
             text: 'Page 8',
-            slug: 'docs-demo-link'
+            slug: 'docs-demo-link',
           },
           {
             text: 'Page 9',
-            slug: 'docs-demo-link'
-          }
-        ]
+            slug: 'docs-demo-link',
+          },
+        ],
       },
       {
         text: 'Nested page group 2',
@@ -56,11 +56,11 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
-          }
-        ]
-      }
-    ]
+            slug: 'docs-demo-link',
+          },
+        ],
+      },
+    ],
   },
   {
     title: 'Second step title',
@@ -75,9 +75,9 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            href: 'docs-demo-link'
-          }
-        ]
+            href: 'docs-demo-link',
+          },
+        ],
       },
       {
         title: 'Third step title',
@@ -86,9 +86,9 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
-          }
-        ]
+            slug: 'docs-demo-link',
+          },
+        ],
       },
       {
         title: 'Third step title',
@@ -97,11 +97,11 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
-          }
-        ]
-      }
-    ]
+            slug: 'docs-demo-link',
+          },
+        ],
+      },
+    ],
   },
   {
     title: 'Second step title',
@@ -116,25 +116,25 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            slug: 'docs-demo-link',
           },
           {
             text: 'Page 2',
-            slug: 'docs-demo-link'
+            slug: 'docs-demo-link',
           },
           {
             text: 'Page 3',
-            slug: 'docs-demo-link'
+            slug: 'docs-demo-link',
           },
           {
             text: 'Page 4',
-            slug: 'docs-demo-link'
+            slug: 'docs-demo-link',
           },
           {
             text: 'Page 5',
-            slug: 'docs-demo-link'
-          }
-        ]
+            slug: 'docs-demo-link',
+          },
+        ],
       },
       {
         title: 'Third step title',
@@ -143,9 +143,9 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
-          }
-        ]
+            slug: 'docs-demo-link',
+          },
+        ],
       },
       {
         title: 'Third step title',
@@ -154,12 +154,12 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
-          }
-        ]
-      }
-    ]
-  }
-]
+            slug: 'docs-demo-link',
+          },
+        ],
+      },
+    ],
+  },
+];
 
 export default exampleData;

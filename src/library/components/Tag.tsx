@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from "react";
+import { ReactNode, useState, useEffect } from 'react';
 
 export interface Props {
   children: ReactNode;
@@ -6,7 +6,7 @@ export interface Props {
   isGhost?: boolean;
   texts?: {
     featuredTag?: string;
-  }
+  };
 }
 
 const Tag = (props: Props): JSX.Element => {
@@ -30,16 +30,14 @@ const Tag = (props: Props): JSX.Element => {
     }
 
     if (props.isGhost) {
-      variantClass ? variantClass += '-ghost' : variantClass += 'ghost';
+      variantClass ? (variantClass += '-ghost') : (variantClass += 'ghost');
     }
 
     setClasses(variantClass);
   }, [props.isGhost, props.variant]);
 
   return (
-    <b className={classes}>
-      {props.variant !== 'featured' ? props.children : props.texts?.featuredTag || 'Featured' }
-    </b>
+    <b className={classes}>{props.variant !== 'featured' ? props.children : props.texts?.featuredTag || 'Featured'}</b>
   );
 };
 

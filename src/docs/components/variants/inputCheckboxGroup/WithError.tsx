@@ -4,21 +4,20 @@ import InputCheckbox from '../../../../library/components/InputCheckbox';
 import Example from '../../../shared/components/Example';
 
 const WithError = (): JSX.Element => {
-
   const errorMessage = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(errorMessage);
   const [checkboxes, setCheckboxes] = useState([
     {
       text: 'Checkbox 1',
-      isChecked: true
+      isChecked: true,
     },
     {
       text: 'Checkbox 2',
-      isChecked: false
+      isChecked: false,
     },
     {
       text: 'Checkbox 3',
-      isChecked: false
+      isChecked: false,
     },
   ]);
 
@@ -26,10 +25,10 @@ const WithError = (): JSX.Element => {
     const updatedCheckboxes = [...checkboxes];
     updatedCheckboxes[index].isChecked = e.target.checked;
     setCheckboxes(updatedCheckboxes);
-  }
+  };
 
   useEffect(() => {
-    if (checkboxes.filter(c => c.isChecked === true).length < 2) {
+    if (checkboxes.filter((c) => c.isChecked === true).length < 2) {
       setErrorText(errorMessage);
     } else {
       setErrorText('');
@@ -45,14 +44,15 @@ const WithError = (): JSX.Element => {
               key={'checkboxListWithError' + i}
               label={checkbox.text}
               aria-describedby="listErrorText"
-              onChange={e => handleChange(e, i)}
+              onChange={(e) => handleChange(e, i)}
               aria-invalid={!!errorText}
-              defaultChecked={checkbox.isChecked} />
+              defaultChecked={checkbox.isChecked}
+            />
           ))}
         </Fieldset>
       </div>
     </Example>
   );
-}
+};
 
 export default WithError;

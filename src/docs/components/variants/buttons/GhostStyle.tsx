@@ -4,7 +4,9 @@ import Example from '../../../shared/components/Example';
 const GhostStyle = (): JSX.Element => {
   return (
     <Example isFlex={true} isDarkTheme={true}>
-      <Button variant="ghost" type="button">Text button</Button>
+      <Button variant="ghost" type="button">
+        Text button
+      </Button>
       <Button variant="ghost" type="button" icon="plus">
         Icon left
       </Button>
@@ -14,6 +16,6 @@ const GhostStyle = (): JSX.Element => {
       <Button variant="ghost" type="button" icon="plus" aria-label="icon button" />
     </Example>
   );
-}
+};
 
 export default GhostStyle;

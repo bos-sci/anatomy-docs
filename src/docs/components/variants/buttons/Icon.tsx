@@ -7,6 +7,6 @@ const Icon = (): JSX.Element => {
       <Button type="button" icon="plus" aria-label="icon button" />
     </Example>
   );
-}
+};
 
 export default Icon;

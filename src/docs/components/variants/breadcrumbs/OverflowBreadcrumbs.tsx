@@ -5,15 +5,15 @@ const OverflowBreadcrumbs = (): JSX.Element => {
   const crumbs: Crumb[] = [
     {
       name: 'Great grandparent page',
-      href: 'docs-demo-link'
+      href: 'docs-demo-link',
     },
     {
       name: 'Grandparent page',
-      href: 'docs-demo-link'
+      href: 'docs-demo-link',
     },
     {
       name: 'Parent page',
-      href: 'docs-demo-link'
+      href: 'docs-demo-link',
     },
   ];
 
@@ -22,6 +22,6 @@ const OverflowBreadcrumbs = (): JSX.Element => {
       <Breadcrumb crumbs={crumbs} currentPage="Current page" />
     </Example>
   );
-}
+};
 
 export default OverflowBreadcrumbs;

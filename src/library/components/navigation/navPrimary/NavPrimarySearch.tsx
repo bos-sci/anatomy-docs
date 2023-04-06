@@ -12,7 +12,6 @@ interface Props {
 }
 
 const NavPrimarySearch = (props: Props): JSX.Element => {
-
   const [searchValue, setSearchValue] = useState('');
 
   const emitChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,13 +19,13 @@ const NavPrimarySearch = (props: Props): JSX.Element => {
     if (props.onSearchChange) {
       props.onSearchChange(e.target.value, e);
     }
-  }
+  };
 
   const emitSearch = (e: FormEvent<HTMLFormElement>) => {
     if (props.onSearch) {
       props.onSearch(searchValue, e);
     }
-  }
+  };
 
   return (
     <div className={'bsds-search-panel' + (props.isOpen ? ' open' : '')}>
@@ -38,14 +37,14 @@ const NavPrimarySearch = (props: Props): JSX.Element => {
           searchAriaLabel: props.texts?.searchAriaLabel,
           searchInputAriaLabel: props.texts?.searchInputAriaLabel,
           searchClearTextAriaLabel: props.texts?.searchClearTextAriaLabel,
-          noResultsFound: props.texts?.searchNoResults
+          noResultsFound: props.texts?.searchNoResults,
         }}
         searchResults={props.searchResults}
-        onChange={e => emitChange(e)}
-        onFormSubmit={e => emitSearch(e)}
+        onChange={(e) => emitChange(e)}
+        onFormSubmit={(e) => emitSearch(e)}
       />
     </div>
   );
-}
+};
 
 export default NavPrimarySearch;

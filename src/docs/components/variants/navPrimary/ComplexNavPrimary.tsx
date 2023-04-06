@@ -7,8 +7,8 @@ import Example from '../../../shared/components/Example';
 const logo = {
   src: logoBSC,
   alt: 'Boston Scientific logo',
-  to: '/'
-}
+  to: '/',
+};
 
 const ComplexNavPrimary = (): JSX.Element => {
   return (
@@ -16,6 +16,6 @@ const ComplexNavPrimary = (): JSX.Element => {
       <NavPrimary logo={logo} navItems={complexData} utilityItems={utilityData} />
     </Example>
   );
-}
+};
 
 export default ComplexNavPrimary;

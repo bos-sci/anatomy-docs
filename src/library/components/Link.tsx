@@ -11,41 +11,56 @@ export interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   isNavLink?: boolean;
 }
 
-const Link = forwardRef(({ variant, href, to, isNavLink, className, children, ...linkAttrs }: Props, ref: ForwardedRef<HTMLAnchorElement>): JSX.Element => {
-
-  let classes = '';
-  switch (variant) {
-    case 'subtle':
-      classes = 'bsds-link-subtle'
-      break;
-    case 'ghost':
-      classes = 'bsds-link-ghost'
-      break;
-    case 'cta':
-      classes = 'bsds-link-cta'
-      break;
-    default:
-      classes = 'bsds-link';
-      break;
-  }
-
-  useEffect(() => {
-    if (href === '#') {
-      console.warn('Do not use invalid href attribute values.')
-    };
-  }, [href]);
-
-  if (to) {
-    if (isNavLink) {
-      return <NavLink ref={ref} to={to} className={`${classes} ${className}`} {...linkAttrs}>{children}</NavLink>;
-    } else {
-      return <RouterLink ref={ref} to={to} className={`${classes} ${className}`} {...linkAttrs}>{children}</RouterLink>;
+const Link = forwardRef(
+  (
+    { variant, href, to, isNavLink, className, children, ...linkAttrs }: Props,
+    ref: ForwardedRef<HTMLAnchorElement>
+  ): JSX.Element => {
+    let classes = '';
+    switch (variant) {
+      case 'subtle':
+        classes = 'bsds-link-subtle';
+        break;
+      case 'ghost':
+        classes = 'bsds-link-ghost';
+        break;
+      case 'cta':
+        classes = 'bsds-link-cta';
+        break;
+      default:
+        classes = 'bsds-link';
+        break;
     }
-  } else {
-    return <a ref={ref} href={href} className={`${classes} ${className}`} {...linkAttrs}>{children}</a>;
-  }
 
-});
+    useEffect(() => {
+      if (href === '#') {
+        console.warn('Do not use invalid href attribute values.');
+      }
+    }, [href]);
+
+    if (to) {
+      if (isNavLink) {
+        return (
+          <NavLink ref={ref} to={to} className={`${classes} ${className}`} {...linkAttrs}>
+            {children}
+          </NavLink>
+        );
+      } else {
+        return (
+          <RouterLink ref={ref} to={to} className={`${classes} ${className}`} {...linkAttrs}>
+            {children}
+          </RouterLink>
+        );
+      }
+    } else {
+      return (
+        <a ref={ref} href={href} className={`${classes} ${className}`} {...linkAttrs}>
+          {children}
+        </a>
+      );
+    }
+  }
+);
 
 Link.displayName = 'Link';
 export default Link;

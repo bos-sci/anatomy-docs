@@ -7,6 +7,6 @@ interface Props {
 
 const TabPanel = ({ children }: Props): JSX.Element => {
   return <>{children}</>;
-}
+};
 
 export default TabPanel;

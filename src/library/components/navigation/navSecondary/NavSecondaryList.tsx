@@ -13,27 +13,45 @@ interface NavListProps {
   openChild: (node: NavNode | null) => any;
 }
 
-const NavSecondaryList = ({ navListId, navItems, parent, activeParent, activeParentRef, setActiveParentRef, openChild }: NavListProps) => {
+const NavSecondaryList = ({
+  navListId,
+  navItems,
+  parent,
+  activeParent,
+  activeParentRef,
+  setActiveParentRef,
+  openChild,
+}: NavListProps) => {
   return (
-    <ul id={navListId} className={`bsds-nav${parent?.text === activeParent?.text ? ' bsds-nav-active-list' : ''}`} role={parent?.text === activeParent?.text ? '' : 'none'}>
+    <ul
+      id={navListId}
+      className={`bsds-nav${parent?.text === activeParent?.text ? ' bsds-nav-active-list' : ''}`}
+      role={parent?.text === activeParent?.text ? '' : 'none'}
+    >
       {navItems.map((navItem, i) => {
         if (navItem.slug) {
           return (
             <li key={`secondaryNavItem${i}`} className="bsds-nav-item">
-              <NavLink
-                to={navItem.slug}
-                className="bsds-nav-link"
-              >
+              <NavLink to={navItem.slug} className="bsds-nav-link">
                 {navItem.text}
               </NavLink>
             </li>
-          )
+          );
         } else {
-          return <NavSecondaryListParent key={`secondaryNavItem${i}`} navItem={navItem} activeParent={activeParent} activeParentRef={activeParentRef} setActiveParentRef={setActiveParentRef} openChild={openChild} />;
+          return (
+            <NavSecondaryListParent
+              key={`secondaryNavItem${i}`}
+              navItem={navItem}
+              activeParent={activeParent}
+              activeParentRef={activeParentRef}
+              setActiveParentRef={setActiveParentRef}
+              openChild={openChild}
+            />
+          );
         }
       })}
     </ul>
   );
-}
+};
 
 export default NavSecondaryList;

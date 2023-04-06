@@ -18,6 +18,6 @@ const ComponentsRouter = (props: Props): JSX.Element => {
   } else if (!params.group && idLookup.components[params.componentName!].group) {
     return <NotFound />;
   } else return <ComponentsController isExternal={props.isExternal} />;
-}
+};
 
 export default ComponentsRouter;

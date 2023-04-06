@@ -16,14 +16,13 @@ interface Props {
 }
 
 const NavPrimaryListParent = (props: Props) => {
-
   const updateHistory = () => {
     if (props.history.length && props.navItem === props.history[props.history.length - 1].node) {
       props.popHistory();
     } else {
       props.pushHistory(props.navItem, props.depth);
     }
-  }
+  };
 
   const isLocationParent = (): boolean => {
     let node = props.activeNode;
@@ -35,30 +34,20 @@ const NavPrimaryListParent = (props: Props) => {
       }
     }
     return false;
-  }
+  };
 
-  const isActive = Array.from(props.history, h => h.node).includes(props.navItem);
+  const isActive = Array.from(props.history, (h) => h.node).includes(props.navItem);
   return (
     <li className="bsds-nav-item-parent">
       <Button
         id={props.navItem.id}
         variant="subtle"
-        className={
-          'bsds-nav-link'
-          + (isActive ? ' active' : '')
-          + (isLocationParent() ? ' current' : '')
-        }
+        className={'bsds-nav-link' + (isActive ? ' active' : '') + (isLocationParent() ? ' current' : '')}
         aria-expanded={isActive}
         onClick={updateHistory}
       >
-        <div className="bsds-nav-link-text">
-          {props.navItem.text}
-        </div>
-        {props.navItem.description &&
-          <div className="bsds-nav-link-description">
-            {props.navItem.description}
-          </div>
-        }
+        <div className="bsds-nav-link-text">{props.navItem.text}</div>
+        {props.navItem.description && <div className="bsds-nav-link-description">{props.navItem.description}</div>}
       </Button>
       <NavPrimaryList
         navItems={props.navItem.children!}
@@ -69,9 +58,10 @@ const NavPrimaryListParent = (props: Props) => {
         setActiveDepth={props.setActiveDepth}
         history={props.history}
         pushHistory={props.pushHistory}
-        popHistory={props.popHistory} />
+        popHistory={props.popHistory}
+      />
     </li>
   );
-}
+};
 
 export default NavPrimaryListParent;

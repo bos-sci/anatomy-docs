@@ -19,16 +19,18 @@ interface Props {
   isExternal?: boolean;
 }
 
-const Preview = ( props: Props ): JSX.Element => {
+const Preview = (props: Props): JSX.Element => {
   const params = useParams();
   const data = useContext(ComponentContext);
 
-  const [componentData, setComponentData] = useState<GetComponentQuery['component']>({} as GetComponentQuery['component']);
+  const [componentData, setComponentData] = useState<GetComponentQuery['component']>(
+    {} as GetComponentQuery['component']
+  );
   const [renderedComponent, setRenderedComponent] = useState<JSX.Element | null>(null);
   const [variant, setVariant] = useState<ComponentModifier | null | undefined>(undefined);
 
   useEffect(() => {
-    if(data) {
+    if (data) {
       setComponentData(data);
     }
   }, [data]);
@@ -36,14 +38,20 @@ const Preview = ( props: Props ): JSX.Element => {
   useEffect(() => {
     let currentVariant: ComponentModifier | null = null;
 
-    currentVariant = componentData?.modifiersCollection?.items.find(variant => variant?.modifierId === params.example) as ComponentModifier;
+    currentVariant = componentData?.modifiersCollection?.items.find(
+      (variant) => variant?.modifierId === params.example
+    ) as ComponentModifier;
 
     if (!currentVariant) {
-      currentVariant = componentData?.stylesCollection?.items.find(variant => variant?.styleId === params.example) as ComponentModifier;
+      currentVariant = componentData?.stylesCollection?.items.find(
+        (variant) => variant?.styleId === params.example
+      ) as ComponentModifier;
     }
 
     if (!currentVariant) {
-      currentVariant = componentData?.statesCollection?.items.find(variant => variant?.stateId === params.example) as ComponentModifier;
+      currentVariant = componentData?.statesCollection?.items.find(
+        (variant) => variant?.stateId === params.example
+      ) as ComponentModifier;
     }
 
     setVariant(currentVariant === undefined ? null : currentVariant);
@@ -59,7 +67,7 @@ const Preview = ( props: Props ): JSX.Element => {
   }
 
   useTitle({
-    titlePrefix: `${title} - Components`
+    titlePrefix: `${title} - Components`,
   });
 
   useEffect(() => {
@@ -70,7 +78,8 @@ const Preview = ( props: Props ): JSX.Element => {
         <Link
           className="docs-demo-link"
           to={`example/${props.variantId ? props.variantId : 'default'}`}
-          target="_blank">
+          target="_blank"
+        >
           See {props.variant?.toLowerCase() || 'example'}
         </Link>
       );
@@ -153,7 +162,7 @@ const Preview = ( props: Props ): JSX.Element => {
 
         case 'product-card':
           const ProductCardController = lazy(() => import('./productCard/_ProductCardController'));
-          setRenderedComponent(<ProductCardController variantId={variantId}/>);
+          setRenderedComponent(<ProductCardController variantId={variantId} />);
           break;
 
         case 'radio-group':
@@ -211,15 +220,17 @@ const Preview = ( props: Props ): JSX.Element => {
     }
   }, [props, params]);
 
-  if ((variant === null && params.example !== 'default') && componentData?.name && props.isExternal && renderedComponent) {
+  if (
+    variant === null &&
+    params.example !== 'default' &&
+    componentData?.name &&
+    props.isExternal &&
+    renderedComponent
+  ) {
     return <NotFound />;
   } else {
-    return (
-      <Suspense fallback={<Fallback />}>
-        {renderedComponent}
-      </Suspense>
-    );
+    return <Suspense fallback={<Fallback />}>{renderedComponent}</Suspense>;
   }
-}
+};
 
 export default Preview;

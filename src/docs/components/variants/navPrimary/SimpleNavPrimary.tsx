@@ -8,7 +8,7 @@ const logo = {
   src: logoBSC,
   alt: 'Boston Scientific logo',
   to: '/',
-}
+};
 
 const SimpleNavPrimary = (): JSX.Element => {
   return (
@@ -16,6 +16,6 @@ const SimpleNavPrimary = (): JSX.Element => {
       <NavPrimary logo={logo} navItems={simpleData} utilityItems={utilityData} />
     </Example>
   );
-}
+};
 
 export default SimpleNavPrimary;

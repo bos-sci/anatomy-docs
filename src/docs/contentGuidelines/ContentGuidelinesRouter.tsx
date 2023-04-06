@@ -12,6 +12,6 @@ const ContentGuidelinesRouter = (): JSX.Element => {
   if (params.contentName && !Object.keys(idLookup.contentGuidelines).includes(params.contentName)) {
     return <NotFound />;
   } else return <ContentGuidelines />;
-}
+};
 
 export default ContentGuidelinesRouter;

@@ -1,6 +1,6 @@
 import { RequireOnlyOne } from '../../../types';
 import NavWizardList from './NavWizardList';
-import './NavWizard.scss'
+import './NavWizard.scss';
 import { RefObject, useEffect, useState, useRef } from 'react';
 import Button from '../../Button';
 
@@ -45,11 +45,10 @@ interface Props {
     wizardNavAriaLabel: string;
     backButtonText?: string;
     backButtonAriaLabel?: string;
-  }
+  };
 }
 
 const NavWizard = (props: Props) => {
-
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [history, setHistory] = useState<HistoryNode[]>([]);
 
@@ -67,25 +66,25 @@ const NavWizard = (props: Props) => {
     newHistory.push({
       node: navItem,
       depth,
-      ref
+      ref,
     });
     setHistory(newHistory);
-  }
+  };
 
   const popHistory = () => {
     const newHistory = [...history];
     newHistory.pop();
     setHistory(newHistory);
-  }
+  };
 
   const focusBackBtn = () => {
     setTimeout(() => backBtnRef.current?.focus(), 0);
-  }
+  };
 
   const backStep = () => {
     popHistory();
     setTimeout(() => history[history.length - 1].ref.current?.focus(), 0);
-  }
+  };
 
   useEffect(() => {
     if (history.length > 0) {
@@ -110,35 +109,47 @@ const NavWizard = (props: Props) => {
           populateParents(node.children as NavNode[], node, ++index);
         }
       });
-    }
+    };
     populateParents(tree);
     setNavTree(tree);
-
   }, [props.navItems]);
 
   return (
     <nav className="bsds-nav-wizard" aria-label={props.texts.wizardNavAriaLabel}>
       <div className="bsds-nav-wizard-header">
-        {history.length > 0 &&
+        {history.length > 0 && (
           <Button
             ref={backBtnRef}
             type="button"
             className="bsds-button-nav-back"
             aria-label={props.texts.backButtonAriaLabel ? props.texts.backButtonAriaLabel : 'Back to previous step'}
-            onClick={backStep}>
+            onClick={backStep}
+          >
             {props.texts.backButtonText ? props.texts.backButtonText : 'Back'}
-          </Button>}
-        {breadcrumb && <p className="bsds-nav-breadcrumb" aria-current="step">{breadcrumb}</p>}
+          </Button>
+        )}
+        {breadcrumb && (
+          <p className="bsds-nav-breadcrumb" aria-current="step">
+            {breadcrumb}
+          </p>
+        )}
         {title && <h2 className="bsds-nav-title">{title}</h2>}
         {description && <p className="bsds-nav-description">{description}</p>}
       </div>
-      {navTree.length > 0 &&
+      {navTree.length > 0 && (
         <div className="bsds-nav-wizard-menu">
-          <NavWizardList navItems={navTree} history={history} pushHistory={pushHistory} popHistory={popHistory} depth={0} focusBackBtn={focusBackBtn} />
+          <NavWizardList
+            navItems={navTree}
+            history={history}
+            pushHistory={pushHistory}
+            popHistory={popHistory}
+            depth={0}
+            focusBackBtn={focusBackBtn}
+          />
         </div>
-      }
+      )}
     </nav>
   );
-}
+};
 
 export default NavWizard;

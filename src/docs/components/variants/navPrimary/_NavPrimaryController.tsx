@@ -13,7 +13,7 @@ const NavPrimaryController = ({ variantId }: VariantProps): JSX.Element => {
     case 'primaryNavigationIntermediate':
       return <IntermediateNavPrimary />;
     case 'primaryNavigationComplex':
-        return <ComplexNavPrimary />;
+      return <ComplexNavPrimary />;
 
     // Styles
     case 'primaryNavigationDefault':
@@ -24,6 +24,6 @@ const NavPrimaryController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <SimpleNavPrimary />;
   }
-}
+};
 
 export default NavPrimaryController;

@@ -22,6 +22,6 @@ const InputRadioController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultInputRadioGroup />;
   }
-}
+};
 
 export default InputRadioController;

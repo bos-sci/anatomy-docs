@@ -19,6 +19,6 @@ const WithError = (): JSX.Element => {
       </Form>
     </Example>
   );
-}
+};
 
 export default WithError;

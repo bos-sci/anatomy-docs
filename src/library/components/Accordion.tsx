@@ -11,12 +11,11 @@ import HeadingElement from './Heading';
 import AccordionHeading from './AccordionHeading';
 
 type Props = {
-  headingLevel: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   children: ReactElement[] | ReactElement;
-}
+};
 
-const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
-
+const Accordion = ({ headingLevel = 'h2', children }: Props): JSX.Element => {
   const accordionId = useId();
 
   const [expandedPanels, setExpandedPanels] = useState(new Set<number>());
@@ -32,7 +31,7 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
     const newPanels = new Set<number>([...expandedPanels]);
     newPanels.has(index) ? newPanels.delete(index) : newPanels.add(index);
     setExpandedPanels(newPanels);
-  }
+  };
 
   useEffect(() => {
     setAccordionPanels(Array.isArray(children) ? children : [children]);
@@ -45,10 +44,10 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
           <HeadingElement
             headingLevel={headingLevel}
             className={
-              "bsds-accordion-heading"
-              + (accordionPanel.props.stoplightColor
-                  ? ` bsds-accordion-stoplight-${accordionPanel.props.stoplightColor}`
-                  : '')
+              'bsds-accordion-heading' +
+              (accordionPanel.props.stoplightColor
+                ? ` bsds-accordion-stoplight-${accordionPanel.props.stoplightColor}`
+                : '')
             }
           >
             <AccordionHeading
@@ -63,18 +62,20 @@ const Accordion = ({ headingLevel = "h2", children }: Props): JSX.Element => {
             ref={panelRefs.current[index]}
             id={accordionId + '-panel' + index}
             className="bsds-accordion-panel"
-            style={expandedPanels.has(index) ? {
-              maxHeight: panelRefs.current[index].current?.scrollHeight
-            } : undefined}
+            style={
+              expandedPanels.has(index)
+                ? {
+                    maxHeight: panelRefs.current[index].current?.scrollHeight,
+                  }
+                : undefined
+            }
           >
-            <div className="bsds-accordion-panel-body">
-              { accordionPanel }
-            </div>
+            <div className="bsds-accordion-panel-body">{accordionPanel}</div>
           </div>
         </Fragment>
       ))}
     </div>
-  )
-}
+  );
+};
 
 export default Accordion;

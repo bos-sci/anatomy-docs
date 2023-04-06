@@ -8,10 +8,12 @@ const AccentStyle = (): JSX.Element => {
         <Tag variant="accent">Accent tag</Tag>
       </Example>
       <Example isDarkTheme={true}>
-        <Tag variant="accent" isGhost>Accent tag</Tag>
+        <Tag variant="accent" isGhost>
+          Accent tag
+        </Tag>
       </Example>
     </>
   );
-}
+};
 
 export default AccentStyle;

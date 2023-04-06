@@ -8,7 +8,7 @@ const DefaultInputRadioGroup = (): JSX.Element => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSelectedRadio(e.target.value);
-  }
+  };
 
   return (
     <Example>
@@ -19,23 +19,26 @@ const DefaultInputRadioGroup = (): JSX.Element => {
             name="groupDefault"
             value="defaultRadio1"
             onChange={handleChange}
-            checked={selectedRadio === 'defaultRadio1'} />
+            checked={selectedRadio === 'defaultRadio1'}
+          />
           <InputRadio
             label="Radio 2"
             name="groupDefault"
             value="defaultRadio2"
             onChange={handleChange}
-            checked={selectedRadio === 'defaultRadio2'} />
+            checked={selectedRadio === 'defaultRadio2'}
+          />
           <InputRadio
             label="Radio 3"
             name="groupDefault"
             value="defaultRadio3"
             onChange={handleChange}
-            checked={selectedRadio === 'defaultRadio3'} />
+            checked={selectedRadio === 'defaultRadio3'}
+          />
         </RadioGroup>
       </div>
     </Example>
   );
-}
+};
 
 export default DefaultInputRadioGroup;

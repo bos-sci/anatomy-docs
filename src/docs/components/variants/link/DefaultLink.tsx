@@ -7,6 +7,6 @@ const DefaultLink = (): JSX.Element => {
       <Link href="docs-demo-link">Link</Link>
     </Example>
   );
-}
+};
 
 export default DefaultLink;

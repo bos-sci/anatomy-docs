@@ -4,7 +4,9 @@ import Example from '../../../shared/components/Example';
 const AssertiveStyle = (): JSX.Element => {
   return (
     <Example isFlex={true}>
-      <Button variant="assertive" type="button">Text button</Button>
+      <Button variant="assertive" type="button">
+        Text button
+      </Button>
       <Button variant="assertive" type="button" icon="plus">
         Icon left
       </Button>
@@ -14,6 +16,6 @@ const AssertiveStyle = (): JSX.Element => {
       <Button variant="assertive" type="button" icon="plus" aria-label="icon button" />
     </Example>
   );
-}
+};
 
 export default AssertiveStyle;

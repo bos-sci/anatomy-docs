@@ -7,8 +7,8 @@ import Example from '../../../shared/components/Example';
 const logo = {
   src: logoBSC,
   alt: 'Boston Scientific logo',
-  to: '/'
-}
+  to: '/',
+};
 
 const IntermediateNavPrimary = (): JSX.Element => {
   return (
@@ -16,6 +16,6 @@ const IntermediateNavPrimary = (): JSX.Element => {
       <NavPrimary logo={logo} navItems={intermediateData} utilityItems={utilityData} />
     </Example>
   );
-}
+};
 
 export default IntermediateNavPrimary;

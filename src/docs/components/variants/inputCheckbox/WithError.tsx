@@ -9,6 +9,6 @@ const WithError = (): JSX.Element => {
       </div>
     </Example>
   );
-}
+};
 
 export default WithError;

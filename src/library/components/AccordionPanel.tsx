@@ -8,6 +8,6 @@ interface Props {
 
 const AccordionPanel = ({ children }: Props): JSX.Element => {
   return <>{children}</>;
-}
+};
 
 export default AccordionPanel;

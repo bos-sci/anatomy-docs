@@ -6,7 +6,7 @@ export const RadioAddonPropsContext = createContext({
   errorText: '',
   isDirty: false,
   setIsDirty: (isDirty: boolean) => {},
-  setFieldsetError: (text: string) => {}
+  setFieldsetError: (text: string) => {},
 });
 
 interface Props extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
@@ -27,7 +27,6 @@ export interface AddonProps {
 let radioGroupId = 0;
 
 const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAttrs }: Props): JSX.Element => {
-
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
   const [validationMessage, setValidationMessage] = useState('');
@@ -41,11 +40,13 @@ const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAtt
       ariaInvalid: isInvalid,
       ariaDescribedby: isInvalid ? errorTextId : '',
       isDirty: areRadiosDirty,
-      setIsDirty: (isDirty: boolean) => { setAreRadiosDirty(isDirty) },
+      setIsDirty: (isDirty: boolean) => {
+        setAreRadiosDirty(isDirty);
+      },
       setFieldsetError: (text) => {
         setValidationMessage(text);
         setIsInvalid(!!text);
-      }
+      },
     });
   }, [isInvalid, errorTextId, errorText, areRadiosDirty]);
 
@@ -56,19 +57,27 @@ const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAtt
   }, []);
 
   return (
-    <fieldset className="bsds-fieldset" aria-describedby={helpTextId ? helpTextId : ''} {...fieldsetAttrs} role="radiogroup" aria-invalid={addonProps.ariaInvalid && addonProps.isDirty}>
-      <legend className="bsds-legend">{ legend }</legend>
-      { validationMessage &&
-        <p id={errorTextId} className="bsds-input-error">{ validationMessage }</p>
-      }
-      { helpText &&
-        <p id={helpTextId} className="bsds-input-help-text">{ helpText }</p>
-      }
-      <RadioAddonPropsContext.Provider value={addonProps}>
-        { children }
-      </RadioAddonPropsContext.Provider>
+    <fieldset
+      className="bsds-fieldset"
+      aria-describedby={helpTextId ? helpTextId : ''}
+      {...fieldsetAttrs}
+      role="radiogroup"
+      aria-invalid={addonProps.ariaInvalid && addonProps.isDirty}
+    >
+      <legend className="bsds-legend">{legend}</legend>
+      {validationMessage && (
+        <p id={errorTextId} className="bsds-input-error">
+          {validationMessage}
+        </p>
+      )}
+      {helpText && (
+        <p id={helpTextId} className="bsds-input-help-text">
+          {helpText}
+        </p>
+      )}
+      <RadioAddonPropsContext.Provider value={addonProps}>{children}</RadioAddonPropsContext.Provider>
     </fieldset>
   );
-}
+};
 
 export default RadioGroup;

@@ -12,6 +12,6 @@ const DefaultTabs = (): JSX.Element => {
       </Tabs>
     </Example>
   );
-}
+};
 
 export default DefaultTabs;

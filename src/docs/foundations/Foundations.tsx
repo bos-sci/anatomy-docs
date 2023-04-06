@@ -17,14 +17,16 @@ const Foundations = (): JSX.Element => {
   const location = useLocation();
   const idLookup: IdLookup = useContext(IdLookupContext);
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
-  const [foundationData, setFoundationData] = useState<GetFoundationQuery['foundation']>({} as GetFoundationQuery['foundation']);
+  const [foundationData, setFoundationData] = useState<GetFoundationQuery['foundation']>(
+    {} as GetFoundationQuery['foundation']
+  );
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
-  const {data, error} = useGetFoundationQuery({
+  const { data, error } = useGetFoundationQuery({
     variables: {
       id: idLookup.foundations[params.foundationName!].id,
-      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
-    }
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
+    },
   });
 
   if (error) {
@@ -32,7 +34,7 @@ const Foundations = (): JSX.Element => {
   }
 
   useEffect(() => {
-    if(data?.foundation) {
+    if (data?.foundation) {
       setFoundationData(data.foundation);
     }
   }, [data]);
@@ -43,45 +45,45 @@ const Foundations = (): JSX.Element => {
     setNavItems([
       {
         text: 'Accessibility',
-        slug: basePath + '/accessibility'
+        slug: basePath + '/accessibility',
       },
       {
         text: 'Anti-patterns',
-        slug: basePath + '/anti-patterns'
+        slug: basePath + '/anti-patterns',
       },
       {
         text: 'Color',
-        slug: basePath + '/color'
+        slug: basePath + '/color',
       },
       {
         text: 'Icons',
         children: [
           {
             text: 'Decorative icons',
-            slug: basePath + '/iconography/decorative-icons'
+            slug: basePath + '/iconography/decorative-icons',
           },
           {
             text: 'System icons',
-            slug: basePath + '/iconography/system-icons'
-          }
-        ]
+            slug: basePath + '/iconography/system-icons',
+          },
+        ],
       },
       {
         text: 'Spacing',
-        slug: basePath + '/spacing'
+        slug: basePath + '/spacing',
       },
       {
         text: 'Typography',
-        slug: basePath + '/typography'
+        slug: basePath + '/typography',
       },
       {
         text: 'Web sustainability',
-        slug: basePath + '/web-sustainability'
+        slug: basePath + '/web-sustainability',
       },
     ]);
   }, [location]);
 
-  useTitle({titlePrefix: `${foundationData?.name} - Foundations`});
+  useTitle({ titlePrefix: `${foundationData?.name} - Foundations` });
   useHashScroll(!!foundationData?.content);
 
   const pageHeadings = useHeadings();
@@ -101,12 +103,18 @@ const Foundations = (): JSX.Element => {
           seoMetaDescription={foundationData?.pageProperties?.seoMetaDescription || ''}
           navSecondaryMenuTrigger="Foundations"
           navSecondaryItems={navItems}
-          navTertiaryItems={headings}>
+          navTertiaryItems={headings}
+        >
           <Markdown markdown={foundationData?.content || ''} headingOffset={1} />
         </PageTemplate>
       </Layout>
     );
-  } else return <Layout><main id="mainContent">Loading...</main></Layout>;
-}
+  } else
+    return (
+      <Layout>
+        <main id="mainContent">Loading...</main>
+      </Layout>
+    );
+};
 
 export default Foundations;
