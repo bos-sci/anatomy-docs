@@ -1,43 +1,18 @@
 $checkbox-size: $ffs-body-assertive;
 $checkmark-size: $ffs-body-assertive;
 
-.bsds-fieldset[aria-invalid='true'] .bsds-input-checkbox-input,
-.bsds-input-checkbox-input[aria-invalid='true'] {
-  + .bsds-input-checkbox-label {
-    &::before {
-      border: space(xs) solid $feedback-error-40;
-    }
-  }
-
-  &:checked,
-  &[aria-checked='true'] {
-    + .bsds-input-checkbox-label {
-      &::before {
-        background: $feedback-error-40;
-      }
-    }
-  }
-
-  &:focus,
-  &:focus:checked {
-    + .bsds-input-checkbox-label {
-      &::before {
-        @include focus-invalid;
-      }
-    }
-  }
+.bsds-input-checkbox {
+  display: flex;
 }
 
 .bsds-fieldset {
-  > .bsds-input:not(:first-child) {
-    .bsds-input-checkbox {
-      margin-top: space(2x);
+  > .bsds-input {
+    &:not(:first-child) {
+      .bsds-input-checkbox {
+        margin-top: space(2x);
+      }
     }
   }
-}
-
-.bsds-input-checkbox {
-  display: flex;
 }
 
 .bsds-input-checkbox-input {
@@ -104,15 +79,6 @@ $checkmark-size: $ffs-body-assertive;
     }
   }
 
-  &:focus,
-  &:focus:checked {
-    + .bsds-input-checkbox-label {
-      &::before {
-        @include focus-default;
-      }
-    }
-  }
-
   &:disabled {
     + .bsds-input-checkbox-label {
       cursor: not-allowed;
@@ -124,6 +90,42 @@ $checkmark-size: $ffs-body-assertive;
 
       &::after {
         filter: invert(40%);
+      }
+    }
+  }
+
+  &:focus,
+  &:focus:checked {
+    + .bsds-input-checkbox-label {
+      &::before {
+        @include focus-default;
+      }
+    }
+  }
+}
+
+.bsds-fieldset[aria-invalid='true'] .bsds-input-checkbox-input,
+.bsds-input-checkbox-input[aria-invalid='true'] {
+  + .bsds-input-checkbox-label {
+    &::before {
+      border: space(xs) solid $feedback-error-40;
+    }
+  }
+
+  &:checked,
+  &[aria-checked='true'] {
+    + .bsds-input-checkbox-label {
+      &::before {
+        background: $feedback-error-40;
+      }
+    }
+  }
+
+  &:focus,
+  &:focus:checked {
+    + .bsds-input-checkbox-label {
+      &::before {
+        @include focus-invalid;
       }
     }
   }
