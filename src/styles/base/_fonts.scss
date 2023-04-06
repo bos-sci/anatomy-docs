@@ -1,8 +1,8 @@
 /* stylelint-disable at-rule-allowed-list */
 @font-face {
+  font-family: 'SST-Roman';
   font-style: normal;
   font-weight: 400;
-  font-family: 'SST-Roman';
   font-display: fallback;
   src: url('/assets/fonts/SST-Roman/SST-Roman.eot');
   src: url('/assets/fonts/SST-Roman/SST-Roman.woff2') format('woff2'),
@@ -13,9 +13,9 @@
 }
 
 @font-face {
+  font-family: 'SST-Heavy';
   font-style: normal;
   font-weight: 500 900;
-  font-family: 'SST-Heavy';
   font-display: fallback;
   src: url('/assets/fonts/SST-Heavy/SST-Heavy.eot');
   src: url('/assets/fonts/SST-Heavy/SST-Heavy.woff2') format('woff2'),

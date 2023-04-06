@@ -21,22 +21,24 @@
 .bsds-search-clear {
   position: absolute;
   right: 0;
+  aspect-ratio: 1 / 1;
   height: 100%;
   border: 0;
   padding: space(2x);
   background: transparent;
-  aspect-ratio: 1 / 1;
 
   &:focus {
     @include focus-default-inset;
   }
 
-  &:hover:not(:disabled),
-  &:active:not(:disabled) {
-    background: transparent;
+  &:not(:disabled) {
+    &:hover,
+    &:active {
+      background: transparent;
 
-    &:not(:active) {
-      fill: $action-primary-40;
+      &:not(:active) {
+        fill: $action-primary-40;
+      }
     }
   }
 }

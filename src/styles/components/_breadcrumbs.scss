@@ -2,12 +2,12 @@ $bsds-breadcrumb-divider: url('../../assets/images/icon-slash.svg');
 
 .bsds-breadcrumbs {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  gap: space(sm) space(md);
+  align-items: center;
   margin: 0;
   padding: 0;
   list-style: none;
+  gap: space(sm) space(md);
 }
 
 .bsds-breadcrumb-item {

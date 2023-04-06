@@ -1,6 +1,8 @@
 .bsds-modal {
-  // NOTE: This is a one off size. We can keep an eye out as we build more modal/panel type components to see if this is a dimension we want to flip to a variable.
-  min-width: min(37.5rem, 100vw);
+  min-width: min(
+    37.5rem,
+    100vw
+  ); // NOTE: This is a one off size. We can keep an eye out as we build more modal/panel type components to see if this is a dimension we want to flip to a variable.
   box-shadow: $box-shadow-primary;
   border: 0;
   padding: space(4x);
@@ -13,10 +15,10 @@
 
   .bsds-modal-header {
     display: grid;
-    grid-template-columns: 1fr auto;
     grid-template-areas:
       'logo close'
       'title close';
+    grid-template-columns: 1fr auto;
     align-items: start;
     gap: space(3x);
   }
@@ -29,10 +31,10 @@
   }
 
   .bsds-modal-logo {
+    grid-area: logo;
     width: auto;
     height: space(6x);
     margin-top: 0;
-    grid-area: logo;
 
     + .bsds-modal-title {
       grid-row: span 1;

@@ -33,8 +33,8 @@ code {
 
 .docs-list-flex {
   display: flex;
-  justify-content: space-between;
   flex-flow: column wrap;
+  justify-content: space-between;
   column-gap: space(4x);
 
   .docs-list-flex-item {

@@ -26,19 +26,19 @@ main {
 }
 
 .docs-body {
-  flex: 1;
   display: grid;
+  grid-template-areas: 'nav-secondary' 'main';
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
-  grid-template-areas: 'nav-secondary' 'main';
+  flex: 1;
 
   .bsds-nav-secondary {
     grid-area: nav-secondary;
   }
 
   main {
-    grid-area: main;
     display: grid;
+    grid-area: main;
     grid-template-areas:
       'intro'
       'nav-tertiary'
@@ -53,16 +53,16 @@ main {
 }
 
 .docs-page-header {
+  grid-area: intro;
   width: 100%;
   padding: 0 space(sm);
-  grid-area: intro;
 }
 
 .docs-page-content {
+  grid-area: page-content;
   width: 100%;
   overflow-x: auto;
   padding: 0 space(sm);
-  grid-area: page-content;
 
   /* stylelint-disable-next-line selector-class-pattern */
   > .docs-preview- {
@@ -88,9 +88,9 @@ main {
 }
 
 .docs-body-minimal {
+  flex: 1;
   width: var(--app-width);
   margin: 0 auto;
-  flex: 1;
 
   main {
     padding: space(4x) calc(space(4x) - space(md));
@@ -103,11 +103,11 @@ main {
 
 @media (min-width: $lg) {
   .docs-body {
+    grid-template-areas: 'nav-secondary main';
+    grid-template-columns: 1fr 4fr;
     width: var(--app-width);
     margin-right: auto;
     margin-left: auto;
-    grid-template-columns: 1fr 4fr;
-    grid-template-areas: 'nav-secondary main';
     gap: 0 space(4x) - space(md);
 
     main {

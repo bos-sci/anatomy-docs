@@ -34,7 +34,6 @@
     background: $neutral-95;
     color: $neutral-40;
     @include font-family-base-regular;
-
     cursor: not-allowed;
   }
 }
@@ -66,7 +65,6 @@
 
 @mixin button-default {
   @include button-base;
-
   border-color: $action-primary-40;
   background: $neutral-100;
   color: $action-primary-40;
@@ -77,7 +75,6 @@
 
 @mixin button-subtle {
   @include link-default;
-
   border-color: transparent;
   padding: space(lg) space(3x) 0.6875rem;
   background: transparent;
@@ -93,7 +90,6 @@
 
     &:hover {
       @include link-hover;
-
       color: $neutral-100;
     }
   }
@@ -101,7 +97,6 @@
 
 @mixin button-assertive {
   @include button-base;
-
   border-color: transparent;
   background: $action-primary-40;
   color: $neutral-100;
@@ -116,7 +111,6 @@
 
 @mixin button-ghost {
   @include button-base;
-
   border-color: $neutral-100;
   background: transparent;
   color: $neutral-100;
@@ -137,7 +131,6 @@
     background: transparent;
     color: $neutral-60;
     @include font-family-base-regular;
-
     cursor: not-allowed;
   }
 }
@@ -161,7 +154,6 @@ button {
 @mixin link-default {
   color: $action-primary-40;
   @include font-family-base-heavy;
-
   text-decoration: underline;
 
   &:visited {
@@ -186,7 +178,6 @@ button {
 @mixin link-subtle {
   color: $neutral-00;
   @include font-family-base-heavy;
-
   text-decoration: underline;
 
   &:visited {
@@ -211,7 +202,6 @@ button {
 @mixin link-ghost {
   color: $neutral-100;
   @include font-family-base-heavy;
-
   text-decoration: underline;
 
   &:visited {
@@ -236,7 +226,6 @@ button {
 @mixin link-navigation {
   color: $neutral-00;
   @include font-family-base-regular;
-
   text-decoration: none;
 
   &:visited {

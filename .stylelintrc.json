@@ -47,7 +47,7 @@
       {
         "ignoreShorthands": [
           "font",
-          "grid",
+          "/grid/",
           "transition",
           "animation"
         ]
@@ -64,7 +64,7 @@
       "line-height": []
     },
     "declaration-property-unit-disallowed-list": {
-      "/^border/": [
+      "/^border(-(?!radius)[a-z]+)?$/": [
         "%"
       ]
     },
@@ -148,8 +148,30 @@
       "bottom",
       "left",
       "z-index",
+      "aspect-ratio",
       "display",
+      "grid",
+      "grid-area",
+      "grid-auto-columns",
+      "grid-auto-flow",
+      "grid-auto-rows",
+      "grid-column",
+      "grid-column-end",
+      "grid-column-start",
+      "grid-row",
+      "grid-row-end",
+      "grid-row-start",
+      "grid-template",
+      "grid-template-areas",
+      "grid-template-columns",
+      "grid-template-rows",
+      "flex",
+      "flex-basis",
       "flex-direction",
+      "flex-flow",
+      "flex-grow",
+      "flex-shrink",
+      "flex-wrap",
       "justify-content",
       "justify-items",
       "justify-self",
@@ -234,12 +256,12 @@
       "content",
       "color",
       "font",
+      "font-family",
       "font-style",
       "font-variant",
       "font-weight",
       "font-size",
       "line-height",
-      "font-family",
       "font-display",
       "text-transform",
       "text-align",
@@ -369,14 +391,6 @@
     "scss/at-else-closing-brace-newline-after": "always-last-in-chain",
     "scss/at-else-empty-line-before": "never",
     "scss/at-extend-no-missing-placeholder": null,
-    "scss/at-function-named-arguments": [
-      "always",
-      {
-        "ignore": [
-          "single-argument"
-        ]
-      }
-    ],
     "scss/at-function-parentheses-space-before": "never",
     "scss/at-if-closing-brace-newline-after": "always-last-in-chain",
     "scss/at-if-no-null": true,
@@ -402,7 +416,8 @@
       "always",
       {
         "except": [
-          "before-dollar-variable"
+          "before-dollar-variable",
+          "last-nested"
         ],
         "ignore": [
           "before-comment"

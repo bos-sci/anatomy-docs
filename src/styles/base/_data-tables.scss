@@ -37,8 +37,8 @@ table {
 
     td {
       * {
-        &:first-of-type // NOTE: this is used to remove the top margin from the previews in the type scale table, we may want to rethink eventually
-        {
+        // NOTE: this is used to remove the top margin from the previews in the type scale table, we may want to rethink eventually
+        &:first-of-type {
           margin-top: 0;
         }
       }

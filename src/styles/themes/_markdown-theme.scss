@@ -1,3 +1,4 @@
+/* stylelint-disable */
 // https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css
 // This theme matches the syntax highlighting in VS Code
 
@@ -5,9 +6,9 @@ markdown {
   pre[class*='language-'],
   code[class*='language-'] {
     color: #d4d4d4;
+    font-family: 'Menlo', 'Monaco', 'Consolas', 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
     font-size: 13px;
     line-height: 1.5;
-    font-family: 'Menlo', 'Monaco', 'Consolas', 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
     text-align: left;
     word-break: normal;
     word-spacing: normal;

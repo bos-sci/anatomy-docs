@@ -3,7 +3,6 @@
 
 .carbon-badge {
   @include font-size($fs-body-subtle);
-
   text-align: center;
 
   .carbon-badge-data {
@@ -27,7 +26,6 @@
   .carbon-badge-link {
     padding-top: space(xs) + space(xxs);
     @include font-family-base-heavy;
-
     color: $text-color-primary;
   }
 }

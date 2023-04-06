@@ -4,6 +4,7 @@
 
   &::before {
     display: inline-block;
+    flex-shrink: 0;
     align-self: flex-start;
     width: space(3x);
     height: space(3x);
@@ -11,7 +12,6 @@
     background-repeat: no-repeat;
     background-size: 100%;
     content: '';
-    flex-shrink: 0;
   }
 
   &.bsds-body-subtle {

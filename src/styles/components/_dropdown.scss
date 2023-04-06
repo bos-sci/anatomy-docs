@@ -82,8 +82,10 @@ $icon-size: 1em;
       }
     }
 
-    &[aria-expanded='true']::after {
-      transform: rotate(180deg);
+    &[aria-expanded='true'] {
+      &::after {
+        transform: rotate(180deg);
+      }
     }
   }
 
@@ -108,6 +110,31 @@ $icon-size: 1em;
 
     .bsds-dropdown-item {
       margin-top: 0;
+    }
+
+    .bsds-dropdown-group-name {
+      @include font-family-base-heavy;
+    }
+
+    .bsds-button {
+      &:hover,
+      &:active {
+        color: $neutral-100;
+      }
+
+      &:hover {
+        background: $action-primary-40;
+      }
+
+      &:active {
+        background: $action-primary-20;
+      }
+    }
+
+    .bsds-link {
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     .bsds-button,
@@ -139,10 +166,6 @@ $icon-size: 1em;
       }
     }
 
-    .bsds-dropdown-group-name {
-      @include font-family-base-heavy;
-    }
-
     .bsds-dropdown-item-highlighted {
       border-top: space(xxs) solid $border-color-subtle;
       padding: space(lg) 0;
@@ -151,27 +174,6 @@ $icon-size: 1em;
       .bsds-link {
         color: $action-primary-40;
         @include font-family-base-heavy;
-      }
-    }
-
-    .bsds-button {
-      &:hover,
-      &:active {
-        color: $neutral-100;
-      }
-
-      &:hover {
-        background: $action-primary-40;
-      }
-
-      &:active {
-        background: $action-primary-20;
-      }
-    }
-
-    .bsds-link {
-      &:hover {
-        text-decoration: underline;
       }
     }
   }

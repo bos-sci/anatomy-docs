@@ -7,9 +7,9 @@
   margin-top: space(md);
   border: space(xxs) solid $neutral-40;
   padding: space(lg) space(2x);
+  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  font-family: inherit;
 
   &:focus {
     @include focus-default;

@@ -7,33 +7,6 @@
     background-position: 0 0;
   }
 }
-@keyframes animated-gradient {
-  0% {
-    background-position: 100% 0;
-  }
-
-  100% {
-    background-position: 0 0;
-  }
-}
-@keyframes animated-gradient {
-  0% {
-    background-position: 100% 0;
-  }
-
-  100% {
-    background-position: 0 0;
-  }
-}
-@keyframes animated-gradient {
-  0% {
-    background-position: 100% 0;
-  }
-
-  100% {
-    background-position: 0 0;
-  }
-}
 
 @mixin animated-gradient-brand {
   // NOTE: only approved for use on Teaser hero in hero container and Wizard Nav

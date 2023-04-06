@@ -1,3 +1,6 @@
+/* stylelint-disable scss/selector-nest-combinators */
+// TODO: ads-463 Figure out how to make nesting work for this file
+
 @import '../../../../styles/abstracts/abstracts';
 @import '../../../../styles/base/base';
 @import '../../../../styles/utilities/utilities';
@@ -17,23 +20,6 @@ $nav-search-z-index: 550;
 // Used in nav-menu nav-links
 $nav-link-padding: space(2x) space(3x);
 $menu-padding: space(md) 0;
-
-.bsds-nav-header {
-  border-top-width: space(xs);
-  border-top-style: solid;
-  border-right: 0;
-  border-bottom: 0;
-  border-left: 0;
-  border-image-source: $gradient-brand;
-  border-image-slice: 1;
-
-  &:not(.is-constrained) {
-    .bsds-nav-utility .bsds-nav,
-    .bsds-nav-primary .bsds-nav-bar {
-      padding: 0 space(md);
-    }
-  }
-}
 
 .bsds-nav-utility,
 .bsds-nav-primary,
@@ -90,6 +76,13 @@ $menu-padding: space(md) 0;
           padding: space(md) space(lg);
           padding-right: calc(space(md) + $icon-size-sm + space(lg));
 
+          &::after {
+            right: space(lg);
+            width: $icon-size-sm;
+            height: $icon-size-sm;
+            background-color: $neutral-40;
+          }
+
           &[aria-expanded='true'],
           &:hover,
           &:active {
@@ -100,13 +93,6 @@ $menu-padding: space(md) 0;
             &::after {
               background-color: $text-color-primary;
             }
-          }
-
-          &::after {
-            right: space(lg);
-            width: $icon-size-sm;
-            height: $icon-size-sm;
-            background-color: $neutral-40;
           }
         }
       }
@@ -119,136 +105,6 @@ $menu-padding: space(md) 0;
 .bsds-nav-primary {
   position: relative;
   box-shadow: inset 0 calc(0rem - space(xxs)) $border-color-subtle;
-
-  // Primary Nav Top Bar
-
-  .bsds-nav-bar {
-    position: relative;
-    z-index: $nav-bar-z-index;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-content: center;
-    align-items: stretch;
-    border-bottom: space(xxs) solid $border-color-subtle;
-    background-color: $neutral-100;
-
-    .bsds-nav-link-logo {
-      display: flex;
-      flex-wrap: wrap;
-      margin: auto;
-      padding: space(2x);
-
-      &:focus {
-        @include focus-default-inset;
-      }
-    }
-
-    & > .bsds-nav {
-      justify-content: center;
-
-      & > .bsds-nav-item {
-        margin-top: 0;
-
-        &.bsds-nav-item-root {
-          display: none;
-
-          & > button.bsds-nav-link {
-            padding-right: calc(
-              space(2x) + $icon-size + space(md)
-            ); // Padding + icon width + space between icon and text
-
-            &::after {
-              position: absolute;
-              top: calc(50% - ($icon-size / 2));
-              right: space(2x);
-              width: $icon-size;
-              height: $icon-size;
-              content: url('../../../../assets/images/icon-chevron-down.svg');
-            }
-
-            &[aria-expanded='true'] {
-              &::after {
-                content: url('../../../../assets/images/icon-chevron-up.svg');
-              }
-            }
-          }
-        }
-
-        &.bsds-nav-item-toggle,
-        &.bsds-nav-item-search {
-          .bsds-nav-link {
-            border: 0;
-            padding-right: space(2x);
-            padding-left: calc(
-              space(2x) + $icon-size + space(md)
-            ); // Padding + icon width + space between icon and text
-
-            &::after {
-              position: absolute;
-              top: calc(50% - ($icon-size / 2));
-              left: space(2x);
-              width: $icon-size;
-              height: $icon-size;
-              background-position: center;
-              background-repeat: no-repeat;
-              background-size: cover;
-              content: '';
-            }
-          }
-        }
-
-        &.bsds-nav-item-search {
-          .bsds-nav-link::after,
-          .bsds-nav-link[aria-expanded='true']::after {
-            background-image: url('../../../../assets/images/icon-search.svg');
-            content: '';
-          }
-        }
-
-        &.bsds-nav-item-toggle {
-          .bsds-nav-link {
-            &::after {
-              background-image: url('../../../../assets/images/icon-menu.svg');
-            }
-
-            &[aria-expanded='true']::after {
-              background-image: url('../../../../assets/images/icon-close.svg');
-            }
-          }
-        }
-
-        & > .bsds-nav-link {
-          position: relative;
-          border: 0;
-          padding: space(3x) space(2x);
-
-          &.current,
-          &:active,
-          &:hover,
-          &[aria-expanded='true'] {
-            background: initial;
-            text-decoration: none;
-
-            &::before {
-              position: absolute;
-              right: space(2x);
-              bottom: 0;
-              left: space(2x);
-              border-bottom: space(sm) solid $border-color-primary;
-              content: '';
-            }
-          }
-
-          &.current {
-            @include font-family-base-heavy;
-          }
-        }
-      }
-    }
-  }
-
-  // Primary Nav Menu
 
   .bsds-nav-menu {
     position: absolute;
@@ -280,6 +136,142 @@ $menu-padding: space(md) 0;
       @include link-navigation;
     }
   }
+
+  // Primary Nav Top Bar
+
+  .bsds-nav-bar {
+    position: relative;
+    z-index: $nav-bar-z-index;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    align-items: stretch;
+    border-bottom: space(xxs) solid $border-color-subtle;
+    background-color: $neutral-100;
+
+    .bsds-nav-link-logo {
+      display: flex;
+      flex-wrap: wrap;
+      margin: auto;
+      padding: space(2x);
+
+      &:focus {
+        @include focus-default-inset;
+      }
+    }
+
+    > .bsds-nav {
+      justify-content: center;
+
+      > .bsds-nav-item {
+        margin-top: 0;
+
+        > .bsds-nav-link {
+          position: relative;
+          border: 0;
+          padding: space(3x) space(2x);
+
+          &.current,
+          &:active,
+          &:hover,
+          &[aria-expanded='true'] {
+            background: initial;
+            text-decoration: none;
+
+            &::before {
+              position: absolute;
+              right: space(2x);
+              bottom: 0;
+              left: space(2x);
+              border-bottom: space(sm) solid $border-color-primary;
+              content: '';
+            }
+          }
+
+          &.current {
+            @include font-family-base-heavy;
+          }
+        }
+
+        &.bsds-nav-item-toggle,
+        &.bsds-nav-item-search {
+          .bsds-nav-link {
+            border: 0;
+            padding-right: space(2x);
+            padding-left: calc(
+              space(2x) + $icon-size + space(md)
+            ); // Padding + icon width + space between icon and text
+
+            &::after {
+              position: absolute;
+              top: calc(50% - ($icon-size / 2));
+              left: space(2x);
+              width: $icon-size;
+              height: $icon-size;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              content: '';
+            }
+          }
+        }
+
+        &.bsds-nav-item-search {
+          .bsds-nav-link {
+            &::after,
+            &[aria-expanded='true']::after {
+              background-image: url('../../../../assets/images/icon-search.svg');
+              content: '';
+            }
+          }
+        }
+
+        &.bsds-nav-item-toggle {
+          .bsds-nav-link {
+            &::after {
+              background-image: url('../../../../assets/images/icon-menu.svg');
+            }
+
+            &[aria-expanded='true'] {
+              &::after {
+                background-image: url('../../../../assets/images/icon-close.svg');
+              }
+            }
+          }
+        }
+
+        &.bsds-nav-item-root {
+          display: none;
+
+          > button {
+            .bsds-nav-link {
+              padding-right: calc(
+                space(2x) + $icon-size + space(md)
+              ); // Padding + icon width + space between icon and text
+
+              &::after {
+                position: absolute;
+                top: calc(50% - ($icon-size / 2));
+                right: space(2x);
+                width: $icon-size;
+                height: $icon-size;
+                content: url('../../../../assets/images/icon-chevron-down.svg');
+              }
+
+              &[aria-expanded='true'] {
+                &::after {
+                  content: url('../../../../assets/images/icon-chevron-up.svg');
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Primary Nav Menu
 
   .bsds-button-nav-back {
     z-index: $nav-back-z-index;
@@ -318,21 +310,21 @@ $menu-padding: space(md) 0;
       left: 0;
     }
 
+    .bsds-nav {
+      display: block;
+      margin: 0;
+    }
+
     &:not(.bsds-nav-active-list) {
       > .bsds-nav {
         padding: 0;
       }
 
-      & > .bsds-nav > .bsds-nav-item:not(.bsds-nav-item-parent),
-      & > .bsds-nav > .bsds-nav-item-parent > .bsds-nav-link,
+      > .bsds-nav > .bsds-nav-item:not(.bsds-nav-item-parent),
+      > .bsds-nav > .bsds-nav-item-parent > .bsds-nav-link,
       > .bsds-nav-menu-panel-header {
         display: none;
       }
-    }
-
-    .bsds-nav {
-      display: block;
-      margin: 0;
     }
 
     &:last-of-type {
@@ -479,7 +471,24 @@ $menu-padding: space(md) 0;
   }
 }
 
-@mixin panelSettings($menu-width) {
+.bsds-nav-header {
+  border-top-width: space(xs);
+  border-top-style: solid;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-image-source: $gradient-brand;
+  border-image-slice: 1;
+
+  &:not(.is-constrained) {
+    .bsds-nav-utility .bsds-nav,
+    .bsds-nav-primary .bsds-nav-bar {
+      padding: 0 space(md);
+    }
+  }
+}
+
+@mixin panel-settings($menu-width) {
   .bsds-nav-menu-panel {
     width: calc($menu-width / $num-panels);
 
@@ -523,26 +532,28 @@ $menu-padding: space(md) 0;
     }
   }
 
-  .bsds-nav-header.is-constrained {
-    $panels-width: 60rem; // NOTE: This is a one off size to match the layout widths.
+  .bsds-nav-header {
+    &.is-constrained {
+      $panels-width: 60rem; // NOTE: This is a one off size to match the layout widths.
 
-    .bsds-nav-utility .bsds-nav,
-    .bsds-nav-bar,
-    .bsds-nav-menu-panels,
-    .bsds-search-panel .bsds-form-search {
-      width: $panels-width;
-    }
+      .bsds-nav-utility .bsds-nav,
+      .bsds-nav-bar,
+      .bsds-nav-menu-panels,
+      .bsds-search-panel .bsds-form-search {
+        width: $panels-width;
+      }
 
-    .bsds-nav-menu {
-      &:not(.intermediate) {
-        .bsds-nav-menu-panels {
-          @include panelSettings($panels-width);
+      .bsds-nav-menu {
+        &:not(.intermediate) {
+          .bsds-nav-menu-panels {
+            @include panel-settings($panels-width);
+          }
         }
       }
-    }
 
-    .bsds-nav-menu-panels {
-      width: $panels-width;
+      .bsds-nav-menu-panels {
+        width: $panels-width;
+      }
     }
   }
 
@@ -625,7 +636,7 @@ $menu-padding: space(md) 0;
 
       &:not(.intermediate) {
         .bsds-nav-menu-panels {
-          @include panelSettings($panels-width);
+          @include panel-settings($panels-width);
         }
       }
 
@@ -651,7 +662,7 @@ $menu-padding: space(md) 0;
     .bsds-nav-menu-panels {
       height: 100%;
 
-      & > .bsds-nav-active-list {
+      > .bsds-nav-active-list {
         .bsds-nav-menu-panel {
           z-index: -1;
         }
@@ -663,7 +674,7 @@ $menu-padding: space(md) 0;
         padding: space(4x) space(4x) space(3x);
       }
 
-      & > .bsds-nav-menu-panel .bsds-nav-menu-panel .bsds-nav-menu-panel {
+      > .bsds-nav-menu-panel .bsds-nav-menu-panel .bsds-nav-menu-panel {
         .bsds-nav-link {
           @include font-size($fs-body-subtle);
         }
@@ -691,8 +702,8 @@ $menu-padding: space(md) 0;
             padding: space(4x) 0 space(3x);
           }
 
-          & > .bsds-nav > .bsds-nav-item:not(.bsds-nav-item-parent),
-          & > .bsds-nav > .bsds-nav-item-parent > .bsds-nav-link,
+          > .bsds-nav > .bsds-nav-item:not(.bsds-nav-item-parent),
+          > .bsds-nav > .bsds-nav-item-parent > .bsds-nav-link,
           > .bsds-nav-menu-panel-header {
             display: block;
           }
@@ -720,47 +731,53 @@ $menu-padding: space(md) 0;
 }
 
 @media (min-width: $xl) {
-  .bsds-nav-header.is-constrained {
-    $panels-width: 71.25rem; // NOTE: This is a one off size to match the layout widths.
+  .bsds-nav-header {
+    &.is-constrained {
+      $panels-width: 71.25rem; // NOTE: This is a one off size to match the layout widths.
 
-    .bsds-nav-utility .bsds-nav,
-    .bsds-nav-bar,
-    .bsds-search-panel .bsds-form-search {
-      width: $panels-width;
-    }
-
-    .bsds-nav-primary {
-      .bsds-nav-menu:not(.intermediate) {
-        .bsds-nav-menu-panels {
-          @include panelSettings($panels-width);
-        }
+      .bsds-nav-utility .bsds-nav,
+      .bsds-nav-bar,
+      .bsds-search-panel .bsds-form-search {
+        width: $panels-width;
       }
 
-      .bsds-nav-menu-panels {
-        width: $panels-width;
+      .bsds-nav-primary {
+        .bsds-nav-menu:not(.intermediate) {
+          .bsds-nav-menu-panels {
+            @include panel-settings($panels-width);
+          }
+        }
+
+        .bsds-nav-menu-panels {
+          width: $panels-width;
+        }
       }
     }
   }
 }
 
 @media (min-width: $xxl) {
-  .bsds-nav-header.is-constrained {
-    $panels-width: 82.5rem; // NOTE: This is a one off size to match the layout widths.
-    .bsds-nav-utility .bsds-nav,
-    .bsds-nav-bar,
-    .bsds-search-panel .bsds-form-search {
-      width: $panels-width;
-    }
-
-    .bsds-nav-primary {
-      .bsds-nav-menu:not(.intermediate) {
-        .bsds-nav-menu-panels {
-          @include panelSettings($panels-width);
-        }
+  .bsds-nav-header {
+    &.is-constrained {
+      $panels-width: 82.5rem; // NOTE: This is a one off size to match the layout widths.
+      .bsds-nav-utility .bsds-nav,
+      .bsds-nav-bar,
+      .bsds-search-panel .bsds-form-search {
+        width: $panels-width;
       }
 
-      .bsds-nav-menu-panels {
-        width: $panels-width;
+      .bsds-nav-primary {
+        .bsds-nav-menu {
+          &:not(.intermediate) {
+            .bsds-nav-menu-panels {
+              @include panel-settings($panels-width);
+            }
+          }
+        }
+
+        .bsds-nav-menu-panels {
+          width: $panels-width;
+        }
       }
     }
   }
