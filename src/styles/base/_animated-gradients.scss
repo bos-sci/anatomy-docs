@@ -10,6 +10,7 @@
 
 @mixin animated-gradient-brand {
   // NOTE: only approved for use on Teaser hero in hero container and Wizard Nav
+  /* stylelint-disable-next-line scss/dollar-variable-empty-line-after */
   $gradient-brand-animated: linear-gradient(
     90deg,
     $brand-primary,
@@ -37,6 +38,7 @@
 }
 
 @mixin animated-gradient-primary {
+  /* stylelint-disable-next-line scss/dollar-variable-empty-line-after */
   $gradient-primary-animated: linear-gradient(
     90deg,
     $accent-secondary-60,
@@ -58,6 +60,7 @@
 }
 
 @mixin animated-gradient-secondary {
+  /* stylelint-disable-next-line scss/dollar-variable-empty-line-after */
   $gradient-secondary-animated: linear-gradient(
     90deg,
     $accent-primary-60,

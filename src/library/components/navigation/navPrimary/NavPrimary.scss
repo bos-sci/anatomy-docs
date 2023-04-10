@@ -377,10 +377,6 @@ $menu-padding: space(md) 0;
         }
       }
 
-      .bsds-nav-link-description {
-        @include font-size($fs-body-subtle);
-      }
-
       .bsds-nav-link-text {
         position: relative;
         padding-right: calc($icon-size-sm + space(md)); // Padding + icon width + space between icon and text;
@@ -404,6 +400,7 @@ $menu-padding: space(md) 0;
         margin-top: space(md);
         color: $neutral-40;
         text-align: left;
+        @include font-size($fs-body-subtle);
         @include font-family-base-regular;
       }
     }
@@ -526,33 +523,27 @@ $menu-padding: space(md) 0;
 }
 
 @media (min-width: $lg) {
-  .bsds-nav-primary {
-    .bsds-search-panel {
-      border-top: 0;
-    }
-  }
-
   .bsds-nav-header {
     &.is-constrained {
-      $panels-width: 60rem; // NOTE: This is a one off size to match the layout widths.
+      $panels-width-lg: 60rem; // NOTE: This is a one off size to match the layout widths.
 
       .bsds-nav-utility .bsds-nav,
       .bsds-nav-bar,
       .bsds-nav-menu-panels,
       .bsds-search-panel .bsds-form-search {
-        width: $panels-width;
+        width: $panels-width-lg;
       }
 
       .bsds-nav-menu {
         &:not(.intermediate) {
           .bsds-nav-menu-panels {
-            @include panel-settings($panels-width);
+            @include panel-settings($panels-width-lg);
           }
         }
       }
 
       .bsds-nav-menu-panels {
-        width: $panels-width;
+        width: $panels-width-lg;
       }
     }
   }
@@ -575,6 +566,10 @@ $menu-padding: space(md) 0;
   }
 
   .bsds-nav-primary {
+    .bsds-search-panel {
+      border-top: 0;
+    }
+
     .bsds-nav-bar {
       position: static;
 
@@ -651,8 +646,7 @@ $menu-padding: space(md) 0;
 
         .bsds-nav {
           display: flex;
-          flex-direction: column;
-          flex-wrap: wrap;
+          flex-flow: column wrap;
           align-content: flex-start;
           align-items: flex-start;
         }
@@ -733,23 +727,23 @@ $menu-padding: space(md) 0;
 @media (min-width: $xl) {
   .bsds-nav-header {
     &.is-constrained {
-      $panels-width: 71.25rem; // NOTE: This is a one off size to match the layout widths.
+      $panels-width-xl: 71.25rem; // NOTE: This is a one off size to match the layout widths.
 
       .bsds-nav-utility .bsds-nav,
       .bsds-nav-bar,
       .bsds-search-panel .bsds-form-search {
-        width: $panels-width;
+        width: $panels-width-xl;
       }
 
       .bsds-nav-primary {
         .bsds-nav-menu:not(.intermediate) {
           .bsds-nav-menu-panels {
-            @include panel-settings($panels-width);
+            @include panel-settings($panels-width-xl);
           }
         }
 
         .bsds-nav-menu-panels {
-          width: $panels-width;
+          width: $panels-width-xl;
         }
       }
     }
@@ -759,24 +753,24 @@ $menu-padding: space(md) 0;
 @media (min-width: $xxl) {
   .bsds-nav-header {
     &.is-constrained {
-      $panels-width: 82.5rem; // NOTE: This is a one off size to match the layout widths.
+      $panels-width-xxl: 82.5rem; // NOTE: This is a one off size to match the layout widths.
       .bsds-nav-utility .bsds-nav,
       .bsds-nav-bar,
       .bsds-search-panel .bsds-form-search {
-        width: $panels-width;
+        width: $panels-width-xxl;
       }
 
       .bsds-nav-primary {
         .bsds-nav-menu {
           &:not(.intermediate) {
             .bsds-nav-menu-panels {
-              @include panel-settings($panels-width);
+              @include panel-settings($panels-width-xxl);
             }
           }
         }
 
         .bsds-nav-menu-panels {
-          width: $panels-width;
+          width: $panels-width-xxl;
         }
       }
     }

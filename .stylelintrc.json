@@ -110,7 +110,8 @@
         "$md",
         "$lg",
         "$xl",
-        "$xxl"
+        "$xxl",
+        "$fs-breakpoint"
       ],
       "max-width": [
         "575px",
