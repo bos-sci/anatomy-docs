@@ -116,27 +116,6 @@ $icon-size: 1em;
       @include font-family-base-heavy;
     }
 
-    .bsds-button {
-      &:hover,
-      &:active {
-        color: $neutral-100;
-      }
-
-      &:hover {
-        background: $action-primary-40;
-      }
-
-      &:active {
-        background: $action-primary-20;
-      }
-    }
-
-    .bsds-link {
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
     .bsds-button,
     .bsds-link,
     .bsds-dropdown-group-name {
@@ -174,6 +153,27 @@ $icon-size: 1em;
       .bsds-link {
         color: $action-primary-40;
         @include font-family-base-heavy;
+      }
+    }
+
+    .bsds-button {
+      &:hover,
+      &:active {
+        color: $neutral-100;
+      }
+
+      &:hover {
+        background: $action-primary-40;
+      }
+
+      &:active {
+        background: $action-primary-20;
+      }
+    }
+
+    .bsds-link {
+      &:hover {
+        text-decoration: underline;
       }
     }
   }

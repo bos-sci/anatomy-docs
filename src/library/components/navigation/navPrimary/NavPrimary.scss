@@ -245,7 +245,7 @@ $menu-padding: space(md) 0;
           display: none;
 
           > button {
-            .bsds-nav-link {
+            &.bsds-nav-link {
               padding-right: calc(
                 space(2x) + $icon-size + space(md)
               ); // Padding + icon width + space between icon and text
