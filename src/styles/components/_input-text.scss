@@ -1,79 +1,66 @@
-.bsds-input-text
-{
+.bsds-input-text {
   width: 100%;
 }
 
-.bsds-input-text-input
-{
+.bsds-input-text-input {
+  width: 100%;
   margin-top: space(md);
   border: space(xxs) solid $neutral-40;
   padding: space(lg) space(2x);
-  width: 100%;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 
-  &:not(:disabled):not(:read-only)
-  {
-    &:hover,
-    &:focus
-    {
-      border-color: $action-primary-40;
-    }
-  }
-
-  &:focus
-  {
+  &:focus {
     @include focus-default;
   }
 
-  &::placeholder
-  {
+  &::placeholder {
     color: $neutral-40;
   }
 
-  &:disabled
-  {
+  &:disabled {
     border-color: $neutral-80;
   }
 
-  &:read-only
-  {
-    &:focus
-    {
+  &:read-only {
+    &:focus {
       @include focus-disabled;
     }
   }
 
   &:disabled,
-  &:read-only
-  {
+  &:read-only {
     background: $neutral-95;
 
-    &:hover
-    {
+    &:hover {
       cursor: not-allowed;
     }
   }
 
-  &:not(:disabled):not(:read-only)
-  {
-    &[aria-invalid="true"],
-    &[aria-invalid="true"]:hover,
-    &[aria-invalid="true"]:focus
-    {
-      border: space(xxs) solid $feedback-error-40;
+  &:not(:disabled) {
+    &[aria-invalid='true'] {
+      &:focus {
+        @include focus-invalid;
+      }
     }
 
-    &[aria-invalid="true"]:focus
-    {
-      @include focus-invalid;
+    &:not(:read-only) {
+      &[aria-invalid='true'],
+      &[aria-invalid='true']:hover,
+      &[aria-invalid='true']:focus {
+        border: space(xxs) solid $feedback-error-40;
+      }
+
+      &:hover,
+      &:focus {
+        border-color: $action-primary-40;
+      }
     }
   }
 }
 
-.bsds-input-text-label
-{
+.bsds-input-text-label {
   display: flex;
   justify-content: space-between;
   align-items: baseline;

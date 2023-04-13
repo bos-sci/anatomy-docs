@@ -1,243 +1,231 @@
 // NOTE: changes to the swatch class names will need to be done in code and contentful (foundations > color)
 
-@mixin swatch
-{
+@mixin swatch {
   width: space(15x);
   height: space(6x);
   margin-top: space(3x);
 }
 
-.docs-swatch
-{
+.docs-swatch {
   // brand color range
-  &-bsc-blue
-  {
+  &-bsc-blue {
     @include swatch;
     background: $brand-primary;
   }
 
   // neutral range
-  &-neutral-00
-  {
+  &-neutral-00 {
     @include swatch;
     background: $neutral-00;
   }
-  &-neutral-20
-  {
+
+  &-neutral-20 {
     @include swatch;
     background: $neutral-20;
   }
-  &-neutral-40
-  {
+
+  &-neutral-40 {
     @include swatch;
     background: $neutral-40;
   }
-  &-neutral-60
-  {
+
+  &-neutral-60 {
     @include swatch;
     background: $neutral-60;
   }
-  &-neutral-80
-  {
+
+  &-neutral-80 {
     @include swatch;
     background: $neutral-80;
   }
-  &-neutral-95
-  {
+
+  &-neutral-95 {
     @include swatch;
     background: $neutral-95;
   }
-  &-neutral-100
-  {
+
+  &-neutral-100 {
     @include swatch;
     border: space(xxs) solid $neutral-00;
     background: $neutral-100;
   }
 
   // action color range
-  &-action-primary-10
-  {
+  &-action-primary-10 {
     @include swatch;
     background: $action-primary-10;
   }
-  &-action-primary-20
-  {
+
+  &-action-primary-20 {
     @include swatch;
     background: $action-primary-20;
   }
-  &-action-primary-40
-  {
+
+  &-action-primary-40 {
     @include swatch;
     background: $action-primary-40;
   }
-  &-action-primary-60
-  {
+
+  &-action-primary-60 {
     @include swatch;
     background: $action-primary-60;
   }
-  &-action-primary-80
-  {
+
+  &-action-primary-80 {
     @include swatch;
     background: $action-primary-80;
   }
-  &-action-primary-95
-  {
+
+  &-action-primary-95 {
     @include swatch;
     background: $action-primary-95;
   }
-  &-action-primary-97
-  {
+
+  &-action-primary-97 {
     @include swatch;
     background: $action-primary-97;
   }
 
   // accent color ranges
-  &-accent-primary-20
-  {
+  &-accent-primary-20 {
     @include swatch;
     background: $accent-primary-20;
   }
-  &-accent-primary-30
-  {
+
+  &-accent-primary-30 {
     @include swatch;
     background: $accent-primary-30;
   }
-  &-accent-primary-40
-  {
+
+  &-accent-primary-40 {
     @include swatch;
     background: $accent-primary-40;
   }
-  &-accent-primary-60
-  {
+
+  &-accent-primary-60 {
     @include swatch;
     background: $accent-primary-60;
   }
-  &-accent-primary-80
-  {
+
+  &-accent-primary-80 {
     @include swatch;
     background: $accent-primary-80;
   }
-  &-accent-primary-95
-  {
+
+  &-accent-primary-95 {
     @include swatch;
     background: $accent-primary-95;
   }
 
-  &-accent-secondary-20
-  {
+  &-accent-secondary-20 {
     @include swatch;
     background: $accent-secondary-20;
   }
-  &-accent-secondary-40
-  {
+
+  &-accent-secondary-40 {
     @include swatch;
     background: $accent-secondary-40;
   }
-  &-accent-secondary-60
-  {
+
+  &-accent-secondary-60 {
     @include swatch;
     background: $accent-secondary-60;
   }
-  &-accent-secondary-80
-  {
+
+  &-accent-secondary-80 {
     @include swatch;
     background: $accent-secondary-80;
   }
-  &-accent-secondary-95
-  {
+
+  &-accent-secondary-95 {
     @include swatch;
     background: $accent-secondary-95;
   }
 
   // feedback color ranges
-  &-feedback-error-20
-  {
+  &-feedback-error-20 {
     @include swatch;
     background: $feedback-error-20;
   }
-  &-feedback-error-40
-  {
+
+  &-feedback-error-40 {
     @include swatch;
     background: $feedback-error-40;
   }
-  &-feedback-error-60
-  {
+
+  &-feedback-error-60 {
     @include swatch;
     background: $feedback-error-60;
   }
-  &-feedback-error-80
-  {
+
+  &-feedback-error-80 {
     @include swatch;
     background: $feedback-error-80;
   }
-  &-feedback-error-95
-  {
+
+  &-feedback-error-95 {
     @include swatch;
     background: $feedback-error-95;
   }
 
   // gradients
-  &-gradient-brand
-  {
+  &-gradient-brand {
     @include swatch;
     background: $gradient-brand;
   }
-  &-gradient-primary
-  {
+
+  &-gradient-primary {
     @include swatch;
     background: $gradient-primary;
   }
-  &-gradient-secondary
-  {
+
+  &-gradient-secondary {
     @include swatch;
     background: $gradient-secondary;
   }
-  &-gradient-accent
-  {
+
+  &-gradient-accent {
     @include swatch;
     background: $gradient-accent;
   }
-  &-gradient-assertive
-  {
+
+  &-gradient-assertive {
     @include swatch;
     background: $gradient-assertive;
   }
-  &-gradient-subtle
-  {
+
+  &-gradient-subtle {
     @include swatch;
     background: $gradient-subtle;
   }
 
   // shadows
-  &-shadow-primary
-  {
+  &-shadow-primary {
     @include swatch;
     margin-left: space(2x);
     box-shadow: $box-shadow-primary;
   }
-  &-shadow-secondary
-  {
+
+  &-shadow-secondary {
     @include swatch;
     margin-left: space(2x);
     box-shadow: $box-shadow-secondary;
   }
-  &-shadow-tertiary
-  {
+
+  &-shadow-tertiary {
     @include swatch;
     margin-left: space(2x);
     box-shadow: $box-shadow-tertiary;
   }
 
   // borders
-  &-border-gradient-accent
-  {
+  &-border-gradient-accent {
     @include swatch;
     @include border-gradient-accent;
   }
 
   // backgrounds
-  &-background-action
-  {
+  &-background-action {
     @include swatch;
     background: $action-primary-95;
   }

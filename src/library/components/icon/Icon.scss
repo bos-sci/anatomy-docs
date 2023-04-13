@@ -7,24 +7,20 @@
 {
   width: space(2x);
 
-  @media (min-width: 992px)
-  {
+  @media (min-width: 992px) {
     width: 1.125rem; // NOTE: this is a one-off size
   }
 }
 
-.bsds-icon-sm
-{
+.bsds-icon-sm {
   width: space(sm);
 }
 
-.bsds-icon-md
-{
+.bsds-icon-md {
   width: space(md);
 }
 
-.bsds-icon-lg
-{
+.bsds-icon-lg {
   width: space(lg);
 }
 
@@ -33,17 +29,14 @@
   width: space(2x);
 }
 
-.bsds-icon-3x
-{
+.bsds-icon-3x {
   width: space(3x);
 }
 
-.bsds-icon-4x
-{
+.bsds-icon-4x {
   width: space(4x);
 }
 
-.bsds-icon-8x
-{
+.bsds-icon-8x {
   width: space(8x);
 }

@@ -1,5 +1,4 @@
-.bsds-card-group
-{
+.bsds-card-group {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: auto;
@@ -7,30 +6,24 @@
 
   &-two-up,
   &-three-up,
-  &-four-up
-  {
+  &-four-up {
     @extend .bsds-card-group;
   }
 
-  @media (min-width: $md)
-  {
+  @media (min-width: $md) {
     &-two-up,
     &-three-up,
-    &-four-up
-    {
+    &-four-up {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (min-width: $lg)
-  {
-    &-three-up
-    {
+  @media (min-width: $lg) {
+    &-three-up {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    &-four-up
-    {
+    &-four-up {
       grid-template-columns: repeat(4, 1fr);
     }
   }
