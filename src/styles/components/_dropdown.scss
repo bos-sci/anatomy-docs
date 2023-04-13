@@ -117,6 +117,11 @@ $icon-size: 1em;
     }
 
     .bsds-button,
+    .bsds-link {
+      @include font-family-base-regular;
+    }
+
+    .bsds-button,
     .bsds-link,
     .bsds-dropdown-group-name {
       position: relative;
@@ -127,7 +132,6 @@ $icon-size: 1em;
       color: $text-color-primary;
       text-align: inherit;
       text-decoration: none;
-      @include font-family-base-regular;
       @include font-size($fs-base);
 
       &:focus {
