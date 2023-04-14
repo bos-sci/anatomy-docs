@@ -20,7 +20,7 @@ const ComponentsController = (props: Props): JSX.Element => {
     {} as GetComponentQuery['component']
   );
 
-  const componentFromId = idLookup.components[params.componentName!];
+  const componentFromId = idLookup.components[params?.componentName ?? ''];
 
   const { data, error } = useGetComponentQuery({
     variables: {

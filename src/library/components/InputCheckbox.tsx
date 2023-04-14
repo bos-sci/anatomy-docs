@@ -37,7 +37,9 @@ const InputCheckbox = forwardRef(
     const validate = useCallback(() => {
       if (inputEl.current) {
         const isValid = inputEl.current.checkValidity();
-        if (isValid) setValidationMessage('');
+        if (isValid) {
+          setValidationMessage('');
+        }
       }
     }, [inputEl]);
 
@@ -97,23 +99,23 @@ const InputCheckbox = forwardRef(
             type="checkbox"
             id={inputId}
             className="bsds-input-checkbox-input"
-            onInvalid={handleInvalid}
-            onBlur={handleBlur}
-            onChange={handleChange}
             aria-invalid={!!validationMessage}
             aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
             {...inputAttrs}
+            onInvalid={handleInvalid}
+            onBlur={handleBlur}
+            onChange={handleChange}
           />
           <label htmlFor={inputId} className="bsds-input-checkbox-label">
             {label}
           </label>
         </div>
-        {validationMessage && (
+        {!!validationMessage && (
           <p id={errorTextId} className="bsds-input-error">
             {validationMessage}
           </p>
         )}
-        {helpText && (
+        {!!helpText && (
           <p id={helpTextId} className="bsds-input-help-text">
             {helpText}
           </p>
@@ -123,4 +125,5 @@ const InputCheckbox = forwardRef(
   }
 );
 
+InputCheckbox.displayName = 'InputCheckbox';
 export default InputCheckbox;

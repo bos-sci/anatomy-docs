@@ -152,27 +152,30 @@ const Modal = forwardRef(
      * Loops the focus back around when you are on the last element and tab, or first element and shift-tab.
      * @param {KeyboardEvent} e - Keyboard event
      */
-    const handleFocus = useCallback((e: KeyboardEvent) => {
-      if (dialogRef.current) {
-        if (e.key === 'Escape') {
-          showDialog(false);
-        }
-        const focusableElements = [
-          ...dialogRef.current?.querySelectorAll(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-          ),
-        ] as HTMLElement[];
-        if (e.key === 'Tab') {
-          if (document.activeElement === focusableElements.at(-1) && !e.shiftKey) {
-            focusableElements[0].focus();
-            e.preventDefault();
-          } else if (document.activeElement === focusableElements[0] && e.shiftKey) {
-            focusableElements.at(-1)?.focus();
-            e.preventDefault();
+    const handleFocus = useCallback(
+      (e: KeyboardEvent) => {
+        if (dialogRef.current) {
+          if (e.key === 'Escape') {
+            showDialog(false);
+          }
+          const focusableElements = [
+            ...dialogRef.current?.querySelectorAll(
+              'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            ),
+          ] as HTMLElement[];
+          if (e.key === 'Tab') {
+            if (document.activeElement === focusableElements.at(-1) && !e.shiftKey) {
+              focusableElements[0].focus();
+              e.preventDefault();
+            } else if (document.activeElement === focusableElements[0] && e.shiftKey) {
+              focusableElements.at(-1)?.focus();
+              e.preventDefault();
+            }
           }
         }
-      }
-    }, []);
+      },
+      [showDialog]
+    );
 
     useEffect(() => {
       document.addEventListener('keydown', handleFocus);
@@ -195,11 +198,11 @@ const Modal = forwardRef(
         onPointerUp={clickOut}
       >
         <div className="bsds-modal-header">
-          {logo && <img src={logo} alt={logoAlt} className="bsds-modal-logo" />}
+          {!!logo && <img src={logo} alt={logoAlt} className="bsds-modal-logo" />}
           <h2 id={dialogId + '-heading'} className="bsds-modal-title">
             {title}
           </h2>
-          {hasClose && (
+          {!!hasClose && (
             <Button
               data-testid="modalCloseBtn"
               variant="subtle"
@@ -222,4 +225,5 @@ const Modal = forwardRef(
   }
 );
 
+Modal.displayName = 'Modal';
 export default Modal;

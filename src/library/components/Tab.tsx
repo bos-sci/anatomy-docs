@@ -1,4 +1,4 @@
-import { RefObject, useCallback } from 'react';
+import { RefObject, useCallback, useState, useEffect } from 'react';
 
 interface Props {
   tabName: string;
@@ -10,9 +10,15 @@ interface Props {
 }
 
 const Tab = ({ tabName, setSelectedTab, index, isActive, tabPanelId, tabRef }: Props): JSX.Element => {
+  const [tabIndexNum, setTabIndexNum] = useState<number>();
+
   const onClick = useCallback(() => {
     setSelectedTab(index);
   }, [setSelectedTab, index]);
+
+  useEffect(() => {
+    setTabIndexNum(isActive ? 0 : -1);
+  }, [isActive]);
 
   return (
     <button
@@ -22,8 +28,8 @@ const Tab = ({ tabName, setSelectedTab, index, isActive, tabPanelId, tabRef }: P
       role="tab"
       aria-controls={tabPanelId}
       aria-selected={isActive}
+      tabIndex={tabIndexNum}
       onClick={onClick}
-      tabIndex={isActive ? 0 : -1}
     >
       {tabName}
     </button>

@@ -107,6 +107,7 @@ const NavPrimary = ({
   const [isIntermediateNav, setIsIntermediateNav] = useState(false);
   const [isNavTouched, setIsNavTouched] = useState(false);
   const [rootButton, setRootButton] = useState<HTMLButtonElement>();
+  const [toggleText, setToggleText] = useState('');
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -269,9 +270,17 @@ const NavPrimary = ({
     }
   };
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      setToggleText(texts?.menuToggleTextClose || 'Close');
+    } else {
+      setToggleText(texts?.menuToggleTextOpen || 'Menu');
+    }
+  }, [isMenuOpen, texts?.menuToggleTextClose, texts?.menuToggleTextOpen]);
+
   return (
-    <header className={'bsds-nav-header' + (isConstrained ? ' is-constrained' : '')} ref={navRef} onKeyUp={handleKeyUp}>
-      {utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
+    <header ref={navRef} className={'bsds-nav-header' + (isConstrained ? ' is-constrained' : '')} onKeyUp={handleKeyUp}>
+      {!!utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
       <nav className="bsds-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="bsds-nav-bar">
           {logo.to || logo.href ? (
@@ -284,26 +293,26 @@ const NavPrimary = ({
           <ul className="bsds-nav">
             {navTree.map((navItem, i) => (
               <li key={navItem.text + i} className="bsds-nav-item bsds-nav-item-root">
-                {navItem.children && (
+                {!!navItem.children && (
                   <Button
                     id={navItem.id}
                     type="button"
                     variant="subtle"
                     className={'bsds-nav-link' + (navItem === getActiveRoot() ? ' current' : '')}
                     aria-haspopup="true"
-                    aria-expanded={history[0] && navItem === history[0].node}
+                    aria-expanded={navItem === history[0]?.node}
                     aria-controls={menuId}
                     onClick={(e) => updateMenu(e, navItem)}
                   >
                     {navItem.text}
                   </Button>
                 )}
-                {(navItem.slug || navItem.href) && (
+                {!!(navItem.slug || navItem.href) && (
                   <NavLink
                     end={!!navItem.isExactMatch}
                     to={(navItem.slug ? navItem.slug : navItem.href) || ''}
                     className={({ isActive }) => `bsds-nav-link${isCurrent(isActive, navItem) ? ' current' : ''}`}
-                    aria-current={navItem.isActive && navItem.isActive(location) ? 'page' : undefined}
+                    aria-current={(navItem.isActive?.(location) && 'page') ?? undefined}
                   >
                     {navItem.text}
                   </NavLink>
@@ -329,7 +338,7 @@ const NavPrimary = ({
                   )}
               </li>
             ))}
-            {hasSearch && (
+            {!!hasSearch && (
               <li className="bsds-nav-item bsds-nav-item-search">
                 <Button
                   variant="subtle"
@@ -357,12 +366,12 @@ const NavPrimary = ({
                 aria-expanded={isMenuOpen}
                 onClick={toggleMenu}
               >
-                {isMenuOpen ? texts?.menuToggleTextClose || 'Close' : texts?.menuToggleTextOpen || 'Menu'}
+                {toggleText}
               </Button>
             </li>
           </ul>
         </div>
-        {navTree.length > 0 && (isViewportSmall || !isNavTouched) && (
+        {!!(navTree.length > 0 && (isViewportSmall || !isNavTouched)) && (
           <NavPrimaryMenu
             ref={menuRef}
             navItems={navTree}

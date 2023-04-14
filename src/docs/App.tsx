@@ -77,7 +77,7 @@ const App = (): JSX.Element => {
   return (
     <Router>
       <IdLookupContext.Provider value={idLookup}>
-        {isLookupReady && (
+        {!!isLookupReady && (
           <Suspense
             fallback={
               <main id="mainContent">

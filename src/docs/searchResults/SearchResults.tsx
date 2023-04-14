@@ -67,7 +67,7 @@ const SearchResults = (): JSX.Element => {
               Loading results...
             </p>
           )}
-          {searchResults && searchResults.length > 0 && (
+          {!!searchResults && searchResults.length > 0 && (
             <ul className="docs-search-results" hidden={!searchQuery}>
               {searchResults.map((result, i) => (
                 <li key={result.text + i} className="docs-search-result">

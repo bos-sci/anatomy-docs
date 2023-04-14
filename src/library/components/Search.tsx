@@ -73,6 +73,11 @@ const Search = forwardRef(
     const [activeDescendant, setActiveDescendant] = useState<number>(0); // set to -1 to reset state
     const [isDirty, setIsDirty] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [autocompleteAria, setAutocompleteAria] = useState<string | undefined>();
+    const [autocompleteAriaOwns, setAutocompleteAriaOwns] = useState<string | undefined>();
+    const [autocompleteAriaComplete, setAutocompleteAriaComplete] = useState<'list' | undefined>();
+    const [autocompleteAriaPopup, setAutocompleteAriaPopup] = useState<'listbox' | undefined>();
+    const [ariaActiveDescendant, setAriaActiveDescendant] = useState<string | undefined>();
 
     const inputRef = useRef<HTMLInputElement>(null);
     const searchRef = useRef<HTMLDivElement>(null);
@@ -171,6 +176,28 @@ const Search = forwardRef(
       };
     });
 
+    useEffect(() => {
+      if (hasAutocomplete) {
+        setAutocompleteAria('combobox');
+        setAutocompleteAriaOwns(searchId + '-results');
+        setAutocompleteAriaComplete('list');
+        setAutocompleteAriaPopup('listbox');
+      } else {
+        setAutocompleteAria(undefined);
+        setAutocompleteAriaOwns(undefined);
+        setAutocompleteAriaComplete(undefined);
+        setAutocompleteAriaPopup(undefined);
+      }
+    }, [hasAutocomplete, searchId]);
+
+    useEffect(() => {
+      if (activeDescendant >= 0) {
+        setAriaActiveDescendant(searchId + '-result-' + activeDescendant);
+      } else {
+        setAriaActiveDescendant(undefined);
+      }
+    }, [activeDescendant, searchId]);
+
     return (
       <form
         action="."
@@ -207,22 +234,22 @@ const Search = forwardRef(
                   placeholder={placeholder || 'Search'}
                   value={inputValue}
                   name="query"
-                  role={hasAutocomplete ? 'combobox' : undefined}
+                  role={autocompleteAria}
                   autoComplete="off"
                   aria-label={texts?.searchInputAriaLabel || 'search input'}
-                  aria-owns={hasAutocomplete ? searchId + '-results' : undefined}
-                  aria-controls={hasAutocomplete ? searchId + '-results' : undefined}
-                  aria-autocomplete={hasAutocomplete ? 'list' : undefined}
-                  aria-haspopup={hasAutocomplete ? 'listbox' : undefined}
-                  aria-expanded={hasAutocomplete && isOpen}
+                  aria-owns={autocompleteAriaOwns}
+                  aria-controls={autocompleteAriaOwns}
+                  aria-autocomplete={autocompleteAriaComplete}
+                  aria-haspopup={autocompleteAriaPopup}
+                  aria-expanded={!!(hasAutocomplete && isOpen)}
                   aria-describedby={texts?.helpText || ''}
-                  aria-activedescendant={activeDescendant >= 0 ? searchId + '-result-' + activeDescendant : undefined}
+                  aria-activedescendant={ariaActiveDescendant}
                   onChange={handleChange}
                   onFocus={handleFocus}
                   {...inputAttrs}
                 />
                 {/* TODO: ADS-96 pull this into an input addon component */}
-                {inputValue && (
+                {!!inputValue && (
                   <button
                     type="button"
                     className="bsds-search-clear"
@@ -232,7 +259,7 @@ const Search = forwardRef(
                     <IconClose className="bsds-icon-lg" />
                   </button>
                 )}
-                {hasAutocomplete && searchResults && (
+                {!!(hasAutocomplete && searchResults) && (
                   <ul id={searchId + '-results'} className="bsds-search-results" hidden={!isOpen}>
                     {searchResults.length > 0 &&
                       searchResults.map((result, i) => (
@@ -262,7 +289,7 @@ const Search = forwardRef(
               </Button>
             </div>
           </div>
-          {texts?.helpText && (
+          {!!texts?.helpText && (
             <p id={'inputHelpText' + searchId} className="bsds-input-help-text">
               {texts?.helpText}
             </p>
@@ -273,4 +300,5 @@ const Search = forwardRef(
   }
 );
 
+Search.displayName = 'Search';
 export default Search;

@@ -9,8 +9,8 @@ interface NavListProps {
   parent: NavNode | null;
   activeParent: NavNode | null;
   activeParentRef: RefObject<HTMLButtonElement> | null;
-  setActiveParentRef: (ref: RefObject<HTMLButtonElement> | null) => any;
-  openChild: (node: NavNode | null) => any;
+  setActiveParentRef: (ref: RefObject<HTMLButtonElement> | null) => unknown;
+  openChild: (node: NavNode | null) => unknown;
 }
 
 const NavSecondaryList = ({

@@ -7,8 +7,8 @@ interface NavParentProps {
   navItem: NavNode;
   activeParent: NavNode | null;
   activeParentRef: RefObject<HTMLButtonElement> | null;
-  setActiveParentRef: (ref: RefObject<HTMLButtonElement> | null) => any;
-  openChild: (node: NavNode | null) => any;
+  setActiveParentRef: (ref: RefObject<HTMLButtonElement> | null) => unknown;
+  openChild: (node: NavNode | null) => unknown;
 }
 
 let navParentId = 0;
@@ -46,15 +46,17 @@ const NavSecondaryListParent = ({
       >
         {navItem.text}
       </Button>
-      <NavSecondaryList
-        navListId={navListId}
-        navItems={navItem.children!}
-        parent={navItem}
-        activeParent={activeParent}
-        activeParentRef={activeParentRef}
-        setActiveParentRef={setActiveParentRef}
-        openChild={openChild}
-      />
+      {!!navItem.children && (
+        <NavSecondaryList
+          navListId={navListId}
+          navItems={navItem.children}
+          parent={navItem}
+          activeParent={activeParent}
+          activeParentRef={activeParentRef}
+          setActiveParentRef={setActiveParentRef}
+          openChild={openChild}
+        />
+      )}
     </li>
   );
 };

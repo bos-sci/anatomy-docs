@@ -21,8 +21,8 @@ export const toCamelCase = (text: string): string => {
 };
 
 // Index search
-const searchClient = algoliasearch(process.env.REACT_APP_ALGOLIA_ID!, process.env.REACT_APP_ALGOLIA_KEY!);
-const index = searchClient.initIndex(process.env.REACT_APP_ALGOLIA_INDEX!);
+const searchClient = algoliasearch(process.env.REACT_APP_ALGOLIA_ID ?? '', process.env.REACT_APP_ALGOLIA_KEY ?? '');
+const index = searchClient.initIndex(process.env.REACT_APP_ALGOLIA_INDEX ?? '');
 
 type Result = SearchResult & {
   description?: string;
@@ -51,13 +51,29 @@ export const indexSearch = async (query: string) => {
 
   const ip = await getIP();
 
+  interface Hit {
+    title: string;
+    pathname: string;
+    description: string;
+  }
+
   const results = new Promise<Result[]>((resolve, reject) => {
     if (query) {
       index.search(query, { analytics: !teamIPs.includes(ip) }).then(({ hits }) => {
         resolve(
           hits
-            .filter((hit: any) => hit.title !== 'Anatomy - Boston Scientific')
-            .filter((hit: any) => !hit.pathname.includes('/example/'))
+            .filter((hit: unknown): hit is Hit => {
+              if (typeof hit !== 'object' || hit === null) {
+                return false;
+              }
+              return (hit as Hit).title !== 'Anatomy - Boston Scientific';
+            })
+            .filter((hit: unknown): hit is Hit => {
+              if (typeof hit !== 'object' || hit === null) {
+                return false;
+              }
+              return !(hit as Hit).pathname.includes('/example/');
+            })
             .map((hit: any) => ({
               to: hit.pathname,
               text: hit.title.replace(' - Anatomy - Boston Scientific', ''),

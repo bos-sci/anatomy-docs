@@ -25,7 +25,7 @@ const CodeStandards = (): JSX.Element => {
 
   const { data, error } = useGetCodeStandardQuery({
     variables: {
-      id: idLookup.codeStandards[params.standardName!].id,
+      id: idLookup.codeStandards[params?.standardName ?? ''].id,
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
     },
   });
@@ -83,7 +83,7 @@ const CodeStandards = (): JSX.Element => {
     <Layout>
       <PageTemplate
         name={codeStandardData?.name || ''}
-        lastUpdated={codeStandardData?.sys?.publishedAt}
+        lastUpdated={codeStandardData?.sys?.publishedAt || ''}
         leadParagraph={codeStandardData?.leadParagraph || ''}
         seoMetaDescription={codeStandardData?.pageProperties?.seoMetaDescription || ''}
         navSecondaryMenuTrigger="Code standards"

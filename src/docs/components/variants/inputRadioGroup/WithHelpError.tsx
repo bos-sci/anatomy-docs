@@ -25,24 +25,24 @@ const WithHelpError = (): JSX.Element => {
             label="Radio 1"
             name="groupHelpError"
             value="groupHelpError1"
-            onChange={handleChange}
             checked={selectedRadio === 'groupHelpError1'}
             forceValidation
+            onChange={handleChange}
           />
           <InputRadio
             label="Radio 2"
             name="groupHelpError"
             value="groupHelpError2"
             helpText="This is an example help text. It can wrap to two lines, but try not to go longer than three."
-            onChange={handleChange}
             checked={selectedRadio === 'groupHelpError2'}
+            onChange={handleChange}
           />
           <InputRadio
             label="Radio 3"
             name="groupHelpError"
             value="groupHelpError3"
-            onChange={handleChange}
             checked={selectedRadio === 'groupHelpError3'}
+            onChange={handleChange}
           />
         </RadioGroup>
       </div>

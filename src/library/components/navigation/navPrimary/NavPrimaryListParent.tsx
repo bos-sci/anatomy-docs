@@ -47,19 +47,21 @@ const NavPrimaryListParent = (props: Props) => {
         onClick={updateHistory}
       >
         <div className="bsds-nav-link-text">{props.navItem.text}</div>
-        {props.navItem.description && <div className="bsds-nav-link-description">{props.navItem.description}</div>}
+        {!!props.navItem.description && <div className="bsds-nav-link-description">{props.navItem.description}</div>}
       </Button>
-      <NavPrimaryList
-        navItems={props.navItem.children!}
-        activeNode={props.activeNode}
-        setActiveNode={props.setActiveNode}
-        depth={props.depth + 1}
-        activeDepth={props.activeDepth}
-        setActiveDepth={props.setActiveDepth}
-        history={props.history}
-        pushHistory={props.pushHistory}
-        popHistory={props.popHistory}
-      />
+      {!!props.navItem.children && (
+        <NavPrimaryList
+          navItems={props.navItem.children}
+          activeNode={props.activeNode}
+          setActiveNode={props.setActiveNode}
+          depth={props.depth + 1}
+          activeDepth={props.activeDepth}
+          setActiveDepth={props.setActiveDepth}
+          history={props.history}
+          pushHistory={props.pushHistory}
+          popHistory={props.popHistory}
+        />
+      )}
     </li>
   );
 };

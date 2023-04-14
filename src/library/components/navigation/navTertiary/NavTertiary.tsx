@@ -22,7 +22,7 @@ const NavTertiary = ({ navTertiaryItems, tertiaryNavAriaLabel }: Props): JSX.Ele
         On this page
       </h2>
       <ul className="bsds-nav">
-        {navTertiaryItems &&
+        {!!navTertiaryItems &&
           Array.from(navTertiaryItems).map((navItem, i) => {
             return (
               <li key={`tertiaryNavItem${i}`} className="bsds-nav-item">

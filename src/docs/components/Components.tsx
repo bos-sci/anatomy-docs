@@ -176,7 +176,7 @@ const Components = (): JSX.Element => {
       <Layout>
         <PageTemplate
           name={componentData?.name || ''}
-          lastUpdated={componentData?.sys?.publishedAt}
+          lastUpdated={componentData?.sys?.publishedAt || ''}
           leadParagraph={componentData?.leadParagraph || ''}
           seoMetaDescription={componentData?.pageProperties?.seoMetaDescription || ''}
           navSecondaryMenuTrigger="Components"
@@ -184,10 +184,10 @@ const Components = (): JSX.Element => {
           navTertiaryItems={headings}
         >
           {/* Default Preview */}
-          {componentData.name && <Preview shouldLinkToExamples={componentData.shouldLinkToExamples || false} />}
+          {!!componentData.name && <Preview shouldLinkToExamples={componentData.shouldLinkToExamples || false} />}
 
           {/* Modifiers */}
-          {componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0 && (
+          {!!componentData.modifiersCollection?.items && componentData.modifiersCollection.items.length > 0 && (
             <>
               <h2 id="modifiers">Modifiers</h2>
               {componentData.modifiersCollection.items.map((modifier) => (
@@ -205,7 +205,7 @@ const Components = (): JSX.Element => {
           )}
 
           {/* Styles */}
-          {componentData.stylesCollection?.items && componentData.stylesCollection.items.length > 0 && (
+          {!!componentData.stylesCollection?.items && componentData.stylesCollection.items.length > 0 && (
             <>
               <h2 id="styles">Styles</h2>
               {componentData.stylesCollection.items.map((style) => (
@@ -223,7 +223,7 @@ const Components = (): JSX.Element => {
           )}
 
           {/* States */}
-          {componentData.statesCollection?.items && componentData.statesCollection.items.length > 0 && (
+          {!!componentData.statesCollection?.items && componentData.statesCollection.items.length > 0 && (
             <>
               <h2 id="states">States</h2>
               {componentData.statesCollection.items.map((state) => (
@@ -240,49 +240,51 @@ const Components = (): JSX.Element => {
             </>
           )}
 
-          {(componentData.usage || componentData.usageDo || componentData.usageDont) && <h2 id="usage">Usage</h2>}
-          {componentData.usage && <Markdown markdown={componentData.usage} />}
-          {(componentData.usageDo || componentData.usageDont) && (
+          {!!(componentData.usage || componentData.usageDo || componentData.usageDont) && <h2 id="usage">Usage</h2>}
+          {!!componentData.usage && <Markdown markdown={componentData.usage} />}
+          {!!(componentData.usageDo || componentData.usageDont) && (
             <div className="docs-list-flex">
               <div className="docs-list-flex-item">
                 <h3>Do:</h3>
                 <Markdown markdown={componentData.usageDo || ''} />
               </div>
               <div className="docs-list-flex-item">
-                <h3>Don't:</h3>
+                <h3>Don&apos;t:</h3>
                 <Markdown markdown={componentData.usageDont || ''} />
               </div>
             </div>
           )}
-          {componentData.interactions && (
+          {!!componentData.interactions && (
             <>
               <h2 id="interactions">Interactions</h2>
               <Markdown markdown={componentData.interactions} headingOffset={2} />
             </>
           )}
-          {(componentData.contentGuidelines ||
+          {!!(
+            componentData.contentGuidelines ||
             componentData.contentGuidelinesDo ||
-            componentData.contentGuidelinesDont) && <h2 id="content-guidelines">Content guidelines</h2>}
-          {componentData.contentGuidelines && <Markdown markdown={componentData.contentGuidelines} />}
-          {(componentData.contentGuidelinesDo || componentData.contentGuidelinesDont) && (
+            componentData.contentGuidelinesDont
+          ) && <h2 id="content-guidelines">Content guidelines</h2>}
+          {!!componentData.contentGuidelines && <Markdown markdown={componentData.contentGuidelines} />}
+          {!!(componentData.contentGuidelinesDo || componentData.contentGuidelinesDont) && (
             <div className="docs-list-flex">
               <div className="docs-list-flex-item">
                 <h3>Do:</h3>
                 <Markdown markdown={componentData.contentGuidelinesDo || ''} />
               </div>
               <div className="docs-list-flex-item">
-                <h3>Don't:</h3>
+                <h3>Don&apos;t:</h3>
                 <Markdown markdown={componentData.contentGuidelinesDont || ''} />
               </div>
             </div>
           )}
-          {componentData.userResearch && (
+          {!!componentData.userResearch && (
             <>
               <h2 id="user-research">User research</h2>
               <Markdown markdown={componentData.userResearch} headingOffset={2} />
             </>
           )}
-          {componentData.accessibility && (
+          {!!componentData.accessibility && (
             <>
               <h2 id="accessibility">Accessibility</h2>
               <Markdown markdown={componentData.accessibility} headingOffset={2} />
@@ -291,12 +293,13 @@ const Components = (): JSX.Element => {
         </PageTemplate>
       </Layout>
     );
-  } else
+  } else {
     return (
       <Layout>
         <main id="mainContent">Loading...</main>
       </Layout>
     );
+  }
 };
 
 export default Components;

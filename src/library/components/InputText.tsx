@@ -49,7 +49,9 @@ const InputText = forwardRef(
     const validate = useCallback(() => {
       if (inputEl.current) {
         const isValid = inputEl.current.checkValidity();
-        if (isValid) setValidationMessage('');
+        if (isValid) {
+          setValidationMessage('');
+        }
       }
     }, [inputEl]);
 
@@ -111,7 +113,7 @@ const InputText = forwardRef(
         <label className="bsds-input-text">
           <div className="bsds-input-text-label">
             {label}
-            {inputAttrs.required && <span className="bsds-input-help-text">{requiredText}</span>}
+            {!!inputAttrs.required && <span className="bsds-input-help-text">{requiredText}</span>}
           </div>
           <input
             ref={(node) => {
@@ -125,20 +127,20 @@ const InputText = forwardRef(
               }
             }}
             className="bsds-input-text-input"
+            aria-invalid={!!validationMessage}
+            aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
             onInvalid={handleInvalid}
             onBlur={handleBlur}
             onChange={handleChange}
-            aria-invalid={!!validationMessage}
-            aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
             {...inputAttrs}
           />
         </label>
-        {validationMessage && (
+        {!!validationMessage && (
           <p id={errorTextId} className="bsds-input-error">
             {validationMessage}
           </p>
         )}
-        {helpText && (
+        {!!helpText && (
           <p id={helpTextId} className="bsds-input-help-text">
             {helpText}
           </p>
@@ -148,4 +150,5 @@ const InputText = forwardRef(
   }
 );
 
+InputText.displayName = 'InputText';
 export default InputText;

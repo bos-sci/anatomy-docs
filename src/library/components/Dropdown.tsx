@@ -47,6 +47,7 @@ const Dropdown = (props: Props) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownItems, setDropdownItems] = useState<DropdownItemElements[]>([]);
   const [dropdownId, setDropdownId] = useState('');
+  const [ariaText, setAriaText] = useState('');
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownItemRefs = useRef(Children.map(children, () => createRef<HTMLElement>()));
@@ -97,6 +98,8 @@ const Dropdown = (props: Props) => {
     }
   };
 
+  const trigger = refs.reference.current as HTMLButtonElement;
+
   const updateFocus = (e: React.KeyboardEvent<HTMLDivElement>) => {
     switch (e.key) {
       case 'ArrowUp':
@@ -112,7 +115,6 @@ const Dropdown = (props: Props) => {
       case 'Escape':
         e.preventDefault();
         setIsDropdownOpen(false);
-        const trigger = refs.reference.current as HTMLButtonElement;
         trigger.focus();
         break;
 
@@ -194,6 +196,12 @@ const Dropdown = (props: Props) => {
   }, []);
 
   useEffect(() => {
+    if (icon) {
+      setAriaText(triggerText);
+    }
+  }, [icon, triggerText]);
+
+  useEffect(() => {
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!dropdownRef.current?.contains(e.target as Node)) {
         setIsDropdownOpen(false);
@@ -211,7 +219,7 @@ const Dropdown = (props: Props) => {
     <DropdownItem
       key={dropdownId + 'item' + i}
       item={item}
-      isHighlightedAction={highlightedAction && i === dropdownItems.length - 1}
+      isHighlightedAction={!!highlightedAction && i === dropdownItems.length - 1}
     />
   ));
 
@@ -223,11 +231,11 @@ const Dropdown = (props: Props) => {
         className={`bsds-dropdown-trigger${className ? ' ' + className : ''}${icon ? ' has-icon' : ''}`}
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}
-        aria-label={icon ? triggerText : undefined}
+        aria-label={ariaText}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         {...buttonAttrs}
       >
-        {icon && <Icon size="2x" name={icon} />}
+        {!!icon && <Icon size="2x" name={icon} />}
         {!icon && triggerText}
       </Button>
       {listType === 'ul' && (

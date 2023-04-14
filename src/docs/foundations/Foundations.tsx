@@ -24,7 +24,7 @@ const Foundations = (): JSX.Element => {
 
   const { data, error } = useGetFoundationQuery({
     variables: {
-      id: idLookup.foundations[params.foundationName!].id,
+      id: idLookup.foundations[params?.foundationName ?? ''].id,
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
     },
   });
@@ -98,7 +98,7 @@ const Foundations = (): JSX.Element => {
       <Layout>
         <PageTemplate
           name={foundationData?.name || ''}
-          lastUpdated={foundationData?.sys?.publishedAt}
+          lastUpdated={foundationData?.sys?.publishedAt || ''}
           leadParagraph={foundationData?.leadParagraph || ''}
           seoMetaDescription={foundationData?.pageProperties?.seoMetaDescription || ''}
           navSecondaryMenuTrigger="Foundations"
@@ -109,12 +109,13 @@ const Foundations = (): JSX.Element => {
         </PageTemplate>
       </Layout>
     );
-  } else
+  } else {
     return (
       <Layout>
         <main id="mainContent">Loading...</main>
       </Layout>
     );
+  }
 };
 
 export default Foundations;

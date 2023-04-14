@@ -20,9 +20,9 @@ const WithError = (): JSX.Element => {
         <InputText
           label="Text input"
           errorText={errorText}
-          onChange={handleChange}
           defaultValue="Invalid value"
           forceValidation
+          onChange={handleChange}
         />
       </div>
     </Example>

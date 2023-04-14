@@ -39,7 +39,9 @@ const InputRadio = forwardRef(
     const validate = useCallback(() => {
       if (inputEl.current) {
         const isValid = inputEl.current.checkValidity();
-        if (isValid) addonProps.setFieldsetError('');
+        if (isValid) {
+          addonProps.setFieldsetError('');
+        }
       }
     }, [inputEl, addonProps]);
 
@@ -106,17 +108,17 @@ const InputRadio = forwardRef(
             type="radio"
             id={inputId}
             className="bsds-input-radio-input"
+            aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
             onInvalid={handleInvalid}
             onBlur={handleBlur}
             onInput={handleChange}
-            aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
             {...inputAttrs}
           />
           <label htmlFor={inputId} className="bsds-input-radio-label">
             {label}
           </label>
         </div>
-        {helpText && (
+        {!!helpText && (
           <p id={helpTextId} className="bsds-input-help-text">
             {helpText}
           </p>
@@ -126,4 +128,5 @@ const InputRadio = forwardRef(
   }
 );
 
+InputRadio.displayName = 'InputRadio';
 export default InputRadio;

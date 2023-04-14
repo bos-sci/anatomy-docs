@@ -11,6 +11,7 @@ export interface Props {
 
 const Tag = (props: Props): JSX.Element => {
   const [classes, setClasses] = useState('');
+  const [featureTag, setFeatureTag] = useState<ReactNode>();
 
   useEffect(() => {
     let variantClass = '';
@@ -36,9 +37,15 @@ const Tag = (props: Props): JSX.Element => {
     setClasses(variantClass);
   }, [props.isGhost, props.variant]);
 
-  return (
-    <b className={classes}>{props.variant !== 'featured' ? props.children : props.texts?.featuredTag || 'Featured'}</b>
-  );
+  useEffect(() => {
+    if (props.variant !== 'featured') {
+      setFeatureTag(props.children);
+    } else {
+      setFeatureTag(props.texts?.featuredTag || 'Featured');
+    }
+  }, [props.variant, props.children, props.texts?.featuredTag]);
+
+  return <b className={classes}>{featureTag}</b>;
 };
 
 export default Tag;

@@ -124,7 +124,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
   }, [location.pathname]);
 
   return (
-    <nav className="bsds-nav-secondary" aria-label={texts?.navAriaLabel || 'secondary'} ref={nav}>
+    <nav ref={nav} className="bsds-nav-secondary" aria-label={texts?.navAriaLabel || 'secondary'}>
       <button
         className="bsds-nav-secondary-menu-trigger"
         aria-expanded={isOpen}
@@ -135,7 +135,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
         {texts?.menuToggleText || 'Menu'}
       </button>
       <div id={navSecondaryId} className={`bsds-nav-secondary-menu${isOpen ? ' open' : ''}`}>
-        {activeParent && (
+        {!!activeParent && (
           <Button ref={backBtnRef} type="button" className="bsds-button-nav-back" onClick={goBack}>
             {texts?.backButtonText || 'Back'}
           </Button>

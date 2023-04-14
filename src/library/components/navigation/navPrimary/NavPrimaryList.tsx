@@ -30,7 +30,7 @@ const NavPrimaryList = (props: Props) => {
         (parent && Array.from(props.history, (h) => h.node).includes(parent) ? ' bsds-nav-list-history' : '')
       }
     >
-      {parent?.altLinkText && props.depth === 1 && (
+      {!!parent?.altLinkText && props.depth === 1 && (
         <div className="bsds-nav-menu-panel-header">
           <p className="bsds-nav-menu-panel-title">{parent.text}</p>
           <p className="bsds-body-subtle">{parent.description}</p>
@@ -66,7 +66,7 @@ const NavPrimaryList = (props: Props) => {
         })}
 
         {/* Bottom Link */}
-        {parent?.altLinkText && props.depth !== 1 && (
+        {!!parent?.altLinkText && props.depth !== 1 && (
           <li key={parent.altLinkText + props.depth} className="bsds-nav-item">
             <Link href={parent.altHref} to={parent.altTo} className="bsds-nav-link-see-all">
               {parent.altLinkText}

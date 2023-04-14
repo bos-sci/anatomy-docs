@@ -37,6 +37,14 @@ const Accordion = ({ headingLevel = 'h2', children }: Props): JSX.Element => {
     setAccordionPanels(Array.isArray(children) ? children : [children]);
   }, [children]);
 
+  const panelMaxHeight = (index: number) => {
+    if (expandedPanels.has(index)) {
+      return { maxHeight: panelRefs.current[index].current?.scrollHeight };
+    } else {
+      return undefined;
+    }
+  };
+
   return (
     <div className="bsds-accordion">
       {accordionPanels.map((accordionPanel, index) => (
@@ -62,13 +70,7 @@ const Accordion = ({ headingLevel = 'h2', children }: Props): JSX.Element => {
             ref={panelRefs.current[index]}
             id={accordionId + '-panel' + index}
             className="bsds-accordion-panel"
-            style={
-              expandedPanels.has(index)
-                ? {
-                    maxHeight: panelRefs.current[index].current?.scrollHeight,
-                  }
-                : undefined
-            }
+            style={panelMaxHeight(index)}
           >
             <div className="bsds-accordion-panel-body">{accordionPanel}</div>
           </div>

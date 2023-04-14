@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactNode, useEffect, useState } from 'react';
 import Icon from './icon/Icon';
 
 export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -30,6 +30,15 @@ const Button = forwardRef(
         break;
     }
 
+    const [iconWithChildren, setIconWithChildren] = useState(children);
+    useEffect(() => {
+      if (icon && children) {
+        setIconWithChildren(<span className="bsds-button-text">{children}</span>);
+      } else {
+        setIconWithChildren(children);
+      }
+    }, [icon, children]);
+
     if (icon && !children) {
       return (
         <button ref={ref} className={`bsds-button-icon ${classes} ${className || ''}`} {...buttonAttrs}>
@@ -40,9 +49,9 @@ const Button = forwardRef(
 
     return (
       <button ref={ref} className={`${classes} ${className || ''}`} {...buttonAttrs}>
-        {icon && iconAlignment === 'left' && <Icon name={icon} size={iconSize} className="bsds-icon-left" />}
-        {icon && children ? <span className="bsds-button-text">{children}</span> : children}
-        {icon && iconAlignment === 'right' && <Icon name={icon} size={iconSize} className="bsds-icon-right" />}
+        {!!(icon && iconAlignment === 'left') && <Icon name={icon} size={iconSize} className="bsds-icon-left" />}
+        {iconWithChildren}
+        {!!(icon && iconAlignment === 'right') && <Icon name={icon} size={iconSize} className="bsds-icon-right" />}
       </button>
     );
   }

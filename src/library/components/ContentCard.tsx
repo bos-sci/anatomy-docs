@@ -125,8 +125,26 @@ const ContentCard = (props: Props): JSX.Element => {
     cardStyles = { ...borderLightStyle };
   }
 
+  const [title, setTitle] = useState<ReactElement>();
+  const [style, setStyle] = useState(cardStyles.classes);
   const [clonedImage, setClonedImage] = useState<ReactElement>();
   const [clonedTag, setClonedTag] = useState<ReactElement>();
+
+  useEffect(() => {
+    if (linkTitle) {
+      setTitle(
+        <Link href={linkHref} className={`${cardStyles.titleLinkClasses} ${'link-hitbox'}`}>
+          {texts.cardTitle}
+        </Link>
+      );
+    } else {
+      setTitle(<>{texts.cardTitle}</>);
+    }
+  }, [texts.cardTitle, linkHref, cardStyles.titleLinkClasses, linkTitle]);
+
+  useEffect(() => {
+    setStyle(decorativeState && actionLink ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes);
+  }, [decorativeState, actionLink, cardStyles.classes]);
 
   useEffect(() => {
     if (image) {
@@ -151,18 +169,12 @@ const ContentCard = (props: Props): JSX.Element => {
   const cardContent = (
     <div className="bsds-card-content">
       {clonedTag}
-      {icon && <Icon name={`${iconName}`} className="bsds-icon-8x" />}
+      {!!icon && <Icon name={`${iconName}`} className="bsds-icon-8x" />}
       <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={'cardTitle' + cardTitleId}>
-        {linkTitle ? (
-          <Link href={linkHref} className={`${cardStyles.titleLinkClasses} ${'link-hitbox'}`}>
-            {texts.cardTitle}
-          </Link>
-        ) : (
-          <>{texts.cardTitle}</>
-        )}
+        {title}
       </HeadingElement>
       <p className="bsds-card-description">{texts?.cardDescription}</p>
-      {actionLink && (
+      {!!actionLink && (
         <Link href={linkHref} className={`${cardStyles.linkClasses}`}>
           {actionLinkText}
         </Link>
@@ -171,10 +183,7 @@ const ContentCard = (props: Props): JSX.Element => {
   );
 
   const cardContentWrapper = (
-    <div
-      className={decorativeState && actionLink ? `${cardStyles.classes} ${decorativeState}` : cardStyles.classes}
-      data-testid="bsdsCard"
-    >
+    <div className={style} data-testid="bsdsCard">
       {cardContent}
     </div>
   );

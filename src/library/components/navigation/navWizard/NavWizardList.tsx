@@ -61,7 +61,7 @@ const NavWizardList = (props: Props) => {
       })}
 
       {/* Overflow Link */}
-      {parent?.overflowLinkText && (
+      {!!parent?.overflowLinkText && (
         <li key={parent.overflowLinkText + props.depth} className="bsds-nav-item bsds-nav-item-overflow">
           <Link href={parent.overflowHref} to={parent.overflowTo}>
             {parent.overflowLinkText}

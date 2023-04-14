@@ -48,9 +48,9 @@ const WithHelpError = (): JSX.Element => {
               key={'checkboxListWithError' + i}
               label={checkbox.text}
               aria-describedby="listErrorText"
-              onChange={(e) => handleChange(e, i)}
               aria-invalid={!!errorText}
               defaultChecked={checkbox.isChecked}
+              onChange={(e) => handleChange(e, i)}
             />
           ))}
         </Fieldset>

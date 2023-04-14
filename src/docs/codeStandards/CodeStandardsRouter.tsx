@@ -11,7 +11,9 @@ const CodeStandardsRouter = (): JSX.Element => {
 
   if (params.standardName && !Object.keys(idLookup.codeStandards).includes(params.standardName)) {
     return <NotFound />;
-  } else return <CodeStandards />;
+  } else {
+    return <CodeStandards />;
+  }
 };
 
 export default CodeStandardsRouter;

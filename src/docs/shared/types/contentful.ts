@@ -13,10 +13,10 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  DateTime: any;
-  Dimension: any;
-  HexColor: any;
-  Quality: any;
+  DateTime: unknown;
+  Dimension: unknown;
+  HexColor: unknown;
+  Quality: unknown;
 };
 
 /** Represents a binary file in a space. An asset can be any file type. */
@@ -1767,7 +1767,7 @@ export type GetCodeStandardQuery = {
     leadParagraph?: string | null;
     content?: string | null;
     pageProperties?: { __typename?: 'PageProperties'; seoMetaDescription?: string | null } | null;
-    sys: { __typename?: 'Sys'; id: string; publishedAt?: any | null };
+    sys: { __typename?: 'Sys'; id: string; publishedAt?: string | null };
   } | null;
 };
 
@@ -1824,7 +1824,7 @@ export type GetComponentQuery = {
       } | null>;
     } | null;
     pageProperties?: { __typename?: 'PageProperties'; seoMetaDescription?: string | null } | null;
-    sys: { __typename?: 'Sys'; id: string; publishedAt?: any | null };
+    sys: { __typename?: 'Sys'; id: string; publishedAt?: string | null };
   } | null;
 };
 
@@ -1841,7 +1841,7 @@ export type GetContentGuidelineQuery = {
     leadParagraph?: string | null;
     content?: string | null;
     pageProperties?: { __typename?: 'PageProperties'; seoMetaDescription?: string | null } | null;
-    sys: { __typename?: 'Sys'; id: string; publishedAt?: any | null };
+    sys: { __typename?: 'Sys'; id: string; publishedAt?: string | null };
   } | null;
 };
 
@@ -1858,7 +1858,7 @@ export type GetFoundationQuery = {
     leadParagraph?: string | null;
     content?: string | null;
     pageProperties?: { __typename?: 'PageProperties'; seoMetaDescription?: string | null } | null;
-    sys: { __typename?: 'Sys'; id: string; publishedAt?: any | null };
+    sys: { __typename?: 'Sys'; id: string; publishedAt?: string | null };
   } | null;
 };
 
@@ -1931,7 +1931,7 @@ export type GetResourceQuery = {
     leadParagraph?: string | null;
     content?: string | null;
     pageProperties?: { __typename?: 'PageProperties'; seoMetaDescription?: string | null } | null;
-    sys: { __typename?: 'Sys'; id: string; publishedAt?: any | null };
+    sys: { __typename?: 'Sys'; id: string; publishedAt?: string | null };
   } | null;
 };
 

@@ -22,7 +22,7 @@ const Resources = (): JSX.Element => {
 
   const { data, error } = useGetResourceQuery({
     variables: {
-      id: idLookup.resources[params.resourceName!].id,
+      id: idLookup.resources[params?.resourceName ?? ''].id,
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
     },
   });
@@ -95,7 +95,7 @@ const Resources = (): JSX.Element => {
     <Layout>
       <PageTemplate
         name={resourceData?.name || ''}
-        lastUpdated={resourceData?.sys?.publishedAt}
+        lastUpdated={resourceData?.sys?.publishedAt || ''}
         leadParagraph={resourceData?.leadParagraph || ''}
         seoMetaDescription={resourceData?.pageProperties?.seoMetaDescription || ''}
         navSecondaryMenuTrigger="Resources"

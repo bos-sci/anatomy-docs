@@ -1,4 +1,4 @@
-import { ImgHTMLAttributes, useId } from 'react';
+import { ImgHTMLAttributes, useEffect, useId, useState } from 'react';
 
 interface BaseProps extends ImgHTMLAttributes<HTMLImageElement> {
   ratio?: Ratio;
@@ -38,6 +38,9 @@ const Image = (props: Props): JSX.Element => {
   const captionId = useId();
   const imageId = useId();
 
+  const [altText, setAltText] = useState(alt);
+  const [ariaText, setAriaText] = useState(texts?.caption);
+
   let ratioClasses = '';
 
   switch (ratio) {
@@ -67,16 +70,24 @@ const Image = (props: Props): JSX.Element => {
     captionAlignment = '-ghost';
   }
 
+  useEffect(() => {
+    setAltText(isDecorative ? '' : alt);
+  }, [alt, isDecorative]);
+
+  useEffect(() => {
+    setAriaText(hasCaption && texts?.caption ? `imageCaption${captionId}` : undefined);
+  }, [captionId, hasCaption, texts?.caption]);
+
   return (
     <>
       <img
         className={`bsds-image${ratioClasses}${className ? ' ' + className : ''}`}
-        alt={isDecorative ? '' : alt}
+        alt={altText}
         id={'image' + imageId}
-        aria-describedby={hasCaption && texts?.caption ? `imageCaption${captionId}` : undefined}
+        aria-describedby={ariaText}
         {...imgAttrs}
       />
-      {hasCaption && texts?.caption && (
+      {!!hasCaption && !!texts?.caption && (
         <p className={`${'bsds-image-caption'}${captionAlignment}`} id={'imageCaption' + captionId}>
           {texts?.caption}
         </p>

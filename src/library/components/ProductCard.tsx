@@ -22,12 +22,6 @@ interface Props {
 const ProductCard = (props: Props): JSX.Element => {
   const { tag, texts, headingLevel, linkTo, variant, assertiveTitle = false, image, gradientBrand, dropShadow } = props;
 
-  const [clonedImage, setClonedImage] = useState<ReactElement>();
-  const [clonedTag, setClonedTag] = useState<ReactElement>();
-
-  const productNameId = useId();
-  const imageLink = useRef<HTMLAnchorElement>(null);
-
   let cardStyles = {
     classes: '',
     titleLinkClasses: '',
@@ -57,6 +51,14 @@ const ProductCard = (props: Props): JSX.Element => {
     titleLinkClasses: 'bsds-link-ghost',
     linkClasses: 'bsds-product-card-ns-title-ghost',
   };
+
+  const [style, setStyle] = useState(cardStyles.classes);
+  const [linkStyle, setLinkStyle] = useState(cardStyles.linkClasses);
+  const [clonedImage, setClonedImage] = useState<ReactElement>();
+  const [clonedTag, setClonedTag] = useState<ReactElement>();
+
+  const productNameId = useId();
+  const imageLink = useRef<HTMLAnchorElement>(null);
 
   switch (variant) {
     case 'ghost':
@@ -90,6 +92,22 @@ const ProductCard = (props: Props): JSX.Element => {
   }
 
   useEffect(() => {
+    setStyle(
+      decorativeState
+        ? `${'bsds-product-card'} ${cardStyles.classes} ${decorativeState}`
+        : `${'bsds-product-card'} ${cardStyles.classes}`
+    );
+  }, [decorativeState, cardStyles.classes]);
+
+  useEffect(() => {
+    setLinkStyle(
+      assertiveTitle
+        ? `${cardStyles.linkClasses}${'-assertive'} ${'link-hitbox'}`
+        : `${cardStyles.linkClasses} ${'link-hitbox'}`
+    );
+  }, [assertiveTitle, cardStyles.linkClasses]);
+
+  useEffect(() => {
     if (tag) {
       setClonedTag(
         cloneElement(tag as ReactElement, {
@@ -113,33 +131,17 @@ const ProductCard = (props: Props): JSX.Element => {
   }, [image, linkTo, variant]);
 
   const defaultProductCard = (
-    <div
-      className={
-        decorativeState
-          ? `${'bsds-product-card'} ${cardStyles.classes} ${decorativeState}`
-          : `${'bsds-product-card'} ${cardStyles.classes}`
-      }
-      data-testid="bsdsProductCard"
-    >
-      {image && clonedImage}
-      {tag && clonedTag}
+    <div className={style} data-testid="bsdsProductCard">
+      {!!image && clonedImage}
+      {!!tag && clonedTag}
       {headingLevel ? (
         <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={'productTitle' + productNameId}>
-          <Link href={linkTo} className={`${cardStyles.titleLinkClasses} ${'link-hitbox'}`} ref={imageLink}>
+          <Link ref={imageLink} href={linkTo} className={`${cardStyles.titleLinkClasses} ${'link-hitbox'}`}>
             {texts.title}
           </Link>
         </HeadingElement>
       ) : (
-        <Link
-          href={linkTo}
-          className={
-            assertiveTitle
-              ? `${cardStyles.linkClasses}${'-assertive'} ${'link-hitbox'}`
-              : `${cardStyles.linkClasses} ${'link-hitbox'}`
-          }
-          id={'productTitle' + productNameId}
-          ref={imageLink}
-        >
+        <Link ref={imageLink} href={linkTo} className={linkStyle} id={'productTitle' + productNameId}>
           {texts.title}
         </Link>
       )}
@@ -150,32 +152,17 @@ const ProductCard = (props: Props): JSX.Element => {
   if (image?.props.ratio === '50:50') {
     return (
       <div data-testid="bsdsProductCard" className="bsds-product-card-even-split">
-        {image && clonedImage}
-        <div
-          className={
-            decorativeState
-              ? `${'bsds-product-card'} ${cardStyles.classes} ${decorativeState}`
-              : `${'bsds-product-card'} ${cardStyles.classes}`
-          }
-        >
-          {tag && clonedTag}
+        {!!image && clonedImage}
+        <div className={style}>
+          {!!tag && clonedTag}
           {headingLevel ? (
             <HeadingElement headingLevel={headingLevel} className="bsds-card-title" id={'productTitle' + productNameId}>
-              <Link href={linkTo} className={`${cardStyles.titleLinkClasses} ${'link-hitbox'}`} ref={imageLink}>
+              <Link ref={imageLink} href={linkTo} className={`${cardStyles.titleLinkClasses} ${'link-hitbox'}`}>
                 {texts.title}
               </Link>
             </HeadingElement>
           ) : (
-            <Link
-              href={linkTo}
-              className={
-                assertiveTitle
-                  ? `${cardStyles.linkClasses}${'-assertive'} ${'link-hitbox'}`
-                  : `${cardStyles.linkClasses} ${'link-hitbox'}`
-              }
-              id={'productTitle' + productNameId}
-              ref={imageLink}
-            >
+            <Link ref={imageLink} href={linkTo} className={linkStyle} id={'productTitle' + productNameId}>
               {texts.title}
             </Link>
           )}

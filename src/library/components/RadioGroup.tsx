@@ -62,15 +62,15 @@ const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAtt
       aria-describedby={helpTextId ? helpTextId : ''}
       {...fieldsetAttrs}
       role="radiogroup"
-      aria-invalid={addonProps.ariaInvalid && addonProps.isDirty}
+      aria-invalid={!!addonProps.ariaInvalid && addonProps.isDirty}
     >
       <legend className="bsds-legend">{legend}</legend>
-      {validationMessage && (
+      {!!validationMessage && (
         <p id={errorTextId} className="bsds-input-error">
           {validationMessage}
         </p>
       )}
-      {helpText && (
+      {!!helpText && (
         <p id={helpTextId} className="bsds-input-help-text">
           {helpText}
         </p>

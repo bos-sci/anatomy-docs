@@ -128,13 +128,13 @@ const NavWizard = (props: Props) => {
             {props.texts.backButtonText ? props.texts.backButtonText : 'Back'}
           </Button>
         )}
-        {breadcrumb && (
+        {!!breadcrumb && (
           <p className="bsds-nav-breadcrumb" aria-current="step">
             {breadcrumb}
           </p>
         )}
-        {title && <h2 className="bsds-nav-title">{title}</h2>}
-        {description && <p className="bsds-nav-description">{description}</p>}
+        {!!title && <h2 className="bsds-nav-title">{title}</h2>}
+        {!!description && <p className="bsds-nav-description">{description}</p>}
       </div>
       {navTree.length > 0 && (
         <div className="bsds-nav-wizard-menu">

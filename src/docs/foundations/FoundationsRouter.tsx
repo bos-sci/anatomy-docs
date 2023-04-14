@@ -11,9 +11,11 @@ const FoundationsRouter = (): JSX.Element => {
 
   if (params.foundationName && !Object.keys(idLookup.foundations).includes(params.foundationName)) {
     return <NotFound />;
-  } else if (!params.group && idLookup.foundations[params.foundationName!].group) {
+  } else if (!params.group && idLookup.foundations[params?.foundationName ?? ''].group) {
     return <NotFound />;
-  } else return <Foundations />;
+  } else {
+    return <Foundations />;
+  }
 };
 
 export default FoundationsRouter;

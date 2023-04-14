@@ -46,7 +46,7 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
           popHistory={props.popHistory}
         />
       </div>
-      {props.history.length === 0 && props.utilityItems && (
+      {props.history.length === 0 && !!props.utilityItems && (
         <ul className="bsds-nav bsds-nav-block">
           {props.utilityItems.map((item, i) => (
             <li key={'utilityItem' + i} className="bsds-nav-item">
@@ -71,4 +71,5 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
   );
 });
 
+NavPrimaryMenu.displayName = 'NavPrimaryMenu';
 export default NavPrimaryMenu;

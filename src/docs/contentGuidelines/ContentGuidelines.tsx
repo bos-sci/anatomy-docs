@@ -25,7 +25,7 @@ const ContentGuidelines = (): JSX.Element => {
 
   const { data, error } = useGetContentGuidelineQuery({
     variables: {
-      id: idLookup.contentGuidelines[params.contentName!].id,
+      id: idLookup.contentGuidelines[params?.contentName ?? ''].id,
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
     },
   });
@@ -60,7 +60,7 @@ const ContentGuidelines = (): JSX.Element => {
     <Layout>
       <PageTemplate
         name={contentGuidelineData?.name || ''}
-        lastUpdated={contentGuidelineData?.sys?.publishedAt}
+        lastUpdated={contentGuidelineData?.sys?.publishedAt || ''}
         leadParagraph={contentGuidelineData?.leadParagraph || ''}
         seoMetaDescription={contentGuidelineData?.pageProperties?.seoMetaDescription || ''}
         navSecondaryMenuTrigger="Content"

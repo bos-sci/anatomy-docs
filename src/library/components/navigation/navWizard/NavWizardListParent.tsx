@@ -38,14 +38,16 @@ const NavWizardListParent = (props: Props) => {
           <IconChevronRight className="bsds-icon-2x" />
         </div>
       </Button>
-      <NavWizardList
-        navItems={props.navItem.children!}
-        depth={props.depth + 1}
-        history={props.history}
-        pushHistory={props.pushHistory}
-        popHistory={props.popHistory}
-        focusBackBtn={props.focusBackBtn}
-      />
+      {!!props.navItem.children && (
+        <NavWizardList
+          navItems={props.navItem.children}
+          depth={props.depth + 1}
+          history={props.history}
+          pushHistory={props.pushHistory}
+          popHistory={props.popHistory}
+          focusBackBtn={props.focusBackBtn}
+        />
+      )}
     </li>
   );
 };

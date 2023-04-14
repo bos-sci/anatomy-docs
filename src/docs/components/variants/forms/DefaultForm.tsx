@@ -41,9 +41,9 @@ const DefaultForm = () => {
             label="Text input"
             defaultValue="Invalid value"
             errorText={noSpacesInputError}
+            helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
             onBlur={validateTextInput}
             onChange={validateTextInput}
-            helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
           />
         </div>
         <div className="bsds-form-control">
