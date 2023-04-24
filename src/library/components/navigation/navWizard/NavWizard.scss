@@ -146,9 +146,9 @@
       /* stylelint-disable scss/selector-nest-combinators */
       > .bsds-nav-item:not(.bsds-nav-item-parent),
       > .bsds-nav-item-parent > .bsds-nav-link {
+        /* stylelint-enable scss/selector-nest-combinators */
         display: none;
       }
-      /* stylelint-enable scss/selector-nest-combinators */
     }
   }
 }

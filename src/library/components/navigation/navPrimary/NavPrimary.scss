@@ -220,10 +220,10 @@ $menu-padding: space(md) 0;
             /* stylelint-disable scss/selector-nest-combinators */
             &::after,
             &[aria-expanded='true']::after {
+              /* stylelint-enable scss/selector-nest-combinators */
               background-image: url('../../../../assets/images/icon-search.svg');
               content: '';
             }
-            /* stylelint-enable scss/selector-nest-combinators */
           }
         }
 
@@ -322,9 +322,9 @@ $menu-padding: space(md) 0;
         /* stylelint-disable scss/selector-nest-combinators */
         > .bsds-nav-item:not(.bsds-nav-item-parent),
         > .bsds-nav-item-parent > .bsds-nav-link {
+          /* stylelint-enable scss/selector-nest-combinators */
           display: none;
         }
-        /* stylelint-enable scss/selector-nest-combinators */
       }
 
       > .bsds-nav-menu-panel-header {
@@ -486,9 +486,9 @@ $menu-padding: space(md) 0;
     /* stylelint-disable scss/selector-nest-combinators */
     .bsds-nav-utility .bsds-nav,
     .bsds-nav-primary .bsds-nav-bar {
+      /* stylelint-enable scss/selector-nest-combinators */
       padding: 0 space(md);
     }
-    /* stylelint-enable scss/selector-nest-combinators */
   }
 }
 
@@ -539,9 +539,9 @@ $menu-padding: space(md) 0;
       .bsds-nav-bar,
       .bsds-nav-menu-panels,
       .bsds-search-panel .bsds-form-search {
+        /* stylelint-enable scss/selector-nest-combinators */
         width: $panels-width-lg;
       }
-      /* stylelint-enable scss/selector-nest-combinators */
 
       .bsds-nav-menu {
         &:not(.intermediate) {
@@ -562,10 +562,10 @@ $menu-padding: space(md) 0;
   .bsds-nav-bar,
   .bsds-nav-menu-panels,
   .bsds-search-panel .bsds-form-search {
+    /* stylelint-enable scss/selector-nest-combinators */
     margin-right: auto;
     margin-left: auto;
   }
-  /* stylelint-enable scss/selector-nest-combinators */
 
   .bsds-nav-utility {
     display: block;
@@ -720,9 +720,9 @@ $menu-padding: space(md) 0;
             /* stylelint-disable scss/selector-nest-combinators */
             > .bsds-nav-item:not(.bsds-nav-item-parent),
             > .bsds-nav-item-parent > .bsds-nav-link {
+              /* stylelint-enable scss/selector-nest-combinators */
               display: block;
             }
-            /* stylelint-enable scss/selector-nest-combinators */
           }
 
           > .bsds-nav-menu-panel-header {
@@ -760,8 +760,8 @@ $menu-padding: space(md) 0;
       .bsds-nav-utility .bsds-nav,
       .bsds-nav-bar,
       .bsds-search-panel .bsds-form-search {
-        width: $panels-width-xl;
         /* stylelint-enable scss/selector-nest-combinators */
+        width: $panels-width-xl;
       }
 
       .bsds-nav-primary {
@@ -789,9 +789,9 @@ $menu-padding: space(md) 0;
       .bsds-nav-utility .bsds-nav,
       .bsds-nav-bar,
       .bsds-search-panel .bsds-form-search {
+        /* stylelint-enable scss/selector-nest-combinators */
         width: $panels-width-xxl;
       }
-      /* stylelint-enable scss/selector-nest-combinators */
 
       .bsds-nav-primary {
         .bsds-nav-menu {
