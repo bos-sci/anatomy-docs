@@ -112,9 +112,14 @@
   width: 100%;
 
   &:not(.has-overflow) {
-    .bsds-tab-overflow,
-    .bsds-tab-list::after {
+    .bsds-tab-overflow {
       display: none;
+    }
+
+    .bsds-tab-list {
+      &::after {
+        display: none;
+      }
     }
   }
 }

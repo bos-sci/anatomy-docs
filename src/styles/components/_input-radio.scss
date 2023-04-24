@@ -67,8 +67,10 @@ $inner-circle-diameter: space(md);
       }
     }
 
+    /* stylelint-disable scss/selector-nest-combinators */
     &:focus,
     &:focus:checked {
+      /* stylelint-enable scss/selector-nest-combinators */
       + .bsds-input-radio-label {
         &::before {
           @include focus-invalid;
@@ -99,8 +101,10 @@ $inner-circle-diameter: space(md);
     }
   }
 
+  /* stylelint-disable scss/selector-nest-combinators */
   &:focus,
   &:focus:checked {
+    /* stylelint-enable scss/selector-nest-combinators */
     + .bsds-input-radio-label {
       &::before {
         @include focus-default;

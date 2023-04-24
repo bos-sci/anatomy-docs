@@ -1,5 +1,3 @@
-/* stylelint-disable scss/selector-nest-combinators */
-// TODO: ads-463 Figure out how to make nesting work for this file
 @import '/src/styles/abstracts/abstracts';
 @import '/src/styles/base/base';
 @import '/src/styles/utilities/utilities';
@@ -147,10 +145,12 @@ $icon-size-sm: space(lg);
     list-style: none;
 
     &:not(.bsds-nav-active-list) {
+      /* stylelint-disable scss/selector-nest-combinators */
       > .bsds-nav-item:not(.bsds-nav-item-parent),
       > .bsds-nav-item-parent > .bsds-nav-link {
         display: none;
       }
+      /* stylelint-enable scss/selector-nest-combinators */
     }
 
     &.bsds-nav-active-list {

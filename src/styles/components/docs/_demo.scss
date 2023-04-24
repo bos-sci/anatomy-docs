@@ -46,6 +46,7 @@
 }
 
 .docs-code {
+  /* stylelint-disable-next-line selector-type-no-unknown */
   markdown {
     pre {
       [class*='language-'] {

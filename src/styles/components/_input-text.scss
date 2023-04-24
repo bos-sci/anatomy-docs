@@ -46,10 +46,13 @@
     }
 
     &:not(:read-only) {
-      &[aria-invalid='true'],
-      &[aria-invalid='true']:hover,
-      &[aria-invalid='true']:focus {
+      &[aria-invalid='true'] {
         border: space(xxs) solid $feedback-error-40;
+
+        &:hover,
+        &:focus {
+          border: space(xxs) solid $feedback-error-40;
+        }
       }
 
       &:hover,
