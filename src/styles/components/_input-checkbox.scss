@@ -1,7 +1,7 @@
 $checkbox-size: $ffs-body-assertive;
 $checkmark-size: $ffs-body-assertive;
 
-@mixin invalid() {
+@mixin checkbox-invalid() {
   + .bsds-input-checkbox-label {
     &::before {
       border: space(xs) solid $feedback-error-40;
@@ -49,7 +49,7 @@ $checkmark-size: $ffs-body-assertive;
 
   &[aria-invalid='true'] {
     .bsds-input-checkbox-input {
-      @include invalid;
+      @include checkbox-invalid;
     }
   }
 }
@@ -150,6 +150,6 @@ $checkmark-size: $ffs-body-assertive;
   }
 
   &[aria-invalid='true'] {
-    @include invalid;
+    @include checkbox-invalid;
   }
 }
