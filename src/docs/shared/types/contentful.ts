@@ -514,6 +514,7 @@ export type ComponentFilter = {
   leadParagraph_not?: InputMaybe<Scalars['String']>;
   leadParagraph_not_contains?: InputMaybe<Scalars['String']>;
   leadParagraph_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  modifiers?: InputMaybe<CfComponentModifierNestedFilter>;
   modifiersCollection_exists?: InputMaybe<Scalars['Boolean']>;
   name?: InputMaybe<Scalars['String']>;
   name_contains?: InputMaybe<Scalars['String']>;
@@ -527,7 +528,9 @@ export type ComponentFilter = {
   shouldLinkToExamples?: InputMaybe<Scalars['Boolean']>;
   shouldLinkToExamples_exists?: InputMaybe<Scalars['Boolean']>;
   shouldLinkToExamples_not?: InputMaybe<Scalars['Boolean']>;
+  states?: InputMaybe<CfComponentStateNestedFilter>;
   statesCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  styles?: InputMaybe<CfComponentStyleNestedFilter>;
   stylesCollection_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
   usage?: InputMaybe<Scalars['String']>;
@@ -1843,6 +1846,99 @@ export type SysFilter = {
   publishedVersion_lte?: InputMaybe<Scalars['Float']>;
   publishedVersion_not?: InputMaybe<Scalars['Float']>;
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+};
+
+export type CfComponentModifierNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfComponentModifierNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfComponentModifierNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  description?: InputMaybe<Scalars['String']>;
+  description_contains?: InputMaybe<Scalars['String']>;
+  description_exists?: InputMaybe<Scalars['Boolean']>;
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  description_not?: InputMaybe<Scalars['String']>;
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  isPreviewDarkThemed?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_exists?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_not?: InputMaybe<Scalars['Boolean']>;
+  modifierId?: InputMaybe<Scalars['String']>;
+  modifierId_contains?: InputMaybe<Scalars['String']>;
+  modifierId_exists?: InputMaybe<Scalars['Boolean']>;
+  modifierId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  modifierId_not?: InputMaybe<Scalars['String']>;
+  modifierId_not_contains?: InputMaybe<Scalars['String']>;
+  modifierId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_exists?: InputMaybe<Scalars['Boolean']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type CfComponentStateNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfComponentStateNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfComponentStateNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  description?: InputMaybe<Scalars['String']>;
+  description_contains?: InputMaybe<Scalars['String']>;
+  description_exists?: InputMaybe<Scalars['Boolean']>;
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  description_not?: InputMaybe<Scalars['String']>;
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  isPreviewDarkThemed?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_exists?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_not?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_exists?: InputMaybe<Scalars['Boolean']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  stateId?: InputMaybe<Scalars['String']>;
+  stateId_contains?: InputMaybe<Scalars['String']>;
+  stateId_exists?: InputMaybe<Scalars['Boolean']>;
+  stateId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  stateId_not?: InputMaybe<Scalars['String']>;
+  stateId_not_contains?: InputMaybe<Scalars['String']>;
+  stateId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type CfComponentStyleNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfComponentStyleNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfComponentStyleNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  description?: InputMaybe<Scalars['String']>;
+  description_contains?: InputMaybe<Scalars['String']>;
+  description_exists?: InputMaybe<Scalars['Boolean']>;
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  description_not?: InputMaybe<Scalars['String']>;
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  isPreviewDarkThemed?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_exists?: InputMaybe<Scalars['Boolean']>;
+  isPreviewDarkThemed_not?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_exists?: InputMaybe<Scalars['Boolean']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  styleId?: InputMaybe<Scalars['String']>;
+  styleId_contains?: InputMaybe<Scalars['String']>;
+  styleId_exists?: InputMaybe<Scalars['Boolean']>;
+  styleId_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  styleId_not?: InputMaybe<Scalars['String']>;
+  styleId_not_contains?: InputMaybe<Scalars['String']>;
+  styleId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
 };
 
 export type CfPagePropertiesNestedFilter = {
