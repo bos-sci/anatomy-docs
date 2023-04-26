@@ -45,7 +45,7 @@ const NavPrimaryList = (props: Props) => {
             // Parent Button
             return (
               <NavPrimaryListParent
-                key={navItem.text + i}
+                key={navItem.slug || navItem.text + props.depth}
                 navItem={navItem}
                 activeNode={props.activeNode}
                 setActiveNode={props.setActiveNode}
@@ -60,7 +60,7 @@ const NavPrimaryList = (props: Props) => {
           } else {
             return (
               // Leaf Node
-              <NavPrimaryLeaf key={navItem.text + i} navItem={navItem} setActiveNode={props.setActiveNode} />
+              <NavPrimaryLeaf key={navItem.slug} navItem={navItem} setActiveNode={props.setActiveNode} />
             );
           }
         })}

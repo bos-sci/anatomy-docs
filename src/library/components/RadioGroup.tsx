@@ -5,8 +5,12 @@ export const RadioAddonPropsContext = createContext({
   ariaDescribedby: '',
   errorText: '',
   isDirty: false,
-  setIsDirty: (isDirty: boolean) => {},
-  setFieldsetError: (text: string) => {},
+  setIsDirty: (isDirty: boolean) => {
+    return;
+  },
+  setFieldsetError: (text: string) => {
+    return;
+  },
 });
 
 interface Props extends FieldsetHTMLAttributes<HTMLFieldSetElement> {

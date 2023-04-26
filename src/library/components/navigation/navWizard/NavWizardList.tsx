@@ -39,7 +39,7 @@ const NavWizardList = (props: Props) => {
           // Parent Button
           return (
             <NavWizardListParent
-              key={navItem.text + i}
+              key={`WizardListParent${navItem.text}`}
               navItem={navItem}
               depth={props.depth}
               history={props.history}
@@ -51,7 +51,7 @@ const NavWizardList = (props: Props) => {
         } else {
           return (
             // Leaf Node
-            <li key={navItem.text + i} className="bsds-nav-item">
+            <li key={`WizardLeafNode${navItem.slug}`} className="bsds-nav-item">
               <Link href={navItem.href} to={navItem.slug} className="bsds-nav-link" isNavLink>
                 {navItem.text}
               </Link>

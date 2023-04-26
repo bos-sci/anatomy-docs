@@ -28,6 +28,7 @@ const Markdown = ({ markdown, headingOffset = 0, className }: Props): JSX.Elemen
   }, [markdown, headingOffset]);
 
   if (markdown) {
+    // eslint-disable-next-line react/no-danger
     return <div className={className} dangerouslySetInnerHTML={{ __html: cleanMarkdown }} />;
   } else {
     return null;

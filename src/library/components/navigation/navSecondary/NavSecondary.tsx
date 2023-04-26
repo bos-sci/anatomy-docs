@@ -67,6 +67,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
           return node;
         } else if (node.children) {
           for (let i = 0; i < node.children.length; i++) {
+            //eslint-disable-next-line prefer-const
             let found: NavNode | null = findInTree(node.children[i], slug);
             if (found) {
               return found;

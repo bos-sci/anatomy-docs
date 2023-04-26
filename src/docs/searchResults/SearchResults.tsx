@@ -69,8 +69,8 @@ const SearchResults = (): JSX.Element => {
           )}
           {!!searchResults && searchResults.length > 0 && (
             <ul className="docs-search-results" hidden={!searchQuery}>
-              {searchResults.map((result, i) => (
-                <li key={result.text + i} className="docs-search-result">
+              {searchResults.map((result) => (
+                <li key={`result${result.text}`} className="docs-search-result">
                   <Link to={result.to} className="bsds-body-assertive">
                     {result.text}
                   </Link>

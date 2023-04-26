@@ -32,7 +32,12 @@ module.exports = {
     'prettier/prettier': 1,
     'curly': ['warn', 'all'],
     'react/default-props-match-prop-types': 2,
-    'react/jsx-no-useless-fragment': 1,
+    'react/jsx-no-useless-fragment': [
+      1,
+      {
+        allowExpressions: true,
+      },
+    ],
     'react/boolean-prop-naming': [
       1,
       {

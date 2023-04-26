@@ -48,7 +48,7 @@ const Accordion = ({ headingLevel = 'h2', children }: Props): JSX.Element => {
   return (
     <div className="bsds-accordion">
       {accordionPanels.map((accordionPanel, index) => (
-        <Fragment key={accordionId + index}>
+        <Fragment key={'fragment' + accordionId}>
           <HeadingElement
             headingLevel={headingLevel}
             className={

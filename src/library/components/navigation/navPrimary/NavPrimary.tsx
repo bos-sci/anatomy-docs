@@ -188,12 +188,11 @@ const NavPrimary = ({
       }
       if (history.length === 0) {
         setIsMenuOpen(false);
-      } else if (isMenuOpen) {
       }
     } else if (!isViewportSmall) {
       setIsViewportSmall(true);
     }
-  }, [history.length, isMenuOpen, isViewportSmall]);
+  }, [history.length, isViewportSmall]);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -292,7 +291,7 @@ const NavPrimary = ({
           )}
           <ul className="bsds-nav">
             {navTree.map((navItem, i) => (
-              <li key={navItem.text + i} className="bsds-nav-item bsds-nav-item-root">
+              <li key={navItem.text + navItem?.slug} className="bsds-nav-item bsds-nav-item-root">
                 {!!navItem.children && (
                   <Button
                     id={navItem.id}

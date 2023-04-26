@@ -30,7 +30,7 @@ const LandingPage = (props: Props): JSX.Element => {
     const groups = new Set(Array.from(Object.keys(listItems), (key) => listItems[key].group));
     const byGroup = Array.from(groups).map((group) => {
       const entries: IdLookupProperties[] = [];
-      Object.keys(listItems).forEach((key, i) => {
+      Object.keys(listItems).forEach((key) => {
         if (listItems[key].group === group) {
           entries.push(listItems[key]);
         }
@@ -40,14 +40,15 @@ const LandingPage = (props: Props): JSX.Element => {
     setGroupedItems(byGroup);
   }, [listItems]);
 
+  console.log(groupedItems);
   return (
     <Layout>
       <div className="docs-body-minimal">
         <main id="mainContent">
           <h1>{props.heading}</h1>
           <CardGroup cardLayout="threeUp" className="bsds-mt-6x">
-            {groupedItems.map((group, i) => (
-              <Fragment key={`group${i}`}>
+            {groupedItems.map((group) => (
+              <Fragment key={`group${group[0].id}`}>
                 {group.map((entry) => (
                   <ContentCard
                     key={entry.id}

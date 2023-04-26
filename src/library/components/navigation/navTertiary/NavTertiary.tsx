@@ -8,7 +8,6 @@ export interface NavItemTertiary {
 }
 
 interface Props {
-  depth?: number;
   navTertiaryItems?: NavItemTertiary[];
   tertiaryNavAriaLabel?: string;
 }
@@ -25,7 +24,7 @@ const NavTertiary = ({ navTertiaryItems, tertiaryNavAriaLabel }: Props): JSX.Ele
         {!!navTertiaryItems &&
           Array.from(navTertiaryItems).map((navItem, i) => {
             return (
-              <li key={`tertiaryNavItem${i}`} className="bsds-nav-item">
+              <li key={`tertiaryNavItem${navItem.id}`} className="bsds-nav-item">
                 <Link to={{ hash: navItem.id }} className="bsds-nav-link">
                   {navItem.text}
                 </Link>

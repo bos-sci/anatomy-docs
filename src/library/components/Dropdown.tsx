@@ -217,7 +217,7 @@ const Dropdown = (props: Props) => {
 
   const listItems = dropdownItems.map((item, i) => (
     <DropdownItem
-      key={dropdownId + 'item' + i}
+      key={dropdownId + 'item' + item.props.children}
       item={item}
       isHighlightedAction={!!highlightedAction && i === dropdownItems.length - 1}
     />

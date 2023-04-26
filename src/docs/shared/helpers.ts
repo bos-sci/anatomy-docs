@@ -74,11 +74,14 @@ export const indexSearch = async (query: string) => {
               }
               return !(hit as Hit).pathname.includes('/example/');
             })
-            .map((hit: any) => ({
-              to: hit.pathname,
-              text: hit.title.replace(' - Anatomy - Boston Scientific', ''),
-              description: hit.description,
-            }))
+            .map((hit: unknown) => {
+              const h = hit as Hit;
+              return {
+                to: h.pathname,
+                text: h.title.replace(' - Anatomy - Boston Scientific', ''),
+                description: h.description,
+              };
+            })
         );
       });
     }

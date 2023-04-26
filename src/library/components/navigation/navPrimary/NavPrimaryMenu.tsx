@@ -48,12 +48,12 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
       </div>
       {props.history.length === 0 && !!props.utilityItems && (
         <ul className="bsds-nav bsds-nav-block">
-          {props.utilityItems.map((item, i) => (
-            <li key={'utilityItem' + i} className="bsds-nav-item">
+          {props.utilityItems.map((item) => (
+            <li key={'utilityItem' + item.text} className="bsds-nav-item">
               {item.children ? (
-                <Dropdown key={'utilityItem' + item.text + i} triggerText={item.text} className="bsds-nav-link">
-                  {item.children.map((child, childI) => (
-                    <Link key={child.text + childI} href={child.href} to={child.slug}>
+                <Dropdown key={'utilityItemDropdown' + item.text} triggerText={item.text} className="bsds-nav-link">
+                  {item.children.map((child) => (
+                    <Link key={'utilityItemDropdownChild' + child.slug} href={child.href} to={child.slug}>
                       {child.text}
                     </Link>
                   ))}

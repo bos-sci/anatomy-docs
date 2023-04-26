@@ -31,7 +31,7 @@ const useHeadingIds = () => {
         return words.slice(0, lastIndex).join(' ');
       };
       headings.forEach((h, index) => {
-        let steps = [h];
+        const steps = [h];
         for (let i = index; i >= 0; i--) {
           if (getLevel(headings[i]) < getLevel(steps[steps.length - 1])) {
             steps.push(headings[i]);

@@ -31,7 +31,7 @@ const NavSecondaryList = ({
       {navItems.map((navItem, i) => {
         if (navItem.slug) {
           return (
-            <li key={`secondaryNavItem${i}`} className="bsds-nav-item">
+            <li key={`secondaryNavItem${navItem.slug}`} className="bsds-nav-item">
               <NavLink to={navItem.slug} className="bsds-nav-link">
                 {navItem.text}
               </NavLink>
@@ -40,7 +40,7 @@ const NavSecondaryList = ({
         } else {
           return (
             <NavSecondaryListParent
-              key={`secondaryNavItem${i}`}
+              key={`secondaryNavItemParent${navItem.text}`}
               navItem={navItem}
               activeParent={activeParent}
               activeParentRef={activeParentRef}

@@ -269,6 +269,7 @@ input ComponentFilter {
   leadParagraph_not: String
   leadParagraph_not_contains: String
   leadParagraph_not_in: [String]
+  modifiers: cfComponentModifierNestedFilter
   modifiersCollection_exists: Boolean
   name: String
   name_contains: String
@@ -282,7 +283,9 @@ input ComponentFilter {
   shouldLinkToExamples: Boolean
   shouldLinkToExamples_exists: Boolean
   shouldLinkToExamples_not: Boolean
+  states: cfComponentStateNestedFilter
   statesCollection_exists: Boolean
+  styles: cfComponentStyleNestedFilter
   stylesCollection_exists: Boolean
   sys: SysFilter
   usage: String
@@ -1121,6 +1124,99 @@ input SysFilter {
   publishedVersion_lte: Float
   publishedVersion_not: Float
   publishedVersion_not_in: [Float]
+}
+
+input cfComponentModifierNestedFilter {
+  AND: [cfComponentModifierNestedFilter]
+  OR: [cfComponentModifierNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  isPreviewDarkThemed: Boolean
+  isPreviewDarkThemed_exists: Boolean
+  isPreviewDarkThemed_not: Boolean
+  modifierId: String
+  modifierId_contains: String
+  modifierId_exists: Boolean
+  modifierId_in: [String]
+  modifierId_not: String
+  modifierId_not_contains: String
+  modifierId_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  sys: SysFilter
+}
+
+input cfComponentStateNestedFilter {
+  AND: [cfComponentStateNestedFilter]
+  OR: [cfComponentStateNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  isPreviewDarkThemed: Boolean
+  isPreviewDarkThemed_exists: Boolean
+  isPreviewDarkThemed_not: Boolean
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  stateId: String
+  stateId_contains: String
+  stateId_exists: Boolean
+  stateId_in: [String]
+  stateId_not: String
+  stateId_not_contains: String
+  stateId_not_in: [String]
+  sys: SysFilter
+}
+
+input cfComponentStyleNestedFilter {
+  AND: [cfComponentStyleNestedFilter]
+  OR: [cfComponentStyleNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  isPreviewDarkThemed: Boolean
+  isPreviewDarkThemed_exists: Boolean
+  isPreviewDarkThemed_not: Boolean
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  styleId: String
+  styleId_contains: String
+  styleId_exists: Boolean
+  styleId_in: [String]
+  styleId_not: String
+  styleId_not_contains: String
+  styleId_not_in: [String]
+  sys: SysFilter
 }
 
 input cfPagePropertiesNestedFilter {
