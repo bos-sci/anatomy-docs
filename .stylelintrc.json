@@ -133,7 +133,7 @@
     ],
     "media-feature-range-notation": "prefix",
     "named-grid-areas-no-invalid": true,
-    "no-descending-specificity": true,
+    "no-descending-specificity": null,
     "no-duplicate-at-import-rules": true,
     "no-duplicate-selectors": true,
     "no-empty-source": true,
