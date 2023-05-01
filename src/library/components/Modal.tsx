@@ -159,7 +159,7 @@ const Modal = forwardRef(
             showDialog(false);
           }
           const focusableElements = [
-            ...dialogRef.current?.querySelectorAll(
+            ...dialogRef.current.querySelectorAll(
               'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
             ),
           ] as HTMLElement[];

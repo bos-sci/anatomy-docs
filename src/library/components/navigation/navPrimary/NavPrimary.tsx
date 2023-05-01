@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, KeyboardEvent, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
 import './NavPrimary.scss';
@@ -230,14 +230,20 @@ const NavPrimary = ({
     };
   }, [onResize]);
 
-  const handleKeyUp = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      if (isMenuOpen || isSearchOpen) {
-        rootButton?.focus();
-      }
-      setIsMenuOpen(false);
-      setHistory([]);
-      setIsSearchOpen(false);
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLUListElement>) => {
+    switch (e.key) {
+      case 'Escape':
+        if (isMenuOpen || isSearchOpen) {
+          rootButton?.focus();
+        }
+        e.preventDefault();
+        setIsMenuOpen(false);
+        setHistory([]);
+        setIsSearchOpen(false);
+        break;
+
+      default:
+        break;
     }
   };
 
@@ -278,7 +284,7 @@ const NavPrimary = ({
   }, [isMenuOpen, texts?.menuToggleTextClose, texts?.menuToggleTextOpen]);
 
   return (
-    <header ref={navRef} className={'bsds-nav-header' + (isConstrained ? ' is-constrained' : '')} onKeyUp={handleKeyUp}>
+    <header ref={navRef} className={'bsds-nav-header' + (isConstrained ? ' is-constrained' : '')}>
       {!!utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
       <nav className="bsds-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="bsds-nav-bar">
@@ -289,7 +295,7 @@ const NavPrimary = ({
           ) : (
             <img className="bsds-nav-link-logo" src={logo.src} alt={logo.alt} />
           )}
-          <ul className="bsds-nav">
+          <ul className="bsds-nav" role="menubar" onKeyUp={handleKeyUp}>
             {navTree.map((navItem, i) => (
               <li key={navItem.text + navItem?.slug} className="bsds-nav-item bsds-nav-item-root">
                 {!!navItem.children && (
@@ -307,11 +313,13 @@ const NavPrimary = ({
                   </Button>
                 )}
                 {!!(navItem.slug || navItem.href) && (
+                  // eslint-disable-next-line jsx-a11y/prefer-tag-over-role
                   <NavLink
                     end={!!navItem.isExactMatch}
                     to={(navItem.slug ? navItem.slug : navItem.href) || ''}
                     className={({ isActive }) => `bsds-nav-link${isCurrent(isActive, navItem) ? ' current' : ''}`}
                     aria-current={(navItem.isActive?.(location) && 'page') ?? undefined}
+                    role="menuitem"
                   >
                     {navItem.text}
                   </NavLink>

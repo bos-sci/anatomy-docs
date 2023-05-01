@@ -100,7 +100,7 @@ const Dropdown = (props: Props) => {
 
   const trigger = refs.reference.current as HTMLButtonElement;
 
-  const updateFocus = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const updateFocus = (e: React.KeyboardEvent<HTMLUListElement>) => {
     switch (e.key) {
       case 'ArrowUp':
         e.preventDefault();
@@ -224,7 +224,7 @@ const Dropdown = (props: Props) => {
   ));
 
   return (
-    <div ref={dropdownRef} className="bsds-dropdown" onKeyDown={updateFocus}>
+    <div ref={dropdownRef} className="bsds-dropdown">
       <Button
         ref={reference}
         variant={variant}
@@ -250,6 +250,7 @@ const Dropdown = (props: Props) => {
           hidden={!isDropdownOpen}
           className="bsds-dropdown-menu"
           role="menu"
+          onKeyDown={updateFocus}
         >
           {listItems}
         </ul>
@@ -266,6 +267,7 @@ const Dropdown = (props: Props) => {
           hidden={!isDropdownOpen}
           className="bsds-dropdown-menu"
           role="menu"
+          onKeyDown={updateFocus}
         >
           {listItems}
         </ol>

@@ -216,7 +216,7 @@ const Search = forwardRef(
               {label || 'Search'}
             </label>
             <div className="bsds-search-control">
-              <div ref={searchRef} className="bsds-input-search" onKeyDown={updateActiveDesc}>
+              <div ref={searchRef} className="bsds-input-search">
                 <input
                   ref={(node) => {
                     if (node) {
@@ -246,6 +246,7 @@ const Search = forwardRef(
                   aria-activedescendant={ariaActiveDescendant}
                   onChange={handleChange}
                   onFocus={handleFocus}
+                  onKeyDown={updateActiveDesc}
                   {...inputAttrs}
                 />
                 {/* TODO: ADS-96 pull this into an input addon component */}
