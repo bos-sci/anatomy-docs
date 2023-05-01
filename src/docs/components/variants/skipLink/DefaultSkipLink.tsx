@@ -3,10 +3,10 @@ import Example from '../../../shared/components/Example';
 import useTitle from '../../../shared/hooks/useTitle';
 
 const DefaultSkipLink = (): JSX.Element => {
-  useTitle({titlePrefix: `Example Skip Link - Components`});
+  useTitle({ titlePrefix: `Example Skip Link - Components` });
   return (
     <Example isFlush>
-      <SkipLink destinationId="mainContent" destination="main content"/>
+      <SkipLink destinationId="mainContent" destination="main content" />
       <header className="docs-wire-header">
         <p>Header area</p>
         <a href="docs-demo-link">Example header link</a>
@@ -17,6 +17,6 @@ const DefaultSkipLink = (): JSX.Element => {
       </main>
     </Example>
   );
-}
+};
 
 export default DefaultSkipLink;

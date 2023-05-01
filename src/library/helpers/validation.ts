@@ -7,4 +7,4 @@ export const getValidationMessage = (input: HTMLInputElement): string => {
     default:
       return input.validationMessage;
   }
-}
+};

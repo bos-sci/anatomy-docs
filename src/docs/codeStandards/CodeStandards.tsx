@@ -16,14 +16,16 @@ const CodeStandards = (): JSX.Element => {
   const location = useLocation();
   const params = useParams();
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
-  const [codeStandardData, setCodeStandardData] = useState<GetCodeStandardQuery['codeStandard']>({} as GetCodeStandardQuery['codeStandard']);
+  const [codeStandardData, setCodeStandardData] = useState<GetCodeStandardQuery['codeStandard']>(
+    {} as GetCodeStandardQuery['codeStandard']
+  );
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const idLookup: IdLookup = useContext(IdLookupContext);
 
-  const {data, error} = useGetCodeStandardQuery({
+  const { data, error } = useGetCodeStandardQuery({
     variables: {
-      id: idLookup.codeStandards[params.standardName!].id,
+      id: idLookup.codeStandards[params?.standardName ?? ''].id,
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
     }
   });
@@ -62,12 +64,12 @@ const CodeStandards = (): JSX.Element => {
       {
         text: 'DevOps',
         slug: pathPrefix + 'devops'
-      },
+      }
     ];
     setNavItems(navItems);
   }, [data, idLookup, location]);
 
-  useTitle({titlePrefix: `${codeStandardData?.name} - Code Standards`});
+  useTitle({ titlePrefix: `${codeStandardData?.name} - Code Standards` });
   useHashScroll(!!codeStandardData?.content);
 
   const pageHeadings = useHeadings();
@@ -81,16 +83,17 @@ const CodeStandards = (): JSX.Element => {
     <Layout>
       <PageTemplate
         name={codeStandardData?.name || ''}
-        lastUpdated={codeStandardData?.sys?.publishedAt}
+        lastUpdated={codeStandardData?.sys?.publishedAt || ''}
         leadParagraph={codeStandardData?.leadParagraph || ''}
         seoMetaDescription={codeStandardData?.pageProperties?.seoMetaDescription || ''}
         navSecondaryMenuTrigger="Code standards"
         navSecondaryItems={navItems}
-        navTertiaryItems={headings}>
-        <Markdown markdown={ codeStandardData?.content || '' } />
+        navTertiaryItems={headings}
+      >
+        <Markdown markdown={codeStandardData?.content || ''} />
       </PageTemplate>
     </Layout>
   );
-}
+};
 
 export default CodeStandards;

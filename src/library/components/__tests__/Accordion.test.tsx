@@ -1,15 +1,13 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import Accordion from "../Accordion";
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import Accordion from '../Accordion';
 import AccordionPanel from '../AccordionPanel';
 
-describe("Accordion", () => {
+describe('Accordion', () => {
   it('Should render with one accordion', async () => {
     render(
       <Accordion headingLevel="h2">
-        <AccordionPanel heading="Accordion 1">
-          Accordion panel 1
-        </AccordionPanel>
+        <AccordionPanel heading="Accordion 1">Accordion panel 1</AccordionPanel>
       </Accordion>
     );
 
@@ -20,15 +18,9 @@ describe("Accordion", () => {
   it('Should render with multiple accordions', async () => {
     render(
       <Accordion headingLevel="h2">
-        <AccordionPanel heading="Accordion 1">
-          Accordion panel 1
-        </AccordionPanel>
-        <AccordionPanel heading="Accordion 2">
-          Accordion panel 2
-        </AccordionPanel>
-        <AccordionPanel heading="Accordion 3">
-          Accordion panel 3
-        </AccordionPanel>
+        <AccordionPanel heading="Accordion 1">Accordion panel 1</AccordionPanel>
+        <AccordionPanel heading="Accordion 2">Accordion panel 2</AccordionPanel>
+        <AccordionPanel heading="Accordion 3">Accordion panel 3</AccordionPanel>
       </Accordion>
     );
 
@@ -41,9 +33,7 @@ describe("Accordion", () => {
 
     render(
       <Accordion headingLevel="h2">
-        <AccordionPanel heading="Accordion 1">
-          Accordion panel 1
-        </AccordionPanel>
+        <AccordionPanel heading="Accordion 1">Accordion panel 1</AccordionPanel>
       </Accordion>
     );
 
@@ -53,10 +43,10 @@ describe("Accordion", () => {
     expect(accordionTrigger).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('Should get class \'bsds-accordion-stoplight-green\' when stoplightColor prop value is \'green\'', async () => {
+  it("Should get class 'bsds-accordion-stoplight-green' when stoplightColor prop value is 'green'", async () => {
     render(
       <Accordion headingLevel="h2">
-        <AccordionPanel heading="Accordion 1" stoplightColor='green'>
+        <AccordionPanel heading="Accordion 1" stoplightColor="green">
           Accordion panel 1
         </AccordionPanel>
       </Accordion>

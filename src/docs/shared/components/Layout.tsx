@@ -1,7 +1,7 @@
 import { createContext, FormEvent, ReactNode, useEffect, useState } from 'react';
 import SkipLink from '../../../library/components/SkipLink';
-import logoADS from "../../../assets/images/logo-anatomy.svg";
-import logoBSC from "../../../assets/images/logo-bsc.svg";
+import logoADS from '../../../assets/images/logo-anatomy.svg';
+import logoBSC from '../../../assets/images/logo-bsc.svg';
 import NavPrimary, { NavItemPrimary } from '../../../library/components/navigation/navPrimary/NavPrimary';
 import algoliasearch from 'algoliasearch';
 import { SearchResult } from '../../../library/components/Search';
@@ -69,13 +69,14 @@ const primaryNavTexts = {
   searchAriaLabel: 'Search Anatomy site'
 };
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const searchClient = algoliasearch(process.env.REACT_APP_ALGOLIA_ID!, process.env.REACT_APP_ALGOLIA_KEY!);
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const index = searchClient.initIndex(process.env.REACT_APP_ALGOLIA_INDEX!);
 
 export const SearchIndexContext = createContext(index);
 
 const Layout = (props: Props): JSX.Element => {
-
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -85,12 +86,12 @@ const Layout = (props: Props): JSX.Element => {
 
   const onSearchChange = (query: string) => {
     setSearchQuery(query);
-  }
+  };
 
   const onSearch = (query: string, e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate(`/search?query=${query}`);
-  }
+  };
 
   useEffect(() => {
     indexSearch(searchQuery).then((results) => {
@@ -99,22 +100,30 @@ const Layout = (props: Props): JSX.Element => {
   }, [searchQuery]);
 
   useEffect(() => {
-    setPathname("https://www.anatomydesignsystem.com" + (location.pathname === '/' ? '' :  location.pathname));
+    setPathname('https://www.anatomydesignsystem.com' + (location.pathname === '/' ? '' : location.pathname));
   }, [location]);
 
   useHeadingIds();
 
-  return <>
-    <SkipLink destinationId="mainContent" destination="main content"/>
-    <NavPrimary texts={primaryNavTexts} logo={logo} navItems={navItems} searchResults={searchResults} onSearchChange={onSearchChange} onSearch={onSearch} isConstrained />
-    <SearchIndexContext.Provider value={index}>
-      { props.children }
-    </SearchIndexContext.Provider>
-    <footer className="docs-footer">
-      <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific"/>
-      { pathname && <CarbonBadge url={pathname} /> }
-    </footer>
-  </>;
-}
+  return (
+    <>
+      <SkipLink destinationId="mainContent" destination="main content" />
+      <NavPrimary
+        texts={primaryNavTexts}
+        logo={logo}
+        navItems={navItems}
+        searchResults={searchResults}
+        isConstrained
+        onSearchChange={onSearchChange}
+        onSearch={onSearch}
+      />
+      <SearchIndexContext.Provider value={index}>{props.children}</SearchIndexContext.Provider>
+      <footer className="docs-footer">
+        <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific" />
+        {!!pathname && <CarbonBadge url={pathname} />}
+      </footer>
+    </>
+  );
+};
 
 export default Layout;

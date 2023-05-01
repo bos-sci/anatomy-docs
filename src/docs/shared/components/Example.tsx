@@ -9,24 +9,23 @@ interface Props {
 }
 
 const Example = (props: Props): JSX.Element => {
-
   const location = useLocation();
   const pathArray = location.pathname.split('/');
   const isExternal = pathArray[pathArray.length - 2] === 'example';
 
   if (isExternal) {
     if (props.isFlush) {
-      return <>{props.children}</>
+      return <>{props.children}</>;
     } else {
       return <div className="docs-preview-external">{props.children}</div>;
     }
   } else {
     return (
       <div className={`docs-preview${props.isDarkTheme ? ' dark' : ''}${props.isFlex ? ' docs-preview-flex' : ''}`}>
-        { props.children }
+        {props.children}
       </div>
     );
   }
-}
+};
 
 export default Example;

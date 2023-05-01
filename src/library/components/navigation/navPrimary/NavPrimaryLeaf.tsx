@@ -20,9 +20,11 @@ const NavPrimaryLeaf = (props: Props) => {
 
   return (
     <li className="bsds-nav-item">
-      <Link href={props.navItem.href} to={props.navItem.slug} className="bsds-nav-link" isNavLink>{props.navItem.text}</Link>
+      <Link href={props.navItem.href} to={props.navItem.slug} className="bsds-nav-link" isNavLink>
+        {props.navItem.text}
+      </Link>
     </li>
   );
-}
+};
 
 export default NavPrimaryLeaf;

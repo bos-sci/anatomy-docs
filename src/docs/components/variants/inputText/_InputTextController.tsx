@@ -31,6 +31,6 @@ const InputTextController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultInputText />;
   }
-}
+};
 
 export default InputTextController;

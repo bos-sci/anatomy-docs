@@ -13,6 +13,6 @@ const NavBackController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultNavBack />;
   }
-}
+};
 
 export default NavBackController;

@@ -4,7 +4,9 @@ import Example from '../../../shared/components/Example';
 const SubtleStyle = (): JSX.Element => {
   return (
     <Example isFlex={true}>
-      <Button variant="subtle" type="button">Text button</Button>
+      <Button variant="subtle" type="button">
+        Text button
+      </Button>
       <Button variant="subtle" type="button" icon="plus">
         Icon left
       </Button>
@@ -14,6 +16,6 @@ const SubtleStyle = (): JSX.Element => {
       <Button variant="subtle" type="button" icon="plus" aria-label="icon button" />
     </Example>
   );
-}
+};
 
 export default SubtleStyle;

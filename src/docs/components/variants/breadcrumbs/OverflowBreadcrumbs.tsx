@@ -14,7 +14,7 @@ const OverflowBreadcrumbs = (): JSX.Element => {
     {
       name: 'Parent page',
       href: 'docs-demo-link'
-    },
+    }
   ];
 
   return (
@@ -22,6 +22,6 @@ const OverflowBreadcrumbs = (): JSX.Element => {
       <Breadcrumb crumbs={crumbs} currentPage="Current page" />
     </Example>
   );
-}
+};
 
 export default OverflowBreadcrumbs;

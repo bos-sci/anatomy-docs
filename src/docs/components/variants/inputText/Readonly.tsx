@@ -12,6 +12,6 @@ const Readonly = (): JSX.Element => {
       </div>
     </Example>
   );
-}
+};
 
 export default Readonly;
