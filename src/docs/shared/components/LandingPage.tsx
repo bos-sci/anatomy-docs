@@ -40,7 +40,6 @@ const LandingPage = (props: Props): JSX.Element => {
     setGroupedItems(byGroup);
   }, [listItems]);
 
-  console.log(groupedItems);
   return (
     <Layout>
       <div className="docs-body-minimal">
