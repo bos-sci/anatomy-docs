@@ -1,0 +1,62 @@
+// Utility Nav
+.bsds-nav-utility {
+  display: none;
+  border-bottom: space(xxs) solid $border-color-subtle;
+
+  .bsds-nav {
+    justify-content: flex-end;
+
+    .bsds-nav-item {
+      margin-top: 0;
+
+      .bsds-nav-link {
+        border: 0;
+        padding: space(md) space(lg);
+        color: $neutral-40;
+
+        &:hover {
+          color: $text-color-primary;
+        }
+      }
+
+      .bsds-dropdown {
+        .bsds-dropdown-trigger {
+          display: inline-flex;
+          padding: space(md) space(lg);
+          padding-right: calc(space(md) + $icon-size-sm + space(lg));
+
+          &::after {
+            right: space(lg);
+            width: $icon-size-sm;
+            height: $icon-size-sm;
+            background-color: $neutral-40;
+          }
+
+          &[aria-expanded='true'],
+          &:hover,
+          &:active {
+            background: transparent;
+            color: $text-color-primary;
+            text-decoration: underline;
+
+            &::after {
+              background-color: $text-color-primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $lg) {
+  .bsds-nav-utility {
+    display: block;
+
+    .bsds-nav {
+      .bsds-nav-link {
+        @include font-size($fs-body-subtle);
+      }
+    }
+  }
+}
