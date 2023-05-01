@@ -26,8 +26,8 @@ const CodeStandards = (): JSX.Element => {
   const { data, error } = useGetCodeStandardQuery({
     variables: {
       id: idLookup.codeStandards[params?.standardName ?? ''].id,
-      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
-    },
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
+    }
   });
 
   if (error) {
@@ -43,28 +43,28 @@ const CodeStandards = (): JSX.Element => {
     const navItems = [
       {
         text: 'General',
-        slug: pathPrefix + 'general',
+        slug: pathPrefix + 'general'
       },
       {
         text: 'Accessibility',
-        slug: pathPrefix + 'accessibility',
+        slug: pathPrefix + 'accessibility'
       },
       {
         text: 'HTML',
-        slug: pathPrefix + 'html',
+        slug: pathPrefix + 'html'
       },
       {
         text: 'CSS',
-        slug: pathPrefix + 'css',
+        slug: pathPrefix + 'css'
       },
       {
         text: 'JavaScript',
-        slug: pathPrefix + 'javascript',
+        slug: pathPrefix + 'javascript'
       },
       {
         text: 'DevOps',
-        slug: pathPrefix + 'devops',
-      },
+        slug: pathPrefix + 'devops'
+      }
     ];
     setNavItems(navItems);
   }, [data, idLookup, location]);

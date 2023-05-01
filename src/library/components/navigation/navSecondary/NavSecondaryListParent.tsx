@@ -18,7 +18,7 @@ const NavSecondaryListParent = ({
   activeParent,
   activeParentRef,
   setActiveParentRef,
-  openChild,
+  openChild
 }: NavParentProps) => {
   const [navListId, setNavListId] = useState('');
   const parentBtnRef = useRef<HTMLButtonElement>(null);

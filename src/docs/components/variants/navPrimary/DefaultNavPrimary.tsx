@@ -7,7 +7,7 @@ import Example from '../../../shared/components/Example';
 const logo = {
   src: logoBSC,
   alt: 'Boston Scientific logo',
-  to: '/',
+  to: '/'
 };
 
 const DefaultNavPrimary = (): JSX.Element => {

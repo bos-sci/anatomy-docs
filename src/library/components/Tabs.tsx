@@ -7,7 +7,7 @@ import {
   useEffect,
   useRef,
   useState,
-  useId,
+  useId
 } from 'react';
 import IconChevronLeft from './icon/icons/IconChevronLeft';
 import IconChevronRight from './icon/icons/IconChevronRight';
@@ -90,19 +90,19 @@ const Tabs = (props: Props): JSX.Element => {
       tabListRef.current?.scrollTo({
         top: 0,
         left: 0,
-        behavior,
+        behavior
       });
     } else if (newTarget === tabRefs.length - 1) {
       tabListRef.current?.scrollTo({
         top: 0,
         left: tabListRef.current.scrollWidth - tabListRef.current.clientWidth,
-        behavior,
+        behavior
       });
     } else {
       tabRefs[newTarget].current?.scrollIntoView({
         behavior,
         block: 'nearest',
-        inline: distance < 0 ? 'start' : 'end',
+        inline: distance < 0 ? 'start' : 'end'
       });
     }
   };

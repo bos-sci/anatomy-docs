@@ -21,7 +21,7 @@ const PageTemplate = (props: Props) => {
 
   useEffect(() => {
     setNavSecondaryTexts({
-      menuToggleText: props.navSecondaryMenuTrigger,
+      menuToggleText: props.navSecondaryMenuTrigger
     });
   }, [props.navSecondaryMenuTrigger]);
 

@@ -17,5 +17,5 @@ const toSlug = (string) =>
 
 module.exports = {
   environment,
-  toSlug,
+  toSlug
 };

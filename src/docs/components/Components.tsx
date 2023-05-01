@@ -39,123 +39,123 @@ const Components = (): JSX.Element => {
     setNavItems([
       {
         text: 'Accordion',
-        slug: basePath + '/accordion',
+        slug: basePath + '/accordion'
       },
       {
         text: 'Button',
-        slug: basePath + '/button',
+        slug: basePath + '/button'
       },
       {
         text: 'Cards',
         children: [
           {
             text: 'Content card',
-            slug: basePath + '/cards/content-card',
+            slug: basePath + '/cards/content-card'
           },
           {
             text: 'Card group',
-            slug: basePath + '/cards/card-group',
+            slug: basePath + '/cards/card-group'
           },
           {
             text: 'Product card',
-            slug: basePath + '/cards/product-card',
-          },
-        ],
+            slug: basePath + '/cards/product-card'
+          }
+        ]
       },
       {
         text: 'Dropdown menu',
-        slug: basePath + '/dropdown-menu',
+        slug: basePath + '/dropdown-menu'
       },
       {
         text: 'Form controls',
         children: [
           {
             text: 'Form',
-            slug: basePath + '/form-controls/form',
+            slug: basePath + '/form-controls/form'
           },
           {
             text: 'Checkbox',
-            slug: basePath + '/form-controls/checkbox',
+            slug: basePath + '/form-controls/checkbox'
           },
           {
             text: 'Checkbox group',
-            slug: basePath + '/form-controls/checkbox-group',
+            slug: basePath + '/form-controls/checkbox-group'
           },
           {
             text: 'Radio group',
-            slug: basePath + '/form-controls/radio-group',
+            slug: basePath + '/form-controls/radio-group'
           },
           {
             text: 'Text input',
-            slug: basePath + '/form-controls/text-input',
-          },
-        ],
+            slug: basePath + '/form-controls/text-input'
+          }
+        ]
       },
       {
         text: 'Image',
-        slug: basePath + '/image',
+        slug: basePath + '/image'
       },
       {
         text: 'Link',
-        slug: basePath + '/link',
+        slug: basePath + '/link'
       },
       {
         text: 'Modal',
-        slug: basePath + '/modal',
+        slug: basePath + '/modal'
       },
       {
         text: 'Navigation',
         children: [
           {
             text: 'Breadcrumbs',
-            slug: basePath + '/navigation/breadcrumbs',
+            slug: basePath + '/navigation/breadcrumbs'
           },
           {
             text: 'Primary navigation',
-            slug: basePath + '/navigation/primary-navigation',
+            slug: basePath + '/navigation/primary-navigation'
           },
           {
             text: 'Secondary navigation',
-            slug: basePath + '/navigation/secondary-navigation',
+            slug: basePath + '/navigation/secondary-navigation'
           },
           {
             text: 'Tertiary navigation',
-            slug: basePath + '/navigation/tertiary-navigation',
+            slug: basePath + '/navigation/tertiary-navigation'
           },
           {
             text: 'Wizard navigation',
-            slug: basePath + '/navigation/wizard-navigation',
+            slug: basePath + '/navigation/wizard-navigation'
           },
           {
             text: 'Navigation link',
-            slug: basePath + '/navigation/navigation-link',
+            slug: basePath + '/navigation/navigation-link'
           },
           {
             text: 'Navigation back button',
-            slug: basePath + '/navigation/navigation-back-button',
+            slug: basePath + '/navigation/navigation-back-button'
           },
           {
             text: 'Search',
-            slug: basePath + '/navigation/search',
+            slug: basePath + '/navigation/search'
           },
           {
             text: 'Skip link',
-            slug: basePath + '/navigation/skip-link',
-          },
-        ],
+            slug: basePath + '/navigation/skip-link'
+          }
+        ]
       },
       {
         text: 'Stoplight',
-        slug: basePath + '/stoplight',
+        slug: basePath + '/stoplight'
       },
       {
         text: 'Tabs',
-        slug: basePath + '/tabs',
+        slug: basePath + '/tabs'
       },
       {
         text: 'Tag',
-        slug: basePath + '/tag',
-      },
+        slug: basePath + '/tag'
+      }
     ]);
   }, [location]);
 

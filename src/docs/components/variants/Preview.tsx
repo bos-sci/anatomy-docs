@@ -67,7 +67,7 @@ const Preview = (props: Props): JSX.Element => {
   }
 
   useTitle({
-    titlePrefix: `${title} - Components`,
+    titlePrefix: `${title} - Components`
   });
 
   useEffect(() => {

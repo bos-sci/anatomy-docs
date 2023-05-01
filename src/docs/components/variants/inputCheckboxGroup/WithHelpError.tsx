@@ -9,16 +9,16 @@ const WithHelpError = (): JSX.Element => {
   const [checkboxes, setCheckboxes] = useState([
     {
       text: 'Checkbox 1',
-      isChecked: true,
+      isChecked: true
     },
     {
       text: 'Checkbox 2',
-      isChecked: false,
+      isChecked: false
     },
     {
       text: 'Checkbox 3',
-      isChecked: false,
-    },
+      isChecked: false
+    }
   ]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {

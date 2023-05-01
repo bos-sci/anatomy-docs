@@ -6,46 +6,46 @@ const DefaultNavSecondary = (): JSX.Element => {
   const navItems: NavItemSecondary[] = [
     {
       text: 'Page',
-      slug: '/page',
+      slug: '/page'
     },
     {
       text: 'Active page',
-      slug: '#',
+      slug: '#'
     },
     {
       text: 'Page group',
       children: [
         {
           text: 'Child page',
-          slug: '/child-page',
+          slug: '/child-page'
         },
         {
           text: 'Child page',
-          slug: '/child-page',
+          slug: '/child-page'
         },
         {
           text: 'Nested page group',
           children: [
             {
               text: 'Nested child page',
-              slug: '/nested-child-page',
+              slug: '/nested-child-page'
             },
             {
               text: 'Nested child page',
-              slug: '/nested-child-page',
+              slug: '/nested-child-page'
             },
             {
               text: 'Nested child page',
-              slug: '/nested-child-page',
-            },
-          ],
-        },
-      ],
-    },
+              slug: '/nested-child-page'
+            }
+          ]
+        }
+      ]
+    }
   ];
 
   const navSecondaryTexts = {
-    menuToggleText: 'Section menu',
+    menuToggleText: 'Section menu'
   };
 
   useEffect(() => {

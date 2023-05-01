@@ -40,7 +40,7 @@ const teamIPs = [
   '192.168.1.6',
   '146.115.148.218',
   '75.31.18.108',
-  '96.237.59.87',
+  '96.237.59.87'
 ];
 
 export const indexSearch = async (query: string) => {
@@ -79,7 +79,7 @@ export const indexSearch = async (query: string) => {
               return {
                 to: h.pathname,
                 text: h.title.replace(' - Anatomy - Boston Scientific', ''),
-                description: h.description,
+                description: h.description
               };
             })
         );
@@ -95,7 +95,7 @@ export const indexSearch = async (query: string) => {
 export const setStorage = (key: string, value: string, ttl: 'release' | number) => {
   const data = {
     value: value,
-    ttl: ttl === 'release' ? releaseDate : Date.now() + ttl * 8.64e7, // 8.64e7 is the number of ms in a day
+    ttl: ttl === 'release' ? releaseDate : Date.now() + ttl * 8.64e7 // 8.64e7 is the number of ms in a day
   };
   localStorage.setItem(key, JSON.stringify(data));
 };

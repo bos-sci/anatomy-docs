@@ -25,31 +25,31 @@ const ProductCard = (props: Props): JSX.Element => {
   let cardStyles = {
     classes: '',
     titleLinkClasses: '',
-    linkClasses: '',
+    linkClasses: ''
   };
 
   const defaultStyle = {
     classes: 'bsds-card',
     titleLinkClasses: 'bsds-link-subtle',
-    linkClasses: 'bsds-product-card-ns-title',
+    linkClasses: 'bsds-product-card-ns-title'
   };
 
   const ghostStyle = {
     classes: 'bsds-card-ghost',
     titleLinkClasses: 'bsds-link-ghost',
-    linkClasses: 'bsds-product-card-ns-title-ghost',
+    linkClasses: 'bsds-product-card-ns-title-ghost'
   };
 
   const borderLightStyle = {
     classes: 'bsds-card-border-light',
     titleLinkClasses: 'bsds-link-subtle',
-    linkClasses: 'bsds-product-card-ns-title',
+    linkClasses: 'bsds-product-card-ns-title'
   };
 
   const borderGhostStyle = {
     classes: 'bsds-card-border-ghost',
     titleLinkClasses: 'bsds-link-ghost',
-    linkClasses: 'bsds-product-card-ns-title-ghost',
+    linkClasses: 'bsds-product-card-ns-title-ghost'
   };
 
   const [style, setStyle] = useState(cardStyles.classes);
@@ -111,7 +111,7 @@ const ProductCard = (props: Props): JSX.Element => {
     if (tag) {
       setClonedTag(
         cloneElement(tag as ReactElement, {
-          isGhost: variant === 'ghost' || variant === 'border-ghost',
+          isGhost: variant === 'ghost' || variant === 'border-ghost'
         })
       );
     }
@@ -124,7 +124,7 @@ const ProductCard = (props: Props): JSX.Element => {
           ratio: image.props.ratio ? image.props.ratio : '1:1',
           isDecorative: false,
           isGhost: variant === 'ghost' || variant === 'border-ghost',
-          onClick: () => imageLink.current?.click(),
+          onClick: () => imageLink.current?.click()
         })
       );
     }

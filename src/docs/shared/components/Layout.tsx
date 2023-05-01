@@ -19,54 +19,54 @@ const navItems: NavItemPrimary[] = [
   {
     text: 'Home',
     slug: '/',
-    isExactMatch: true,
+    isExactMatch: true
   },
   {
     text: 'Content',
     slug: '/content',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'content';
-    },
+    }
   },
   {
     text: 'Foundations',
     slug: '/foundations',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'foundations';
-    },
+    }
   },
   {
     text: 'Components',
     slug: '/components',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'components';
-    },
+    }
   },
   {
     text: 'Code standards',
     slug: '/code-standards',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'code-standards';
-    },
+    }
   },
   {
     text: 'Resources',
     slug: '/resources',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'resources';
-    },
-  },
+    }
+  }
 ];
 
 const logo = {
   src: logoADS,
   alt: 'Anatomy design system logo',
   to: '',
-  ariaLabel: 'Anatomy design system home',
+  ariaLabel: 'Anatomy design system home'
 };
 
 const primaryNavTexts = {
-  searchAriaLabel: 'Search Anatomy site',
+  searchAriaLabel: 'Search Anatomy site'
 };
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

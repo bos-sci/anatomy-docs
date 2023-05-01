@@ -26,14 +26,14 @@ const deprecatedElements = () => {
     'spacer',
     'strike',
     'tt',
-    'xmp',
+    'xmp'
   ];
   return elements.map((element) => ({
     element: element,
-    message: `<${element}> is deprecated. Please use a different element. https://developer.mozilla.org/en-US/docs/Web/HTML/Element#obsolete_and_deprecated_elements`,
+    message: `<${element}> is deprecated. Please use a different element. https://developer.mozilla.org/en-US/docs/Web/HTML/Element#obsolete_and_deprecated_elements`
   }));
 };
 
 module.exports = {
-  deprecatedElements,
+  deprecatedElements
 };

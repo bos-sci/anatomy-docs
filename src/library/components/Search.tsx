@@ -10,7 +10,7 @@ import {
   useEffect,
   useId,
   useRef,
-  useState,
+  useState
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RequireOnlyOne } from '../types';

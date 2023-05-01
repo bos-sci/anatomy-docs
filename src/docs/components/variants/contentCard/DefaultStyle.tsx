@@ -9,7 +9,7 @@ const DefaultStyle = (): JSX.Element => {
           texts={{
             cardTitle: 'Card title',
             cardDescription:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum.',
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum.'
           }}
           linkTitle={false}
           headingLevel="h4"
@@ -21,7 +21,7 @@ const DefaultStyle = (): JSX.Element => {
           texts={{
             cardTitle: 'Card title',
             cardDescription:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum.',
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum augue, viverra aliquet nunc. Cras eget felis sodales, vestibulum neque ac, rhoncus ipsum.'
           }}
           variant="ghost"
           linkTitle={false}

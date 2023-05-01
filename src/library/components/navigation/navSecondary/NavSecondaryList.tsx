@@ -20,7 +20,7 @@ const NavSecondaryList = ({
   activeParent,
   activeParentRef,
   setActiveParentRef,
-  openChild,
+  openChild
 }: NavListProps) => {
   return (
     <ul

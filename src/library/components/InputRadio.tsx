@@ -10,7 +10,7 @@ import {
   useContext,
   useEffect,
   useRef,
-  useState,
+  useState
 } from 'react';
 import { getValidationMessage } from '../helpers/validation';
 import { AddonProps, RadioAddonPropsContext } from './RadioGroup';

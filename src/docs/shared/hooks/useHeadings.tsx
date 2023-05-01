@@ -22,7 +22,7 @@ const useHeadings = (depth = 1): NavItemTertiary[] => {
       Array.from(document.querySelectorAll(selector)).map((heading) => {
         return {
           id: heading.id as string,
-          text: heading.textContent as string,
+          text: heading.textContent as string
         };
       })
     );

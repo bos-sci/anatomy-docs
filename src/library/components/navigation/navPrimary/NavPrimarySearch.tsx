@@ -37,7 +37,7 @@ const NavPrimarySearch = (props: Props): JSX.Element => {
           searchAriaLabel: props.texts?.searchAriaLabel,
           searchInputAriaLabel: props.texts?.searchInputAriaLabel,
           searchClearTextAriaLabel: props.texts?.searchClearTextAriaLabel,
-          noResultsFound: props.texts?.searchNoResults,
+          noResultsFound: props.texts?.searchNoResults
         }}
         searchResults={props.searchResults}
         onChange={(e) => emitChange(e)}

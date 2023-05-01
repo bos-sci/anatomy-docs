@@ -59,7 +59,7 @@ const ContentCard = (props: Props): JSX.Element => {
     actionLink,
     actionLinkText,
     gradientBrand,
-    dropShadow,
+    dropShadow
   } = props;
 
   const cardTitleId = useId();
@@ -67,31 +67,31 @@ const ContentCard = (props: Props): JSX.Element => {
   let cardStyles = {
     classes: '',
     titleLinkClasses: '',
-    linkClasses: '',
+    linkClasses: ''
   };
 
   const defaultStyle = {
     classes: 'bsds-card',
     titleLinkClasses: 'bsds-link-subtle',
-    linkClasses: '',
+    linkClasses: ''
   };
 
   const ghostStyle = {
     classes: 'bsds-card-ghost',
     titleLinkClasses: 'bsds-link-ghost',
-    linkClasses: 'bsds-link-ghost',
+    linkClasses: 'bsds-link-ghost'
   };
 
   const borderLightStyle = {
     classes: 'bsds-card-border-light',
     titleLinkClasses: 'bsds-link-subtle',
-    linkClasses: '',
+    linkClasses: ''
   };
 
   const borderGhostStyle = {
     classes: 'bsds-card-border-ghost',
     titleLinkClasses: 'bsds-link-ghost',
-    linkClasses: 'bsds-link-ghost',
+    linkClasses: 'bsds-link-ghost'
   };
 
   switch (variant) {
@@ -150,7 +150,7 @@ const ContentCard = (props: Props): JSX.Element => {
     if (image) {
       setClonedImage(
         cloneElement(image as ReactElement, {
-          isGhost: variant === 'ghost' || variant === 'border-ghost',
+          isGhost: variant === 'ghost' || variant === 'border-ghost'
         })
       );
     }
@@ -160,7 +160,7 @@ const ContentCard = (props: Props): JSX.Element => {
     if (tag) {
       setClonedTag(
         cloneElement(tag as ReactElement, {
-          isGhost: variant === 'ghost' || variant === 'border-ghost',
+          isGhost: variant === 'ghost' || variant === 'border-ghost'
         })
       );
     }

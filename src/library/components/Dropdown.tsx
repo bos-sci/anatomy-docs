@@ -8,7 +8,7 @@ import {
   RefObject,
   useEffect,
   useRef,
-  useState,
+  useState
 } from 'react';
 import Button from './Button';
 import { Props as ButtonProps } from './Button';
@@ -56,7 +56,7 @@ const Dropdown = (props: Props) => {
     whileElementsMounted: autoUpdate,
     placement: menuPosition,
     strategy: 'fixed',
-    middleware: [flip(), shift()],
+    middleware: [flip(), shift()]
   });
 
   useEffect(() => {
@@ -145,7 +145,7 @@ const Dropdown = (props: Props) => {
               'ref': dropdownItemRefs.current[i],
               'id': dropdownId + 'group' + i,
               'role': 'none',
-              'aria-hidden': true,
+              'aria-hidden': true
             });
           } else {
             // Dropdown item (button or link) clone
@@ -157,7 +157,7 @@ const Dropdown = (props: Props) => {
             } = {
               ref: dropdownItemRefs.current[i],
               role: 'menuitem',
-              tabIndex: -1,
+              tabIndex: -1
             };
             // If nested under group
             if (lastGroupName !== null) {
@@ -171,8 +171,8 @@ const Dropdown = (props: Props) => {
         dropdownItemClones = [
           cloneElement(children as ReactElement, {
             ref: dropdownItemRefs.current[0],
-            role: 'menuitem',
-          }),
+            role: 'menuitem'
+          })
         ];
       }
 
@@ -182,7 +182,7 @@ const Dropdown = (props: Props) => {
           cloneElement(highlightedAction as ReactElement, {
             ref: dropdownItemRefs.current[dropdownItemRefs.current.length - 1],
             role: 'menuitem',
-            tabIndex: -1,
+            tabIndex: -1
           })
         );
       }
@@ -245,7 +245,7 @@ const Dropdown = (props: Props) => {
             position: strategy,
             top: y ?? 0,
             left: x ?? 0,
-            width: 'max-content',
+            width: 'max-content'
           }}
           hidden={!isDropdownOpen}
           className="bsds-dropdown-menu"
@@ -262,7 +262,7 @@ const Dropdown = (props: Props) => {
             position: strategy,
             top: y ?? 0,
             left: x ?? 0,
-            width: 'max-content',
+            width: 'max-content'
           }}
           hidden={!isDropdownOpen}
           className="bsds-dropdown-menu"

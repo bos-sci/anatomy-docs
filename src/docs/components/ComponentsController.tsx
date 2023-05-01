@@ -25,8 +25,8 @@ const ComponentsController = (props: Props): JSX.Element => {
   const { data, error } = useGetComponentQuery({
     variables: {
       id: componentFromId.id,
-      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
-    },
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
+    }
   });
 
   if (error) {

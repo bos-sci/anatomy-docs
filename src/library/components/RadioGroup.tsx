@@ -10,7 +10,7 @@ export const RadioAddonPropsContext = createContext({
   },
   setFieldsetError: (text: string) => {
     return;
-  },
+  }
 });
 
 interface Props extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
@@ -50,7 +50,7 @@ const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAtt
       setFieldsetError: (text) => {
         setValidationMessage(text);
         setIsInvalid(!!text);
-      },
+      }
     });
   }, [isInvalid, errorTextId, errorText, areRadiosDirty]);
 

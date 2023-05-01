@@ -93,7 +93,7 @@ const NavPrimary = ({
   isConstrained = false,
   searchResults,
   onSearchChange,
-  onSearch,
+  onSearch
 }: Props): JSX.Element => {
   const location = useLocation();
 
@@ -123,7 +123,7 @@ const NavPrimary = ({
     }
     newHistory.push({
       node: navItem,
-      depth: depth,
+      depth: depth
     });
     setHistory(newHistory);
   };

@@ -11,7 +11,7 @@ import {
   useId,
   useImperativeHandle,
   useRef,
-  useState,
+  useState
 } from 'react';
 import Button, { Props as ButtonProps } from './Button';
 import { Props as LinkProps } from './Link';
@@ -47,7 +47,7 @@ const Modal = forwardRef(
       negativeAction,
       children,
       onClose,
-      onShowModal,
+      onShowModal
     }: Props,
     ref: ForwardedRef<ModalRef>
   ): JSX.Element => {
@@ -63,7 +63,7 @@ const Modal = forwardRef(
       if (positiveAction) {
         const attrs = {
           variant: 'assertive',
-          className: '',
+          className: ''
         };
         if ((positiveAction.type as FunctionComponent).displayName === 'Link') {
           attrs.className = 'bsds-button-assertive';
@@ -77,7 +77,7 @@ const Modal = forwardRef(
       if (negativeAction) {
         const attrs = {
           variant: hasClose ? 'subtle' : 'default',
-          className: '',
+          className: ''
         };
         if ((negativeAction.type as FunctionComponent).displayName === 'Link') {
           attrs.className = hasClose ? 'bsds-button-subtle' : 'bsds-button';
@@ -124,7 +124,7 @@ const Modal = forwardRef(
           close() {
             showDialog(false);
           },
-          isOpen: dialogRef.current?.open || false,
+          isOpen: dialogRef.current?.open || false
         };
       },
       [showDialog]
@@ -161,7 +161,7 @@ const Modal = forwardRef(
           const focusableElements = [
             ...dialogRef.current.querySelectorAll(
               'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-            ),
+            )
           ] as HTMLElement[];
           if (e.key === 'Tab') {
             if (document.activeElement === focusableElements.at(-1) && !e.shiftKey) {

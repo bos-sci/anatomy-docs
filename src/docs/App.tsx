@@ -30,7 +30,7 @@ const initialIdLookup: IdLookup = {
   components: {},
   codeStandards: {},
   foundations: {},
-  resources: {},
+  resources: {}
 };
 
 export const IdLookupContext = createContext<IdLookup>(initialIdLookup);
@@ -40,8 +40,8 @@ const App = (): JSX.Element => {
   const [isLookupReady, setIsLookupReady] = useState(false);
   const { data, error } = useGetCollectionsQuery({
     variables: {
-      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
-    },
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
+    }
   });
 
   if (error) {
@@ -55,7 +55,7 @@ const App = (): JSX.Element => {
           id: item?.sys.id,
           name: item?.name,
           group: item?.group ? slugify(item.group) : null,
-          leadParagraph: item?.leadParagraph,
+          leadParagraph: item?.leadParagraph
         })
     );
   }, []);

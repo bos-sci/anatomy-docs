@@ -66,7 +66,7 @@ const NavWizard = (props: Props) => {
     newHistory.push({
       node: navItem,
       depth,
-      ref,
+      ref
     });
     setHistory(newHistory);
   };

@@ -54,7 +54,7 @@ const LandingPage = (props: Props): JSX.Element => {
                     key={entry.id}
                     texts={{
                       cardTitle: entry.name,
-                      cardDescription: entry.leadParagraph as string,
+                      cardDescription: entry.leadParagraph as string
                     }}
                     headingLevel="h2"
                     variant="border-light"

@@ -31,7 +31,7 @@ const Icon = (props: Props): JSX.Element => {
       IconChevronLeft: lazy(() => import('./icons/IconChevronLeft')),
       IconChevronDown: lazy(() => import('./icons/IconChevronDown')),
       IconChevronUp: lazy(() => import('./icons/IconChevronUp')),
-      IconCardDemo: lazy(() => import('./icons/IconCardDemo')),
+      IconCardDemo: lazy(() => import('./icons/IconCardDemo'))
     };
 
     switch (name) {

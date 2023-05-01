@@ -23,8 +23,8 @@ const Resources = (): JSX.Element => {
   const { data, error } = useGetResourceQuery({
     variables: {
       id: idLookup.resources[params?.resourceName ?? ''].id,
-      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true',
-    },
+      preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
+    }
   });
 
   if (error) {
@@ -43,41 +43,41 @@ const Resources = (): JSX.Element => {
     setNavItems([
       {
         text: 'About Anatomy',
-        slug: basePath + '/about-anatomy',
+        slug: basePath + '/about-anatomy'
       },
       {
         text: 'Community',
-        slug: basePath + '/community',
+        slug: basePath + '/community'
       },
       {
         text: 'Designers',
         children: [
           {
             text: 'Libraries',
-            slug: basePath + '/designers/libraries',
+            slug: basePath + '/designers/libraries'
           },
           {
             text: 'Icon guidelines',
-            slug: basePath + '/designers/icon-guidelines',
+            slug: basePath + '/designers/icon-guidelines'
           },
           {
             text: 'Tools and links',
-            slug: basePath + '/designers/tools-and-links',
-          },
-        ],
+            slug: basePath + '/designers/tools-and-links'
+          }
+        ]
       },
       {
         text: 'Developers',
-        slug: basePath + '/developers',
+        slug: basePath + '/developers'
       },
       {
         text: 'SEO',
-        slug: basePath + '/seo',
+        slug: basePath + '/seo'
       },
       {
         text: 'Release notes',
-        slug: basePath + '/release-notes',
-      },
+        slug: basePath + '/release-notes'
+      }
     ]);
   }, [location]);
 

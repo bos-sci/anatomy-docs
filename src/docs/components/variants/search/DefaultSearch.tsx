@@ -5,16 +5,16 @@ import Example from '../../../shared/components/Example';
 const data: SearchResult[] = [
   {
     text: 'Search result 1',
-    to: 'docs-demo-link',
+    to: 'docs-demo-link'
   },
   {
     text: 'Search result 2',
-    to: 'docs-demo-link',
+    to: 'docs-demo-link'
   },
   {
     text: 'Search result 3',
-    to: 'docs-demo-link',
-  },
+    to: 'docs-demo-link'
+  }
 ];
 
 const DefaultSearch = (): JSX.Element => {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 require('dotenv').config();
 const contentful = require('contentful');
 const { SitemapStream } = require('sitemap');
@@ -12,12 +13,12 @@ const MAIN_NAVIGATION = {
   foundation: 'foundations',
   component: 'components',
   codeStandard: 'code-standards',
-  resource: 'resources',
+  resource: 'resources'
 };
 
 const client = contentful.createClient({
   accessToken: environment('CONTENTFUL_API_TOKEN'),
-  space: environment('REACT_APP_CONTENTFUL_SPACE_ID'),
+  space: environment('REACT_APP_CONTENTFUL_SPACE_ID')
 });
 
 const createSitemap = async () => {
@@ -30,7 +31,7 @@ const createSitemap = async () => {
 
   const entries = await client.getEntries({
     content_type: contentTypeIds,
-    limit: 1000,
+    limit: 1000
   });
 
   const urls = entries.items
@@ -46,7 +47,7 @@ const createSitemap = async () => {
       };
 
       const site = {
-        url: getUrl(),
+        url: getUrl()
       };
       if (entry.sys.updatedAt) {
         site.lastmod = entry.sys.updatedAt;
@@ -55,19 +56,19 @@ const createSitemap = async () => {
     });
 
   const customPages = [
-    ...Object.values(MAIN_NAVIGATION).map((nav) => ROOT + '/' + nav),
+    ...Object.values(MAIN_NAVIGATION).map((nav) => ROOT + '/' + nav)
     // When creating custom pages (not tied to contentful), add urls to this array
   ];
 
   customPages.forEach((page) => {
     urls.push({
-      url: page,
+      url: page
     });
   });
 
   // Create a stream to write to
   const sitemap = new SitemapStream({
-    hostname: ROOT,
+    hostname: ROOT
   });
 
   const writeStream = createWriteStream('./public/sitemap.xml');
