@@ -9,7 +9,7 @@ describe('CardGroup', () => {
       </CardGroup>
     );
 
-    expect(screen.getByTestId('bsdsCardGroup')).toBeInTheDocument;
+    expect(screen.getByTestId('bsdsCardGroup')).toBeInTheDocument();
   });
 
   it("Adds class 'bsds-card-group-two-up' to card group when '2up' cardLayout is selected", () => {

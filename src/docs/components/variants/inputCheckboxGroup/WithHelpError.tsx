@@ -45,7 +45,7 @@ const WithHelpError = (): JSX.Element => {
         >
           {checkboxes.map((checkbox, i) => (
             <InputCheckbox
-              key={'checkboxListWithError' + i}
+              key={'checkboxListWithError' + checkbox.text}
               label={checkbox.text}
               aria-describedby="listErrorText"
               aria-invalid={!!errorText}

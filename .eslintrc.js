@@ -4,7 +4,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true,
+    node: true
   },
   extends: [
     'react-app',
@@ -15,7 +15,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:@typescript-eslint/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:prettier/recommended',
+    'plugin:prettier/recommended'
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -23,8 +23,8 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true,
-    },
+      jsx: true
+    }
   },
   plugins: ['@typescript-eslint', 'react'],
   rules: {
@@ -35,16 +35,16 @@ module.exports = {
     'react/jsx-no-useless-fragment': [
       1,
       {
-        allowExpressions: true,
-      },
+        allowExpressions: true
+      }
     ],
     'react/boolean-prop-naming': [
       1,
       {
         rule: '^(is|has|should|can|did)[A-Z]([A-Za-z0-9]?)+',
         message:
-          'Boolean props like ({{ propName }}) need to start with one of the following auxiliary verbs: is, has, should, can, did.',
-      },
+          'Boolean props like ({{ propName }}) need to start with one of the following auxiliary verbs: is, has, should, can, did.'
+      }
     ],
     // "react/forbid-elements": [1, { forbid: deprecatedElements() }], -> Need to upgrade ESLint config to do this one this way.
 
@@ -52,8 +52,8 @@ module.exports = {
       1,
       {
         namedComponents: 'arrow-function',
-        unnamedComponents: 'arrow-function',
-      },
+        unnamedComponents: 'arrow-function'
+      }
     ],
 
     'react/hook-use-state': [1, { allowDestructuredState: false }],
@@ -65,8 +65,8 @@ module.exports = {
       {
         checkFragmentShorthand: true,
         checkKeyMustBeforeSpread: true,
-        warnOnDuplicates: true,
-      },
+        warnOnDuplicates: true
+      }
     ],
     'react/jsx-no-bind': [
       1,
@@ -75,8 +75,8 @@ module.exports = {
         ignoreRefs: false,
         allowArrowFunctions: true,
         allowFunctions: false,
-        allowBind: false,
-      },
+        allowBind: false
+      }
     ],
     'react/jsx-no-constructed-context-values': 1,
     'react/jsx-no-leaked-render': [1, { validStrategies: ['coerce'] }],
@@ -84,14 +84,14 @@ module.exports = {
       1,
       {
         warnOnSpreadAttributes: true,
-        forms: true,
-      },
+        forms: true
+      }
     ],
     'react/jsx-pascal-case': [
       1,
       {
-        allowNamespace: true,
-      },
+        allowNamespace: true
+      }
     ],
     'react/jsx-sort-props': [
       1,
@@ -100,8 +100,8 @@ module.exports = {
         shorthandLast: true,
         ignoreCase: true,
         noSortAlphabetically: true,
-        reservedFirst: true,
-      },
+        reservedFirst: true
+      }
     ],
     'react/no-array-index-key': 1,
     'react/no-danger': 1,
@@ -116,8 +116,8 @@ module.exports = {
       1,
       {
         component: true,
-        html: false,
-      },
+        html: false
+      }
     ],
     'react/static-property-placement': 1,
     'react/style-prop-object': 1,
@@ -125,8 +125,8 @@ module.exports = {
     'jsx-a11y/anchor-ambiguous-text': [
       1,
       {
-        words: ['read more'],
-      },
+        words: ['read more']
+      }
     ],
     'jsx-a11y/control-has-associated-label': 1,
     'jsx-a11y/lang': 1,
@@ -143,6 +143,6 @@ module.exports = {
     'jsx-a11y/interactive-supports-focus': 1,
     'no-empty': 1,
     'jsx-a11y/no-static-element-interactions': 1,
-    'no-unsafe-optional-chaining': 1,
-  },
+    'no-unsafe-optional-chaining': 1
+  }
 };

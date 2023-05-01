@@ -2,7 +2,9 @@ import { render, screen } from '@testing-library/react';
 import Link from '../Link';
 
 describe('Link', () => {
-  it("Does not render when it's missing both 'to' and 'href' props", () => {});
+  it("Does not render when it's missing both 'to' and 'href' props", () => {
+    ('');
+  });
   it('Renders default link', () => {
     render(<Link href="docs-demo-link">Plain Link!</Link>);
     expect(screen.getByRole('link')).toBeInTheDocument();

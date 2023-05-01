@@ -91,15 +91,25 @@ describe('Modal', () => {
   // https://github.com/jsdom/jsdom/issues/3294
   // Currently the modal can not be opened or closed in jest
 
-  it('Should open on call of showModal', () => {});
+  it('Should open on call of showModal', () => {
+    ('');
+  });
 
-  it('Should close on call of close', () => {});
+  it('Should close on call of close', () => {
+    ('');
+  });
 
-  it('Should run onShowModal when opened', async () => {});
+  it('Should run onShowModal when opened', async () => {
+    ('');
+  });
 
-  it('Should run onClose when closed', async () => {});
+  it('Should run onClose when closed', async () => {
+    ('');
+  });
 
-  it('Should close modal on click outside of modal', () => {});
+  it('Should close modal on click outside of modal', () => {
+    ('');
+  });
 
   // Keyboard interactions
 

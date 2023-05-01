@@ -35,46 +35,55 @@ export type Asset = {
   width?: Maybe<Scalars['Int']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetContentTypeArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetFileNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetHeightArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetSizeArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetTitleArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetUrlArgs = {
   locale?: InputMaybe<Scalars['String']>;
   transform?: InputMaybe<ImageTransformOptions>;
 };
+
 
 /** Represents a binary file in a space. An asset can be any file type. */
 export type AssetWidthArgs = {
@@ -163,6 +172,7 @@ export type AssetLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type AssetLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -205,25 +215,30 @@ export type CodeStandard = Entry & {
   sys: Sys;
 };
 
+
 /** Documentation regarding code standards. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/codeStandard) */
 export type CodeStandardContentArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Documentation regarding code standards. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/codeStandard) */
 export type CodeStandardLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Documentation regarding code standards. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/codeStandard) */
 export type CodeStandardLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 /** Documentation regarding code standards. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/codeStandard) */
 export type CodeStandardNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Documentation regarding code standards. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/codeStandard) */
 export type CodeStandardPagePropertiesArgs = {
@@ -274,6 +289,7 @@ export type CodeStandardLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type CodeStandardLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -319,45 +335,54 @@ export type Component = Entry & {
   userResearch?: Maybe<Scalars['String']>;
 };
 
+
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentAccessibilityArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentContentGuidelinesArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentContentGuidelinesDoArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentContentGuidelinesDontArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentGroupArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentInteractionsArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentModifiersCollectionArgs = {
@@ -367,10 +392,12 @@ export type ComponentModifiersCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentPagePropertiesArgs = {
@@ -378,10 +405,12 @@ export type ComponentPagePropertiesArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
 };
 
+
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentShouldLinkToExamplesArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentStatesCollectionArgs = {
@@ -391,6 +420,7 @@ export type ComponentStatesCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentStylesCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -399,20 +429,24 @@ export type ComponentStylesCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentUsageArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentUsageDoArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentUsageDontArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
 export type ComponentUserResearchArgs = {
@@ -534,6 +568,7 @@ export type ComponentLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type ComponentLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -553,25 +588,30 @@ export type ComponentModifier = Entry & {
   sys: Sys;
 };
 
+
 /** Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier) */
 export type ComponentModifierDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier) */
 export type ComponentModifierIsPreviewDarkThemedArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier) */
 export type ComponentModifierLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 /** Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier) */
 export type ComponentModifierModifierIdArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Modifiers of components, e.g.: button with icon, input with help text, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentModifier) */
 export type ComponentModifierNameArgs = {
@@ -623,12 +663,14 @@ export type ComponentModifierLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type ComponentModifierLinkingCollectionsComponentCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type ComponentModifierLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -691,25 +733,30 @@ export type ComponentState = Entry & {
   sys: Sys;
 };
 
+
 /** States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState) */
 export type ComponentStateDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState) */
 export type ComponentStateIsPreviewDarkThemedArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState) */
 export type ComponentStateLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 /** States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState) */
 export type ComponentStateNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** States of components, e.g.: disabled, readonly, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentState) */
 export type ComponentStateStateIdArgs = {
@@ -761,12 +808,14 @@ export type ComponentStateLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type ComponentStateLinkingCollectionsComponentCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type ComponentStateLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -812,25 +861,30 @@ export type ComponentStyle = Entry & {
   sys: Sys;
 };
 
+
 /** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
 export type ComponentStyleDescriptionArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
 export type ComponentStyleIsPreviewDarkThemedArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
 export type ComponentStyleLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 /** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
 export type ComponentStyleNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
 export type ComponentStyleStyleIdArgs = {
@@ -882,12 +936,14 @@ export type ComponentStyleLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
 };
 
+
 export type ComponentStyleLinkingCollectionsComponentCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type ComponentStyleLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -933,25 +989,30 @@ export type ContentGuideline = Entry & {
   sys: Sys;
 };
 
+
 /** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
 export type ContentGuidelineContentArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
 export type ContentGuidelineLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
 export type ContentGuidelineLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 /** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
 export type ContentGuidelineNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
 export type ContentGuidelinePagePropertiesArgs = {
@@ -1001,6 +1062,7 @@ export type ContentGuidelineLinkingCollections = {
   __typename?: 'ContentGuidelineLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
 };
+
 
 export type ContentGuidelineLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1092,30 +1154,36 @@ export type Foundation = Entry & {
   sys: Sys;
 };
 
+
 /** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
 export type FoundationContentArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
 export type FoundationGroupArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
 export type FoundationLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
 export type FoundationLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 /** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
 export type FoundationNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Documentation for foundations. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/foundation) */
 export type FoundationPagePropertiesArgs = {
@@ -1172,6 +1240,7 @@ export type FoundationLinkingCollections = {
   __typename?: 'FoundationLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
 };
+
 
 export type FoundationLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1299,10 +1368,12 @@ export type PageProperties = Entry & {
   sys: Sys;
 };
 
+
 /** [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/pageProperties) */
 export type PagePropertiesLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 /** [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/pageProperties) */
 export type PagePropertiesSeoMetaDescriptionArgs = {
@@ -1341,12 +1412,14 @@ export type PagePropertiesLinkingCollections = {
   resourceCollection?: Maybe<ResourceCollection>;
 };
 
+
 export type PagePropertiesLinkingCollectionsCodeStandardCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type PagePropertiesLinkingCollectionsComponentCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1355,12 +1428,14 @@ export type PagePropertiesLinkingCollectionsComponentCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 export type PagePropertiesLinkingCollectionsContentGuidelineCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type PagePropertiesLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1369,12 +1444,14 @@ export type PagePropertiesLinkingCollectionsEntryCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
 export type PagePropertiesLinkingCollectionsFoundationCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type PagePropertiesLinkingCollectionsResourceCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1421,11 +1498,13 @@ export type Query = {
   resourceCollection?: Maybe<ResourceCollection>;
 };
 
+
 export type QueryAssetArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryAssetCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1436,11 +1515,13 @@ export type QueryAssetCollectionArgs = {
   where?: InputMaybe<AssetFilter>;
 };
 
+
 export type QueryCodeStandardArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryCodeStandardCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1451,11 +1532,13 @@ export type QueryCodeStandardCollectionArgs = {
   where?: InputMaybe<CodeStandardFilter>;
 };
 
+
 export type QueryComponentArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryComponentCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1466,11 +1549,13 @@ export type QueryComponentCollectionArgs = {
   where?: InputMaybe<ComponentFilter>;
 };
 
+
 export type QueryComponentModifierArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryComponentModifierCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1481,11 +1566,13 @@ export type QueryComponentModifierCollectionArgs = {
   where?: InputMaybe<ComponentModifierFilter>;
 };
 
+
 export type QueryComponentStateArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryComponentStateCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1496,11 +1583,13 @@ export type QueryComponentStateCollectionArgs = {
   where?: InputMaybe<ComponentStateFilter>;
 };
 
+
 export type QueryComponentStyleArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryComponentStyleCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1511,11 +1600,13 @@ export type QueryComponentStyleCollectionArgs = {
   where?: InputMaybe<ComponentStyleFilter>;
 };
 
+
 export type QueryContentGuidelineArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryContentGuidelineCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1526,6 +1617,7 @@ export type QueryContentGuidelineCollectionArgs = {
   where?: InputMaybe<ContentGuidelineFilter>;
 };
 
+
 export type QueryEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -1535,11 +1627,13 @@ export type QueryEntryCollectionArgs = {
   where?: InputMaybe<EntryFilter>;
 };
 
+
 export type QueryFoundationArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryFoundationCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1550,11 +1644,13 @@ export type QueryFoundationCollectionArgs = {
   where?: InputMaybe<FoundationFilter>;
 };
 
+
 export type QueryPagePropertiesArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryPagePropertiesCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1565,11 +1661,13 @@ export type QueryPagePropertiesCollectionArgs = {
   where?: InputMaybe<PagePropertiesFilter>;
 };
 
+
 export type QueryResourceArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 };
+
 
 export type QueryResourceCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1593,30 +1691,36 @@ export type Resource = Entry & {
   sys: Sys;
 };
 
+
 /** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
 export type ResourceContentArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
 export type ResourceGroupArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+
 /** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
 export type ResourceLeadParagraphArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
 export type ResourceLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 /** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
 export type ResourceNameArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
+
 
 /** Documentation for resources. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/resource) */
 export type ResourcePagePropertiesArgs = {
@@ -1673,6 +1777,7 @@ export type ResourceLinkingCollections = {
   __typename?: 'ResourceLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
 };
+
 
 export type ResourceLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -1855,198 +1960,65 @@ export type GetCodeStandardQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
-export type GetCodeStandardQuery = {
-  __typename?: 'Query';
-  codeStandard?: {
-    __typename?: 'CodeStandard';
-    name?: string | null;
-    leadParagraph?: string | null;
-    content?: string | null;
-    pageProperties?: { __typename?: 'PageProperties'; seoMetaDescription?: string | null } | null;
-    sys: { __typename?: 'Sys'; id: string; publishedAt?: any | null };
-  } | null;
-};
+
+export type GetCodeStandardQuery = { __typename?: 'Query', codeStandard?: { __typename?: 'CodeStandard', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetComponentQueryVariables = Exact<{
   id: Scalars['String'];
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
-export type GetComponentQuery = {
-  __typename?: 'Query';
-  component?: {
-    __typename?: 'Component';
-    name?: string | null;
-    leadParagraph?: string | null;
-    shouldLinkToExamples?: boolean | null;
-    usage?: string | null;
-    usageDo?: string | null;
-    usageDont?: string | null;
-    interactions?: string | null;
-    contentGuidelines?: string | null;
-    contentGuidelinesDo?: string | null;
-    contentGuidelinesDont?: string | null;
-    userResearch?: string | null;
-    accessibility?: string | null;
-    group?: string | null;
-    modifiersCollection?: {
-      __typename?: 'ComponentModifiersCollection';
-      items: Array<{
-        __typename?: 'ComponentModifier';
-        name?: string | null;
-        description?: string | null;
-        modifierId?: string | null;
-        isPreviewDarkThemed?: boolean | null;
-      } | null>;
-    } | null;
-    stylesCollection?: {
-      __typename?: 'ComponentStylesCollection';
-      items: Array<{
-        __typename?: 'ComponentStyle';
-        name?: string | null;
-        description?: string | null;
-        styleId?: string | null;
-        isPreviewDarkThemed?: boolean | null;
-      } | null>;
-    } | null;
-    statesCollection?: {
-      __typename?: 'ComponentStatesCollection';
-      items: Array<{
-        __typename?: 'ComponentState';
-        name?: string | null;
-        description?: string | null;
-        stateId?: string | null;
-        isPreviewDarkThemed?: boolean | null;
-      } | null>;
-    } | null;
-    pageProperties?: { __typename?: 'PageProperties'; seoMetaDescription?: string | null } | null;
-    sys: { __typename?: 'Sys'; id: string; publishedAt?: any | null };
-  } | null;
-};
+
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, shouldLinkToExamples?: boolean | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, group?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetContentGuidelineQueryVariables = Exact<{
   id: Scalars['String'];
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
-export type GetContentGuidelineQuery = {
-  __typename?: 'Query';
-  contentGuideline?: {
-    __typename?: 'ContentGuideline';
-    name?: string | null;
-    leadParagraph?: string | null;
-    content?: string | null;
-    pageProperties?: { __typename?: 'PageProperties'; seoMetaDescription?: string | null } | null;
-    sys: { __typename?: 'Sys'; id: string; publishedAt?: any | null };
-  } | null;
-};
+
+export type GetContentGuidelineQuery = { __typename?: 'Query', contentGuideline?: { __typename?: 'ContentGuideline', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetFoundationQueryVariables = Exact<{
   id: Scalars['String'];
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
-export type GetFoundationQuery = {
-  __typename?: 'Query';
-  foundation?: {
-    __typename?: 'Foundation';
-    name?: string | null;
-    leadParagraph?: string | null;
-    content?: string | null;
-    pageProperties?: { __typename?: 'PageProperties'; seoMetaDescription?: string | null } | null;
-    sys: { __typename?: 'Sys'; id: string; publishedAt?: any | null };
-  } | null;
-};
+
+export type GetFoundationQuery = { __typename?: 'Query', foundation?: { __typename?: 'Foundation', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetCollectionsQueryVariables = Exact<{
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
-export type GetCollectionsQuery = {
-  __typename?: 'Query';
-  foundationCollection?: {
-    __typename?: 'FoundationCollection';
-    items: Array<{
-      __typename?: 'Foundation';
-      name?: string | null;
-      group?: string | null;
-      leadParagraph?: string | null;
-      sys: { __typename?: 'Sys'; id: string };
-    } | null>;
-  } | null;
-  contentGuidelineCollection?: {
-    __typename?: 'ContentGuidelineCollection';
-    items: Array<{
-      __typename?: 'ContentGuideline';
-      name?: string | null;
-      leadParagraph?: string | null;
-      sys: { __typename?: 'Sys'; id: string };
-    } | null>;
-  } | null;
-  codeStandardCollection?: {
-    __typename?: 'CodeStandardCollection';
-    items: Array<{
-      __typename?: 'CodeStandard';
-      name?: string | null;
-      leadParagraph?: string | null;
-      sys: { __typename?: 'Sys'; id: string };
-    } | null>;
-  } | null;
-  componentCollection?: {
-    __typename?: 'ComponentCollection';
-    items: Array<{
-      __typename?: 'Component';
-      name?: string | null;
-      group?: string | null;
-      leadParagraph?: string | null;
-      sys: { __typename?: 'Sys'; id: string };
-    } | null>;
-  } | null;
-  resourceCollection?: {
-    __typename?: 'ResourceCollection';
-    items: Array<{
-      __typename?: 'Resource';
-      name?: string | null;
-      group?: string | null;
-      leadParagraph?: string | null;
-      sys: { __typename?: 'Sys'; id: string };
-    } | null>;
-  } | null;
-};
+
+export type GetCollectionsQuery = { __typename?: 'Query', foundationCollection?: { __typename?: 'FoundationCollection', items: Array<{ __typename?: 'Foundation', name?: string | null, group?: string | null, leadParagraph?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, contentGuidelineCollection?: { __typename?: 'ContentGuidelineCollection', items: Array<{ __typename?: 'ContentGuideline', name?: string | null, leadParagraph?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, codeStandardCollection?: { __typename?: 'CodeStandardCollection', items: Array<{ __typename?: 'CodeStandard', name?: string | null, leadParagraph?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, componentCollection?: { __typename?: 'ComponentCollection', items: Array<{ __typename?: 'Component', name?: string | null, group?: string | null, leadParagraph?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, resourceCollection?: { __typename?: 'ResourceCollection', items: Array<{ __typename?: 'Resource', name?: string | null, group?: string | null, leadParagraph?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type GetResourceQueryVariables = Exact<{
   id: Scalars['String'];
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
-export type GetResourceQuery = {
-  __typename?: 'Query';
-  resource?: {
-    __typename?: 'Resource';
-    name?: string | null;
-    leadParagraph?: string | null;
-    content?: string | null;
-    pageProperties?: { __typename?: 'PageProperties'; seoMetaDescription?: string | null } | null;
-    sys: { __typename?: 'Sys'; id: string; publishedAt?: any | null };
-  } | null;
-};
+
+export type GetResourceQuery = { __typename?: 'Query', resource?: { __typename?: 'Resource', name?: string | null, leadParagraph?: string | null, content?: string | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+
 
 export const GetCodeStandardDocument = gql`
-  query getCodeStandard($id: String!, $preview: Boolean) {
-    codeStandard(id: $id, preview: $preview) {
-      name
-      leadParagraph
-      content
-      pageProperties {
-        seoMetaDescription
-      }
-      sys {
-        id
-        publishedAt
-      }
+    query getCodeStandard($id: String!, $preview: Boolean) {
+  codeStandard(id: $id, preview: $preview) {
+    name
+    leadParagraph
+    content
+    pageProperties {
+      seoMetaDescription
+    }
+    sys {
+      id
+      publishedAt
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetCodeStandardQuery__
@@ -2065,71 +2037,67 @@ export const GetCodeStandardDocument = gql`
  *   },
  * });
  */
-export function useGetCodeStandardQuery(
-  baseOptions: Apollo.QueryHookOptions<GetCodeStandardQuery, GetCodeStandardQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetCodeStandardQuery, GetCodeStandardQueryVariables>(GetCodeStandardDocument, options);
-}
-export function useGetCodeStandardLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetCodeStandardQuery, GetCodeStandardQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetCodeStandardQuery, GetCodeStandardQueryVariables>(GetCodeStandardDocument, options);
-}
+export function useGetCodeStandardQuery(baseOptions: Apollo.QueryHookOptions<GetCodeStandardQuery, GetCodeStandardQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCodeStandardQuery, GetCodeStandardQueryVariables>(GetCodeStandardDocument, options);
+      }
+export function useGetCodeStandardLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCodeStandardQuery, GetCodeStandardQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCodeStandardQuery, GetCodeStandardQueryVariables>(GetCodeStandardDocument, options);
+        }
 export type GetCodeStandardQueryHookResult = ReturnType<typeof useGetCodeStandardQuery>;
 export type GetCodeStandardLazyQueryHookResult = ReturnType<typeof useGetCodeStandardLazyQuery>;
 export type GetCodeStandardQueryResult = Apollo.QueryResult<GetCodeStandardQuery, GetCodeStandardQueryVariables>;
 export const GetComponentDocument = gql`
-  query getComponent($id: String!, $preview: Boolean) {
-    component(id: $id, preview: $preview) {
-      name
-      leadParagraph
-      modifiersCollection {
-        items {
-          name
-          description
-          modifierId
-          isPreviewDarkThemed
-        }
-      }
-      stylesCollection {
-        items {
-          name
-          description
-          styleId
-          isPreviewDarkThemed
-        }
-      }
-      statesCollection {
-        items {
-          name
-          description
-          stateId
-          isPreviewDarkThemed
-        }
-      }
-      shouldLinkToExamples
-      usage
-      usageDo
-      usageDont
-      interactions
-      contentGuidelines
-      contentGuidelinesDo
-      contentGuidelinesDont
-      userResearch
-      accessibility
-      group
-      pageProperties {
-        seoMetaDescription
-      }
-      sys {
-        id
-        publishedAt
+    query getComponent($id: String!, $preview: Boolean) {
+  component(id: $id, preview: $preview) {
+    name
+    leadParagraph
+    modifiersCollection {
+      items {
+        name
+        description
+        modifierId
+        isPreviewDarkThemed
       }
     }
+    stylesCollection {
+      items {
+        name
+        description
+        styleId
+        isPreviewDarkThemed
+      }
+    }
+    statesCollection {
+      items {
+        name
+        description
+        stateId
+        isPreviewDarkThemed
+      }
+    }
+    shouldLinkToExamples
+    usage
+    usageDo
+    usageDont
+    interactions
+    contentGuidelines
+    contentGuidelinesDo
+    contentGuidelinesDont
+    userResearch
+    accessibility
+    group
+    pageProperties {
+      seoMetaDescription
+    }
+    sys {
+      id
+      publishedAt
+    }
   }
-`;
+}
+    `;
 
 /**
  * __useGetComponentQuery__
@@ -2148,37 +2116,33 @@ export const GetComponentDocument = gql`
  *   },
  * });
  */
-export function useGetComponentQuery(
-  baseOptions: Apollo.QueryHookOptions<GetComponentQuery, GetComponentQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetComponentQuery, GetComponentQueryVariables>(GetComponentDocument, options);
-}
-export function useGetComponentLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetComponentQuery, GetComponentQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetComponentQuery, GetComponentQueryVariables>(GetComponentDocument, options);
-}
+export function useGetComponentQuery(baseOptions: Apollo.QueryHookOptions<GetComponentQuery, GetComponentQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetComponentQuery, GetComponentQueryVariables>(GetComponentDocument, options);
+      }
+export function useGetComponentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetComponentQuery, GetComponentQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetComponentQuery, GetComponentQueryVariables>(GetComponentDocument, options);
+        }
 export type GetComponentQueryHookResult = ReturnType<typeof useGetComponentQuery>;
 export type GetComponentLazyQueryHookResult = ReturnType<typeof useGetComponentLazyQuery>;
 export type GetComponentQueryResult = Apollo.QueryResult<GetComponentQuery, GetComponentQueryVariables>;
 export const GetContentGuidelineDocument = gql`
-  query getContentGuideline($id: String!, $preview: Boolean) {
-    contentGuideline(id: $id, preview: $preview) {
-      name
-      leadParagraph
-      content
-      pageProperties {
-        seoMetaDescription
-      }
-      sys {
-        id
-        publishedAt
-      }
+    query getContentGuideline($id: String!, $preview: Boolean) {
+  contentGuideline(id: $id, preview: $preview) {
+    name
+    leadParagraph
+    content
+    pageProperties {
+      seoMetaDescription
+    }
+    sys {
+      id
+      publishedAt
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetContentGuidelineQuery__
@@ -2197,46 +2161,33 @@ export const GetContentGuidelineDocument = gql`
  *   },
  * });
  */
-export function useGetContentGuidelineQuery(
-  baseOptions: Apollo.QueryHookOptions<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>(
-    GetContentGuidelineDocument,
-    options
-  );
-}
-export function useGetContentGuidelineLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>(
-    GetContentGuidelineDocument,
-    options
-  );
-}
+export function useGetContentGuidelineQuery(baseOptions: Apollo.QueryHookOptions<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>(GetContentGuidelineDocument, options);
+      }
+export function useGetContentGuidelineLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>(GetContentGuidelineDocument, options);
+        }
 export type GetContentGuidelineQueryHookResult = ReturnType<typeof useGetContentGuidelineQuery>;
 export type GetContentGuidelineLazyQueryHookResult = ReturnType<typeof useGetContentGuidelineLazyQuery>;
-export type GetContentGuidelineQueryResult = Apollo.QueryResult<
-  GetContentGuidelineQuery,
-  GetContentGuidelineQueryVariables
->;
+export type GetContentGuidelineQueryResult = Apollo.QueryResult<GetContentGuidelineQuery, GetContentGuidelineQueryVariables>;
 export const GetFoundationDocument = gql`
-  query getFoundation($id: String!, $preview: Boolean) {
-    foundation(id: $id, preview: $preview) {
-      name
-      leadParagraph
-      content
-      pageProperties {
-        seoMetaDescription
-      }
-      sys {
-        id
-        publishedAt
-      }
+    query getFoundation($id: String!, $preview: Boolean) {
+  foundation(id: $id, preview: $preview) {
+    name
+    leadParagraph
+    content
+    pageProperties {
+      seoMetaDescription
+    }
+    sys {
+      id
+      publishedAt
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetFoundationQuery__
@@ -2255,73 +2206,69 @@ export const GetFoundationDocument = gql`
  *   },
  * });
  */
-export function useGetFoundationQuery(
-  baseOptions: Apollo.QueryHookOptions<GetFoundationQuery, GetFoundationQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetFoundationQuery, GetFoundationQueryVariables>(GetFoundationDocument, options);
-}
-export function useGetFoundationLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetFoundationQuery, GetFoundationQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetFoundationQuery, GetFoundationQueryVariables>(GetFoundationDocument, options);
-}
+export function useGetFoundationQuery(baseOptions: Apollo.QueryHookOptions<GetFoundationQuery, GetFoundationQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetFoundationQuery, GetFoundationQueryVariables>(GetFoundationDocument, options);
+      }
+export function useGetFoundationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFoundationQuery, GetFoundationQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetFoundationQuery, GetFoundationQueryVariables>(GetFoundationDocument, options);
+        }
 export type GetFoundationQueryHookResult = ReturnType<typeof useGetFoundationQuery>;
 export type GetFoundationLazyQueryHookResult = ReturnType<typeof useGetFoundationLazyQuery>;
 export type GetFoundationQueryResult = Apollo.QueryResult<GetFoundationQuery, GetFoundationQueryVariables>;
 export const GetCollectionsDocument = gql`
-  query getCollections($preview: Boolean) {
-    foundationCollection(order: name_ASC, preview: $preview) {
-      items {
-        name
-        group
-        leadParagraph
-        sys {
-          id
-        }
-      }
-    }
-    contentGuidelineCollection(order: name_ASC, preview: $preview) {
-      items {
-        name
-        leadParagraph
-        sys {
-          id
-        }
-      }
-    }
-    codeStandardCollection(preview: $preview) {
-      items {
-        name
-        leadParagraph
-        sys {
-          id
-        }
-      }
-    }
-    componentCollection(order: name_ASC, preview: $preview) {
-      items {
-        name
-        group
-        leadParagraph
-        sys {
-          id
-        }
-      }
-    }
-    resourceCollection(order: name_ASC, preview: $preview) {
-      items {
-        name
-        group
-        leadParagraph
-        sys {
-          id
-        }
+    query getCollections($preview: Boolean) {
+  foundationCollection(order: name_ASC, preview: $preview) {
+    items {
+      name
+      group
+      leadParagraph
+      sys {
+        id
       }
     }
   }
-`;
+  contentGuidelineCollection(order: name_ASC, preview: $preview) {
+    items {
+      name
+      leadParagraph
+      sys {
+        id
+      }
+    }
+  }
+  codeStandardCollection(preview: $preview) {
+    items {
+      name
+      leadParagraph
+      sys {
+        id
+      }
+    }
+  }
+  componentCollection(order: name_ASC, preview: $preview) {
+    items {
+      name
+      group
+      leadParagraph
+      sys {
+        id
+      }
+    }
+  }
+  resourceCollection(order: name_ASC, preview: $preview) {
+    items {
+      name
+      group
+      leadParagraph
+      sys {
+        id
+      }
+    }
+  }
+}
+    `;
 
 /**
  * __useGetCollectionsQuery__
@@ -2339,37 +2286,33 @@ export const GetCollectionsDocument = gql`
  *   },
  * });
  */
-export function useGetCollectionsQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetCollectionsQuery, GetCollectionsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetCollectionsQuery, GetCollectionsQueryVariables>(GetCollectionsDocument, options);
-}
-export function useGetCollectionsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetCollectionsQuery, GetCollectionsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetCollectionsQuery, GetCollectionsQueryVariables>(GetCollectionsDocument, options);
-}
+export function useGetCollectionsQuery(baseOptions?: Apollo.QueryHookOptions<GetCollectionsQuery, GetCollectionsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCollectionsQuery, GetCollectionsQueryVariables>(GetCollectionsDocument, options);
+      }
+export function useGetCollectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCollectionsQuery, GetCollectionsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCollectionsQuery, GetCollectionsQueryVariables>(GetCollectionsDocument, options);
+        }
 export type GetCollectionsQueryHookResult = ReturnType<typeof useGetCollectionsQuery>;
 export type GetCollectionsLazyQueryHookResult = ReturnType<typeof useGetCollectionsLazyQuery>;
 export type GetCollectionsQueryResult = Apollo.QueryResult<GetCollectionsQuery, GetCollectionsQueryVariables>;
 export const GetResourceDocument = gql`
-  query getResource($id: String!, $preview: Boolean) {
-    resource(id: $id, preview: $preview) {
-      name
-      leadParagraph
-      content
-      pageProperties {
-        seoMetaDescription
-      }
-      sys {
-        id
-        publishedAt
-      }
+    query getResource($id: String!, $preview: Boolean) {
+  resource(id: $id, preview: $preview) {
+    name
+    leadParagraph
+    content
+    pageProperties {
+      seoMetaDescription
+    }
+    sys {
+      id
+      publishedAt
     }
   }
-`;
+}
+    `;
 
 /**
  * __useGetResourceQuery__
@@ -2389,15 +2332,13 @@ export const GetResourceDocument = gql`
  * });
  */
 export function useGetResourceQuery(baseOptions: Apollo.QueryHookOptions<GetResourceQuery, GetResourceQueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetResourceQuery, GetResourceQueryVariables>(GetResourceDocument, options);
-}
-export function useGetResourceLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetResourceQuery, GetResourceQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetResourceQuery, GetResourceQueryVariables>(GetResourceDocument, options);
-}
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetResourceQuery, GetResourceQueryVariables>(GetResourceDocument, options);
+      }
+export function useGetResourceLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetResourceQuery, GetResourceQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetResourceQuery, GetResourceQueryVariables>(GetResourceDocument, options);
+        }
 export type GetResourceQueryHookResult = ReturnType<typeof useGetResourceQuery>;
 export type GetResourceLazyQueryHookResult = ReturnType<typeof useGetResourceLazyQuery>;
 export type GetResourceQueryResult = Apollo.QueryResult<GetResourceQuery, GetResourceQueryVariables>;

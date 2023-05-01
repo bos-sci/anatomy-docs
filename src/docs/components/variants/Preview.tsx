@@ -71,7 +71,35 @@ const Preview = (props: Props): JSX.Element => {
   });
 
   useEffect(() => {
-    const variantId = props.variantId ? props.variantId : params.example!;
+    const variantId = props.variantId ?? (params.example as string);
+
+    const ComponentControllers = {
+      AccordionController: lazy(() => import('./accordion/_AccordionController')),
+      BreadcrumbController: lazy(() => import('./breadcrumbs/_BreadcrumbController')),
+      ButtonController: lazy(() => import('./buttons/_ButtonController')),
+      ContentCardController: lazy(() => import('./contentCard/_ContentCardController')),
+      CardGroupController: lazy(() => import('./cardGroup/_CardGroupController')),
+      DropdownController: lazy(() => import('./dropdown/_DropdownController')),
+      InputCheckboxController: lazy(() => import('./inputCheckbox/_inputCheckboxController')),
+      InputCheckboxGroupController: lazy(() => import('./inputCheckboxGroup/_InputCheckboxGroupController')),
+      DefaultForm: lazy(() => import('./forms/DefaultForm')),
+      ImageController: lazy(() => import('./image/_ImageController')),
+      LinkController: lazy(() => import('./link/_LinkController')),
+      ModalController: lazy(() => import('./modals/_modalController')),
+      DefaultNavLink: lazy(() => import('./navLink/DefaultNavLink')),
+      NavBackController: lazy(() => import('./navBack/_NavBackController')),
+      NavPrimaryController: lazy(() => import('./navPrimary/_NavPrimaryController')),
+      ProductCardController: lazy(() => import('./productCard/_ProductCardController')),
+      InputRadioGroupController: lazy(() => import('./inputRadioGroup/_InputRadioGroupController')),
+      DefaultSearch: lazy(() => import('./search/DefaultSearch')),
+      DefaultNavSecondary: lazy(() => import('./navSecondary/DefaultNavSecondary')),
+      DefaultSkipLink: lazy(() => import('./skipLink/DefaultSkipLink')),
+      StoplightController: lazy(() => import('./stoplight/_StoplightController')),
+      TabsController: lazy(() => import('./tabs/_TabsController')),
+      TagController: lazy(() => import('./tag/_TagController')),
+      DefaultNavTertiary: lazy(() => import('./navTertiary/DefaultNavTertiary')),
+      InputTextController: lazy(() => import('./inputText/_InputTextController'))
+    };
 
     if (props.shouldLinkToExamples) {
       setRenderedComponent(
@@ -86,128 +114,103 @@ const Preview = (props: Props): JSX.Element => {
     } else {
       switch (params.componentName) {
         case 'accordion':
-          const AccordionController = lazy(() => import('./accordion/_AccordionController'));
-          setRenderedComponent(<AccordionController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.AccordionController variantId={variantId} />);
           break;
 
         case 'breadcrumbs':
-          const BreadcrumbController = lazy(() => import('./breadcrumbs/_BreadcrumbController'));
-          setRenderedComponent(<BreadcrumbController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.BreadcrumbController variantId={variantId} />);
           break;
 
         case 'button':
-          const ButtonController = lazy(() => import('./buttons/_ButtonController'));
-          setRenderedComponent(<ButtonController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.ButtonController variantId={variantId} />);
           break;
 
         case 'content-card':
-          const ContentCardController = lazy(() => import('./contentCard/_ContentCardController'));
-          setRenderedComponent(<ContentCardController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.ContentCardController variantId={variantId} />);
           break;
 
         case 'card-group':
-          const CardGroupController = lazy(() => import('./cardGroup/_CardGroupController'));
-          setRenderedComponent(<CardGroupController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.CardGroupController variantId={variantId} />);
           break;
 
         case 'dropdown-menu':
-          const DropdownController = lazy(() => import('./dropdown/_DropdownController'));
-          setRenderedComponent(<DropdownController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.DropdownController variantId={variantId} />);
           break;
 
         case 'checkbox':
-          const InputCheckboxController = lazy(() => import('./inputCheckbox/_inputCheckboxController'));
-          setRenderedComponent(<InputCheckboxController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.InputCheckboxController variantId={variantId} />);
           break;
 
         case 'checkbox-group':
-          const InputCheckboxGroupController = lazy(() => import('./inputCheckboxGroup/_InputCheckboxGroupController'));
-          setRenderedComponent(<InputCheckboxGroupController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.InputCheckboxGroupController variantId={variantId} />);
           break;
 
         case 'form':
-          const DefaultForm = lazy(() => import('./forms/DefaultForm'));
-          setRenderedComponent(<DefaultForm />);
+          setRenderedComponent(<ComponentControllers.DefaultForm />);
           break;
 
         case 'image':
-          const ImageController = lazy(() => import('./image/_ImageController'));
-          setRenderedComponent(<ImageController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.ImageController variantId={variantId} />);
           break;
 
         case 'link':
-          const LinkController = lazy(() => import('./link/_LinkController'));
-          setRenderedComponent(<LinkController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.LinkController variantId={variantId} />);
           break;
 
         case 'modal':
-          const ModalController = lazy(() => import('./modals/_modalController'));
-          setRenderedComponent(<ModalController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.ModalController variantId={variantId} />);
           break;
 
         case 'navigation-link':
-          const DefaultNavLink = lazy(() => import('./navLink/DefaultNavLink'));
-          setRenderedComponent(<DefaultNavLink />);
+          setRenderedComponent(<ComponentControllers.DefaultNavLink />);
           break;
 
         case 'navigation-back-button':
-          const NavBackController = lazy(() => import('./navBack/_NavBackController'));
-          setRenderedComponent(<NavBackController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.NavBackController variantId={variantId} />);
           break;
 
         case 'primary-navigation':
-          const NavPrimaryController = lazy(() => import('./navPrimary/_NavPrimaryController'));
-          setRenderedComponent(<NavPrimaryController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.NavPrimaryController variantId={variantId} />);
           break;
 
         case 'product-card':
-          const ProductCardController = lazy(() => import('./productCard/_ProductCardController'));
-          setRenderedComponent(<ProductCardController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.ProductCardController variantId={variantId} />);
           break;
 
         case 'radio-group':
-          const InputRadioGroupController = lazy(() => import('./inputRadioGroup/_InputRadioGroupController'));
-          setRenderedComponent(<InputRadioGroupController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.InputRadioGroupController variantId={variantId} />);
           break;
 
         case 'search':
-          const DefaultSearch = lazy(() => import('./search/DefaultSearch'));
-          setRenderedComponent(<DefaultSearch />);
+          setRenderedComponent(<ComponentControllers.DefaultSearch />);
           break;
 
         case 'secondary-navigation':
-          const DefaultNavSecondary = lazy(() => import('./navSecondary/DefaultNavSecondary'));
-          setRenderedComponent(<DefaultNavSecondary />);
+          setRenderedComponent(<ComponentControllers.DefaultNavSecondary />);
           break;
 
         case 'skip-link':
-          const DefaultSkipLink = lazy(() => import('./skipLink/DefaultSkipLink'));
-          setRenderedComponent(<DefaultSkipLink />);
+          setRenderedComponent(<ComponentControllers.DefaultSkipLink />);
           break;
 
         case 'stoplight':
-          const StoplightController = lazy(() => import('./stoplight/_StoplightController'));
-          setRenderedComponent(<StoplightController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.StoplightController variantId={variantId} />);
           break;
 
         case 'tabs':
-          const TabsController = lazy(() => import('./tabs/_TabsController'));
-          setRenderedComponent(<TabsController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.TabsController variantId={variantId} />);
           break;
 
         case 'tag':
-          const TagController = lazy(() => import('./tag/_TagController'));
-          setRenderedComponent(<TagController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.TagController variantId={variantId} />);
           break;
 
         case 'tertiary-navigation':
-          const DefaultNavTertiary = lazy(() => import('./navTertiary/DefaultNavTertiary'));
-          setRenderedComponent(<DefaultNavTertiary />);
+          setRenderedComponent(<ComponentControllers.DefaultNavTertiary />);
           break;
 
         case 'text-input':
-          const InputTextController = lazy(() => import('./inputText/_InputTextController'));
-          setRenderedComponent(<InputTextController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.InputTextController variantId={variantId} />);
           break;
 
         case 'wizard-navigation':
