@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/prefer-tag-over-role */
 import { IconProps } from './iconTypes';
 
 const IconChevronRight = (props: IconProps): JSX.Element => {

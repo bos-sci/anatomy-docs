@@ -58,7 +58,9 @@ describe('Search', () => {
     const clearBtn = screen.getAllByRole('button').find((button) => button.textContent !== 'Search');
 
     expect(input).toHaveValue('test');
-    await user.click(clearBtn!);
+    if (clearBtn) {
+      await user.click(clearBtn);
+    }
     expect(input).toHaveValue('');
   });
 
