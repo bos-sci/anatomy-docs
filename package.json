@@ -24,10 +24,16 @@
     "eject": "react-scripts eject",
     "generate-types": "graphql-codegen --config codegen.yml --require dotenv/config",
     "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "sitemap": "node src/utils/generateSitemap.js",
     "stylelint:check": "stylelint-config-prettier-scss-check",
     "release-date": "echo \"// This file is automatically updated on release\nexport const releaseDate = new Date('$(date)');\" > ./src/utils/release-date.ts",
-    "lint:style": "stylelint \"**/*.scss\""
+    "lint:style": "stylelint \"**/*.scss\"",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -82,13 +88,20 @@
     "eslint-plugin-react": "^7.31.10",
     "fs": "^0.0.1-security",
     "graphql": "^16.5.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
     "prettier": "2.8.1",
+    "react-scripts": "^5.0.1",
     "sitemap": "^7.1.1",
     "stylelint": "^14.15.0",
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard-scss": "^6.1.0",
     "stylelint-order": "^6.0.1",
-    "typescript": "^4.8.4",
-    "react-scripts": "^5.0.1"
+    "typescript": "^4.8.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,html,css,scss}": "prettier --write",
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "*.{css,scss}": "stylelint --fix"
   }
 }
