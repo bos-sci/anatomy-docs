@@ -22,7 +22,7 @@ $bsds-breadcrumb-divider: url('../../assets/images/icon-slash.svg');
       &::before {
         display: inline-block;
         width: 1ch;
-        height: 1em;
+        height: 1pt;
         margin-right: space(md);
         background-image: $bsds-breadcrumb-divider;
         background-position: center;
