@@ -15,6 +15,7 @@ import { ComponentContext } from './ComponentsController';
 const Components = (): JSX.Element => {
   const location = useLocation();
 
+  // This also is fine
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [componentData, setComponentData] = useState<GetComponentQuery['component']>(
     {} as GetComponentQuery['component']
