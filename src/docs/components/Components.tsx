@@ -26,6 +26,7 @@ const Components = (): JSX.Element => {
 
   const myVar: any = 'test';
 
+  console.log(myVar);
   useEffect(() => {
     if (data) {
       setComponentData(data);
