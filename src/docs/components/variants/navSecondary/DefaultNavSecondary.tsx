@@ -37,9 +37,9 @@ const DefaultNavSecondary = (): JSX.Element => {
             {
               text: 'Nested child page',
               slug: '/nested-child-page'
-            },
+            }
           ]
-        },
+        }
       ]
     }
   ];
@@ -50,9 +50,10 @@ const DefaultNavSecondary = (): JSX.Element => {
 
   useEffect(() => {
     setTimeout(() => {
-      document.querySelectorAll('.docs-preview .nav-link')
+      document
+        .querySelectorAll('.docs-preview .nav-link')
         .forEach((link, i) => i !== 1 && link.classList.remove('active'));
-    }, 0)
+    }, 0);
   }, []);
 
   return (
@@ -60,6 +61,6 @@ const DefaultNavSecondary = (): JSX.Element => {
       <NavSecondary texts={navSecondaryTexts} navItems={navItems} />
     </Example>
   );
-}
+};
 
 export default DefaultNavSecondary;

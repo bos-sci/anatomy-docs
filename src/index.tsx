@@ -9,24 +9,25 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 const {
   REACT_APP_CONTENTFUL_SPACE_ID: SPACE_ID,
   REACT_APP_CONTENTFUL_ENVIRONMENT: ENVIRONMENT,
-  REACT_APP_CONTENTFUL_TOKEN: API_KEY,
+  REACT_APP_CONTENTFUL_TOKEN: API_KEY
 } = process.env;
 
 export const apolloClient = new ApolloClient({
   uri: `https://graphql.contentful.com/content/v1/spaces/${SPACE_ID}/environments/${ENVIRONMENT}`,
   headers: {
-    Authorization: `Bearer ${API_KEY}`,
+    Authorization: `Bearer ${API_KEY}`
   },
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache()
 });
 
 const container = document.getElementById('root');
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(container!);
 
 root.render(
   <React.StrictMode>
     <ApolloProvider client={apolloClient}>
-        <App />
+      <App />
     </ApolloProvider>
   </React.StrictMode>
 );

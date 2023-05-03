@@ -1,79 +1,76 @@
 $checkbox-size: $ffs-body-assertive;
 $checkmark-size: $ffs-body-assertive;
 
-.bsds-fieldset[aria-invalid="true"] .bsds-input-checkbox-input,
-.bsds-input-checkbox-input[aria-invalid="true"]
-{
-  + .bsds-input-checkbox-label
-  {
-    &::before
-    {
+@mixin checkbox-invalid() {
+  + .bsds-input-checkbox-label {
+    &::before {
       border: space(xs) solid $feedback-error-40;
     }
   }
 
   &:checked,
-  &[aria-checked="true"]
-  {
-    + .bsds-input-checkbox-label
-    {
-      &::before
-      {
+  &[aria-checked='true'] {
+    + .bsds-input-checkbox-label {
+      &::before {
         background: $feedback-error-40;
       }
     }
   }
 
-  &:focus,
-  &:focus:checked
-  {
-    + .bsds-input-checkbox-label
-    {
-      &::before
-      {
+  &:focus {
+    + .bsds-input-checkbox-label {
+      &::before {
         @include focus-invalid;
+      }
+    }
+
+    &:checked {
+      + .bsds-input-checkbox-label {
+        &::before {
+          @include focus-invalid;
+        }
       }
     }
   }
 }
 
-.bsds-fieldset
-{
-   > .bsds-input:not(:first-child)
-  {
-    .bsds-input-checkbox
-    {
-      margin-top: space(2x);
+.bsds-input-checkbox {
+  display: flex;
+}
+
+.bsds-fieldset {
+  > .bsds-input {
+    &:not(:first-child) {
+      .bsds-input-checkbox {
+        margin-top: space(2x);
+      }
+    }
+  }
+
+  &[aria-invalid='true'] {
+    .bsds-input-checkbox-input {
+      @include checkbox-invalid;
     }
   }
 }
 
-.bsds-input-checkbox
-{
-  display: flex;
-}
-
- .bsds-input-checkbox-input
-{
+.bsds-input-checkbox-input {
   position: absolute;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  clip: rect(0,0,0,0);
+  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
   overflow: hidden;
+  margin: 0;
   opacity: 0;
-  -webkit-appearance: none;
+  padding: 0;
+  appearance: none;
   pointer-events: none;
 
-  + .bsds-input-checkbox-label
-  {
+  + .bsds-input-checkbox-label {
     position: relative;
     padding-left: space(3x) + space(xs);
     cursor: pointer;
 
-    &::before
-    {
-      content: "";
+    &::before {
       position: absolute;
       top: calc((1.5em - $checkbox-size) / 2);
       left: 0;
@@ -81,17 +78,15 @@ $checkmark-size: $ffs-body-assertive;
       height: $checkbox-size;
       border: space(xxs) solid $neutral-00;
       background: $neutral-100;
+      content: '';
     }
   }
 
   &:checked,
-  &[aria-checked="mixed"],
-  &[aria-checked="true"]
-  {
-    + .bsds-input-checkbox-label
-    {
-      &::before
-      {
+  &[aria-checked='mixed'],
+  &[aria-checked='true'] {
+    + .bsds-input-checkbox-label {
+      &::before {
         border: transparent;
         background: $neutral-00;
       }
@@ -99,60 +94,62 @@ $checkmark-size: $ffs-body-assertive;
   }
 
   &:checked,
-  &[aria-checked="true"]
-  {
+  &[aria-checked='true'] {
     + .bsds-input-checkbox-label // checkmark
     {
-      &::before
-      {
+      &::before {
         background: $neutral-00;
       }
-      &::after
-      {
-        content: '';
+
+      &::after {
         position: absolute;
         top: calc((1.5em - $checkmark-size) / 2);
         left: 0;
-        color: $neutral-100;
         width: $checkmark-size;
         height: $checkmark-size;
         padding: space(xxs) + space(xs);
-        background-image: url("../../assets/images/icon-check.svg");
-        background-size: 100%;
-        background-repeat: no-repeat;
+        background-image: url('../../assets/images/icon-check.svg');
         background-origin: content-box;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        content: '';
+        color: $neutral-100;
       }
     }
   }
 
-  &:focus,
-  &:focus:checked
-  {
-    + .bsds-input-checkbox-label
-    {
-      &::before
-      {
-        @include focus-default;
-      }
-    }
-  }
-
-  &:disabled
-  {
-    + .bsds-input-checkbox-label
-    {
+  &:disabled {
+    + .bsds-input-checkbox-label {
       cursor: not-allowed;
 
-      &::before
-      {
-        background: $neutral-95;
+      &::before {
         border: space(xxs) solid $neutral-80;
+        background: $neutral-95;
       }
 
-      &::after
-      {
+      &::after {
         filter: invert(40%);
       }
     }
+  }
+
+  &:focus {
+    + .bsds-input-checkbox-label {
+      &::before {
+        @include focus-default;
+      }
+    }
+
+    &:checked {
+      + .bsds-input-checkbox-label {
+        &::before {
+          @include focus-default;
+        }
+      }
+    }
+  }
+
+  &[aria-invalid='true'] {
+    @include checkbox-invalid;
   }
 }

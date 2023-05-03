@@ -156,7 +156,8 @@ export const intermediateData: NavItemPrimary[] = [
   },
   {
     text: 'Navigation section',
-    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    description:
+      'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altLinkText: 'See all pages',
     altTo: 'docs-demo-link',
     children: [
@@ -239,13 +240,15 @@ export const intermediateData: NavItemPrimary[] = [
 export const complexData: NavItemPrimary[] = [
   {
     text: 'Navigation section 1',
-    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    description:
+      'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altHref: 'docs-demo-link',
     altLinkText: 'All pages',
     children: [
       {
         text: 'Page group',
-        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        description:
+          'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
@@ -350,7 +353,8 @@ export const complexData: NavItemPrimary[] = [
     children: [
       {
         text: 'Page group',
-        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        description:
+          'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
@@ -465,7 +469,8 @@ export const complexData: NavItemPrimary[] = [
       },
       {
         text: 'Page group',
-        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        description:
+          'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
@@ -477,7 +482,8 @@ export const complexData: NavItemPrimary[] = [
       },
       {
         text: 'Page group',
-        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        description:
+          'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
@@ -491,7 +497,8 @@ export const complexData: NavItemPrimary[] = [
   },
   {
     text: 'Navigation section 3',
-    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    description:
+      'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altHref: 'docs-demo-link',
     altLinkText: 'All pages',
     children: [
@@ -570,13 +577,15 @@ export const complexData: NavItemPrimary[] = [
 export const contextualComplex: NavItemPrimary[] = [
   {
     text: 'For healthcare professionals',
-    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    description:
+      'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altHref: 'docs-demo-link',
     altLinkText: 'All healthcare professionals information',
     children: [
       {
         text: 'Medical specialties',
-        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        description:
+          'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all treatments',
         altTo: 'docs-demo-link',
         children: [
@@ -751,7 +760,7 @@ export const contextualComplex: NavItemPrimary[] = [
           },
           {
             text: `Men's health`,
-            altLinkText: 'See all men\'s health',
+            altLinkText: "See all men's health",
             altTo: 'docs-demo-link',
             children: [
               {
@@ -762,7 +771,7 @@ export const contextualComplex: NavItemPrimary[] = [
           },
           {
             text: `Women's health`,
-            altLinkText: 'See all women\'s health',
+            altLinkText: "See all women's health",
             altTo: 'docs-demo-link',
             children: [
               {
@@ -824,7 +833,8 @@ export const contextualComplex: NavItemPrimary[] = [
   // About BSC
   {
     text: 'About Boston Scientific',
-    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    description:
+      'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altHref: 'docs-demo-link',
     altLinkText: 'All Boston Scientific information',
     children: [

@@ -11,6 +11,6 @@ const AccordionController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultAccordion />;
   }
-}
+};
 
 export default AccordionController;

@@ -7,6 +7,6 @@ const DefaultButton = (): JSX.Element => {
       <Button type="button">Text button</Button>
     </Example>
   );
-}
+};
 
 export default DefaultButton;

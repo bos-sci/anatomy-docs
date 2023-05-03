@@ -20,9 +20,9 @@ const Resources = (): JSX.Element => {
   const [resourceData, setResourceData] = useState<GetResourceQuery['resource']>({} as GetResourceQuery['resource']);
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
-  const {data, error} = useGetResourceQuery({
+  const { data, error } = useGetResourceQuery({
     variables: {
-      id: idLookup.resources[params.resourceName!].id,
+      id: idLookup.resources[params?.resourceName ?? ''].id,
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
     }
   });
@@ -32,7 +32,7 @@ const Resources = (): JSX.Element => {
   }
 
   useEffect(() => {
-    if(data?.resource) {
+    if (data?.resource) {
       setResourceData(data.resource);
     }
   }, [data]);
@@ -77,11 +77,11 @@ const Resources = (): JSX.Element => {
       {
         text: 'Release notes',
         slug: basePath + '/release-notes'
-      },
+      }
     ]);
   }, [location]);
 
-  useTitle({titlePrefix: `${resourceData?.name} - Resources`});
+  useTitle({ titlePrefix: `${resourceData?.name} - Resources` });
   useHashScroll(!!resourceData?.content);
 
   const pageHeadings = useHeadings();
@@ -95,19 +95,21 @@ const Resources = (): JSX.Element => {
     <Layout>
       <PageTemplate
         name={resourceData?.name || ''}
-        lastUpdated={resourceData?.sys?.publishedAt}
+        lastUpdated={resourceData?.sys?.publishedAt || ''}
         leadParagraph={resourceData?.leadParagraph || ''}
         seoMetaDescription={resourceData?.pageProperties?.seoMetaDescription || ''}
         navSecondaryMenuTrigger="Resources"
         navSecondaryItems={navItems}
-        navTertiaryItems={headings}>
+        navTertiaryItems={headings}
+      >
         <Markdown
           markdown={resourceData?.content || ''}
           headingOffset={1}
-          className={resourceData?.name === 'Release notes' ? 'docs-table-align-top' : ''} />
+          className={resourceData?.name === 'Release notes' ? 'docs-table-align-top' : ''}
+        />
       </PageTemplate>
     </Layout>
   );
-}
+};
 
 export default Resources;

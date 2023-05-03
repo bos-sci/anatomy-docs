@@ -1,48 +1,47 @@
-table
-{
+table {
   width: 100%;
   margin: space(3x) 0 0;
-  border: 0;
   border-collapse: collapse;
-  
-  caption
-  {
+  border: 0;
+
+  caption {
     margin-top: space(md);
     padding: 0;
     color: $text-color-primary;
     @include font-size($fs-small);
   }
 
-  tr
-  {
+  tr {
     border-bottom: space(xxs) solid $neutral-80;
 
-    th
-    {
+    th {
       @include font-family-base-heavy;
       text-align: inherit;
     }
 
     th,
-    td
-    {
+    td {
       border: 0;
       padding: space(2x);
     }
 
-    & > *:first-child
-    {
-      padding-left: 0;
+    > * {
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
     }
 
-    & > *:last-child
-    {
-      padding-right: 0;
-    }
-
-    td *:first-of-type // NOTE: this is used to remove the top margin from the previews in the type scale table, we may want to rethink eventually
-    {
-      margin-top: 0;
+    td {
+      * {
+        // NOTE: this is used to remove the top margin from the previews in the type scale table, we may want to rethink eventually
+        &:first-of-type {
+          margin-top: 0;
+        }
+      }
     }
   }
 }

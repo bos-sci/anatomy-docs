@@ -1,4 +1,15 @@
-import { Children, cloneElement, createRef, FunctionComponent, HTMLAttributes, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
+import {
+  Children,
+  cloneElement,
+  createRef,
+  FunctionComponent,
+  HTMLAttributes,
+  ReactElement,
+  RefObject,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import Button from './Button';
 import { Props as ButtonProps } from './Button';
 import { Props as LinkProps } from './Link';
@@ -36,11 +47,12 @@ const Dropdown = (props: Props) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownItems, setDropdownItems] = useState<DropdownItemElements[]>([]);
   const [dropdownId, setDropdownId] = useState('');
+  const [ariaText, setAriaText] = useState('');
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownItemRefs = useRef(Children.map(children, () => createRef<HTMLElement>()));
 
-  const {x, y, reference, floating, strategy, refs} = useFloating({
+  const { x, y, reference, floating, strategy, refs } = useFloating({
     whileElementsMounted: autoUpdate,
     placement: menuPosition,
     strategy: 'fixed',
@@ -49,7 +61,9 @@ const Dropdown = (props: Props) => {
 
   useEffect(() => {
     if (isDropdownOpen) {
-      const firstAction = dropdownItemRefs.current.find(ref => ref.current?.tagName === 'BUTTON' || ref.current?.tagName === 'A');
+      const firstAction = dropdownItemRefs.current.find(
+        (ref) => ref.current?.tagName === 'BUTTON' || ref.current?.tagName === 'A'
+      );
       if (firstAction) {
         firstAction.current?.focus();
       } else {
@@ -73,15 +87,20 @@ const Dropdown = (props: Props) => {
       } else if (newIndex < 0) {
         newIndex += dropdownItemRefs.current.length;
       }
-      if (dropdownItemRefs.current[newIndex].current?.tagName !== 'BUTTON' && dropdownItemRefs.current[newIndex].current?.tagName !== 'A') {
+      if (
+        dropdownItemRefs.current[newIndex].current?.tagName !== 'BUTTON' &&
+        dropdownItemRefs.current[newIndex].current?.tagName !== 'A'
+      ) {
         moveFocus(distance > 0 ? ++distance : --distance);
       } else {
         dropdownItemRefs.current[newIndex].current?.focus();
       }
     }
-  }
+  };
 
-  const updateFocus = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const trigger = refs.reference.current as HTMLButtonElement;
+
+  const updateFocus = (e: React.KeyboardEvent<HTMLUListElement>) => {
     switch (e.key) {
       case 'ArrowUp':
         e.preventDefault();
@@ -96,17 +115,16 @@ const Dropdown = (props: Props) => {
       case 'Escape':
         e.preventDefault();
         setIsDropdownOpen(false);
-        const trigger = refs.reference.current as HTMLButtonElement;
         trigger.focus();
         break;
 
       default:
         break;
     }
-  }
+  };
 
   useEffect(() => {
-    if(highlightedAction) {
+    if (highlightedAction) {
       dropdownItemRefs.current.push(createRef());
     }
   }, [highlightedAction, dropdownItemRefs]);
@@ -124,22 +142,23 @@ const Dropdown = (props: Props) => {
           if (childComponent.displayName === 'DropdownGroupName') {
             lastGroupName = i;
             return cloneElement(child, {
-              ref: dropdownItemRefs.current[i],
-              id: dropdownId + 'group' + i,
-              role: 'none',
+              'ref': dropdownItemRefs.current[i],
+              'id': dropdownId + 'group' + i,
+              'role': 'none',
               'aria-hidden': true
             });
-          } else { // Dropdown item (button or link) clone
+          } else {
+            // Dropdown item (button or link) clone
             const attrs: {
-              ref: RefObject<HTMLElement>;
-              role: string;
+              'ref': RefObject<HTMLElement>;
+              'role': string;
               'aria-describedby'?: string;
-              tabIndex: number;
+              'tabIndex': number;
             } = {
               ref: dropdownItemRefs.current[i],
               role: 'menuitem',
               tabIndex: -1
-            }
+            };
             // If nested under group
             if (lastGroupName !== null) {
               attrs['aria-describedby'] = dropdownId + 'group' + lastGroupName;
@@ -159,11 +178,13 @@ const Dropdown = (props: Props) => {
 
       // Highlighted action
       if (highlightedAction) {
-        dropdownItemClones.push(cloneElement(highlightedAction as ReactElement, {
-          ref: dropdownItemRefs.current[dropdownItemRefs.current.length - 1],
-          role: 'menuitem',
-          tabIndex: -1
-        }));
+        dropdownItemClones.push(
+          cloneElement(highlightedAction as ReactElement, {
+            ref: dropdownItemRefs.current[dropdownItemRefs.current.length - 1],
+            role: 'menuitem',
+            tabIndex: -1
+          })
+        );
       }
 
       setDropdownItems(dropdownItemClones);
@@ -175,69 +196,84 @@ const Dropdown = (props: Props) => {
   }, []);
 
   useEffect(() => {
+    if (icon) {
+      setAriaText(triggerText);
+    }
+  }, [icon, triggerText]);
+
+  useEffect(() => {
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!dropdownRef.current?.contains(e.target as Node)) {
         setIsDropdownOpen(false);
       }
-    }
+    };
     window.addEventListener('focusin', onFocusWithinOut);
     window.addEventListener('pointerup', onFocusWithinOut);
     return () => {
       window.removeEventListener('focusin', onFocusWithinOut);
       window.removeEventListener('pointerup', onFocusWithinOut);
-    }
+    };
   }, []);
 
   const listItems = dropdownItems.map((item, i) => (
-    <DropdownItem key={dropdownId + 'item' + i} item={item} isHighlightedAction={highlightedAction && i === dropdownItems.length - 1} />
+    <DropdownItem
+      key={dropdownId + 'item' + item.props.children}
+      item={item}
+      isHighlightedAction={!!highlightedAction && i === dropdownItems.length - 1}
+    />
   ));
 
   return (
-    <div ref={dropdownRef} className="bsds-dropdown" onKeyDown={updateFocus}>
+    <div ref={dropdownRef} className="bsds-dropdown">
       <Button
         ref={reference}
         variant={variant}
         className={`bsds-dropdown-trigger${className ? ' ' + className : ''}${icon ? ' has-icon' : ''}`}
         aria-haspopup="true"
         aria-expanded={isDropdownOpen}
-        aria-label={icon ? triggerText : undefined}
+        aria-label={ariaText}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        {...buttonAttrs}>
-          {icon && <Icon size="2x" name={icon} />}
-          {!icon && triggerText}
+        {...buttonAttrs}
+      >
+        {!!icon && <Icon size="2x" name={icon} />}
+        {!icon && triggerText}
       </Button>
-        {listType === 'ul' && (
-          <ul
-            ref={floating}
-            style={{
-              position: strategy,
-              top: y ?? 0,
-              left: x ?? 0,
-              width: 'max-content'
-           }}
-           hidden={!isDropdownOpen}
-           className="bsds-dropdown-menu"
-           role="menu">
-            {listItems}
-          </ul>
-        )}
-        {listType === 'ol' && (
-          <ol
-            ref={floating}
-            style={{
-              position: strategy,
-              top: y ?? 0,
-              left: x ?? 0,
-              width: 'max-content'
-            }}
-            hidden={!isDropdownOpen}
-            className="bsds-dropdown-menu"
-            role="menu">
-            {listItems}
-          </ol>
-        )}
+      {listType === 'ul' && (
+        <ul
+          ref={floating}
+          style={{
+            position: strategy,
+            top: y ?? 0,
+            left: x ?? 0,
+            width: 'max-content'
+          }}
+          hidden={!isDropdownOpen}
+          className="bsds-dropdown-menu"
+          role="menu"
+          onKeyDown={updateFocus}
+        >
+          {listItems}
+        </ul>
+      )}
+      {listType === 'ol' && (
+        <ol
+          ref={floating}
+          style={{
+            position: strategy,
+            top: y ?? 0,
+            left: x ?? 0,
+            width: 'max-content'
+          }}
+          hidden={!isDropdownOpen}
+          className="bsds-dropdown-menu"
+          role="menu"
+          onKeyDown={updateFocus}
+        >
+          {listItems}
+        </ol>
+      )}
     </div>
   );
-}
+};
 
 export default Dropdown;

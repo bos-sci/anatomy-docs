@@ -160,6 +160,6 @@ const exampleData: NavItemWizard[] = [
       }
     ]
   }
-]
+];
 
 export default exampleData;

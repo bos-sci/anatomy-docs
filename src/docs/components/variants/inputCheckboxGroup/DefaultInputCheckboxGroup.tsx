@@ -14,6 +14,6 @@ const DefaultInputCheckboxGroup = (): JSX.Element => {
       </div>
     </Example>
   );
-}
+};
 
 export default DefaultInputCheckboxGroup;

@@ -1,54 +1,44 @@
-.bsds-button
-{
+.bsds-button {
   @include button-default;
 
-  &-assertive
-  {
+  &-assertive {
     @include button-assertive;
   }
 
-  &-subtle
-  {
+  &-subtle {
     @include button-subtle;
   }
 
-  &-ghost
-  {
+  &-ghost {
     @include button-ghost;
   }
 
-  &-icon
-  {
+  &-icon {
     @include button-icon;
   }
 
-  &-nav-back
-  {
+  &-nav-back {
     $icon-size: 1em;
+
     @include button-subtle;
     position: relative;
     padding-left: calc(space(2x) + $icon-size + space(md)); // Padding + icon width + space between icon and text
 
-    &::before
-    {
+    &::before {
       position: absolute;
-      -webkit-mask: url("../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
-      mask: url("../../assets/images/icon-chevron-left.svg") no-repeat 50% 50%;
-      -webkit-mask-size: cover;
-      mask-size: cover;
       top: calc(50% - ($icon-size / 2));
       left: space(2x);
       width: $icon-size;
       height: $icon-size;
-      content: '';
       background-color: $action-primary-40;
+      content: '';
+      mask: url('../../assets/images/icon-chevron-left.svg') no-repeat 50% 50%;
+      mask-size: cover;
     }
 
-    &:not([disabled])
-    {
+    &:not([disabled]) {
       &:hover,
-      &:active
-      {
+      &:active {
         background: transparent;
         color: $action-primary-40;
         text-decoration-line: underline;
@@ -58,38 +48,32 @@
   }
 }
 
-//
 // Link buttons
 // This is not recommended -- we should use button styles on button elements, and link styles on link elements
 // NOTE: these will need to be updated if we modify the link mixins
-//
 
-a[class*="bsds-button"]
-{
-  text-decoration: none;
-
-  &:hover,
-  &:focus,
-  &:active
-  {
+a {
+  &[class*='bsds-button'] {
     text-decoration: none;
-  }
-}
 
-a.bsds-button,
-a.bsds-button-subtle
-{
-  &:visited
-  {
-    color: $action-primary-40;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
   }
-}
 
-a.bsds-button-assertive,
-a.bsds-button-ghost
-{
-  &:visited
-  {
-    color: $neutral-100;
+  &.bsds-button,
+  &.bsds-button-subtle {
+    &:visited {
+      color: $action-primary-40;
+    }
+  }
+
+  &.bsds-button-assertive,
+  &.bsds-button-ghost {
+    &:visited {
+      color: $neutral-100;
+    }
   }
 }

@@ -1,55 +1,45 @@
-import { render, screen } from "@testing-library/react";
-import Stoplight from "../Stoplight";
+import { render, screen } from '@testing-library/react';
+import Stoplight from '../Stoplight';
 
-describe("Stoplight", () => {
-  it("Renders alert variation", () => {
+describe('Stoplight', () => {
+  it('Renders alert variation', () => {
     render(<Stoplight lightColor="red">Sample Stoplight!</Stoplight>);
-    expect(screen.getByText("Sample Stoplight!")).toBeInTheDocument();
-    expect(screen.getByText("Sample Stoplight!")).toHaveClass(
-      "bsds-stoplight-red"
-    );
+    expect(screen.getByText('Sample Stoplight!')).toBeInTheDocument();
+    expect(screen.getByText('Sample Stoplight!')).toHaveClass('bsds-stoplight-red');
   });
 
-  it("Renders warning variation", () => {
+  it('Renders warning variation', () => {
     render(<Stoplight lightColor="yellow">Sample Stoplight!</Stoplight>);
-    expect(screen.getByText("Sample Stoplight!")).toBeInTheDocument();
-    expect(screen.getByText("Sample Stoplight!")).toHaveClass(
-      "bsds-stoplight-yellow"
-    );
+    expect(screen.getByText('Sample Stoplight!')).toBeInTheDocument();
+    expect(screen.getByText('Sample Stoplight!')).toHaveClass('bsds-stoplight-yellow');
   });
 
-  it("Renders success variation", () => {
+  it('Renders success variation', () => {
     render(<Stoplight lightColor="green">Sample Stoplight!</Stoplight>);
 
-    expect(screen.getByText("Sample Stoplight!")).toBeInTheDocument();
-    expect(screen.getByText("Sample Stoplight!")).toHaveClass(
-      "bsds-stoplight-green"
-    );
+    expect(screen.getByText('Sample Stoplight!')).toBeInTheDocument();
+    expect(screen.getByText('Sample Stoplight!')).toHaveClass('bsds-stoplight-green');
   });
 
-  it("Renders ghost variation when prop is present", () => {
+  it('Renders ghost variation when prop is present', () => {
     render(
       <Stoplight lightColor="green" textColor="ghost">
         Variant Stoplight!
       </Stoplight>
     );
 
-    expect(screen.getByText("Variant Stoplight!")).toBeInTheDocument();
-    expect(screen.getByText("Variant Stoplight!")).toHaveClass(
-      "bsds-stoplight-ghost"
-    );
+    expect(screen.getByText('Variant Stoplight!')).toBeInTheDocument();
+    expect(screen.getByText('Variant Stoplight!')).toHaveClass('bsds-stoplight-ghost');
   });
 
-  it("Renders assertive size when prop is present", () => {
+  it('Renders assertive size when prop is present', () => {
     render(
       <Stoplight lightColor="green" textColor="ghost" size="assertive">
         Variant Stoplight!
       </Stoplight>
     );
 
-    expect(screen.getByText("Variant Stoplight!")).toBeInTheDocument();
-    expect(screen.getByText("Variant Stoplight!")).toHaveClass(
-      "bsds-body-assertive"
-    );
+    expect(screen.getByText('Variant Stoplight!')).toBeInTheDocument();
+    expect(screen.getByText('Variant Stoplight!')).toHaveClass('bsds-body-assertive');
   });
 });

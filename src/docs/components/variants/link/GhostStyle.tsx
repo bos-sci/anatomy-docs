@@ -4,9 +4,11 @@ import Example from '../../../shared/components/Example';
 const GhostStyle = (): JSX.Element => {
   return (
     <Example isDarkTheme={true}>
-      <Link href="docs-demo-link" variant="ghost">Ghost link</Link>
+      <Link href="docs-demo-link" variant="ghost">
+        Ghost link
+      </Link>
     </Example>
   );
-}
+};
 
 export default GhostStyle;

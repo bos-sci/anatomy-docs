@@ -11,9 +11,11 @@ const ResourcesRouter = (): JSX.Element => {
 
   if (params.resourceName && !Object.keys(idLookup.resources).includes(params.resourceName)) {
     return <NotFound />;
-  } else if (!params.group && idLookup.resources[params.resourceName!].group) {
+  } else if (!params.group && idLookup.resources[params?.resourceName ?? ''].group) {
     return <NotFound />;
-  } else return <Resources />;
-}
+  } else {
+    return <Resources />;
+  }
+};
 
 export default ResourcesRouter;

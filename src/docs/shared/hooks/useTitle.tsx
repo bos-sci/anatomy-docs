@@ -5,9 +5,9 @@ interface Props {
   titlePrefix?: string;
 }
 
-const useTitle = ({title, titlePrefix}: Props): void => {
+const useTitle = ({ title, titlePrefix }: Props): void => {
   useEffect(() => {
-    let pageTitle = "";
+    let pageTitle = '';
 
     if (title) {
       pageTitle = title;
@@ -18,13 +18,12 @@ const useTitle = ({title, titlePrefix}: Props): void => {
     }
 
     if (pageTitle.length > 70) {
-      document.title = pageTitle.substring(0,70);
-      console.warn("Page title exceeds 70 character limit!");
+      document.title = pageTitle.substring(0, 70);
+      console.warn('Page title exceeds 70 character limit!');
     } else {
       document.title = pageTitle;
     }
-
   }, [title, titlePrefix]);
-}
+};
 
 export default useTitle;

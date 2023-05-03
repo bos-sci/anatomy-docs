@@ -1,11 +1,8 @@
 // NOTE: if we update button/link mixins, we'll also need to modify button-link and link-button overrides in _button.scss and _link.scss
 
-@mixin button-hover
-{
-  &:not([disabled])
-  {
-    &:hover
-    {
+@mixin button-hover {
+  &:not([disabled]) {
+    &:hover {
       border-color: transparent;
       background: $action-primary-20;
       color: $neutral-100;
@@ -15,31 +12,24 @@
   }
 }
 
-@mixin button-active
-{
-  &:not([disabled])
-  {
+@mixin button-active {
+  &:not([disabled]) {
     border-color: transparent;
     background: $action-primary-20;
     color: $neutral-100;
   }
 }
 
-@mixin button-focus
-{
-  &:not([disabled])
-  {
-    &:focus
-    {
+@mixin button-focus {
+  &:not([disabled]) {
+    &:focus {
       @include focus-default;
     }
   }
 }
 
-@mixin button-disabled
-{
-  &[disabled]
-  {
+@mixin button-disabled {
+  &[disabled] {
     border-color: $neutral-80;
     background: $neutral-95;
     color: $neutral-40;
@@ -48,36 +38,32 @@
   }
 }
 
-@mixin button-base
-{
+@mixin button-base {
   display: inline-flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  border-radius: 0;
   border-width: space(xs);
   border-style: solid;
-  border-radius: 0;
   padding: space(lg) space(3x) 0.6875rem; // NOTE: this is a one-off size because space(lg) - space(xxs) was rounding up
-  @include font-family-base-heavy;
   font-size: $ffs-body-assertive;
-  text-align: center;
   line-height: inherit;
+  text-align: center;
+  @include font-family-base-heavy;
 
-  .bsds-button-text
-  {
+  .bsds-button-text {
     flex: 1;
     text-align: left;
   }
 
-  &:active
-  {
+  &:active {
     @include button-active;
   }
 
   @include button-hover;
 }
 
-@mixin button-default
-{
+@mixin button-default {
   @include button-base;
   border-color: $action-primary-40;
   background: $neutral-100;
@@ -87,34 +73,29 @@
   @include button-disabled;
 }
 
-@mixin button-subtle
-{
+@mixin button-subtle {
   @include link-default;
   border-color: transparent;
   padding: space(lg) space(3x) 0.6875rem;
-  text-decoration: none;
   background: transparent;
+  text-decoration: none;
   @include button-focus;
   @include button-disabled;
 
-  &:not([disabled])
-  {
-    &:hover
-    {
+  &:not([disabled]) {
+    &:disabled {
+      border: 0;
+      background: transparent;
+    }
+
+    &:hover {
       @include link-hover;
       color: $neutral-100;
     }
   }
-
-  &:disabled
-  {
-    border: 0;
-    background: transparent;
-  }
 }
 
-@mixin button-assertive
-{
+@mixin button-assertive {
   @include button-base;
   border-color: transparent;
   background: $action-primary-40;
@@ -123,35 +104,29 @@
   @include button-disabled;
 }
 
-@mixin button-ghost-active
-{
+@mixin button-ghost-active {
   border-color: $neutral-100;
   background: rgba($neutral-100, 0.3);
 }
 
-@mixin button-ghost
-{
+@mixin button-ghost {
   @include button-base;
   border-color: $neutral-100;
   background: transparent;
   color: $neutral-100;
 
-  &:not([disabled])
-  {
+  &:not([disabled]) {
     &:hover,
-    &:active
-    {
+    &:active {
       @include button-ghost-active;
     }
 
-    &:focus
-    {
+    &:focus {
       @include focus-ghost;
     }
   }
 
-  &[disabled]
-  {
+  &[disabled] {
     border-color: $neutral-60;
     background: transparent;
     color: $neutral-60;
@@ -160,152 +135,119 @@
   }
 }
 
-@mixin button-icon
-{
+@mixin button-icon {
   border-radius: 50%;
   padding: space(2x) + space(xxs);
 }
 
-//
 // Default Button Styles
-//
-
-button
-{
+button {
   @include button-default;
 }
 
-//
 // Link Mixins
-//
-
-@mixin link-hover
-{
+@mixin link-hover {
   text-decoration-thickness: space(xs);
   cursor: pointer;
 }
 
-@mixin link-default
-{
+@mixin link-default {
   color: $action-primary-40;
   @include font-family-base-heavy;
   text-decoration: underline;
 
-  &:visited
-  {
+  &:visited {
     color: $accent-primary-30;
   }
 
-  &:hover
-  {
+  &:hover {
     color: $neutral-00;
     @include link-hover;
   }
 
-  &:active
-  {
+  &:active {
     color: $neutral-00;
     text-decoration-thickness: space(xs);
   }
 
-  &:focus
-  {
+  &:focus {
     @include focus-default;
   }
 }
 
-@mixin link-subtle
-{
+@mixin link-subtle {
   color: $neutral-00;
   @include font-family-base-heavy;
   text-decoration: underline;
 
-  &:visited
-  {
+  &:visited {
     color: $accent-primary-30;
   }
 
-  &:hover
-  {
+  &:hover {
     color: $action-primary-40;
     @include link-hover;
   }
 
-  &:active
-  {
+  &:active {
     color: $action-primary-40;
     text-decoration-thickness: space(xs);
   }
 
-  &:focus
-  {
+  &:focus {
     @include focus-default;
   }
 }
 
-@mixin link-ghost
-{
+@mixin link-ghost {
   color: $neutral-100;
   @include font-family-base-heavy;
   text-decoration: underline;
 
-  &:visited
-  {
+  &:visited {
     color: $neutral-80;
   }
 
-  &:hover
-  {
+  &:hover {
     color: $neutral-60;
     @include link-hover;
   }
 
-  &:active
-  {
+  &:active {
     color: $neutral-60;
     text-decoration-thickness: space(xs);
   }
 
-  &:focus
-  {
+  &:focus {
     @include focus-ghost;
   }
 }
 
-@mixin link-navigation
-{
+@mixin link-navigation {
   color: $neutral-00;
   @include font-family-base-regular;
   text-decoration: none;
 
-  &:visited
-  {
+  &:visited {
     color: $neutral-00;
   }
 
-  &:hover
-  {
+  &:hover {
     color: $neutral-00;
     text-decoration: underline;
   }
 
-  &:active
-  {
+  &:active {
     color: $neutral-00;
     text-decoration: underline;
   }
 
-  &.active
-  {
+  &.active {
     @include font-family-base-heavy;
   }
 }
 
-//
 // Default Link Styles
-//
-
-a
-{
+a {
   @include link-default;
 }
