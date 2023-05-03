@@ -24,6 +24,8 @@ const Components = (): JSX.Element => {
 
   const data = useContext(ComponentContext);
 
+  const myVar: any = 'test';
+
   useEffect(() => {
     if (data) {
       setComponentData(data);
