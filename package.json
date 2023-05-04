@@ -27,11 +27,12 @@
     "stylelint:check": "stylelint-config-prettier-scss-check",
     "release-date": "echo \"// This file is automatically updated on release\nexport const releaseDate = new Date('$(date)');\" > ./src/utils/release-date.ts",
     "lint:styles": "stylelint \"**/*.scss\"",
-    "fix:styles": "stylelint \"**/*.scss\" --fix",
-    "lint:scripts": "eslint ./src",
-    "fix:scripts": "eslint --fix ./src",
+    "fix:styles": "stylelint --fix \"**/*.scss\"",
+    "lint:scripts": "eslint .",
+    "fix:scripts": "eslint --fix .",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
+    "lint:all": "npm run lint:styles && npm run lint:scripts && npm run format:check",
     "prepare": "husky install"
   },
   "browserslist": {
