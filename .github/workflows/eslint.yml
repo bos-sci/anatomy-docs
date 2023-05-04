@@ -34,4 +34,4 @@ jobs:
           eslint: true
           prettier: true
           stylelint: true
-          stylelint_dir: "**/*.scss"
+          stylelint_args: "**/*.scss"
