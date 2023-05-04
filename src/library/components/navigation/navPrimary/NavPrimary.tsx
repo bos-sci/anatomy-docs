@@ -295,7 +295,7 @@ const NavPrimary = ({
           ) : (
             <img className="bsds-nav-link-logo" src={logo.src} alt={logo.alt} />
           )}
-          <ul className="bsds-nav" onKeyUp={handleKeyUp}>
+          <ul className="bsds-nav" role="menubar" onKeyUp={handleKeyUp}>
             {navTree.map((navItem, i) => (
               <li key={navItem.text + navItem?.slug} role="none" className="bsds-nav-item bsds-nav-item-root">
                 {!!navItem.children && (
