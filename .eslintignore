@@ -1,2 +1,5 @@
-/src/reportWebVitals.ts
-/src/docs/shared/types/contentful.ts
+src/reportWebVitals.ts
+src/docs/shared/types/contentful.ts
+cypress.config.ts
+cypress
+.github
