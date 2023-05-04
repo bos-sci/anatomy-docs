@@ -297,9 +297,11 @@ const NavPrimary = ({
           )}
           <ul className="bsds-nav" role="menubar" onKeyUp={handleKeyUp}>
             {navTree.map((navItem, i) => (
-              <li key={navItem.text + navItem?.slug} className="bsds-nav-item bsds-nav-item-root">
+              <li key={navItem.text + navItem?.slug} role="none" className="bsds-nav-item bsds-nav-item-root">
                 {!!navItem.children && (
+                  // eslint-disable-next-line jsx-a11y/prefer-tag-over-role
                   <Button
+                    role="menuitem"
                     id={navItem.id}
                     type="button"
                     variant="subtle"
@@ -346,8 +348,10 @@ const NavPrimary = ({
               </li>
             ))}
             {!!hasSearch && (
-              <li className="bsds-nav-item bsds-nav-item-search">
+              <li role="none" className="bsds-nav-item bsds-nav-item-search">
+                {/* eslint-disable-next-line jsx-a11y/prefer-tag-over-role */}
                 <Button
+                  role="menuitem"
                   variant="subtle"
                   className="bsds-nav-link"
                   aria-label={texts?.searchToggleAriaLabel || 'Toggle search'}
@@ -365,8 +369,10 @@ const NavPrimary = ({
                 />
               </li>
             )}
-            <li className="bsds-nav-item bsds-nav-item-toggle">
+            <li role="none" className="bsds-nav-item bsds-nav-item-toggle">
+              {/* eslint-disable-next-line jsx-a11y/prefer-tag-over-role */}
               <Button
+                role="menuitem"
                 variant="subtle"
                 className="bsds-nav-link"
                 aria-label={texts?.menuToggleAriaLabel || 'Toggle menu'}

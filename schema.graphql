@@ -1,4 +1,6 @@
-"""Represents a binary file in a space. An asset can be any file type."""
+"""
+Represents a binary file in a space. An asset can be any file type.
+"""
 type Asset {
   contentType(locale: String): String
   contentfulMetadata: ContentfulMetadata!
@@ -790,13 +792,17 @@ enum FoundationOrder {
   sys_publishedVersion_DESC
 }
 
-"""The 'HexColor' type represents color in `rgb:ffffff` string format."""
+"""
+The 'HexColor' type represents color in `rgb:ffffff` string format.
+"""
 scalar HexColor
 
 enum ImageFormat {
   AVIF
 
-  """JPG image format."""
+  """
+  JPG image format.
+  """
   JPG
 
   """
@@ -807,7 +813,9 @@ enum ImageFormat {
   """
   JPG_PROGRESSIVE
 
-  """PNG image format"""
+  """
+  PNG image format
+  """
   PNG
 
   """
@@ -816,42 +824,66 @@ enum ImageFormat {
   """
   PNG8
 
-  """WebP image format."""
+  """
+  WebP image format.
+  """
   WEBP
 }
 
 enum ImageResizeFocus {
-  """Focus the resizing on the bottom."""
+  """
+  Focus the resizing on the bottom.
+  """
   BOTTOM
 
-  """Focus the resizing on the bottom left."""
+  """
+  Focus the resizing on the bottom left.
+  """
   BOTTOM_LEFT
 
-  """Focus the resizing on the bottom right."""
+  """
+  Focus the resizing on the bottom right.
+  """
   BOTTOM_RIGHT
 
-  """Focus the resizing on the center."""
+  """
+  Focus the resizing on the center.
+  """
   CENTER
 
-  """Focus the resizing on the largest face."""
+  """
+  Focus the resizing on the largest face.
+  """
   FACE
 
-  """Focus the resizing on the area containing all the faces."""
+  """
+  Focus the resizing on the area containing all the faces.
+  """
   FACES
 
-  """Focus the resizing on the left."""
+  """
+  Focus the resizing on the left.
+  """
   LEFT
 
-  """Focus the resizing on the right."""
+  """
+  Focus the resizing on the right.
+  """
   RIGHT
 
-  """Focus the resizing on the top."""
+  """
+  Focus the resizing on the top.
+  """
   TOP
 
-  """Focus the resizing on the top left."""
+  """
+  Focus the resizing on the top left.
+  """
   TOP_LEFT
 
-  """Focus the resizing on the top right."""
+  """
+  Focus the resizing on the top right.
+  """
   TOP_RIGHT
 }
 
@@ -866,7 +898,9 @@ enum ImageResizeStrategy {
   """
   FILL
 
-  """Resizes the image to fit into the specified dimensions."""
+  """
+  Resizes the image to fit into the specified dimensions.
+  """
   FIT
 
   """
@@ -880,7 +914,9 @@ enum ImageResizeStrategy {
   """
   SCALE
 
-  """Creates a thumbnail from the image."""
+  """
+  Creates a thumbnail from the image.
+  """
   THUMB
 }
 
@@ -899,10 +935,14 @@ input ImageTransformOptions {
   """
   cornerRadius: Int
 
-  """Desired image format. Defaults to the original image format."""
+  """
+  Desired image format. Defaults to the original image format.
+  """
   format: ImageFormat
 
-  """Desired height in pixels. Defaults to the original image height."""
+  """
+  Desired height in pixels. Defaults to the original image height.
+  """
   height: Dimension
 
   """
@@ -911,13 +951,19 @@ input ImageTransformOptions {
   """
   quality: Quality
 
-  """Desired resize focus area. Defaults to `CENTER`."""
+  """
+  Desired resize focus area. Defaults to `CENTER`.
+  """
   resizeFocus: ImageResizeFocus
 
-  """Desired resize strategy. Defaults to `FIT`."""
+  """
+  Desired resize strategy. Defaults to `FIT`.
+  """
   resizeStrategy: ImageResizeStrategy
 
-  """Desired width in pixels. Defaults to the original image width."""
+  """
+  Desired width in pixels. Defaults to the original image width.
+  """
   width: Dimension
 }
 
@@ -955,7 +1001,12 @@ input PagePropertiesFilter {
 type PagePropertiesLinkingCollections {
   codeStandardCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CodeStandardCollection
   componentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCollection
-  contentGuidelineCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ContentGuidelineCollection
+  contentGuidelineCollection(
+    limit: Int = 100
+    locale: String
+    preview: Boolean
+    skip: Int = 0
+  ): ContentGuidelineCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   foundationCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): FoundationCollection
   resourceCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ResourceCollection
@@ -981,26 +1032,103 @@ scalar Quality
 
 type Query {
   asset(id: String!, locale: String, preview: Boolean): Asset
-  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
+  assetCollection(
+    limit: Int = 100
+    locale: String
+    order: [AssetOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: AssetFilter
+  ): AssetCollection
   codeStandard(id: String!, locale: String, preview: Boolean): CodeStandard
-  codeStandardCollection(limit: Int = 100, locale: String, order: [CodeStandardOrder], preview: Boolean, skip: Int = 0, where: CodeStandardFilter): CodeStandardCollection
+  codeStandardCollection(
+    limit: Int = 100
+    locale: String
+    order: [CodeStandardOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: CodeStandardFilter
+  ): CodeStandardCollection
   component(id: String!, locale: String, preview: Boolean): Component
-  componentCollection(limit: Int = 100, locale: String, order: [ComponentOrder], preview: Boolean, skip: Int = 0, where: ComponentFilter): ComponentCollection
+  componentCollection(
+    limit: Int = 100
+    locale: String
+    order: [ComponentOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: ComponentFilter
+  ): ComponentCollection
   componentModifier(id: String!, locale: String, preview: Boolean): ComponentModifier
-  componentModifierCollection(limit: Int = 100, locale: String, order: [ComponentModifierOrder], preview: Boolean, skip: Int = 0, where: ComponentModifierFilter): ComponentModifierCollection
+  componentModifierCollection(
+    limit: Int = 100
+    locale: String
+    order: [ComponentModifierOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: ComponentModifierFilter
+  ): ComponentModifierCollection
   componentState(id: String!, locale: String, preview: Boolean): ComponentState
-  componentStateCollection(limit: Int = 100, locale: String, order: [ComponentStateOrder], preview: Boolean, skip: Int = 0, where: ComponentStateFilter): ComponentStateCollection
+  componentStateCollection(
+    limit: Int = 100
+    locale: String
+    order: [ComponentStateOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: ComponentStateFilter
+  ): ComponentStateCollection
   componentStyle(id: String!, locale: String, preview: Boolean): ComponentStyle
-  componentStyleCollection(limit: Int = 100, locale: String, order: [ComponentStyleOrder], preview: Boolean, skip: Int = 0, where: ComponentStyleFilter): ComponentStyleCollection
+  componentStyleCollection(
+    limit: Int = 100
+    locale: String
+    order: [ComponentStyleOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: ComponentStyleFilter
+  ): ComponentStyleCollection
   contentGuideline(id: String!, locale: String, preview: Boolean): ContentGuideline
-  contentGuidelineCollection(limit: Int = 100, locale: String, order: [ContentGuidelineOrder], preview: Boolean, skip: Int = 0, where: ContentGuidelineFilter): ContentGuidelineCollection
-  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
+  contentGuidelineCollection(
+    limit: Int = 100
+    locale: String
+    order: [ContentGuidelineOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: ContentGuidelineFilter
+  ): ContentGuidelineCollection
+  entryCollection(
+    limit: Int = 100
+    locale: String
+    order: [EntryOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: EntryFilter
+  ): EntryCollection
   foundation(id: String!, locale: String, preview: Boolean): Foundation
-  foundationCollection(limit: Int = 100, locale: String, order: [FoundationOrder], preview: Boolean, skip: Int = 0, where: FoundationFilter): FoundationCollection
+  foundationCollection(
+    limit: Int = 100
+    locale: String
+    order: [FoundationOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: FoundationFilter
+  ): FoundationCollection
   pageProperties(id: String!, locale: String, preview: Boolean): PageProperties
-  pagePropertiesCollection(limit: Int = 100, locale: String, order: [PagePropertiesOrder], preview: Boolean, skip: Int = 0, where: PagePropertiesFilter): PagePropertiesCollection
+  pagePropertiesCollection(
+    limit: Int = 100
+    locale: String
+    order: [PagePropertiesOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: PagePropertiesFilter
+  ): PagePropertiesCollection
   resource(id: String!, locale: String, preview: Boolean): Resource
-  resourceCollection(limit: Int = 100, locale: String, order: [ResourceOrder], preview: Boolean, skip: Int = 0, where: ResourceFilter): ResourceCollection
+  resourceCollection(
+    limit: Int = 100
+    locale: String
+    order: [ResourceOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: ResourceFilter
+  ): ResourceCollection
 }
 
 """
