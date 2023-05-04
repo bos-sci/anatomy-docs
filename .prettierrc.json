@@ -8,5 +8,6 @@
   "htmlWhitespaceSensitivity": "ignore",
   "bracketSpacing": true,
   "bracketSameLine": false,
-  "singleAttributePerLine": false
+  "singleAttributePerLine": false,
+  "printWidth": 120
 }

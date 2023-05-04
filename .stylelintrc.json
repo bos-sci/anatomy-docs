@@ -1,7 +1,7 @@
 {
   "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
   "plugins": ["stylelint-order"],
-  "defaultSeverity": "warning",
+  "defaultSeverity": "error",
   "rules": {
     "alpha-value-notation": "number",
     "annotation-no-unknown": true,
