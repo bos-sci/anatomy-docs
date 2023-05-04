@@ -264,7 +264,7 @@ const Search = forwardRef(
                   <ul id={searchId + '-results'} className="bsds-search-results" hidden={!isOpen}>
                     {searchResults.length > 0 &&
                       searchResults.map((result, i) => (
-                        <li key={searchId + result.to} className="bsds-search-result">
+                        <li key={searchId + result.text} className="bsds-search-result">
                           <Link
                             id={searchId + '-result-' + i}
                             to={result.to}

@@ -21,12 +21,14 @@ const BoldMatch = (props: Props): JSX.Element => {
       {matchArray.map((match, i) => {
         if (match.toLowerCase() === props.match.toLowerCase()) {
           return (
-            <span key={'key' + match} className="bsds-font-weight-heavy">
+            // eslint-disable-next-line react/no-array-index-key
+            <span key={'key' + match + i} className="bsds-font-weight-heavy">
               {match}
             </span>
           );
         } else {
-          return <Fragment key={'key' + match}>{match}</Fragment>;
+          // eslint-disable-next-line react/no-array-index-key
+          return <Fragment key={'key' + match + i}>{match}</Fragment>;
         }
       })}
     </>
