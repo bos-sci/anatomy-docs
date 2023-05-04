@@ -1,11 +1,6 @@
 {
-  "extends": [
-    "stylelint-config-standard-scss",
-    "stylelint-config-prettier-scss"
-  ],
-  "plugins": [
-    "stylelint-order"
-  ],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
+  "plugins": ["stylelint-order"],
   "defaultSeverity": "error",
   "rules": {
     "alpha-value-notation": "number",
@@ -45,12 +40,7 @@
     "declaration-block-no-redundant-longhand-properties": [
       true,
       {
-        "ignoreShorthands": [
-          "font",
-          "/grid/",
-          "transition",
-          "animation"
-        ]
+        "ignoreShorthands": ["font", "/grid/", "transition", "animation"]
       }
     ],
     "declaration-block-no-shorthand-property-overrides": true,
@@ -58,21 +48,15 @@
     "declaration-empty-line-before": "never",
     "declaration-no-important": true,
     "declaration-property-unit-allowed-list": {
-      "font-size": [
-        "rem"
-      ],
+      "font-size": ["rem"],
       "line-height": []
     },
     "declaration-property-unit-disallowed-list": {
-      "/^border(-(?!radius)[a-z]+)?$/": [
-        "%"
-      ]
+      "/^border(-(?!radius)[a-z]+)?$/": ["%"]
     },
     "declaration-property-value-disallowed-list": [
       {
-        "/^border/": [
-          "none"
-        ]
+        "/^border/": ["none"]
       }
     ],
     "font-family-name-quotes": "always-unless-keyword",
@@ -85,13 +69,7 @@
     "function-no-unknown": null,
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
-    "function-url-scheme-disallowed-list": [
-      "/ftp/",
-      "/^http/",
-      "/^www/",
-      ".com$",
-      "/^data:/"
-    ],
+    "function-url-scheme-disallowed-list": ["/ftp/", "/^http/", "/^www/", ".com$", "/^data:/"],
     "hue-degree-notation": "angle",
     "import-notation": "string",
     "keyframe-block-no-duplicate-selectors": true,
@@ -101,36 +79,10 @@
     "media-feature-name-no-unknown": true,
     "media-feature-name-no-vendor-prefix": true,
     "media-feature-name-value-allowed-list": {
-      "min-width": [
-        "576px",
-        "768px",
-        "992px",
-        "1200px",
-        "$sm",
-        "$md",
-        "$lg",
-        "$xl",
-        "$xxl",
-        "$fs-breakpoint"
-      ],
-      "max-width": [
-        "575px",
-        "767px",
-        "991px",
-        "1199px",
-        "$sm",
-        "$md",
-        "$lg",
-        "$xl",
-        "$xxl"
-      ]
+      "min-width": ["576px", "768px", "992px", "1200px", "$sm", "$md", "$lg", "$xl", "$xxl", "$fs-breakpoint"],
+      "max-width": ["575px", "767px", "991px", "1199px", "$sm", "$md", "$lg", "$xl", "$xxl"]
     },
-    "media-feature-name-allowed-list": [
-      "min-width",
-      "max-width",
-      "prefers-reduced-motion",
-      "prefers-color-scheme"
-    ],
+    "media-feature-name-allowed-list": ["min-width", "max-width", "prefers-reduced-motion", "prefers-color-scheme"],
     "media-feature-range-notation": "prefix",
     "named-grid-areas-no-invalid": true,
     "no-descending-specificity": null,
@@ -346,12 +298,8 @@
     "rule-empty-line-before": [
       "always",
       {
-        "except": [
-          "first-nested"
-        ],
-        "ignore": [
-          "after-comment"
-        ]
+        "except": ["first-nested"],
+        "ignore": ["after-comment"]
       }
     ],
     "selector-attribute-quotes": "always",
@@ -368,22 +316,11 @@
     "selector-type-no-unknown": true,
     "shorthand-property-no-redundant-values": true,
     "string-no-newline": true,
-    "unit-disallowed-list": [
-      "cm",
-      "mm",
-      "Q",
-      "in",
-      "pc",
-      "pt",
-      "ex",
-      "lh"
-    ],
+    "unit-disallowed-list": ["cm", "mm", "Q", "in", "pc", "pt", "ex", "lh"],
     "unit-no-unknown": [
       true,
       {
-        "ignoreFunctions": [
-          "space"
-        ]
+        "ignoreFunctions": ["space"]
       }
     ],
     "value-keyword-case": "lower",
@@ -401,9 +338,7 @@
     "scss/at-mixin-named-arguments": [
       "always",
       {
-        "ignore": [
-          "single-argument"
-        ]
+        "ignore": ["single-argument"]
       }
     ],
     "scss/at-mixin-parentheses-space-before": "never",
@@ -416,37 +351,22 @@
     "scss/dollar-variable-empty-line-after": [
       "always",
       {
-        "except": [
-          "before-dollar-variable",
-          "last-nested"
-        ],
-        "ignore": [
-          "before-comment"
-        ]
+        "except": ["before-dollar-variable", "last-nested"],
+        "ignore": ["before-comment"]
       }
     ],
     "scss/dollar-variable-empty-line-before": [
       "always",
       {
-        "except": [
-          "first-nested",
-          "after-dollar-variable"
-        ],
-        "ignore": [
-          "after-comment"
-        ]
+        "except": ["first-nested", "after-dollar-variable"],
+        "ignore": ["after-comment"]
       }
     ],
     "scss/dollar-variable-first-in-block": [
       true,
       {
-        "ignore": [
-          "comments",
-          "imports"
-        ],
-        "except": [
-          "root"
-        ]
+        "ignore": ["comments", "imports"],
+        "except": ["root"]
       }
     ],
     "scss/dollar-variable-no-missing-interpolation": true,
@@ -457,10 +377,7 @@
     "scss/function-no-unknown": [
       true,
       {
-        "ignoreFunctions": [
-          "space",
-          "calc"
-        ]
+        "ignoreFunctions": ["space", "calc"]
       }
     ],
     "scss/function-quote-no-quoted-strings-inside": true,
