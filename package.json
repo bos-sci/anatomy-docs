@@ -26,9 +26,10 @@
     "sitemap": "node src/utils/generateSitemap.js",
     "stylelint:check": "stylelint-config-prettier-scss-check",
     "release-date": "echo \"// This file is automatically updated on release\nexport const releaseDate = new Date('$(date)');\" > ./src/utils/release-date.ts",
-    "lint:style": "stylelint \"**/*.scss\"",
-    "lint:check": "eslint .",
-    "lint:fix": "eslint --fix .",
+    "lint:styles": "stylelint \"**/*.scss\"",
+    "fix:styles": "stylelint \"**/*.scss\" --fix",
+    "lint:scripts": "eslint ./src",
+    "fix:scripts": "eslint --fix ./src",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "prepare": "husky install"
