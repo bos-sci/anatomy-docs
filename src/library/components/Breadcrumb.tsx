@@ -50,7 +50,7 @@ const Breadcrumb = ({ crumbs, currentPage, texts, hasOverflow = true }: Props): 
                 listType="ol"
               >
                 {overflowCrumbs.map((crumb) => (
-                  <Link key={`crumb${crumb.to}`} href={crumb.href} to={crumb.to}>
+                  <Link key={`crumb${crumb.name}`} href={crumb.href} to={crumb.to}>
                     {crumb.name}
                   </Link>
                 ))}
@@ -59,7 +59,7 @@ const Breadcrumb = ({ crumbs, currentPage, texts, hasOverflow = true }: Props): 
           </li>
         )}
         {visibleCrumbs.map((crumb) => (
-          <li key={`crumb${crumb.to}`} className="bsds-breadcrumb-item">
+          <li key={`crumb${crumb.name}`} className="bsds-breadcrumb-item">
             <Link href={crumb.href} to={crumb.to} className="bsds-breadcrumb-link">
               {crumb.name}{' '}
             </Link>

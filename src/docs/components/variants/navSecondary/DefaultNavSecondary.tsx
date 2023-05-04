@@ -16,26 +16,26 @@ const DefaultNavSecondary = (): JSX.Element => {
       text: 'Page group',
       children: [
         {
-          text: 'Child page',
+          text: 'Child page 1',
           slug: '/child-page'
         },
         {
-          text: 'Child page',
+          text: 'Child page 2',
           slug: '/child-page'
         },
         {
           text: 'Nested page group',
           children: [
             {
-              text: 'Nested child page',
+              text: 'Nested child page 1',
               slug: '/nested-child-page'
             },
             {
-              text: 'Nested child page',
+              text: 'Nested child page 2',
               slug: '/nested-child-page'
             },
             {
-              text: 'Nested child page',
+              text: 'Nested child page 3',
               slug: '/nested-child-page'
             }
           ]

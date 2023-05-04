@@ -60,7 +60,11 @@ const NavPrimaryList = (props: Props) => {
           } else {
             return (
               // Leaf Node
-              <NavPrimaryLeaf key={navItem.slug} navItem={navItem} setActiveNode={props.setActiveNode} />
+              <NavPrimaryLeaf
+                key={'NavPrimaryLeaf' + navItem.text || navItem.id}
+                navItem={navItem}
+                setActiveNode={props.setActiveNode}
+              />
             );
           }
         })}

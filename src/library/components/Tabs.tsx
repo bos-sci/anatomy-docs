@@ -240,7 +240,7 @@ const Tabs = (props: Props): JSX.Element => {
       <div className="bsds-tab-panels">
         {tabPanels.map((tabPanel, index) => (
           <div
-            key={'tab' + tabPanelId}
+            key={tablistLabelId + tabPanel.props.tabName}
             id={tabPanelId + index}
             className="bsds-tab-panel"
             role="tabpanel"
