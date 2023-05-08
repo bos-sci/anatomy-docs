@@ -54,11 +54,13 @@
     "declaration-property-unit-disallowed-list": {
       "/^border(-(?!radius)[a-z]+)?$/": ["%"]
     },
-    "declaration-property-value-disallowed-list": [
-      {
-        "/^border/": ["none"]
-      }
-    ],
+    "declaration-property-value-allowed-list": {
+      "font-family": ["inherit", "initial", "revert", "revert-layer", "unset"]
+    },
+    "declaration-property-value-disallowed-list": {
+      "/^border/": ["none"],
+      "/./": ["/\\d+\\.\\d+px/"]
+    },
     "font-family-name-quotes": "always-unless-keyword",
     "font-family-no-duplicate-names": true,
     "font-family-no-missing-generic-family-keyword": true,
