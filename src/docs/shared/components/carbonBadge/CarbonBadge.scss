@@ -1,13 +1,11 @@
-@import "../../../../styles/abstracts/abstracts";
-@import "../../../../styles/base/base";
+@import '../../../../styles/abstracts/abstracts';
+@import '../../../../styles/base/base';
 
-.carbon-badge
-{
+.carbon-badge {
   @include font-size($fs-body-subtle);
   text-align: center;
 
-  .carbon-badge-data
-  {
+  .carbon-badge-data {
     display: flex;
     margin-bottom: space(sm);
     border: space(xxs) solid $action-primary-40;
@@ -15,20 +13,17 @@
   }
 
   .carbon-badge-link,
-  .carbon-badge-co2
-  {
+  .carbon-badge-co2 {
     padding: space(xs) space(md);
   }
 
-  .carbon-badge-co2
-  {
+  .carbon-badge-co2 {
     border-right: space(xxs) solid $action-primary-40;
     padding-bottom: space(xs) + space(xxs);
     background: $neutral-100;
   }
 
-  .carbon-badge-link
-  {
+  .carbon-badge-link {
     padding-top: space(xs) + space(xxs);
     @include font-family-base-heavy;
     color: $text-color-primary;

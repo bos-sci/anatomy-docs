@@ -20,6 +20,6 @@ const TagController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultTag />;
   }
-}
+};
 
 export default TagController;

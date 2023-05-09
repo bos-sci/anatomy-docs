@@ -3,7 +3,6 @@ import Dropdown from '../../../../library/components/Dropdown';
 import Example from '../../../shared/components/Example';
 
 const DefaultDropdown = (): JSX.Element => {
-
   return (
     <Example>
       <Dropdown triggerText="Dropdown trigger">
@@ -13,6 +12,6 @@ const DefaultDropdown = (): JSX.Element => {
       </Dropdown>
     </Example>
   );
-}
+};
 
 export default DefaultDropdown;

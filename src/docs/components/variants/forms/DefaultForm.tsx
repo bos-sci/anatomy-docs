@@ -13,23 +13,22 @@ interface ADSInputElement extends HTMLInputElement {
 }
 
 const DefaultForm = () => {
-
   const noSpacesError = 'This is an example of an error message. Delete the spaces to clear the error message.';
   const [noSpacesInputError, setNoSpacesInputError] = useState(noSpacesError);
   const noSpacesInput = useRef<ADSInputElement>(null);
 
   const validateTextInput = () => {
     setNoSpacesInputError(noSpacesInput.current?.value.includes(' ') ? noSpacesError : '');
-  }
+  };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     validateTextInput();
-  }
+  };
 
   const handleInvalid = (e: FormEvent<HTMLFormElement>) => {
     validateTextInput();
-  }
+  };
 
   return (
     <Example>
@@ -42,9 +41,10 @@ const DefaultForm = () => {
             label="Text input"
             defaultValue="Invalid value"
             errorText={noSpacesInputError}
+            helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
             onBlur={validateTextInput}
             onChange={validateTextInput}
-            helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."/>
+          />
         </div>
         <div className="bsds-form-control">
           <InputText label="Required text input" required />
@@ -55,7 +55,8 @@ const DefaultForm = () => {
         <div className="bsds-form-control">
           <Fieldset
             legend="Checkbox group"
-            helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three.">
+            helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
+          >
             <InputCheckbox label="Checkbox 1" />
             <InputCheckbox label="Checkbox 2" />
             <InputCheckbox label="Checkbox 3" />
@@ -77,6 +78,6 @@ const DefaultForm = () => {
       </Form>
     </Example>
   );
-}
+};
 
 export default DefaultForm;

@@ -8,10 +8,12 @@ const FeaturedStyle = (): JSX.Element => {
         <Tag variant="featured">Tag</Tag>
       </Example>
       <Example isDarkTheme={true}>
-        <Tag variant="featured" isGhost>Tag</Tag>
+        <Tag variant="featured" isGhost>
+          Tag
+        </Tag>
       </Example>
     </>
   );
-}
+};
 
 export default FeaturedStyle;

@@ -3,7 +3,6 @@ import Dropdown from '../../../../library/components/Dropdown';
 import Example from '../../../shared/components/Example';
 
 const HighlightDropdown = (): JSX.Element => {
-
   return (
     <Example>
       <Dropdown triggerText="Dropdown trigger" highlightedAction={<Button>Highlighted action</Button>}>
@@ -13,6 +12,6 @@ const HighlightDropdown = (): JSX.Element => {
       </Dropdown>
     </Example>
   );
-}
+};
 
 export default HighlightDropdown;

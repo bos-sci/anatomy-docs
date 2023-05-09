@@ -12,7 +12,7 @@ const useHeadingIds = () => {
   const setIds = useCallback(() => {
     const headings = document.querySelectorAll('h2, h3, h4, h5, h6');
     if (headings.length > 0) {
-      const getLevel = (heading: Element): Number => Number(heading.tagName.charAt(1));
+      const getLevel = (heading: Element): number => Number(heading.tagName.charAt(1));
       const trimText = (text: string): string => {
         const softMax = 20;
         // eslint-disable-next-line no-useless-escape
@@ -29,19 +29,19 @@ const useHeadingIds = () => {
           charSum += words[i].length;
         }
         return words.slice(0, lastIndex).join(' ');
-      }
+      };
       headings.forEach((h, index) => {
-        let steps = [h];
+        const steps = [h];
         for (let i = index; i >= 0; i--) {
           if (getLevel(headings[i]) < getLevel(steps[steps.length - 1])) {
             steps.push(headings[i]);
           }
         }
         if (!h.id.includes(':')) {
-          h.id = Array.from(steps, s => toCamelCase(trimText(s.textContent || '')))
-          .reverse()
-          .join('_')
-          .replaceAll('-', '_');
+          h.id = Array.from(steps, (s) => toCamelCase(trimText(s.textContent || '')))
+            .reverse()
+            .join('_')
+            .replaceAll('-', '_');
         }
       });
     }
@@ -61,8 +61,8 @@ const useHeadingIds = () => {
       if (observer) {
         observer.disconnect();
       }
-    }
+    };
   }, [targetNode, observer]);
-}
+};
 
 export default useHeadingIds;

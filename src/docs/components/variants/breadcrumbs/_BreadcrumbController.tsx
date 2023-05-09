@@ -11,6 +11,6 @@ const BreadcrumbController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultBreadcrumbs />;
   }
-}
+};
 
 export default BreadcrumbController;

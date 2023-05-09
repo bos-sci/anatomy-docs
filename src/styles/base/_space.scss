@@ -13,10 +13,8 @@ $space: (
   15x: 7.5rem
 );
 
-@function space($key)
-{
-  @if map-has-key($space, $key)
-  {
+@function space($key) {
+  @if map-has-key($space, $key) {
     @return map-get($space, $key);
   }
   @warn "Unknown `#{$key}` in $space";

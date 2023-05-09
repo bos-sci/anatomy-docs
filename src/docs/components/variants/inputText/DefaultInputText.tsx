@@ -7,7 +7,7 @@ const DefaultInputText = (): JSX.Element => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-  }
+  };
 
   return (
     <Example>
@@ -16,6 +16,6 @@ const DefaultInputText = (): JSX.Element => {
       </div>
     </Example>
   );
-}
+};
 
 export default DefaultInputText;

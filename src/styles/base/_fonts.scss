@@ -1,25 +1,27 @@
+/* stylelint-disable declaration-property-value-allowed-list */
+/* stylelint-disable at-rule-allowed-list */
 @font-face {
   font-family: 'SST-Roman';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
   src: url('/assets/fonts/SST-Roman/SST-Roman.eot');
   src: url('/assets/fonts/SST-Roman/SST-Roman.woff2') format('woff2'),
     url('/assets/fonts/SST-Roman/SST-Roman.woff') format('woff'),
     url('/assets/fonts/SST-Roman/SST-Roman.ttf') format('truetype'),
     url('/assets/fonts/SST-Roman/SST-Roman.svg#SST-Roman') format('svg'),
     url('/assets/fonts/SST-Roman/SST-Roman.eot?#iefix') format('embedded-opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: fallback;
 }
 
 @font-face {
   font-family: 'SST-Heavy';
+  font-style: normal;
+  font-weight: 500 900;
+  font-display: fallback;
   src: url('/assets/fonts/SST-Heavy/SST-Heavy.eot');
   src: url('/assets/fonts/SST-Heavy/SST-Heavy.woff2') format('woff2'),
     url('/assets/fonts/SST-Heavy/SST-Heavy.woff') format('woff'),
     url('/assets/fonts/SST-Heavy/SST-Heavy.ttf') format('truetype'),
     url('/assets/fonts/SST-Heavy/SST-Heavy.svg#SST-Heavy') format('svg'),
     url('/assets/fonts/SST-Heavy/SST-Heavy.eot?#iefix') format('embedded-opentype');
-  font-weight: 500 900;
-  font-style: normal;
-  font-display: fallback;
 }

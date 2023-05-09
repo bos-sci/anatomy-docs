@@ -19,6 +19,6 @@ const OverflowTabs = (): JSX.Element => {
       </Tabs>
     </Example>
   );
-}
+};
 
 export default OverflowTabs;

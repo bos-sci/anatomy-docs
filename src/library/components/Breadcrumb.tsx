@@ -17,12 +17,11 @@ interface Props {
   texts?: {
     breadcrumbNavAriaLabel?: string;
     breadcrumbDropdownAriaLabel?: string;
-  }
+  };
   hasOverflow?: boolean;
 }
 
 const Breadcrumb = ({ crumbs, currentPage, texts, hasOverflow = true }: Props): JSX.Element => {
-
   const [overflowCrumbs, setOverflowCrumbs] = useState<Crumb[]>([]);
   const [visibleCrumbs, setVisibleCrumbs] = useState<Crumb[]>([]);
 
@@ -41,26 +40,37 @@ const Breadcrumb = ({ crumbs, currentPage, texts, hasOverflow = true }: Props): 
   return (
     <nav aria-label={texts?.breadcrumbNavAriaLabel || 'breadcrumbs'}>
       <ol className="bsds-breadcrumbs">
-        {overflowCrumbs.length > 0 &&
+        {overflowCrumbs.length > 0 && (
           <li className="bsds-breadcrumb-overflow">
-            {overflowCrumbs.length > 0 &&
-              <Dropdown variant="subtle" triggerText={texts?.breadcrumbDropdownAriaLabel || 'previous pages'} icon="ellipsis" listType="ol">
-                {overflowCrumbs.map(crumb => (
-                  <Link key={`crumb${crumb.name}`} href={crumb.href} to={crumb.to}>{crumb.name}</Link>
+            {overflowCrumbs.length > 0 && (
+              <Dropdown
+                variant="subtle"
+                triggerText={texts?.breadcrumbDropdownAriaLabel || 'previous pages'}
+                icon="ellipsis"
+                listType="ol"
+              >
+                {overflowCrumbs.map((crumb) => (
+                  <Link key={`crumb${crumb.name}`} href={crumb.href} to={crumb.to}>
+                    {crumb.name}
+                  </Link>
                 ))}
               </Dropdown>
-            }
+            )}
           </li>
-        }
-        {visibleCrumbs.map(crumb => (
+        )}
+        {visibleCrumbs.map((crumb) => (
           <li key={`crumb${crumb.name}`} className="bsds-breadcrumb-item">
-            <Link href={crumb.href} to={crumb.to} className="bsds-breadcrumb-link">{crumb.name} </Link>
+            <Link href={crumb.href} to={crumb.to} className="bsds-breadcrumb-link">
+              {crumb.name}{' '}
+            </Link>
           </li>
         ))}
-        <li className="bsds-breadcrumb-item" aria-current="page">{currentPage}</li>
+        <li className="bsds-breadcrumb-item" aria-current="page">
+          {currentPage}
+        </li>
       </ol>
     </nav>
   );
-}
+};
 
 export default Breadcrumb;

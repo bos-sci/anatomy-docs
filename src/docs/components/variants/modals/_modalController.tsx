@@ -8,14 +8,14 @@ const ModalController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
     case 'modalLogo':
-      return <LogoModal />
+      return <LogoModal />;
     case 'modalRequiredAction':
-      return <RequiredActionModal />
+      return <RequiredActionModal />;
     case 'modalSingleAction':
-      return <SingleActionModal />
+      return <SingleActionModal />;
     default:
       return <DefaultModal />;
   }
-}
+};
 
 export default ModalController;

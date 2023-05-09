@@ -12,6 +12,6 @@ const DefaultStyle = (): JSX.Element => {
       </Example>
     </>
   );
-}
+};
 
 export default DefaultStyle;
