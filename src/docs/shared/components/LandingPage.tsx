@@ -48,19 +48,21 @@ const LandingPage = (props: Props): JSX.Element => {
           <CardGroup cardLayout="threeUp" className="bsds-mt-6x">
             {groupedItems.map((group) => (
               <Fragment key={`group${group[0].id}`}>
-                {group.map((entry) => (
-                  <ContentCard
-                    key={entry.id}
-                    texts={{
-                      cardTitle: entry.name,
-                      cardDescription: entry.leadParagraph as string
-                    }}
-                    headingLevel="h2"
-                    variant="border-light"
-                    linkHref={getUrl(entry)}
-                    linkTitle
-                  />
-                ))}
+                {group
+                  .sort((first, last) => first.name.localeCompare(last.name))
+                  .map((entry) => (
+                    <ContentCard
+                      key={entry.id}
+                      texts={{
+                        cardTitle: entry.name,
+                        cardDescription: entry.leadParagraph as string
+                      }}
+                      headingLevel="h2"
+                      variant="border-light"
+                      linkHref={getUrl(entry)}
+                      linkTitle
+                    />
+                  ))}
               </Fragment>
             ))}
           </CardGroup>
