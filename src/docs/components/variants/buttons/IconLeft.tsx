@@ -3,7 +3,7 @@ import Example from '../../../shared/components/Example';
 
 const IconLeft = (): JSX.Element => {
   return (
-    <Example isFlex={true}>
+    <Example isFlex>
       <Button type="button" icon="plus">
         Icon left
       </Button>

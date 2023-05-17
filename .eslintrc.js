@@ -143,6 +143,7 @@ module.exports = {
     'jsx-a11y/interactive-supports-focus': 1,
     'no-empty': 1,
     'jsx-a11y/no-static-element-interactions': 1,
-    'no-unsafe-optional-chaining': 1
+    'no-unsafe-optional-chaining': 1,
+    'react/jsx-boolean-value': 1
   }
 };

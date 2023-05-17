@@ -12,8 +12,8 @@ const WithLink = (): JSX.Element => {
         }}
         headingLevel="h4"
         linkHref="docs-demo-link"
-        actionLink={true}
         actionLinkText="Call-to-action"
+        actionLink
       />
     </Example>
   );

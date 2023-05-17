@@ -28,9 +28,9 @@ describe('Card', () => {
           cardDescription: 'Card description'
         }}
         headingLevel="h2"
-        actionLink={true}
         actionLinkText="Link text"
         linkHref="docs-demo-link"
+        actionLink
       />
     );
     const cardLink = screen.getByText('Link text');
@@ -48,8 +48,8 @@ describe('Card', () => {
           cardDescription: 'Card description'
         }}
         headingLevel="h2"
-        linkTitle={true}
         linkHref="docs-demo-link"
+        linkTitle
       />
     );
 
@@ -103,10 +103,10 @@ describe('Card', () => {
           cardDescription: 'Card description'
         }}
         headingLevel="h2"
-        actionLink={true}
         actionLinkText="Link text"
         linkHref="docs-demo-link"
-        dropShadow={true}
+        actionLink
+        dropShadow
       />
     );
 
@@ -121,10 +121,10 @@ describe('Card', () => {
           cardDescription: 'Card description'
         }}
         headingLevel="h2"
-        actionLink={true}
         actionLinkText="Link text"
         linkHref="docs-demo-link"
-        gradientBrand={true}
+        actionLink
+        gradientBrand
       />
     );
 
@@ -139,8 +139,8 @@ describe('Card', () => {
           cardDescription: 'Card description'
         }}
         headingLevel="h2"
-        icon={true}
         iconName="demoCardIcon"
+        icon
       />
     );
 
