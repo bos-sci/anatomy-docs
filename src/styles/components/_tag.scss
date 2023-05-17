@@ -68,14 +68,14 @@
     @include tag-assertive;
     @include font-family-base-regular;
     padding: space(sm) space(md);
-    background-color: $neutral-95;
+    background: $neutral-95;
     text-transform: none;
     letter-spacing: unset;
   }
 
   &-subtle-ghost {
     @extend .bsds-tag-subtle;
-    background-color: $neutral-40;
+    background: $neutral-40;
     color: $text-color-ghost;
   }
 }
