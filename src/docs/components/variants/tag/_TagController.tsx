@@ -4,6 +4,7 @@ import DefaultStyle from './DefaultStyle';
 import AccentStyle from './AccentStyle';
 import AssertiveStyle from './AssertiveStyle';
 import FeaturedStyle from './FeaturedStyle';
+import SubtleStyle from './SubtleStyle';
 
 const TagController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
@@ -16,6 +17,8 @@ const TagController = ({ variantId }: VariantProps): JSX.Element => {
       return <AssertiveStyle />;
     case 'tagFeatured':
       return <FeaturedStyle />;
+    case 'tagSubtle':
+      return <SubtleStyle />;
 
     default:
       return <DefaultTag />;
