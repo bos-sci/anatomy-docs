@@ -73,6 +73,10 @@ const Foundations = (): JSX.Element => {
         slug: basePath + '/spacing'
       },
       {
+        text: 'Tokens',
+        slug: basePath + '/tokens'
+      },
+      {
         text: 'Typography',
         slug: basePath + '/typography'
       },
