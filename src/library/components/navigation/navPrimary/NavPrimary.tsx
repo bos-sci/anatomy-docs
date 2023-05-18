@@ -289,7 +289,7 @@ const NavPrimary = ({
       <nav className="bsds-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="bsds-nav-bar">
           {logo.to || logo.href ? (
-            <Link to={logo.to} href={logo.href} isNavLink={true} className="bsds-nav-link-logo">
+            <Link to={logo.to} href={logo.href} className="bsds-nav-link-logo" isNavLink>
               <img src={logo.src} alt={logo.alt} />
             </Link>
           ) : (

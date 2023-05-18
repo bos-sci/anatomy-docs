@@ -58,7 +58,7 @@ describe('Product Card', () => {
           description: 'Product card description'
         }}
         linkTo="docs-demo-link"
-        assertiveTitle={true}
+        assertiveTitle
       />
     );
 
@@ -89,7 +89,7 @@ describe('Product Card', () => {
           description: 'Product card description'
         }}
         linkTo="docs-demo-link"
-        dropShadow={true}
+        dropShadow
       />
     );
 
@@ -104,7 +104,7 @@ describe('Product Card', () => {
           description: 'Product card description'
         }}
         linkTo="docs-demo-link"
-        gradientBrand={true}
+        gradientBrand
       />
     );
 

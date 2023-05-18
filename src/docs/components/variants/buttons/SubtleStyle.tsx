@@ -3,7 +3,7 @@ import Example from '../../../shared/components/Example';
 
 const SubtleStyle = (): JSX.Element => {
   return (
-    <Example isFlex={true}>
+    <Example isFlex>
       <Button variant="subtle" type="button">
         Text button
       </Button>

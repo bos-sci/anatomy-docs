@@ -3,7 +3,7 @@ import Example from '../../../shared/components/Example';
 
 const DefaultStyle = (): JSX.Element => {
   return (
-    <Example isFlex={true}>
+    <Example isFlex>
       <Button type="button">Text button</Button>
       <Button type="button" icon="plus">
         Icon left
