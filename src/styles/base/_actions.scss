@@ -24,6 +24,10 @@
   &:not([disabled]) {
     &:focus {
       @include focus-default;
+
+      &.small {
+        @include focus-small;
+      }
     }
   }
 }
@@ -61,6 +65,10 @@
   }
 
   @include button-hover;
+
+  &.small {
+    @include button-small;
+  }
 }
 
 @mixin button-default {
@@ -93,6 +101,10 @@
       color: $neutral-100;
     }
   }
+
+  &.small {
+    @include button-default;
+  }
 }
 
 @mixin button-assertive {
@@ -102,6 +114,10 @@
   color: $neutral-100;
   @include button-focus;
   @include button-disabled;
+
+  &.small {
+    @include button-default;
+  }
 }
 
 @mixin button-ghost-active {
@@ -138,6 +154,12 @@
 @mixin button-icon {
   border-radius: 50%;
   padding: space(2x) + space(xxs);
+}
+
+@mixin button-small {
+  @include font-size($fs-body-subtle);
+  border-width: space(xxs);
+  padding: space(md) calc(space(lg) + space(xxs));
 }
 
 // Default Button Styles

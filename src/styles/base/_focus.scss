@@ -32,3 +32,10 @@
   @include focus-default;
   outline-color: $feedback-error-40;
 }
+
+// Use with small button component style
+@mixin focus-small {
+  @include focus-default;
+  outline: space(xxs) solid $action-primary-40;
+  outline-offset: space(xxs);
+}
