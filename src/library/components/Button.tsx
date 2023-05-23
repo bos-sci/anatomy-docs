@@ -30,9 +30,17 @@ const Button = forwardRef(
         classes = 'bsds-button';
         break;
     }
-    let buttonIconSize = iconSize;
-    if (size === 'small') {
-      buttonIconSize = 'lg';
+
+    let buttonSizeClass = '';
+    let buttonIconSizeClass = iconSize;
+    switch (size) {
+      case 'small':
+        buttonSizeClass = 'bsds-button-small';
+        buttonIconSizeClass = 'lg';
+        break;
+
+      default:
+        break;
     }
 
     const [iconWithChildren, setIconWithChildren] = useState(children);
@@ -53,11 +61,13 @@ const Button = forwardRef(
     }
 
     return (
-      <button ref={ref} className={`${classes} ${className || ''} ${size}`} {...buttonAttrs}>
-        {!!(icon && iconAlignment === 'left') && <Icon name={icon} size={buttonIconSize} className="bsds-icon-left" />}
+      <button ref={ref} className={`${classes} ${className || ''} ${buttonSizeClass}`} {...buttonAttrs}>
+        {!!(icon && iconAlignment === 'left') && (
+          <Icon name={icon} size={buttonIconSizeClass} className="bsds-icon-left" />
+        )}
         {iconWithChildren}
         {!!(icon && iconAlignment === 'right') && (
-          <Icon name={icon} size={buttonIconSize} className="bsds-icon-right" />
+          <Icon name={icon} size={buttonIconSizeClass} className="bsds-icon-right" />
         )}
       </button>
     );

@@ -24,10 +24,6 @@
   &:not([disabled]) {
     &:focus {
       @include focus-default;
-
-      &.small {
-        @include focus-small;
-      }
     }
   }
 }
@@ -66,7 +62,8 @@
 
   @include button-hover;
 
-  &.small {
+  &.bsds-button-small {
+    // NOTE: typically this is defined in components/buttons, but that results in a lot of repetitive code. Let's revisit if/when we explore more button sizes.
     @include button-small;
   }
 }
@@ -101,10 +98,6 @@
       color: $neutral-100;
     }
   }
-
-  &.small {
-    @include button-default;
-  }
 }
 
 @mixin button-assertive {
@@ -114,10 +107,6 @@
   color: $neutral-100;
   @include button-focus;
   @include button-disabled;
-
-  &.small {
-    @include button-default;
-  }
 }
 
 @mixin button-ghost-active {
