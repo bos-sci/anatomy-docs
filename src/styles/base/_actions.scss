@@ -61,6 +61,11 @@
   }
 
   @include button-hover;
+
+  &.bsds-button-small {
+    // NOTE: typically this is defined in components/buttons, but that results in a lot of repetitive code. Let's revisit if/when we explore more button sizes & consider renaming this mixin.
+    @include button-small;
+  }
 }
 
 @mixin button-default {
@@ -138,6 +143,12 @@
 @mixin button-icon {
   border-radius: 50%;
   padding: space(2x) + space(xxs);
+}
+
+@mixin button-small {
+  @include font-size($fs-body-subtle);
+  border-width: space(xxs);
+  padding: space(md) calc(space(lg) + space(xxs));
 }
 
 // Default Button Styles
