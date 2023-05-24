@@ -63,7 +63,7 @@
   @include button-hover;
 
   &.bsds-button-small {
-    // NOTE: typically this is defined in components/buttons, but that results in a lot of repetitive code. Let's revisit if/when we explore more button sizes.
+    // NOTE: typically this is defined in components/buttons, but that results in a lot of repetitive code. Let's revisit if/when we explore more button sizes & consider renaming this mixin.
     @include button-small;
   }
 }
