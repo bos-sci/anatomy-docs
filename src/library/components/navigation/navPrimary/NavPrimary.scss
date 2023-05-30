@@ -1,3 +1,5 @@
+@import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
+
 @import '../../../../styles/abstracts/abstracts';
 @import '../../../../styles/base/base';
 @import '../../../../styles/utilities/utilities';
@@ -54,7 +56,7 @@
   }
 }
 
-@media (min-width: $lg) {
+@media (min-width: $breakpoint-lg-min) {
   .bsds-nav-header {
     /* stylelint-disable scss/selector-nest-combinators */
     .bsds-nav-utility .bsds-nav,
@@ -81,7 +83,7 @@
   }
 }
 
-@media (min-width: $xl) {
+@media (min-width: $breakpoint-xl-min) {
   .bsds-nav-header {
     &.is-constrained {
       $panels-width-xl: 71.25rem; // NOTE: This is a one off size to match the layout widths.
@@ -97,7 +99,7 @@
   }
 }
 
-@media (min-width: $xxl) {
+@media (min-width: $breakpoint-xxl-min) {
   .bsds-nav-header {
     &.is-constrained {
       $panels-width-xxl: 82.5rem; // NOTE: This is a one off size to match the layout widths.

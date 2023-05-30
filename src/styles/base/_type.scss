@@ -78,18 +78,6 @@ $fs-small: (
   }
 }
 
-@mixin font-family-base-regular {
-  /* stylelint-disable-next-line declaration-property-value-allowed-list */
-  font-family: $font-family-base-regular;
-  font-weight: $font-weight-regular;
-}
-
-@mixin font-family-base-heavy {
-  /* stylelint-disable-next-line declaration-property-value-allowed-list */
-  font-family: $font-family-base-heavy;
-  font-weight: $font-weight-heavy;
-}
-
 body {
   color: $text-color-primary;
   @include font-family-base-regular;

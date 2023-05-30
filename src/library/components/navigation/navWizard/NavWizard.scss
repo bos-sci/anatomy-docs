@@ -1,3 +1,5 @@
+@import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
+
 @import '/src/styles/abstracts/abstracts';
 @import '/src/styles/base/base';
 @import '/src/styles/utilities/utilities';
@@ -153,7 +155,7 @@
   }
 }
 
-@media (min-width: $lg) {
+@media (min-width: $breakpoint-lg-min) {
   .bsds-nav-wizard {
     padding: space(6x) space(8x);
 
