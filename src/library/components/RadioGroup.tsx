@@ -10,6 +10,10 @@ export const RadioAddonPropsContext = createContext({
   },
   setFieldsetError: (text: string) => {
     return;
+  },
+  buttonGroup: false,
+  setButtonGroup: (buttonGroup: boolean) => {
+    return;
   }
 });
 
@@ -17,6 +21,7 @@ interface Props extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
   legend: string;
   errorText?: string;
   helpText?: string;
+  buttonGroup?: boolean;
 }
 
 export interface AddonProps {
@@ -26,17 +31,27 @@ export interface AddonProps {
   isDirty: boolean;
   setIsDirty: (isDirty: boolean) => void;
   setFieldsetError: (text: string) => void;
+  buttonGroup: boolean;
+  setButtonGroup: (buttonGroup: boolean) => void;
 }
 
 let radioGroupId = 0;
 
-const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAttrs }: Props): JSX.Element => {
+const RadioGroup = ({
+  legend,
+  errorText = '',
+  helpText,
+  buttonGroup,
+  children,
+  ...fieldsetAttrs
+}: Props): JSX.Element => {
   const [helpTextId, setHelpTextId] = useState('');
   const [errorTextId, setErrorTextId] = useState('');
   const [validationMessage, setValidationMessage] = useState('');
   const [addonProps, setAddonProps] = useState<AddonProps>({} as AddonProps);
   const [isInvalid, setIsInvalid] = useState(!!errorText);
   const [areRadiosDirty, setAreRadiosDirty] = useState(!!errorText);
+  const [buttonGroupStyle, setButtonGroupStyle] = useState(!!buttonGroup);
 
   useEffect(() => {
     setAddonProps({
@@ -50,9 +65,13 @@ const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAtt
       setFieldsetError: (text) => {
         setValidationMessage(text);
         setIsInvalid(!!text);
+      },
+      buttonGroup: buttonGroupStyle,
+      setButtonGroup: (buttonGroup: boolean) => {
+        setButtonGroupStyle(buttonGroup);
       }
     });
-  }, [isInvalid, errorTextId, errorText, areRadiosDirty]);
+  }, [isInvalid, errorTextId, errorText, areRadiosDirty, buttonGroupStyle]);
 
   useEffect(() => {
     const idNum = ++radioGroupId;
@@ -60,22 +79,40 @@ const RadioGroup = ({ legend, errorText = '', helpText, children, ...fieldsetAtt
     setErrorTextId('radioGroupErrorText' + idNum);
   }, []);
 
+  let radioGroupStyles = {
+    fieldsetClass: 'bsds-fieldset',
+    legendClass: 'bsds-legend',
+    inputErrorClass: 'bsds-input-error',
+    inputHelpText: 'bsds-input-help-text'
+  };
+
+  const buttonGroupStyles = {
+    fieldsetClass: 'bsds-fieldset-button-group',
+    legendClass: 'bsds-legend-button-group',
+    inputErrorClass: 'bsds-input-error',
+    inputHelpText: 'bsds-input-help-text'
+  };
+
+  if (buttonGroup) {
+    radioGroupStyles = { ...buttonGroupStyles };
+  }
+
   return (
     <fieldset
-      className="bsds-fieldset"
+      className={radioGroupStyles.fieldsetClass}
       aria-describedby={helpTextId ? helpTextId : ''}
       {...fieldsetAttrs}
       role="radiogroup"
       aria-invalid={!!addonProps.ariaInvalid && addonProps.isDirty}
     >
-      <legend className="bsds-legend">{legend}</legend>
+      <legend className={radioGroupStyles.legendClass}>{legend}</legend>
       {!!validationMessage && (
-        <p id={errorTextId} className="bsds-input-error">
+        <p id={errorTextId} className={radioGroupStyles.inputErrorClass}>
           {validationMessage}
         </p>
       )}
       {!!helpText && (
-        <p id={helpTextId} className="bsds-input-help-text">
+        <p id={helpTextId} className={radioGroupStyles.inputHelpText}>
           {helpText}
         </p>
       )}

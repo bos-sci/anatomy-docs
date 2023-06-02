@@ -32,6 +32,7 @@ const InputRadio = forwardRef(
     const [inputId, setInputId] = useState('');
     const [helpTextId, setHelpTextId] = useState('');
     const [errorText, setErrorText] = useState('');
+    const [isGroupStyle, setIsGroupStyle] = useState(false);
     const addonProps: AddonProps = useContext(RadioAddonPropsContext);
 
     const inputEl = useRef<HTMLInputElement>(null);
@@ -91,9 +92,35 @@ const InputRadio = forwardRef(
       setHelpTextId('radioHelpText' + idNum);
     }, []);
 
+    useEffect(() => {
+      if (addonProps.buttonGroup) {
+        setIsGroupStyle(addonProps.buttonGroup);
+      }
+    }, [isGroupStyle, addonProps]);
+
+    let inputRadioStyles = {
+      containerClass: 'bsds-input',
+      radioContainerClass: 'bsds-input-radio',
+      inputRadioClass: 'bsds-input-radio-input',
+      labelClass: 'bsds-input-radio-label',
+      inputHelptext: 'bsds-input-help-text'
+    };
+
+    const inputButtonGroupStyles = {
+      containerClass: 'bsds-input-button-group',
+      radioContainerClass: 'bsds-input-radio-button-group',
+      inputRadioClass: 'bsds-input-radio-input',
+      labelClass: 'bsds-input-radio-label-button-group',
+      inputHelptext: 'bsds-input-help-text'
+    };
+
+    if (isGroupStyle) {
+      inputRadioStyles = { ...inputButtonGroupStyles };
+    }
+
     return (
-      <div className="bsds-input">
-        <div className="bsds-input-radio">
+      <div className={inputRadioStyles.containerClass}>
+        <div className={inputRadioStyles.radioContainerClass}>
           <input
             ref={(node) => {
               if (node) {
@@ -107,19 +134,19 @@ const InputRadio = forwardRef(
             }}
             type="radio"
             id={inputId}
-            className="bsds-input-radio-input"
+            className={inputRadioStyles.inputRadioClass}
             aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
             onInvalid={handleInvalid}
             onBlur={handleBlur}
             onInput={handleChange}
             {...inputAttrs}
           />
-          <label htmlFor={inputId} className="bsds-input-radio-label">
+          <label htmlFor={inputId} className={inputRadioStyles.labelClass}>
             {label}
           </label>
         </div>
         {!!helpText && (
-          <p id={helpTextId} className="bsds-input-help-text">
+          <p id={helpTextId} className={inputRadioStyles.inputHelptext}>
             {helpText}
           </p>
         )}

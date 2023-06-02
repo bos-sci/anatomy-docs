@@ -3,6 +3,10 @@ $inner-circle-diameter: space(md);
 
 .bsds-input-radio {
   display: flex;
+
+  &-button-group {
+    min-width: space(4x);
+  }
 }
 
 .bsds-fieldset {
@@ -42,6 +46,16 @@ $inner-circle-diameter: space(md);
       border: space(xxs) solid $neutral-00;
       background: $neutral-100;
       content: '';
+    }
+
+    &-button-group {
+      @include button-default;
+      @include button-small;
+      @include font-family-base-regular;
+      border-radius: space(3x);
+      border-color: $neutral-40;
+      padding: space(md) space(3x);
+      color: $neutral-40;
     }
   }
 
@@ -98,6 +112,11 @@ $inner-circle-diameter: space(md);
         content: '';
         transform: scale(calc($inner-circle-diameter / $outer-circle-diameter));
       }
+
+      &-button-group {
+        outline: $action-primary-40 solid space(xxs);
+        border-color: $action-primary-40;
+      }
     }
   }
 
@@ -107,6 +126,10 @@ $inner-circle-diameter: space(md);
     /* stylelint-enable scss/selector-nest-combinators */
     + .bsds-input-radio-label {
       &::before {
+        @include focus-default;
+      }
+
+      &-button-group {
         @include focus-default;
       }
     }
