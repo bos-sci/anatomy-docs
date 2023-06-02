@@ -29,7 +29,12 @@ module.exports = {
   plugins: ['@typescript-eslint', 'react'],
   rules: {
     // Legend: 0 = off, 1 = warn, 2 = error
-    'prettier/prettier': 1,
+    'prettier/prettier': [
+      1,
+      {
+        trailingComma: 'none'
+      }
+    ],
     'curly': ['warn', 'all'],
     'react/default-props-match-prop-types': 2,
     'react/jsx-no-useless-fragment': [
