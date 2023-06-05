@@ -81,8 +81,29 @@
     "media-feature-name-no-unknown": true,
     "media-feature-name-no-vendor-prefix": true,
     "media-feature-name-value-allowed-list": {
-      "min-width": ["576px", "768px", "992px", "1200px", "$sm", "$md", "$lg", "$xl", "$xxl", "$fs-breakpoint"],
-      "max-width": ["575px", "767px", "991px", "1199px", "$sm", "$md", "$lg", "$xl", "$xxl"]
+      "min-width": [
+        "576px",
+        "768px",
+        "992px",
+        "1200px",
+        "$breakpoint-sm-min",
+        "$breakpoint-md-min",
+        "$breakpoint-lg-min",
+        "$breakpoint-xl-min",
+        "$breakpoint-xxl-min",
+        "$fs-breakpoint"
+      ],
+      "max-width": [
+        "575px",
+        "767px",
+        "991px",
+        "1199px",
+        "$breakpoint-sm-min",
+        "$breakpoint-md-min",
+        "$breakpoint-lg-min",
+        "$breakpoint-xl-min",
+        "$breakpoint-xxl-min"
+      ]
     },
     "media-feature-name-allowed-list": ["min-width", "max-width", "prefers-reduced-motion", "prefers-color-scheme"],
     "media-feature-range-notation": "prefix",
