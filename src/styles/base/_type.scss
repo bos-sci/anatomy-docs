@@ -1,7 +1,3 @@
-@use 'sass:map';
-
-// NOTE: changes to the type class names will need to be done in code and contentful (foundations > typography)
-
 body {
   color: $text-color-primary;
   @include font-family-base-regular;
@@ -68,30 +64,6 @@ h6,
 .bsds-h6 {
   color: $text-color-primary;
   @include font-family-base-heavy;
-}
-
-.bsds-display-1 {
-  margin: space(12x) 0 0;
-  @include font-size($fs-display-1);
-  line-height: 1.2;
-}
-
-.bsds-display-2 {
-  margin: space(12x) 0 0;
-  @include font-size($fs-display-2);
-  line-height: 1.2;
-}
-
-.bsds-display-3 {
-  margin: space(8x) 0 0;
-  @include font-size($fs-display-3);
-  line-height: 1.4;
-}
-
-.bsds-display-4 {
-  margin: space(8x) 0 0;
-  @include font-size($fs-display-4);
-  line-height: 1.4;
 }
 
 h1,
