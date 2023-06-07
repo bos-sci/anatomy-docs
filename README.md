@@ -134,6 +134,8 @@ Steps for adding a new field to an existing section.
 5. If the examples are external (e.g. primary nav), add the routes to those examples as ignores in SiteImprove.
 
 #### Deploy to Production
+If the release covers changes to @boston-scientific/anatomy-tokens, ensure the tokens package is released before updating the docs site
+in production.
 1. In Contentful, point the master alias environment at the working environment.
 This environment is now the production environment.
 2. Delete the oldest backup environment.
