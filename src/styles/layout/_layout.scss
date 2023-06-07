@@ -101,7 +101,7 @@ main {
   }
 }
 
-@media (min-width: $lg) {
+@media (min-width: $breakpoint-lg-min) {
   .docs-body {
     grid-template-areas: 'nav-secondary main';
     grid-template-columns: 1fr 4fr;
@@ -143,14 +143,14 @@ main {
   }
 }
 
-@media (min-width: $xl) {
+@media (min-width: $breakpoint-xl-min) {
   .docs-body {
     grid-template-columns: 1fr 5fr;
     width: var(--app-width);
   }
 }
 
-@media (min-width: $xxl) {
+@media (min-width: $breakpoint-xxl-min) {
   .docs-body {
     width: var(--app-width);
   }

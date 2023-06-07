@@ -1,4 +1,4 @@
-// TODO: ADS-129 shuffle imports so we can use space(x) for $border-radius and $box-shadow-primary utility variables
+@import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
 @import './abstracts/abstracts';
 @import './base/base';
 @import './layout/layout';
