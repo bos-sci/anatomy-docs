@@ -1,7 +1,22 @@
+.bsds-input-radio {
+  &-button-group {
+    min-width: space(4x);
+  }
+}
+
 .bsds-fieldset-button-group {
   @extend .bsds-fieldset;
   flex-flow: row wrap;
   gap: space(lg);
+
+  .bsds-input-error {
+    width: 100%;
+    margin: 0;
+  }
+
+  .bsds-input-help-text {
+    margin: 0;
+  }
 
   &[aria-invalid='true'] {
     .bsds-input-button-group {
@@ -37,15 +52,6 @@
       padding-bottom: 0;
     }
   }
-
-  .bsds-input-error {
-    width: 100%;
-    margin: 0;
-  }
-
-  .bsds-input-help-text {
-    margin: 0;
-  }
 }
 
 .bsds-legend-button-group {
@@ -69,7 +75,8 @@
     padding: space(md) space(3x);
     color: $neutral-40;
 
-    &:hover {
+    &:hover,
+    &:active {
       outline: $action-primary-20 solid space(xxs);
     }
 

@@ -5,7 +5,7 @@ import RadioGroup from '../../../../library/components/RadioGroup';
 import Example from '../../../shared/components/Example';
 
 const ButtonGroupStyle = (): JSX.Element => {
-  const [selectedRadio, setSelectedRadio] = useState('buttonGroupRadio6');
+  const [selectedRadio, setSelectedRadio] = useState('buttonGroupRadio1');
   const [selectedErrorRadio, setSelectedErrorRadio] = useState('buttonGroupHelpRadio1');
   const error = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(error);
@@ -23,69 +23,29 @@ const ButtonGroupStyle = (): JSX.Element => {
         <div className="bsds-form-control">
           <RadioGroup legend="Legend" buttonGroup>
             <InputRadio
-              label="1"
+              label="Radio 1"
               name="buttonGroupRadio"
               value="buttonGroupRadio1"
               checked={selectedRadio === 'buttonGroupRadio1'}
               onChange={handleChange}
             />
             <InputRadio
-              label="Option 2"
+              label="Radio 2"
               name="buttonGroupRadio"
               value="buttonGroupRadio2"
               checked={selectedRadio === 'buttonGroupRadio2'}
               onChange={handleChange}
             />
             <InputRadio
-              label="Really long option 3"
+              label="Radio 3"
               name="buttonGroupRadio"
               value="buttonGroupRadio3"
               checked={selectedRadio === 'buttonGroupRadio3'}
               inputUnavailable
               onChange={handleChange}
             />
-            <InputRadio
-              label="Extra really super long option 4"
-              name="buttonGroupRadio"
-              value="buttonGroupRadio4"
-              checked={selectedRadio === 'buttonGroupRadio4'}
-              onChange={handleChange}
-            />
-            <InputRadio
-              label="Unselected disabled option 5"
-              name="buttonGroupRadio"
-              value="buttonGroupRadio5"
-              checked={selectedRadio === 'buttonGroupRadio5'}
-              disabled
-              onChange={handleChange}
-            />
-            <InputRadio
-              label="Selected disabled option 6"
-              name="buttonGroupRadio"
-              value="buttonGroupRadio6"
-              checked={selectedRadio === 'buttonGroupRadio6'}
-              disabled
-              onChange={handleChange}
-            />
           </RadioGroup>
         </div>
-      </Example>
-      <Example>
-        <Form onSubmit={handleSubmit}>
-          <div className="bsds-form-control bsds-margin-top-remove">
-            <RadioGroup legend="Legend" buttonGroup>
-              <InputRadio label="Help option 1" name="buttonGroupHelpRadio" value="buttonGroupHelpRadio1" required />
-              <InputRadio
-                label="Help option 2"
-                name="buttonGroupHelpRadio"
-                value="buttonGroupHelpRadio2"
-                required
-                forceValidation
-              />
-              <InputRadio label="Help option 3" name="buttonGroupHelpRadio" value="buttonGroupHelpRadio3" required />
-            </RadioGroup>
-          </div>
-        </Form>
       </Example>
       <Example>
         <Form onSubmit={handleSubmit}>
@@ -97,7 +57,7 @@ const ButtonGroupStyle = (): JSX.Element => {
               buttonGroup
             >
               <InputRadio
-                label="Help option 1"
+                label="Radio 1"
                 name="buttonGroupHelpRadio"
                 value="buttonGroupHelpRadio1"
                 checked={selectedErrorRadio === 'buttonGroupHelpRadio1'}
@@ -105,14 +65,14 @@ const ButtonGroupStyle = (): JSX.Element => {
                 onChange={handleChange}
               />
               <InputRadio
-                label="Help option 2"
+                label="Radio 2"
                 name="buttonGroupHelpRadio"
                 value="buttonGroupHelpRadio2"
                 checked={selectedErrorRadio === 'buttonGroupHelpRadio2'}
                 onChange={handleChange}
               />
               <InputRadio
-                label="Help option 3"
+                label="Radio 3"
                 name="buttonGroupHelpRadio"
                 value="buttonGroupHelpRadio3"
                 checked={selectedErrorRadio === 'buttonGroupHelpRadio3'}
