@@ -25,7 +25,7 @@
 
   &:read-only {
     &:focus {
-      @include focus-disabled;
+      @include focus-readonly;
     }
   }
 

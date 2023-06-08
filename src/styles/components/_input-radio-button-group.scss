@@ -1,0 +1,127 @@
+.bsds-fieldset-button-group {
+  @extend .bsds-fieldset;
+  flex-flow: row wrap;
+  gap: space(lg);
+
+  &[aria-invalid='true'] {
+    .bsds-input-button-group {
+      .bsds-input-radio-button-group {
+        .bsds-input-radio-label-button-group {
+          outline-color: $feedback-error-40;
+
+          &:hover,
+          &:active {
+            outline-color: $action-primary-20;
+            border-color: $action-primary-20;
+          }
+        }
+        /* stylelint-disable scss/selector-nest-combinators */
+        .bsds-input-radio-input {
+          &:checked {
+            + .bsds-input-radio-label-button-group {
+              border-color: $feedback-error-40;
+            }
+          }
+
+          &:focus,
+          &:focus:checked {
+            + .bsds-input-radio-label-button-group {
+              @include focus-invalid;
+            }
+          }
+        }
+      }
+    }
+
+    .bsds-legend-button-group {
+      padding-bottom: 0;
+    }
+  }
+
+  .bsds-input-error {
+    width: 100%;
+    margin: 0;
+  }
+
+  .bsds-input-help-text {
+    margin: 0;
+  }
+}
+
+.bsds-legend-button-group {
+  @include font-family-base-regular;
+  @include font-size($fs-body-subtle);
+  padding-bottom: space(lg);
+}
+
+.bsds-input-button-group {
+  width: max-content;
+}
+
+.bsds-input-radio-input {
+  + .bsds-input-radio-label-button-group {
+    @include button-default;
+    @include button-small;
+    @include font-family-base-regular;
+    outline: $neutral-40 solid space(xxs);
+    border-radius: space(3x);
+    border: space(xs) solid transparent;
+    padding: space(md) space(3x);
+    color: $neutral-40;
+
+    &:hover {
+      outline: $action-primary-20 solid space(xxs);
+    }
+
+    &-unavailable {
+      @extend .bsds-input-radio-label-button-group;
+      outline: $neutral-40 dashed space(xxs);
+    }
+  }
+
+  &:checked,
+  &[aria-checked='true'] {
+    + .bsds-input-radio-label-button-group {
+      outline: none;
+      border-color: $action-primary-40;
+      color: $neutral-00;
+    }
+  }
+
+  &:focus,
+  &:focus:checked {
+    + .bsds-input-radio-label-button-group {
+      @include focus-default;
+    }
+  }
+
+  &:disabled {
+    + .bsds-input-radio-label-button-group {
+      outline-color: $neutral-60;
+      border-color: transparent;
+      background: $neutral-95;
+      color: $neutral-40;
+      cursor: not-allowed;
+
+      &:hover,
+      &:active {
+        @extend .bsds-input-radio-label-button-group;
+      }
+    }
+
+    &:checked,
+    &[aria-checked='true'] {
+      + .bsds-input-radio-label-button-group {
+        border-width: space(xs);
+        border-color: $neutral-60;
+
+        &:hover,
+        &:active {
+          border-color: $neutral-60;
+          background: $neutral-95;
+          color: $neutral-40;
+        }
+      }
+    }
+  }
+}

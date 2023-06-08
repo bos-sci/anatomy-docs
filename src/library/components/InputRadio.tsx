@@ -20,13 +20,14 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   value?: string;
   helpText?: string;
   forceValidation?: boolean;
+  inputUnavailable?: boolean;
 }
 
 let radioId = 0;
 
 const InputRadio = forwardRef(
   (
-    { label, helpText, forceValidation, onBlur, onInput, onInvalid, ...inputAttrs }: Props,
+    { label, helpText, forceValidation, inputUnavailable, onBlur, onInput, onInvalid, ...inputAttrs }: Props,
     ref: ForwardedRef<HTMLInputElement>
   ): JSX.Element => {
     const [inputId, setInputId] = useState('');
@@ -116,6 +117,9 @@ const InputRadio = forwardRef(
 
     if (isGroupStyle) {
       inputRadioStyles = { ...inputButtonGroupStyles };
+      if (inputUnavailable) {
+        inputRadioStyles.labelClass = 'bsds-input-radio-label-button-group-unavailable';
+      }
     }
 
     return (

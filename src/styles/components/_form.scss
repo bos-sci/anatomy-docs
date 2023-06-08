@@ -8,31 +8,15 @@
   border: 0;
   padding-right: 0;
   padding-left: 0;
-
-  &-button-group {
-    @extend .bsds-fieldset;
-    flex-flow: row wrap;
-    gap: space(lg);
-  }
 }
 
 .bsds-legend {
   @include font-family-base-heavy;
   @include font-size($fs-base);
-
-  &-button-group {
-    @include font-family-base-regular;
-    @include font-size($fs-body-subtle);
-    padding-bottom: space(lg);
-  }
 }
 
 .bsds-input {
   width: 100%;
-
-  &-button-group {
-    width: max-content;
-  }
 }
 
 .bsds-input-error {
@@ -56,9 +40,10 @@
 }
 
 .bsds-input-help-text {
+  width: 100%;
   margin: space(sm) 0 0 0;
-  @include font-size($fs-body-subtle);
   color: $neutral-40;
+  @include font-size($fs-body-subtle);
 }
 
 .bsds-form-control {

@@ -232,7 +232,7 @@
   }
 }
 
-@media (min-width: $lg) {
+@media (min-width: $breakpoint-lg-min) {
   .bsds-nav-primary {
     .bsds-search-panel {
       border-top: 0;
@@ -375,7 +375,7 @@
   }
 }
 
-@media (min-width: $xl) {
+@media (min-width: $breakpoint-xl-min) {
   .bsds-nav-header {
     &.is-constrained {
       $panels-width-xl: 71.25rem; // NOTE: This is a one off size to match the layout widths.
@@ -397,7 +397,7 @@
   }
 }
 
-@media (min-width: $xxl) {
+@media (min-width: $breakpoint-xxl-min) {
   .bsds-nav-header {
     &.is-constrained {
       $panels-width-xxl: 82.5rem; // NOTE: This is a one off size to match the layout widths.
