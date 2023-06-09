@@ -16,16 +16,10 @@ const Disabled = (): JSX.Element => {
       </Example>
       <Example>
         <div className="bsds-form-control">
-          <RadioGroup legend="Disabled button group" buttonGroup>
-            <InputRadio
-              label="Radio 1"
-              name="buttonGroupRadioDisabledDisabled"
-              value="buttonGroupRadioDisabled1"
-              checked
-              disabled
-            />
-            <InputRadio label="Radio 2" name="buttonGroupRadioDisabled" value="buttonGroupRadioDisabled2" disabled />
-            <InputRadio label="Radio 3" name="buttonGroupRadioDisabled" value="buttonGroupRadioDisabled3" disabled />
+          <RadioGroup legend="Disabled button style radio group" buttonGroup disabled>
+            <InputRadio label="Radio 1" name="groupButtonStyleDisabled" value="groupButtonStyleDisabled1" checked />
+            <InputRadio label="Radio 2" name="groupButtonStyleDisabled" value="groupButtonStyleDisabled2" />
+            <InputRadio label="Radio 3" name="groupButtonStyleDisabled" value="groupButtonStyleDisabled3" />
           </RadioGroup>
         </div>
       </Example>

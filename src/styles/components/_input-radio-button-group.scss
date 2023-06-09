@@ -15,6 +15,7 @@
   }
 
   .bsds-input-help-text {
+    width: 100%;
     margin: 0;
   }
 
@@ -49,7 +50,9 @@
     }
 
     .bsds-legend-button-group {
-      padding-bottom: 0;
+      ~ .bsds-input-button-group {
+        margin-top: 0;
+      }
     }
   }
 }
@@ -57,7 +60,10 @@
 .bsds-legend-button-group {
   @include font-family-base-regular;
   @include font-size($fs-body-subtle);
-  padding-bottom: space(lg);
+
+  ~ .bsds-input-button-group {
+    margin-top: space(lg);
+  }
 }
 
 .bsds-input-button-group {
@@ -69,7 +75,7 @@
     @include button-default;
     @include button-small;
     @include font-family-base-regular;
-    outline: $neutral-40 solid space(xxs);
+    outline: space(xxs) solid $neutral-40;
     border-radius: space(3x);
     border: space(xs) solid transparent;
     padding: space(md) space(3x);
@@ -77,12 +83,12 @@
 
     &:hover,
     &:active {
-      outline: $action-primary-20 solid space(xxs);
+      outline: space(xxs) solid $action-primary-20;
     }
 
     &-unavailable {
       @extend .bsds-input-radio-label-button-group;
-      outline: $neutral-40 dashed space(xxs);
+      outline-style: dashed;
     }
   }
 

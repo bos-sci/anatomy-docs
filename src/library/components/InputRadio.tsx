@@ -104,7 +104,7 @@ const InputRadio = forwardRef(
       radioContainerClass: 'bsds-input-radio',
       inputRadioClass: 'bsds-input-radio-input',
       labelClass: 'bsds-input-radio-label',
-      inputHelptext: 'bsds-input-help-text'
+      inputHelpText: 'bsds-input-help-text'
     };
 
     const inputButtonGroupStyles = {
@@ -112,7 +112,7 @@ const InputRadio = forwardRef(
       radioContainerClass: 'bsds-input-radio-button-group',
       inputRadioClass: 'bsds-input-radio-input',
       labelClass: 'bsds-input-radio-label-button-group',
-      inputHelptext: 'bsds-input-help-text'
+      inputHelpText: 'bsds-input-help-text'
     };
 
     if (isGroupStyle) {
@@ -150,7 +150,7 @@ const InputRadio = forwardRef(
           </label>
         </div>
         {!!helpText && (
-          <p id={helpTextId} className={inputRadioStyles.inputHelptext}>
+          <p id={helpTextId} className={inputRadioStyles.inputHelpText}>
             {helpText}
           </p>
         )}
