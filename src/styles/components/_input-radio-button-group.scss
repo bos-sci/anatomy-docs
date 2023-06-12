@@ -40,6 +40,11 @@
           &:checked {
             + .bsds-input-radio-label-button-group {
               border-color: $feedback-error-40;
+
+              &:hover,
+              &:active {
+                border-color: $action-primary-20;
+              }
             }
           }
 

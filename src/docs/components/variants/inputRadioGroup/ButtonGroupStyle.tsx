@@ -76,6 +76,7 @@ const ButtonGroupStyle = (): JSX.Element => {
               name="groupButtonStyleHelpError"
               value="groupButtonStyleHelpError3"
               checked={selectedHelpErrorRadio === 'groupButtonStyleHelpError3'}
+              inputUnavailable
               onChange={handleHelpErrorChange}
             />
           </RadioGroup>
