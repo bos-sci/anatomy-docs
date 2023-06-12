@@ -19,7 +19,12 @@ const Disabled = (): JSX.Element => {
           <RadioGroup legend="Disabled button style radio group" buttonGroup disabled>
             <InputRadio label="Radio 1" name="groupButtonStyleDisabled" value="groupButtonStyleDisabled1" checked />
             <InputRadio label="Radio 2" name="groupButtonStyleDisabled" value="groupButtonStyleDisabled2" />
-            <InputRadio label="Radio 3" name="groupButtonStyleDisabled" value="groupButtonStyleDisabled3" />
+            <InputRadio
+              label="Radio 3"
+              name="groupButtonStyleDisabled"
+              value="groupButtonStyleDisabled3"
+              inputUnavailable
+            />
           </RadioGroup>
         </div>
       </Example>
