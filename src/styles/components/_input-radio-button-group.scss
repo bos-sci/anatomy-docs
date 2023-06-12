@@ -9,6 +9,10 @@
   flex-flow: row wrap;
   gap: space(lg);
 
+  &:not([aria-invalid='true']) {
+    gap: space(xs) space(lg);
+  }
+
   .bsds-input-error {
     width: 100%;
     margin: 0;
