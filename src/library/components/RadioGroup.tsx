@@ -79,40 +79,22 @@ const RadioGroup = ({
     setErrorTextId('radioGroupErrorText' + idNum);
   }, []);
 
-  let radioGroupStyles = {
-    fieldsetClass: 'bsds-fieldset',
-    legendClass: 'bsds-legend',
-    inputErrorClass: 'bsds-input-error',
-    inputHelpText: 'bsds-input-help-text'
-  };
-
-  const buttonGroupStyles = {
-    fieldsetClass: 'bsds-fieldset-button-group',
-    legendClass: 'bsds-legend-button-group',
-    inputErrorClass: 'bsds-input-error',
-    inputHelpText: 'bsds-input-help-text'
-  };
-
-  if (buttonGroup) {
-    radioGroupStyles = { ...buttonGroupStyles };
-  }
-
   return (
     <fieldset
-      className={radioGroupStyles.fieldsetClass}
+      className={`bsds-fieldset${buttonGroup ? '-button-group' : ''}`}
       aria-describedby={helpTextId ? helpTextId : ''}
       {...fieldsetAttrs}
       role="radiogroup"
       aria-invalid={!!addonProps.ariaInvalid && addonProps.isDirty}
     >
-      <legend className={radioGroupStyles.legendClass}>{legend}</legend>
+      <legend className={'bsds-legend'}>{legend}</legend>
       {!!validationMessage && (
-        <p id={errorTextId} className={radioGroupStyles.inputErrorClass}>
+        <p id={errorTextId} className={'bsds-input-error'}>
           {validationMessage}
         </p>
       )}
       {!!helpText && (
-        <p id={helpTextId} className={radioGroupStyles.inputHelpText}>
+        <p id={helpTextId} className={'bsds-input-help-text'}>
           {helpText}
         </p>
       )}

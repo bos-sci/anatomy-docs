@@ -99,32 +99,9 @@ const InputRadio = forwardRef(
       }
     }, [isGroupStyle, addonProps]);
 
-    let inputRadioStyles = {
-      containerClass: 'bsds-input',
-      radioContainerClass: 'bsds-input-radio',
-      inputRadioClass: 'bsds-input-radio-input',
-      labelClass: 'bsds-input-radio-label',
-      inputHelpText: 'bsds-input-help-text'
-    };
-
-    const inputButtonGroupStyles = {
-      containerClass: 'bsds-input-button-group',
-      radioContainerClass: 'bsds-input-radio-button-group',
-      inputRadioClass: 'bsds-input-radio-input',
-      labelClass: 'bsds-input-radio-label-button-group',
-      inputHelpText: 'bsds-input-help-text'
-    };
-
-    if (isGroupStyle) {
-      inputRadioStyles = { ...inputButtonGroupStyles };
-      if (inputUnavailable) {
-        inputRadioStyles.labelClass = 'bsds-input-radio-label-button-group-unavailable';
-      }
-    }
-
     return (
-      <div className={inputRadioStyles.containerClass}>
-        <div className={inputRadioStyles.radioContainerClass}>
+      <div className={'bsds-input'}>
+        <div className={'bsds-input-radio'}>
           <input
             ref={(node) => {
               if (node) {
@@ -138,19 +115,22 @@ const InputRadio = forwardRef(
             }}
             type="radio"
             id={inputId}
-            className={inputRadioStyles.inputRadioClass}
+            className={'bsds-input-radio-input'}
             aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
             onInvalid={handleInvalid}
             onBlur={handleBlur}
             onInput={handleChange}
             {...inputAttrs}
           />
-          <label htmlFor={inputId} className={inputRadioStyles.labelClass}>
+          <label
+            htmlFor={inputId}
+            className={`bsds-input-radio-label${isGroupStyle && inputUnavailable ? '-unavailable' : ''}`}
+          >
             {label}
           </label>
         </div>
         {!!helpText && (
-          <p id={helpTextId} className={inputRadioStyles.inputHelpText}>
+          <p id={helpTextId} className={'bsds-input-help-text'}>
             {helpText}
           </p>
         )}

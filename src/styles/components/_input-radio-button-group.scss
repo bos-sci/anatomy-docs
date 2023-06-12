@@ -1,9 +1,3 @@
-.bsds-input-radio {
-  &-button-group {
-    min-width: space(4x);
-  }
-}
-
 .bsds-fieldset-button-group {
   @extend .bsds-fieldset;
   flex-flow: row wrap;
@@ -11,6 +5,137 @@
 
   &:not([aria-invalid='true']) {
     gap: space(xs) space(lg);
+  }
+
+  .bsds-legend {
+    @include font-family-base-regular;
+    @include font-size($fs-body-subtle);
+
+    ~ .bsds-input {
+      width: max-content;
+      margin-top: space(lg);
+
+      &:not(:first-child) {
+        .bsds-input-radio {
+          min-width: space(4x);
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .bsds-input-radio-input {
+    + .bsds-input-radio-label {
+      @include button-default;
+      @include button-small;
+      @include font-family-base-regular;
+      outline: space(xxs) solid $neutral-40;
+      border-radius: space(3x);
+      border: space(xs) solid transparent;
+      padding: space(md) space(3x);
+      color: $neutral-40;
+
+      &:hover,
+      &:active {
+        outline: space(xxs) solid $action-primary-20;
+      }
+
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      &-unavailable {
+        @extend .bsds-input-radio-label;
+        outline-style: dashed;
+      }
+    }
+
+    &:checked,
+    &[aria-checked='true'] {
+      + .bsds-input-radio-label {
+        outline: none;
+        border-color: $action-primary-40;
+        color: $neutral-00;
+      }
+    }
+    /* stylelint-disable scss/selector-nest-combinators */
+    &:focus,
+    &:focus:checked {
+      + .bsds-input-radio-label {
+        @include focus-default;
+      }
+    }
+
+    &:disabled {
+      + .bsds-input-radio-label {
+        outline-color: $neutral-60;
+        border-color: transparent;
+        background: $neutral-95;
+        color: $neutral-40;
+        cursor: not-allowed;
+
+        &:hover,
+        &:active {
+          @extend .bsds-input-radio-label;
+        }
+      }
+
+      &:checked,
+      &[aria-checked='true'] {
+        + .bsds-input-radio-label {
+          border-width: space(xs);
+          border-color: $neutral-60;
+
+          &:hover,
+          &:active {
+            border-color: $neutral-60;
+            background: $neutral-95;
+            color: $neutral-40;
+          }
+        }
+      }
+    }
+  }
+
+  &[aria-invalid='true'] {
+    .bsds-legend {
+      ~ .bsds-input {
+        margin-top: 0;
+
+        .bsds-input-radio {
+          .bsds-input-radio-label {
+            outline-color: $feedback-error-40;
+
+            &:hover,
+            &:active {
+              outline-color: $action-primary-20;
+              border-color: $action-primary-20;
+            }
+          }
+
+          .bsds-input-radio-input {
+            &:checked {
+              + .bsds-input-radio-label {
+                border-color: $feedback-error-40;
+
+                &:hover,
+                &:active {
+                  border-color: $action-primary-20;
+                }
+              }
+            }
+
+            &:focus,
+            &:focus:checked {
+              + .bsds-input-radio-label {
+                @include focus-invalid;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .bsds-input-error {
@@ -25,129 +150,5 @@
   .bsds-input-help-text {
     width: 100%;
     margin-top: space(lg);
-  }
-
-  &[aria-invalid='true'] {
-    .bsds-input-button-group {
-      .bsds-input-radio-button-group {
-        .bsds-input-radio-label-button-group {
-          outline-color: $feedback-error-40;
-
-          &:hover,
-          &:active {
-            outline-color: $action-primary-20;
-            border-color: $action-primary-20;
-          }
-        }
-        /* stylelint-disable scss/selector-nest-combinators */
-        .bsds-input-radio-input {
-          &:checked {
-            + .bsds-input-radio-label-button-group {
-              border-color: $feedback-error-40;
-
-              &:hover,
-              &:active {
-                border-color: $action-primary-20;
-              }
-            }
-          }
-
-          &:focus,
-          &:focus:checked {
-            + .bsds-input-radio-label-button-group {
-              @include focus-invalid;
-            }
-          }
-        }
-      }
-    }
-
-    .bsds-legend-button-group {
-      ~ .bsds-input-button-group {
-        margin-top: 0;
-      }
-    }
-  }
-}
-
-.bsds-legend-button-group {
-  @include font-family-base-regular;
-  @include font-size($fs-body-subtle);
-
-  ~ .bsds-input-button-group {
-    margin-top: space(lg);
-  }
-}
-
-.bsds-input-button-group {
-  width: max-content;
-}
-
-.bsds-input-radio-input {
-  + .bsds-input-radio-label-button-group {
-    @include button-default;
-    @include button-small;
-    @include font-family-base-regular;
-    outline: space(xxs) solid $neutral-40;
-    border-radius: space(3x);
-    border: space(xs) solid transparent;
-    padding: space(md) space(3x);
-    color: $neutral-40;
-
-    &:hover,
-    &:active {
-      outline: space(xxs) solid $action-primary-20;
-    }
-
-    &-unavailable {
-      @extend .bsds-input-radio-label-button-group;
-      outline-style: dashed;
-    }
-  }
-
-  &:checked,
-  &[aria-checked='true'] {
-    + .bsds-input-radio-label-button-group {
-      outline: none;
-      border-color: $action-primary-40;
-      color: $neutral-00;
-    }
-  }
-
-  &:focus,
-  &:focus:checked {
-    + .bsds-input-radio-label-button-group {
-      @include focus-default;
-    }
-  }
-
-  &:disabled {
-    + .bsds-input-radio-label-button-group {
-      outline-color: $neutral-60;
-      border-color: transparent;
-      background: $neutral-95;
-      color: $neutral-40;
-      cursor: not-allowed;
-
-      &:hover,
-      &:active {
-        @extend .bsds-input-radio-label-button-group;
-      }
-    }
-
-    &:checked,
-    &[aria-checked='true'] {
-      + .bsds-input-radio-label-button-group {
-        border-width: space(xs);
-        border-color: $neutral-60;
-
-        &:hover,
-        &:active {
-          border-color: $neutral-60;
-          background: $neutral-95;
-          color: $neutral-40;
-        }
-      }
-    }
   }
 }
