@@ -6,6 +6,40 @@
   margin-top: space(3x);
 }
 
+@mixin swatch-border($border-properties) {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 100%;
+    height: 0;
+    border-bottom: $border-properties;
+    content: '';
+  }
+}
+
+@mixin ghost-swatch($has-offset: true) {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: calc(0rem - space(2x));
+    bottom: calc(0rem - space(2x));
+    left: calc(0rem - space(2x));
+    @if $has-offset {
+      right: calc(0rem - space(2x));
+    } @else {
+      right: 0;
+    }
+    z-index: -1;
+    display: block;
+    background: $neutral-00;
+    content: '';
+  }
+}
+
 .docs-swatch {
   // brand color range
   &-bsc-blue {
@@ -143,6 +177,56 @@
   }
 
   // feedback color ranges
+  &-feedback-success-20 {
+    @include swatch;
+    background: $feedback-success-20;
+  }
+
+  &-feedback-success-40 {
+    @include swatch;
+    background: $feedback-success-40;
+  }
+
+  &-feedback-success-60 {
+    @include swatch;
+    background: $feedback-success-60;
+  }
+
+  &-feedback-success-80 {
+    @include swatch;
+    background: $feedback-success-80;
+  }
+
+  &-feedback-success-95 {
+    @include swatch;
+    background: $feedback-success-95;
+  }
+
+  &-feedback-warning-20 {
+    @include swatch;
+    background: $feedback-warning-20;
+  }
+
+  &-feedback-warning-40 {
+    @include swatch;
+    background: $feedback-warning-40;
+  }
+
+  &-feedback-warning-60 {
+    @include swatch;
+    background: $feedback-warning-60;
+  }
+
+  &-feedback-warning-80 {
+    @include swatch;
+    background: $feedback-warning-80;
+  }
+
+  &-feedback-warning-95 {
+    @include swatch;
+    background: $feedback-warning-95;
+  }
+
   &-feedback-error-20 {
     @include swatch;
     background: $feedback-error-20;
@@ -224,9 +308,145 @@
     @include border-gradient-accent;
   }
 
+  &-border-color-action {
+    @include swatch;
+    @include swatch-border($border-width-xs solid $border-color-action);
+  }
+
+  &-border-color-assertive {
+    @include swatch;
+    @include swatch-border($border-width-xs solid $border-color-assertive);
+  }
+
+  &-border-color-error {
+    @include swatch;
+    @include swatch-border($border-width-xs solid $border-color-error);
+  }
+
+  &-border-color-ghost {
+    @include swatch;
+    @include swatch-border($border-width-xs solid $border-color-ghost);
+
+    @include ghost-swatch(false);
+  }
+
+  &-border-color-subtle {
+    @include swatch;
+    @include swatch-border($border-width-xs solid $border-color-subtle);
+  }
+
+  &-border-color-success {
+    @include swatch;
+    @include swatch-border($border-width-xs solid $border-color-success);
+  }
+
+  &-border-color-warning {
+    @include swatch;
+    @include swatch-border($border-width-xs solid $border-color-warning);
+  }
+
+  &-border-radius-sm {
+    @include swatch;
+    border-radius: $border-radius-sm;
+    border: $border-width-xs solid $border-color-assertive;
+  }
+
+  &-border-width-xxs {
+    @include swatch;
+    @include swatch-border($border-width-xxs solid $border-color-assertive);
+  }
+
+  &-border-width-xs {
+    @include swatch;
+    @include swatch-border($border-width-xs solid $border-color-assertive);
+  }
+
+  &-border-width-sm {
+    @include swatch;
+    @include swatch-border($border-width-sm solid $border-color-assertive);
+  }
+
   // backgrounds
   &-background-action {
     @include swatch;
     background: $action-primary-95;
+  }
+
+  // Size
+
+  &-size-icon-decorative {
+    img {
+      display: block;
+      width: $size-icon-decorative;
+      margin: auto;
+    }
+  }
+
+  &-letter-spacing-increase {
+    letter-spacing: $letter-spacing-increase;
+  }
+
+  // Focus
+
+  &-focus-default {
+    @include swatch;
+    @include focus-default;
+    margin-left: space(2x);
+    border: space(xxs) solid $neutral-00;
+  }
+
+  &-focus-default-inset {
+    @include swatch;
+    @include focus-default-inset;
+    margin-left: space(2x);
+    border: space(xxs) solid $neutral-00;
+  }
+
+  &-focus-ghost {
+    @include swatch;
+    @include focus-ghost;
+    @include ghost-swatch;
+    margin-left: space(2x);
+    border: space(xxs) solid $neutral-100;
+  }
+
+  &-focus-ghost-inset {
+    @include swatch;
+    @include focus-ghost-inset;
+    @include ghost-swatch;
+    margin-left: space(2x);
+    border: space(xxs) solid $neutral-100;
+  }
+
+  &-focus-readonly {
+    @include swatch;
+    @include focus-readonly;
+    margin-left: space(2x);
+    border: space(xxs) solid $neutral-00;
+  }
+
+  &-focus-invalid {
+    @include swatch;
+    @include focus-invalid;
+    margin-left: space(2x);
+    border: space(xxs) solid $neutral-00;
+  }
+
+  // Gradients
+
+  &-animated-gradient-brand {
+    @include swatch;
+    @include animated-gradient-brand;
+    position: relative;
+  }
+
+  &-animated-gradient-primary {
+    @include swatch;
+    @include animated-gradient-primary;
+  }
+
+  &-animated-gradient-secondary {
+    @include swatch;
+    @include animated-gradient-secondary;
   }
 }
