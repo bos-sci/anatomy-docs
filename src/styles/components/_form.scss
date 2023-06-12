@@ -41,8 +41,8 @@
 
 .bsds-input-help-text {
   margin: space(sm) 0 0 0;
-  @include font-size($fs-body-subtle);
   color: $neutral-40;
+  @include font-size($fs-body-subtle);
 }
 
 .bsds-form-control {

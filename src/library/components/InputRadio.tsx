@@ -20,18 +20,20 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   value?: string;
   helpText?: string;
   forceValidation?: boolean;
+  inputUnavailable?: boolean;
 }
 
 let radioId = 0;
 
 const InputRadio = forwardRef(
   (
-    { label, helpText, forceValidation, onBlur, onInput, onInvalid, ...inputAttrs }: Props,
+    { label, helpText, forceValidation, inputUnavailable, onBlur, onInput, onInvalid, ...inputAttrs }: Props,
     ref: ForwardedRef<HTMLInputElement>
   ): JSX.Element => {
     const [inputId, setInputId] = useState('');
     const [helpTextId, setHelpTextId] = useState('');
     const [errorText, setErrorText] = useState('');
+    const [isGroupStyle, setIsGroupStyle] = useState(false);
     const addonProps: AddonProps = useContext(RadioAddonPropsContext);
 
     const inputEl = useRef<HTMLInputElement>(null);
@@ -91,9 +93,15 @@ const InputRadio = forwardRef(
       setHelpTextId('radioHelpText' + idNum);
     }, []);
 
+    useEffect(() => {
+      if (addonProps.buttonGroup) {
+        setIsGroupStyle(addonProps.buttonGroup);
+      }
+    }, [isGroupStyle, addonProps]);
+
     return (
-      <div className="bsds-input">
-        <div className="bsds-input-radio">
+      <div className={'bsds-input'}>
+        <div className={'bsds-input-radio'}>
           <input
             ref={(node) => {
               if (node) {
@@ -107,19 +115,22 @@ const InputRadio = forwardRef(
             }}
             type="radio"
             id={inputId}
-            className="bsds-input-radio-input"
+            className={'bsds-input-radio-input'}
             aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
             onInvalid={handleInvalid}
             onBlur={handleBlur}
             onInput={handleChange}
             {...inputAttrs}
           />
-          <label htmlFor={inputId} className="bsds-input-radio-label">
+          <label
+            htmlFor={inputId}
+            className={`bsds-input-radio-label${isGroupStyle && inputUnavailable ? '-unavailable' : ''}`}
+          >
             {label}
           </label>
         </div>
         {!!helpText && (
-          <p id={helpTextId} className="bsds-input-help-text">
+          <p id={helpTextId} className={'bsds-input-help-text'}>
             {helpText}
           </p>
         )}
