@@ -9,7 +9,6 @@
 
   .bsds-legend {
     @include font-family-base-regular;
-    @include font-size($fs-body-subtle);
 
     ~ .bsds-input {
       width: max-content;
@@ -78,6 +77,13 @@
         &:hover,
         &:active {
           @extend .bsds-input-radio-label;
+        }
+
+        &-unavailable {
+          &:hover,
+          &:active {
+            outline-style: dashed;
+          }
         }
       }
 
