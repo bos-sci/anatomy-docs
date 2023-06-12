@@ -35,3 +35,26 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add('getInternalLinks', () => {
+  cy.readFile('public/sitemap.xml').then((text) => {
+    const parser = new DOMParser();
+    const xmlDOM = parser.parseFromString(text, 'text/xml');
+    const values = Array.from(xmlDOM.getElementsByTagName('loc'));
+    const urls = values.map((url) => url.innerHTML);
+    return urls;
+  });
+});
+
+// eslint-disable @typescript/interface-name
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace Cypress {
+    interface Chainable {
+      getInternalLinks(): Chainable<Array<string>>;
+    }
+  }
+}
+
+// Convert this to a module instead of script (allows import/export)
+export {};
