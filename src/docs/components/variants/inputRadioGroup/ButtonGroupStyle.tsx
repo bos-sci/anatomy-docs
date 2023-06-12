@@ -15,7 +15,7 @@ const ButtonGroupStyle = (): JSX.Element => {
 
   const handleHelpErrorChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSelectedHelpErrorRadio(e.target.value);
-    setErrorText(e.target.value === 'groupButtonStyleHelpError1' ? error : '');
+    setErrorText(e.target.value === 'groupButtonStyleHelpError1' ? error : error);
   };
 
   return (

@@ -12,11 +12,15 @@
   .bsds-input-error {
     width: 100%;
     margin: 0;
+
+    + .bsds-input-help-text {
+      margin-top: 0;
+    }
   }
 
   .bsds-input-help-text {
     width: 100%;
-    margin: 0;
+    margin-top: space(lg);
   }
 
   &[aria-invalid='true'] {
