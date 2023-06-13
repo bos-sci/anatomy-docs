@@ -3,8 +3,8 @@ import InputRadio from '../../../../library/components/InputRadio';
 import RadioGroup from '../../../../library/components/RadioGroup';
 import Example from '../../../shared/components/Example';
 
-const DefaultInputRadioGroupStyle = (): JSX.Element => {
-  const [selectedRadio, setSelectedRadio] = useState('defaultRadioStyle1');
+const DefaultRadioGroupStyle = (): JSX.Element => {
+  const [selectedRadio, setSelectedRadio] = useState('groupDefaultStyle1');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSelectedRadio(e.target.value);
@@ -17,22 +17,22 @@ const DefaultInputRadioGroupStyle = (): JSX.Element => {
           <InputRadio
             label="Radio 1"
             name="groupDefaultStyle"
-            value="defaultRadioStyle1"
-            checked={selectedRadio === 'defaultRadioStyle1'}
+            value="groupDefaultStyle1"
+            checked={selectedRadio === 'groupDefaultStyle1'}
             onChange={handleChange}
           />
           <InputRadio
             label="Radio 2"
             name="groupDefaultStyle"
-            value="defaultRadioStyle2"
-            checked={selectedRadio === 'defaultRadioStyle2'}
+            value="groupDefaultStyle2"
+            checked={selectedRadio === 'groupDefaultStyle2'}
             onChange={handleChange}
           />
           <InputRadio
             label="Radio 3"
             name="groupDefaultStyle"
-            value="defaultRadioStyle3"
-            checked={selectedRadio === 'defaultRadioStyle3'}
+            value="groupDefaultStyle3"
+            checked={selectedRadio === 'groupDefaultStyle3'}
             onChange={handleChange}
           />
         </RadioGroup>
@@ -41,4 +41,4 @@ const DefaultInputRadioGroupStyle = (): JSX.Element => {
   );
 };
 
-export default DefaultInputRadioGroupStyle;
+export default DefaultRadioGroupStyle;

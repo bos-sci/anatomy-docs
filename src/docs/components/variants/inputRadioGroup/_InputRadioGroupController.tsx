@@ -5,7 +5,7 @@ import WithError from './WithError';
 import WithHelpError from './WithHelpError';
 import Disabled from './Disabled';
 import ButtonGroupStyle from './ButtonGroupStyle';
-import DefaultInputRadioGroupStyle from './DefaultInputRadioGroupStyle';
+import DefaultRadioGroupStyle from './DefaultRadioGroupStyle';
 
 const InputRadioController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
@@ -18,9 +18,9 @@ const InputRadioController = ({ variantId }: VariantProps): JSX.Element => {
       return <WithHelpError />;
 
     // Styles
-    case 'inputRadioDefaultGroupStyle':
-      return <DefaultInputRadioGroupStyle />;
-    case 'inputRadioButtonGroupStyle':
+    case 'defaultRadioGroupStyle':
+      return <DefaultRadioGroupStyle />;
+    case 'buttonGroupStyle':
       return <ButtonGroupStyle />;
 
     // States
