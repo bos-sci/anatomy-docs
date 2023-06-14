@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/prefer-tag-over-role */
 import { IconProps } from './iconTypes';
 
 const IconChevronRight = (props: IconProps): JSX.Element => {
@@ -11,8 +12,8 @@ const IconChevronRight = (props: IconProps): JSX.Element => {
       viewBox="0 0 18 18"
     >
       <path
-        d="M14.17,9.7l-8,8a1,1,0,0,1-1.4,0l-.93-.93a1,1,0,0,1,0-1.4L10.17,9,3.83,2.62a1,1,0,0,1,0-1.4L4.76.29a1,1,0,0,1,1.4,0l8,8A1,1,0,0,1,14.17,9.7Z"
         fill="currentColor"
+        d="M14.17,9.7l-8,8a1,1,0,0,1-1.4,0l-.93-.93a1,1,0,0,1,0-1.4L10.17,9,3.83,2.62a1,1,0,0,1,0-1.4L4.76.29a1,1,0,0,1,1.4,0l8,8A1,1,0,0,1,14.17,9.7Z"
       />
     </svg>
   );

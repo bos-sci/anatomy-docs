@@ -1,14 +1,15 @@
-@import "/src/styles/abstracts/abstracts";
-@import "/src/styles/base/base";
+// TODO: Remove import once stylesheet is moved off of component
+@import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
 
-.bsds-nav-tertiary
-{
+@import '/src/styles/abstracts/abstracts';
+@import '/src/styles/base/base';
+
+.bsds-nav-tertiary {
   grid-area: nav-tertiary;
   width: 100%;
   margin: space(4x) 0 0;
 
-  .bsds-nav-tertiary-title
-  {
+  .bsds-nav-tertiary-title {
     margin: 0;
     border-bottom: space(xxs) solid $neutral-80;
     padding-bottom: space(lg);
@@ -18,8 +19,7 @@
     line-height: 1.5; // NOTE: overriding h2's default line height
   }
 
-  .bsds-nav
-  {
+  .bsds-nav {
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -28,23 +28,19 @@
     @include font-size($fs-small);
   }
 
-  .bsds-nav-item
-  {
+  .bsds-nav-item {
     margin-top: space(lg);
   }
 
-  .bsds-nav-link
-  {
+  .bsds-nav-link {
     display: inline-flex;
     padding: 0;
     @include link-navigation;
   }
 }
 
-@media (min-width: $lg)
-{
-  .bsds-nav-tertiary
-  {
+@media (min-width: $breakpoint-lg-min) {
+  .bsds-nav-tertiary {
     margin-top: 0;
   }
 }

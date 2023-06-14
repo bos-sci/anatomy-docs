@@ -3,10 +3,10 @@ import Example from '../../../shared/components/Example';
 
 const Icon = (): JSX.Element => {
   return (
-    <Example isFlex={true}>
+    <Example isFlex>
       <Button type="button" icon="plus" aria-label="icon button" />
     </Example>
   );
-}
+};
 
 export default Icon;

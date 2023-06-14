@@ -7,10 +7,10 @@ const CtaStyle = (): JSX.Element => {
     <Example>
       <Link href="docs-demo-link" variant="cta">
         CTA link
-        <IconArrowRight className="bsds-link-cta-icon"/>
+        <IconArrowRight className="bsds-link-cta-icon" />
       </Link>
     </Example>
   );
-}
+};
 
 export default CtaStyle;

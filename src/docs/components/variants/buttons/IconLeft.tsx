@@ -3,10 +3,12 @@ import Example from '../../../shared/components/Example';
 
 const IconLeft = (): JSX.Element => {
   return (
-    <Example isFlex={true}>
-      <Button type="button" icon="plus">Icon left</Button>
+    <Example isFlex>
+      <Button type="button" icon="plus">
+        Icon left
+      </Button>
     </Example>
   );
-}
+};
 
 export default IconLeft;

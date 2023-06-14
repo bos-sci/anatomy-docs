@@ -22,6 +22,6 @@ const InputCheckboxController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultInputCheckbox />;
   }
-}
+};
 
 export default InputCheckboxController;

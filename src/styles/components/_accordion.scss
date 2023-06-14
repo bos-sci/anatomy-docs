@@ -1,20 +1,16 @@
-.bsds-accordion
-{
+.bsds-accordion {
   width: 100%;
 
-  &:last-child
-  {
+  &:last-child {
     border-bottom: space(xxs) solid $neutral-80;
   }
 }
 
-.bsds-accordion-heading
-{
+.bsds-accordion-heading {
   margin-top: 0;
 }
 
-.bsds-accordion-trigger
-{
+.bsds-accordion-trigger {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,159 +22,131 @@
   border-left: 0;
   padding: space(3x);
   background: transparent;
-  color: $border-color-primary;
+  color: $border-color-assertive;
   @include font-family-base-regular;
   @include font-size($fs-base);
   text-align: left;
 
-  svg
-  {
+  svg {
     margin-left: space(3x);
   }
 
-  &[aria-expanded="true"]
-  {
+  &[aria-expanded='true'] {
     color: $neutral-00;
     @include font-family-base-heavy;
 
-    svg
-    {
+    svg {
       transform: rotate(180deg);
     }
   }
 
-  &:not([disabled])
-  {
-    &:hover
-    {
+  &:not([disabled]) {
+    &:hover {
       border-color: $neutral-80;
       background: transparent;
       color: $action-primary-40;
       text-decoration: underline;
 
-      svg
-      {
+      svg {
         color: $action-primary-40;
       }
     }
 
-    &:active
-    {
+    &:active {
       background: transparent;
       color: $action-primary-40;
 
-      svg
-      {
+      svg {
         color: $action-primary-40;
       }
     }
 
-    &:focus
-    {
+    &:focus {
       background: transparent;
       @include focus-default-inset;
     }
   }
 
-  &[disabled]
-  {
+  &[disabled] {
     background: transparent;
     color: $neutral-60;
     cursor: not-allowed;
   }
 }
 
-.bsds-accordion-panel
-{
+.bsds-accordion-panel {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.2s ease;
 }
 
-.bsds-accordion-panel-body
-{
+.bsds-accordion-panel-body {
   padding: space(3x) space(3x) space(4x);
 }
 
 // Stoplight styles
 
-[class*="bsds-accordion-stoplight"]
-{
-  .bsds-accordion-trigger
-  {
+[class*='bsds-accordion-stoplight'] {
+  .bsds-accordion-trigger {
     position: relative;
     padding: 0;
 
-    &::before
-    {
-      content: '';
+    &::before {
       align-self: stretch;
       width: space(3x) + space(2x) + space(sm);
       margin-right: space(2x);
       border-left-width: space(sm);
       border-left-style: solid;
       padding: space(3x) space(md);
-      background-size: space(3x);
-      background-repeat: no-repeat;
       background-position: center;
+      background-repeat: no-repeat;
+      background-size: space(3x);
+      content: '';
     }
 
-    .bsds-accordion-trigger-text
-    {
+    .bsds-accordion-trigger-text {
       flex: 1;
       padding: space(3x) 0;
     }
 
-    svg
-    {
+    svg {
       margin-right: space(3x);
     }
 
-    &:focus
-    {
+    &:focus {
       @include focus-default;
       z-index: 2;
     }
   }
 }
 
-.bsds-accordion-stoplight
-{
-  &-red
-  {
-    .bsds-accordion-trigger
-    {
-      &::before
-      {
+.bsds-accordion-stoplight {
+  &-red {
+    .bsds-accordion-trigger {
+      &::before {
         border-left-color: $feedback-error-40;
         background-color: $feedback-error-95;
-        background-image: url("../../assets/images/icon-stoplight-red.svg");
+        background-image: url('../../assets/images/icon-stoplight-red.svg');
       }
     }
   }
 
-  &-yellow
-  {
-    .bsds-accordion-trigger
-    {
-      &::before
-      {
+  &-yellow {
+    .bsds-accordion-trigger {
+      &::before {
         border-left-color: $feedback-warning-60;
         background-color: $feedback-warning-95;
-        background-image: url("../../assets/images/icon-stoplight-yellow.svg");
+        background-image: url('../../assets/images/icon-stoplight-yellow.svg');
       }
     }
   }
 
-  &-green
-  {
-    .bsds-accordion-trigger
-    {
-      &::before
-      {
+  &-green {
+    .bsds-accordion-trigger {
+      &::before {
         border-left-color: $feedback-success-40;
         background-color: $feedback-success-95;
-        background-image: url("../../assets/images/icon-stoplight-green.svg");
+        background-image: url('../../assets/images/icon-stoplight-green.svg');
       }
     }
   }

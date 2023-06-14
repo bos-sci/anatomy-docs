@@ -4,7 +4,6 @@ import Modal, { ModalRef } from '../../../../library/components/Modal';
 import Example from '../../../shared/components/Example';
 
 const RequiredActionModal = (): JSX.Element => {
-
   const modalRef = useRef<ModalRef>(null);
 
   const positiveAction = <Button>Positive action</Button>;
@@ -12,12 +11,22 @@ const RequiredActionModal = (): JSX.Element => {
 
   return (
     <Example>
-      <Button type="button" aria-haspopup="true" onClick={() => modalRef.current?.showModal()}>Open required action modal</Button>
-      <Modal ref={modalRef} hasClose={false} title="Modal title" positiveAction={positiveAction} negativeAction={negativeAction}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet varius sapien. Nullam diam nisl, congue bibendum orci eu, fermentum consequat nulla. Nunc luctus placerat mauris, eu convallis ante sollicitudin in. Maecenas orci eros, placerat bibendum rhoncus a, tincidunt vitae lectus.
+      <Button type="button" aria-haspopup="true" onClick={() => modalRef.current?.showModal()}>
+        Open required action modal
+      </Button>
+      <Modal
+        ref={modalRef}
+        hasClose={false}
+        title="Modal title"
+        positiveAction={positiveAction}
+        negativeAction={negativeAction}
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet varius sapien. Nullam diam nisl, congue
+        bibendum orci eu, fermentum consequat nulla. Nunc luctus placerat mauris, eu convallis ante sollicitudin in.
+        Maecenas orci eros, placerat bibendum rhoncus a, tincidunt vitae lectus.
       </Modal>
     </Example>
   );
-}
+};
 
 export default RequiredActionModal;

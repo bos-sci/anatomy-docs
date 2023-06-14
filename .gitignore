@@ -11,6 +11,9 @@
 # production
 /build
 
+# versions file
+/src/docs/shared/versions.ts
+
 # release date file
 /src/utils/release-date.ts
 
@@ -26,3 +29,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.eslintcache

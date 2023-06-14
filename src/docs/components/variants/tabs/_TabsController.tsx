@@ -11,6 +11,6 @@ const TabsController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultTabs />;
   }
-}
+};
 
 export default TabsController;

@@ -1,6 +1,6 @@
 {
   "semi": true,
-  "trailingComma": "es5",
+  "trailingComma": "none",
   "singleQuote": true,
   "jsxSingleQuote": false,
   "quoteProps": "consistent",
@@ -8,5 +8,6 @@
   "htmlWhitespaceSensitivity": "ignore",
   "bracketSpacing": true,
   "bracketSameLine": false,
-  "singleAttributePerLine": false
+  "singleAttributePerLine": false,
+  "printWidth": 120
 }

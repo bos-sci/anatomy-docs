@@ -1,4 +1,4 @@
-import IconChevronDown from "./icon/icons/IconChevronDown";
+import IconChevronDown from './icon/icons/IconChevronDown';
 
 interface Props {
   heading: string;
@@ -17,12 +17,10 @@ const AccordionHeading = ({ heading, togglePanel, index, isPanelExpanded, panelI
       aria-expanded={isPanelExpanded}
       onClick={() => togglePanel(index)}
     >
-      <span className="bsds-accordion-trigger-text">
-        { heading }
-      </span>
-      <IconChevronDown className='bsds-icon-2x' />
+      <span className="bsds-accordion-trigger-text">{heading}</span>
+      <IconChevronDown className="bsds-icon-2x" />
     </button>
-  )
-}
+  );
+};
 
 export default AccordionHeading;

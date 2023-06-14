@@ -1,74 +1,70 @@
-import { render, screen } from "@testing-library/react";
-import Tag from "../Tag";
+import { render, screen } from '@testing-library/react';
+import Tag from '../Tag';
 
-describe("Tag", () => {
-  it("Renders default variant when no variant prop passed", () => {
-    render(
-      <Tag>Sample Tag!</Tag>
-    );
-    expect(screen.getByText("Sample Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Sample Tag!")).toHaveClass("bsds-tag");
+describe('Tag', () => {
+  it('Renders default variant when no variant prop passed', () => {
+    render(<Tag>Sample Tag!</Tag>);
+    expect(screen.getByText('Sample Tag!')).toBeInTheDocument();
+    expect(screen.getByText('Sample Tag!')).toHaveClass('bsds-tag');
   });
 
-  it("Renders ghost variant", () => {
+  it('Renders ghost variant', () => {
     render(<Tag isGhost>Variant Tag!</Tag>);
 
-    expect(screen.getByText("Variant Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Variant Tag!")).toHaveClass("bsds-tag-ghost");
+    expect(screen.getByText('Variant Tag!')).toBeInTheDocument();
+    expect(screen.getByText('Variant Tag!')).toHaveClass('bsds-tag-ghost');
   });
 
-  it("Renders accent variation", () => {
+  it('Renders accent variation', () => {
+    render(<Tag variant="accent">Sample Tag!</Tag>);
+    expect(screen.getByText('Sample Tag!')).toBeInTheDocument();
+    expect(screen.getByText('Sample Tag!')).toHaveClass('bsds-tag-accent');
+  });
+
+  it('Renders accent-ghost variation', () => {
     render(
-      <Tag variant="accent">Sample Tag!</Tag>
+      <Tag variant="accent" isGhost>
+        Sample Tag!
+      </Tag>
     );
-    expect(screen.getByText("Sample Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Sample Tag!")).toHaveClass("bsds-tag-accent");
+
+    expect(screen.getByText('Sample Tag!')).toBeInTheDocument();
+    expect(screen.getByText('Sample Tag!')).toHaveClass('bsds-tag-accent-ghost');
   });
 
-  it("Renders accent-ghost variation", () => {
-    render(
-      <Tag variant="accent" isGhost>Sample Tag!</Tag>
-    );
+  it('Renders assertive variation', () => {
+    render(<Tag variant="assertive">Variant Tag!</Tag>);
 
-    expect(screen.getByText("Sample Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Sample Tag!")).toHaveClass("bsds-tag-accent-ghost");
+    expect(screen.getByText('Variant Tag!')).toBeInTheDocument();
+    expect(screen.getByText('Variant Tag!')).toHaveClass('bsds-tag-assertive');
   });
 
-  it("Renders assertive variation", () => {
+  it('Renders assertive-ghost variation', () => {
     render(
-      <Tag variant="assertive">
+      <Tag variant="assertive" isGhost>
         Variant Tag!
       </Tag>
     );
 
-    expect(screen.getByText("Variant Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Variant Tag!")).toHaveClass("bsds-tag-assertive");
-  });
-
-  it("Renders assertive-ghost variation", () => {
-    render(
-      <Tag variant="assertive" isGhost>Variant Tag!</Tag>
-    );
-
-    expect(screen.getByText("Variant Tag!")).toBeInTheDocument();
-    expect(screen.getByText("Variant Tag!")).toHaveClass("bsds-tag-assertive-ghost");
+    expect(screen.getByText('Variant Tag!')).toBeInTheDocument();
+    expect(screen.getByText('Variant Tag!')).toHaveClass('bsds-tag-assertive-ghost');
   });
 
   it("Renders featured variation with 'featured' as tag text", () => {
-    render(
-      <Tag variant="featured">Variant Tag!</Tag>
-    );
+    render(<Tag variant="featured">Variant Tag!</Tag>);
 
-    expect(screen.getByText("Featured")).toBeInTheDocument();
-    expect(screen.getByText("Featured")).toHaveClass("bsds-tag-featured");
+    expect(screen.getByText('Featured')).toBeInTheDocument();
+    expect(screen.getByText('Featured')).toHaveClass('bsds-tag-featured');
   });
 
   it("Renders featured-ghost variation with 'featured' as tag text", () => {
     render(
-      <Tag variant="featured" isGhost>Variant Tag!</Tag>
+      <Tag variant="featured" isGhost>
+        Variant Tag!
+      </Tag>
     );
 
-    expect(screen.getByText("Featured")).toBeInTheDocument();
-    expect(screen.getByText("Featured")).toHaveClass("bsds-tag-featured-ghost");
+    expect(screen.getByText('Featured')).toBeInTheDocument();
+    expect(screen.getByText('Featured')).toHaveClass('bsds-tag-featured-ghost');
   });
 });

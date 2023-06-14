@@ -9,6 +9,6 @@ const DefaultStoplight = (): JSX.Element => {
       <Stoplight lightColor="green">Green light</Stoplight>
     </Example>
   );
-}
+};
 
 export default DefaultStoplight;

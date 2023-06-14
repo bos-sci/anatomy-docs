@@ -5,10 +5,10 @@ const WithError = (): JSX.Element => {
   return (
     <Example>
       <div className="bsds-form-control">
-        <InputCheckbox label="Checkbox" required forceValidation={true} />
+        <InputCheckbox label="Checkbox" forceValidation required />
       </div>
     </Example>
   );
-}
+};
 
 export default WithError;

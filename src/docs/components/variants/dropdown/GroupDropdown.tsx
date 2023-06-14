@@ -4,7 +4,6 @@ import DropdownGroupName from '../../../../library/components/DropdownGroupName'
 import Example from '../../../shared/components/Example';
 
 const GroupDropdown = (): JSX.Element => {
-
   return (
     <Example>
       <Dropdown triggerText="Dropdown trigger">
@@ -17,6 +16,6 @@ const GroupDropdown = (): JSX.Element => {
       </Dropdown>
     </Example>
   );
-}
+};
 
 export default GroupDropdown;

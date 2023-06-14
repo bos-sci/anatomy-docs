@@ -12,6 +12,6 @@ const Disabled = (): JSX.Element => {
       </div>
     </Example>
   );
-}
+};
 
 export default Disabled;

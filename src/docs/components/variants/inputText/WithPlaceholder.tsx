@@ -9,6 +9,6 @@ const WithPlaceholder = (): JSX.Element => {
       </div>
     </Example>
   );
-}
+};
 
 export default WithPlaceholder;

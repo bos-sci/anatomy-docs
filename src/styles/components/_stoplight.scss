@@ -1,25 +1,21 @@
-[class*="bsds-stoplight"]
-{
+[class*='bsds-stoplight'] {
   display: flex;
   align-items: center;
 
-  &::before
-  {
-    content: '';
+  &::before {
+    display: inline-block;
     flex-shrink: 0;
     align-self: flex-start;
-    display: inline-block;
     width: space(3x);
     height: space(3x);
     margin-right: space(md);
-    background-size: 100%;
     background-repeat: no-repeat;
+    background-size: 100%;
+    content: '';
   }
 
-  &.bsds-body-subtle
-  {
-    &::before
-    {
+  &.bsds-body-subtle {
+    &::before {
       width: space(2x);
       height: space(2x);
       transform: translateY(-1px);
@@ -27,42 +23,32 @@
   }
 }
 
-.bsds-stoplight
-{
-  &-red
-  {
-    &::before
-    {
-      background-image: url("../../assets/images/icon-stoplight-red.svg");
+.bsds-stoplight {
+  &-red {
+    &::before {
+      background-image: url('../../assets/images/icon-stoplight-red.svg');
     }
 
-    &.bsds-stoplight-ghost
-    {
-      &::before
-      {
-        background-image: url("../../assets/images/icon-stoplight-red-ghost.svg");
+    &.bsds-stoplight-ghost {
+      &::before {
+        background-image: url('../../assets/images/icon-stoplight-red-ghost.svg');
       }
     }
   }
 
-  &-yellow
-  {
-    &::before
-    {
-      background-image: url("../../assets/images/icon-stoplight-yellow.svg");
+  &-yellow {
+    &::before {
+      background-image: url('../../assets/images/icon-stoplight-yellow.svg');
     }
   }
 
-  &-green
-  {
-    &::before
-    {
-      background-image: url("../../assets/images/icon-stoplight-green.svg");
+  &-green {
+    &::before {
+      background-image: url('../../assets/images/icon-stoplight-green.svg');
     }
   }
 
-  &-ghost
-  {
+  &-ghost {
     color: $neutral-100;
   }
 }

@@ -1,164 +1,143 @@
 $icon-size: 1em;
 
-.bsds-dropdown
-{
+.bsds-dropdown {
   position: relative;
   display: inline-block;
 
-  .bsds-dropdown-trigger
-  {
+  .bsds-dropdown-trigger {
     padding-right: calc(space(lg) + $icon-size + space(3x)); // gap + icon width + padding
 
-    &.has-icon
-    {
-      padding-left: space(lg);
+    &.has-icon {
       padding-right: calc(space(md) + $icon-size + space(lg)); // gap + icon width + padding
+      padding-left: space(lg);
 
-      &::after
-      {
+      &::after {
         right: space(lg);
       }
     }
 
-    &::after
-    {
-      content: '';
-      -webkit-mask: url("../../assets/images/icon-chevron-down.svg") no-repeat 50% 50%;
-      mask: url("../../assets/images/icon-chevron-down.svg") no-repeat 50% 50%;
-      -webkit-mask-size: cover;
-      mask-size: cover;
+    &::after {
       position: absolute;
       right: space(3x);
       width: $icon-size;
       height: $icon-size;
+      content: '';
+      mask: url('../../assets/images/icon-chevron-down.svg') no-repeat 50% 50%;
+      mask-size: cover;
     }
 
-    &.bsds-button
-    {
-      &::after
-      {
+    &.bsds-button {
+      &::after {
         background-color: $action-primary-40;
       }
 
-      &[aria-expanded="true"]
-      {
+      &[aria-expanded='true'] {
         @include button-active;
       }
 
       &:hover,
       &:active,
-      &[aria-expanded="true"]
-      {
-        &::after
-        {
+      &[aria-expanded='true'] {
+        &::after {
           background-color: $neutral-100;
         }
       }
 
-      &-assertive
-      {
-        &::after
-        {
+      &-assertive {
+        &::after {
           background-color: $neutral-100;
         }
 
-        &[aria-expanded="true"]
-        {
+        &[aria-expanded='true'] {
           @include button-active;
         }
       }
 
-      &-subtle
-      {
-        &::after
-        {
+      &-subtle {
+        &::after {
           background-color: $action-primary-40;
         }
 
-        &[aria-expanded="true"]
-        {
+        &[aria-expanded='true'] {
           @include button-active;
         }
 
         &:hover,
         &:active,
-        &[aria-expanded="true"]
-        {
-          &::after
-          {
+        &[aria-expanded='true'] {
+          &::after {
             background-color: $neutral-100;
           }
         }
       }
 
-      &-ghost
-      {
-        &::after
-        {
+      &-ghost {
+        &::after {
           background-color: $neutral-100;
         }
 
-        &[aria-expanded="true"]
-        {
+        &[aria-expanded='true'] {
           @include button-ghost-active;
         }
       }
     }
 
-    &[aria-expanded="true"]::after
-    {
-      transform: rotate(180deg);
+    &[aria-expanded='true'] {
+      &::after {
+        transform: rotate(180deg);
+      }
     }
   }
 
-  .bsds-dropdown-menu
-  {
+  .bsds-dropdown-menu {
     position: absolute;
-    margin: 0;
-    padding: 0;
-    min-width: 10rem; // NOTE: This is a one off size.
-    list-style: none;
-    background: $neutral-100;
-    box-shadow: $box-shadow-secondary;
     z-index: 1000;
+    min-width: 10rem; // NOTE: This is a one off size.
+    margin: 0;
+    box-shadow: $box-shadow-secondary;
+    padding: 0;
+    background: $neutral-100;
+    list-style: none;
 
-    &.right
-    {
+    &.right {
       right: 0;
     }
 
-    &.full
-    {
+    &.full {
+      right: 0;
       left: 0;
-      right: 0;
     }
 
-    .bsds-dropdown-item
-    {
+    .bsds-dropdown-item {
       margin-top: 0;
+    }
+
+    .bsds-dropdown-group-name {
+      @include font-family-base-heavy;
+    }
+
+    .bsds-button,
+    .bsds-link {
+      @include font-family-base-regular;
     }
 
     .bsds-button,
     .bsds-link,
-    .bsds-dropdown-group-name
-    {
+    .bsds-dropdown-group-name {
       position: relative;
       display: block;
+      width: 100%;
       border: 0;
       padding: space(lg) space(2x);
-      width: 100%;
       color: $text-color-primary;
-      @include font-family-base-regular;
-      @include font-size($fs-base);
-      text-decoration: none;
       text-align: inherit;
+      text-decoration: none;
+      @include font-size($fs-base);
 
-      &:focus
-      {
+      &:focus {
         @include focus-default-inset;
 
-        &::before
-        {
+        &::before {
           position: absolute;
           top: space(xs);
           right: space(xs);
@@ -170,47 +149,34 @@ $icon-size: 1em;
       }
     }
 
-    .bsds-dropdown-group-name
-    {
-      @include font-family-base-heavy;
-    }
-
-    .bsds-dropdown-item-highlighted
-    {
+    .bsds-dropdown-item-highlighted {
       border-top: space(xxs) solid $border-color-subtle;
       padding: space(lg) 0;
 
       .bsds-button,
-      .bsds-link
-      {
+      .bsds-link {
         color: $action-primary-40;
         @include font-family-base-heavy;
       }
     }
 
-    .bsds-button
-    {
+    .bsds-button {
       &:hover,
-      &:active
-      {
+      &:active {
         color: $neutral-100;
       }
 
-      &:hover
-      {
+      &:hover {
         background: $action-primary-40;
       }
 
-      &:active
-      {
+      &:active {
         background: $action-primary-20;
       }
     }
 
-    .bsds-link
-    {
-      &:hover
-      {
+    .bsds-link {
+      &:hover {
         text-decoration: underline;
       }
     }

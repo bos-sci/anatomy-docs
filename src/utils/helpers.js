@@ -1,5 +1,5 @@
 const environment = (envVar) => {
-  return process.env[envVar] || "";
+  return process.env[envVar] || '';
 };
 
 // toSlug is a copy of slugify in src/docs/shared/helpers.ts
@@ -9,13 +9,13 @@ const toSlug = (string) =>
   string
     .toString()
     .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^\w-]+/g, "")
-    .replace(/--+/g, "-")
-    .replace(/^-+/, "")
-    .replace(/-+$/, "");
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
 
 module.exports = {
   environment,
-  toSlug,
+  toSlug
 };

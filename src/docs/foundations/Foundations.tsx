@@ -17,12 +17,14 @@ const Foundations = (): JSX.Element => {
   const location = useLocation();
   const idLookup: IdLookup = useContext(IdLookupContext);
   const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
-  const [foundationData, setFoundationData] = useState<GetFoundationQuery['foundation']>({} as GetFoundationQuery['foundation']);
+  const [foundationData, setFoundationData] = useState<GetFoundationQuery['foundation']>(
+    {} as GetFoundationQuery['foundation']
+  );
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
-  const {data, error} = useGetFoundationQuery({
+  const { data, error } = useGetFoundationQuery({
     variables: {
-      id: idLookup.foundations[params.foundationName!].id,
+      id: idLookup.foundations[params?.foundationName ?? ''].id,
       preview: process.env.REACT_APP_CONTENTFUL_PREVIEW === 'true'
     }
   });
@@ -32,7 +34,7 @@ const Foundations = (): JSX.Element => {
   }
 
   useEffect(() => {
-    if(data?.foundation) {
+    if (data?.foundation) {
       setFoundationData(data.foundation);
     }
   }, [data]);
@@ -71,17 +73,21 @@ const Foundations = (): JSX.Element => {
         slug: basePath + '/spacing'
       },
       {
+        text: 'Tokens',
+        slug: basePath + '/tokens'
+      },
+      {
         text: 'Typography',
         slug: basePath + '/typography'
       },
       {
         text: 'Web sustainability',
         slug: basePath + '/web-sustainability'
-      },
+      }
     ]);
   }, [location]);
 
-  useTitle({titlePrefix: `${foundationData?.name} - Foundations`});
+  useTitle({ titlePrefix: `${foundationData?.name} - Foundations` });
   useHashScroll(!!foundationData?.content);
 
   const pageHeadings = useHeadings();
@@ -96,17 +102,24 @@ const Foundations = (): JSX.Element => {
       <Layout>
         <PageTemplate
           name={foundationData?.name || ''}
-          lastUpdated={foundationData?.sys?.publishedAt}
+          lastUpdated={foundationData?.sys?.publishedAt || ''}
           leadParagraph={foundationData?.leadParagraph || ''}
           seoMetaDescription={foundationData?.pageProperties?.seoMetaDescription || ''}
           navSecondaryMenuTrigger="Foundations"
           navSecondaryItems={navItems}
-          navTertiaryItems={headings}>
+          navTertiaryItems={headings}
+        >
           <Markdown markdown={foundationData?.content || ''} headingOffset={1} />
         </PageTemplate>
       </Layout>
     );
-  } else return <Layout><main id="mainContent">Loading...</main></Layout>;
-}
+  } else {
+    return (
+      <Layout>
+        <main id="mainContent">Loading...</main>
+      </Layout>
+    );
+  }
+};
 
 export default Foundations;

@@ -17,6 +17,6 @@ const StoplightController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultStoplight />;
   }
-}
+};
 
 export default StoplightController;

@@ -3,80 +3,36 @@
 $text-color-primary: $neutral-00;
 $text-color-ghost: $neutral-100;
 
-
-// Border Utility Variables
-
-$border-color-primary: $neutral-00;
-$border-color-ghost: $neutral-100;
-$border-color-accent: $action-primary-40;
-$border-color-subtle: $neutral-80;
-
-@mixin border-gradient-accent
-{
-  border-width: space(sm);
-  border-style: solid;
-  border-image-source: $gradient-accent;
-  border-image-slice: 1;
-}
-
-$border-radius: 0.25rem; // NOTE: this is a one-off size
-
-
-// Shadow Utility Variables
-
-$box-shadow-primary: 0 0 0.75rem 0 rgba($neutral-00, 0.2); // NOTE: this is a one-off size
-$box-shadow-secondary: 0 0.125rem 1rem 0 rgba($neutral-00, 0.1);
-$box-shadow-tertiary: 0 0.125rem 0.625rem 0 rgba($neutral-00, 0.2);
-
-
-// Breakpoint Utility Variables
-// TODO: ADS-197 set up mixins for media queries
-
-$sm: 36rem; // 576px
-$md: 48rem; // 768px
-$lg: 62rem; // 992px
-$xl: 75rem; // 1200px
-$xxl: 87.5rem; // 1400px
-
-
 // App Width Utility Variables
 
-:root
-{
+:root {
   --app-width: 100%;
 }
 
-@media (min-width: $lg)
-{
-  :root
-  {
+@media (min-width: $breakpoint-lg-min) {
+  :root {
     --app-width: 60rem;
   }
 }
 
-@media (min-width: $xl)
-{
-  :root
-  {
+@media (min-width: $breakpoint-xl-min) {
+  :root {
     --app-width: 71.25rem;
   }
 }
 
-@media (min-width: $xxl)
-{
-  :root
-  {
+@media (min-width: $breakpoint-xxl-min) {
+  :root {
     --app-width: 82.5rem;
   }
 }
 
 // Modifier Warning Utility Mixin
 
-@mixin bsds-modifier-error-text
-{
+@mixin bsds-modifier-error-text {
   display: block;
   padding: 0 0 0 space(3x);
-  background-image: url("../../assets/images/icon-error.svg");
+  background-image: url('../../assets/images/icon-error.svg');
   background-position: left;
   background-repeat: no-repeat;
   background-size: space(2x);

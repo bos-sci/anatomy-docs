@@ -1,109 +1,101 @@
-.docs-preview
-{
+.docs-preview {
   margin-top: space(3x);
   border: 1px solid $neutral-00; // one-off to match markdown's background color
   padding: space(2x);
-  background-image:
-    linear-gradient(45deg, rgba($neutral-95, 0.5) 25%, transparent 25%),
+  background-image: linear-gradient(45deg, rgba($neutral-95, 0.5) 25%, transparent 25%),
     linear-gradient(135deg, rgba($neutral-95, 0.5) 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, rgba($neutral-95, 0.5) 75%),
     linear-gradient(135deg, transparent 75%, rgba($neutral-95, 0.5) 75%);
-  background-size: 20px 20px;
   background-position: 0 0, 10px 0, 10px -10px, 0 10px;
+  background-size: 20px 20px;
 
-  &.dark
-  {
+  &.dark {
     border-bottom: 1px solid $neutral-00;
     background-color: $neutral-20;
-    background-image:
-      linear-gradient(45deg, rgba($neutral-00, 0.5) 25%, transparent 25%),
+    background-image: linear-gradient(45deg, rgba($neutral-00, 0.5) 25%, transparent 25%),
       linear-gradient(135deg, rgba($neutral-00, 0.5) 25%, transparent 25%),
       linear-gradient(45deg, transparent 75%, rgba($neutral-00, 0.5) 75%),
       linear-gradient(135deg, transparent 75%, rgba($neutral-00, 0.5) 75%);
   }
 
-  &.docs-preview-flex
-  {
+  &.docs-preview-flex {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: space(2x);
   }
 
-  > :first-child
-  {
+  > :first-child {
     margin-top: 0;
   }
 
-  & .bsds-nav-tertiary
-  {
+  .bsds-nav-tertiary {
     width: 100%; // TODO: remove this when we remove the fixed widths from the page layout
   }
 
-  & .docs-icon-decorative > *
-  {
-    margin-top: 0;
+  .docs-icon-decorative {
+    > * {
+      margin-top: 0;
+    }
   }
 }
 
-.bsds-margin-top-remove
-{
+.bsds-margin-top-remove {
+  /* stylelint-disable-next-line declaration-no-important */
   margin-top: 0 !important; // Important is used here to ensure utility class overrides existing styles
 }
 
-.docs-code
-{
-  markdown
-  {
-    pre[class*="language-"]
-    {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: $border-radius;
-      border-bottom-left-radius: $border-radius;
-      margin: 0;
+.docs-code {
+  /* stylelint-disable-next-line selector-type-no-unknown */
+  markdown {
+    pre {
+      [class*='language-'] {
+        margin: 0;
+        border-radius: 0 0 $border-radius-sm $border-radius-sm;
+      }
     }
 
-    :not(pre) > code[class*="language-"]
-    {
-      border-radius: $border-radius;
+    :not(pre) {
+      > code {
+        [class*='language-'] {
+          border-radius: $border-radius-sm;
+        }
+      }
     }
   }
 }
 
-.docs-demo-link
-{
+.docs-demo-link {
   display: inline-block;
   margin-top: space(3x);
 }
 
-.docs-preview-external
-{
+.docs-preview-external {
   margin: space(4x);
 }
 
 .docs-wire-header,
-.docs-wire-main
-{
+.docs-wire-main {
   padding: 0 space(2x) space(2x);
   text-align: center;
 }
 
-.docs-wire-header
-{
+.docs-wire-header {
   border-bottom: space(xxs) solid $border-color-subtle;
 }
 
-.docs-wire-main
-{
+.docs-wire-main {
   height: 100vh;
   background: $neutral-95;
 }
 
-.docs-wire-card
-{
+.docs-wire-card {
   width: 100%;
   padding: space(6x) space(lg);
   background: $neutral-95;
   text-align: center;
+}
+
+pre {
+  overflow-x: auto;
 }

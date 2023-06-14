@@ -30,6 +30,6 @@ const DropdownController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultDropdown />;
   }
-}
+};
 
 export default DropdownController;

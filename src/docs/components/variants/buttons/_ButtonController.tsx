@@ -36,6 +36,6 @@ const ButtonController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultButton />;
   }
-}
+};
 
 export default ButtonController;

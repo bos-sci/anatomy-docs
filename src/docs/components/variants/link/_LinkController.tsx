@@ -20,6 +20,6 @@ const LinkController = ({ variantId }: VariantProps): JSX.Element => {
     default:
       return <DefaultLink />;
   }
-}
+};
 
 export default LinkController;

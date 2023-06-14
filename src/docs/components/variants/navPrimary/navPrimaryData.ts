@@ -4,46 +4,46 @@ const basePath = '';
 
 export const utilityData = [
   {
-    text: 'Page',
+    text: 'Page 1',
     slug: 'docs-demo-link'
   },
   {
-    text: 'Page',
+    text: 'Page 2',
     slug: 'docs-demo-link'
   },
   {
-    text: 'Page',
+    text: 'Page 3',
     slug: 'docs-demo-link'
   },
   {
     text: 'Dropdown',
     children: [
       {
-        text: 'Dropdown option',
+        text: 'Action 1',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Dropdown option',
+        text: 'Action 2',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Dropdown option',
+        text: 'Action 3',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Dropdown option',
+        text: 'Action 4',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Dropdown option',
+        text: 'Action 5',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Dropdown option',
+        text: 'Action 6',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Dropdown option',
+        text: 'Action 7',
         slug: 'docs-demo-link'
       }
     ]
@@ -132,11 +132,11 @@ export const contextualUtility = [
 
 export const simpleData: NavItemPrimary[] = [
   {
-    text: 'Page',
+    text: 'Page 1',
     slug: 'docs-demo-link'
   },
   {
-    text: 'Page',
+    text: 'Page 2',
     slug: 'docs-demo-link'
   },
   {
@@ -144,24 +144,25 @@ export const simpleData: NavItemPrimary[] = [
     slug: '.'
   },
   {
-    text: 'Page',
+    text: 'Page 4',
     slug: 'docs-demo-link'
   }
 ];
 
 export const intermediateData: NavItemPrimary[] = [
   {
-    text: 'Page',
+    text: 'Page 1',
     slug: 'docs-demo-link'
   },
   {
     text: 'Navigation section',
-    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    description:
+      'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altLinkText: 'See all pages',
     altTo: 'docs-demo-link',
     children: [
       {
-        text: 'Child page',
+        text: 'Child page 1',
         slug: 'docs-demo-link'
       },
       {
@@ -169,69 +170,69 @@ export const intermediateData: NavItemPrimary[] = [
         slug: '.'
       },
       {
-        text: 'Child page',
+        text: 'Child page 3',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 4',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 5',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 6',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 7',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 8',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 9',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 10',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 11',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 12',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 13',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 14',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 15',
         slug: 'docs-demo-link'
       },
       {
-        text: 'Child page',
+        text: 'Child page 16',
         slug: 'docs-demo-link'
       }
     ]
   },
   {
-    text: 'Page',
+    text: 'Page 2',
     slug: 'docs-demo-link'
   },
   {
-    text: 'Page',
+    text: 'Page 3',
     slug: 'docs-demo-link'
   }
 ];
@@ -239,18 +240,20 @@ export const intermediateData: NavItemPrimary[] = [
 export const complexData: NavItemPrimary[] = [
   {
     text: 'Navigation section 1',
-    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    description:
+      'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altHref: 'docs-demo-link',
     altLinkText: 'All pages',
     children: [
       {
-        text: 'Page group',
-        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        text: 'Page group 1',
+        description:
+          'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: 'docs-demo-link'
           },
           {
@@ -258,84 +261,84 @@ export const complexData: NavItemPrimary[] = [
             slug: '.'
           },
           {
-            text: 'Page',
+            text: 'Page 3',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 4',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 5',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 6',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 7',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 8',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 9',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 10',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 11',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 12',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 13',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 14',
             slug: 'docs-demo-link'
           }
         ]
       },
       {
-        text: 'Page group',
+        text: 'Page group 2',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: 'docs-demo-link'
           }
         ]
       },
       {
-        text: 'Page group',
+        text: 'Page group 3',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: 'docs-demo-link'
           }
         ]
       },
       {
-        text: 'Page group',
+        text: 'Page group 4',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: 'docs-demo-link'
           }
         ]
@@ -349,114 +352,115 @@ export const complexData: NavItemPrimary[] = [
     altLinkText: 'All pages',
     children: [
       {
-        text: 'Page group',
-        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        text: 'Page group 1',
+        description:
+          'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
           {
-            text: 'Nested page group',
+            text: 'Nested page group 1',
             altLinkText: 'See all pages',
             altTo: 'docs-demo-link',
             children: [
               {
-                text: 'Page',
+                text: 'Page 1',
                 slug: 'docs-demo-link'
               },
               {
-                text: 'Page',
+                text: 'Page 2',
                 slug: 'docs-demo-link'
               },
               {
-                text: 'Page',
+                text: 'Page 3',
                 slug: 'docs-demo-link'
               }
             ]
           },
           {
-            text: 'Nested page group',
+            text: 'Nested page group 2',
             altLinkText: 'See all pages',
             altTo: 'docs-demo-link',
             children: [
               {
-                text: 'Page',
+                text: 'Page 1',
                 slug: 'docs-demo-link'
               }
             ]
           },
           {
-            text: 'Nested page group',
+            text: 'Nested page group 3',
             altLinkText: 'See all pages',
             altTo: 'docs-demo-link',
             children: [
               {
-                text: 'Page',
+                text: 'Page 1',
                 slug: 'docs-demo-link'
               }
             ]
           },
           {
-            text: 'Nested page group',
+            text: 'Nested page group 4',
             altLinkText: 'See all pages',
             altTo: 'docs-demo-link',
             children: [
               {
-                text: 'Page',
+                text: 'Page 1',
                 slug: 'docs-demo-link'
               }
             ]
           },
           {
-            text: 'Nested page group',
+            text: 'Nested page group 5',
             altLinkText: 'See all pages',
             altTo: 'docs-demo-link',
             children: [
               {
-                text: 'Page',
+                text: 'Page 1',
                 slug: 'docs-demo-link'
               }
             ]
           },
           {
-            text: `Nested page group`,
+            text: `Nested page group 6`,
             altLinkText: 'See all pages',
             altTo: 'docs-demo-link',
             children: [
               {
-                text: 'Page',
+                text: 'Page 1',
                 slug: 'docs-demo-link'
               }
             ]
           },
           {
-            text: `Nested page group`,
+            text: `Nested page group 7`,
             altLinkText: 'See all pages',
             altTo: 'docs-demo-link',
             children: [
               {
-                text: 'Page',
+                text: 'Page 1',
                 slug: 'docs-demo-link'
               }
             ]
           },
           {
-            text: 'Nested page group',
+            text: 'Nested page group 8',
             altLinkText: 'See all pages',
             altTo: 'docs-demo-link',
             children: [
               {
-                text: 'Page',
+                text: 'Page 1',
                 slug: 'docs-demo-link'
               }
             ]
           },
           {
-            text: 'Nested page group',
+            text: 'Nested page group 9',
             altLinkText: 'See all pages',
             altTo: 'docs-demo-link',
             children: [
               {
-                text: 'Page',
+                text: 'Page 1',
                 slug: 'docs-demo-link'
               }
             ]
@@ -464,25 +468,27 @@ export const complexData: NavItemPrimary[] = [
         ]
       },
       {
-        text: 'Page group',
-        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        text: 'Page group 2',
+        description:
+          'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: 'docs-demo-link'
           }
         ]
       },
       {
-        text: 'Page group',
-        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        text: 'Page group 3',
+        description:
+          'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: 'docs-demo-link'
           }
         ]
@@ -491,76 +497,77 @@ export const complexData: NavItemPrimary[] = [
   },
   {
     text: 'Navigation section 3',
-    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    description:
+      'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altHref: 'docs-demo-link',
     altLinkText: 'All pages',
     children: [
       {
-        text: 'Page group',
+        text: 'Page group 1',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 2',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 3',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 4',
             slug: 'docs-demo-link'
           },
           {
-            text: 'Page',
+            text: 'Page 5',
             slug: 'docs-demo-link'
           }
         ]
       },
       {
-        text: 'Page group',
+        text: 'Page group 2',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: 'docs-demo-link'
           }
         ]
       },
       {
-        text: 'Page group',
+        text: 'Page group 3',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: 'docs-demo-link'
           }
         ]
       },
       {
-        text: 'Page group',
+        text: 'Page group 4',
         description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all pages',
         altTo: 'docs-demo-link',
         children: [
           {
-            text: 'Page',
+            text: 'Page 1',
             slug: 'docs-demo-link'
           }
         ]
       },
       {
-        text: 'Page',
+        text: 'Page 1',
         href: 'external-url-here'
       }
     ]
@@ -570,13 +577,15 @@ export const complexData: NavItemPrimary[] = [
 export const contextualComplex: NavItemPrimary[] = [
   {
     text: 'For healthcare professionals',
-    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    description:
+      'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altHref: 'docs-demo-link',
     altLinkText: 'All healthcare professionals information',
     children: [
       {
         text: 'Medical specialties',
-        description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+        description:
+          'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
         altLinkText: 'See all treatments',
         altTo: 'docs-demo-link',
         children: [
@@ -751,7 +760,7 @@ export const contextualComplex: NavItemPrimary[] = [
           },
           {
             text: `Men's health`,
-            altLinkText: 'See all men\'s health',
+            altLinkText: "See all men's health",
             altTo: 'docs-demo-link',
             children: [
               {
@@ -762,7 +771,7 @@ export const contextualComplex: NavItemPrimary[] = [
           },
           {
             text: `Women's health`,
-            altLinkText: 'See all women\'s health',
+            altLinkText: "See all women's health",
             altTo: 'docs-demo-link',
             children: [
               {
@@ -824,7 +833,8 @@ export const contextualComplex: NavItemPrimary[] = [
   // About BSC
   {
     text: 'About Boston Scientific',
-    description: 'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
+    description:
+      'Proin quis eros sollicitudin, hendrerit ante vel, auctor metus. Proin quis eros sollicitudin, hendrerit ante vel, auctor metus.',
     altHref: 'docs-demo-link',
     altLinkText: 'All Boston Scientific information',
     children: [

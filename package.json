@@ -3,31 +3,40 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@boston-scientific/anatomy-tokens": "^2.0.0",
     "@floating-ui/react-dom": "^1.0.0",
     "algoliasearch": "^4.14.2",
+    "anatomy-tokens": "file:../anatomy-tokens",
     "axios": "^1.2.2",
     "dompurify": "^2.3.8",
     "marked": "^4.0.17",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "react-instantsearch-hooks-web": "^6.32.1",
     "react-router-dom": "^6.3.0",
-    "react-websitecarbon-badge": "^1.0.5",
     "sass": "^1.53.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "npm run generate-types && npm run release-date && react-scripts start",
-    "build": "npm run sitemap && npm run generate-types && npm run release-date && CI=false react-scripts build",
+    "start": "npm run generate-types && npm run pre && react-scripts start",
+    "build": "npm run sitemap && npm run pre && CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-types": "graphql-codegen --config codegen.yml --require dotenv/config",
+    "pre": "npm run generate-types && npm run release-date && node src/utils/updateTokensVersion.js",
     "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "sitemap": "node src/utils/generateSitemap.js",
     "stylelint:check": "stylelint-config-prettier-scss-check",
     "release-date": "echo \"// This file is automatically updated on release\nexport const releaseDate = new Date('$(date)');\" > ./src/utils/release-date.ts",
-    "lint:style": "stylelint \"**/*.scss\""
+    "lint:styles": "stylelint \"**/*.scss\"",
+    "fix:styles": "stylelint --fix \"**/*.scss\"",
+    "lint:scripts": "eslint .",
+    "fix:scripts": "eslint --fix .",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:all": "npm run lint:styles && npm run lint:scripts && npm run format:check",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -82,13 +91,20 @@
     "eslint-plugin-react": "^7.31.10",
     "fs": "^0.0.1-security",
     "graphql": "^16.5.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
     "prettier": "2.8.1",
+    "react-scripts": "^5.0.1",
     "sitemap": "^7.1.1",
     "stylelint": "^14.15.0",
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard-scss": "^6.1.0",
     "stylelint-order": "^6.0.1",
-    "typescript": "^4.8.4",
-    "react-scripts": "^5.0.1"
+    "typescript": "^4.8.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,html,css,scss}": "prettier --write",
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "*.{css,scss}": "stylelint --fix"
   }
 }

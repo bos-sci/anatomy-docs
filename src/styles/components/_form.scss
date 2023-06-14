@@ -1,68 +1,57 @@
-.bsds-form
-{
+.bsds-form {
   width: 100%;
 }
 
-.bsds-fieldset
-{
+.bsds-fieldset {
   display: flex;
   flex-direction: column;
   border: 0;
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
 }
 
-.bsds-legend
-{
+.bsds-legend {
   @include font-family-base-heavy;
   @include font-size($fs-base);
 }
 
-.bsds-input
-{
+.bsds-input {
   width: 100%;
 }
 
-.bsds-input-error
-{
+.bsds-input-error {
   display: flex;
   align-items: center;
   margin: space(md) 0 0 0;
   color: $feedback-error-40;
 
-  &::before
-  {
-    content: '';
+  &::before {
+    display: inline-block;
     flex-shrink: 0;
     align-self: flex-start;
-    display: inline-block;
     width: space(3x);
     height: space(3x);
     margin-right: space(md);
-    background-image: url("../../assets/images/icon-error.svg");
-    background-size: 100%;
+    background-image: url('../../assets/images/icon-error.svg');
     background-repeat: no-repeat;
+    background-size: 100%;
+    content: '';
   }
 }
 
-.bsds-input-help-text
-{
+.bsds-input-help-text {
   margin: space(sm) 0 0 0;
-  @include font-size($fs-body-subtle);
   color: $neutral-40;
+  @include font-size($fs-body-subtle);
 }
 
-.bsds-form-control
-{
+.bsds-form-control {
   margin-top: space(4x);
 }
 
-@media (min-width: 992px)
-{
-  .bsds-input-error
-  {
-    &::before
-    {
+@media (min-width: 992px) {
+  .bsds-input-error {
+    &::before {
       transform: translateY(space(xs));
     }
   }

@@ -3,7 +3,6 @@ import InputText from '../../../../library/components/InputText';
 import Example from '../../../shared/components/Example';
 
 const WithHelpAndError = (): JSX.Element => {
-
   const errorMessage = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(errorMessage);
 
@@ -13,7 +12,7 @@ const WithHelpAndError = (): JSX.Element => {
     } else {
       setErrorText('');
     }
-  }
+  };
 
   return (
     <Example>
@@ -22,12 +21,13 @@ const WithHelpAndError = (): JSX.Element => {
           label="Text input"
           helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
           errorText={errorText}
-          onChange={handleChange}
           defaultValue="Invalid value"
-          forceValidation />
+          forceValidation
+          onChange={handleChange}
+        />
       </div>
     </Example>
   );
-}
+};
 
 export default WithHelpAndError;

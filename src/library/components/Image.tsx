@@ -1,4 +1,4 @@
-import { ImgHTMLAttributes, useId } from "react";
+import { ImgHTMLAttributes, useEffect, useId, useState } from 'react';
 
 interface BaseProps extends ImgHTMLAttributes<HTMLImageElement> {
   ratio?: Ratio;
@@ -20,13 +20,13 @@ type AltTextProps =
       alt: string;
     };
 
-export type Ratio = "1:1" | "4:3" | "16:9" | "21:9" | "50:50";
+export type Ratio = '1:1' | '4:3' | '16:9' | '21:9' | '50:50';
 export type Props = BaseProps & AltTextProps;
 
 const Image = (props: Props): JSX.Element => {
   const {
     alt,
-    ratio = "16:9",
+    ratio = '16:9',
     isDecorative,
     hasCaption,
     texts,
@@ -38,53 +38,60 @@ const Image = (props: Props): JSX.Element => {
   const captionId = useId();
   const imageId = useId();
 
-  let ratioClasses = "";
+  const [altText, setAltText] = useState(alt);
+  const [ariaText, setAriaText] = useState(texts?.caption);
+
+  let ratioClasses = '';
 
   switch (ratio) {
-    case "1:1":
-      ratioClasses = "-1to1";
+    case '1:1':
+      ratioClasses = '-1to1';
       break;
-    case "4:3":
-      ratioClasses = "-4to3";
+    case '4:3':
+      ratioClasses = '-4to3';
       break;
-    case "16:9":
-      ratioClasses = "-16to9";
+    case '16:9':
+      ratioClasses = '-16to9';
       break;
-    case "21:9":
-      ratioClasses = "-21to9";
+    case '21:9':
+      ratioClasses = '-21to9';
       break;
-    case "50:50":
-      ratioClasses = "-50-split";
-  };
+    case '50:50':
+      ratioClasses = '-50-split';
+  }
 
-  let captionAlignment = "";
+  let captionAlignment = '';
 
   if (isCaptionCentered && !isGhost) {
-    captionAlignment = "-center";
+    captionAlignment = '-center';
   } else if (isCaptionCentered && isGhost) {
-    captionAlignment = "-center-ghost";
+    captionAlignment = '-center-ghost';
   } else if (isGhost) {
-    captionAlignment = "-ghost";
+    captionAlignment = '-ghost';
   }
+
+  useEffect(() => {
+    setAltText(isDecorative ? '' : alt);
+  }, [alt, isDecorative]);
+
+  useEffect(() => {
+    setAriaText(hasCaption && texts?.caption ? `imageCaption${captionId}` : undefined);
+  }, [captionId, hasCaption, texts?.caption]);
 
   return (
     <>
       <img
-        className={`bsds-image${ratioClasses}${
-          className ? " " + className : ""
-        }`}
-        alt={isDecorative ? "" : alt}
-        id={"image" + imageId}
-        aria-describedby={
-          hasCaption && texts?.caption ? `imageCaption${captionId}` : undefined
-        }
+        className={`bsds-image${ratioClasses}${className ? ' ' + className : ''}`}
+        alt={altText}
+        id={'image' + imageId}
+        aria-describedby={ariaText}
         {...imgAttrs}
-    />
-      { hasCaption && texts?.caption &&
-        <p className={`${"bsds-image-caption"}${captionAlignment}`} id={"imageCaption" + captionId}>
+      />
+      {!!hasCaption && !!texts?.caption && (
+        <p className={`${'bsds-image-caption'}${captionAlignment}`} id={'imageCaption' + captionId}>
           {texts?.caption}
         </p>
-      }
+      )}
     </>
   );
 };

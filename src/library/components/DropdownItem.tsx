@@ -6,8 +6,8 @@ import { Props as DropdownGroupNameProps } from './DropdownGroupName';
 export type DropdownItemElements = ReactElement<ButtonProps | LinkProps | DropdownGroupNameProps>;
 
 interface Props {
-    item: DropdownItemElements;
-    isHighlightedAction?: boolean;
+  item: DropdownItemElements;
+  isHighlightedAction?: boolean;
 }
 
 const DropdownItem = (props: Props) => {
@@ -19,6 +19,6 @@ const DropdownItem = (props: Props) => {
       {props.item}
     </li>
   );
-}
+};
 
-export default DropdownItem
+export default DropdownItem;

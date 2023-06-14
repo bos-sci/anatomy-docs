@@ -2,7 +2,6 @@ import Example from '../../../shared/components/Example';
 import NavTertiary, { NavItemTertiary } from '../../../../library/components/navigation/navTertiary/NavTertiary';
 
 const DefaultNavTertiary = (): JSX.Element => {
-
   const navTertiaryItems: NavItemTertiary[] = [
     {
       id: 'section1',
@@ -23,6 +22,6 @@ const DefaultNavTertiary = (): JSX.Element => {
       <NavTertiary navTertiaryItems={navTertiaryItems} />
     </Example>
   );
-}
+};
 
 export default DefaultNavTertiary;
