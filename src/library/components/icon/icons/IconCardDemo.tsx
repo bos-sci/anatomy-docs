@@ -3,7 +3,7 @@ import { IconProps } from './iconTypes';
 const IconCardDemo = (props: IconProps): JSX.Element => {
   return (
     <svg
-      aria-label="iconCardDemo"
+      aria-hidden="true"
       focusable="false"
       className={`${props.className}`}
       data-testid="cardDemoIcon"
