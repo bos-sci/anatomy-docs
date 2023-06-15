@@ -132,7 +132,7 @@ $icon-size: 1em;
       color: $text-color-primary;
       text-align: inherit;
       text-decoration: none;
-      @include font-size($fs-base);
+      @include font-size($fs-body);
 
       &:focus {
         @include focus-default-inset;

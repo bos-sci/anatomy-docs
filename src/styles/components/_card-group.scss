@@ -10,7 +10,7 @@
     @extend .bsds-card-group;
   }
 
-  @media (min-width: $md) {
+  @media (min-width: $breakpoint-md-min) {
     &-two-up,
     &-three-up,
     &-four-up {
@@ -18,7 +18,7 @@
     }
   }
 
-  @media (min-width: $lg) {
+  @media (min-width: $breakpoint-lg-min) {
     &-three-up {
       grid-template-columns: repeat(3, 1fr);
     }

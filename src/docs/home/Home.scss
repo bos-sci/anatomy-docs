@@ -1,3 +1,6 @@
+// TODO: Remove import once stylesheet is moved off of component
+@import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
+
 @import '/src/styles/abstracts/abstracts';
 @import '/src/styles/base/base';
 
@@ -10,7 +13,10 @@
 
   &::after {
     bottom: calc(0rem - space(sm));
+    z-index: 1;
+    content: '';
     @include animated-gradient-brand;
+    @include decorative-bar;
   }
 
   .docs-page-title {

@@ -26,6 +26,7 @@
   border: 0;
   padding: space(2x);
   background: transparent;
+  color: $neutral-00;
 
   &:focus {
     @include focus-default-inset;
@@ -35,6 +36,7 @@
     &:hover,
     &:active {
       background: transparent;
+      color: $action-primary-40;
 
       &:not(:active) {
         fill: $action-primary-40;
@@ -73,7 +75,7 @@
   }
 }
 
-@media (min-width: $sm) {
+@media (min-width: $breakpoint-sm-min) {
   .bsds-search-control {
     flex-direction: row;
   }

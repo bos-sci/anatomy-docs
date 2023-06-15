@@ -1,3 +1,6 @@
+// TODO: Remove import once stylesheet is moved off of component
+@import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
+
 @import '/src/styles/abstracts/abstracts';
 @import '/src/styles/base/base';
 @import '/src/styles/utilities/utilities';
@@ -46,8 +49,11 @@
   }
 
   &::after {
-    @include animated-gradient-brand;
     bottom: 0;
+    z-index: 1;
+    content: '';
+    @include animated-gradient-brand;
+    @include decorative-bar;
   }
 
   .bsds-nav-wizard-menu {
@@ -153,7 +159,7 @@
   }
 }
 
-@media (min-width: $lg) {
+@media (min-width: $breakpoint-lg-min) {
   .bsds-nav-wizard {
     padding: space(6x) space(8x);
 

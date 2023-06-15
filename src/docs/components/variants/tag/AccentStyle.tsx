@@ -7,7 +7,7 @@ const AccentStyle = (): JSX.Element => {
       <Example>
         <Tag variant="accent">Accent tag</Tag>
       </Example>
-      <Example isDarkTheme={true}>
+      <Example isDarkTheme>
         <Tag variant="accent" isGhost>
           Accent tag
         </Tag>

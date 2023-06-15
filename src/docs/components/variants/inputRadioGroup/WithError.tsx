@@ -12,7 +12,7 @@ const WithError = (): JSX.Element => {
       <Form onSubmit={handleSubmit}>
         <div className="bsds-form-control bsds-margin-top-remove">
           <RadioGroup legend="Legend">
-            <InputRadio label="Radio 1" name="groupRequired" value="errorRequired1" forceValidation={true} required />
+            <InputRadio label="Radio 1" name="groupRequired" value="errorRequired1" forceValidation required />
             <InputRadio label="Radio 2" name="groupRequired" value="errorRequired2" required />
           </RadioGroup>
         </div>

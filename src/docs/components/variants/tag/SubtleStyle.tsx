@@ -1,17 +1,19 @@
 import Tag from '../../../../library/components/Tag';
 import Example from '../../../shared/components/Example';
 
-const DefaultStyle = (): JSX.Element => {
+const SubtleStyle = (): JSX.Element => {
   return (
     <>
       <Example>
-        <Tag>Default tag</Tag>
+        <Tag variant="subtle">Subtle tag</Tag>
       </Example>
       <Example isDarkTheme>
-        <Tag isGhost>Default tag</Tag>
+        <Tag variant="subtle" isGhost>
+          Subtle tag
+        </Tag>
       </Example>
     </>
   );
 };
 
-export default DefaultStyle;
+export default SubtleStyle;

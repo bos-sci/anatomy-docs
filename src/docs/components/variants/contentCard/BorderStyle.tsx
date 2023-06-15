@@ -17,7 +17,7 @@ const BorderStyle = (): JSX.Element => {
         />
       </Example>
 
-      <Example isDarkTheme={true}>
+      <Example isDarkTheme>
         <ContentCard
           texts={{
             cardTitle: 'Card title',

@@ -47,7 +47,7 @@
               right: space(2x);
               bottom: 0;
               left: space(2x);
-              border-bottom: space(sm) solid $border-color-primary;
+              border-bottom: space(sm) solid $border-color-assertive;
               content: '';
             }
           }
@@ -137,7 +137,7 @@
   }
 }
 
-@media (min-width: $sm) {
+@media (min-width: $breakpoint-sm-min) {
   .bsds-nav-primary {
     .bsds-nav-bar {
       flex-direction: row;
@@ -150,7 +150,7 @@
   }
 }
 
-@media (min-width: $lg) {
+@media (min-width: $breakpoint-lg-min) {
   .bsds-nav-primary {
     .bsds-nav-bar {
       position: static;

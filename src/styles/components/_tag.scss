@@ -63,4 +63,19 @@
     background-color: $accent-primary-80;
     color: $text-color-primary;
   }
+
+  &-subtle {
+    @include tag-assertive;
+    @include font-family-base-regular;
+    padding: space(sm) space(md);
+    background: $neutral-95;
+    text-transform: none;
+    letter-spacing: unset;
+  }
+
+  &-subtle-ghost {
+    @extend .bsds-tag-subtle;
+    background: $neutral-40;
+    color: $text-color-ghost;
+  }
 }

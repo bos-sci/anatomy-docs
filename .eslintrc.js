@@ -29,7 +29,12 @@ module.exports = {
   plugins: ['@typescript-eslint', 'react'],
   rules: {
     // Legend: 0 = off, 1 = warn, 2 = error
-    'prettier/prettier': 1,
+    'prettier/prettier': [
+      1,
+      {
+        trailingComma: 'none'
+      }
+    ],
     'curly': ['warn', 'all'],
     'react/default-props-match-prop-types': 2,
     'react/jsx-no-useless-fragment': [
@@ -143,6 +148,7 @@ module.exports = {
     'jsx-a11y/interactive-supports-focus': 1,
     'no-empty': 1,
     'jsx-a11y/no-static-element-interactions': 1,
-    'no-unsafe-optional-chaining': 1
+    'no-unsafe-optional-chaining': 1,
+    'react/jsx-boolean-value': 1
   }
 };

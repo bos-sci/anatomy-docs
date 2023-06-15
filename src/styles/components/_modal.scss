@@ -71,7 +71,7 @@
   }
 }
 
-@media (min-width: $xl) {
+@media (min-width: $breakpoint-xl-min) {
   .bsds-modal {
     max-width: 80ch;
   }

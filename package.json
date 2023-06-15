@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@boston-scientific/anatomy-tokens": "^3.0.1",
     "@floating-ui/react-dom": "^1.0.0",
     "algoliasearch": "^4.14.2",
     "axios": "^1.2.2",
@@ -16,11 +17,12 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "npm run generate-types && npm run release-date && react-scripts start",
-    "build": "npm run sitemap && npm run generate-types && npm run release-date && CI=false react-scripts build",
+    "start": "npm run generate-types && npm run pre && react-scripts start",
+    "build": "npm run sitemap && npm run pre && CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-types": "graphql-codegen --config codegen.yml --require dotenv/config",
+    "pre": "npm run generate-types && npm run release-date && node src/utils/updateTokensVersion.js",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "sitemap": "node src/utils/generateSitemap.js",

@@ -4,7 +4,7 @@ import Example from '../../../shared/components/Example';
 const Disabled = (): JSX.Element => {
   return (
     <>
-      <Example isFlex={true}>
+      <Example isFlex>
         <Button type="button" disabled>
           Default
         </Button>
@@ -15,7 +15,7 @@ const Disabled = (): JSX.Element => {
           Subtle
         </Button>
       </Example>
-      <Example isFlex={true} isDarkTheme={true}>
+      <Example isFlex isDarkTheme>
         <Button variant="ghost" type="button" disabled>
           Ghost
         </Button>

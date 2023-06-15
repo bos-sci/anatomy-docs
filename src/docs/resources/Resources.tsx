@@ -53,6 +53,10 @@ const Resources = (): JSX.Element => {
         text: 'Designers',
         children: [
           {
+            text: 'App design guidelines',
+            slug: basePath + '/designers/app-design-guidelines'
+          },
+          {
             text: 'Libraries',
             slug: basePath + '/designers/libraries'
           },

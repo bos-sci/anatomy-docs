@@ -13,7 +13,7 @@ const RedLightStyle = (): JSX.Element => {
           Subtle red light
         </Stoplight>
       </Example>
-      <Example isDarkTheme={true}>
+      <Example isDarkTheme>
         <Stoplight lightColor="red" textColor="ghost" size="assertive">
           Assertive red light
         </Stoplight>

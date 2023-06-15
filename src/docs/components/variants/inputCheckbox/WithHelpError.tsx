@@ -8,7 +8,7 @@ const WithHelpError = (): JSX.Element => {
         <InputCheckbox
           label="Checkbox"
           helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
-          forceValidation={true}
+          forceValidation
           required
         />
       </div>

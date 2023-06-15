@@ -1,4 +1,5 @@
-@import '../../../styles/base/space';
+// TODO: Remove import once stylesheet is moved off of component
+@import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
 
 // TODO: ADS-101 validate fixed/responsive icon sizes that we'll need to support
 // set the icon width to the parent's responsive/fixed font size
