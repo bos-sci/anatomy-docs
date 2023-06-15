@@ -1,7 +1,7 @@
 body {
   color: $text-color-primary;
   @include font-family-base-regular;
-  @include font-size($fs-base);
+  @include font-size($fs-body);
   line-height: 1.5;
 }
 

@@ -449,4 +449,14 @@
     @include swatch;
     @include animated-gradient-secondary;
   }
+
+  &-decorative-bar {
+    position: relative;
+
+    &::after {
+      background: $neutral-00;
+      content: '';
+      @include decorative-bar;
+    }
+  }
 }

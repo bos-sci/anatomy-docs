@@ -24,7 +24,7 @@
   background: transparent;
   color: $border-color-assertive;
   @include font-family-base-regular;
-  @include font-size($fs-base);
+  @include font-size($fs-body);
   text-align: left;
 
   svg {
