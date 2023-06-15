@@ -388,8 +388,10 @@ export type ComponentLinkedFromArgs = {
 export type ComponentModifiersCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentModifiersCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentModifierFilter>;
 };
 
 
@@ -416,8 +418,10 @@ export type ComponentShouldLinkToExamplesArgs = {
 export type ComponentStatesCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentStatesCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentStateFilter>;
 };
 
 
@@ -425,8 +429,10 @@ export type ComponentStatesCollectionArgs = {
 export type ComponentStylesCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentStylesCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentStyleFilter>;
 };
 
 
@@ -667,6 +673,7 @@ export type ComponentModifierLinkingCollections = {
 export type ComponentModifierLinkingCollectionsComponentCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentModifierLinkingCollectionsComponentCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -678,6 +685,23 @@ export type ComponentModifierLinkingCollectionsEntryCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum ComponentModifierLinkingCollectionsComponentCollectionOrder {
+  GroupAsc = 'group_ASC',
+  GroupDesc = 'group_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  ShouldLinkToExamplesAsc = 'shouldLinkToExamples_ASC',
+  ShouldLinkToExamplesDesc = 'shouldLinkToExamples_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 export enum ComponentModifierOrder {
   IsPreviewDarkThemedAsc = 'isPreviewDarkThemed_ASC',
@@ -703,6 +727,23 @@ export type ComponentModifiersCollection = {
   skip: Scalars['Int'];
   total: Scalars['Int'];
 };
+
+export enum ComponentModifiersCollectionOrder {
+  IsPreviewDarkThemedAsc = 'isPreviewDarkThemed_ASC',
+  IsPreviewDarkThemedDesc = 'isPreviewDarkThemed_DESC',
+  ModifierIdAsc = 'modifierId_ASC',
+  ModifierIdDesc = 'modifierId_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 export enum ComponentOrder {
   GroupAsc = 'group_ASC',
@@ -812,6 +853,7 @@ export type ComponentStateLinkingCollections = {
 export type ComponentStateLinkingCollectionsComponentCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentStateLinkingCollectionsComponentCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -823,6 +865,23 @@ export type ComponentStateLinkingCollectionsEntryCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum ComponentStateLinkingCollectionsComponentCollectionOrder {
+  GroupAsc = 'group_ASC',
+  GroupDesc = 'group_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  ShouldLinkToExamplesAsc = 'shouldLinkToExamples_ASC',
+  ShouldLinkToExamplesDesc = 'shouldLinkToExamples_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 export enum ComponentStateOrder {
   IsPreviewDarkThemedAsc = 'isPreviewDarkThemed_ASC',
@@ -848,6 +907,23 @@ export type ComponentStatesCollection = {
   skip: Scalars['Int'];
   total: Scalars['Int'];
 };
+
+export enum ComponentStatesCollectionOrder {
+  IsPreviewDarkThemedAsc = 'isPreviewDarkThemed_ASC',
+  IsPreviewDarkThemedDesc = 'isPreviewDarkThemed_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  StateIdAsc = 'stateId_ASC',
+  StateIdDesc = 'stateId_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 /** Styles of components, e.g.: assertive button, subtle button, etc. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/componentStyle) */
 export type ComponentStyle = Entry & {
@@ -940,6 +1016,7 @@ export type ComponentStyleLinkingCollections = {
 export type ComponentStyleLinkingCollectionsComponentCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentStyleLinkingCollectionsComponentCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -951,6 +1028,23 @@ export type ComponentStyleLinkingCollectionsEntryCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum ComponentStyleLinkingCollectionsComponentCollectionOrder {
+  GroupAsc = 'group_ASC',
+  GroupDesc = 'group_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  ShouldLinkToExamplesAsc = 'shouldLinkToExamples_ASC',
+  ShouldLinkToExamplesDesc = 'shouldLinkToExamples_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 export enum ComponentStyleOrder {
   IsPreviewDarkThemedAsc = 'isPreviewDarkThemed_ASC',
@@ -976,6 +1070,23 @@ export type ComponentStylesCollection = {
   skip: Scalars['Int'];
   total: Scalars['Int'];
 };
+
+export enum ComponentStylesCollectionOrder {
+  IsPreviewDarkThemedAsc = 'isPreviewDarkThemed_ASC',
+  IsPreviewDarkThemedDesc = 'isPreviewDarkThemed_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  StyleIdAsc = 'styleId_ASC',
+  StyleIdDesc = 'styleId_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 /** Documentation for content guidelines. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/contentGuideline) */
 export type ContentGuideline = Entry & {
@@ -1416,6 +1527,7 @@ export type PagePropertiesLinkingCollections = {
 export type PagePropertiesLinkingCollectionsCodeStandardCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PagePropertiesLinkingCollectionsCodeStandardCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -1424,6 +1536,7 @@ export type PagePropertiesLinkingCollectionsCodeStandardCollectionArgs = {
 export type PagePropertiesLinkingCollectionsComponentCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PagePropertiesLinkingCollectionsComponentCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -1432,6 +1545,7 @@ export type PagePropertiesLinkingCollectionsComponentCollectionArgs = {
 export type PagePropertiesLinkingCollectionsContentGuidelineCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PagePropertiesLinkingCollectionsContentGuidelineCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -1448,6 +1562,7 @@ export type PagePropertiesLinkingCollectionsEntryCollectionArgs = {
 export type PagePropertiesLinkingCollectionsFoundationCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PagePropertiesLinkingCollectionsFoundationCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -1456,9 +1571,83 @@ export type PagePropertiesLinkingCollectionsFoundationCollectionArgs = {
 export type PagePropertiesLinkingCollectionsResourceCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PagePropertiesLinkingCollectionsResourceCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum PagePropertiesLinkingCollectionsCodeStandardCollectionOrder {
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum PagePropertiesLinkingCollectionsComponentCollectionOrder {
+  GroupAsc = 'group_ASC',
+  GroupDesc = 'group_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  ShouldLinkToExamplesAsc = 'shouldLinkToExamples_ASC',
+  ShouldLinkToExamplesDesc = 'shouldLinkToExamples_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum PagePropertiesLinkingCollectionsContentGuidelineCollectionOrder {
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum PagePropertiesLinkingCollectionsFoundationCollectionOrder {
+  GroupAsc = 'group_ASC',
+  GroupDesc = 'group_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum PagePropertiesLinkingCollectionsResourceCollectionOrder {
+  GroupAsc = 'group_ASC',
+  GroupDesc = 'group_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 export enum PagePropertiesOrder {
   SeoMetaDescriptionAsc = 'seoMetaDescription_ASC',

@@ -98,7 +98,8 @@ const Preview = (props: Props): JSX.Element => {
       TabsController: lazy(() => import('./tabs/_TabsController')),
       TagController: lazy(() => import('./tag/_TagController')),
       DefaultNavTertiary: lazy(() => import('./navTertiary/DefaultNavTertiary')),
-      InputTextController: lazy(() => import('./inputText/_InputTextController'))
+      InputTextController: lazy(() => import('./inputText/_InputTextController')),
+      SelectController: lazy(() => import('./select/_SelectController'))
     };
 
     if (props.shouldLinkToExamples) {
@@ -183,6 +184,10 @@ const Preview = (props: Props): JSX.Element => {
 
         case 'search':
           setRenderedComponent(<ComponentControllers.DefaultSearch />);
+          break;
+
+        case 'select':
+          setRenderedComponent(<ComponentControllers.SelectController variantId={variantId} />);
           break;
 
         case 'secondary-navigation':

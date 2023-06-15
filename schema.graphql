@@ -196,12 +196,12 @@ type Component implements Entry {
   interactions(locale: String): String
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentLinkingCollections
-  modifiersCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentModifiersCollection
+  modifiersCollection(limit: Int = 100, locale: String, order: [ComponentModifiersCollectionOrder], preview: Boolean, skip: Int = 0, where: ComponentModifierFilter): ComponentModifiersCollection
   name(locale: String): String
   pageProperties(locale: String, preview: Boolean): PageProperties
   shouldLinkToExamples(locale: String): Boolean
-  statesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentStatesCollection
-  stylesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentStylesCollection
+  statesCollection(limit: Int = 100, locale: String, order: [ComponentStatesCollectionOrder], preview: Boolean, skip: Int = 0, where: ComponentStateFilter): ComponentStatesCollection
+  stylesCollection(limit: Int = 100, locale: String, order: [ComponentStylesCollectionOrder], preview: Boolean, skip: Int = 0, where: ComponentStyleFilter): ComponentStylesCollection
   sys: Sys!
   usage(locale: String): String
   usageDo(locale: String): String
@@ -374,8 +374,25 @@ input ComponentModifierFilter {
 }
 
 type ComponentModifierLinkingCollections {
-  componentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCollection
+  componentCollection(limit: Int = 100, locale: String, order: [ComponentModifierLinkingCollectionsComponentCollectionOrder], preview: Boolean, skip: Int = 0): ComponentCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ComponentModifierLinkingCollectionsComponentCollectionOrder {
+  group_ASC
+  group_DESC
+  name_ASC
+  name_DESC
+  shouldLinkToExamples_ASC
+  shouldLinkToExamples_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentModifierOrder {
@@ -400,6 +417,23 @@ type ComponentModifiersCollection {
   limit: Int!
   skip: Int!
   total: Int!
+}
+
+enum ComponentModifiersCollectionOrder {
+  isPreviewDarkThemed_ASC
+  isPreviewDarkThemed_DESC
+  modifierId_ASC
+  modifierId_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentOrder {
@@ -471,8 +505,25 @@ input ComponentStateFilter {
 }
 
 type ComponentStateLinkingCollections {
-  componentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCollection
+  componentCollection(limit: Int = 100, locale: String, order: [ComponentStateLinkingCollectionsComponentCollectionOrder], preview: Boolean, skip: Int = 0): ComponentCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ComponentStateLinkingCollectionsComponentCollectionOrder {
+  group_ASC
+  group_DESC
+  name_ASC
+  name_DESC
+  shouldLinkToExamples_ASC
+  shouldLinkToExamples_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentStateOrder {
@@ -497,6 +548,23 @@ type ComponentStatesCollection {
   limit: Int!
   skip: Int!
   total: Int!
+}
+
+enum ComponentStatesCollectionOrder {
+  isPreviewDarkThemed_ASC
+  isPreviewDarkThemed_DESC
+  name_ASC
+  name_DESC
+  stateId_ASC
+  stateId_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 """
@@ -551,8 +619,25 @@ input ComponentStyleFilter {
 }
 
 type ComponentStyleLinkingCollections {
-  componentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCollection
+  componentCollection(limit: Int = 100, locale: String, order: [ComponentStyleLinkingCollectionsComponentCollectionOrder], preview: Boolean, skip: Int = 0): ComponentCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ComponentStyleLinkingCollectionsComponentCollectionOrder {
+  group_ASC
+  group_DESC
+  name_ASC
+  name_DESC
+  shouldLinkToExamples_ASC
+  shouldLinkToExamples_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentStyleOrder {
@@ -577,6 +662,23 @@ type ComponentStylesCollection {
   limit: Int!
   skip: Int!
   total: Int!
+}
+
+enum ComponentStylesCollectionOrder {
+  isPreviewDarkThemed_ASC
+  isPreviewDarkThemed_DESC
+  name_ASC
+  name_DESC
+  styleId_ASC
+  styleId_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 """
@@ -953,12 +1055,85 @@ input PagePropertiesFilter {
 }
 
 type PagePropertiesLinkingCollections {
-  codeStandardCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): CodeStandardCollection
-  componentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCollection
-  contentGuidelineCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ContentGuidelineCollection
+  codeStandardCollection(limit: Int = 100, locale: String, order: [PagePropertiesLinkingCollectionsCodeStandardCollectionOrder], preview: Boolean, skip: Int = 0): CodeStandardCollection
+  componentCollection(limit: Int = 100, locale: String, order: [PagePropertiesLinkingCollectionsComponentCollectionOrder], preview: Boolean, skip: Int = 0): ComponentCollection
+  contentGuidelineCollection(limit: Int = 100, locale: String, order: [PagePropertiesLinkingCollectionsContentGuidelineCollectionOrder], preview: Boolean, skip: Int = 0): ContentGuidelineCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  foundationCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): FoundationCollection
-  resourceCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ResourceCollection
+  foundationCollection(limit: Int = 100, locale: String, order: [PagePropertiesLinkingCollectionsFoundationCollectionOrder], preview: Boolean, skip: Int = 0): FoundationCollection
+  resourceCollection(limit: Int = 100, locale: String, order: [PagePropertiesLinkingCollectionsResourceCollectionOrder], preview: Boolean, skip: Int = 0): ResourceCollection
+}
+
+enum PagePropertiesLinkingCollectionsCodeStandardCollectionOrder {
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum PagePropertiesLinkingCollectionsComponentCollectionOrder {
+  group_ASC
+  group_DESC
+  name_ASC
+  name_DESC
+  shouldLinkToExamples_ASC
+  shouldLinkToExamples_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum PagePropertiesLinkingCollectionsContentGuidelineCollectionOrder {
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum PagePropertiesLinkingCollectionsFoundationCollectionOrder {
+  group_ASC
+  group_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum PagePropertiesLinkingCollectionsResourceCollectionOrder {
+  group_ASC
+  group_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum PagePropertiesOrder {
