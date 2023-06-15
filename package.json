@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@boston-scientific/anatomy-tokens": "^2.0.0",
+    "@boston-scientific/anatomy-tokens": "^3.0.1",
     "@floating-ui/react-dom": "^1.0.0",
     "algoliasearch": "^4.14.2",
-    "anatomy-tokens": "file:../anatomy-tokens",
     "axios": "^1.2.2",
     "dompurify": "^2.3.8",
     "marked": "^4.0.17",

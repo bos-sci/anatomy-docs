@@ -5,7 +5,7 @@
     z-index: $nav-menu-z-index;
     width: 100%;
     border-bottom: space(xxs) solid $border-color-subtle;
-    @include font-size($fs-base);
+    @include font-size($fs-body);
 
     &:not(.open) {
       display: none;
@@ -93,7 +93,7 @@
     justify-content: flex-start;
     width: 100%;
     box-shadow: $box-shadow-secondary;
-    @include font-size($fs-base);
+    @include font-size($fs-body);
 
     &:hover,
     &:active {

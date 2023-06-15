@@ -37,6 +37,6 @@ $text-color-ghost: $neutral-100;
   background-repeat: no-repeat;
   background-size: space(2x);
   color: $feedback-error-40;
-  @include font-size($fs-base);
+  @include font-size($fs-body);
   @include font-family-base-regular;
 }

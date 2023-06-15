@@ -29,7 +29,7 @@
 
   .bsds-nav-link {
     display: block;
-    @include font-size($fs-base);
+    @include font-size($fs-body);
     @include link-navigation;
 
     &:focus {
