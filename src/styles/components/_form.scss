@@ -12,7 +12,7 @@
 
 .bsds-legend {
   @include font-family-base-heavy;
-  @include font-size($fs-base);
+  @include font-size($fs-body);
 }
 
 .bsds-input {
