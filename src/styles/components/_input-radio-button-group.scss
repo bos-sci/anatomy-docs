@@ -26,7 +26,6 @@
   .bsds-input-radio-input {
     + .bsds-input-radio-label {
       @include button-default;
-      @include button-small;
       @include font-family-base-regular;
       outline: space(xxs) solid $neutral-40;
       border-radius: space(3x);
