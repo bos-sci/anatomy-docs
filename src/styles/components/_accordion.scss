@@ -2,7 +2,43 @@
   width: 100%;
 
   &:last-child {
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: $border-width-xxs solid $border-color-subtle;
+  }
+
+  &.is-contained {
+    border: $border-width-xxs solid $border-color-subtle;
+    padding: space(lg);
+
+    .bsds-accordion-heading {
+      .bsds-accordion-trigger {
+        padding: space(lg) space(md);
+      }
+
+      &[class*='bsds-accordion-stoplight'] {
+        .bsds-accordion-trigger {
+          padding: 0;
+          padding-right: space(md);
+
+          svg {
+            margin-right: 0;
+          }
+        }
+
+        .bsds-accordion-trigger-text {
+          padding: space(lg) 0;
+        }
+      }
+
+      &:first-of-type {
+        .bsds-accordion-trigger {
+          border-top: 0;
+        }
+      }
+    }
+
+    .bsds-accordion-panel-body {
+      padding: space(3x);
+    }
   }
 }
 
@@ -16,7 +52,7 @@
   align-items: center;
   width: 100%;
   margin: 0;
-  border-top: space(xxs) solid $neutral-80;
+  border-top: $border-width-xxs solid $border-color-subtle;
   border-right: 0;
   border-bottom: 0;
   border-left: 0;
@@ -42,7 +78,7 @@
 
   &:not([disabled]) {
     &:hover {
-      border-color: $neutral-80;
+      border-color: $border-color-subtle;
       background: transparent;
       color: $action-primary-40;
       text-decoration: underline;
