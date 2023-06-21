@@ -4,6 +4,27 @@
   &:last-child {
     border-bottom: space(xxs) solid $neutral-80;
   }
+
+  &.is-contained {
+    border: $border-width-xxs solid $border-color-subtle;
+    padding: space(lg);
+
+    .bsds-accordion-heading {
+      .bsds-accordion-trigger {
+        padding: space(lg) space(md);
+      }
+
+      &:first-of-type {
+        .bsds-accordion-trigger {
+          border-top: 0;
+        }
+      }
+    }
+
+    .bsds-accordion-panel-body {
+      padding: space(3x);
+    }
+  }
 }
 
 .bsds-accordion-heading {

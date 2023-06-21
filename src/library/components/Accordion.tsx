@@ -12,10 +12,11 @@ import AccordionHeading from './AccordionHeading';
 
 type Props = {
   headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  isContained?: boolean;
   children: ReactElement[] | ReactElement;
 };
 
-const Accordion = ({ headingLevel = 'h2', children }: Props): JSX.Element => {
+const Accordion = ({ headingLevel = 'h2', isContained = false, children }: Props): JSX.Element => {
   const accordionId = useId();
 
   const [expandedPanels, setExpandedPanels] = useState(new Set<number>());
@@ -46,7 +47,7 @@ const Accordion = ({ headingLevel = 'h2', children }: Props): JSX.Element => {
   };
 
   return (
-    <div className="bsds-accordion">
+    <div className={'bsds-accordion' + (isContained ? ' is-contained' : '')}>
       {accordionPanels.map((accordionPanel, index) => (
         <Fragment key={'fragment' + accordionPanel.props.heading}>
           <HeadingElement
