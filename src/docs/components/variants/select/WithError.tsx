@@ -1,15 +1,16 @@
 import Select from '../../../../library/components/Select';
-import SelectOption from '../../../../library/components/SelectOption';
+import Option from '../../../../library/components/Option';
 import Example from '../../../shared/components/Example';
 
 const WithError = (): JSX.Element => {
   return (
     <Example>
       <div className="bsds-form-control">
-        <Select id="selectWithError" label="Select" placeholder="Placeholder text" forceValidation>
-          <SelectOption label="Option 1" value="Option 1" />
-          <SelectOption label="Option 2" value="Option 2" />
-          <SelectOption label="Option 3" value="Option 3" />
+        <Select id="selectWithError" label="Select" forceValidation required>
+          <Option value="" disabled selected />
+          <Option value="option1">Option 1</Option>
+          <Option value="option2">Option 2</Option>
+          <Option value="option3">Option 3</Option>
         </Select>
       </div>
     </Example>

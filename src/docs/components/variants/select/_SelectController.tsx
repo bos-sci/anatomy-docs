@@ -1,7 +1,6 @@
 import { VariantProps } from '../Preview';
 import DefaultSelect from './DefaulSelect';
 import Disabled from './Disabled';
-import Required from './Required';
 import WithError from './WithError';
 import WithHelp from './WithHelp';
 import WithHelpError from './WithHelpError';
@@ -26,9 +25,6 @@ const SelectController = ({ variantId }: VariantProps): JSX.Element => {
 
     case 'selectDisabled':
       return <Disabled />;
-
-    case 'selectRequired':
-      return <Required />;
 
     default:
       return <DefaultSelect />;

@@ -11,7 +11,7 @@ import {
   forwardRef,
   ForwardedRef
 } from 'react';
-import { valueMissingError } from '../helpers/validation';
+import { errorValueMissing } from '../helpers/validation';
 
 export const SelectOptionAddonPropsContext = createContext({
   ariaInvalid: false,
@@ -27,7 +27,6 @@ export const SelectOptionAddonPropsContext = createContext({
 });
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
-  placeholder?: string;
   helpText?: string;
   errorText?: string;
   selectRequired?: string;
@@ -49,7 +48,6 @@ const Select = forwardRef(
   (
     {
       label,
-      placeholder,
       helpText,
       errorText = '',
       selectRequired = 'required',
@@ -91,8 +89,8 @@ const Select = forwardRef(
 
     const validate = useCallback(() => {
       if (selectEl.current) {
-        if (selectEl.current.value === '') {
-          setValidationMessage(valueMissingError);
+        if (selectEl.current.selectedOptions[0].disabled) {
+          setValidationMessage(errorValueMissing);
         } else {
           setValidationMessage('');
         }
@@ -145,6 +143,7 @@ const Select = forwardRef(
       setErrorTextId('inputErrorText' + idNum);
     }, []);
 
+    // TODO: ADS-500 revisit classNames
     return (
       <div className="bsds-input">
         <label className="bsds-input-text">
@@ -164,7 +163,6 @@ const Select = forwardRef(
                   }
                 }
               }}
-              id={label}
               name={label}
               className="bsds-input-text-input-select-control"
               aria-invalid={!!validationMessage}
@@ -173,21 +171,20 @@ const Select = forwardRef(
               onChange={handleChange}
               {...selectAttrs}
             >
-              {!!placeholder && <option value="">{placeholder}</option>}
               <SelectOptionAddonPropsContext.Provider value={addonProps}>
                 {children}
               </SelectOptionAddonPropsContext.Provider>
             </select>
           </div>
         </label>
-        {!!helpText && (
-          <p id={helpTextId} className="bsds-input-help-text">
-            {helpText}
-          </p>
-        )}
         {!!validationMessage && (
           <p id={errorTextId} className="bsds-input-error">
             {validationMessage}
+          </p>
+        )}
+        {!!helpText && (
+          <p id={helpTextId} className="bsds-input-help-text">
+            {helpText}
           </p>
         )}
       </div>
