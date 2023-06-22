@@ -177,12 +177,23 @@ const Modal = forwardRef(
       [showDialog]
     );
 
+    // Mount and unmount keydown event listeners for focus
     useEffect(() => {
       document.addEventListener('keydown', handleFocus);
       return () => {
         document.removeEventListener('keydown', handleFocus);
       };
     }, [handleFocus]);
+
+    // Set overflow to auto on unmount of component
+    useEffect(() => {
+      return () => {
+        const body = document.querySelector('body');
+        if (body) {
+          body.style.overflowY = 'auto';
+        }
+      };
+    });
 
     return (
       // Disabling as adding role="dialog" is required for some screen readers to announce properly
