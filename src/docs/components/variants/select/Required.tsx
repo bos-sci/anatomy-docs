@@ -3,7 +3,7 @@ import Select from '../../../../library/components/Select';
 import SelectOption from '../../../../library/components/SelectOption';
 import Example from '../../../shared/components/Example';
 
-const DefaultSelect = (): JSX.Element => {
+const Required = (): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -13,14 +13,14 @@ const DefaultSelect = (): JSX.Element => {
   return (
     <Example>
       <div className="bsds-form-control">
-        <Select id="selectDefault" label="Select" onChange={handleChange}>
-          <SelectOption label="Option 1" value="Option 1" defaultChecked={inputValue === 'selectDefault1'} />
-          <SelectOption label="Option 2" value="Option 2" defaultChecked={inputValue === 'selectDefault2'} />
-          <SelectOption label="Option 3" value="Option 3" defaultChecked={inputValue === 'selectDefault3'} />
+        <Select id="selectRequired" label="Select" required onChange={handleChange}>
+          <SelectOption label="Option 1" value="Option 1" defaultChecked={inputValue === 'selectRequired1'} />
+          <SelectOption label="Option 2" value="Option 2" defaultChecked={inputValue === 'selectRequired2'} />
+          <SelectOption label="Option 3" value="Option 3" defaultChecked={inputValue === 'selectRequired3'} />
         </Select>
       </div>
     </Example>
   );
 };
 
-export default DefaultSelect;
+export default Required;
