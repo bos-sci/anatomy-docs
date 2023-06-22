@@ -5,8 +5,6 @@
 @import '/src/styles/base/base';
 @import '/src/styles/utilities/utilities';
 
-$icon-size-sm: space(lg);
-
 @mixin icon-background($icon-size, $alignment: right) {
   position: absolute;
   box-sizing: content-box;

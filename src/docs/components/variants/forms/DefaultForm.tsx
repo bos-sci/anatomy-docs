@@ -7,6 +7,8 @@ import InputRadio from '../../../../library/components/InputRadio';
 import InputText from '../../../../library/components/InputText';
 import RadioGroup from '../../../../library/components/RadioGroup';
 import Example from '../../../shared/components/Example';
+import Select from '../../../../library/components/Select';
+import Option from '../../../../library/components/Option';
 
 interface ADSInputElement extends HTMLInputElement {
   validate: () => void;
@@ -51,6 +53,15 @@ const DefaultForm = () => {
         </div>
         <div className="bsds-form-control">
           <InputText label="Disabled text input" disabled />
+        </div>
+        <div className="bsds-form-control">
+          <Select id="optionDefault" label="Select">
+            <Option value="" disabled selected />
+
+            <Option value="option1">Option 1</Option>
+            <Option value="option2">Option 2</Option>
+            <Option value="option3">Option 3</Option>
+          </Select>
         </div>
         <div className="bsds-form-control">
           <Fieldset
