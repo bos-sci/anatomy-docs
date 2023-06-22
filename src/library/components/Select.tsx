@@ -6,25 +6,13 @@ import {
   useEffect,
   useRef,
   useState,
-  createContext,
   MutableRefObject,
   forwardRef,
-  ForwardedRef
+  ForwardedRef,
+  useId
 } from 'react';
 import { errorValueMissing } from '../helpers/validation';
 
-export const SelectOptionAddonPropsContext = createContext({
-  ariaInvalid: false,
-  ariaDescribedby: '',
-  errorText: '',
-  isDirty: false,
-  setIsDirty: (isDirty: boolean) => {
-    return;
-  },
-  setFieldsetError: (text: string) => {
-    return;
-  }
-});
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
   helpText?: string;
@@ -32,17 +20,6 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   selectRequired?: string;
   forceValidation?: boolean;
 }
-export interface AddonProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  ariaInvalid: boolean;
-  ariaDescribedby: string;
-  errorText: string;
-  validationMessage: string;
-  isDirty: boolean;
-  setIsDirty: (isDirty: boolean) => void;
-  setFieldsetError: (text: string) => void;
-}
-
-let selectId = 0;
 
 const Select = forwardRef(
   (
@@ -62,34 +39,16 @@ const Select = forwardRef(
     const [helpTextId, setHelpTextId] = useState('');
     const [errorTextId, setErrorTextId] = useState('');
     const [validationMessage, setValidationMessage] = useState('');
-    const [addonProps, setAddonProps] = useState<AddonProps>({} as AddonProps);
-    const [isInvalid, setIsInvalid] = useState(!!errorText);
-    const [areOptionsDirty, setAreOptionsDirty] = useState(!!errorText);
+
     const [value, setValue] = useState('');
     const [isDirty, setIsDirty] = useState(false);
 
     const selectEl = useRef<HTMLSelectElement>(null);
-
-    useEffect(() => {
-      setAddonProps({
-        errorText,
-        validationMessage: validationMessage,
-        ariaInvalid: isInvalid,
-        ariaDescribedby: isInvalid ? errorTextId : '',
-        isDirty: areOptionsDirty,
-        setIsDirty: (isDirty: boolean) => {
-          setAreOptionsDirty(isDirty);
-        },
-        setFieldsetError: (text) => {
-          setValidationMessage(text);
-          setIsInvalid(!!text);
-        }
-      });
-    }, [isInvalid, errorTextId, errorText, validationMessage, areOptionsDirty]);
+    const selectId = 'inputHelpText' + useId();
 
     const validate = useCallback(() => {
       if (selectEl.current) {
-        if (selectEl.current.selectedOptions[0].disabled) {
+        if (selectEl.current.selectedOptions[0].disabled && selectEl.current.required) {
           setValidationMessage(errorValueMissing);
         } else {
           setValidationMessage('');
@@ -115,9 +74,9 @@ const Select = forwardRef(
     };
 
     useEffect(() => {
-      selectEl?.current?.setCustomValidity(isInvalid ? errorText : '');
+      selectEl?.current?.setCustomValidity(errorText ?? '');
       selectEl.current?.checkValidity();
-    }, [selectEl, isInvalid, errorText]);
+    }, [selectEl, validationMessage, errorText]);
 
     useEffect(() => {
       if (forceValidation && !isDirty) {
@@ -138,10 +97,9 @@ const Select = forwardRef(
 
     // On component mount
     useEffect(() => {
-      const idNum = ++selectId;
-      setHelpTextId('inputHelpText' + idNum);
-      setErrorTextId('inputErrorText' + idNum);
-    }, []);
+      setHelpTextId('inputHelpText' + selectId);
+      setErrorTextId('inputErrorText' + selectId);
+    }, [selectId]);
 
     // TODO: ADS-500 revisit classNames
     return (
@@ -171,19 +129,17 @@ const Select = forwardRef(
               onChange={handleChange}
               {...selectAttrs}
             >
-              <SelectOptionAddonPropsContext.Provider value={addonProps}>
-                {children}
-              </SelectOptionAddonPropsContext.Provider>
+              {children}
             </select>
           </div>
         </label>
         {!!validationMessage && (
-          <p id={errorTextId} className="bsds-input-error">
+          <p id={helpTextId} className="bsds-input-error">
             {validationMessage}
           </p>
         )}
         {!!helpText && (
-          <p id={helpTextId} className="bsds-input-help-text">
+          <p id={errorTextId} className="bsds-input-help-text">
             {helpText}
           </p>
         )}
