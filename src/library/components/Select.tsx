@@ -17,7 +17,7 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
   helpText?: string;
   errorText?: string;
-  selectRequired?: string;
+  requiredText?: string;
   forceValidation?: boolean;
 }
 
@@ -27,7 +27,7 @@ const Select = forwardRef(
       label,
       helpText,
       errorText = '',
-      selectRequired = 'required',
+      requiredText = 'required',
       forceValidation = false,
       children,
       onBlur,
@@ -39,7 +39,6 @@ const Select = forwardRef(
     const [helpTextId, setHelpTextId] = useState('');
     const [errorTextId, setErrorTextId] = useState('');
     const [validationMessage, setValidationMessage] = useState('');
-
     const [value, setValue] = useState('');
     const [isDirty, setIsDirty] = useState(false);
 
@@ -107,7 +106,7 @@ const Select = forwardRef(
         <label className="bsds-input-text">
           <div className="bsds-input-text-label">
             {label}
-            {!!selectAttrs.required && <span className="bsds-input-help-text">{selectRequired}</span>}
+            {!!selectAttrs.required && <span className="bsds-input-help-text">{requiredText}</span>}
           </div>
           <div className="bsds-input-text-input-select">
             <select
@@ -134,12 +133,12 @@ const Select = forwardRef(
           </div>
         </label>
         {!!validationMessage && (
-          <p id={helpTextId} className="bsds-input-error">
+          <p id={errorTextId} className="bsds-input-error">
             {validationMessage}
           </p>
         )}
         {!!helpText && (
-          <p id={errorTextId} className="bsds-input-help-text">
+          <p id={helpTextId} className="bsds-input-help-text">
             {helpText}
           </p>
         )}
