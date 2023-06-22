@@ -49,11 +49,13 @@ const Select = forwardRef(
       if (selectEl.current) {
         if (selectEl.current.selectedOptions[0].disabled && selectEl.current.required) {
           setValidationMessage(errorValueMissing);
+        } else if (errorText) {
+          setValidationMessage(errorText);
         } else {
           setValidationMessage('');
         }
       }
-    }, [selectEl]);
+    }, [selectEl, errorText]);
 
     const handleBlur = (e: FocusEvent<HTMLSelectElement>) => {
       validate();
@@ -71,11 +73,6 @@ const Select = forwardRef(
         onChange(e);
       }
     };
-
-    useEffect(() => {
-      selectEl?.current?.setCustomValidity(errorText ?? '');
-      selectEl.current?.checkValidity();
-    }, [selectEl, validationMessage, errorText]);
 
     useEffect(() => {
       if (forceValidation && !isDirty) {
