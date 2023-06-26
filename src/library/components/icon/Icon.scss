@@ -8,7 +8,7 @@
 {
   width: space(2x);
 
-  @media (min-width: 992px) {
+  @media (min-width: $breakpoint-lg-min) {
     width: 1.125rem; // NOTE: this is a one-off size
   }
 }

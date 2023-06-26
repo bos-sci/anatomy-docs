@@ -49,7 +49,7 @@
   margin-top: space(4x);
 }
 
-@media (min-width: 992px) {
+@media (min-width: $breakpoint-lg-min) {
   .bsds-input-error {
     &::before {
       transform: translateY(space(xs));
