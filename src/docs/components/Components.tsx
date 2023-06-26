@@ -86,6 +86,10 @@ const Components = (): JSX.Element => {
             slug: basePath + '/form-controls/radio-group'
           },
           {
+            text: 'Select',
+            slug: basePath + '/form-controls/select'
+          },
+          {
             text: 'Text input',
             slug: basePath + '/form-controls/text-input'
           }
