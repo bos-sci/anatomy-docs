@@ -160,7 +160,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: $breakpoint-lg-min) {
   .bsds-nav-secondary {
     .bsds-nav-secondary-menu-trigger {
       display: none;

@@ -39,7 +39,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: $breakpoint-lg-min) {
   .docs-home {
     .docs-logo {
       padding: space(6x) 0;
