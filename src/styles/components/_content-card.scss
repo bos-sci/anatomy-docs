@@ -91,20 +91,6 @@
 
   .bsds-icon-8x {
     display: none;
-
-    ~ .bsds-card-content {
-      &::before {
-        @include bsds-modifier-error-text;
-        content: 'Image and icon modifiers cannot be combined.';
-      }
-    }
-
-    ~ .bsds-card-title {
-      &::before {
-        @include bsds-modifier-error-text;
-        content: 'Image and icon modifiers cannot be combined.\A';
-      }
-    }
   }
 }
 
