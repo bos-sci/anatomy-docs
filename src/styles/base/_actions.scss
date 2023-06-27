@@ -70,7 +70,7 @@
 
 @mixin button-default {
   @include button-base;
-  border-color: $action-primary-40;
+  border-color: $border-color-action;
   background: $neutral-100;
   color: $action-primary-40;
   @include font-family-base-heavy;

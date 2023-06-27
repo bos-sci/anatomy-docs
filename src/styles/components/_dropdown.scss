@@ -143,14 +143,14 @@ $icon-size: 1em;
           right: space(xs);
           bottom: space(xs);
           left: space(xs);
-          border: space(xs) solid $border-color-ghost;
+          border: $border-width-xs solid $border-color-ghost;
           content: '';
         }
       }
     }
 
     .bsds-dropdown-item-highlighted {
-      border-top: space(xxs) solid $border-color-subtle;
+      border-top: $border-width-xxs solid $border-color-subtle;
       padding: space(lg) 0;
 
       .bsds-button,

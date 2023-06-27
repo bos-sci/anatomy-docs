@@ -4,7 +4,7 @@ $checkmark-size: $ffs-body-assertive;
 @mixin checkbox-invalid() {
   + .bsds-input-checkbox-label {
     &::before {
-      border: space(xs) solid $feedback-error-40;
+      border: $border-width-xs solid $border-color-error;
     }
   }
 
@@ -76,7 +76,7 @@ $checkmark-size: $ffs-body-assertive;
       left: 0;
       width: $checkbox-size;
       height: $checkbox-size;
-      border: space(xxs) solid $neutral-00;
+      border: $border-width-xxs solid $border-color-assertive;
       background: $neutral-100;
       content: '';
     }
@@ -123,7 +123,7 @@ $checkmark-size: $ffs-body-assertive;
       cursor: not-allowed;
 
       &::before {
-        border: space(xxs) solid $neutral-80;
+        border: $border-width-xxs solid $border-color-subtle;
         background: $neutral-95;
       }
 

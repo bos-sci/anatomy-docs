@@ -5,7 +5,7 @@
 .bsds-input-text-input {
   width: 100%;
   margin-top: space(md);
-  border: space(xxs) solid $neutral-40;
+  border: $border-width-xxs solid $neutral-40;
   padding: space(lg) space(2x);
   font-family: inherit;
   font-size: inherit;
@@ -20,7 +20,7 @@
   }
 
   &:disabled {
-    border-color: $neutral-80;
+    border-color: $border-color-subtle;
   }
 
   &:read-only {
@@ -47,17 +47,17 @@
 
     &:not(:read-only) {
       &[aria-invalid='true'] {
-        border: space(xxs) solid $feedback-error-40;
+        border: $border-width-xxs solid $border-color-error;
 
         &:hover,
         &:focus {
-          border: space(xxs) solid $feedback-error-40;
+          border: $border-width-xxs solid $border-color-error;
         }
       }
 
       &:hover,
       &:focus {
-        border-color: $action-primary-40;
+        border-color: $border-color-action;
       }
     }
   }

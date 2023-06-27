@@ -74,14 +74,14 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    border: space(xxs) solid $border-color-subtle;
+    border: $border-width-xxs solid $border-color-subtle;
     padding: space(3x);
     text-align: left;
     @include link-navigation;
 
     &:hover,
     &:active {
-      border: space(xxs) solid $action-primary-40;
+      border: $border-width-xxs solid $border-color-action;
       background: initial;
     }
 

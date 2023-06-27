@@ -39,7 +39,7 @@ $inner-circle-diameter: space(md);
       width: $outer-circle-diameter;
       height: $outer-circle-diameter;
       border-radius: 50%;
-      border: space(xxs) solid $neutral-00;
+      border: $border-width-xxs solid $border-color-assertive;
       background: $neutral-100;
       content: '';
     }
@@ -48,7 +48,7 @@ $inner-circle-diameter: space(md);
   &[aria-invalid='true'] {
     + .bsds-input-radio-label {
       &::before {
-        border: space(xs) solid $feedback-error-40;
+        border: $border-width-xs solid $border-color-error;
         background: $neutral-100;
       }
     }
@@ -118,7 +118,7 @@ $inner-circle-diameter: space(md);
 
       &::before {
         opacity: 1;
-        border: space(xxs) solid $neutral-80;
+        border: $border-width-xxs solid $border-color-subtle;
         background: $neutral-95;
       }
     }

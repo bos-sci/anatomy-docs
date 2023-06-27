@@ -37,7 +37,7 @@
           }
 
           &[aria-invalid='true'] {
-            border-color: $feedback-error-40;
+            border-color: $border-color-error;
           }
         }
       }

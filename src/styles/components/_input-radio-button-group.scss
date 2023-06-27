@@ -29,7 +29,7 @@
       @include font-family-base-regular;
       outline: space(xxs) solid $neutral-40;
       border-radius: space(3x);
-      border: space(xs) solid transparent;
+      border: $border-width-xxs solid transparent;
       padding: space(md) space(3x);
       color: $neutral-40;
 
@@ -53,7 +53,7 @@
     &[aria-checked='true'] {
       + .bsds-input-radio-label {
         outline: none;
-        border-color: $action-primary-40;
+        border-color: $border-color-action;
         color: $neutral-00;
       }
     }
@@ -122,11 +122,11 @@
           .bsds-input-radio-input {
             &:checked {
               + .bsds-input-radio-label {
-                border-color: $feedback-error-40;
+                border-color: $border-color-error;
 
                 &:hover,
                 &:active {
-                  border-color: $action-primary-20;
+                  border-color: $border-color-error;
                 }
               }
             }

@@ -22,7 +22,7 @@
   &-border-light {
     @extend .bsds-card;
     box-sizing: border-box;
-    border: space(xxs) solid $border-color-subtle;
+    border: $border-width-xxs solid $border-color-subtle;
     padding: space(3x);
     background-color: $neutral-100;
   }

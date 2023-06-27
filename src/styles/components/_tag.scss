@@ -15,7 +15,7 @@
 
 @mixin tag-accent {
   @include tag-default;
-  border-width: 0 0 0 space(sm);
+  border-width: 0 0 0 $border-width-sm;
   border-style: solid;
   padding: space(xs) 0 space(xs) space(md);
 }
