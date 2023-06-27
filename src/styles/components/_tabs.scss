@@ -38,7 +38,7 @@
   border: 0;
   padding: space(lg) space(2x);
   background: transparent;
-  color: $neutral-40;
+  color: $text-color-subtle;
   @include font-family-base-regular;
 
   &::after {
@@ -67,7 +67,7 @@
   }
 
   &[aria-selected='true'] {
-    color: $neutral-00;
+    color: $text-color-primary;
     @include font-family-base-heavy;
 
     &::after {

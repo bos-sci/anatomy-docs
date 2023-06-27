@@ -48,7 +48,7 @@ $bsds-breadcrumb-divider: url('../../assets/images/icon-slash.svg');
     &:not([href]) {
       // FOR DEMO ONLY
       &:hover {
-        color: $neutral-00;
+        color: $text-color-primary;
         text-decoration: underline;
       }
     }

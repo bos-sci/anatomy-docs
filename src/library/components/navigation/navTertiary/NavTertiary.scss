@@ -11,9 +11,9 @@
 
   .bsds-nav-tertiary-title {
     margin: 0;
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: $border-width-xxs solid $border-color-subtle;
     padding-bottom: space(lg);
-    color: $neutral-40;
+    color: $text-color-subtle;
     @include font-family-base-regular;
     @include font-size($fs-small);
     line-height: 1.5; // NOTE: overriding h2's default line height

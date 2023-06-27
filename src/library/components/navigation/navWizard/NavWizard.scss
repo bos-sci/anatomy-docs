@@ -58,7 +58,7 @@
 
   .bsds-nav-wizard-menu {
     margin-top: space(4x);
-    border-top: space(xs) solid $border-color-subtle;
+    border-top: $border-width-xs solid $border-color-subtle;
     padding-top: space(4x);
   }
 

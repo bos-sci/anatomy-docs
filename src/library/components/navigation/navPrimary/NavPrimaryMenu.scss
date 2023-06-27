@@ -4,7 +4,7 @@
     left: 0;
     z-index: $nav-menu-z-index;
     width: 100%;
-    border-bottom: space(xxs) solid $border-color-subtle;
+    border-bottom: $border-width-xxs solid $border-color-subtle;
     @include font-size($fs-body);
 
     &:not(.open) {
@@ -55,7 +55,7 @@
         .bsds-nav-link-description {
           width: 100%;
           margin-top: space(md);
-          color: $neutral-40;
+          color: $text-color-subtle;
           text-align: left;
           @include font-size($fs-body-subtle);
           @include font-family-base-regular;
@@ -112,7 +112,7 @@
     padding: $menu-padding;
 
     > :not(:last-child) {
-      border-right: space(xxs) solid $border-color-subtle;
+      border-right: $border-width-xxs solid $border-color-subtle;
     }
   }
 
@@ -131,7 +131,7 @@
     }
 
     .bsds-nav-menu-panel-header {
-      border-bottom: space(xxs) solid $border-color-subtle;
+      border-bottom: $border-width-xxs solid $border-color-subtle;
       padding: space(lg) space(3x) space(4x);
 
       .bsds-nav-menu-panel-title {
@@ -180,7 +180,7 @@
       flex-direction: column;
       align-content: flex-start;
       align-items: flex-start;
-      border-top: space(xxs) solid $border-color-subtle;
+      border-top: $border-width-xxs solid $border-color-subtle;
       padding: $menu-padding;
 
       .bsds-nav-link {
@@ -219,8 +219,8 @@
     display: none;
     width: 100%;
     margin: auto;
-    border-top: space(xxs) solid $border-color-subtle;
-    border-bottom: space(xxs) solid $border-color-subtle;
+    border-top: $border-width-xxs solid $border-color-subtle;
+    border-bottom: $border-width-xxs solid $border-color-subtle;
 
     &.open {
       display: block;
@@ -242,7 +242,7 @@
       height: 100%;
 
       .bsds-nav-menu-panel-header {
-        border-right: space(xxs) solid $border-color-subtle;
+        border-right: $border-width-xxs solid $border-color-subtle;
         border-bottom: 0;
         padding: space(4x) space(4x) space(3x);
       }
@@ -255,11 +255,11 @@
         border-bottom: 0;
 
         &:first-child {
-          border-left: space(xxs) solid $border-color-subtle;
+          border-left: $border-width-xxs solid $border-color-subtle;
         }
 
         &:not(:first-child) {
-          border-right: space(xxs) solid $border-color-subtle;
+          border-right: $border-width-xxs solid $border-color-subtle;
         }
 
         &.bsds-nav-list-history {
@@ -306,7 +306,7 @@
 
     .bsds-nav-menu {
       height: 60vh;
-      border-top: space(xxs) solid $border-color-subtle;
+      border-top: $border-width-xxs solid $border-color-subtle;
 
       .bsds-nav {
         height: 100%;

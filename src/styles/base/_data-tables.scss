@@ -12,7 +12,7 @@ table {
   }
 
   tr {
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: $border-width-xxs solid $border-color-subtle;
 
     th {
       @include font-family-base-heavy;

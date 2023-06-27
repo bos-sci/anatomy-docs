@@ -58,7 +58,7 @@
   border-left: 0;
   padding: space(3x);
   background: transparent;
-  color: $border-color-assertive;
+  color: $text-color-primary;
   @include font-family-base-regular;
   @include font-size($fs-body);
   text-align: left;
@@ -68,7 +68,6 @@
   }
 
   &[aria-expanded='true'] {
-    color: $neutral-00;
     @include font-family-base-heavy;
 
     svg {
@@ -131,7 +130,7 @@
       align-self: stretch;
       width: space(3x) + space(2x) + space(sm);
       margin-right: space(2x);
-      border-left-width: space(sm);
+      border-left-width: $border-width-sm;
       border-left-style: solid;
       padding: space(3x) space(md);
       background-position: center;
