@@ -29,7 +29,7 @@
             right: space(lg);
             width: $icon-size-sm;
             height: $icon-size-sm;
-            background-color: $neutral-40;
+            background: $text-color-subtle;
           }
 
           &[aria-expanded='true'],
@@ -40,7 +40,7 @@
             text-decoration: underline;
 
             &::after {
-              background-color: $text-color-primary;
+              background: $text-color-primary;
             }
           }
         }

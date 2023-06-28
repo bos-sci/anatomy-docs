@@ -54,7 +54,7 @@
     &:hover,
     &:active {
       background: transparent;
-      color: $action-primary-40;
+      color: $text-color-action;
 
       &::after {
         background: $action-primary-40;
@@ -78,7 +78,7 @@
 
   &[disabled] {
     background: transparent;
-    color: $neutral-60;
+    color: $text-color-disabled;
     @include font-family-base-regular;
     cursor: not-allowed;
   }

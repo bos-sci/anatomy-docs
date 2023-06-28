@@ -16,7 +16,7 @@
     width: $size-icon-decorative;
     height: $size-icon-decorative;
     margin: 0;
-    border-radius: 50%;
+    border-radius: $border-radius-circle;
   }
 
   .docs-team-member {

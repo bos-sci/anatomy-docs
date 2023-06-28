@@ -55,14 +55,7 @@ $checkmark-size: $ffs-body-assertive;
 }
 
 .bsds-input-checkbox-input {
-  position: absolute;
-  box-sizing: border-box;
-  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
-  overflow: hidden;
-  margin: 0;
-  opacity: 0;
-  padding: 0;
-  appearance: none;
+  @include visually-hidden;
   pointer-events: none;
 
   + .bsds-input-checkbox-label {

@@ -79,7 +79,7 @@
     &:hover {
       border-color: $border-color-subtle;
       background: transparent;
-      color: $action-primary-40;
+      color: $text-color-action;
       text-decoration: underline;
 
       svg {
@@ -89,7 +89,7 @@
 
     &:active {
       background: transparent;
-      color: $action-primary-40;
+      color: $text-color-action;
 
       svg {
         color: $action-primary-40;
@@ -104,7 +104,7 @@
 
   &[disabled] {
     background: transparent;
-    color: $neutral-60;
+    color: $text-color-disabled;
     cursor: not-allowed;
   }
 }
@@ -159,7 +159,7 @@
   &-red {
     .bsds-accordion-trigger {
       &::before {
-        border-left-color: $feedback-error-40;
+        border-left-color: $border-color-error;
         background-color: $feedback-error-95;
         background-image: url('../../assets/images/icon-stoplight-red.svg');
       }
@@ -179,7 +179,7 @@
   &-green {
     .bsds-accordion-trigger {
       &::before {
-        border-left-color: $feedback-success-40;
+        border-left-color: $border-color-success;
         background-color: $feedback-success-95;
         background-image: url('../../assets/images/icon-stoplight-green.svg');
       }

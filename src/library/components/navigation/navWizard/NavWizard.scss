@@ -9,7 +9,7 @@
   position: relative;
   box-shadow: $box-shadow-tertiary;
   padding: space(4x);
-  background-color: $neutral-100;
+  background: $neutral-100;
 
   .bsds-nav-wizard-header {
     display: grid;
@@ -117,7 +117,7 @@
         }
 
         > .bsds-nav-link-addon {
-          background-color: $action-primary-40;
+          background: $action-primary-40;
           color: $neutral-100;
         }
       }

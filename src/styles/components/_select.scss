@@ -6,7 +6,7 @@
       grid-template-areas: 'select';
       align-items: center;
       margin-top: space(md);
-      background-color: $neutral-100;
+      background: $neutral-100;
 
       select {
         @extend .bsds-input-text-input;
@@ -16,7 +16,7 @@
 
         &.bsds-input-text-input-select-control {
           z-index: 1;
-          background-color: transparent;
+          background: transparent;
 
           &:hover,
           &::after,
@@ -48,7 +48,7 @@
         right: space(2x);
         width: $icon-size-sm;
         height: $icon-size-sm;
-        background-color: $neutral-00;
+        background: $neutral-00;
         content: '';
         mask: url('../../assets/images/icon-chevron-down.svg') no-repeat 50% 50%;
         mask-size: cover;

@@ -95,11 +95,6 @@
     box-shadow: $box-shadow-secondary;
     @include font-size($fs-body);
 
-    &:hover,
-    &:active {
-      background-color: $neutral-100;
-    }
-
     &:focus {
       @include focus-default-inset;
     }
@@ -204,7 +199,7 @@
             right: space(lg);
             width: $icon-size-sm;
             height: $icon-size-sm;
-            background-color: $text-color-primary;
+            background: $text-color-primary;
           }
         }
       }

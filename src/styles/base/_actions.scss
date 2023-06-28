@@ -72,7 +72,7 @@
   @include button-base;
   border-color: $border-color-action;
   background: $neutral-100;
-  color: $action-primary-40;
+  color: $text-color-action;
   @include font-family-base-heavy;
   @include button-focus;
   @include button-disabled;
@@ -134,14 +134,14 @@
   &[disabled] {
     border-color: $neutral-60;
     background: transparent;
-    color: $neutral-60;
+    color: $text-color-disabled;
     @include font-family-base-regular;
     cursor: not-allowed;
   }
 }
 
 @mixin button-icon {
-  border-radius: 50%;
+  border-radius: $border-radius-circle;
   padding: space(2x) + space(xxs);
 }
 
@@ -163,7 +163,7 @@ button {
 }
 
 @mixin link-default {
-  color: $action-primary-40;
+  color: $text-color-action;
   @include font-family-base-heavy;
   text-decoration: underline;
 
@@ -196,12 +196,12 @@ button {
   }
 
   &:hover {
-    color: $action-primary-40;
+    color: $text-color-action;
     @include link-hover;
   }
 
   &:active {
-    color: $action-primary-40;
+    color: $text-color-action;
     text-decoration-thickness: space(xs);
   }
 
@@ -220,12 +220,12 @@ button {
   }
 
   &:hover {
-    color: $neutral-60;
+    color: $text-color-disabled;
     @include link-hover;
   }
 
   &:active {
-    color: $neutral-60;
+    color: $text-color-disabled;
     text-decoration-thickness: space(xs);
   }
 

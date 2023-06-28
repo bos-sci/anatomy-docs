@@ -28,7 +28,7 @@ $icon-size: 1em;
 
     &.bsds-button {
       &::after {
-        background-color: $action-primary-40;
+        background: $action-primary-40;
       }
 
       &[aria-expanded='true'] {
@@ -39,13 +39,13 @@ $icon-size: 1em;
       &:active,
       &[aria-expanded='true'] {
         &::after {
-          background-color: $neutral-100;
+          background: $neutral-100;
         }
       }
 
       &-assertive {
         &::after {
-          background-color: $neutral-100;
+          background: $neutral-100;
         }
 
         &[aria-expanded='true'] {
@@ -55,7 +55,7 @@ $icon-size: 1em;
 
       &-subtle {
         &::after {
-          background-color: $action-primary-40;
+          background: $action-primary-40;
         }
 
         &[aria-expanded='true'] {
@@ -66,14 +66,14 @@ $icon-size: 1em;
         &:active,
         &[aria-expanded='true'] {
           &::after {
-            background-color: $neutral-100;
+            background: $neutral-100;
           }
         }
       }
 
       &-ghost {
         &::after {
-          background-color: $neutral-100;
+          background: $neutral-100;
         }
 
         &[aria-expanded='true'] {
@@ -155,7 +155,7 @@ $icon-size: 1em;
 
       .bsds-button,
       .bsds-link {
-        color: $action-primary-40;
+        color: $text-color-action;
         @include font-family-base-heavy;
       }
     }

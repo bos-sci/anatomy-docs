@@ -24,13 +24,13 @@
     box-sizing: border-box;
     border: $border-width-xxs solid $border-color-subtle;
     padding: space(3x);
-    background-color: $neutral-100;
+    background: $neutral-100;
   }
 
   &-border-ghost {
     @extend .bsds-card-ghost;
     @extend .bsds-card-border-light;
-    background-color: rgba($neutral-100, 0.2);
+    background: rgba($neutral-100, 0.2);
   }
 
   &-title {

@@ -54,13 +54,13 @@
 
   &-featured {
     @include tag-assertive;
-    background-color: $accent-primary-30;
+    background: $accent-primary-30;
     color: $text-color-ghost;
   }
 
   &-featured-ghost {
     @include tag-assertive;
-    background-color: $accent-primary-80;
+    background: $accent-primary-80;
     color: $text-color-primary;
   }
 
