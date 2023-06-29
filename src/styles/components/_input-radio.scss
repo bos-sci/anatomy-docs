@@ -22,7 +22,7 @@ $inner-circle-diameter: space(md);
   + .bsds-input-radio-label {
     position: relative;
     vertical-align: middle;
-    padding-left: space(3x) + space(xs);
+    padding-left: calc(space(3x) + space(xs));
     cursor: pointer;
 
     &::before {

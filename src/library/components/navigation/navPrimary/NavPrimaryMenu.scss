@@ -186,7 +186,7 @@
       .bsds-dropdown {
         .bsds-dropdown-trigger {
           display: inline-flex;
-          padding-right: space(md) + $icon-size-sm + space(lg);
+          padding-right: calc(space(md) + $icon-size-sm + space(lg));
 
           &[aria-expanded='true'],
           &:hover,

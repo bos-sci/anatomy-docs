@@ -60,7 +60,7 @@ $checkmark-size: $ffs-body-assertive;
 
   + .bsds-input-checkbox-label {
     position: relative;
-    padding-left: space(3x) + space(xs);
+    padding-left: calc(space(3x) + space(xs));
     cursor: pointer;
 
     &::before {
@@ -100,7 +100,7 @@ $checkmark-size: $ffs-body-assertive;
         left: 0;
         width: $checkmark-size;
         height: $checkmark-size;
-        padding: space(xxs) + space(xs);
+        padding: calc(space(xxs) + space(xs));
         background-image: url('../../assets/images/icon-check.svg');
         background-origin: content-box;
         background-repeat: no-repeat;

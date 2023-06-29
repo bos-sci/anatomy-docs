@@ -142,7 +142,7 @@
 
 @mixin button-icon {
   border-radius: $border-radius-circle;
-  padding: space(2x) + space(xxs);
+  padding: calc(space(2x) + space(xxs));
 }
 
 @mixin button-small {

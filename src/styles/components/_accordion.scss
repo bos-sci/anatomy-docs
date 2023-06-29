@@ -128,7 +128,7 @@
 
     &::before {
       align-self: stretch;
-      width: space(3x) + space(2x) + space(sm);
+      width: calc(space(3x) + space(2x) + space(sm));
       margin-right: space(2x);
       border-left-width: $border-width-sm;
       border-left-style: solid;

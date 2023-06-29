@@ -21,7 +21,7 @@
 .docs-code-dont {
   position: relative;
   display: block;
-  padding-left: space(2x) + space(sm);
+  padding-left: calc(space(2x) + space(sm));
   @include font-family-base-heavy;
   text-transform: uppercase;
 
