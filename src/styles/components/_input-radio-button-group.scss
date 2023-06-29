@@ -29,7 +29,7 @@
       @include font-family-base-regular;
       outline: space(xxs) solid $neutral-40;
       border-radius: space(3x);
-      border: $border-width-xxs solid transparent;
+      border: $border-width-xs solid transparent;
       padding: space(md) space(3x);
       color: $text-color-subtle;
 
@@ -126,7 +126,7 @@
 
                 &:hover,
                 &:active {
-                  border-color: $border-color-error;
+                  border-color: $action-primary-20;
                 }
               }
             }

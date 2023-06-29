@@ -169,7 +169,7 @@
   &-yellow {
     .bsds-accordion-trigger {
       &::before {
-        border-left-color: $feedback-warning-60;
+        border-left-color: $border-color-warning;
         background-color: $feedback-warning-95;
         background-image: url('../../assets/images/icon-stoplight-yellow.svg');
       }

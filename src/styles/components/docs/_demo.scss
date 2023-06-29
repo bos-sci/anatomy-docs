@@ -1,6 +1,6 @@
 .docs-preview {
   margin-top: space(3x);
-  border: $border-width-xxs solid $border-color-assertive; // one-off to match markdown's background color
+  border: $border-width-xxs solid $border-color-assertive;
   padding: space(2x);
   background-image: linear-gradient(45deg, rgba($neutral-95, 0.5) 25%, transparent 25%),
     linear-gradient(135deg, rgba($neutral-95, 0.5) 25%, transparent 25%),
