@@ -1,6 +1,6 @@
 import Example from '../../../shared/components/Example';
 import Image from '../../../../library/components/Image';
-import image4to3 from '../../../../assets/images/4to3.jpg';
+import image4to3 from '../../../../docs/assets/images/4to3.jpg';
 
 const ImageStyle4to3 = (): JSX.Element => {
   return (

@@ -1,7 +1,7 @@
 import Example from '../../../shared/components/Example';
 import ContentCard from '../../../../library/components/ContentCard';
 import Image from '../../../../library/components/Image';
-import image16to9 from '../../../../assets/images/16to9.jpg';
+import image16to9 from '../../../../docs/assets/images/16to9.jpg';
 
 const WithImage = (): JSX.Element => {
   return (

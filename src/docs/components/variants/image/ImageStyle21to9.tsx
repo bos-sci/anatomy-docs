@@ -1,6 +1,6 @@
 import Example from '../../../shared/components/Example';
 import Image from '../../../../library/components/Image';
-import image21to9 from '../../../../assets/images/21to9.jpg';
+import image21to9 from '../../../../docs/assets/images/21to9.jpg';
 
 const ImageStyle21to9 = (): JSX.Element => {
   return (

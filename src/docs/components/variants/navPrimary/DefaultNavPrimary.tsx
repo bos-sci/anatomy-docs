@@ -1,6 +1,6 @@
 import NavPrimary from '../../../../library/components/navigation/navPrimary/NavPrimary';
 
-import logoBSC from '../../../../assets/images/logo-bsc-tagline.svg';
+import logoBSC from '../../../../docs/assets/images/logo-bsc-tagline.svg';
 import { intermediateData, utilityData } from './navPrimaryData';
 import Example from '../../../shared/components/Example';
 

@@ -1,7 +1,7 @@
 import Example from '../../../shared/components/Example';
 import ProductCard from '../../../../library/components/ProductCard';
 import Image from '../../../../library/components/Image';
-import image5050 from '../../../../assets/images/50-50-split.jpg';
+import image5050 from '../../../../docs/assets/images/50-50-split.jpg';
 
 const WithImage = (): JSX.Element => {
   return (

@@ -1,7 +1,7 @@
 import { createContext, FormEvent, ReactNode, useEffect, useState } from 'react';
 import SkipLink from '../../../library/components/SkipLink';
-import logoADS from '../../../assets/images/logo-anatomy.svg';
-import logoBSC from '../../../assets/images/logo-bsc.svg';
+import logoADS from '../../../docs/assets/images/logo-anatomy.svg';
+import logoBSC from '../../../docs/assets/images/logo-bsc.svg';
 import NavPrimary, { NavItemPrimary } from '../../../library/components/navigation/navPrimary/NavPrimary';
 import algoliasearch from 'algoliasearch';
 import { SearchResult } from '../../../library/components/Search';
