@@ -1,14 +1,11 @@
-// TODO: Remove import once stylesheet is moved off of component
-@import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
+@import '../../abstracts/abstracts';
+@import '../../base/base';
+@import '../../utilities/utilities';
 
-@import '../../../../styles/abstracts/abstracts';
-@import '../../../../styles/base/base';
-@import '../../../../styles/utilities/utilities';
-
-@import './VarsNavPrimary';
-@import './NavUtility';
-@import './NavPrimaryBar';
-@import './NavPrimaryMenu';
+@import './vars-nav-primary';
+@import './nav-utility';
+@import './nav-primary-bar';
+@import './nav-primary-menu';
 
 .bsds-nav-utility,
 .bsds-nav-primary,

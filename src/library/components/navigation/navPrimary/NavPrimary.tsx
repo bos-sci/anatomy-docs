@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { RequireOnlyOne } from '../../../types';
 import Button from '../../Button';
-import './NavPrimary.scss';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
 import { Location, NavLink, useLocation } from 'react-router-dom';

@@ -86,7 +86,7 @@
             &::after,
             &[aria-expanded='true']::after {
               /* stylelint-enable scss/selector-nest-combinators */
-              background-image: url('../../../../assets/images/icon-search.svg');
+              background-image: url('../../../assets/images/icon-search.svg');
               content: '';
             }
           }
@@ -95,12 +95,12 @@
         &.bsds-nav-item-toggle {
           .bsds-nav-link {
             &::after {
-              background-image: url('../../../../assets/images/icon-menu.svg');
+              background-image: url('../../../assets/images/icon-menu.svg');
             }
 
             &[aria-expanded='true'] {
               &::after {
-                background-image: url('../../../../assets/images/icon-close.svg');
+                background-image: url('../../../assets/images/icon-close.svg');
               }
             }
           }
@@ -121,12 +121,12 @@
                 right: space(2x);
                 width: $icon-size;
                 height: $icon-size;
-                content: url('../../../../assets/images/icon-chevron-down.svg');
+                content: url('../../../assets/images/icon-chevron-down.svg');
               }
 
               &[aria-expanded='true'] {
                 &::after {
-                  content: url('../../../../assets/images/icon-chevron-up.svg');
+                  content: url('../../../assets/images/icon-chevron-up.svg');
                 }
               }
             }
@@ -179,7 +179,7 @@
               width: $icon-size;
               height: $icon-size;
               padding: space(2x);
-              background-image: url('../../../../assets/images/icon-search.svg');
+              background-image: url('../../../assets/images/icon-search.svg');
               background-position: center;
               background-repeat: no-repeat;
               background-size: $icon-size;
