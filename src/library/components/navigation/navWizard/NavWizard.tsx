@@ -1,6 +1,5 @@
 import { RequireOnlyOne } from '../../../types';
 import NavWizardList from './NavWizardList';
-import './NavWizard.scss';
 import { RefObject, useEffect, useState, useRef } from 'react';
 import Button from '../../Button';
 
