@@ -40,18 +40,6 @@ $bsds-breadcrumb-divider: url('../../assets/images/icon-slash.svg');
 .bsds-link {
   &.bsds-breadcrumb-link {
     @include link-navigation;
-
-    // DEVELOPER NOTE:
-    // The grandparent and parent anchor elements are missing their href attributes because they are placeholder links.
-    // We added :not([href]) styles for the docs site so that we can demonstrate the hover state.
-    // *** We should never do this on our actual site. ***
-    &:not([href]) {
-      // FOR DEMO ONLY
-      &:hover {
-        color: $text-color-primary;
-        text-decoration: underline;
-      }
-    }
   }
 }
 
