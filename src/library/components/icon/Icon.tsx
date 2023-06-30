@@ -1,7 +1,5 @@
 import { lazy, ReactElement, Suspense, useEffect, useState } from 'react';
 
-import './Icon.scss';
-
 interface Props {
   name: string;
   size?: 'sm' | 'md' | 'lg' | '2x' | '3x' | '4x' | 'base';
