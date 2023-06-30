@@ -36,7 +36,7 @@
     display: block;
     width: 100%;
     border: 0;
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: $border-width-xxs solid $border-color-subtle;
     padding-right: space(4x);
     padding-left: space(4x);
     color: $text-color-primary;
@@ -44,7 +44,7 @@
 
     &:hover,
     &:active {
-      border-color: $neutral-80;
+      border-color: $border-color-subtle;
       background: $neutral-100;
       color: initial;
     }
@@ -71,7 +71,7 @@
     position: absolute;
     display: none;
     width: 100%;
-    border-bottom: space(xxs) solid $neutral-80;
+    border-bottom: $border-width-xxs solid $border-color-subtle;
     padding: space(lg) space(2x);
     background: $neutral-100;
 
@@ -105,7 +105,7 @@
         position: absolute;
         left: 0;
         height: space(3x);
-        border-left: space(sm) solid $neutral-00;
+        border-left: $border-width-sm solid $border-color-assertive;
         content: '';
       }
     }

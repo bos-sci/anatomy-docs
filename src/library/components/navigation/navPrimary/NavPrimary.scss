@@ -14,7 +14,7 @@
 .bsds-nav-primary,
 .bsds-nav-menu,
 .bsds-search-panel {
-  background-color: $neutral-100;
+  background: $neutral-100;
 }
 
 .bsds-nav-utility,
@@ -39,7 +39,7 @@
 }
 
 .bsds-nav-header {
-  border-top-width: space(xs);
+  border-top-width: $border-width-xs;
   border-top-style: solid;
   border-right: 0;
   border-bottom: 0;

@@ -29,9 +29,9 @@
       @include font-family-base-regular;
       outline: space(xxs) solid $neutral-40;
       border-radius: space(3x);
-      border: space(xs) solid transparent;
+      border: $border-width-xs solid transparent;
       padding: space(md) space(3x);
-      color: $neutral-40;
+      color: $text-color-subtle;
 
       &:hover,
       &:active {
@@ -53,7 +53,7 @@
     &[aria-checked='true'] {
       + .bsds-input-radio-label {
         outline: none;
-        border-color: $action-primary-40;
+        border-color: $border-color-action;
         color: $neutral-00;
       }
     }
@@ -70,7 +70,7 @@
         outline-color: $neutral-60;
         border-color: transparent;
         background: $neutral-95;
-        color: $neutral-40;
+        color: $text-color-subtle;
         cursor: not-allowed;
 
         &:hover,
@@ -89,14 +89,14 @@
       &:checked,
       &[aria-checked='true'] {
         + .bsds-input-radio-label {
-          border-width: space(xs);
+          border-width: $border-width-xs;
           border-color: $neutral-60;
 
           &:hover,
           &:active {
             border-color: $neutral-60;
             background: $neutral-95;
-            color: $neutral-40;
+            color: $text-color-subtle;
           }
         }
       }
@@ -122,7 +122,7 @@
           .bsds-input-radio-input {
             &:checked {
               + .bsds-input-radio-label {
-                border-color: $feedback-error-40;
+                border-color: $border-color-error;
 
                 &:hover,
                 &:active {

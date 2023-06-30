@@ -3,7 +3,7 @@
   @include font-family-base-heavy;
   @include font-size($fs-small);
   text-transform: uppercase;
-  letter-spacing: 0.075rem; // NOTE: this is a one-off size
+  letter-spacing: $letter-spacing-increase;
 }
 
 @mixin tag-assertive {
@@ -15,7 +15,7 @@
 
 @mixin tag-accent {
   @include tag-default;
-  border-width: 0 0 0 space(sm);
+  border-width: 0 0 0 $border-width-sm;
   border-style: solid;
   padding: space(xs) 0 space(xs) space(md);
 }
@@ -54,13 +54,13 @@
 
   &-featured {
     @include tag-assertive;
-    background-color: $accent-primary-30;
+    background: $accent-primary-30;
     color: $text-color-ghost;
   }
 
   &-featured-ghost {
     @include tag-assertive;
-    background-color: $accent-primary-80;
+    background: $accent-primary-80;
     color: $text-color-primary;
   }
 

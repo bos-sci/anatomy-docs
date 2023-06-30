@@ -10,8 +10,8 @@
     justify-content: space-between;
     align-content: center;
     align-items: stretch;
-    border-bottom: space(xxs) solid $border-color-subtle;
-    background-color: $neutral-100;
+    border-bottom: $border-width-xxs solid $border-color-subtle;
+    background: $neutral-100;
 
     .bsds-nav-link-logo {
       display: flex;
@@ -47,7 +47,7 @@
               right: space(2x);
               bottom: 0;
               left: space(2x);
-              border-bottom: space(sm) solid $border-color-assertive;
+              border-bottom: $border-width-sm solid $border-color-assertive;
               content: '';
             }
           }

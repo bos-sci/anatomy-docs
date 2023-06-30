@@ -80,7 +80,7 @@
 
   &-neutral-100 {
     @include swatch;
-    border: space(xxs) solid $neutral-00;
+    border: $border-width-xxs solid $border-color-assertive;
     background: $neutral-100;
   }
 
@@ -392,14 +392,14 @@
     @include swatch;
     @include focus-default;
     margin-left: space(2x);
-    border: space(xxs) solid $neutral-00;
+    border: $border-width-xxs solid $border-color-assertive;
   }
 
   &-focus-default-inset {
     @include swatch;
     @include focus-default-inset;
     margin-left: space(2x);
-    border: space(xxs) solid $neutral-00;
+    border: $border-width-xxs solid $border-color-assertive;
   }
 
   &-focus-ghost {
@@ -407,7 +407,7 @@
     @include focus-ghost;
     @include ghost-swatch;
     margin-left: space(2x);
-    border: space(xxs) solid $neutral-100;
+    border: $border-width-xxs solid $border-color-ghost;
   }
 
   &-focus-ghost-inset {
@@ -415,21 +415,21 @@
     @include focus-ghost-inset;
     @include ghost-swatch;
     margin-left: space(2x);
-    border: space(xxs) solid $neutral-100;
+    border: $border-width-xxs solid $border-color-ghost;
   }
 
   &-focus-readonly {
     @include swatch;
     @include focus-readonly;
     margin-left: space(2x);
-    border: space(xxs) solid $neutral-00;
+    border: $border-width-xxs solid $border-color-assertive;
   }
 
   &-focus-invalid {
     @include swatch;
     @include focus-invalid;
     margin-left: space(2x);
-    border: space(xxs) solid $neutral-00;
+    border: $border-width-xxs solid $border-color-assertive;
   }
 
   // Gradients

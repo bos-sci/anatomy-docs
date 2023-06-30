@@ -28,7 +28,7 @@ $icon-size: 1em;
 
     &.bsds-button {
       &::after {
-        background-color: $action-primary-40;
+        background: $action-primary-40;
       }
 
       &[aria-expanded='true'] {
@@ -39,13 +39,13 @@ $icon-size: 1em;
       &:active,
       &[aria-expanded='true'] {
         &::after {
-          background-color: $neutral-100;
+          background: $neutral-100;
         }
       }
 
       &-assertive {
         &::after {
-          background-color: $neutral-100;
+          background: $neutral-100;
         }
 
         &[aria-expanded='true'] {
@@ -55,7 +55,7 @@ $icon-size: 1em;
 
       &-subtle {
         &::after {
-          background-color: $action-primary-40;
+          background: $action-primary-40;
         }
 
         &[aria-expanded='true'] {
@@ -66,14 +66,14 @@ $icon-size: 1em;
         &:active,
         &[aria-expanded='true'] {
           &::after {
-            background-color: $neutral-100;
+            background: $neutral-100;
           }
         }
       }
 
       &-ghost {
         &::after {
-          background-color: $neutral-100;
+          background: $neutral-100;
         }
 
         &[aria-expanded='true'] {
@@ -143,19 +143,19 @@ $icon-size: 1em;
           right: space(xs);
           bottom: space(xs);
           left: space(xs);
-          border: space(xs) solid $border-color-ghost;
+          border: $border-width-xs solid $border-color-ghost;
           content: '';
         }
       }
     }
 
     .bsds-dropdown-item-highlighted {
-      border-top: space(xxs) solid $border-color-subtle;
+      border-top: $border-width-xxs solid $border-color-subtle;
       padding: space(lg) 0;
 
       .bsds-button,
       .bsds-link {
-        color: $action-primary-40;
+        color: $text-color-action;
         @include font-family-base-heavy;
       }
     }
@@ -163,7 +163,7 @@ $icon-size: 1em;
     .bsds-button {
       &:hover,
       &:active {
-        color: $neutral-100;
+        color: $text-color-ghost;
       }
 
       &:hover {

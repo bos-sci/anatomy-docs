@@ -49,21 +49,21 @@ button {
     &.bsds-link {
       &:hover,
       &:active {
-        color: $neutral-00;
+        color: $text-color-primary;
       }
     }
 
     &.bsds-link-subtle {
       &:hover,
       &:active {
-        color: $action-primary-40;
+        color: $text-color-action;
       }
     }
 
     &.bsds-link-ghost {
       &:hover,
       &:active {
-        color: $neutral-60;
+        color: $text-color-disabled;
       }
 
       :focus {

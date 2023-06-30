@@ -50,9 +50,9 @@
   width: 100%;
   margin: 0;
   box-shadow: $box-shadow-secondary;
-  border: space(xxs) solid $border-color-subtle;
+  border: $border-width-xxs solid $border-color-subtle;
   padding: space(md) 0;
-  background-color: $neutral-100;
+  background: $neutral-100;
   list-style: none;
 }
 

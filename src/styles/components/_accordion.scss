@@ -58,7 +58,7 @@
   border-left: 0;
   padding: space(3x);
   background: transparent;
-  color: $border-color-assertive;
+  color: $text-color-primary;
   @include font-family-base-regular;
   @include font-size($fs-body);
   text-align: left;
@@ -68,7 +68,6 @@
   }
 
   &[aria-expanded='true'] {
-    color: $neutral-00;
     @include font-family-base-heavy;
 
     svg {
@@ -80,7 +79,7 @@
     &:hover {
       border-color: $border-color-subtle;
       background: transparent;
-      color: $action-primary-40;
+      color: $text-color-action;
       text-decoration: underline;
 
       svg {
@@ -90,7 +89,7 @@
 
     &:active {
       background: transparent;
-      color: $action-primary-40;
+      color: $text-color-action;
 
       svg {
         color: $action-primary-40;
@@ -105,7 +104,7 @@
 
   &[disabled] {
     background: transparent;
-    color: $neutral-60;
+    color: $text-color-disabled;
     cursor: not-allowed;
   }
 }
@@ -129,9 +128,9 @@
 
     &::before {
       align-self: stretch;
-      width: space(3x) + space(2x) + space(sm);
+      width: calc(space(3x) + space(2x) + space(sm));
       margin-right: space(2x);
-      border-left-width: space(sm);
+      border-left-width: $border-width-sm;
       border-left-style: solid;
       padding: space(3x) space(md);
       background-position: center;
@@ -160,7 +159,7 @@
   &-red {
     .bsds-accordion-trigger {
       &::before {
-        border-left-color: $feedback-error-40;
+        border-left-color: $border-color-error;
         background-color: $feedback-error-95;
         background-image: url('../../assets/images/icon-stoplight-red.svg');
       }
@@ -170,7 +169,7 @@
   &-yellow {
     .bsds-accordion-trigger {
       &::before {
-        border-left-color: $feedback-warning-60;
+        border-left-color: $border-color-warning;
         background-color: $feedback-warning-95;
         background-image: url('../../assets/images/icon-stoplight-yellow.svg');
       }
@@ -180,7 +179,7 @@
   &-green {
     .bsds-accordion-trigger {
       &::before {
-        border-left-color: $feedback-success-40;
+        border-left-color: $border-color-success;
         background-color: $feedback-success-95;
         background-image: url('../../assets/images/icon-stoplight-green.svg');
       }

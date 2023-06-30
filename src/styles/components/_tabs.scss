@@ -38,7 +38,7 @@
   border: 0;
   padding: space(lg) space(2x);
   background: transparent;
-  color: $neutral-40;
+  color: $text-color-subtle;
   @include font-family-base-regular;
 
   &::after {
@@ -54,7 +54,7 @@
     &:hover,
     &:active {
       background: transparent;
-      color: $action-primary-40;
+      color: $text-color-action;
 
       &::after {
         background: $action-primary-40;
@@ -67,7 +67,7 @@
   }
 
   &[aria-selected='true'] {
-    color: $neutral-00;
+    color: $text-color-primary;
     @include font-family-base-heavy;
 
     &::after {
@@ -78,7 +78,7 @@
 
   &[disabled] {
     background: transparent;
-    color: $neutral-60;
+    color: $text-color-disabled;
     @include font-family-base-regular;
     cursor: not-allowed;
   }
@@ -104,7 +104,7 @@
 }
 
 .bsds-tab-panels {
-  border-top: space(xxs) solid $neutral-80;
+  border-top: $border-width-xxs solid $border-color-subtle;
   padding-top: space(3x);
 }
 

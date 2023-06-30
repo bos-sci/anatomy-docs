@@ -11,7 +11,7 @@
   .carbon-badge-data {
     display: flex;
     margin-bottom: space(sm);
-    border: space(xxs) solid $action-primary-40;
+    border: $border-width-xxs solid $border-color-action;
     background: $action-primary-95;
   }
 
@@ -21,13 +21,13 @@
   }
 
   .carbon-badge-co2 {
-    border-right: space(xxs) solid $action-primary-40;
-    padding-bottom: space(xs) + space(xxs);
+    border-right: $border-width-xxs solid $border-color-action;
+    padding-bottom: calc(space(xs) + space(xxs));
     background: $neutral-100;
   }
 
   .carbon-badge-link {
-    padding-top: space(xs) + space(xxs);
+    padding-top: calc(space(xs) + space(xxs));
     @include font-family-base-heavy;
     color: $text-color-primary;
   }

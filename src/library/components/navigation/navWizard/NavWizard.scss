@@ -9,7 +9,7 @@
   position: relative;
   box-shadow: $box-shadow-tertiary;
   padding: space(4x);
-  background-color: $neutral-100;
+  background: $neutral-100;
 
   .bsds-nav-wizard-header {
     display: grid;
@@ -58,7 +58,7 @@
 
   .bsds-nav-wizard-menu {
     margin-top: space(4x);
-    border-top: space(xs) solid $border-color-subtle;
+    border-top: $border-width-xs solid $border-color-subtle;
     padding-top: space(4x);
   }
 
@@ -74,14 +74,14 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    border: space(xxs) solid $border-color-subtle;
+    border: $border-width-xxs solid $border-color-subtle;
     padding: space(3x);
     text-align: left;
     @include link-navigation;
 
     &:hover,
     &:active {
-      border: space(xxs) solid $action-primary-40;
+      border: $border-width-xxs solid $border-color-action;
       background: initial;
     }
 
@@ -117,7 +117,7 @@
         }
 
         > .bsds-nav-link-addon {
-          background-color: $action-primary-40;
+          background: $action-primary-40;
           color: $neutral-100;
         }
       }

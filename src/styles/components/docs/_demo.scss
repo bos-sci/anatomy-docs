@@ -1,6 +1,6 @@
 .docs-preview {
   margin-top: space(3x);
-  border: 1px solid $neutral-00; // one-off to match markdown's background color
+  border: $border-width-xxs solid $border-color-assertive;
   padding: space(2x);
   background-image: linear-gradient(45deg, rgba($neutral-95, 0.5) 25%, transparent 25%),
     linear-gradient(135deg, rgba($neutral-95, 0.5) 25%, transparent 25%),
@@ -10,7 +10,7 @@
   background-size: 20px 20px;
 
   &.dark {
-    border-bottom: 1px solid $neutral-00;
+    border-bottom: $border-width-xxs solid $border-color-assertive;
     background-color: $neutral-20;
     background-image: linear-gradient(45deg, rgba($neutral-00, 0.5) 25%, transparent 25%),
       linear-gradient(135deg, rgba($neutral-00, 0.5) 25%, transparent 25%),
@@ -81,7 +81,7 @@
 }
 
 .docs-wire-header {
-  border-bottom: space(xxs) solid $border-color-subtle;
+  border-bottom: $border-width-xxs solid $border-color-subtle;
 }
 
 .docs-wire-main {

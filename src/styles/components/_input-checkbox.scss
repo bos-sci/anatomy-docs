@@ -4,7 +4,7 @@ $checkmark-size: $ffs-body-assertive;
 @mixin checkbox-invalid() {
   + .bsds-input-checkbox-label {
     &::before {
-      border: space(xs) solid $feedback-error-40;
+      border: $border-width-xs solid $border-color-error;
     }
   }
 
@@ -55,19 +55,12 @@ $checkmark-size: $ffs-body-assertive;
 }
 
 .bsds-input-checkbox-input {
-  position: absolute;
-  box-sizing: border-box;
-  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
-  overflow: hidden;
-  margin: 0;
-  opacity: 0;
-  padding: 0;
-  appearance: none;
+  @include visually-hidden;
   pointer-events: none;
 
   + .bsds-input-checkbox-label {
     position: relative;
-    padding-left: space(3x) + space(xs);
+    padding-left: calc(space(3x) + space(xs));
     cursor: pointer;
 
     &::before {
@@ -76,7 +69,7 @@ $checkmark-size: $ffs-body-assertive;
       left: 0;
       width: $checkbox-size;
       height: $checkbox-size;
-      border: space(xxs) solid $neutral-00;
+      border: $border-width-xxs solid $border-color-assertive;
       background: $neutral-100;
       content: '';
     }
@@ -107,7 +100,7 @@ $checkmark-size: $ffs-body-assertive;
         left: 0;
         width: $checkmark-size;
         height: $checkmark-size;
-        padding: space(xxs) + space(xs);
+        padding: calc(space(xxs) + space(xs));
         background-image: url('../../assets/images/icon-check.svg');
         background-origin: content-box;
         background-repeat: no-repeat;
@@ -123,7 +116,7 @@ $checkmark-size: $ffs-body-assertive;
       cursor: not-allowed;
 
       &::before {
-        border: space(xxs) solid $neutral-80;
+        border: $border-width-xxs solid $border-color-subtle;
         background: $neutral-95;
       }
 
