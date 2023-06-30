@@ -1,6 +1,5 @@
-import Layout from '../shared/components/Layout';
-import useTitle from '../shared/hooks/useTitle';
-import './Home.scss';
+import Layout from './shared/components/Layout';
+import useTitle from './shared/hooks/useTitle';
 import { Helmet } from 'react-helmet';
 
 const Home = (): JSX.Element => {

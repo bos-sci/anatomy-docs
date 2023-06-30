@@ -1,13 +1,11 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Link from '../../library/components/Link';
-import Search, { SearchResult } from '../../library/components/Search';
-import Layout from '../shared/components/Layout';
-import PageTemplate from '../shared/components/PageTemplate';
-import { indexSearch } from '../shared/helpers';
-import useTitle from '../shared/hooks/useTitle';
-
-import './SearchResults.scss';
+import Link from '../library/components/Link';
+import Search, { SearchResult } from '../library/components/Search';
+import Layout from './shared/components/Layout';
+import PageTemplate from './shared/components/PageTemplate';
+import { indexSearch } from './shared/helpers';
+import useTitle from './shared/hooks/useTitle';
 
 type Result = SearchResult & {
   description?: string;

@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { slugify } from './shared/helpers';
 import { useGetCollectionsQuery } from './shared/types/contentful';
 import { IdLookup, IdLookupEntry } from './shared/types/docs';
-import Home from './home/Home';
+import Home from './Home';
 import NotFound from './shared/components/NotFound';
-import SearchResults from './searchResults/SearchResults';
+import SearchResults from './SearchResults';
 import LandingPage from './shared/components/LandingPage';
 
 const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));

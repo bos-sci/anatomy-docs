@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { indexSearch } from '../helpers';
 import useHeadingIds from '../hooks/useHeadingIds';
 import { useLocation } from 'react-router';
-import CarbonBadge from './carbonBadge/CarbonBadge';
+import CarbonBadge from './CarbonBadge';
 
 interface Props {
   children: ReactNode;
