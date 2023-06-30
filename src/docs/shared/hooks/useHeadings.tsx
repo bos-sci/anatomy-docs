@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { NavItemTertiary } from '../../../library/components/navigation/navTertiary/NavTertiary';
+import { NavItemTertiary } from '../../../library/components/navigation/NavTertiary';
 
 /*
  * @PARAM key: any - The value that triggers an update of the query selection when changed.

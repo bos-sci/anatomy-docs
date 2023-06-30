@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, Fragment } from 'react';
 import Preview from './variants/Preview';
 import { NavItemSecondary } from '../../library/components/navigation/navSecondary/NavSecondary';
-import { NavItemTertiary } from '../../library/components/navigation/navTertiary/NavTertiary';
+import { NavItemTertiary } from '../../library/components/navigation/NavTertiary';
 import Markdown from '../shared/components/Markdown';
 import { GetComponentQuery } from '../shared/types/contentful';
 import useTitle from '../shared/hooks/useTitle';

@@ -1,6 +1,5 @@
 import { useId } from 'react';
 import { Link } from 'react-router-dom';
-import './NavTertiary.scss';
 
 export interface NavItemTertiary {
   id: string;

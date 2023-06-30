@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import Markdown from './Markdown';
 import NavSecondary, { NavItemSecondary } from '../../../library/components/navigation/navSecondary/NavSecondary';
-import NavTertiary, { NavItemTertiary } from '../../../library/components/navigation/navTertiary/NavTertiary';
+import NavTertiary, { NavItemTertiary } from '../../../library/components/navigation/NavTertiary';
 import { Helmet } from 'react-helmet';
 
 interface Props {

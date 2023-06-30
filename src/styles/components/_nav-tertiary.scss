@@ -1,8 +1,5 @@
-// TODO: Remove import once stylesheet is moved off of component
-@import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
-
-@import '/src/styles/abstracts/abstracts';
-@import '/src/styles/base/base';
+@import '../abstracts/abstracts';
+@import '../base/base';
 
 .bsds-nav-tertiary {
   grid-area: nav-tertiary;
