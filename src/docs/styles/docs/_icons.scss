@@ -44,12 +44,12 @@
 
 .docs-code-do {
   &::before {
-    background-image: url('../../library/assets/images/icon-check-circle.svg');
+    background-image: url('../../../library/assets/images/icon-check-circle.svg');
   }
 }
 
 .docs-code-dont {
   &::before {
-    background-image: url('../../library/assets/images/icon-times-circle.svg');
+    background-image: url('../../../library/assets/images/icon-times-circle.svg');
   }
 }
