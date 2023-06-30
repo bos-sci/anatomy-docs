@@ -1,9 +1,6 @@
-// TODO: Remove import once stylesheet is moved off of component
-@import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
-
-@import '/src/styles/abstracts/abstracts';
-@import '/src/styles/base/base';
-@import '/src/styles/utilities/utilities';
+@import '../abstracts/abstracts';
+@import '../base/base';
+@import '../utilities/utilities';
 
 @mixin icon-background($icon-size, $alignment: right) {
   position: absolute;
@@ -57,7 +54,7 @@
       @include icon-background($icon-size-sm);
       top: 0;
       padding: space(2x) space(4x);
-      background-image: url('../../../../assets/images/icon-chevron-down.svg');
+      background-image: url('../../assets/images/icon-chevron-down.svg');
     }
 
     &[aria-expanded='true'] {
@@ -134,7 +131,7 @@
       &::after {
         @include icon-background($icon-size-sm);
         padding: space(lg);
-        background-image: url('../../../../assets/images/icon-chevron-right.svg');
+        background-image: url('../../assets/images/icon-chevron-right.svg');
       }
     }
   }
