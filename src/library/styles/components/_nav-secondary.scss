@@ -1,7 +1,3 @@
-@import '../abstracts/abstracts';
-@import '../base/base';
-@import '../utilities/utilities';
-
 @mixin icon-background($icon-size, $alignment: right) {
   position: absolute;
   box-sizing: content-box;

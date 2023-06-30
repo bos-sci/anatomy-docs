@@ -1,8 +1,8 @@
 // TODO: Remove import once stylesheet is moved off of component
 @import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
 
-@import '../../../../styles/abstracts/abstracts';
-@import '../../../../styles/base/base';
+@import 'src/library/styles/abstracts/abstracts';
+@import 'src/library/styles/base/base';
 
 .carbon-badge {
   @include font-size($fs-body-subtle);
