@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Checkbox from '../InputCheckbox';
+import Checkbox from 'library/components/InputCheckbox';
 
 describe('Checkbox Component', () => {
   it('Renders correctly with default props', () => {

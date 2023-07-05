@@ -2,8 +2,8 @@
 
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import RadioGroup from '../RadioGroup';
-import InputRadio from '../InputRadio';
+import RadioGroup from 'library/components/RadioGroup';
+import InputRadio from 'library/components/InputRadio';
 
 describe('Button style Radio Group component', () => {
   it('Renders correctly with buttonGroup props', () => {

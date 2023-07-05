@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Button from '../Button';
-import Dropdown from '../Dropdown';
-import DropdownGroupName from '../DropdownGroupName';
+import Button from 'library/components/Button';
+import Dropdown from 'library/components/Dropdown';
+import DropdownGroupName from 'library/components/DropdownGroupName';
 
 class ResizeObserver {
   observe() {

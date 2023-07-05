@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import Select from '../Select';
-import Option from '../Option';
+import Select from 'library/components/Select';
+import Option from 'library/components/Option';
 
 describe('Select component', () => {
   it('Renders correctly with label and option props', () => {

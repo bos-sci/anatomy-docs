@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import Tabs from '../Tabs';
-import TabPanel from '../TabPanel';
+import Tabs from 'library/components/Tabs';
+import TabPanel from 'library/components/TabPanel';
 
 describe('Tab', () => {
   it('Renders a set of tabs by default', () => {

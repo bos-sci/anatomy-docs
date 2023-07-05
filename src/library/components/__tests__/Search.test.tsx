@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FormEvent } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Search, { SearchResult } from '../Search';
+import Search, { SearchResult } from 'library/components/Search';
 
 const searchResults: SearchResult[] = [
   {

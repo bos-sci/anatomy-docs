@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import InputText from '../InputText';
+import InputText from 'library/components/InputText';
 
 describe('InputText', () => {
   it('Renders a blank input field by default', () => {

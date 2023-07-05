@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Image from '../Image';
+import Image from 'library/components/Image';
 
 describe('Image', () => {
   it('Renders a default image when only src is provided', () => {

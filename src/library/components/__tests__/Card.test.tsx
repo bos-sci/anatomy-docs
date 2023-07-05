@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import Card from '../ContentCard';
-import Image from '../Image';
-import Tag from '../Tag';
+import Card from 'library/components/ContentCard';
+import Image from 'library/components/Image';
+import Tag from 'library/components/Tag';
 
 describe('Card', () => {
   it('Renders a default card when only title, heading level and description are provided', () => {

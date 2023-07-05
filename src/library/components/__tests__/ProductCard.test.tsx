@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import ProductCard from '../ProductCard';
-import Tag from '../Tag';
-import Image from '../Image';
+import ProductCard from 'library/components/ProductCard';
+import Tag from 'library/components/Tag';
+import Image from 'library/components/Image';
 
 describe('Product Card', () => {
   it('Renders a deafult product card when only title, description and link are provided', () => {
