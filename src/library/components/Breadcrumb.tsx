@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { RequireOnlyOne } from '../types';
-import Dropdown from './Dropdown';
-import Link from './Link';
+import { RequireOnlyOne } from 'library/types';
+import Dropdown from 'library/components/Dropdown';
+import Link from 'library/components/Link';
 
 interface CrumbBase {
   name: string;

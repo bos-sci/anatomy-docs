@@ -1,8 +1,8 @@
 import { ReactElement, useState, useEffect, cloneElement, useId, useRef } from 'react';
-import HeadingElement from './Heading';
-import Link from './Link';
-import { Props as TagProps } from './Tag';
-import { Props as ImageProps } from './Image';
+import HeadingElement from 'library/components/Heading';
+import Link from 'library/components/Link';
+import { Props as TagProps } from 'library/components/Tag';
+import { Props as ImageProps } from 'library/components/Image';
 
 interface Props {
   tag?: ReactElement<TagProps>;

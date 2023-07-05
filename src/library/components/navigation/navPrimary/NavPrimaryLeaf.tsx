@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useHref, useMatch } from 'react-router-dom';
-import Link from '../../Link';
+import Link from 'library/components/Link';
 import { NavNode } from './NavPrimary';
 
 interface Props {

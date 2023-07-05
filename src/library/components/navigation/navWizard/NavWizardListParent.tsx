@@ -1,9 +1,9 @@
-import Button from '../../Button';
+import { RefObject, useRef } from 'react';
+import Button from 'library/components/Button';
+import IconChevronRight from 'library/components/icon/icons/IconChevronRight';
 import { NavNode } from './NavWizard';
 import NavWizardList from './NavWizardList';
 import { HistoryNode } from './NavWizard';
-import IconChevronRight from '../../icon/icons/IconChevronRight';
-import { RefObject, useRef } from 'react';
 
 interface Props {
   navItem: NavNode;

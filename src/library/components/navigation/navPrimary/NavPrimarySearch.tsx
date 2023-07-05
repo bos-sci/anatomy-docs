@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import Search from '../../Search';
-import { SearchResult } from '../../Search';
+import Search from 'library/components/Search';
+import { SearchResult } from 'library/components/Search';
 import { Texts } from './NavPrimary';
 
 interface Props {

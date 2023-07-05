@@ -11,7 +11,7 @@ import {
   useRef,
   useState
 } from 'react';
-import { getValidationMessage } from '../helpers/validation';
+import { getValidationMessage } from 'library/helpers/validation';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;

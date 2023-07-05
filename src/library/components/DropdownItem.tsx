@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import { Props as ButtonProps } from './Button';
-import { Props as LinkProps } from './Link';
-import { Props as DropdownGroupNameProps } from './DropdownGroupName';
+import { Props as ButtonProps } from 'library/components/Button';
+import { Props as LinkProps } from 'library/components/Link';
+import { Props as DropdownGroupNameProps } from 'library/components/DropdownGroupName';
 
 export type DropdownItemElements = ReactElement<ButtonProps | LinkProps | DropdownGroupNameProps>;
 

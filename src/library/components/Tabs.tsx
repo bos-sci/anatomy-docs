@@ -9,9 +9,9 @@ import {
   useState,
   useId
 } from 'react';
-import IconChevronLeft from './icon/icons/IconChevronLeft';
-import IconChevronRight from './icon/icons/IconChevronRight';
-import Tab from './Tab';
+import IconChevronLeft from 'library/components/icon/icons/IconChevronLeft';
+import IconChevronRight from 'library/components/icon/icons/IconChevronRight';
+import Tab from 'library/components/Tab';
 
 type Props = {
   children: ReactElement[] | ReactElement;

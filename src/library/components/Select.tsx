@@ -11,7 +11,7 @@ import {
   ForwardedRef,
   useId
 } from 'react';
-import { errorValueMissing } from '../helpers/validation';
+import { errorValueMissing } from 'library/helpers/validation';
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   label: string;

@@ -10,11 +10,11 @@ import {
   useRef,
   useState
 } from 'react';
-import Button from './Button';
-import { Props as ButtonProps } from './Button';
-import { Props as LinkProps } from './Link';
-import DropdownItem, { DropdownItemElements } from './DropdownItem';
-import Icon from './icon/Icon';
+import Button from 'library/components/Button';
+import { Props as ButtonProps } from 'library/components/Button';
+import { Props as LinkProps } from 'library/components/Link';
+import DropdownItem, { DropdownItemElements } from 'library/components/DropdownItem';
+import Icon from 'library/components/icon/Icon';
 import { autoUpdate, flip, Placement, shift, useFloating } from '@floating-ui/react-dom';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {

@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactNode, useEffect, useState } from 'react';
-import Icon from './icon/Icon';
+import Icon from 'library/components/icon/Icon';
 
 export interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;

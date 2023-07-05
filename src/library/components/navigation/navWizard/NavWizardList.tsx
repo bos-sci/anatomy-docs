@@ -1,8 +1,8 @@
-import Link from '../../Link';
+import { RefObject } from 'react';
+import Link from 'library/components/Link';
 import { NavNode } from './NavWizard';
 import NavWizardListParent from './NavWizardListParent';
 import { HistoryNode } from './NavWizard';
-import { RefObject } from 'react';
 
 interface Props {
   navItems: NavNode[];

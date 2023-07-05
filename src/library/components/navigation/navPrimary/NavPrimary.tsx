@@ -1,12 +1,12 @@
 import { ChangeEvent, FormEvent, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
-import { RequireOnlyOne } from '../../../types';
-import Button from '../../Button';
+import { Location, NavLink, useLocation } from 'react-router-dom';
+import { RequireOnlyOne } from 'library/types';
+import Button from 'library/components/Button';
+import Link from 'library/components/Link';
+import { SearchResult } from 'library/components/Search';
+import NavPrimarySearch from './NavPrimarySearch';
 import NavPrimaryMenu from './NavPrimaryMenu';
 import NavUtility from './NavUtility';
-import { Location, NavLink, useLocation } from 'react-router-dom';
-import Link from '../../Link';
-import NavPrimarySearch from './NavPrimarySearch';
-import { SearchResult } from '../../Search';
 
 interface NavItem {
   text: string;

@@ -13,8 +13,8 @@ import {
   useRef,
   useState
 } from 'react';
-import Button, { Props as ButtonProps } from './Button';
-import { Props as LinkProps } from './Link';
+import Button, { Props as ButtonProps } from 'library/components/Button';
+import { Props as LinkProps } from 'library/components/Link';
 
 export interface ModalRef {
   showModal: () => void;
