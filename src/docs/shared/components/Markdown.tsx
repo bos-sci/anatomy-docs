@@ -1,7 +1,7 @@
 import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import { useEffect, useState } from 'react';
-import { tokens } from '../versions';
+import { tokens } from 'docs/shared/versions';
 
 interface Props {
   markdown: string;

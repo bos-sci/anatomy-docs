@@ -1,15 +1,15 @@
 import { createContext, FormEvent, ReactNode, useEffect, useState } from 'react';
-import SkipLink from '../../../library/components/SkipLink';
-import logoADS from '../../../docs/assets/images/logo-anatomy.svg';
-import logoBSC from '../../../docs/assets/images/logo-bsc.svg';
-import NavPrimary, { NavItemPrimary } from '../../../library/components/navigation/navPrimary/NavPrimary';
-import algoliasearch from 'algoliasearch';
-import { SearchResult } from '../../../library/components/Search';
-import { useNavigate } from 'react-router-dom';
-import { indexSearch } from '../helpers';
-import useHeadingIds from '../hooks/useHeadingIds';
 import { useLocation } from 'react-router';
-import CarbonBadge from './CarbonBadge';
+import algoliasearch from 'algoliasearch';
+import SkipLink from 'library/components/SkipLink';
+import logoADS from 'docs/assets/images/logo-anatomy.svg';
+import logoBSC from 'docs/assets/images/logo-bsc.svg';
+import NavPrimary, { NavItemPrimary } from 'library/components/navigation/navPrimary/NavPrimary';
+import { SearchResult } from 'library/components/Search';
+import { useNavigate } from 'react-router-dom';
+import { indexSearch } from 'docs/shared/helpers';
+import useHeadingIds from 'docs/shared/hooks/useHeadingIds';
+import CarbonBadge from 'docs/shared/components/CarbonBadge';
 
 interface Props {
   children: ReactNode;

@@ -9,3 +9,9 @@
 .bsds-mt-6x {
   margin-top: space(6x);
 }
+
+// TODO: Standardize utility names
+.bsds-margin-top-remove {
+  /* stylelint-disable-next-line declaration-no-important */
+  margin-top: 0 !important; // Important is used here to ensure utility class overrides existing styles
+}

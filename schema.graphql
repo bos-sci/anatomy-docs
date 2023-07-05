@@ -125,7 +125,7 @@ type CodeStandard implements Entry {
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): CodeStandardLinkingCollections
   name(locale: String): String
-  pageProperties(locale: String, preview: Boolean): PageProperties
+  pageProperties(locale: String, preview: Boolean, where: PagePropertiesFilter): PageProperties
   sys: Sys!
 }
 
@@ -198,7 +198,7 @@ type Component implements Entry {
   linkedFrom(allowedLocales: [String]): ComponentLinkingCollections
   modifiersCollection(limit: Int = 100, locale: String, order: [ComponentModifiersCollectionOrder], preview: Boolean, skip: Int = 0, where: ComponentModifierFilter): ComponentModifiersCollection
   name(locale: String): String
-  pageProperties(locale: String, preview: Boolean): PageProperties
+  pageProperties(locale: String, preview: Boolean, where: PagePropertiesFilter): PageProperties
   shouldLinkToExamples(locale: String): Boolean
   statesCollection(limit: Int = 100, locale: String, order: [ComponentStatesCollectionOrder], preview: Boolean, skip: Int = 0, where: ComponentStateFilter): ComponentStatesCollection
   stylesCollection(limit: Int = 100, locale: String, order: [ComponentStylesCollectionOrder], preview: Boolean, skip: Int = 0, where: ComponentStyleFilter): ComponentStylesCollection
@@ -690,7 +690,7 @@ type ContentGuideline implements Entry {
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ContentGuidelineLinkingCollections
   name(locale: String): String
-  pageProperties(locale: String, preview: Boolean): PageProperties
+  pageProperties(locale: String, preview: Boolean, where: PagePropertiesFilter): PageProperties
   sys: Sys!
 }
 
@@ -825,7 +825,7 @@ type Foundation implements Entry {
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): FoundationLinkingCollections
   name(locale: String): String
-  pageProperties(locale: String, preview: Boolean): PageProperties
+  pageProperties(locale: String, preview: Boolean, where: PagePropertiesFilter): PageProperties
   sys: Sys!
 }
 
@@ -1188,7 +1188,7 @@ type Resource implements Entry {
   leadParagraph(locale: String): String
   linkedFrom(allowedLocales: [String]): ResourceLinkingCollections
   name(locale: String): String
-  pageProperties(locale: String, preview: Boolean): PageProperties
+  pageProperties(locale: String, preview: Boolean, where: PagePropertiesFilter): PageProperties
   sys: Sys!
 }
 

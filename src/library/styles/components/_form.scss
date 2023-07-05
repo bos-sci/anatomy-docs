@@ -45,6 +45,7 @@
   @include font-size($fs-body-subtle);
 }
 
+// TODO: Should we have spacing here? If not, can we get rid of class bsds-margin-top-remove?
 .bsds-form-control {
   margin-top: space(4x);
 }

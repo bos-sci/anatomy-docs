@@ -1,0 +1,33 @@
+.docs-demo-link {
+  display: inline-block;
+  margin-top: space(3x);
+}
+
+.docs-table-align-top {
+  table {
+    td {
+      vertical-align: top;
+    }
+  }
+}
+
+.docs-table-responsive {
+  overflow-x: auto;
+}
+
+.docs-list-flex {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  column-gap: space(4x);
+
+  .docs-list-flex-item {
+    flex: 1;
+  }
+}
+
+@media (min-width: $breakpoint-lg-min) {
+  .docs-list-flex {
+    flex-flow: row wrap;
+  }
+}

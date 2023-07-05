@@ -58,6 +58,25 @@ main {
   padding: 0 space(sm);
 }
 
+.docs-title {
+  margin-top: 0;
+}
+
+.docs-datestamp {
+  margin-top: 0;
+  @include font-size($fs-body-subtle);
+
+  dt,
+  dd {
+    display: inline;
+  }
+
+  dd {
+    margin-bottom: 0;
+    margin-left: space(md);
+  }
+}
+
 .docs-page-content {
   grid-area: page-content;
   width: 100%;

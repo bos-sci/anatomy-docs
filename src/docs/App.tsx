@@ -1,18 +1,18 @@
 import { useState, useEffect, createContext, Suspense, useCallback, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { slugify } from './shared/helpers';
-import { useGetCollectionsQuery } from './shared/types/contentful';
-import { IdLookup, IdLookupEntry } from './shared/types/docs';
-import Home from './Home';
-import NotFound from './shared/components/NotFound';
-import SearchResults from './SearchResults';
-import LandingPage from './shared/components/LandingPage';
+import { slugify } from 'docs/shared/helpers';
+import { useGetCollectionsQuery } from 'docs/shared/types/contentful';
+import { IdLookup, IdLookupEntry } from 'docs/shared/types/docs';
+import Home from 'docs/pages/Home';
+import NotFound from 'docs/shared/components/NotFound';
+import SearchResults from 'docs/pages/SearchResults';
+import LandingPage from 'docs/shared/components/LandingPage';
 
-const CodeStandardsRouter = lazy(() => import('./codeStandards/CodeStandardsRouter'));
-const ComponentsRouter = lazy(() => import('./components/ComponentsRouter'));
-const ContentGuidelinesRouter = lazy(() => import('./contentGuidelines/ContentGuidelinesRouter'));
-const FoundationsRouter = lazy(() => import('./foundations/FoundationsRouter'));
-const ResourcesRouter = lazy(() => import('./resources/ResourcesRouter'));
+const CodeStandardsRouter = lazy(() => import('docs/pages/codeStandards/CodeStandardsRouter'));
+const ComponentsRouter = lazy(() => import('docs/pages/components/ComponentsRouter'));
+const ContentGuidelinesRouter = lazy(() => import('docs/pages/contentGuidelines/ContentGuidelinesRouter'));
+const FoundationsRouter = lazy(() => import('docs/pages/foundations/FoundationsRouter'));
+const ResourcesRouter = lazy(() => import('docs/pages/resources/ResourcesRouter'));
 
 interface Collection {
   items: {

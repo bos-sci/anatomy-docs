@@ -1,12 +1,12 @@
-import Layout from './Layout';
-import { IdLookupContext } from '../../App';
-import { IdLookup, IdLookupProperties } from '../types/docs';
 import { Fragment, useContext, useEffect, useState } from 'react';
-import ContentCard from '../../../library/components/ContentCard';
-import CardGroup from '../../../library/components/CardGroup';
-import { slugify } from '../helpers';
 import { useLocation } from 'react-router';
-import useTitle from '../hooks/useTitle';
+import ContentCard from 'library/components/ContentCard';
+import CardGroup from 'library/components/CardGroup';
+import { IdLookupContext } from 'docs/App';
+import Layout from 'docs/shared/components/Layout';
+import { IdLookup, IdLookupProperties } from 'docs/shared/types/docs';
+import { slugify } from 'docs/shared/helpers';
+import useTitle from 'docs/shared/hooks/useTitle';
 
 interface Props {
   heading: string;

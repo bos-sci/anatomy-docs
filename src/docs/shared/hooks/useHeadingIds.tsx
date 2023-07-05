@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { toCamelCase } from '../helpers';
+import { toCamelCase } from 'docs/shared/helpers';
 
 const useHeadingIds = () => {
   const [observer, setObserver] = useState<MutationObserver | null>(null);
