@@ -121,12 +121,13 @@
                 right: space(2x);
                 width: $icon-size;
                 height: $icon-size;
-                content: url('../../../assets/images/icon-chevron-down.svg');
+                background-image: url('../../../assets/images/icon-chevron-down.svg');
+                content: '';
               }
 
               &[aria-expanded='true'] {
                 &::after {
-                  content: url('../../../assets/images/icon-chevron-up.svg');
+                  background-image: url('../../../assets/images/icon-chevron-up.svg');
                 }
               }
             }
