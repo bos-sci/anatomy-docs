@@ -122,6 +122,8 @@
                 width: $icon-size;
                 height: $icon-size;
                 background-image: url('../../../assets/images/icon-chevron-down.svg');
+                background-position: bottom;
+                background-repeat: no-repeat;
                 content: '';
               }
 
