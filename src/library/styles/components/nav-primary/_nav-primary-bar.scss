@@ -127,7 +127,7 @@
 
               &[aria-expanded='true'] {
                 &::after {
-                  background-image: url('../../../assets/images/icon-chevron-up.svg');
+                  transform: rotate(180deg);
                 }
               }
             }
