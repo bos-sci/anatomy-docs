@@ -1,9 +1,9 @@
 import { ReactElement, cloneElement, useState, useEffect, useId } from 'react';
-import HeadingElement from './Heading';
-import { Props as ImageProps } from './Image';
-import { Props as TagProps } from './Tag';
-import Link from './Link';
-import Icon from './icon/Icon';
+import HeadingElement from 'library/components/Heading';
+import { Props as ImageProps } from 'library/components/Image';
+import { Props as TagProps } from 'library/components/Tag';
+import Link from 'library/components/Link';
+import Icon from 'library/components/icon/Icon';
 
 interface PlainCardProps {
   texts: {

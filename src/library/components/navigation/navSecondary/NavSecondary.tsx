@@ -1,9 +1,8 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
-import { RequireOnlyOne } from '../../../types';
-import NavSecondaryList from './NavSecondaryList';
-import './NavSecondary.scss';
-import Button from '../../Button';
 import { useLocation } from 'react-router-dom';
+import { RequireOnlyOne } from 'library/types';
+import Button from 'library/components/Button';
+import NavSecondaryList from './NavSecondaryList';
 
 interface NavItem {
   text: string;

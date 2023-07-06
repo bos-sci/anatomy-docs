@@ -1,7 +1,7 @@
 import { ForwardedRef, forwardRef, useState } from 'react';
-import Button from '../../Button';
-import Dropdown from '../../Dropdown';
-import Link from '../../Link';
+import Button from 'library/components/Button';
+import Dropdown from 'library/components/Dropdown';
+import Link from 'library/components/Link';
 import { HistoryNode, NavItemUtility, NavNode, Texts } from './NavPrimary';
 import NavPrimaryList from './NavPrimaryList';
 

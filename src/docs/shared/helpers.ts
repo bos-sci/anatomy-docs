@@ -1,7 +1,7 @@
 import algoliasearch from 'algoliasearch';
 import axios from 'axios';
-import { SearchResult } from '../../library/components/Search';
-import { releaseDate } from '../../utils/release-date';
+import { SearchResult } from 'library/components/Search';
+import { releaseDate } from 'utils/release-date';
 
 export const slugify = (text: string): string => {
   return text

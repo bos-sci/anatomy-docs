@@ -1,5 +1,5 @@
-import Dropdown from '../../Dropdown';
-import Link from '../../Link';
+import Dropdown from 'library/components/Dropdown';
+import Link from 'library/components/Link';
 import { NavItemUtility } from './NavPrimary';
 
 interface Props {

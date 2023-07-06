@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import CardGroup from '../CardGroup';
+import CardGroup from 'library/components/CardGroup';
 
 describe('CardGroup', () => {
   it('Renders a default card group when at least one child is provided', () => {

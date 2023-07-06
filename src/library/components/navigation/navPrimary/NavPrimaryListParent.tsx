@@ -1,4 +1,4 @@
-import Button from '../../Button';
+import Button from 'library/components/Button';
 import { NavNode } from './NavPrimary';
 import NavPrimaryList from './NavPrimaryList';
 import { HistoryNode } from './NavPrimary';

@@ -1,8 +1,7 @@
-import { RequireOnlyOne } from '../../../types';
-import NavWizardList from './NavWizardList';
-import './NavWizard.scss';
 import { RefObject, useEffect, useState, useRef } from 'react';
-import Button from '../../Button';
+import { RequireOnlyOne } from 'library/types';
+import Button from 'library/components/Button';
+import NavWizardList from './NavWizardList';
 
 interface NavItem {
   text: string;

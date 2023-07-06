@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Button from '../Button';
-import Modal from '../Modal';
-import BSCLogo from '../../../assets/images/logo-bsc-tagline.svg';
+import Button from 'library/components/Button';
+import Modal from 'library/components/Modal';
+import BSCLogo from 'docs/assets/images/logo-bsc-tagline.svg';
 
 const positiveAction = <Button data-testid="positiveAction">Positive action</Button>;
 const negativeAction = <Button data-testid="negativeAction">Negative action</Button>;

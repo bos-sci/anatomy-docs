@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Stoplight from '../Stoplight';
+import Stoplight from 'library/components/Stoplight';
 
 describe('Stoplight', () => {
   it('Renders alert variation', () => {

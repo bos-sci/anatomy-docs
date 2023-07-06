@@ -13,11 +13,11 @@ import {
   useState
 } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RequireOnlyOne } from '../types';
-import Button from './Button';
-import IconClose from './icon/icons/IconClose';
-import Link from './Link';
-import BoldMatch from './BoldMatch';
+import { RequireOnlyOne } from 'library/types';
+import Button from 'library/components/Button';
+import IconClose from 'library/components/icon/icons/IconClose';
+import Link from 'library/components/Link';
+import BoldMatch from 'library/components/BoldMatch';
 
 interface Result {
   to?: string;

@@ -1,7 +1,7 @@
+import { RefObject } from 'react';
 import { NavLink } from 'react-router-dom';
 import NavSecondaryListParent from './NavSecondaryListParent';
 import { NavNode } from './NavSecondary';
-import { RefObject } from 'react';
 
 interface NavListProps {
   navListId?: string;

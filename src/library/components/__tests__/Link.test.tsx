@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Link from '../Link';
+import Link from 'library/components/Link';
 
 describe('Link', () => {
   it("Does not render when it's missing both 'to' and 'href' props", () => {

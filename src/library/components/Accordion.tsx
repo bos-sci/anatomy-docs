@@ -7,8 +7,8 @@
 //   https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html
 
 import { Children, createRef, Fragment, ReactElement, useEffect, useId, useRef, useState } from 'react';
-import HeadingElement from './Heading';
-import AccordionHeading from './AccordionHeading';
+import HeadingElement from 'library/components/Heading';
+import AccordionHeading from 'library/components/AccordionHeading';
 
 type Props = {
   headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';

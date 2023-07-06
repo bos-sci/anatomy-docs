@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Tag from '../Tag';
+import Tag from 'library/components/Tag';
 
 describe('Tag', () => {
   it('Renders default variant when no variant prop passed', () => {

@@ -12,8 +12,8 @@ import {
   useRef,
   useState
 } from 'react';
-import { getValidationMessage } from '../helpers/validation';
-import { AddonProps, RadioAddonPropsContext } from './RadioGroup';
+import { getValidationMessage } from 'library/helpers/validation';
+import { AddonProps, RadioAddonPropsContext } from 'library/components/RadioGroup';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;

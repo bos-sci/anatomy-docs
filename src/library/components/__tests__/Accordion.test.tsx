@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Accordion from '../Accordion';
-import AccordionPanel from '../AccordionPanel';
+import Accordion from 'library/components/Accordion';
+import AccordionPanel from 'library/components/AccordionPanel';
 
 describe('Accordion', () => {
   it('Should render with one accordion', async () => {

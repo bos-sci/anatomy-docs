@@ -1,4 +1,4 @@
-import IconChevronDown from './icon/icons/IconChevronDown';
+import IconChevronDown from 'library/components/icon/icons/IconChevronDown';
 
 interface Props {
   heading: string;

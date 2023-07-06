@@ -1,4 +1,4 @@
-import Link from '../../Link';
+import Link from 'library/components/Link';
 import { NavNode } from './NavPrimary';
 import NavPrimaryListParent from './NavPrimaryListParent';
 import { HistoryNode } from './NavPrimary';
