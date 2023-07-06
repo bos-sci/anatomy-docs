@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, RefObject } from 'react';
-import Button from 'library/components//Button';
+import Button from 'library/components/Button';
 import NavSecondaryList from './NavSecondaryList';
 import { NavNode } from './NavSecondary';
 
