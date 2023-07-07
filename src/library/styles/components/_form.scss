@@ -19,6 +19,16 @@
   width: 100%;
 }
 
+.bsds-field-label {
+  width: 100%;
+}
+
+.bsds-field-label-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
 .bsds-field-error {
   display: flex;
   align-items: center;
