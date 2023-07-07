@@ -40,7 +40,7 @@
   border-image-source: $gradient-brand;
   border-image-slice: 1;
 
-  &:not(.is-constrained) {
+  &:not(.bsds-nav-header-constrained) {
     /* stylelint-disable scss/selector-nest-combinators */
     .bsds-nav-utility .bsds-nav,
     .bsds-nav-primary .bsds-nav-bar {
@@ -62,7 +62,7 @@
       margin-left: auto;
     }
 
-    &.is-constrained {
+    &-constrained {
       $panels-width-lg: 60rem; // NOTE: This is a one off size to match the layout widths.
 
       /* stylelint-disable scss/selector-nest-combinators */
@@ -79,7 +79,7 @@
 
 @media (min-width: $breakpoint-xl-min) {
   .bsds-nav-header {
-    &.is-constrained {
+    &-constrained {
       $panels-width-xl: 71.25rem; // NOTE: This is a one off size to match the layout widths.
 
       /* stylelint-disable scss/selector-nest-combinators */
@@ -95,7 +95,7 @@
 
 @media (min-width: $breakpoint-xxl-min) {
   .bsds-nav-header {
-    &.is-constrained {
+    &-constrained {
       $panels-width-xxl: 82.5rem; // NOTE: This is a one off size to match the layout widths.
       /* stylelint-disable scss/selector-nest-combinators */
       .bsds-nav-utility .bsds-nav,

@@ -283,7 +283,7 @@ const NavPrimary = ({
   }, [isMenuOpen, texts?.menuToggleTextClose, texts?.menuToggleTextOpen]);
 
   return (
-    <header ref={navRef} className={'bsds-nav-header' + (isConstrained ? ' is-constrained' : '')}>
+    <header ref={navRef} className={'bsds-nav-header' + (isConstrained ? '-constrained' : '')}>
       {!!utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
       <nav className="bsds-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="bsds-nav-bar">
