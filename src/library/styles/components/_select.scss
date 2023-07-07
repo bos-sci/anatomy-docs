@@ -48,10 +48,8 @@
         right: space(2x);
         width: $icon-size-sm;
         height: $icon-size-sm;
-        background: $neutral-00;
+        background-image: url('../../assets/images/icon-chevron-down.svg');
         content: '';
-        mask: url('../../assets/images/icon-chevron-down.svg') no-repeat 50% 50%;
-        mask-size: cover;
       }
     }
   }
