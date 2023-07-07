@@ -34,27 +34,27 @@ $checkmark-size: $ffs-body-assertive;
   }
 }
 
-.bsds-input-checkbox {
+.bsds-input-checkbox-control {
   display: flex;
 }
 
 .bsds-fieldset {
-  > .bsds-input {
+  > .bsds-field {
     &:not(:first-child) {
-      .bsds-input-checkbox {
+      .bsds-input-checkbox-control {
         margin-top: space(2x);
       }
     }
   }
 
   &[aria-invalid='true'] {
-    .bsds-input-checkbox-input {
+    .bsds-input-checkbox {
       @include checkbox-invalid;
     }
   }
 }
 
-.bsds-input-checkbox-input {
+.bsds-input-checkbox {
   @include visually-hidden;
   pointer-events: none;
 

@@ -99,13 +99,13 @@ const Select = forwardRef(
 
     // TODO: ADS-500 revisit classNames
     return (
-      <div className="bsds-input">
-        <label className="bsds-input-text">
-          <div className="bsds-input-text-label">
+      <div className="bsds-field">
+        <label className="bsds-field-label">
+          <div className="bsds-field-label-text">
             {label}
-            {!!selectAttrs.required && <span className="bsds-input-help-text">{requiredText}</span>}
+            {!!selectAttrs.required && <span className="bsds-field-help-text">{requiredText}</span>}
           </div>
-          <div className="bsds-input-text-input-select">
+          <div className="bsds-select-control">
             <select
               ref={(node) => {
                 if (node) {
@@ -118,7 +118,7 @@ const Select = forwardRef(
                 }
               }}
               name={label}
-              className="bsds-input-text-input-select-control"
+              className="bsds-select"
               aria-invalid={!!validationMessage}
               aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
               onBlur={handleBlur}
@@ -130,12 +130,12 @@ const Select = forwardRef(
           </div>
         </label>
         {!!validationMessage && (
-          <p id={errorTextId} className="bsds-input-error">
+          <p id={errorTextId} className="bsds-field-error">
             {validationMessage}
           </p>
         )}
         {!!helpText && (
-          <p id={helpTextId} className="bsds-input-help-text">
+          <p id={helpTextId} className="bsds-field-help-text">
             {helpText}
           </p>
         )}

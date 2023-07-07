@@ -13,7 +13,7 @@ describe('Select component', () => {
       </Select>
     );
     expect(screen.getByLabelText('Select')).toBeInTheDocument();
-    expect(screen.getByLabelText('Select')).toHaveClass('bsds-input-text-input-select-control');
+    expect(screen.getByLabelText('Select')).toHaveClass('bsds-select');
   });
 
   it('Renders correctly with helpText prop', () => {

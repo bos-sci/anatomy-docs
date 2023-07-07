@@ -1,8 +1,8 @@
-.bsds-input-text {
+.bsds-field-label {
   width: 100%;
 }
 
-.bsds-input-text-input {
+.bsds-input {
   width: 100%;
   margin-top: space(md);
   border: $border-width-xxs solid $border-color-assertive;
@@ -63,7 +63,7 @@
   }
 }
 
-.bsds-input-text-label {
+.bsds-field-label-text {
   display: flex;
   justify-content: space-between;
   align-items: baseline;

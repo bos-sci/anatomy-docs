@@ -207,11 +207,11 @@ const Search = forwardRef(
         onSubmit={handleSubmit}
         {...formAttributes}
       >
-        <div className="bsds-input">
+        <div className="bsds-field">
           <div className="bsds-search">
             <label
               htmlFor={searchId}
-              className={'bsds-input-text-label' + (!isLabelVisible ? ' bsds-visually-hidden' : '')}
+              className={'bsds-field-text-label' + (!isLabelVisible ? ' bsds-visually-hidden' : '')}
             >
               {label || 'Search'}
             </label>
@@ -230,7 +230,7 @@ const Search = forwardRef(
                   }}
                   id={searchId}
                   type="search"
-                  className="bsds-input-text-input"
+                  className="bsds-input"
                   placeholder={placeholder || 'Search'}
                   value={inputValue}
                   name="query"
@@ -291,7 +291,7 @@ const Search = forwardRef(
             </div>
           </div>
           {!!texts?.helpText && (
-            <p id={'inputHelpText' + searchId} className="bsds-input-help-text">
+            <p id={'inputHelpText' + searchId} className="bsds-field-help-text">
               {texts?.helpText}
             </p>
           )}

@@ -83,8 +83,8 @@ const InputCheckbox = forwardRef(
     }, []);
 
     return (
-      <div className="bsds-input">
-        <div className="bsds-input-checkbox">
+      <div className="bsds-field">
+        <div className="bsds-input-checkbox-control">
           <input
             ref={(node) => {
               if (node) {
@@ -98,7 +98,7 @@ const InputCheckbox = forwardRef(
             }}
             type="checkbox"
             id={inputId}
-            className="bsds-input-checkbox-input"
+            className="bsds-input-checkbox"
             aria-invalid={!!validationMessage}
             aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
             {...inputAttrs}
@@ -111,12 +111,12 @@ const InputCheckbox = forwardRef(
           </label>
         </div>
         {!!validationMessage && (
-          <p id={errorTextId} className="bsds-input-error">
+          <p id={errorTextId} className="bsds-field-error">
             {validationMessage}
           </p>
         )}
         {!!helpText && (
-          <p id={helpTextId} className="bsds-input-help-text">
+          <p id={helpTextId} className="bsds-field-help-text">
             {helpText}
           </p>
         )}

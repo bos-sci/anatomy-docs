@@ -89,12 +89,12 @@ const RadioGroup = ({
     >
       <legend className={'bsds-legend'}>{legend}</legend>
       {!!validationMessage && (
-        <p id={errorTextId} className={'bsds-input-error'}>
+        <p id={errorTextId} className={'bsds-field-error'}>
           {validationMessage}
         </p>
       )}
       {!!helpText && (
-        <p id={helpTextId} className={'bsds-input-help-text'}>
+        <p id={helpTextId} className={'bsds-field-help-text'}>
           {helpText}
         </p>
       )}

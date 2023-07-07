@@ -1,58 +1,55 @@
-.bsds-input-text {
-  &-input {
-    &-select {
-      position: relative;
-      display: grid;
-      grid-template-areas: 'select';
-      align-items: center;
-      margin-top: space(md);
-      background: $neutral-100;
+.bsds-select-control {
+  position: relative;
+  display: grid;
+  grid-template-areas: 'select';
+  align-items: center;
+  margin-top: space(md);
+  background: $neutral-100;
 
-      select {
-        @extend .bsds-input-text-input;
-        grid-area: select;
-        appearance: none;
-        margin: 0;
+  select {
+    @extend .bsds-input;
+    grid-area: select;
+    margin: 0;
+    border-radius: 0;
+    appearance: none;
 
-        &.bsds-input-text-input-select-control {
-          z-index: 1;
-          background: transparent;
+    &.bsds-select {
+      z-index: 1;
+      background: transparent;
 
-          &:hover,
-          &::after,
-          &:read-only {
-            cursor: pointer;
-          }
+      &:hover,
+      &::after,
+      &:read-only {
+        cursor: pointer;
+      }
 
-          &:focus {
-            @include focus-default;
-          }
+      &:focus {
+        @include focus-default;
+      }
 
-          &:disabled {
-            background: $neutral-95;
+      &:disabled {
+        background: $neutral-95;
 
-            &:hover {
-              cursor: not-allowed;
-            }
-          }
-
-          &[aria-invalid='true'] {
-            border-color: $border-color-error;
-          }
+        &:hover {
+          cursor: not-allowed;
         }
       }
 
-      &::after {
-        position: absolute;
-        top: calc(50% - ($icon-size-sm / 3));
-        right: space(2x);
-        width: $icon-size-sm;
-        height: $icon-size-sm;
-        background: $neutral-00;
-        content: '';
-        mask: url('../../assets/images/icon-chevron-down.svg') no-repeat 50% 50%;
-        mask-size: cover;
+      &[aria-invalid='true'] {
+        border-color: $border-color-error;
       }
     }
+  }
+
+  &::after {
+    position: absolute;
+    top: calc(50% - ($icon-size-sm / 3));
+    right: space(2x);
+    width: $icon-size-sm;
+    height: $icon-size-sm;
+    background: $neutral-00;
+    content: '';
+    mask: url('../../assets/images/icon-chevron-down.svg') no-repeat 50% 50%;
+    mask-size: cover;
   }
 }

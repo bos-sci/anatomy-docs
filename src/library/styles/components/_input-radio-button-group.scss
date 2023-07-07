@@ -10,12 +10,12 @@
   .bsds-legend {
     @include font-family-base-regular;
 
-    ~ .bsds-input {
+    ~ .bsds-field {
       width: max-content;
       margin-top: space(lg);
 
       &:not(:first-child) {
-        .bsds-input-radio {
+        .bsds-input-radio-control {
           min-width: space(4x);
           margin-top: 0;
         }
@@ -23,7 +23,7 @@
     }
   }
 
-  .bsds-input-radio-input {
+  .bsds-input-radio {
     + .bsds-input-radio-label {
       @include button-default;
       @include font-family-base-regular;
@@ -105,10 +105,10 @@
 
   &[aria-invalid='true'] {
     .bsds-legend {
-      ~ .bsds-input {
+      ~ .bsds-field {
         margin-top: 0;
 
-        .bsds-input-radio {
+        .bsds-input-radio-control {
           .bsds-input-radio-label {
             outline-color: $feedback-error-40;
 
@@ -119,7 +119,7 @@
             }
           }
 
-          .bsds-input-radio-input {
+          .bsds-input-radio {
             &:checked {
               + .bsds-input-radio-label {
                 border-color: $border-color-error;
@@ -143,16 +143,16 @@
     }
   }
 
-  .bsds-input-error {
+  .bsds-field-error {
     width: 100%;
     margin: 0;
 
-    + .bsds-input-help-text {
+    + .bsds-field-help-text {
       margin-top: 0;
     }
   }
 
-  .bsds-input-help-text {
+  .bsds-field-help-text {
     width: 100%;
     margin-top: space(lg);
   }

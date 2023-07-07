@@ -15,11 +15,11 @@
   @include font-size($fs-body);
 }
 
-.bsds-input {
+.bsds-field {
   width: 100%;
 }
 
-.bsds-input-error {
+.bsds-field-error {
   display: flex;
   align-items: center;
   margin: space(md) 0 0 0;
@@ -39,10 +39,14 @@
   }
 }
 
-.bsds-input-help-text {
+.bsds-field-help-text {
   margin: space(sm) 0 0 0;
   color: $text-color-subtle;
   @include font-size($fs-body-subtle);
+}
+
+.bsds-field-required-text {
+  @extend .bsds-field-help-text;
 }
 
 // TODO: ADS-334 Should we have spacing here? If not, can we get rid of class bsds-margin-top-remove?
@@ -51,7 +55,7 @@
 }
 
 @media (min-width: $breakpoint-lg-min) {
-  .bsds-input-error {
+  .bsds-field-error {
     &::before {
       transform: translateY(space(xs));
     }

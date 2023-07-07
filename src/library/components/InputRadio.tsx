@@ -100,8 +100,8 @@ const InputRadio = forwardRef(
     }, [isGroupStyle, addonProps]);
 
     return (
-      <div className={'bsds-input'}>
-        <div className={'bsds-input-radio'}>
+      <div className="bsds-field">
+        <div className="bsds-input-radio-control">
           <input
             ref={(node) => {
               if (node) {
@@ -115,7 +115,7 @@ const InputRadio = forwardRef(
             }}
             type="radio"
             id={inputId}
-            className={'bsds-input-radio-input'}
+            className="bsds-input-radio"
             aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
             onInvalid={handleInvalid}
             onBlur={handleBlur}
@@ -130,7 +130,7 @@ const InputRadio = forwardRef(
           </label>
         </div>
         {!!helpText && (
-          <p id={helpTextId} className={'bsds-input-help-text'}>
+          <p id={helpTextId} className="bsds-field-help-text">
             {helpText}
           </p>
         )}
