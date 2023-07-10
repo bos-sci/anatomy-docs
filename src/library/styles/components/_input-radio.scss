@@ -32,7 +32,7 @@ $inner-circle-diameter: space(md);
     }
   }
 
-  &[aria-invalid='true'] {
+  [aria-invalid='true'] & {
     + .bsds-input-radio-label {
       &::before {
         border: $border-width-xs solid $border-color-error;
