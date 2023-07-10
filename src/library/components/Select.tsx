@@ -97,7 +97,6 @@ const Select = forwardRef(
       setErrorTextId('inputErrorText' + selectId);
     }, [selectId]);
 
-    // TODO: ADS-500 revisit classNames
     return (
       <div className="bsds-field">
         <label className="bsds-field-label">
