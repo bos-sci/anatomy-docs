@@ -101,34 +101,32 @@ const InputRadio = forwardRef(
 
     return (
       <div className="bsds-field">
-        <div className="bsds-input-radio-control">
-          <input
-            ref={(node) => {
-              if (node) {
-                (inputEl as MutableRefObject<HTMLInputElement>).current = node;
-                if (typeof ref === 'function') {
-                  ref(node);
-                } else if (ref) {
-                  (ref as MutableRefObject<HTMLInputElement>).current = node;
-                }
+        <input
+          ref={(node) => {
+            if (node) {
+              (inputEl as MutableRefObject<HTMLInputElement>).current = node;
+              if (typeof ref === 'function') {
+                ref(node);
+              } else if (ref) {
+                (ref as MutableRefObject<HTMLInputElement>).current = node;
               }
-            }}
-            type="radio"
-            id={inputId}
-            className="bsds-input-radio"
-            aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
-            onInvalid={handleInvalid}
-            onBlur={handleBlur}
-            onInput={handleChange}
-            {...inputAttrs}
-          />
-          <label
-            htmlFor={inputId}
-            className={`bsds-input-radio-label${isGroupStyle && inputUnavailable ? '-unavailable' : ''}`}
-          >
-            {label}
-          </label>
-        </div>
+            }
+          }}
+          type="radio"
+          id={inputId}
+          className="bsds-input-radio"
+          aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
+          onInvalid={handleInvalid}
+          onBlur={handleBlur}
+          onInput={handleChange}
+          {...inputAttrs}
+        />
+        <label
+          htmlFor={inputId}
+          className={`bsds-input-radio-label${isGroupStyle && inputUnavailable ? '-unavailable' : ''}`}
+        >
+          {label}
+        </label>
         {!!helpText && (
           <p id={helpTextId} className="bsds-field-help-text">
             {helpText}

@@ -7,7 +7,7 @@
   background: $neutral-100;
 
   select {
-    @extend .bsds-input;
+    @extend %field-control;
     grid-area: select;
     margin: 0;
     border-radius: 0;
@@ -18,13 +18,17 @@
       background: transparent;
 
       &:hover,
-      &::after,
-      &:read-only {
+      &::after {
         cursor: pointer;
       }
 
       &:focus {
         @include focus-default;
+      }
+
+      &:hover,
+      &:focus {
+        border-color: $border-color-action;
       }
 
       &:disabled {

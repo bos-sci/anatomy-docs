@@ -34,16 +34,10 @@ $checkmark-size: $ffs-body-assertive;
   }
 }
 
-.bsds-input-checkbox-control {
-  display: flex;
-}
-
 .bsds-fieldset {
   > .bsds-field {
     &:not(:first-child) {
-      .bsds-input-checkbox-control {
-        margin-top: space(2x);
-      }
+      margin-top: space(2x);
     }
   }
 

@@ -84,32 +84,30 @@ const InputCheckbox = forwardRef(
 
     return (
       <div className="bsds-field">
-        <div className="bsds-input-checkbox-control">
-          <input
-            ref={(node) => {
-              if (node) {
-                (inputEl as MutableRefObject<HTMLInputElement>).current = node;
-                if (typeof ref === 'function') {
-                  ref(node);
-                } else if (ref) {
-                  (ref as MutableRefObject<HTMLInputElement>).current = node;
-                }
+        <input
+          ref={(node) => {
+            if (node) {
+              (inputEl as MutableRefObject<HTMLInputElement>).current = node;
+              if (typeof ref === 'function') {
+                ref(node);
+              } else if (ref) {
+                (ref as MutableRefObject<HTMLInputElement>).current = node;
               }
-            }}
-            type="checkbox"
-            id={inputId}
-            className="bsds-input-checkbox"
-            aria-invalid={!!validationMessage}
-            aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
-            {...inputAttrs}
-            onInvalid={handleInvalid}
-            onBlur={handleBlur}
-            onChange={handleChange}
-          />
-          <label htmlFor={inputId} className="bsds-input-checkbox-label">
-            {label}
-          </label>
-        </div>
+            }
+          }}
+          type="checkbox"
+          id={inputId}
+          className="bsds-input-checkbox"
+          aria-invalid={!!validationMessage}
+          aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
+          {...inputAttrs}
+          onInvalid={handleInvalid}
+          onBlur={handleBlur}
+          onChange={handleChange}
+        />
+        <label htmlFor={inputId} className="bsds-input-checkbox-label">
+          {label}
+        </label>
         {!!validationMessage && (
           <p id={errorTextId} className="bsds-field-error">
             {validationMessage}

@@ -1,53 +1,30 @@
 .bsds-input {
-  width: 100%;
-  margin-top: space(md);
-  border: $border-width-xxs solid $border-color-assertive;
-  padding: space(lg) space(2x);
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-
-  &:focus {
-    @include focus-default;
-  }
+  @extend %field-control;
 
   &::placeholder {
     color: $text-color-subtle;
   }
 
-  &:disabled {
-    border-color: $border-color-subtle;
-  }
-
-  &:read-only {
-    &:focus {
-      @include focus-readonly;
-    }
-  }
-
-  &:disabled,
   &:read-only {
     background: $neutral-95;
 
     &:hover {
       cursor: not-allowed;
     }
+
+    &:focus {
+      @include focus-readonly;
+    }
   }
 
   &:not(:disabled) {
-    &[aria-invalid='true'] {
-      &:focus {
-        @include focus-invalid;
-      }
-    }
-
     &:not(:read-only) {
       &[aria-invalid='true'] {
-        border: $border-width-xxs solid $border-color-error;
+        border-color: $border-color-error;
 
         &:hover,
         &:focus {
-          border: $border-width-xxs solid $border-color-error;
+          border-color: $border-color-error;
         }
       }
 

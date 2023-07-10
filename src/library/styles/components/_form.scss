@@ -1,3 +1,36 @@
+%field-control {
+  position: relative;
+  width: 100%;
+  margin-top: space(md);
+  border: $border-width-xxs solid $border-color-assertive;
+  padding: space(lg) space(2x);
+  background: $neutral-100;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+
+  &:focus {
+    @include focus-default;
+  }
+
+  &:disabled {
+    border-color: $border-color-subtle;
+    background: $neutral-95;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  &:not(:disabled) {
+    &[aria-invalid='true'] {
+      &:focus {
+        @include focus-invalid;
+      }
+    }
+  }
+}
+
 .bsds-form {
   width: 100%;
 }
@@ -16,6 +49,8 @@
 }
 
 .bsds-field {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 

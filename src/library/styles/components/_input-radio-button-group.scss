@@ -15,10 +15,8 @@
       margin-top: space(lg);
 
       &:not(:first-child) {
-        .bsds-input-radio-control {
-          min-width: space(4x);
-          margin-top: 0;
-        }
+        min-width: space(4x);
+        margin-top: 0;
       }
     }
   }
@@ -108,34 +106,32 @@
       ~ .bsds-field {
         margin-top: 0;
 
-        .bsds-input-radio-control {
-          .bsds-input-radio-label {
-            outline-color: $feedback-error-40;
+        .bsds-input-radio-label {
+          outline-color: $feedback-error-40;
 
-            &:hover,
-            &:active {
-              outline-color: $action-primary-20;
-              border-color: $action-primary-20;
+          &:hover,
+          &:active {
+            outline-color: $action-primary-20;
+            border-color: $action-primary-20;
+          }
+        }
+
+        .bsds-input-radio {
+          &:checked {
+            + .bsds-input-radio-label {
+              border-color: $border-color-error;
+
+              &:hover,
+              &:active {
+                border-color: $action-primary-20;
+              }
             }
           }
 
-          .bsds-input-radio {
-            &:checked {
-              + .bsds-input-radio-label {
-                border-color: $border-color-error;
-
-                &:hover,
-                &:active {
-                  border-color: $action-primary-20;
-                }
-              }
-            }
-
-            &:focus,
-            &:focus:checked {
-              + .bsds-input-radio-label {
-                @include focus-invalid;
-              }
+          &:focus,
+          &:focus:checked {
+            + .bsds-input-radio-label {
+              @include focus-invalid;
             }
           }
         }
