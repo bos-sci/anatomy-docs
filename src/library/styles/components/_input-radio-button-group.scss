@@ -12,11 +12,10 @@
 
     ~ .bsds-field {
       width: max-content;
-      margin-top: space(lg);
 
       &:not(:first-child) {
         min-width: space(4x);
-        margin-top: 0;
+        margin-top: space(lg);
       }
     }
   }
