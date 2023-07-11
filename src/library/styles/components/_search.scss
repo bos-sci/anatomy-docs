@@ -1,11 +1,16 @@
-.bsds-field-text-label {
-  margin-bottom: space(md);
+.bsds-field-label-text {
+  &.bsds-visually-hidden {
+    + .bsds-search-control {
+      margin-top: 0;
+    }
+  }
 }
 
 .bsds-search-control {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: $field-control-margin-top;
   gap: space(2x);
 
   .bsds-input {

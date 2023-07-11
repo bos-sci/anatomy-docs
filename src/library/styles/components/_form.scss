@@ -1,7 +1,7 @@
 %field-control {
   position: relative;
   width: 100%;
-  margin-top: space(md);
+  margin-top: $field-control-margin-top;
   border: $border-width-xxs solid $border-color-assertive;
   padding: space(lg) space(2x);
   background: $neutral-100;

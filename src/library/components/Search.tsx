@@ -210,7 +210,7 @@ const Search = forwardRef(
         <div className="bsds-field">
           <label
             htmlFor={searchId}
-            className={'bsds-field-text-label' + (!isLabelVisible ? ' bsds-visually-hidden' : '')}
+            className={'bsds-field-label-text' + (!isLabelVisible ? ' bsds-visually-hidden' : '')}
           >
             {label || 'Search'}
           </label>
