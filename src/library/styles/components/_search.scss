@@ -1,16 +1,17 @@
-.bsds-search {
-  width: 100%;
-
-  .bsds-input {
-    height: 100%;
-    margin-top: 0;
-  }
+.bsds-field-text-label {
+  margin-bottom: space(md);
 }
 
 .bsds-search-control {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: space(2x);
+
+  .bsds-input {
+    height: 100%;
+    margin-top: 0;
+  }
 }
 
 .bsds-input-search {
