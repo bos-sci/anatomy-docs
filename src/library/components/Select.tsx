@@ -102,7 +102,7 @@ const Select = forwardRef(
         <label className="bsds-field-label">
           <div className="bsds-field-label-text">
             {label}
-            {!!selectAttrs.required && <span className="bsds-field-help-text">{requiredText}</span>}
+            {!!selectAttrs.required && <span className="bsds-field-required-text">{requiredText}</span>}
           </div>
           <div className="bsds-select-control">
             <select
