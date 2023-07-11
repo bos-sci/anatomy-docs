@@ -1,4 +1,4 @@
-// Text Utility Variables
+// Text utility variables
 
 $text-color-primary: $neutral-00;
 $text-color-subtle: $neutral-40;
@@ -6,15 +6,15 @@ $text-color-disabled: $neutral-60;
 $text-color-ghost: $neutral-100;
 $text-color-action: $action-primary-40;
 
-// Border Radius Utility Variables
+// Border radius utility variables
 
 $border-radius-circle: 50%;
 
-// Icon Utility Variables
+// Icon utility variables
 
 $icon-size-sm: space(lg);
 
-// App Width Utility Variables
+// App width utility variables
 
 :root {
   --app-width: 100%;
@@ -37,3 +37,7 @@ $icon-size-sm: space(lg);
     --app-width: 82.5rem;
   }
 }
+
+// Form utility variables
+
+$field-control-margin-top: space(md);

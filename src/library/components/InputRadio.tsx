@@ -100,37 +100,35 @@ const InputRadio = forwardRef(
     }, [isGroupStyle, addonProps]);
 
     return (
-      <div className={'bsds-input'}>
-        <div className={'bsds-input-radio'}>
-          <input
-            ref={(node) => {
-              if (node) {
-                (inputEl as MutableRefObject<HTMLInputElement>).current = node;
-                if (typeof ref === 'function') {
-                  ref(node);
-                } else if (ref) {
-                  (ref as MutableRefObject<HTMLInputElement>).current = node;
-                }
+      <div className="bsds-field">
+        <input
+          ref={(node) => {
+            if (node) {
+              (inputEl as MutableRefObject<HTMLInputElement>).current = node;
+              if (typeof ref === 'function') {
+                ref(node);
+              } else if (ref) {
+                (ref as MutableRefObject<HTMLInputElement>).current = node;
               }
-            }}
-            type="radio"
-            id={inputId}
-            className={'bsds-input-radio-input'}
-            aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
-            onInvalid={handleInvalid}
-            onBlur={handleBlur}
-            onInput={handleChange}
-            {...inputAttrs}
-          />
-          <label
-            htmlFor={inputId}
-            className={`bsds-input-radio-label${isGroupStyle && inputUnavailable ? '-unavailable' : ''}`}
-          >
-            {label}
-          </label>
-        </div>
+            }
+          }}
+          type="radio"
+          id={inputId}
+          className="bsds-input-radio"
+          aria-describedby={`${helpTextId} ${addonProps.isDirty ? addonProps.ariaDescribedby : ''}`}
+          onInvalid={handleInvalid}
+          onBlur={handleBlur}
+          onInput={handleChange}
+          {...inputAttrs}
+        />
+        <label
+          htmlFor={inputId}
+          className={`bsds-input-radio-label${isGroupStyle && inputUnavailable ? '-unavailable' : ''}`}
+        >
+          {label}
+        </label>
         {!!helpText && (
-          <p id={helpTextId} className={'bsds-input-help-text'}>
+          <p id={helpTextId} className="bsds-field-help-text">
             {helpText}
           </p>
         )}

@@ -207,91 +207,89 @@ const Search = forwardRef(
         onSubmit={handleSubmit}
         {...formAttributes}
       >
-        <div className="bsds-input">
-          <div className="bsds-search">
-            <label
-              htmlFor={searchId}
-              className={'bsds-input-text-label' + (!isLabelVisible ? ' bsds-visually-hidden' : '')}
-            >
-              {label || 'Search'}
-            </label>
-            <div className="bsds-search-control">
-              <div ref={searchRef} className="bsds-input-search">
-                <input
-                  ref={(node) => {
-                    if (node) {
-                      (inputRef as MutableRefObject<HTMLInputElement>).current = node;
-                      if (typeof ref === 'function') {
-                        ref(node);
-                      } else if (ref) {
-                        (ref as MutableRefObject<HTMLInputElement>).current = node;
-                      }
+        <div className="bsds-field">
+          <label
+            htmlFor={searchId}
+            className={'bsds-field-label-text' + (!isLabelVisible ? ' bsds-visually-hidden' : '')}
+          >
+            {label || 'Search'}
+          </label>
+          <div className="bsds-search-control">
+            <div ref={searchRef} className="bsds-input-search">
+              <input
+                ref={(node) => {
+                  if (node) {
+                    (inputRef as MutableRefObject<HTMLInputElement>).current = node;
+                    if (typeof ref === 'function') {
+                      ref(node);
+                    } else if (ref) {
+                      (ref as MutableRefObject<HTMLInputElement>).current = node;
                     }
-                  }}
-                  id={searchId}
-                  type="search"
-                  className="bsds-input-text-input"
-                  placeholder={placeholder || 'Search'}
-                  value={inputValue}
-                  name="query"
-                  role={autocompleteAria}
-                  autoComplete="off"
-                  aria-label={texts?.searchInputAriaLabel || 'search input'}
-                  aria-owns={autocompleteAriaOwns}
-                  aria-controls={autocompleteAriaOwns}
-                  aria-autocomplete={autocompleteAriaComplete}
-                  aria-haspopup={autocompleteAriaPopup}
-                  aria-expanded={!!(hasAutocomplete && isOpen)}
-                  aria-describedby={texts?.helpText || ''}
-                  aria-activedescendant={ariaActiveDescendant}
-                  onChange={handleChange}
-                  onFocus={handleFocus}
-                  onKeyDown={updateActiveDesc}
-                  {...inputAttrs}
-                />
-                {/* TODO: ADS-96 pull this into an input addon component */}
-                {!!inputValue && (
-                  <button
-                    type="button"
-                    className="bsds-search-clear"
-                    aria-label={texts?.searchClearTextAriaLabel || 'clear search query'}
-                    onClick={() => setInputValue('')}
-                  >
-                    <IconClose className="bsds-icon-lg" />
-                  </button>
-                )}
-                {!!(hasAutocomplete && searchResults) && (
-                  <ul id={searchId + '-results'} className="bsds-search-results" hidden={!isOpen}>
-                    {searchResults.length > 0 &&
-                      searchResults.map((result, i) => (
-                        <li key={searchId + result.text} className="bsds-search-result">
-                          <Link
-                            id={searchId + '-result-' + i}
-                            to={result.to}
-                            href={result.href}
-                            className={'bsds-link-nav' + (i === activeDescendant ? ' active-descendant' : '')}
-                            aria-label={result.text}
-                            tabIndex={-1}
-                          >
-                            <BoldMatch match={inputValue}>{result.text}</BoldMatch>
-                          </Link>
-                        </li>
-                      ))}
-                    {searchResults.length === 0 && (
-                      <li id={searchId + '-result-0'} className="bsds-search-result bsds-search-result-none">
-                        {texts?.noResultsFound || 'No results found'}
+                  }
+                }}
+                id={searchId}
+                type="search"
+                className="bsds-input"
+                placeholder={placeholder || 'Search'}
+                value={inputValue}
+                name="query"
+                role={autocompleteAria}
+                autoComplete="off"
+                aria-label={texts?.searchInputAriaLabel || 'search input'}
+                aria-owns={autocompleteAriaOwns}
+                aria-controls={autocompleteAriaOwns}
+                aria-autocomplete={autocompleteAriaComplete}
+                aria-haspopup={autocompleteAriaPopup}
+                aria-expanded={!!(hasAutocomplete && isOpen)}
+                aria-describedby={texts?.helpText || ''}
+                aria-activedescendant={ariaActiveDescendant}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                onKeyDown={updateActiveDesc}
+                {...inputAttrs}
+              />
+              {/* TODO: ADS-96 pull this into an input addon component */}
+              {!!inputValue && (
+                <button
+                  type="button"
+                  className="bsds-search-clear"
+                  aria-label={texts?.searchClearTextAriaLabel || 'clear search query'}
+                  onClick={() => setInputValue('')}
+                >
+                  <IconClose className="bsds-icon-lg" />
+                </button>
+              )}
+              {!!(hasAutocomplete && searchResults) && (
+                <ul id={searchId + '-results'} className="bsds-search-results" hidden={!isOpen}>
+                  {searchResults.length > 0 &&
+                    searchResults.map((result, i) => (
+                      <li key={searchId + result.text} className="bsds-search-result">
+                        <Link
+                          id={searchId + '-result-' + i}
+                          to={result.to}
+                          href={result.href}
+                          className={'bsds-link-nav' + (i === activeDescendant ? ' active-descendant' : '')}
+                          aria-label={result.text}
+                          tabIndex={-1}
+                        >
+                          <BoldMatch match={inputValue}>{result.text}</BoldMatch>
+                        </Link>
                       </li>
-                    )}
-                  </ul>
-                )}
-              </div>
-              <Button variant="assertive" disabled={!inputValue} aria-label={texts?.buttonAriaLabel || 'Search'}>
-                {texts?.buttonText || 'Search'}
-              </Button>
+                    ))}
+                  {searchResults.length === 0 && (
+                    <li id={searchId + '-result-0'} className="bsds-search-result bsds-search-result-none">
+                      {texts?.noResultsFound || 'No results found'}
+                    </li>
+                  )}
+                </ul>
+              )}
             </div>
+            <Button variant="assertive" disabled={!inputValue} aria-label={texts?.buttonAriaLabel || 'Search'}>
+              {texts?.buttonText || 'Search'}
+            </Button>
           </div>
           {!!texts?.helpText && (
-            <p id={'inputHelpText' + searchId} className="bsds-input-help-text">
+            <p id={'inputHelpText' + searchId} className="bsds-field-help-text">
               {texts?.helpText}
             </p>
           )}
