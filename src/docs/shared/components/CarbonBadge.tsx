@@ -76,10 +76,10 @@ const CarbonBadge = (props: Props): JSX.Element => {
           Website Carbon
         </a>
       </div>
-      <span className="carbon-badge-percent" aria-hidden="true">
+      <div className="carbon-badge-percent" aria-hidden="true">
         {!(carbonData && carbonData.p) && <>&nbsp;</>}
         {!!(carbonData && carbonData.p) && <>Cleaner than {carbonData.p}% of pages tested</>}
-      </span>
+      </div>
     </div>
   );
 };

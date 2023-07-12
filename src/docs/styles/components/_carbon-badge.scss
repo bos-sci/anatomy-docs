@@ -2,27 +2,30 @@
   @include font-size($fs-body-subtle);
   text-align: center;
 
-  .carbon-badge-data {
+  &-data {
     display: flex;
-    margin-bottom: space(sm);
     border: $border-width-xxs solid $border-color-action;
     background: $action-primary-95;
   }
 
-  .carbon-badge-link,
-  .carbon-badge-co2 {
+  &-link,
+  &-co2 {
     padding: space(xs) space(md);
   }
 
-  .carbon-badge-co2 {
+  &-co2 {
     border-right: $border-width-xxs solid $border-color-action;
     padding-bottom: calc(space(xs) + space(xxs));
     background: $neutral-100;
   }
 
-  .carbon-badge-link {
+  &-link {
     padding-top: calc(space(xs) + space(xxs));
     @include font-family-base-heavy;
     color: $text-color-primary;
+  }
+
+  &-percent {
+    margin-top: space(sm);
   }
 }
