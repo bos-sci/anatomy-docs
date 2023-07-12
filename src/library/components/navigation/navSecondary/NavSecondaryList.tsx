@@ -1,5 +1,5 @@
 import { RefObject } from 'react';
-import { NavLink } from 'react-router-dom';
+import Link from 'library/components/Link';
 import NavSecondaryListParent from './NavSecondaryListParent';
 import { NavNode } from './NavSecondary';
 
@@ -32,9 +32,9 @@ const NavSecondaryList = ({
         if (navItem.slug) {
           return (
             <li key={`secondaryNavItem${navItem.text}`} className="bsds-nav-item">
-              <NavLink to={navItem.slug} className="bsds-nav-link">
+              <Link to={navItem.slug} href={navItem.slug} className="bsds-nav-link" isNavLink>
                 {navItem.text}
-              </NavLink>
+              </Link>
             </li>
           );
         } else {

@@ -5,7 +5,7 @@
     border-bottom: $border-width-xxs solid $border-color-subtle;
   }
 
-  &-contained {
+  &.is-contained {
     border: $border-width-xxs solid $border-color-subtle;
     padding: space(lg);
 

@@ -68,7 +68,7 @@
     padding: space(lg) space(2x);
     background: $neutral-100;
 
-    &.open {
+    &.is-open {
       display: block;
     }
   }
@@ -93,7 +93,7 @@
     @include link-navigation;
     @include font-size($fs-body-subtle);
 
-    &.active {
+    &.is-active {
       &::before {
         position: absolute;
         left: 0;

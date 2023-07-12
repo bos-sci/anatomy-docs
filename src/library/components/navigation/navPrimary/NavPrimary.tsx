@@ -283,7 +283,7 @@ const NavPrimary = ({
   }, [isMenuOpen, texts?.menuToggleTextClose, texts?.menuToggleTextOpen]);
 
   return (
-    <header ref={navRef} className={'bsds-nav-header' + (isConstrained ? '-constrained' : '')}>
+    <header ref={navRef} className={'bsds-nav-header' + (isConstrained ? ' is-constrained' : '')}>
       {!!utilityItems && <NavUtility utilityItems={utilityItems} ariaLabel={texts?.utilityNavAriaLabel} />}
       <nav className="bsds-nav-primary" aria-label={texts?.primaryNavAriaLabel || 'primary'}>
         <div className="bsds-nav-bar">
@@ -304,7 +304,7 @@ const NavPrimary = ({
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className={'bsds-nav-link' + (navItem === getActiveRoot() ? ' current' : '')}
+                    className={'bsds-nav-link' + (navItem === getActiveRoot() ? ' is-current' : '')}
                     aria-haspopup="true"
                     aria-expanded={navItem === history[0]?.node}
                     aria-controls={menuId}
@@ -318,7 +318,7 @@ const NavPrimary = ({
                   <NavLink
                     end={!!navItem.isExactMatch}
                     to={(navItem.slug ? navItem.slug : navItem.href) || ''}
-                    className={({ isActive }) => `bsds-nav-link${isCurrent(isActive, navItem) ? ' current' : ''}`}
+                    className={({ isActive }) => `bsds-nav-link${isCurrent(isActive, navItem) ? ' is-current' : ''}`}
                     aria-current={(navItem.isActive?.(location) && 'page') ?? undefined}
                     role="menuitem"
                   >

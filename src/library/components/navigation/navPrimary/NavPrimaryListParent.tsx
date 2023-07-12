@@ -42,7 +42,7 @@ const NavPrimaryListParent = (props: Props) => {
       <Button
         id={props.navItem.id}
         variant="subtle"
-        className={'bsds-nav-link' + (isActive ? ' active' : '') + (isLocationParent() ? ' current' : '')}
+        className={'bsds-nav-link' + (isActive ? ' is-active' : '') + (isLocationParent() ? ' is-current' : '')}
         aria-expanded={isActive}
         onClick={updateHistory}
       >

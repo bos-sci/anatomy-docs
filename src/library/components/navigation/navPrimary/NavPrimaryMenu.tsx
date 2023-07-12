@@ -26,7 +26,9 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
     <div
       ref={ref}
       id={props.menuId}
-      className={'bsds-nav-menu' + (props.isMenuOpen ? ' open' : '') + (props.isIntermediateNav ? ' intermediate' : '')}
+      className={
+        'bsds-nav-menu' + (props.isMenuOpen ? ' is-open' : '') + (props.isIntermediateNav ? ' intermediate' : '')
+      }
     >
       {props.history.length > 0 && (
         <Button type="button" className="bsds-button-nav-back" onClick={() => props.popHistory()}>

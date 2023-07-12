@@ -7,7 +7,7 @@
     border-bottom: $border-width-xxs solid $border-color-subtle;
     @include font-size($fs-body);
 
-    &:not(.open) {
+    &:not(.is-open) {
       display: none;
     }
 
@@ -22,7 +22,7 @@
           text-decoration: none;
         }
 
-        &.active,
+        &.is-active,
         &:hover,
         &:active {
           background: $neutral-95;
@@ -46,7 +46,7 @@
           }
         }
 
-        &.current {
+        &.is-current {
           .bsds-nav-link-text {
             @include font-family-base-heavy;
           }
@@ -217,7 +217,7 @@
     border-top: $border-width-xxs solid $border-color-subtle;
     border-bottom: $border-width-xxs solid $border-color-subtle;
 
-    &.open {
+    &.is-open {
       display: block;
     }
 

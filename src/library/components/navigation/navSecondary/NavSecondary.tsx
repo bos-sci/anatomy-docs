@@ -134,7 +134,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
       >
         {texts?.menuToggleText || 'Menu'}
       </button>
-      <div id={navSecondaryId} className={`bsds-nav-secondary-menu${isOpen ? ' open' : ''}`}>
+      <div id={navSecondaryId} className={`bsds-nav-secondary-menu${isOpen ? ' is-open' : ''}`}>
         {!!activeParent && (
           <Button ref={backBtnRef} type="button" className="bsds-button-nav-back" onClick={goBack}>
             {texts?.backButtonText || 'Back'}

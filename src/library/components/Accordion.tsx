@@ -47,7 +47,7 @@ const Accordion = ({ headingLevel = 'h2', isContained = false, children }: Props
   };
 
   return (
-    <div className={'bsds-accordion' + (isContained ? '-contained' : '')}>
+    <div className={'bsds-accordion' + (isContained ? ' is-contained' : '')}>
       {accordionPanels.map((accordionPanel, index) => (
         <Fragment key={'fragment' + accordionPanel.props.heading}>
           <HeadingElement
