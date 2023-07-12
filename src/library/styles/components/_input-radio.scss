@@ -1,21 +1,15 @@
 $outer-circle-diameter: $ffs-body-assertive;
 $inner-circle-diameter: space(md);
 
-.bsds-input-radio {
-  display: flex;
-}
-
 .bsds-fieldset {
-  > .bsds-input {
+  > .bsds-field {
     &:not(:first-child) {
-      .bsds-input-radio {
-        margin-top: space(2x);
-      }
+      margin-top: space(2x);
     }
   }
 }
 
-.bsds-input-radio-input {
+.bsds-input-radio {
   @include visually-hidden;
   pointer-events: none;
 

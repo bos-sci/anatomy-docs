@@ -83,40 +83,38 @@ const InputCheckbox = forwardRef(
     }, []);
 
     return (
-      <div className="bsds-input">
-        <div className="bsds-input-checkbox">
-          <input
-            ref={(node) => {
-              if (node) {
-                (inputEl as MutableRefObject<HTMLInputElement>).current = node;
-                if (typeof ref === 'function') {
-                  ref(node);
-                } else if (ref) {
-                  (ref as MutableRefObject<HTMLInputElement>).current = node;
-                }
+      <div className="bsds-field">
+        <input
+          ref={(node) => {
+            if (node) {
+              (inputEl as MutableRefObject<HTMLInputElement>).current = node;
+              if (typeof ref === 'function') {
+                ref(node);
+              } else if (ref) {
+                (ref as MutableRefObject<HTMLInputElement>).current = node;
               }
-            }}
-            type="checkbox"
-            id={inputId}
-            className="bsds-input-checkbox-input"
-            aria-invalid={!!validationMessage}
-            aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
-            {...inputAttrs}
-            onInvalid={handleInvalid}
-            onBlur={handleBlur}
-            onChange={handleChange}
-          />
-          <label htmlFor={inputId} className="bsds-input-checkbox-label">
-            {label}
-          </label>
-        </div>
+            }
+          }}
+          type="checkbox"
+          id={inputId}
+          className="bsds-input-checkbox"
+          aria-invalid={!!validationMessage}
+          aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
+          {...inputAttrs}
+          onInvalid={handleInvalid}
+          onBlur={handleBlur}
+          onChange={handleChange}
+        />
+        <label htmlFor={inputId} className="bsds-input-checkbox-label">
+          {label}
+        </label>
         {!!validationMessage && (
-          <p id={errorTextId} className="bsds-input-error">
+          <p id={errorTextId} className="bsds-field-error">
             {validationMessage}
           </p>
         )}
         {!!helpText && (
-          <p id={helpTextId} className="bsds-input-help-text">
+          <p id={helpTextId} className="bsds-field-help-text">
             {helpText}
           </p>
         )}
