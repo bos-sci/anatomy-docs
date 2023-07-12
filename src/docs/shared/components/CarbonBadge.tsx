@@ -65,15 +65,18 @@ const CarbonBadge = (props: Props): JSX.Element => {
 
   return (
     <div className="carbon-badge">
+      <p className="bsds-visually-hidden">
+        {carbonLabel}. {percentLabel}.
+      </p>
       <div className="carbon-badge-data">
-        <span className="carbon-badge-co2" aria-label={carbonLabel}>
+        <span className="carbon-badge-co2" aria-hidden="true">
           {carbon}
         </span>
         <a className="carbon-badge-link" target="_blank" rel="noopener noreferrer" href="https://websitecarbon.com">
           Website Carbon
         </a>
       </div>
-      <span className="carbon-badge-percent" aria-label={percentLabel}>
+      <span className="carbon-badge-percent" aria-hidden="true">
         {!(carbonData && carbonData.p) && <>&nbsp;</>}
         {!!(carbonData && carbonData.p) && <>Cleaner than {carbonData.p}% of pages tested</>}
       </span>
