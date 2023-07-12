@@ -80,7 +80,7 @@
 
     &:disabled {
       + .bsds-input-radio-label {
-        border-color: $neutral-60;
+        border-color: $border-color-subtle;
         background: $neutral-95;
         color: $text-color-subtle;
         cursor: not-allowed;
@@ -103,12 +103,12 @@
         + .bsds-input-radio-label {
           box-shadow: none;
           border-width: $border-width-xs;
-          border-color: $neutral-60;
+          border-color: $border-color-subtle;
 
           &:hover,
           &:active {
             box-shadow: none;
-            border-color: $neutral-60;
+            border-color: $border-color-subtle;
             background: $neutral-95;
             color: $text-color-subtle;
           }
