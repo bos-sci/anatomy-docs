@@ -28,7 +28,7 @@ const NavPrimarySearch = (props: Props): JSX.Element => {
   };
 
   return (
-    <div className={'bsds-search-panel' + (props.isOpen ? ' open' : '')}>
+    <div className={'bsds-search-panel' + (props.isOpen ? ' is-open' : '')}>
       <Search
         label={props.texts?.searchLabel}
         texts={{

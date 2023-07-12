@@ -29,10 +29,10 @@ const NavSecondaryList = ({
       role={parent?.text === activeParent?.text ? '' : 'none'}
     >
       {navItems.map((navItem, i) => {
-        if (navItem.slug) {
+        if (navItem.to || navItem.href) {
           return (
             <li key={`secondaryNavItem${navItem.text}`} className="bsds-nav-item">
-              <Link to={navItem.slug} href={navItem.slug} className="bsds-nav-link" isNavLink>
+              <Link to={navItem.to} href={navItem.href} className="bsds-nav-link" isNavLink>
                 {navItem.text}
               </Link>
             </li>

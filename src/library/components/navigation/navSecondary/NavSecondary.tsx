@@ -6,18 +6,20 @@ import NavSecondaryList from './NavSecondaryList';
 
 interface NavItem {
   text: string;
-  slug?: string;
+  pathname?: string;
+  to?: string;
+  href?: string;
   children?: NavItemSecondary[];
 }
 
-export type NavItemSecondary = RequireOnlyOne<NavItem, 'slug' | 'children'>;
+export type NavItemSecondary = RequireOnlyOne<NavItem, 'to' | 'href' | 'children'>;
 
 interface NavTreeNode extends NavItem {
   parent: NavNode | null;
   children?: NavNode[];
 }
 
-export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'children'>;
+export type NavNode = RequireOnlyOne<NavTreeNode, 'to' | 'href' | 'children'>;
 
 interface Props {
   navItems: NavItemSecondary[];
@@ -60,14 +62,14 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
   const location = useLocation();
 
   useEffect(() => {
-    const findNodeBySlug = (nodes: NavNode[], slug: string): NavNode | undefined => {
-      function findInTree(node: NavNode, slug: string): NavNode | null {
-        if (node.slug && slug.includes(node.slug)) {
+    const findNodeBySlug = (nodes: NavNode[], to: string): NavNode | undefined => {
+      function findInTree(node: NavNode, pathname: string): NavNode | null {
+        if ((node.href && pathname.includes(node.href)) || (node.to && pathname.includes(node.to))) {
           return node;
         } else if (node.children) {
           for (let i = 0; i < node.children.length; i++) {
             //eslint-disable-next-line prefer-const
-            let found: NavNode | null = findInTree(node.children[i], slug);
+            let found: NavNode | null = findInTree(node.children[i], to);
             if (found) {
               return found;
             }
@@ -79,7 +81,7 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
       }
 
       for (let i = 0; i < nodes.length; i++) {
-        const foundNode = findInTree(nodes[i], slug);
+        const foundNode = findInTree(nodes[i], to);
         if (foundNode) {
           return foundNode;
         }

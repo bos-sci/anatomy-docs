@@ -6,37 +6,37 @@ const DefaultNavSecondary = (): JSX.Element => {
   const navItems: NavItemSecondary[] = [
     {
       text: 'Page',
-      slug: '/page'
+      to: '/page'
     },
     {
       text: 'Active page',
-      slug: '#'
+      to: '#'
     },
     {
       text: 'Page group',
       children: [
         {
           text: 'Child page 1',
-          slug: '/child-page'
+          to: '/child-page'
         },
         {
           text: 'Child page 2',
-          slug: '/child-page'
+          to: '/child-page'
         },
         {
           text: 'Nested page group',
           children: [
             {
               text: 'Nested child page 1',
-              slug: '/nested-child-page'
+              to: '/nested-child-page'
             },
             {
               text: 'Nested child page 2',
-              slug: '/nested-child-page'
+              to: '/nested-child-page'
             },
             {
               text: 'Nested child page 3',
-              slug: '/nested-child-page'
+              to: '/nested-child-page'
             }
           ]
         }
@@ -52,7 +52,7 @@ const DefaultNavSecondary = (): JSX.Element => {
     setTimeout(() => {
       document
         .querySelectorAll('.docs-preview .nav-link')
-        .forEach((link, i) => i !== 1 && link.classList.remove('active'));
+        .forEach((link, i) => i !== 1 && link.classList.remove('is-active'));
     }, 0);
   }, []);
 
