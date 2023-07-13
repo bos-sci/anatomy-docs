@@ -51,7 +51,14 @@ const Link = forwardRef(
     if (to) {
       if (isNavLink) {
         return (
-          <NavLink ref={ref} to={to} className={`${classes} ${className}`} target={target} rel={relAttr} {...linkAttrs}>
+          <NavLink
+            ref={ref}
+            to={to}
+            className={({ isActive }) => `${classes} ${className}` + (isActive ? ' is-active' : '')}
+            target={target}
+            rel={relAttr}
+            {...linkAttrs}
+          >
             {children}
           </NavLink>
         );

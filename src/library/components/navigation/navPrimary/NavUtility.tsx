@@ -16,13 +16,13 @@ const NavUtility = ({ utilityItems, ariaLabel }: Props): JSX.Element => {
             {utilityItem.children ? (
               <Dropdown triggerText={utilityItem.text} className="bsds-nav-link" menuPosition="bottom-end">
                 {utilityItem.children.map((child) => (
-                  <Link key={child.text + child.slug} href={child.href} to={child.slug}>
+                  <Link key={child.text + (child.to || child.href)} href={child.href} to={child.to}>
                     {child.text}
                   </Link>
                 ))}
               </Dropdown>
             ) : (
-              <Link to={utilityItem.slug} href={utilityItem.href} className="bsds-nav-link">
+              <Link to={utilityItem.to} href={utilityItem.href} className="bsds-nav-link">
                 {utilityItem.text}
               </Link>
             )}

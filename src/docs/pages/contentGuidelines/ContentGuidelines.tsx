@@ -41,7 +41,7 @@ const ContentGuidelines = (): JSX.Element => {
     const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/'));
     const navItems = Object.keys(idLookup.contentGuidelines).map((entry) => ({
       text: idLookup.contentGuidelines[entry].name,
-      slug: basePath + '/' + entry
+      to: basePath + '/' + entry
     }));
     setNavItems(navItems);
   }, [data, idLookup, location]);

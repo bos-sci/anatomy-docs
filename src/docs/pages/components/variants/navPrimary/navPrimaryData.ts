@@ -5,46 +5,46 @@ const basePath = '';
 export const utilityData = [
   {
     text: 'Page 1',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   },
   {
     text: 'Page 2',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   },
   {
     text: 'Page 3',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   },
   {
     text: 'Dropdown',
     children: [
       {
         text: 'Action 1',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Action 2',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Action 3',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Action 4',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Action 5',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Action 6',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Action 7',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       }
     ]
   }
@@ -53,78 +53,78 @@ export const utilityData = [
 export const contextualUtility = [
   {
     text: 'News',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   },
   {
     text: 'Careers',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   },
   {
     text: 'Investors',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   },
   {
     text: 'Region Selector',
     children: [
       {
         text: 'Argentina',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Brazil',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Chile',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'China',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Columbia',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Deutschland',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Europe',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'India',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Japan',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Korea',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Malaysia',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Mexico',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Peru',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Spain',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'United States',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       }
     ]
   }
@@ -133,26 +133,26 @@ export const contextualUtility = [
 export const simpleData: NavItemPrimary[] = [
   {
     text: 'Page 1',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   },
   {
     text: 'Page 2',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   },
   {
     text: 'Current page',
-    slug: '.'
+    to: '.'
   },
   {
     text: 'Page 4',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   }
 ];
 
 export const intermediateData: NavItemPrimary[] = [
   {
     text: 'Page 1',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   },
   {
     text: 'Navigation section',
@@ -163,77 +163,77 @@ export const intermediateData: NavItemPrimary[] = [
     children: [
       {
         text: 'Child page 1',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Current page',
-        slug: '.'
+        to: '.'
       },
       {
         text: 'Child page 3',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 4',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 5',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 6',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 7',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 8',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 9',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 10',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 11',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 12',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 13',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 14',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 15',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       },
       {
         text: 'Child page 16',
-        slug: 'docs-demo-link'
+        to: 'docs-demo-link'
       }
     ]
   },
   {
     text: 'Page 2',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   },
   {
     text: 'Page 3',
-    slug: 'docs-demo-link'
+    to: 'docs-demo-link'
   }
 ];
 
@@ -254,59 +254,59 @@ export const complexData: NavItemPrimary[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Current page',
-            slug: '.'
+            to: '.'
           },
           {
             text: 'Page 3',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 4',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 5',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 6',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 7',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 8',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 9',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 10',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 11',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 12',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 13',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 14',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -317,7 +317,7 @@ export const complexData: NavItemPrimary[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -328,7 +328,7 @@ export const complexData: NavItemPrimary[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -339,7 +339,7 @@ export const complexData: NavItemPrimary[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       }
@@ -365,15 +365,15 @@ export const complexData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Page 1',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               },
               {
                 text: 'Page 2',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               },
               {
                 text: 'Page 3',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -384,7 +384,7 @@ export const complexData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Page 1',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -395,7 +395,7 @@ export const complexData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Page 1',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -406,7 +406,7 @@ export const complexData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Page 1',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -417,7 +417,7 @@ export const complexData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Page 1',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -428,7 +428,7 @@ export const complexData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Page 1',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -439,7 +439,7 @@ export const complexData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Page 1',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -450,7 +450,7 @@ export const complexData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Page 1',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -461,7 +461,7 @@ export const complexData: NavItemPrimary[] = [
             children: [
               {
                 text: 'Page 1',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           }
@@ -476,7 +476,7 @@ export const complexData: NavItemPrimary[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -489,7 +489,7 @@ export const complexData: NavItemPrimary[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       }
@@ -510,23 +510,23 @@ export const complexData: NavItemPrimary[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 2',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 3',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 4',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 5',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -538,7 +538,7 @@ export const complexData: NavItemPrimary[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -550,7 +550,7 @@ export const complexData: NavItemPrimary[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -562,7 +562,7 @@ export const complexData: NavItemPrimary[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -591,59 +591,59 @@ export const contextualComplex: NavItemPrimary[] = [
         children: [
           {
             text: 'Electrophysiology',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Female Pelvic Medicine',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Gastroenterology',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Gastrointestinal Surgery',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Gynecology',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Interventional Cardiology',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Interventional Radiology',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Neurological Surgery',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Orthopedic Surgery',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Pain Medicine',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Pulmonology',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Structural Heart Valve',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Urology',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Vascular Surgery',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -654,7 +654,7 @@ export const contextualComplex: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -665,7 +665,7 @@ export const contextualComplex: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -676,7 +676,7 @@ export const contextualComplex: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       }
@@ -702,15 +702,15 @@ export const contextualComplex: NavItemPrimary[] = [
             children: [
               {
                 text: 'Asthma',
-                slug: basePath + 'docs-demo-link' // Used to demo the active style
+                to: basePath + 'docs-demo-link' // Used to demo the active style
               },
               {
                 text: 'Last level',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               },
               {
                 text: 'Last level',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -721,7 +721,7 @@ export const contextualComplex: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -732,7 +732,7 @@ export const contextualComplex: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -743,7 +743,7 @@ export const contextualComplex: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -754,7 +754,7 @@ export const contextualComplex: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -765,7 +765,7 @@ export const contextualComplex: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -776,7 +776,7 @@ export const contextualComplex: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -787,7 +787,7 @@ export const contextualComplex: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           },
@@ -798,7 +798,7 @@ export const contextualComplex: NavItemPrimary[] = [
             children: [
               {
                 text: 'Last level',
-                slug: 'docs-demo-link'
+                to: 'docs-demo-link'
               }
             ]
           }
@@ -812,7 +812,7 @@ export const contextualComplex: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -824,7 +824,7 @@ export const contextualComplex: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item 2',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       }
@@ -846,23 +846,23 @@ export const contextualComplex: NavItemPrimary[] = [
         children: [
           {
             text: 'Businesses',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Leadership',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Locations',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Awards & recognition',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Ventures',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -874,7 +874,7 @@ export const contextualComplex: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -886,7 +886,7 @@ export const contextualComplex: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -898,7 +898,7 @@ export const contextualComplex: NavItemPrimary[] = [
         children: [
           {
             text: 'Child item',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },

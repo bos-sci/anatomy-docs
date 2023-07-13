@@ -45,44 +45,44 @@ const Foundations = (): JSX.Element => {
     setNavItems([
       {
         text: 'Accessibility',
-        slug: basePath + '/accessibility'
+        to: basePath + '/accessibility'
       },
       {
         text: 'Anti-patterns',
-        slug: basePath + '/anti-patterns'
+        to: basePath + '/anti-patterns'
       },
       {
         text: 'Color',
-        slug: basePath + '/color'
+        to: basePath + '/color'
       },
       {
         text: 'Icons',
         children: [
           {
             text: 'Decorative icons',
-            slug: basePath + '/iconography/decorative-icons'
+            to: basePath + '/iconography/decorative-icons'
           },
           {
             text: 'System icons',
-            slug: basePath + '/iconography/system-icons'
+            to: basePath + '/iconography/system-icons'
           }
         ]
       },
       {
         text: 'Spacing',
-        slug: basePath + '/spacing'
+        to: basePath + '/spacing'
       },
       {
         text: 'Tokens',
-        slug: basePath + '/tokens'
+        to: basePath + '/tokens'
       },
       {
         text: 'Typography',
-        slug: basePath + '/typography'
+        to: basePath + '/typography'
       },
       {
         text: 'Web sustainability',
-        slug: basePath + '/web-sustainability'
+        to: basePath + '/web-sustainability'
       }
     ]);
   }, [location]);

@@ -43,44 +43,44 @@ const Resources = (): JSX.Element => {
     setNavItems([
       {
         text: 'About Anatomy',
-        slug: basePath + '/about-anatomy'
+        to: basePath + '/about-anatomy'
       },
       {
         text: 'Community',
-        slug: basePath + '/community'
+        to: basePath + '/community'
       },
       {
         text: 'Designers',
         children: [
           {
             text: 'App design guidelines',
-            slug: basePath + '/designers/app-design-guidelines'
+            to: basePath + '/designers/app-design-guidelines'
           },
           {
             text: 'Libraries',
-            slug: basePath + '/designers/libraries'
+            to: basePath + '/designers/libraries'
           },
           {
             text: 'Icon guidelines',
-            slug: basePath + '/designers/icon-guidelines'
+            to: basePath + '/designers/icon-guidelines'
           },
           {
             text: 'Tools and links',
-            slug: basePath + '/designers/tools-and-links'
+            to: basePath + '/designers/tools-and-links'
           }
         ]
       },
       {
         text: 'Developers',
-        slug: basePath + '/developers'
+        to: basePath + '/developers'
       },
       {
         text: 'SEO',
-        slug: basePath + '/seo'
+        to: basePath + '/seo'
       },
       {
         text: 'Release notes',
-        slug: basePath + '/release-notes'
+        to: basePath + '/release-notes'
       }
     ]);
   }, [location]);

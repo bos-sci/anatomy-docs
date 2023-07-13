@@ -52,7 +52,7 @@ const NavWizardList = (props: Props) => {
           return (
             // Leaf Node
             <li key={`WizardLeafNode${navItem.text}`} className="bsds-nav-item">
-              <Link href={navItem.href} to={navItem.slug} className="bsds-nav-link" isNavLink>
+              <Link href={navItem.href} to={navItem.to} className="bsds-nav-link" isNavLink>
                 {navItem.text}
               </Link>
             </li>

@@ -14,39 +14,39 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: '.'
+            to: '.'
           },
           {
             text: 'Page 2',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 3',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 4',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 5',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 6',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 7',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 8',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 9',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -56,7 +56,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       }
@@ -86,7 +86,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -97,7 +97,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       }
@@ -116,23 +116,23 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 2',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 3',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 4',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           },
           {
             text: 'Page 5',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -143,7 +143,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       },
@@ -154,7 +154,7 @@ const exampleData: NavItemWizard[] = [
         children: [
           {
             text: 'Page 1',
-            slug: 'docs-demo-link'
+            to: 'docs-demo-link'
           }
         ]
       }

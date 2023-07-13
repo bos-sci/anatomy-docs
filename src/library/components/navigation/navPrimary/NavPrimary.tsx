@@ -10,7 +10,7 @@ import NavUtility from './NavUtility';
 
 interface NavItem {
   text: string;
-  slug?: string;
+  to?: string;
   href?: string;
 }
 
@@ -29,9 +29,9 @@ interface NavItemUtilityBase extends NavItem {
   children?: NavItemUtility[];
 }
 
-export type NavItemPrimary = RequireOnlyOne<NavItemPrimaryBase, 'slug' | 'href' | 'children'>;
+export type NavItemPrimary = RequireOnlyOne<NavItemPrimaryBase, 'to' | 'href' | 'children'>;
 
-export type NavItemUtility = RequireOnlyOne<NavItemUtilityBase, 'slug' | 'href' | 'children'>;
+export type NavItemUtility = RequireOnlyOne<NavItemUtilityBase, 'to' | 'href' | 'children'>;
 
 interface NavTreeNode extends NavItemPrimaryBase {
   parent: NavNode | null;
@@ -39,7 +39,7 @@ interface NavTreeNode extends NavItemPrimaryBase {
   id: string;
 }
 
-export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'href' | 'children'>;
+export type NavNode = RequireOnlyOne<NavTreeNode, 'to' | 'href' | 'children'>;
 
 export interface HistoryNode {
   node: NavNode;
@@ -97,8 +97,8 @@ const NavPrimary = ({
   const location = useLocation();
 
   const [navTree, setNavTree] = useState<NavNode[]>([]);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMenuExpanded, setIsMenuExpanded] = useState(false);
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [history, setHistory] = useState<HistoryNode[]>([]);
   const [activeNode, setActiveNode] = useState<NavNode | null>(null);
   const [menuId, setMenuId] = useState('');
@@ -138,11 +138,11 @@ const NavPrimary = ({
     setRootButton(e.target as HTMLButtonElement);
     if (history.length && history[0].node === navItem) {
       setHistory([]);
-      setIsMenuOpen(false);
+      setIsMenuExpanded(false);
     } else {
       pushHistory(navItem, 0);
-      setIsMenuOpen(true);
-      setIsSearchOpen(false);
+      setIsMenuExpanded(true);
+      setIsSearchExpanded(false);
     }
   };
 
@@ -186,7 +186,7 @@ const NavPrimary = ({
         setIsViewportSmall(false);
       }
       if (history.length === 0) {
-        setIsMenuOpen(false);
+        setIsMenuExpanded(false);
       }
     } else if (!isViewportSmall) {
       setIsViewportSmall(true);
@@ -194,15 +194,15 @@ const NavPrimary = ({
   }, [history.length, isViewportSmall]);
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuExpanded) {
       setIsNavTouched(true);
     }
-  }, [isMenuOpen]);
+  }, [isMenuExpanded]);
 
   useEffect(() => {
     if (location) {
-      setIsSearchOpen(false);
-      setIsMenuOpen(false);
+      setIsSearchExpanded(false);
+      setIsMenuExpanded(false);
       setHistory([]);
     }
   }, [location]);
@@ -211,8 +211,8 @@ const NavPrimary = ({
     // Close menu on focus out or click out
     const onFocusWithinOut = (e: FocusEvent | PointerEvent) => {
       if (!navRef.current?.contains(e.target as Node)) {
-        setIsSearchOpen(false);
-        setIsMenuOpen(false);
+        setIsSearchExpanded(false);
+        setIsMenuExpanded(false);
         setHistory([]);
       }
     };
@@ -232,13 +232,13 @@ const NavPrimary = ({
   const handleKeyUp = (e: React.KeyboardEvent<HTMLUListElement>) => {
     switch (e.key) {
       case 'Escape':
-        if (isMenuOpen || isSearchOpen) {
+        if (isMenuExpanded || isSearchExpanded) {
           rootButton?.focus();
         }
         e.preventDefault();
-        setIsMenuOpen(false);
+        setIsMenuExpanded(false);
         setHistory([]);
-        setIsSearchOpen(false);
+        setIsSearchExpanded(false);
         break;
 
       default:
@@ -248,22 +248,22 @@ const NavPrimary = ({
 
   const toggleMenu = (e: MouseEvent<HTMLButtonElement>) => {
     setRootButton(e.target as HTMLButtonElement);
-    if (!isMenuOpen && isSearchOpen) {
-      setIsSearchOpen(false);
+    if (!isMenuExpanded && isSearchExpanded) {
+      setIsSearchExpanded(false);
     }
-    if (isMenuOpen) {
+    if (isMenuExpanded) {
       setHistory([]);
     }
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuExpanded(!isMenuExpanded);
   };
 
   const toggleSearch = (e: MouseEvent<HTMLButtonElement>) => {
     setRootButton(e.target as HTMLButtonElement);
-    if (!isSearchOpen && isMenuOpen) {
-      setIsMenuOpen(false);
+    if (!isSearchExpanded && isMenuExpanded) {
+      setIsMenuExpanded(false);
       setHistory([]);
     }
-    setIsSearchOpen(!isSearchOpen);
+    setIsSearchExpanded(!isSearchExpanded);
   };
 
   const isCurrent = (isActive: boolean, navItem: NavItemPrimary): boolean => {
@@ -275,12 +275,12 @@ const NavPrimary = ({
   };
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuExpanded) {
       setToggleText(texts?.menuToggleTextClose || 'Close');
     } else {
       setToggleText(texts?.menuToggleTextOpen || 'Menu');
     }
-  }, [isMenuOpen, texts?.menuToggleTextClose, texts?.menuToggleTextOpen]);
+  }, [isMenuExpanded, texts?.menuToggleTextClose, texts?.menuToggleTextOpen]);
 
   return (
     <header ref={navRef} className={'bsds-nav-header' + (isConstrained ? ' is-constrained' : '')}>
@@ -296,7 +296,11 @@ const NavPrimary = ({
           )}
           <ul className="bsds-nav" role="menubar" onKeyUp={handleKeyUp}>
             {navTree.map((navItem, i) => (
-              <li key={navItem.text + navItem?.slug} role="none" className="bsds-nav-item bsds-nav-item-root">
+              <li
+                key={navItem.text + (navItem?.to || navItem?.href)}
+                role="none"
+                className="bsds-nav-item bsds-nav-item-root"
+              >
                 {!!navItem.children && (
                   // eslint-disable-next-line jsx-a11y/prefer-tag-over-role
                   <Button
@@ -304,7 +308,7 @@ const NavPrimary = ({
                     id={navItem.id}
                     type="button"
                     variant="subtle"
-                    className={'bsds-nav-link' + (navItem === getActiveRoot() ? ' current' : '')}
+                    className={'bsds-nav-link' + (navItem === getActiveRoot() ? ' is-current' : '')}
                     aria-haspopup="true"
                     aria-expanded={navItem === history[0]?.node}
                     aria-controls={menuId}
@@ -313,12 +317,12 @@ const NavPrimary = ({
                     {navItem.text}
                   </Button>
                 )}
-                {!!(navItem.slug || navItem.href) && (
+                {!!(navItem.to || navItem.href) && (
                   // eslint-disable-next-line jsx-a11y/prefer-tag-over-role
                   <NavLink
                     end={!!navItem.isExactMatch}
-                    to={(navItem.slug ? navItem.slug : navItem.href) || ''}
-                    className={({ isActive }) => `bsds-nav-link${isCurrent(isActive, navItem) ? ' current' : ''}`}
+                    to={(navItem.to ? navItem.to : navItem.href) || ''}
+                    className={({ isActive }) => `bsds-nav-link${isCurrent(isActive, navItem) ? ' is-current' : ''}`}
                     aria-current={(navItem.isActive?.(location) && 'page') ?? undefined}
                     role="menuitem"
                   >
@@ -336,7 +340,7 @@ const NavPrimary = ({
                       activeNode={activeNode}
                       setActiveNode={setActiveNode}
                       menuId={menuId}
-                      isMenuOpen={isMenuOpen}
+                      isMenuExpanded={isMenuExpanded}
                       isIntermediateNav={isIntermediateNav}
                       history={history}
                       pushHistory={pushHistory}
@@ -354,14 +358,14 @@ const NavPrimary = ({
                   variant="subtle"
                   className="bsds-nav-link"
                   aria-label={texts?.searchToggleAriaLabel || 'Toggle search'}
-                  aria-expanded={isSearchOpen}
+                  aria-expanded={isSearchExpanded}
                   onClick={toggleSearch}
                 >
                   <span className="bsds-nav-link-search-text">{texts?.searchToggleText || 'Search'}</span>
                 </Button>
                 <NavPrimarySearch
                   texts={texts}
-                  isOpen={isSearchOpen}
+                  isExpanded={isSearchExpanded}
                   searchResults={searchResults}
                   onSearchChange={onSearchChange}
                   onSearch={onSearch}
@@ -375,7 +379,7 @@ const NavPrimary = ({
                 variant="subtle"
                 className="bsds-nav-link"
                 aria-label={texts?.menuToggleAriaLabel || 'Toggle menu'}
-                aria-expanded={isMenuOpen}
+                aria-expanded={isMenuExpanded}
                 onClick={toggleMenu}
               >
                 {toggleText}
@@ -391,7 +395,7 @@ const NavPrimary = ({
             activeNode={activeNode}
             setActiveNode={setActiveNode}
             menuId={menuId}
-            isMenuOpen={isMenuOpen}
+            isMenuExpanded={isMenuExpanded}
             isIntermediateNav={isIntermediateNav}
             history={history}
             pushHistory={pushHistory}

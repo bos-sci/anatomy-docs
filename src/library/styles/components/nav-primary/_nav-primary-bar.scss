@@ -35,7 +35,7 @@
           border: 0;
           padding: space(3x) space(2x);
 
-          &.current,
+          &.is-current,
           &:active,
           &:hover,
           &[aria-expanded='true'] {
@@ -52,7 +52,7 @@
             }
           }
 
-          &.current {
+          &.is-current {
             @include font-family-base-heavy;
           }
         }
