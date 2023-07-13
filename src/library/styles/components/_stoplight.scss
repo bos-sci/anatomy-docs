@@ -18,7 +18,7 @@
     &::before {
       width: space(2x);
       height: space(2x);
-      transform: translateY(-1px);
+      transform: translateY(calc(0rem - space(xxs)));
     }
   }
 }

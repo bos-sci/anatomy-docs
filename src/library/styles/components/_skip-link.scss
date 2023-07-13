@@ -1,6 +1,6 @@
 .bsds-skip-link {
   position: absolute;
-  top: -3.125rem; // NOTE: this is a one-off size that needs to change if the height of the skip link changes
+  top: -100%;
   z-index: 1000;
   display: flex;
   justify-content: center;

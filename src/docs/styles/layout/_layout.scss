@@ -144,12 +144,12 @@ main {
     }
 
     > .bsds-nav-secondary {
-      width: 12rem;
+      width: 12rem; // NOTE: this is a one-off size
       margin-top: space(4x);
     }
 
     .bsds-nav-tertiary {
-      width: 12rem;
+      width: 12rem; // NOTE: this is a one-off size
       margin-top: space(lg);
     }
   }
