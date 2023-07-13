@@ -10,7 +10,7 @@ interface NavListProps {
   activeParent: NavNode | null;
   activeParentRef: RefObject<HTMLButtonElement> | null;
   setActiveParentRef: (ref: RefObject<HTMLButtonElement> | null) => unknown;
-  openChild: (node: NavNode | null) => unknown;
+  expandedChild: (node: NavNode | null) => unknown;
 }
 
 const NavSecondaryList = ({
@@ -20,7 +20,7 @@ const NavSecondaryList = ({
   activeParent,
   activeParentRef,
   setActiveParentRef,
-  openChild
+  expandedChild
 }: NavListProps) => {
   return (
     <ul
@@ -45,7 +45,7 @@ const NavSecondaryList = ({
               activeParent={activeParent}
               activeParentRef={activeParentRef}
               setActiveParentRef={setActiveParentRef}
-              openChild={openChild}
+              expandedChild={expandedChild}
             />
           );
         }

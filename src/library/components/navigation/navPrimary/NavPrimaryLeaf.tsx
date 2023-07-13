@@ -9,7 +9,7 @@ interface Props {
 }
 
 const NavPrimaryLeaf = (props: Props) => {
-  const matchLink = useHref(props.navItem.slug ? props.navItem.slug : props.navItem.href || '');
+  const matchLink = useHref(props.navItem.to ? props.navItem.to : props.navItem.href || '');
   const isMatch = useMatch(matchLink);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const NavPrimaryLeaf = (props: Props) => {
 
   return (
     <li className="bsds-nav-item">
-      <Link href={props.navItem.text} to={props.navItem.slug} className="bsds-nav-link" isNavLink>
+      <Link href={props.navItem.text} to={props.navItem.to} className="bsds-nav-link" isNavLink>
         {props.navItem.text}
       </Link>
     </li>

@@ -5,7 +5,7 @@ import { Texts } from './NavPrimary';
 
 interface Props {
   texts?: Texts;
-  isOpen: boolean;
+  isExpanded: boolean;
   searchResults?: SearchResult[];
   onSearch?: (query: string, e: FormEvent<HTMLFormElement>) => void;
   onSearchChange?: (query: string, e: ChangeEvent<HTMLInputElement>) => void;
@@ -28,7 +28,7 @@ const NavPrimarySearch = (props: Props): JSX.Element => {
   };
 
   return (
-    <div className={'bsds-search-panel' + (props.isOpen ? ' is-open' : '')}>
+    <div className={'bsds-search-panel' + (props.isExpanded ? ' is-expanded' : '')}>
       <Search
         label={props.texts?.searchLabel}
         texts={{

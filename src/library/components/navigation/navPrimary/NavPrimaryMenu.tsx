@@ -11,7 +11,7 @@ interface Props {
   activeNode: NavNode | null;
   setActiveNode: (node: NavNode) => void;
   menuId: string;
-  isMenuOpen: boolean;
+  isMenuExpanded: boolean;
   isIntermediateNav: boolean;
   history: HistoryNode[];
   pushHistory: (navItem: NavNode, depth: number) => void;
@@ -27,7 +27,9 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
       ref={ref}
       id={props.menuId}
       className={
-        'bsds-nav-menu' + (props.isMenuOpen ? ' is-open' : '') + (props.isIntermediateNav ? ' intermediate' : '')
+        'bsds-nav-menu' +
+        (props.isMenuExpanded ? ' is-expanded' : '') +
+        (props.isIntermediateNav ? ' intermediate' : '')
       }
     >
       {props.history.length > 0 && (
@@ -55,13 +57,13 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
               {item.children ? (
                 <Dropdown key={'utilityItemDropdown' + item.text} triggerText={item.text} className="bsds-nav-link">
                   {item.children.map((child) => (
-                    <Link key={'utilityItemDropdownChild' + child.slug} href={child.href} to={child.slug}>
+                    <Link key={'utilityItemDropdownChild' + (child.to || child.href)} href={child.href} to={child.to}>
                       {child.text}
                     </Link>
                   ))}
                 </Dropdown>
               ) : (
-                <Link to={item.slug} href={item.href} className="bsds-nav-link">
+                <Link to={item.to} href={item.href} className="bsds-nav-link">
                   {item.text}
                 </Link>
               )}

@@ -7,7 +7,7 @@
     border-bottom: $border-width-xxs solid $border-color-subtle;
     @include font-size($fs-body);
 
-    &:not(.is-open) {
+    &:not(.is-expanded) {
       display: none;
     }
 
@@ -217,7 +217,7 @@
     border-top: $border-width-xxs solid $border-color-subtle;
     border-bottom: $border-width-xxs solid $border-color-subtle;
 
-    &.is-open {
+    &.is-expanded {
       display: block;
     }
 
@@ -352,7 +352,7 @@
   }
 
   .bsds-nav-header {
-    &-constrained {
+    .is-constrained {
       $panels-width-lg: 60rem; // NOTE: This is a one off size to match the layout widths.
 
       .bsds-nav-menu-panels {
@@ -372,7 +372,7 @@
 
 @media (min-width: $breakpoint-xl-min) {
   .bsds-nav-header {
-    &-constrained {
+    .is-constrained {
       $panels-width-xl: 71.25rem; // NOTE: This is a one off size to match the layout widths.
 
       .bsds-nav-primary {
@@ -394,7 +394,7 @@
 
 @media (min-width: $breakpoint-xxl-min) {
   .bsds-nav-header {
-    &-constrained {
+    .is-constrained {
       $panels-width-xxl: 82.5rem; // NOTE: This is a one off size to match the layout widths.
       .bsds-nav-primary {
         .bsds-nav-menu {

@@ -5,7 +5,7 @@ import NavWizardList from './NavWizardList';
 
 interface NavItem {
   text: string;
-  slug?: string;
+  to?: string;
   href?: string;
 }
 
@@ -18,9 +18,9 @@ interface NavItemWizardBase extends NavItem {
   overflowLinkText?: string;
 }
 
-export type NavItemWizard = RequireOnlyOne<NavItemWizardBase, 'slug' | 'href' | 'children'>;
+export type NavItemWizard = RequireOnlyOne<NavItemWizardBase, 'to' | 'href' | 'children'>;
 
-export type NavItemUtility = RequireOnlyOne<NavItem, 'slug' | 'href'>;
+export type NavItemUtility = RequireOnlyOne<NavItem, 'to' | 'href'>;
 
 interface NavTreeNode extends NavItemWizardBase {
   parent: NavNode | null;
@@ -28,7 +28,7 @@ interface NavTreeNode extends NavItemWizardBase {
   id: string;
 }
 
-export type NavNode = RequireOnlyOne<NavTreeNode, 'slug' | 'href' | 'children'>;
+export type NavNode = RequireOnlyOne<NavTreeNode, 'to' | 'href' | 'children'>;
 
 export interface HistoryNode {
   node: NavNode;

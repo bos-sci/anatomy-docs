@@ -72,7 +72,7 @@ const Search = forwardRef(
     const [inputValue, setInputValue] = useState('');
     const [activeDescendant, setActiveDescendant] = useState<number>(0); // set to -1 to reset state
     const [isDirty, setIsDirty] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
     const [autocompleteAria, setAutocompleteAria] = useState<string | undefined>();
     const [autocompleteAriaOwns, setAutocompleteAriaOwns] = useState<string | undefined>();
     const [autocompleteAriaComplete, setAutocompleteAriaComplete] = useState<'list' | undefined>();
@@ -138,7 +138,7 @@ const Search = forwardRef(
         onFocus(e);
       }
       if (hasAutocomplete && inputValue) {
-        setIsOpen(true);
+        setIsExpanded(true);
       }
     };
 
@@ -152,7 +152,7 @@ const Search = forwardRef(
 
     useEffect(() => {
       setActiveDescendant(-1);
-      setIsOpen(!!inputValue);
+      setIsExpanded(!!inputValue);
     }, [inputValue]);
 
     useEffect(() => {
@@ -166,7 +166,7 @@ const Search = forwardRef(
     useEffect(() => {
       const closeOnClick = (e: PointerEvent) => {
         if (!searchRef.current?.contains(e.target as Node)) {
-          setIsOpen(false);
+          setIsExpanded(false);
         }
       };
 
@@ -240,7 +240,7 @@ const Search = forwardRef(
                 aria-controls={autocompleteAriaOwns}
                 aria-autocomplete={autocompleteAriaComplete}
                 aria-haspopup={autocompleteAriaPopup}
-                aria-expanded={!!(hasAutocomplete && isOpen)}
+                aria-expanded={!!(hasAutocomplete && isExpanded)}
                 aria-describedby={texts?.helpText || ''}
                 aria-activedescendant={ariaActiveDescendant}
                 onChange={handleChange}
@@ -260,7 +260,7 @@ const Search = forwardRef(
                 </button>
               )}
               {!!(hasAutocomplete && searchResults) && (
-                <ul id={searchId + '-results'} className="bsds-search-results" hidden={!isOpen}>
+                <ul id={searchId + '-results'} className="bsds-search-results" hidden={!isExpanded}>
                   {searchResults.length > 0 &&
                     searchResults.map((result, i) => (
                       <li key={searchId + result.text} className="bsds-search-result">
