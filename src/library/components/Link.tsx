@@ -79,7 +79,14 @@ const Link = forwardRef(
     } else {
       return (
         // eslint-disable-next-line react/jsx-no-target-blank
-        <a ref={ref} href={href} className={`${classes} ${className}`} target={target} rel={relAttr} {...linkAttrs}>
+        <a
+          ref={ref}
+          href={href}
+          className={`${classes} ${className ? className : ''}`}
+          target={target}
+          rel={relAttr}
+          {...linkAttrs}
+        >
           {children}
         </a>
       );

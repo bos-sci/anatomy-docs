@@ -67,12 +67,12 @@ a {
   &.bsds-button-subtle {
     color: $action-primary-40;
 
-    &:hover {
-      @include button-hover;
-    }
-
     &:visited {
       color: $action-primary-40;
+    }
+
+    &:hover {
+      @include button-hover;
     }
   }
 
