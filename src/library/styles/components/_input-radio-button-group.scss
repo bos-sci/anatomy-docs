@@ -1,11 +1,18 @@
+/* stylelint-disable scss/selector-nest-combinators */
+
+@mixin hover-reset {
+  &:hover {
+    + .bsds-input-radio-label {
+      box-shadow: none;
+      border-color: transparent;
+    }
+  }
+}
+
 .bsds-fieldset-button-group {
   @extend .bsds-fieldset;
   flex-flow: row wrap;
   gap: space(lg);
-
-  &:not([aria-invalid='true']) {
-    gap: space(xs) space(lg);
-  }
 
   .bsds-legend {
     @include font-family-base-regular;
@@ -14,7 +21,6 @@
       width: max-content;
 
       &:not(:first-child) {
-        min-width: space(4x);
         margin-top: space(lg);
       }
     }
@@ -22,24 +28,25 @@
 
   .bsds-input-radio {
     + .bsds-input-radio-label {
-      @include button-default;
-      @include font-family-base-regular;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       min-width: space(8x);
       border-radius: space(3x);
       border-width: space(xxs);
       border-style: solid;
       border-color: inherit;
       padding: space(md) space(3x);
+      background: $neutral-100;
       color: $text-color-subtle;
+      font-size: $ffs-body-assertive;
+      line-height: inherit;
+      text-align: center;
+      @include font-family-base-regular;
 
       &::before,
       &::after {
         display: none;
-      }
-
-      &:hover,
-      &:active {
-        border-color: transparent;
       }
 
       &-unavailable {
@@ -48,77 +55,58 @@
       }
     }
 
+    &:not(:disabled) {
+      &:hover,
+      &:active {
+        + .bsds-input-radio-label {
+          border-color: transparent;
+          background: $action-primary-20;
+          color: $text-color-ghost;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+
+      &:focus,
+      &:focus:checked {
+        + .bsds-input-radio-label {
+          @include focus-default;
+          box-shadow: inset 0 0 0 space(xxs) $border-color-action;
+        }
+        @include hover-reset;
+      }
+    }
+
     &:checked,
     &[aria-checked='true'] {
       + .bsds-input-radio-label {
         box-shadow: inset 0 0 0 space(xxs) $border-color-action;
         outline: none;
+        border-style: solid;
         border-color: $border-color-action;
         color: $neutral-00;
-
-        &:hover {
-          box-shadow: none;
-        }
-
-        &-unavailable {
-          border-style: solid;
-        }
       }
-    }
-    /* stylelint-disable scss/selector-nest-combinators */
-    &:focus,
-    &:focus:checked {
-      + .bsds-input-radio-label {
-        @include focus-default;
-        box-shadow: inset 0 0 0 space(xxs) $border-color-action;
-
-        &:hover {
-          box-shadow: none;
-        }
-      }
+      @include hover-reset;
     }
 
     &:disabled {
       + .bsds-input-radio-label {
+        border-style: solid;
         border-color: $border-color-subtle;
         background: $neutral-95;
         color: $text-color-subtle;
         cursor: not-allowed;
 
-        &:hover,
-        &:active {
-          @extend .bsds-input-radio-label;
-        }
-
         &-unavailable {
-          &:hover,
-          &:active {
-            border-style: dashed;
-          }
+          border-style: dashed;
         }
       }
 
       &:checked,
       &[aria-checked='true'] {
         + .bsds-input-radio-label {
-          box-shadow: none;
-          border-width: $border-width-xs;
+          box-shadow: inset 0 0 0 space(xxs) $border-color-subtle;
           border-color: $border-color-subtle;
-
-          &:hover,
-          &:active {
-            box-shadow: none;
-            border-color: $border-color-subtle;
-            background: $neutral-95;
-            color: $text-color-subtle;
-          }
-
-          &-unavailable {
-            &:hover,
-            &:active {
-              border-style: dashed;
-            }
-          }
         }
       }
     }
@@ -129,42 +117,29 @@
       ~ .bsds-field {
         margin-top: 0;
 
-        .bsds-input-radio-label {
-          border-color: $feedback-error-40;
-
-          &::before {
-            background-color: transparent;
-          }
-
-          &:hover,
-          &:active {
-            border-color: $action-primary-20;
-          }
-        }
-
         .bsds-input-radio {
-          &:checked {
+          &:not(:disabled) {
             + .bsds-input-radio-label {
-              box-shadow: inset 0 0 0 space(xxs) $border-color-error;
-              border-color: $border-color-error;
-
-              &:hover,
-              &:active {
-                box-shadow: none;
-                border-color: $action-primary-20;
-              }
+              border-color: $feedback-error-40;
             }
-          }
+            @include hover-reset;
 
-          &:focus,
-          &:focus:checked {
-            + .bsds-input-radio-label {
-              @include focus-invalid;
-              box-shadow: inset 0 0 0 space(xxs) $border-color-error;
-
-              &:hover {
-                box-shadow: none;
+            &:focus,
+            &:focus:checked {
+              + .bsds-input-radio-label {
+                @include focus-invalid;
+                box-shadow: inset 0 0 0 space(xxs) $border-color-error;
               }
+              @include hover-reset;
+            }
+
+            &:checked,
+            &[aria-checked='true'] {
+              + .bsds-input-radio-label {
+                box-shadow: inset 0 0 0 space(xxs) $border-color-error;
+                border-color: $border-color-error;
+              }
+              @include hover-reset;
             }
           }
         }
