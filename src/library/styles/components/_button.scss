@@ -63,27 +63,23 @@ a {
     }
   }
 
-  &.bsds-button-assertive {
-    color: $neutral-100;
-  }
-
+  &.bsds-button,
   &.bsds-button-subtle {
     color: $action-primary-40;
 
     &:hover {
       @include button-hover;
     }
-  }
 
-  &.bsds-button,
-  &.bsds-button-subtle {
     &:visited {
       color: $action-primary-40;
     }
   }
 
-  &.bsds-button-ghost,
-  &.bsds-button-assertive {
+  &.bsds-button-assertive,
+  &.bsds-button-ghost {
+    color: $neutral-100;
+
     &:visited {
       color: $neutral-100;
     }
