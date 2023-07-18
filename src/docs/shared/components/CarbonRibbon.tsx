@@ -14,7 +14,7 @@ interface Props {
   url: string;
 }
 
-const CarbonBadge = (props: Props): JSX.Element => {
+const CarbonRibbon = (props: Props): JSX.Element => {
   const [carbonData, setCarbonData] = useState<CarbonData>();
   const [carbon, setCarbon] = useState<JSX.Element>(
     <>
@@ -113,4 +113,4 @@ const CarbonBadge = (props: Props): JSX.Element => {
   );
 };
 
-export default CarbonBadge;
+export default CarbonRibbon;
