@@ -41,6 +41,7 @@
     &-content {
       grid-template-columns: auto 1fr auto;
       gap: space(4x);
+      padding: space(lg) space(3x);
     }
 
     &.is-constrained {
@@ -50,5 +51,15 @@
 
   .ribbon-carbon-percent {
     text-align: center;
+  }
+}
+
+@media (min-width: $breakpoint-lg-min) {
+  .ribbon-carbon {
+    &.is-constrained {
+      .ribbon-carbon-content {
+        padding: space(lg) 0;
+      }
+    }
   }
 }
