@@ -45,7 +45,7 @@ const NavPrimaryList = (props: Props) => {
             // Parent Button
             return (
               <NavPrimaryListParent
-                key={navItem.slug || navItem.text + props.depth}
+                key={navItem.to || navItem.href || navItem.text + props.depth}
                 navItem={navItem}
                 activeNode={props.activeNode}
                 setActiveNode={props.setActiveNode}

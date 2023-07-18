@@ -43,31 +43,31 @@ const CodeStandards = (): JSX.Element => {
     const navItems = [
       {
         text: 'General',
-        slug: pathPrefix + 'general'
+        to: pathPrefix + 'general'
       },
       {
         text: 'Accessibility',
-        slug: pathPrefix + 'accessibility'
+        to: pathPrefix + 'accessibility'
       },
       {
         text: 'HTML',
-        slug: pathPrefix + 'html'
+        to: pathPrefix + 'html'
       },
       {
         text: 'CSS',
-        slug: pathPrefix + 'css'
+        to: pathPrefix + 'css'
       },
       {
         text: 'JavaScript',
-        slug: pathPrefix + 'javascript'
+        to: pathPrefix + 'javascript'
       },
       {
         text: 'DevOps',
-        slug: pathPrefix + 'devops'
+        to: pathPrefix + 'devops'
       },
       {
         text: 'Automated code quality tools',
-        slug: pathPrefix + 'automated-code-quality-tools'
+        to: pathPrefix + 'automated-code-quality-tools'
       }
     ];
     setNavItems(navItems);

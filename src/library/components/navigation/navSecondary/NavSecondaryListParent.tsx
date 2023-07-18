@@ -8,7 +8,7 @@ interface NavParentProps {
   activeParent: NavNode | null;
   activeParentRef: RefObject<HTMLButtonElement> | null;
   setActiveParentRef: (ref: RefObject<HTMLButtonElement> | null) => unknown;
-  openChild: (node: NavNode | null) => unknown;
+  expandedChild: (node: NavNode | null) => unknown;
 }
 
 let navParentId = 0;
@@ -18,7 +18,7 @@ const NavSecondaryListParent = ({
   activeParent,
   activeParentRef,
   setActiveParentRef,
-  openChild
+  expandedChild
 }: NavParentProps) => {
   const [navListId, setNavListId] = useState('');
   const parentBtnRef = useRef<HTMLButtonElement>(null);
@@ -42,7 +42,7 @@ const NavSecondaryListParent = ({
         className="bsds-nav-link"
         aria-expanded={navItem === activeParent}
         aria-controls={navListId}
-        onClick={() => openChild(navItem)}
+        onClick={() => expandedChild(navItem)}
       >
         {navItem.text}
       </Button>
@@ -54,7 +54,7 @@ const NavSecondaryListParent = ({
           activeParent={activeParent}
           activeParentRef={activeParentRef}
           setActiveParentRef={setActiveParentRef}
-          openChild={openChild}
+          expandedChild={expandedChild}
         />
       )}
     </li>

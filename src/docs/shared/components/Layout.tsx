@@ -18,40 +18,40 @@ interface Props {
 const navItems: NavItemPrimary[] = [
   {
     text: 'Home',
-    slug: '/',
+    to: '/',
     isExactMatch: true
   },
   {
     text: 'Content',
-    slug: '/content',
+    to: '/content',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'content';
     }
   },
   {
     text: 'Foundations',
-    slug: '/foundations',
+    to: '/foundations',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'foundations';
     }
   },
   {
     text: 'Components',
-    slug: '/components',
+    to: '/components',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'components';
     }
   },
   {
     text: 'Code standards',
-    slug: '/code-standards',
+    to: '/code-standards',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'code-standards';
     }
   },
   {
     text: 'Resources',
-    slug: '/resources',
+    to: '/resources',
     isActive: (location) => {
       return location.pathname.split('/')[1] === 'resources';
     }

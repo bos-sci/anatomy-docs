@@ -51,7 +51,14 @@ const Link = forwardRef(
     if (to) {
       if (isNavLink) {
         return (
-          <NavLink ref={ref} to={to} className={`${classes} ${className}`} target={target} rel={relAttr} {...linkAttrs}>
+          <NavLink
+            ref={ref}
+            to={to}
+            className={({ isActive }) => `${classes} ${className}` + (isActive ? ' is-active' : '')}
+            target={target}
+            rel={relAttr}
+            {...linkAttrs}
+          >
             {children}
           </NavLink>
         );
@@ -72,7 +79,14 @@ const Link = forwardRef(
     } else {
       return (
         // eslint-disable-next-line react/jsx-no-target-blank
-        <a ref={ref} href={href} className={`${classes} ${className}`} target={target} rel={relAttr} {...linkAttrs}>
+        <a
+          ref={ref}
+          href={href}
+          className={`${classes} ${className ? className : ''}`}
+          target={target}
+          rel={relAttr}
+          {...linkAttrs}
+        >
           {children}
         </a>
       );

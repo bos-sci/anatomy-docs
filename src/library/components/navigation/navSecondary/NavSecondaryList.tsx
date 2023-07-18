@@ -1,5 +1,5 @@
 import { RefObject } from 'react';
-import { NavLink } from 'react-router-dom';
+import Link from 'library/components/Link';
 import NavSecondaryListParent from './NavSecondaryListParent';
 import { NavNode } from './NavSecondary';
 
@@ -10,7 +10,7 @@ interface NavListProps {
   activeParent: NavNode | null;
   activeParentRef: RefObject<HTMLButtonElement> | null;
   setActiveParentRef: (ref: RefObject<HTMLButtonElement> | null) => unknown;
-  openChild: (node: NavNode | null) => unknown;
+  expandedChild: (node: NavNode | null) => unknown;
 }
 
 const NavSecondaryList = ({
@@ -20,7 +20,7 @@ const NavSecondaryList = ({
   activeParent,
   activeParentRef,
   setActiveParentRef,
-  openChild
+  expandedChild
 }: NavListProps) => {
   return (
     <ul
@@ -29,12 +29,12 @@ const NavSecondaryList = ({
       role={parent?.text === activeParent?.text ? '' : 'none'}
     >
       {navItems.map((navItem, i) => {
-        if (navItem.slug) {
+        if (navItem.to || navItem.href) {
           return (
             <li key={`secondaryNavItem${navItem.text}`} className="bsds-nav-item">
-              <NavLink to={navItem.slug} className="bsds-nav-link">
+              <Link to={navItem.to} href={navItem.href} className="bsds-nav-link" isNavLink>
                 {navItem.text}
-              </NavLink>
+              </Link>
             </li>
           );
         } else {
@@ -45,7 +45,7 @@ const NavSecondaryList = ({
               activeParent={activeParent}
               activeParentRef={activeParentRef}
               setActiveParentRef={setActiveParentRef}
-              openChild={openChild}
+              expandedChild={expandedChild}
             />
           );
         }

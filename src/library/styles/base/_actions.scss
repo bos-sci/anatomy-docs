@@ -253,7 +253,7 @@ button {
     text-decoration: underline;
   }
 
-  &.active {
+  &.is-active {
     @include font-family-base-heavy;
   }
 }
