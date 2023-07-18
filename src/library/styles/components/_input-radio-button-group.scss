@@ -33,7 +33,7 @@
       align-items: center;
       min-width: space(8x);
       border-radius: space(3x);
-      border-width: space(xxs);
+      border-width: $border-width-xxs;
       border-style: solid;
       border-color: inherit;
       padding: space(md) space(3x);
@@ -71,7 +71,7 @@
       &:focus:checked {
         + .bsds-input-radio-label {
           @include focus-default;
-          box-shadow: inset 0 0 0 space(xxs) $border-color-action;
+          box-shadow: inset 0 0 0 $border-width-xxs $border-color-action;
         }
         @include hover-reset;
       }
@@ -80,11 +80,11 @@
     &:checked,
     &[aria-checked='true'] {
       + .bsds-input-radio-label {
-        box-shadow: inset 0 0 0 space(xxs) $border-color-action;
+        box-shadow: inset 0 0 0 $border-width-xxs $border-color-action;
         outline: none;
         border-style: solid;
         border-color: $border-color-action;
-        color: $neutral-00;
+        color: $text-color-primary;
       }
       @include hover-reset;
     }
@@ -105,7 +105,7 @@
       &:checked,
       &[aria-checked='true'] {
         + .bsds-input-radio-label {
-          box-shadow: inset 0 0 0 space(xxs) $border-color-subtle;
+          box-shadow: inset 0 0 0 $border-width-xxs $border-color-subtle;
           border-color: $border-color-subtle;
         }
       }
@@ -120,7 +120,7 @@
         .bsds-input-radio {
           &:not(:disabled) {
             + .bsds-input-radio-label {
-              border-color: $feedback-error-40;
+              border-color: $border-color-error;
             }
             @include hover-reset;
 
@@ -128,7 +128,7 @@
             &:focus:checked {
               + .bsds-input-radio-label {
                 @include focus-invalid;
-                box-shadow: inset 0 0 0 space(xxs) $border-color-error;
+                box-shadow: inset 0 0 0 $border-width-xxs $border-color-error;
               }
               @include hover-reset;
             }
@@ -136,7 +136,7 @@
             &:checked,
             &[aria-checked='true'] {
               + .bsds-input-radio-label {
-                box-shadow: inset 0 0 0 space(xxs) $border-color-error;
+                box-shadow: inset 0 0 0 $border-width-xxs $border-color-error;
                 border-color: $border-color-error;
               }
               @include hover-reset;
