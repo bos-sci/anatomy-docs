@@ -1,28 +1,54 @@
-.carbon-badge {
-  @include font-size($fs-body-subtle);
-  text-align: center;
+.ribbon-carbon {
+  display: flex;
+  background: $accent-secondary-20;
 
-  .carbon-badge-data {
-    display: flex;
-    margin-bottom: space(sm);
-    border: $border-width-xxs solid $border-color-action;
-    background: $action-primary-95;
+  &-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    width: 100%;
+    padding: space(lg) space(3x);
+    color: $text-color-ghost;
+    gap: space(lg);
+    @include font-size($fs-small);
   }
 
-  .carbon-badge-link,
-  .carbon-badge-co2 {
-    padding: space(xs) space(md);
+  &.is-constrained {
+    .ribbon-carbon-content {
+      max-width: var(--app-width);
+    }
   }
 
-  .carbon-badge-co2 {
-    border-right: $border-width-xxs solid $border-color-action;
-    padding-bottom: calc(space(xs) + space(xxs));
-    background: $neutral-100;
-  }
-
-  .carbon-badge-link {
-    padding-top: calc(space(xs) + space(xxs));
+  .ribbon-carbon-percent {
     @include font-family-base-heavy;
-    color: $text-color-primary;
+  }
+
+  .ribbon-carbon-icon {
+    width: space(lg);
+
+    &.bsds-icon-left {
+      margin-right: space(sm);
+    }
+
+    &.bsds-icon-right {
+      margin-left: space(sm);
+    }
+  }
+}
+
+@media (min-width: $breakpoint-md-min) {
+  .ribbon-carbon {
+    &-content {
+      grid-template-columns: auto 1fr auto;
+      gap: space(4x);
+    }
+
+    &.is-constrained {
+      justify-content: center;
+    }
+  }
+
+  .ribbon-carbon-percent {
+    text-align: center;
   }
 }
