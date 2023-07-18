@@ -91,7 +91,7 @@ $icon-size: 1em;
 
   .bsds-dropdown-menu {
     position: absolute;
-    z-index: 1000;
+    z-index: 70;
     min-width: 10rem; // NOTE: This is a one off size.
     margin: 0;
     box-shadow: $box-shadow-secondary;

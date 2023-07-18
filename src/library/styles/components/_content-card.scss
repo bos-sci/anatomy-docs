@@ -47,7 +47,7 @@
       &:not(.bsds-card-shadow) {
         &::before {
           bottom: 0;
-          z-index: 1;
+          z-index: 10;
           opacity: 0;
           content: '';
           transition: opacity 0.4s linear;
@@ -111,7 +111,7 @@
   &:not(.bsds-product-card) {
     [class*='bsds-card-title'] {
       ~ .bsds-card-description {
-        z-index: 2;
+        z-index: 20;
       }
     }
   }
@@ -124,7 +124,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1;
+    z-index: 10;
     display: block;
     content: '';
   }
