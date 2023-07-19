@@ -7,7 +7,7 @@
 
   &::after {
     bottom: calc(0rem - space(sm));
-    z-index: 10;
+    z-index: 1;
     content: '';
     @include animated-gradient-brand;
     @include decorative-bar;

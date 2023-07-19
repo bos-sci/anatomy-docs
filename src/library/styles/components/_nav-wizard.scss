@@ -43,7 +43,7 @@
 
   &::after {
     bottom: 0;
-    z-index: 10;
+    z-index: 1;
     content: '';
     @include animated-gradient-brand;
     @include decorative-bar;
