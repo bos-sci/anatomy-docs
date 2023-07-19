@@ -1,0 +1,71 @@
+.ribbon-carbon {
+  display: flex;
+  background: $accent-secondary-20;
+
+  &-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    width: 100%;
+    padding: space(lg) space(3x);
+    color: $text-color-ghost;
+    gap: space(lg);
+    @include font-size($fs-small);
+  }
+
+  &.is-constrained {
+    .ribbon-carbon-content {
+      max-width: var(--app-width);
+    }
+  }
+
+  .ribbon-carbon-percent {
+    @include font-family-base-heavy;
+  }
+
+  .ribbon-carbon-link {
+    &:hover {
+      color: $neutral-80;
+    }
+  }
+
+  .ribbon-carbon-icon {
+    width: space(lg);
+
+    &.bsds-icon-left {
+      margin-right: space(sm);
+    }
+
+    &.bsds-icon-right {
+      margin-left: space(sm);
+    }
+  }
+}
+
+@media (min-width: $breakpoint-md-min) {
+  .ribbon-carbon {
+    &-content {
+      grid-template-columns: auto 1fr auto;
+      gap: space(4x);
+      padding: space(lg) space(3x);
+    }
+
+    &.is-constrained {
+      justify-content: center;
+    }
+  }
+
+  .ribbon-carbon-percent {
+    text-align: center;
+  }
+}
+
+@media (min-width: $breakpoint-lg-min) {
+  .ribbon-carbon {
+    &.is-constrained {
+      .ribbon-carbon-content {
+        padding: space(lg) 0;
+      }
+    }
+  }
+}

@@ -9,7 +9,7 @@ import { SearchResult } from 'library/components/Search';
 import { useNavigate } from 'react-router-dom';
 import { indexSearch } from 'docs/shared/helpers';
 import useHeadingIds from 'docs/shared/hooks/useHeadingIds';
-import CarbonBadge from 'docs/shared/components/CarbonBadge';
+import CarbonRibbon from 'docs/shared/components/CarbonRibbon';
 
 interface Props {
   children: ReactNode;
@@ -120,7 +120,7 @@ const Layout = (props: Props): JSX.Element => {
       <SearchIndexContext.Provider value={index}>{props.children}</SearchIndexContext.Provider>
       <footer className="docs-footer">
         <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific" />
-        {!!pathname && <CarbonBadge url={pathname} />}
+        {!!pathname && <CarbonRibbon url={pathname} />}
       </footer>
     </>
   );
