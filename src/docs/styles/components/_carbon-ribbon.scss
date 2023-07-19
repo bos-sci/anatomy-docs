@@ -23,6 +23,12 @@
     @include font-family-base-heavy;
   }
 
+  .ribbon-carbon-link {
+    &:hover {
+      color: $neutral-80;
+    }
+  }
+
   .ribbon-carbon-icon {
     width: space(lg);
 
