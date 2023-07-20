@@ -93,8 +93,8 @@ body {
   .docs-footer {
     display: flex;
     flex-direction: column;
-    margin-top: space(8x);
-    border-top: $border-width-xxs solid $border-color-subtle;
+    margin-top: space(12x);
+    background: $neutral-95;
   }
 
   .docs-footer-logo {

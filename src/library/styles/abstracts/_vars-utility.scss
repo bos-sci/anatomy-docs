@@ -6,37 +6,9 @@ $text-color-disabled: $neutral-60;
 $text-color-ghost: $neutral-100;
 $text-color-action: $action-primary-40;
 
-// Border radius utility variables
-
-$border-radius-circle: 50%;
-
 // Icon utility variables
 
 $icon-size-sm: space(lg);
-
-// App width utility variables
-
-:root {
-  --app-width: 100%;
-}
-
-@media (min-width: $breakpoint-lg-min) {
-  :root {
-    --app-width: 60rem;
-  }
-}
-
-@media (min-width: $breakpoint-xl-min) {
-  :root {
-    --app-width: 71.25rem;
-  }
-}
-
-@media (min-width: $breakpoint-xxl-min) {
-  :root {
-    --app-width: 82.5rem;
-  }
-}
 
 // Form utility variables
 
