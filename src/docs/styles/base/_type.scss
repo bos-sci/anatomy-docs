@@ -1,3 +1,97 @@
+body {
+  color: $text-color-primary;
+  @include font-family-base-regular;
+  @include font-size($fs-body);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $text-color-primary;
+  @include font-family-base-heavy;
+}
+
+h1 {
+  margin: space(8x) 0 0;
+  @include font-size($fs-h1);
+  line-height: 1.4;
+}
+
+h2 {
+  margin: space(6x) 0 0;
+  @include font-size($fs-h2);
+  line-height: 1.4;
+}
+
+h3 {
+  margin: space(6x) 0 0;
+  @include font-size($fs-h3);
+  line-height: 1.4;
+}
+
+h4 {
+  margin: space(4x) 0 0;
+  @include font-size($fs-h4);
+  line-height: 1.4;
+}
+
+h5 {
+  margin: space(3x) 0 0;
+  @include font-size($fs-h5);
+  line-height: 1.5;
+}
+
+h6 {
+  margin: space(3x) 0 0;
+  @include font-size($fs-h6);
+  line-height: 1.5;
+}
+
+p,
+dl {
+  margin: space(2x) 0 0;
+}
+
+ul,
+ol {
+  margin: space(2x) 0 0;
+  padding-left: space(4x);
+}
+
+li {
+  &:not(:first-of-type) {
+    margin: space(2x) 0 0;
+  }
+}
+
+figure {
+  position: relative;
+  margin: space(4x) space(4x) 0;
+
+  blockquote {
+    margin: 0;
+  }
+
+  figcaption {
+    margin: space(md) 0 0;
+    padding-left: space(3x);
+
+    &::before {
+      position: absolute;
+      left: 0;
+      content: '—';
+    }
+  }
+}
+
+cite {
+  font-style: normal;
+}
+
 pre {
   overflow-x: auto;
 }
