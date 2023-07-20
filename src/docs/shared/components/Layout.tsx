@@ -122,7 +122,7 @@ const Layout = (props: Props): JSX.Element => {
         <div className="docs-footer-content">
           <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific" />
           <p className="bsds-font-size-sm">
-            &copy;{new Date().getFullYear()} Boston Scientific Corporation or its affiliates. All rights reserved.
+            &copy; {new Date().getFullYear()} Boston Scientific Corporation or its affiliates. All rights reserved.
           </p>
         </div>
         {!!pathname && <CarbonRibbon url={pathname} />}
