@@ -350,6 +350,14 @@
     @include swatch-border($border-width-xs solid $border-color-warning);
   }
 
+  &-border-radius-circle {
+    @include swatch;
+    width: space(6x);
+    height: space(6x);
+    border-radius: $border-radius-circle;
+    border: $border-width-xs solid $border-color-assertive;
+  }
+
   &-border-radius-sm {
     @include swatch;
     border-radius: $border-radius-sm;
@@ -465,13 +473,15 @@
     }
   }
 
-  &-space-xxs {
+  &-space-xxs,
+  &-space-negative-xxs {
     @include swatch-space;
     width: space(xxs);
     height: space(xxs);
   }
 
-  &-space-xs {
+  &-space-xs,
+  &-space-negative-xs {
     @include swatch-space;
     width: space(xs);
     height: space(xs);
