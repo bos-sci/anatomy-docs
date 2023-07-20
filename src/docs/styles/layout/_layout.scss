@@ -98,9 +98,15 @@ main {
   background: $neutral-95;
 }
 
+.docs-footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: space(6x) space(3x);
+}
+
 .docs-footer-logo {
   width: space(12x);
-  margin: space(3x);
 }
 
 .docs-body-minimal {
@@ -118,6 +124,11 @@ main {
 }
 
 @media (min-width: $breakpoint-md-min) {
+  .docs-footer-content {
+    justify-content: center;
+    text-align: center;
+  }
+
   .docs-footer-logo {
     align-self: center;
   }
