@@ -29,7 +29,10 @@ const Icon = (props: Props): JSX.Element => {
       IconChevronLeft: lazy(() => import('./icons/IconChevronLeft')),
       IconChevronDown: lazy(() => import('./icons/IconChevronDown')),
       IconChevronUp: lazy(() => import('./icons/IconChevronUp')),
-      IconCardDemo: lazy(() => import('./icons/IconCardDemo'))
+      IconCardDemo: lazy(() => import('./icons/IconCardDemo')),
+      IconDocument: lazy(() => import('./icons/IconDocument')),
+      IconGlobe: lazy(() => import('./icons/IconGlobe')),
+      IconPeople: lazy(() => import('./icons/IconPeople'))
     };
 
     switch (name) {
@@ -94,6 +97,30 @@ const Icon = (props: Props): JSX.Element => {
         setIcon(
           <Suspense fallback={<Fallback />}>
             <ImportedIcons.IconCardDemo className={className} />
+          </Suspense>
+        );
+        break;
+
+      case 'document':
+        setIcon(
+          <Suspense fallback={<Fallback />}>
+            <ImportedIcons.IconDocument className={className} />
+          </Suspense>
+        );
+        break;
+
+      case 'globe':
+        setIcon(
+          <Suspense fallback={<Fallback />}>
+            <ImportedIcons.IconGlobe className={className} />
+          </Suspense>
+        );
+        break;
+
+      case 'people':
+        setIcon(
+          <Suspense fallback={<Fallback />}>
+            <ImportedIcons.IconPeople className={className} />
           </Suspense>
         );
         break;
