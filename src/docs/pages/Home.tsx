@@ -130,7 +130,7 @@ const Home = (): JSX.Element => {
               <ContentCard
                 texts={{
                   cardTitle: `What's new`,
-                  cardDescription: `Anatomy is always updating and evolving. Changes are logged in our release notes.`
+                  cardDescription: `Anatomy is always updating and evolving. Find the latest updates in our release notes.`
                 }}
                 headingLevel="h3"
                 actionLinkText="Read our release notes"
