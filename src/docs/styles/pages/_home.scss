@@ -2,41 +2,39 @@
   position: relative;
   display: grid;
   flex: 1;
-  padding: space(4x);
-  background: $gradient-assertive;
 
-  &::after {
-    bottom: 0;
-    z-index: 1;
-    content: '';
-    @include animated-gradient-brand;
-    @include decorative-bar;
-  }
-
-  .docs-page-title {
+  .docs-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    color: $text-color-ghost;
-    text-align: center;
-  }
+    padding: space(2x) space(4x) space(8x);
 
-  .docs-logo {
-    max-width: 37.5rem; // NOTE: this is a one-off size
-    padding: space(4x) 0;
+    &.bg-gradient-assertive {
+      background: $gradient-assertive;
+
+      .docs-page-title,
+      .docs-page-description {
+        color: $text-color-ghost;
+      }
+    }
+
+    &.bg-action {
+      background: $action-primary-97;
+    }
+
+    .is-constrained {
+      width: var(--app-width);
+    }
+
+    .docs-page-title {
+      margin-top: space(6x);
+    }
+
+    .docs-page-description {
+      max-width: 60ch;
+    }
   }
 
   + .docs-footer {
-    margin-top: 0;
-    border: 0;
-  }
-}
-
-@media (min-width: $breakpoint-lg-min) {
-  .docs-home {
-    .docs-logo {
-      padding: space(6x) 0;
-    }
+    margin-top: space(4x);
   }
 }
