@@ -1,6 +1,6 @@
 .bsds-nav-primary {
   position: relative;
-  box-shadow: inset 0 calc(0rem - space(xxs)) $border-color-subtle;
+  box-shadow: inset 0 space(-xxs) $border-color-subtle;
 
   .bsds-nav-bar {
     position: relative;
