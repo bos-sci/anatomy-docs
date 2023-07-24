@@ -102,7 +102,7 @@
 
   .bsds-nav-menu-panels {
     position: relative;
-    width: $panels-width;
+    width: var(--app-width);
     margin: auto;
     padding: $menu-padding;
 
@@ -113,7 +113,7 @@
 
   .bsds-nav-menu-panel {
     display: none;
-    width: $panels-width;
+    width: var(--app-width);
     margin-top: 0;
 
     .bsds-nav-menu-panel {
@@ -316,7 +316,27 @@
 
       &:not(.intermediate) {
         .bsds-nav-menu-panels {
-          @include panel-settings($panels-width);
+          .bsds-nav-menu-panel {
+            width: calc(var(--app-width) / $num-panels);
+
+            .bsds-nav-menu-panel {
+              left: calc(var(--app-width) / $num-panels);
+            }
+
+            &.has-header {
+              left: 0;
+              width: calc((var(--app-width) / $num-panels) * 2);
+
+              .bsds-nav-menu-panel {
+                left: calc((var(--app-width) / $num-panels) * 2);
+                width: calc(var(--app-width) / $num-panels);
+
+                .bsds-nav-menu-panel {
+                  left: calc((var(--app-width) / $num-panels));
+                }
+              }
+            }
+          }
         }
       }
 
@@ -353,61 +373,8 @@
 
   .bsds-nav-header {
     .is-constrained {
-      $panels-width-lg: 60rem; // NOTE: This is a one off size to match the layout widths.
-
       .bsds-nav-menu-panels {
-        width: $panels-width-lg;
-      }
-
-      .bsds-nav-menu {
-        &:not(.intermediate) {
-          .bsds-nav-menu-panels {
-            @include panel-settings($panels-width-lg);
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: $breakpoint-xl-min) {
-  .bsds-nav-header {
-    .is-constrained {
-      $panels-width-xl: 71.25rem; // NOTE: This is a one off size to match the layout widths.
-
-      .bsds-nav-primary {
-        .bsds-nav-menu {
-          &:not(.intermediate) {
-            .bsds-nav-menu-panels {
-              @include panel-settings($panels-width-xl);
-            }
-          }
-        }
-
-        .bsds-nav-menu-panels {
-          width: $panels-width-xl;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: $breakpoint-xxl-min) {
-  .bsds-nav-header {
-    .is-constrained {
-      $panels-width-xxl: 82.5rem; // NOTE: This is a one off size to match the layout widths.
-      .bsds-nav-primary {
-        .bsds-nav-menu {
-          &:not(.intermediate) {
-            .bsds-nav-menu-panels {
-              @include panel-settings($panels-width-xxl);
-            }
-          }
-        }
-
-        .bsds-nav-menu-panels {
-          width: $panels-width-xxl;
-        }
+        width: var(--app-width);
       }
     }
   }
