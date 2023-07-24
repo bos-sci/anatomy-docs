@@ -17,14 +17,6 @@ body {
   height: 100vh;
 }
 
-main {
-  // TODO: ADS-198 and ADS-297 find a better place for this
-  img {
-    width: 100%;
-    margin-top: space(3x);
-  }
-}
-
 .docs-body {
   display: grid;
   grid-template-areas: 'nav-secondary' 'main';
@@ -49,6 +41,14 @@ main {
     justify-items: start;
     overflow-y: auto;
     padding: space(4x) calc(space(4x) - space(md));
+
+    // TODO: ADS-410
+    img {
+      &:not(.bsds-modal-logo) {
+        width: 100%;
+        margin-top: space(3x);
+      }
+    }
   }
 }
 
@@ -56,6 +56,20 @@ main {
   grid-area: intro;
   width: 100%;
   padding: 0 space(sm);
+}
+
+.docs-page-content {
+  grid-area: page-content;
+  width: 100%;
+  overflow-x: auto;
+  padding: 0 space(sm);
+
+  /* stylelint-disable-next-line selector-class-pattern */
+  > .docs-preview- {
+    &:first-of-type {
+      margin-top: space(6x);
+    }
+  }
 }
 
 .docs-title {
@@ -74,20 +88,6 @@ main {
   dd {
     margin-bottom: 0;
     margin-left: space(md);
-  }
-}
-
-.docs-page-content {
-  grid-area: page-content;
-  width: 100%;
-  overflow-x: auto;
-  padding: 0 space(sm);
-
-  /* stylelint-disable-next-line selector-class-pattern */
-  > .docs-preview- {
-    &:first-of-type {
-      margin-top: space(6x);
-    }
   }
 }
 

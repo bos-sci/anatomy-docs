@@ -1,3 +1,40 @@
+a {
+  // Button links
+  // This is not recommended -- we should use button styles on button elements, and link styles on link elements
+  // NOTE: these will need to be updated if we modify the link mixins
+  &[class*='bsds-button'] {
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
+  }
+
+  &.bsds-button,
+  &.bsds-button-subtle {
+    color: $action-primary-40;
+
+    &:visited {
+      color: $action-primary-40;
+    }
+
+    &:hover {
+      @include button-hover;
+    }
+  }
+
+  &.bsds-button-assertive,
+  &.bsds-button-ghost {
+    color: $neutral-100;
+
+    &:visited {
+      color: $neutral-100;
+    }
+  }
+}
+
 .bsds-link {
   @include link-default;
 
@@ -20,55 +57,6 @@
     .bsds-link-cta-icon {
       width: $ffs-body-assertive;
       margin-left: space(md);
-    }
-  }
-}
-
-// Button links
-// This is not recommended -- we should use button styles on button elements, and link styles on link elements
-// NOTE: these will need to be updated if we modify the link mixins
-
-button {
-  &[class*='bsds-link'] {
-    border: 0;
-    padding: 0;
-    background: transparent;
-    text-decoration: underline;
-
-    &:not([disabled]) {
-      &:hover,
-      &:focus,
-      &:active {
-        background: transparent;
-        text-decoration: underline;
-      }
-    }
-  }
-
-  &:not([disabled]) {
-    &.bsds-link {
-      &:hover,
-      &:active {
-        color: $text-color-primary;
-      }
-    }
-
-    &.bsds-link-subtle {
-      &:hover,
-      &:active {
-        color: $text-color-action;
-      }
-    }
-
-    &.bsds-link-ghost {
-      &:hover,
-      &:active {
-        color: $text-color-disabled;
-      }
-
-      :focus {
-        @include focus-ghost;
-      }
     }
   }
 }

@@ -151,9 +151,52 @@
   padding: space(md) calc(space(lg) + space(xxs));
 }
 
-// Default Button Styles
 button {
-  @include button-default;
+  // Link buttons
+  // This is not recommended -- we should use button styles on button elements, and link styles on link elements
+  // NOTE: these will need to be updated if we modify the link mixin
+  &[class*='bsds-link'] {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    text-decoration: underline;
+
+    &:not([disabled]) {
+      &:hover,
+      &:focus,
+      &:active {
+        background: transparent;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &:not([disabled]) {
+    &.bsds-link {
+      &:hover,
+      &:active {
+        color: $text-color-primary;
+      }
+    }
+
+    &.bsds-link-subtle {
+      &:hover,
+      &:active {
+        color: $text-color-action;
+      }
+    }
+
+    &.bsds-link-ghost {
+      &:hover,
+      &:active {
+        color: $text-color-disabled;
+      }
+
+      :focus {
+        @include focus-ghost;
+      }
+    }
+  }
 }
 
 // Link Mixins
@@ -256,9 +299,4 @@ button {
   &.is-active {
     @include font-family-base-heavy;
   }
-}
-
-// Default Link Styles
-a {
-  @include link-default;
 }
