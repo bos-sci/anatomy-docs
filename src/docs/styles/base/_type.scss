@@ -11,7 +11,6 @@ h3,
 h4,
 h5,
 h6 {
-  color: $text-color-primary;
   @include font-family-base-heavy;
 }
 
@@ -101,22 +100,6 @@ code {
   word-wrap: break-word;
 }
 
-small {
-  display: block;
-  @include font-size($fs-small);
-
-  li {
-    &:not(:first-of-type) {
-      margin: space(md) 0 0;
-    }
-  }
-}
-
-b,
-strong {
-  @include font-family-base-heavy;
-}
-
 .bsds-body-assertive {
   margin: space(3x) 0 0;
 
@@ -131,10 +114,19 @@ strong {
   @include font-size($fs-body-subtle);
 }
 
+small,
 .bsds-font-size-sm {
+  display: block;
+  @include font-size($fs-small);
+
   li {
     &:not(:first-of-type) {
       margin: space(md) 0 0;
     }
   }
+}
+
+b,
+strong {
+  @include font-family-base-heavy;
 }
