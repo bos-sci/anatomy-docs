@@ -16,31 +16,37 @@ h6 {
 }
 
 h1 {
+  margin: space(8x) 0 0;
   @include font-size($fs-h1);
   line-height: 1.4;
 }
 
 h2 {
+  margin: space(6x) 0 0;
   @include font-size($fs-h2);
   line-height: 1.4;
 }
 
 h3 {
+  margin: space(6x) 0 0;
   @include font-size($fs-h3);
   line-height: 1.4;
 }
 
 h4 {
+  margin: space(4x) 0 0;
   @include font-size($fs-h4);
   line-height: 1.4;
 }
 
 h5 {
+  margin: space(3x) 0 0;
   @include font-size($fs-h5);
   line-height: 1.5;
 }
 
 h6 {
+  margin: space(3x) 0 0;
   @include font-size($fs-h6);
   line-height: 1.5;
 }
@@ -109,4 +115,26 @@ small {
 b,
 strong {
   @include font-family-base-heavy;
+}
+
+.bsds-body-assertive {
+  margin: space(3x) 0 0;
+
+  li {
+    &:not(:first-of-type) {
+      margin: space(3x) 0 0;
+    }
+  }
+}
+
+.bsds-body-subtle {
+  @include font-size($fs-body-subtle);
+}
+
+.bsds-font-size-sm {
+  li {
+    &:not(:first-of-type) {
+      margin: space(md) 0 0;
+    }
+  }
 }
