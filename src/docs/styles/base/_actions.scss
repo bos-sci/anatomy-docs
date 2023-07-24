@@ -1,0 +1,9 @@
+// Default Link Styles
+a {
+  @include link-default;
+}
+
+// Default Button Styles
+button {
+  @include button-default;
+}
