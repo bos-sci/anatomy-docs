@@ -1,4 +1,3 @@
-$panels-width: 100vw;
 $num-panels: 4;
 $nav-bar-z-index: 103;
 $nav-back-z-index: 102;
@@ -14,27 +13,3 @@ $icon-size-lg: space(2x);
 // Used in nav-menu nav-links
 $nav-link-padding: space(2x) space(3x);
 $menu-padding: space(md) 0;
-
-@mixin panel-settings($menu-width) {
-  .bsds-nav-menu-panel {
-    width: calc($menu-width / $num-panels);
-
-    .bsds-nav-menu-panel {
-      left: calc($menu-width / $num-panels);
-    }
-
-    &.has-header {
-      left: 0;
-      width: calc(($menu-width / $num-panels) * 2);
-
-      .bsds-nav-menu-panel {
-        left: calc(($menu-width / $num-panels) * 2);
-        width: calc($menu-width / $num-panels);
-
-        .bsds-nav-menu-panel {
-          left: calc(($menu-width / $num-panels));
-        }
-      }
-    }
-  }
-}

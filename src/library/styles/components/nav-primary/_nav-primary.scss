@@ -63,46 +63,13 @@
     }
 
     &.is-constrained {
-      $panels-width-lg: 60rem; // NOTE: This is a one off size to match the layout widths.
-
       /* stylelint-disable scss/selector-nest-combinators */
       .bsds-nav-utility .bsds-nav,
       .bsds-nav-bar,
       .bsds-nav-menu-panels,
       .bsds-search-panel .bsds-form-search {
         /* stylelint-enable scss/selector-nest-combinators */
-        width: $panels-width-lg;
-      }
-    }
-  }
-}
-
-@media (min-width: $breakpoint-xl-min) {
-  .bsds-nav-header {
-    &.is-constrained {
-      $panels-width-xl: 71.25rem; // NOTE: This is a one off size to match the layout widths.
-
-      /* stylelint-disable scss/selector-nest-combinators */
-      .bsds-nav-utility .bsds-nav,
-      .bsds-nav-bar,
-      .bsds-search-panel .bsds-form-search {
-        /* stylelint-enable scss/selector-nest-combinators */
-        width: $panels-width-xl;
-      }
-    }
-  }
-}
-
-@media (min-width: $breakpoint-xxl-min) {
-  .bsds-nav-header {
-    &.is-constrained {
-      $panels-width-xxl: 82.5rem; // NOTE: This is a one off size to match the layout widths.
-      /* stylelint-disable scss/selector-nest-combinators */
-      .bsds-nav-utility .bsds-nav,
-      .bsds-nav-bar,
-      .bsds-search-panel .bsds-form-search {
-        /* stylelint-enable scss/selector-nest-combinators */
-        width: $panels-width-xxl;
+        width: var(--app-width);
       }
     }
   }
