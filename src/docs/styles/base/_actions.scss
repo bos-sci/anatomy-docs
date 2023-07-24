@@ -1,5 +1,10 @@
+// Default Link Styles
 a {
   @include link-default;
+
+  // Button links
+  // This is not recommended -- we should use button styles on button elements, and link styles on link elements
+  // NOTE: these will need to be updated if we modify the link mixins
 
   &[class*='bsds-button'] {
     text-decoration: none;
@@ -35,6 +40,12 @@ a {
 }
 
 button {
+  @include button-default;
+
+  // Link buttons
+  // This is not recommended -- we should use button styles on button elements, and link styles on link elements
+  // NOTE: these will need to be updated if we modify the link mixins
+
   &[class*='bsds-link'] {
     border: 0;
     padding: 0;

@@ -151,11 +151,6 @@
   padding: space(md) calc(space(lg) + space(xxs));
 }
 
-// Default Button Styles
-button {
-  @include button-default;
-}
-
 // Link Mixins
 @mixin link-hover {
   text-decoration-thickness: space(xs);
@@ -256,9 +251,4 @@ button {
   &.is-active {
     @include font-family-base-heavy;
   }
-}
-
-// Default Link Styles
-a {
-  @include link-default;
 }
