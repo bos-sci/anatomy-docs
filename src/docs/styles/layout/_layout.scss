@@ -49,6 +49,15 @@ body {
         margin-top: space(3x);
       }
     }
+
+    .docs-icon-decorative,
+    .docs-icon-system,
+    .docs-team-member-card {
+      img {
+        width: auto;
+        margin-top: 0;
+      }
+    }
   }
 }
 
