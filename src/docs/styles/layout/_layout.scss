@@ -17,6 +17,14 @@ body {
   height: 100vh;
 }
 
+// TODO: ADS-410
+main {
+  img {
+    width: 100%;
+    margin-top: space(3x);
+  }
+}
+
 .docs-body {
   display: grid;
   grid-template-areas: 'nav-secondary' 'main';
@@ -41,14 +49,6 @@ body {
     justify-items: start;
     overflow-y: auto;
     padding: space(4x) calc(space(4x) - space(md));
-
-    // TODO: ADS-410
-    img {
-      &:not(.bsds-modal-logo) {
-        width: 100%;
-        margin-top: space(3x);
-      }
-    }
   }
 }
 
