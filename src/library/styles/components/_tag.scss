@@ -30,7 +30,7 @@
 
   &-accent {
     @include tag-accent;
-    @include border-gradient($direction: $degree-180, $style: $accent);
+    @include border-gradient($direction: $horizontal, $style: $accent);
     border-image-slice: 1;
   }
 

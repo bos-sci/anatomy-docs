@@ -9,7 +9,7 @@
     padding: space(2x) space(4x) space(8x);
 
     &.bg-gradient-assertive {
-      @include linear-gradient($direction: $degree-90, $style: $assertive);
+      @include linear-gradient($direction: $vertical, $style: $assertive);
 
       .docs-page-title,
       .docs-page-description {
