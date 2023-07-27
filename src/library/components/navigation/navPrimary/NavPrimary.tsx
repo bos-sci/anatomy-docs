@@ -79,6 +79,7 @@ interface Props {
   searchResults?: SearchResult[];
   location: Location | ReactLocation;
   isActiveNode: (node: NavNode, ref: RefObject<HTMLAnchorElement>) => boolean;
+  navigateToSearchResult: (result: SearchResult) => void;
   onSearch?: (query: string, e: FormEvent<HTMLFormElement>) => void;
   onSearchChange?: (query: string, e: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -95,6 +96,7 @@ const NavPrimary = ({
   searchResults,
   location,
   isActiveNode,
+  navigateToSearchResult,
   onSearchChange,
   onSearch
 }: Props): JSX.Element => {
@@ -364,6 +366,7 @@ const NavPrimary = ({
                   texts={texts}
                   isExpanded={isSearchExpanded}
                   searchResults={searchResults}
+                  navigateToResult={navigateToSearchResult}
                   onSearchChange={onSearchChange}
                   onSearch={onSearch}
                 />

@@ -125,6 +125,7 @@ const Layout = (props: Props): JSX.Element => {
         searchResults={searchResults}
         location={location}
         isActiveNode={isActiveNode}
+        navigateToSearchResult={(result) => navigate(result.to as string)}
         isConstrained
         onSearch={onSearch}
         onSearchChange={onSearchChange}

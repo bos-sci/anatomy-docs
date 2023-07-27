@@ -1,4 +1,4 @@
-import { matchPath, resolvePath, useLocation } from 'react-router-dom';
+import { matchPath, resolvePath, useLocation, useNavigate } from 'react-router-dom';
 import { RefObject } from 'react';
 import NavPrimary, { NavNode } from 'library/components/navigation/navPrimary/NavPrimary';
 
@@ -14,6 +14,7 @@ const logo = {
 
 const SimpleNavPrimary = (): JSX.Element => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isActiveNode = (node: NavNode, ref: RefObject<HTMLAnchorElement>) => {
     return !!matchPath(
@@ -30,6 +31,7 @@ const SimpleNavPrimary = (): JSX.Element => {
         utilityItems={utilityData}
         location={location}
         isActiveNode={isActiveNode}
+        navigateToSearchResult={(result) => navigate(result.to as string)}
       />
     </Example>
   );

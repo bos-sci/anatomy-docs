@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Search, { SearchResult } from 'library/components/Search';
 import Example from 'docs/shared/components/Example';
+import { useNavigate } from 'react-router';
 
 const data: SearchResult[] = [
   {
@@ -18,6 +19,8 @@ const data: SearchResult[] = [
 ];
 
 const DefaultSearch = (): JSX.Element => {
+  const navigate = useNavigate();
+
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [query, setQuery] = useState('');
 
@@ -27,7 +30,12 @@ const DefaultSearch = (): JSX.Element => {
 
   return (
     <Example>
-      <Search label="Search" searchResults={searchResults} onChange={(e) => setQuery(e.target.value)} />
+      <Search
+        label="Search"
+        searchResults={searchResults}
+        navigateToResult={(result) => navigate(result.to as string)}
+        onChange={(e) => setQuery(e.target.value)}
+      />
     </Example>
   );
 };

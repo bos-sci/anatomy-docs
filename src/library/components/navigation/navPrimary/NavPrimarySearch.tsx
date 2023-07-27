@@ -9,6 +9,7 @@ interface Props {
   searchResults?: SearchResult[];
   onSearch?: (query: string, e: FormEvent<HTMLFormElement>) => void;
   onSearchChange?: (query: string, e: ChangeEvent<HTMLInputElement>) => void;
+  navigateToResult: (result: SearchResult) => void;
 }
 
 const NavPrimarySearch = (props: Props): JSX.Element => {
@@ -40,6 +41,7 @@ const NavPrimarySearch = (props: Props): JSX.Element => {
           noResultsFound: props.texts?.searchNoResults
         }}
         searchResults={props.searchResults}
+        navigateToResult={props.navigateToResult}
         onChange={(e) => emitChange(e)}
         onFormSubmit={(e) => emitSearch(e)}
       />
