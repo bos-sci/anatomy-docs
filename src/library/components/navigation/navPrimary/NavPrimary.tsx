@@ -1,5 +1,5 @@
-import { ChangeEvent, FormEvent, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
-import { Location, NavLink, useLocation } from 'react-router-dom';
+import { ChangeEvent, FormEvent, MouseEvent, RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { Location as ReactLocation } from 'react-router-dom';
 import { RequireOnlyOne } from 'library/types';
 import Button from 'library/components/Button';
 import Link from 'library/components/Link';
@@ -22,7 +22,7 @@ interface NavItemPrimaryBase extends NavItem {
   altHref?: string;
   altLinkText?: string;
   isExactMatch?: boolean;
-  isActive?: (location: Location) => boolean;
+  isActive?: (location: Location | ReactLocation) => boolean;
 }
 
 interface NavItemUtilityBase extends NavItem {
@@ -77,6 +77,8 @@ interface Props {
   hasSearch?: boolean;
   isConstrained?: boolean;
   searchResults?: SearchResult[];
+  location: Location | ReactLocation;
+  isActiveNode: (node: NavNode, ref: RefObject<HTMLAnchorElement>) => boolean;
   onSearch?: (query: string, e: FormEvent<HTMLFormElement>) => void;
   onSearchChange?: (query: string, e: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -91,11 +93,11 @@ const NavPrimary = ({
   hasSearch = true,
   isConstrained = false,
   searchResults,
+  location,
+  isActiveNode,
   onSearchChange,
   onSearch
 }: Props): JSX.Element => {
-  const location = useLocation();
-
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
@@ -110,6 +112,7 @@ const NavPrimary = ({
 
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     setMenuId('navPrimaryMenu' + navPrimaryMenuIndex++);
@@ -266,14 +269,6 @@ const NavPrimary = ({
     setIsSearchExpanded(!isSearchExpanded);
   };
 
-  const isCurrent = (isActive: boolean, navItem: NavItemPrimary): boolean => {
-    if (navItem.isActive) {
-      return navItem.isActive(location);
-    } else {
-      return isActive;
-    }
-  };
-
   useEffect(() => {
     if (isMenuExpanded) {
       setToggleText(texts?.menuToggleTextClose || 'Close');
@@ -319,15 +314,16 @@ const NavPrimary = ({
                 )}
                 {!!(navItem.to || navItem.href) && (
                   // eslint-disable-next-line jsx-a11y/prefer-tag-over-role
-                  <NavLink
-                    end={!!navItem.isExactMatch}
-                    to={(navItem.to ? navItem.to : navItem.href) || ''}
-                    className={({ isActive }) => `bsds-nav-link${isCurrent(isActive, navItem) ? ' is-current' : ''}`}
+                  <Link
+                    ref={linkRef}
+                    to={navItem.to}
+                    href={navItem.href}
+                    className={`bsds-nav-link${isActiveNode(navItem as NavNode, linkRef) ? ' is-current' : ''}`}
                     aria-current={(navItem.isActive?.(location) && 'page') ?? undefined}
                     role="menuitem"
                   >
                     {navItem.text}
-                  </NavLink>
+                  </Link>
                 )}
                 {navTree.length > 0 &&
                   history.length > 0 &&
@@ -338,6 +334,7 @@ const NavPrimary = ({
                       navItems={navTree}
                       utilityItems={utilityItems}
                       activeNode={activeNode}
+                      isActiveNode={isActiveNode}
                       setActiveNode={setActiveNode}
                       menuId={menuId}
                       isMenuExpanded={isMenuExpanded}
@@ -393,6 +390,7 @@ const NavPrimary = ({
             navItems={navTree}
             utilityItems={utilityItems}
             activeNode={activeNode}
+            isActiveNode={isActiveNode}
             setActiveNode={setActiveNode}
             menuId={menuId}
             isMenuExpanded={isMenuExpanded}

@@ -1,26 +1,25 @@
-import { useEffect } from 'react';
-import { useHref, useMatch } from 'react-router-dom';
+import { RefObject, useEffect, useRef } from 'react';
 import Link from 'library/components/Link';
 import { NavNode } from './NavPrimary';
 
 interface Props {
   navItem: NavNode;
   setActiveNode: (node: NavNode) => void;
+  isActiveNode: (node: NavNode, ref: RefObject<HTMLAnchorElement>) => boolean;
 }
 
 const NavPrimaryLeaf = (props: Props) => {
-  const matchLink = useHref(props.navItem.to ? props.navItem.to : props.navItem.href || '');
-  const isMatch = useMatch(matchLink);
+  const linkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    if (isMatch) {
+    if (props.isActiveNode(props.navItem, linkRef)) {
       props.setActiveNode(props.navItem);
     }
-  }, [isMatch, props]);
+  }, [props]);
 
   return (
     <li className="bsds-nav-item">
-      <Link href={props.navItem.text} to={props.navItem.to} className="bsds-nav-link" isNavLink>
+      <Link ref={linkRef} href={props.navItem.text} to={props.navItem.to} className="bsds-nav-link" isNavLink>
         {props.navItem.text}
       </Link>
     </li>

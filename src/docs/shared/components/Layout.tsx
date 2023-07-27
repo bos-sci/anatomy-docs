@@ -1,10 +1,10 @@
-import { createContext, FormEvent, ReactNode, useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
+import { createContext, FormEvent, ReactNode, RefObject, useEffect, useState } from 'react';
+import { matchPath, resolvePath, useLocation } from 'react-router';
 import algoliasearch from 'algoliasearch';
 import SkipLink from 'library/components/SkipLink';
 import logoADS from 'docs/assets/images/logo-anatomy.svg';
 import logoBSC from 'docs/assets/images/logo-bsc.svg';
-import NavPrimary, { NavItemPrimary } from 'library/components/navigation/navPrimary/NavPrimary';
+import NavPrimary, { NavItemPrimary, NavNode } from 'library/components/navigation/navPrimary/NavPrimary';
 import { SearchResult } from 'library/components/Search';
 import { useNavigate } from 'react-router-dom';
 import { indexSearch } from 'docs/shared/helpers';
@@ -84,6 +84,16 @@ const Layout = (props: Props): JSX.Element => {
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [pathname, setPathname] = useState('');
 
+  const isActiveNode = (node: NavNode, ref: RefObject<HTMLAnchorElement>) => {
+    return !!matchPath(
+      {
+        path: resolvePath(node.to ? node.to : node.href || '', location.pathname).pathname,
+        end: node.isExactMatch
+      },
+      location.pathname
+    );
+  };
+
   const onSearchChange = (query: string) => {
     setSearchQuery(query);
   };
@@ -113,9 +123,11 @@ const Layout = (props: Props): JSX.Element => {
         logo={logo}
         navItems={navItems}
         searchResults={searchResults}
+        location={location}
+        isActiveNode={isActiveNode}
         isConstrained
-        onSearchChange={onSearchChange}
         onSearch={onSearch}
+        onSearchChange={onSearchChange}
       />
       <SearchIndexContext.Provider value={index}>{props.children}</SearchIndexContext.Provider>
       <footer className="docs-footer">

@@ -3,10 +3,12 @@ import { NavNode } from './NavPrimary';
 import NavPrimaryListParent from './NavPrimaryListParent';
 import { HistoryNode } from './NavPrimary';
 import NavPrimaryLeaf from './NavPrimaryLeaf';
+import { RefObject } from 'react';
 
 interface Props {
   navItems: NavNode[];
   activeNode: NavNode | null;
+  isActiveNode: (node: NavNode, ref: RefObject<HTMLAnchorElement>) => boolean;
   setActiveNode: (node: NavNode) => void;
   depth: number;
   activeDepth: number;
@@ -48,6 +50,7 @@ const NavPrimaryList = (props: Props) => {
                 key={navItem.to || navItem.href || navItem.text + props.depth}
                 navItem={navItem}
                 activeNode={props.activeNode}
+                isActiveNode={props.isActiveNode}
                 setActiveNode={props.setActiveNode}
                 depth={props.depth}
                 activeDepth={props.activeDepth}
@@ -63,6 +66,7 @@ const NavPrimaryList = (props: Props) => {
               <NavPrimaryLeaf
                 key={'NavPrimaryLeaf' + navItem.text || navItem.id}
                 navItem={navItem}
+                isActiveNode={props.isActiveNode}
                 setActiveNode={props.setActiveNode}
               />
             );
