@@ -51,7 +51,7 @@
           opacity: 0;
           content: '';
           transition: opacity 0.4s linear;
-          @include animated-gradient-brand;
+          @include linear-gradient($direction: $degree-90, $style: $brand, $animated: true);
           @include decorative-bar;
         }
 
