@@ -1,4 +1,5 @@
 /* stylelint-disable declaration-empty-line-before */
+@use 'sass:map';
 
 // Gradient animation keyframes
 @keyframes animated-gradient {
@@ -20,45 +21,20 @@
 }
 
 @mixin animated-gradient($style) {
-  @if $style == $brand {
-    $gradient-brand-animated: $brand-primary, $accent-primary-60, $accent-secondary-60, $brand-primary,
-      $accent-primary-60;
+  $animatedgradient: map.get($animatedgradients, $style);
 
-    background: $gradient-brand-animated;
-    background-image: linear-gradient($vertical, $gradient-brand-animated);
-    background-size: 400% 100%;
-    animation: animated-gradient 10s linear infinite;
+  background: $animatedgradient;
+  background-image: linear-gradient($vertical, $animatedgradient);
+  background-size: 400% 100%;
+  animation: animated-gradient 10s linear infinite;
 
-    @media (prefers-reduced-motion: reduce) {
-      background-image: $gradient-brand-animated;
-      background-size: 100% 100%;
-      animation: none;
-    }
-  } @else if $style == $primary {
-    $gradient-primary-animated: $accent-secondary-60, $action-primary-40, $accent-secondary-60, $action-primary-40;
-
-    background: $gradient-primary-animated;
-    background-image: linear-gradient($vertical, $gradient-primary-animated);
+  @if $style != $brand {
     background-size: 300% 100%;
-    animation: animated-gradient 10s linear infinite;
+  }
 
-    @media (prefers-reduced-motion: reduce) {
-      background-image: $gradient-primary-animated;
-      background-size: 100% 100%;
-      animation: none;
-    }
-  } @else if $animated != false and $style == $secondary {
-    $gradient-secondary-animated: $accent-primary-60, $action-primary-20, $accent-primary-60, $action-primary-20;
-
-    background: $gradient-secondary-animated;
-    background-image: linear-gradient($vertical, $gradient-secondary-animated);
-    background-size: 300% 100%;
-    animation: animated-gradient 10s linear infinite;
-
-    @media (prefers-reduced-motion: reduce) {
-      background-image: $gradient-secondary-animated;
-      background-size: 100% 100%;
-      animation: none;
-    }
+  @media (prefers-reduced-motion: reduce) {
+    background-image: $animatedgradient;
+    background-size: 100% 100%;
+    animation: none;
   }
 }

@@ -14,3 +14,26 @@ $right: 135deg;
 $horizontal: 180deg;
 $reversed: 270deg;
 $right-reversed: 322deg;
+
+// Gradient mixin animated color variables
+$animatedgradients: (
+  $brand: (
+    $brand-primary,
+    $accent-primary-60,
+    $accent-secondary-60,
+    $brand-primary,
+    $accent-primary-60
+  ),
+  $primary: (
+    $accent-secondary-60,
+    $action-primary-40,
+    $accent-secondary-60,
+    $action-primary-40
+  ),
+  $secondary: (
+    $accent-primary-60,
+    $action-primary-20,
+    $accent-primary-60,
+    $action-primary-20
+  )
+);
