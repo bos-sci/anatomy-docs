@@ -19,7 +19,7 @@ const NavPrimaryLeaf = (props: Props) => {
 
   return (
     <li className="bsds-nav-item">
-      <Link ref={linkRef} href={props.navItem.text} to={props.navItem.to} className="bsds-nav-link" isNavLink>
+      <Link ref={linkRef} href={props.navItem.href} to={props.navItem.to} className="bsds-nav-link" isNavLink>
         {props.navItem.text}
       </Link>
     </li>
