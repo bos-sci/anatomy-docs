@@ -12,7 +12,6 @@ import {
   useRef,
   useState
 } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { RequireOnlyOne } from 'library/types';
 import Button from 'library/components/Button';
 import IconClose from 'library/components/icon/icons/IconClose';
@@ -42,6 +41,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     noResultsFound?: string;
   };
   onFormSubmit?: (e: FormEvent<HTMLFormElement>) => void;
+  navigateToResult?: (result: SearchResult) => void;
 }
 
 const Search = forwardRef(
@@ -60,13 +60,12 @@ const Search = forwardRef(
       onChange,
       onFocus,
       onFormSubmit,
+      navigateToResult,
       formAttributes,
       ...inputAttrs
     }: Props,
     ref: ForwardedRef<HTMLInputElement>
   ): JSX.Element => {
-    const navigate = useNavigate();
-
     const searchId = useId();
 
     const [inputValue, setInputValue] = useState('');
@@ -112,13 +111,8 @@ const Search = forwardRef(
           break;
 
         case 'Enter':
-          // TODO: ADS-95 find another solution if we don't want react-router-dom (v6) a dependency of Anatomy due to the use of navigate(), and address when we split lib from docs.
-          if (searchResults && inputValue) {
-            if (searchResults[activeDescendant].to) {
-              navigate(searchResults[activeDescendant].to as string);
-            } else if (searchResults[activeDescendant].href) {
-              navigate(searchResults[activeDescendant].href as string);
-            }
+          if (searchResults && inputValue && navigateToResult) {
+            navigateToResult(searchResults[activeDescendant]);
           }
           break;
 
@@ -154,6 +148,14 @@ const Search = forwardRef(
       setActiveDescendant(-1);
       setIsExpanded(!!inputValue);
     }, [inputValue]);
+
+    useEffect(() => {
+      if (hasAutocomplete && !navigateToResult) {
+        console.error(
+          "Property 'navigateToResult' is missing on search. Either provide a value for 'navigateToResult' or set 'hasAutocomplete' to false."
+        );
+      }
+    }, [hasAutocomplete, navigateToResult]);
 
     useEffect(() => {
       if (defaultValue && !isDirty) {

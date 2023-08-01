@@ -1,13 +1,13 @@
-import { createContext, FormEvent, ReactNode, useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
+import { createContext, FormEvent, ReactNode, RefObject, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import algoliasearch from 'algoliasearch';
 import SkipLink from 'library/components/SkipLink';
 import logoADS from 'docs/assets/images/logo-anatomy.svg';
 import logoBSC from 'docs/assets/images/logo-bsc.svg';
-import NavPrimary, { NavItemPrimary } from 'library/components/navigation/navPrimary/NavPrimary';
+import NavPrimary, { NavItemPrimary, NavNode } from 'library/components/navigation/navPrimary/NavPrimary';
 import { SearchResult } from 'library/components/Search';
 import { useNavigate } from 'react-router-dom';
-import { indexSearch } from 'docs/shared/helpers';
+import { indexSearch, isActiveNode } from 'docs/shared/helpers';
 import useHeadingIds from 'docs/shared/hooks/useHeadingIds';
 import CarbonRibbon from 'docs/shared/components/CarbonRibbon';
 
@@ -113,9 +113,12 @@ const Layout = (props: Props): JSX.Element => {
         logo={logo}
         navItems={navItems}
         searchResults={searchResults}
+        location={location}
+        isActiveNode={(node: NavNode, ref: RefObject<HTMLAnchorElement>) => isActiveNode(node, ref, location)}
+        navigateToSearchResult={(result) => navigate(result.to as string)}
         isConstrained
-        onSearchChange={onSearchChange}
         onSearch={onSearch}
+        onSearchChange={onSearchChange}
       />
       <SearchIndexContext.Provider value={index}>{props.children}</SearchIndexContext.Provider>
       <footer className="docs-footer">
