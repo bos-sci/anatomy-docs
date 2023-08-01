@@ -1,8 +1,11 @@
 import Example from 'docs/shared/components/Example';
 import NavSecondary, { NavItemSecondary } from 'library/components/navigation/navSecondary/NavSecondary';
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const DefaultNavSecondary = (): JSX.Element => {
+  const location = useLocation();
+
   const navItems: NavItemSecondary[] = [
     {
       text: 'Page',
@@ -58,7 +61,7 @@ const DefaultNavSecondary = (): JSX.Element => {
 
   return (
     <Example>
-      <NavSecondary texts={navSecondaryTexts} navItems={navItems} />
+      <NavSecondary texts={navSecondaryTexts} navItems={navItems} location={location} />
     </Example>
   );
 };
