@@ -1,5 +1,5 @@
 import { createContext, FormEvent, ReactNode, RefObject, useEffect, useState } from 'react';
-import { matchPath, resolvePath, useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 import algoliasearch from 'algoliasearch';
 import SkipLink from 'library/components/SkipLink';
 import logoADS from 'docs/assets/images/logo-anatomy.svg';
@@ -7,7 +7,7 @@ import logoBSC from 'docs/assets/images/logo-bsc.svg';
 import NavPrimary, { NavItemPrimary, NavNode } from 'library/components/navigation/navPrimary/NavPrimary';
 import { SearchResult } from 'library/components/Search';
 import { useNavigate } from 'react-router-dom';
-import { indexSearch } from 'docs/shared/helpers';
+import { indexSearch, isActiveNode } from 'docs/shared/helpers';
 import useHeadingIds from 'docs/shared/hooks/useHeadingIds';
 import CarbonRibbon from 'docs/shared/components/CarbonRibbon';
 
@@ -84,16 +84,6 @@ const Layout = (props: Props): JSX.Element => {
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [pathname, setPathname] = useState('');
 
-  const isActiveNode = (node: NavNode, ref: RefObject<HTMLAnchorElement>) => {
-    return !!matchPath(
-      {
-        path: resolvePath(node.to ? node.to : node.href || '', location.pathname).pathname,
-        end: node.isExactMatch
-      },
-      location.pathname
-    );
-  };
-
   const onSearchChange = (query: string) => {
     setSearchQuery(query);
   };
@@ -124,7 +114,7 @@ const Layout = (props: Props): JSX.Element => {
         navItems={navItems}
         searchResults={searchResults}
         location={location}
-        isActiveNode={isActiveNode}
+        isActiveNode={(node: NavNode, ref: RefObject<HTMLAnchorElement>) => isActiveNode(node, ref, location)}
         navigateToSearchResult={(result) => navigate(result.to as string)}
         isConstrained
         onSearch={onSearch}

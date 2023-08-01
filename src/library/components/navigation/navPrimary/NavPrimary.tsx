@@ -271,6 +271,14 @@ const NavPrimary = ({
     setIsSearchExpanded(!isSearchExpanded);
   };
 
+  const isCurrent = (node: NavNode, ref: RefObject<HTMLAnchorElement>): boolean => {
+    if (node.isActive) {
+      return node.isActive(location);
+    } else {
+      return isActiveNode(node, ref);
+    }
+  };
+
   useEffect(() => {
     if (isMenuExpanded) {
       setToggleText(texts?.menuToggleTextClose || 'Close');
@@ -320,8 +328,8 @@ const NavPrimary = ({
                     ref={linkRef}
                     to={navItem.to}
                     href={navItem.href}
-                    className={`bsds-nav-link${isActiveNode(navItem as NavNode, linkRef) ? ' is-current' : ''}`}
-                    aria-current={(navItem.isActive?.(location) && 'page') ?? undefined}
+                    className={`bsds-nav-link${isCurrent(navItem as NavNode, linkRef) ? ' is-current' : ''}`}
+                    aria-current={(isCurrent(navItem as NavNode, linkRef) && 'page') ?? undefined}
                     role="menuitem"
                   >
                     {navItem.text}
@@ -336,7 +344,7 @@ const NavPrimary = ({
                       navItems={navTree}
                       utilityItems={utilityItems}
                       activeNode={activeNode}
-                      isActiveNode={isActiveNode}
+                      isActiveNode={isCurrent}
                       setActiveNode={setActiveNode}
                       menuId={menuId}
                       isMenuExpanded={isMenuExpanded}
