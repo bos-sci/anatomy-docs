@@ -1,6 +1,9 @@
+import { RefObject } from 'react';
+import { matchPath, resolvePath, Location } from 'react-router-dom';
 import algoliasearch from 'algoliasearch';
 import axios from 'axios';
 import { SearchResult } from 'library/components/Search';
+import { NavNode } from 'library/components/navigation/navPrimary/NavPrimary';
 import { releaseDate } from 'utils/release-date';
 
 export const slugify = (text: string): string => {
@@ -119,4 +122,17 @@ export const getStorage = (key: string) => {
     }
     return data;
   }
+};
+
+// Primary Nav helpers
+
+// Active function when using react-router
+export const isActiveNode = (node: NavNode, ref: RefObject<HTMLAnchorElement>, location: Location) => {
+  return !!matchPath(
+    {
+      path: resolvePath(node.to ? node.to : node.href || '', location.pathname).pathname,
+      end: node.isExactMatch
+    },
+    location.pathname
+  );
 };

@@ -2,10 +2,12 @@ import Button from 'library/components/Button';
 import { NavNode } from './NavPrimary';
 import NavPrimaryList from './NavPrimaryList';
 import { HistoryNode } from './NavPrimary';
+import { RefObject } from 'react';
 
 interface Props {
   navItem: NavNode;
   activeNode: NavNode | null;
+  isActiveNode: (node: NavNode, ref: RefObject<HTMLAnchorElement>) => boolean;
   setActiveNode: (node: NavNode) => void;
   depth: number;
   activeDepth: number;
@@ -53,6 +55,7 @@ const NavPrimaryListParent = (props: Props) => {
         <NavPrimaryList
           navItems={props.navItem.children}
           activeNode={props.activeNode}
+          isActiveNode={props.isActiveNode}
           setActiveNode={props.setActiveNode}
           depth={props.depth + 1}
           activeDepth={props.activeDepth}

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { IdLookupContext } from 'docs/App';
 import { GetComponentQuery, useGetComponentQuery } from 'docs/shared/types/contentful';
 import { IdLookup } from 'docs/shared/types/docs';

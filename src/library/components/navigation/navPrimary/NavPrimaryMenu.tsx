@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef, useState } from 'react';
+import { ForwardedRef, RefObject, forwardRef, useState } from 'react';
 import Button from 'library/components/Button';
 import Dropdown from 'library/components/Dropdown';
 import Link from 'library/components/Link';
@@ -9,6 +9,7 @@ interface Props {
   navItems: NavNode[];
   utilityItems?: NavItemUtility[];
   activeNode: NavNode | null;
+  isActiveNode: (node: NavNode, ref: RefObject<HTMLAnchorElement>) => boolean;
   setActiveNode: (node: NavNode) => void;
   menuId: string;
   isMenuExpanded: boolean;
@@ -41,6 +42,7 @@ const NavPrimaryMenu = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
         <NavPrimaryList
           navItems={props.navItems}
           activeNode={props.activeNode}
+          isActiveNode={props.isActiveNode}
           setActiveNode={props.setActiveNode}
           depth={0}
           activeDepth={activeDepth}
