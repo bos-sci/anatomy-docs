@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'library/components/Link';
 
 export interface NavItemTertiary {
   id: string;
@@ -9,9 +9,10 @@ export interface NavItemTertiary {
 interface Props {
   navTertiaryItems?: NavItemTertiary[];
   tertiaryNavAriaLabel?: string;
+  hasReactRouter?: boolean;
 }
 
-const NavTertiary = ({ navTertiaryItems, tertiaryNavAriaLabel }: Props): JSX.Element => {
+const NavTertiary = ({ navTertiaryItems, tertiaryNavAriaLabel, hasReactRouter = true }: Props): JSX.Element => {
   const navTitleId = useId();
 
   return (
@@ -24,7 +25,11 @@ const NavTertiary = ({ navTertiaryItems, tertiaryNavAriaLabel }: Props): JSX.Ele
           Array.from(navTertiaryItems).map((navItem, i) => {
             return (
               <li key={`tertiaryNavItem${navItem.id}`} className="bsds-nav-item">
-                <Link to={{ hash: navItem.id }} className="bsds-nav-link">
+                <Link
+                  to={hasReactRouter ? { hash: navItem.id } : ''}
+                  href={!hasReactRouter ? `#${navItem.id}` : ''}
+                  className="bsds-nav-link"
+                >
                   {navItem.text}
                 </Link>
               </li>
