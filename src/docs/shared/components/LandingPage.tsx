@@ -1,5 +1,5 @@
 import { Fragment, useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 import ContentCard from 'library/components/ContentCard';
 import CardGroup from 'library/components/CardGroup';
 import { IdLookupContext } from 'docs/App';
