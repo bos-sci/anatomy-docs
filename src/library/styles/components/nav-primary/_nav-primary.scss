@@ -37,8 +37,7 @@
   border-right: 0;
   border-bottom: 0;
   border-left: 0;
-  border-image-source: $gradient-brand;
-  border-image-slice: 1;
+  @include border-gradient($direction: '90deg', $style: $brand);
 
   &:not(.is-constrained) {
     /* stylelint-disable scss/selector-nest-combinators */

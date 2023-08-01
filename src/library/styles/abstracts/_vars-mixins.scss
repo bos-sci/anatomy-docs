@@ -21,7 +21,9 @@
 @mixin border-gradient($direction, $style) {
   $gradient-direction: map.get($gradient-directions, $direction);
 
+  border-style: solid;
   border-image-source: linear-gradient($gradient-direction, $style);
+  border-image-slice: 1;
 }
 
 @mixin animated-gradient($style) {

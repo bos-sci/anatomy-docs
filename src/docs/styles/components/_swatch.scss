@@ -260,32 +260,32 @@
   // gradients
   &-gradient-brand {
     @include swatch;
-    background: $gradient-brand;
+    @include linear-gradient($direction: '90deg', $style: $brand);
   }
 
   &-gradient-primary {
     @include swatch;
-    background: $gradient-primary;
+    @include linear-gradient($direction: '90deg', $style: $primary);
   }
 
   &-gradient-secondary {
     @include swatch;
-    background: $gradient-secondary;
+    @include linear-gradient($direction: '90deg', $style: $secondary);
   }
 
   &-gradient-accent {
     @include swatch;
-    background: $gradient-accent;
+    @include linear-gradient($direction: '90deg', $style: $accent);
   }
 
   &-gradient-assertive {
     @include swatch;
-    background: $gradient-assertive;
+    @include linear-gradient($direction: '90deg', $style: $assertive);
   }
 
   &-gradient-subtle {
     @include swatch;
-    background: $gradient-subtle;
+    @include linear-gradient($direction: '90deg', $style: $subtle);
   }
 
   // shadows
@@ -310,7 +310,8 @@
   // borders
   &-border-gradient-accent {
     @include swatch;
-    @include border-gradient-accent;
+    @include border-gradient($direction: '180deg', $style: $accent);
+    border-width: $border-width-sm;
   }
 
   &-border-color-action {
@@ -449,18 +450,18 @@
 
   &-animated-gradient-brand {
     @include swatch;
-    @include animated-gradient-brand;
+    @include animated-gradient($style: $brand);
     position: relative;
   }
 
   &-animated-gradient-primary {
     @include swatch;
-    @include animated-gradient-primary;
+    @include animated-gradient($style: $primary);
   }
 
   &-animated-gradient-secondary {
     @include swatch;
-    @include animated-gradient-secondary;
+    @include animated-gradient($style: $secondary);
   }
 
   &-decorative-bar {
