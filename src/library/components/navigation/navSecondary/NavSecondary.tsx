@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Location as ReactLocation } from 'react-router-dom';
 import { RequireOnlyOne } from 'library/types';
 import Button from 'library/components/Button';
 import NavSecondaryList from './NavSecondaryList';
@@ -24,6 +24,7 @@ export type NavNode = RequireOnlyOne<NavTreeNode, 'to' | 'href' | 'children'>;
 interface Props {
   navItems: NavItemSecondary[];
   activeSlug?: string;
+  location: Location | ReactLocation;
   texts?: {
     menuToggleAriaLabel?: string;
     menuToggleText?: string;
@@ -34,7 +35,7 @@ interface Props {
 
 let navSecondaryIndex = 0;
 
-const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
+const NavSecondary = ({ navItems, activeSlug, location, texts }: Props): JSX.Element => {
   const [navTree, setNavTree] = useState<NavNode[]>([]);
   const [activeParent, setActiveParent] = useState<NavNode | null>(null);
   const [activeParentRef, setActiveParentRef] = useState<RefObject<HTMLButtonElement> | null>(null);
@@ -58,8 +59,6 @@ const NavSecondary = ({ navItems, activeSlug, texts }: Props): JSX.Element => {
     populateParents(tree);
     setNavTree(tree);
   }, [navItems]);
-
-  const location = useLocation();
 
   useEffect(() => {
     const findNodeBySlug = (nodes: NavNode[], pathname: string): NavNode | undefined => {

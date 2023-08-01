@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { useLocation } from 'react-router-dom';
 import Markdown from 'docs/shared/components/Markdown';
 import NavSecondary, { NavItemSecondary } from 'library/components/navigation/navSecondary/NavSecondary';
 import NavTertiary, { NavItemTertiary } from 'library/components/navigation/NavTertiary';
@@ -16,6 +17,8 @@ interface Props {
 }
 
 const PageTemplate = (props: Props) => {
+  const location = useLocation();
+
   const [navSecondaryTexts, setNavSecondaryTexts] = useState({});
   const [seoMetaDescriptionValue, setSeoMetaDescriptionValue] = useState<string | undefined>();
 
@@ -41,7 +44,7 @@ const PageTemplate = (props: Props) => {
         <meta name="description" content={seoMetaDescriptionValue} />
       </Helmet>
       {!!(props.navSecondaryItems && props.navSecondaryMenuTrigger) && (
-        <NavSecondary texts={navSecondaryTexts} navItems={props.navSecondaryItems} />
+        <NavSecondary texts={navSecondaryTexts} navItems={props.navSecondaryItems} location={location} />
       )}
       <main id="mainContent">
         <div className="docs-page-header">
