@@ -7,16 +7,18 @@ $assertive: $neutral-00, $action-primary-20;
 $subtle: $neutral-95, $neutral-100 0%;
 
 // Gradient mixin direction variables
-$left: 36deg;
-$center: 84deg;
-$vertical: 90deg;
-$right: 135deg;
-$horizontal: 180deg;
-$reversed: 270deg;
-$right-reversed: 322deg;
+$gradient-directions: (
+  '36deg': 36deg,
+  '84deg': 84deg,
+  '90deg': 90deg,
+  '135deg': 135deg,
+  '180deg': 180deg,
+  '270deg': 270deg,
+  '322deg': 322deg
+);
 
 // Gradient mixin animated color variables
-$animatedgradients: (
+$animated-gradients: (
   $brand: (
     $brand-primary,
     $accent-primary-60,

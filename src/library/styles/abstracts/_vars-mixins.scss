@@ -13,27 +13,31 @@
 }
 
 @mixin linear-gradient($direction, $style) {
-  background: linear-gradient($direction, $style);
+  $gradient-direction: map.get($gradient-directions, $direction);
+
+  background: linear-gradient($gradient-direction, $style);
 }
 
 @mixin border-gradient($direction, $style) {
-  border-image-source: linear-gradient($direction, $style);
+  $gradient-direction: map.get($gradient-directions, $direction);
+
+  border-image-source: linear-gradient($gradient-direction, $style);
 }
 
 @mixin animated-gradient($style) {
-  $animatedgradient: map.get($animatedgradients, $style);
+  $animated-gradient-style: map.get($animated-gradients, $style);
 
-  background: $animatedgradient;
-  background-image: linear-gradient($vertical, $animatedgradient);
-  background-size: 400% 100%;
+  background: $animated-gradient-style;
+  background-image: linear-gradient(90deg, $animated-gradient-style);
+  background-size: 300% 100%;
   animation: animated-gradient 10s linear infinite;
 
-  @if $style != $brand {
-    background-size: 300% 100%;
+  @if $style == $brand {
+    background-size: 400% 100%;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    background-image: $animatedgradient;
+    background-image: $animated-gradient-style;
     background-size: 100% 100%;
     animation: none;
   }
