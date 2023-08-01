@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Search, { SearchResult } from 'library/components/Search';
 import Example from 'docs/shared/components/Example';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const data: SearchResult[] = [
   {

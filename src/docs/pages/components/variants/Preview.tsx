@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useState, useContext } from 'react';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import NotFound from 'docs/shared/components/NotFound';
 import useTitle from 'docs/shared/hooks/useTitle';
