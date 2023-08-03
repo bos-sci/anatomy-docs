@@ -5,10 +5,12 @@
   "description": "A monorepo containing all the design system projects at Boston Scientific",
   "main": "index.js",
   "directories": {
-    "doc": "docs"
+    "doc": "docs",
+    "packages": "packages"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "docs/*"
   ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.47.1",
