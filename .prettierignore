@@ -1,9 +1,9 @@
 # Ignore artifacts:
-build
+docs/build
 coverage
-node_modules
-cypress
-src/docs/shared/types/contentful.ts
-schema.graphql
+**/node_modules
+docs/cypress
+docs/src/docs/shared/types/contentful.ts
+docs/schema.graphql
 **/*.md
 .github
