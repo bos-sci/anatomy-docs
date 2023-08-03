@@ -1,5 +1,5 @@
-src/reportWebVitals.ts
-src/docs/shared/types/contentful.ts
-cypress.config.ts
-cypress
+docs/src/reportWebVitals.ts
+docs/src/docs/shared/types/contentful.ts
+docs/cypress.config.ts
+docs/cypress
 .github
