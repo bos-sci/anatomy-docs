@@ -9,7 +9,8 @@
 /coverage
 
 # production
-/build
+/docs//build
+/packages/anatomy-tokens/lib
 
 # versions file
 /src/docs/shared/versions.ts
