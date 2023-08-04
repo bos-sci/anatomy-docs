@@ -1,2 +1,2 @@
 [build]
-  base = "docs/"
+  base = "docs"
