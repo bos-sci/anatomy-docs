@@ -9,7 +9,7 @@
     "packages": "packages"
   },
   "workspaces": [
-    "packages/anatomy-tokens",
+    "packages/*",
     "docs"
   ],
   "devDependencies": {
@@ -17,11 +17,14 @@
     "lint-staged": "^13.2.0"
   },
   "scripts": {
+    "start:docs": "npm start --workspace=docs",
+    "build:docs": "npm run build --workspace=docs",
+    "build:tokens": "npm run build --workspace=packages/anatomy-tokens",
     "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,html,css,scss}": "npm run format:write --workspaces --if-present",
-    "*.{js,jsx,ts,tsx}": "npm run fic:scripts --workspaces --if-present",
+    "*.{js,jsx,ts,tsx}": "npm run fix:scripts --workspaces --if-present",
     "*.{css,scss}": "npm run fix:styles --workspaces --if-present"
   },
   "browserslist": {

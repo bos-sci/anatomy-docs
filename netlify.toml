@@ -1,3 +1,10 @@
-[build]
-  base = "docs"
-  publish = "docs/build"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[plugins]]
+package = "@algolia/netlify-plugin-crawler"
+  [plugins.inputs]
+  branches = ['master', 'develop']
+  renderJavaScript = true
