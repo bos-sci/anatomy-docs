@@ -27,7 +27,14 @@
     "cypress:run": "cypress run",
     "sitemap": "node src/utils/generateSitemap.js",
     "stylelint:check": "stylelint-config-prettier-scss-check",
-    "release-date": "echo \"// This file is automatically updated on release\nexport const releaseDate = new Date('$(date)');\" > ./src/utils/release-date.ts"
+    "release-date": "echo \"// This file is automatically updated on release\nexport const releaseDate = new Date('$(date)');\" > ./src/utils/release-date.ts",
+    "lint:styles": "stylelint \"**/*.scss\"",
+    "fix:styles": "stylelint --fix \"**/*.scss\"",
+    "lint:scripts": "eslint .",
+    "fix:scripts": "eslint --cache --fix .",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:all": "npm run lint:styles && npm run lint:scripts && npm run format:check"
   },
   "browserslist": {
     "production": [
@@ -64,16 +71,31 @@
     "@types/react-helmet": "^6.1.5",
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
     "axe-core": "^4.4.2",
     "contentful": "^9.2.5",
     "cypress": "^10.3.0",
     "cypress-axe": "^1.0.0",
     "cypress-real-events": "^1.7.1",
     "dotenv": "^10.0.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-n": "^15.4.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.31.10",
     "fs": "^0.0.1-security",
     "graphql": "^16.5.0",
+    "prettier": "2.8.1",
     "react-scripts": "^5.0.1",
     "sitemap": "^7.1.1",
+    "stylelint": "^14.15.0",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^6.1.0",
+    "stylelint-order": "^6.0.1",
     "typescript": "^4.8.4"
   }
 }

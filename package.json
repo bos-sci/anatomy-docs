@@ -9,58 +9,21 @@
     "packages": "packages"
   },
   "workspaces": [
-    "packages/*",
-    "docs/*"
+    "packages/anatomy-tokens",
+    "docs"
   ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.47.1",
-    "@typescript-eslint/parser": "^5.47.1",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^14.2.1",
-    "@types/jest": "^28.1.4",
-    "@types/node": "^18.0.1",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.6",
-    "@types/react-helmet": "^6.1.5",
-    "@types/react-router": "^5.1.18",
-    "@types/react-router-dom": "^5.3.3",
-    "eslint": "^8.26.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-n": "^15.4.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.31.10",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
-    "prettier": "2.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.1",
-    "stylelint": "^14.15.0",
-    "stylelint-config-prettier-scss": "^0.0.1",
-    "stylelint-config-standard-scss": "^6.1.0",
-    "stylelint-order": "^6.0.1",
-    "web-vitals": "^1.1.2"
+    "prettier": "2.8.1"
   },
   "scripts": {
-    "lint:styles": "stylelint \"**/*.scss\"",
-    "fix:styles": "stylelint --fix \"**/*.scss\"",
-    "lint:scripts": "eslint .",
-    "fix:scripts": "eslint --fix .",
-    "format:check": "prettier --check .",
-    "format:write": "prettier --write .",
-    "lint:all": "npm run lint:styles && npm run lint:scripts && npm run format:check",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,html,css,scss}": "prettier --write",
-    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
-    "*.{css,scss}": "stylelint --fix"
+    "*.{js,jsx,ts,tsx,json,html,css,scss}": "npm run format:write --workspaces --if-present",
+    "*.{js,jsx,ts,tsx}": "npm run fic:scripts --workspaces --if-present",
+    "*.{css,scss}": "npm run fix:styles --workspaces --if-present"
   },
   "browserslist": {
     "production": [

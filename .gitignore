@@ -9,7 +9,7 @@
 /coverage
 
 # production
-/docs//build
+/docs/build
 /packages/anatomy-tokens/lib
 
 # versions file
