@@ -45,7 +45,7 @@ const LandingPage = (props: Props): JSX.Element => {
       <div className="docs-body-minimal">
         <main id="mainContent">
           <h1>{props.heading}</h1>
-          <CardGroup cardLayout="threeUp" className="bsds-mt-6x">
+          <CardGroup cardLayout="twoUp" className="bsds-mt-4x">
             {groupedItems.map((group) => (
               <Fragment key={`group${group[0].id}`}>
                 {group

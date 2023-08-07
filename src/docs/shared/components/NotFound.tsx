@@ -6,7 +6,7 @@ const NotFound = (): JSX.Element => {
     <Layout>
       <div className="docs-body-minimal">
         <main id="mainContent">
-          <h1>Oops!</h1>
+          <h1>Page not found</h1>
           <p>Looks like this page doesn&apos;t exist.</p>
           <Link to="/">Go to the home page</Link>
         </main>
