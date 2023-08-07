@@ -25,7 +25,7 @@ const ConstrainedNavPrimary = (): JSX.Element => {
         utilityItems={utilityData}
         location={location}
         isActiveNode={(node: NavNode, ref: RefObject<HTMLAnchorElement>) => isActiveNode(node, ref, location)}
-        navigateToSearchResult={(result) => navigate(result.to as string)}
+        navigateToSearchResult={(result) => navigate(result?.to as string)}
         isConstrained
       />
     </Example>
