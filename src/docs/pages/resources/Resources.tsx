@@ -46,6 +46,10 @@ const Resources = (): JSX.Element => {
         to: basePath + '/about-anatomy'
       },
       {
+        text: 'Accessibility statement',
+        to: basePath + '/accessibility-statement'
+      },
+      {
         text: 'Community',
         to: basePath + '/community'
       },
