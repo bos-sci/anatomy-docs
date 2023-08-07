@@ -8,3 +8,7 @@ package = "@algolia/netlify-plugin-crawler"
   [plugins.inputs]
   branches = ['master', 'develop']
   renderJavaScript = true
+
+[build]
+  publish = "docs/build"
+  command = "npm run build:docs"

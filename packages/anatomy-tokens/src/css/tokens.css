@@ -1,0 +1,45 @@
+/* stylelint-disable media-feature-name-value-allowed-list */
+:root {
+  /* Type scale */
+  --fs-h1: 2.101rem;
+  --fs-h2: 1.811rem;
+  --fs-h3: 1.561rem;
+  --fs-h4: 1.346rem;
+  --fs-h5: 1.16rem;
+  --fs-h6: 1rem;
+  --fs-body: 1rem;
+  --fs-body-assertive: 1.16rem;
+  --fs-body-subtle: 0.906rem;
+  --fs-small: 0.75rem;
+
+  /* Space scale */
+  --space-negative-xs: -0.125rem;
+  --space-negative-xxs: -0.063rem;
+  --space-xxs: 0.063rem;
+  --space-xs: 0.125rem;
+  --space-sm: 0.25rem;
+  --space-md: 0.5rem;
+  --space-lg: 0.75rem;
+  --space-2x: 1rem;
+  --space-3x: 1.5rem;
+  --space-4x: 2rem;
+  --space-6x: 3rem;
+  --space-8x: 4rem;
+  --space-12x: 6rem;
+  --space-15x: 7.5rem;
+}
+
+/* Breakpoint lg */
+@media (min-width: 62rem) {
+  :root {
+    /* Type scale */
+    --fs-h1: 2.574rem;
+    --fs-h2: 2.181rem;
+    --fs-h3: 1.848rem;
+    --fs-h4: 1.5666rem;
+    --fs-h5: 1.328rem;
+    --fs-h6: 1.125rem;
+    --fs-body: 1.125rem;
+    --fs-body-assertive: 1.328rem;
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@boston-scientific/anatomy-tokens",
+  "version": "3.1.0",
+  "description": "Design tokens for Boston Scientific's Anatomy Design System",
+  "main": "index.js",
+  "files": [
+    "/lib"
+  ],
+  "scripts": {
+    "sass": "sass build/global.scss:build/global.css --watch",
+    "build": "node scss-to-css.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "version": "node updateVersions.js && git add README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bos-sci/anatomy-tokens.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bos-sci/anatomy-tokens/issues"
+  },
+  "homepage": "https://github.com/bos-sci/anatomy-tokens#readme",
+  "type": "module",
+  "devDependencies": {
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.23",
+    "postcss-cli": "^10.1.0",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "sass": "^1.62.1"
+  }
+}
