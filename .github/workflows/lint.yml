@@ -29,8 +29,10 @@ jobs:
         run: npm ci
 
       - name: Run linters
-        working-directory: ./docs
-        run: |
-          npm run format:check
-          npm run lint:scripts
-          npm run lint:styles
+        uses: wearerequired/lint-action@v2
+        with:
+          eslint: true
+          eslint_extensions: js,ts,tsx
+          prettier: true
+          stylelint: true
+          stylelint_extensions: css,scss
