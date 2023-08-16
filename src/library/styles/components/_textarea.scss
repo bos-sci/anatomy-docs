@@ -1,0 +1,28 @@
+.bsds-textarea {
+  @extend %field-control;
+  max-width: 100%;
+  min-width: calc(space(12x) * 3 + space(3x));
+  min-height: space(12x);
+
+  &::placeholder {
+    color: $text-color-subtle;
+  }
+
+  &:read-only {
+    background: $neutral-95;
+
+    &:hover {
+      border-color: $border-color-action;
+      cursor: not-allowed;
+    }
+
+    &:focus {
+      @include focus-readonly;
+    }
+  }
+
+  &:hover,
+  &:active {
+    border-color: $border-color-action;
+  }
+}
