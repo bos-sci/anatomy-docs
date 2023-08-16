@@ -22,7 +22,7 @@ interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   forceValidation?: boolean;
 }
 
-let inputId = 0;
+let textAreaId = 0;
 
 const TextArea = forwardRef(
   (
@@ -105,7 +105,7 @@ const TextArea = forwardRef(
 
     // On component mount
     useEffect(() => {
-      const idNum = ++inputId;
+      const idNum = ++textAreaId;
       setHelpTextId('inputHelpText' + idNum);
       setErrorTextId('inputErrorText' + idNum);
     }, []);

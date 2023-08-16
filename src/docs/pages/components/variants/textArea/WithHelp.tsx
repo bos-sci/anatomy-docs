@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import TextArea from 'library/components/TextArea';
 import Example from 'docs/shared/components/Example';
 
-const DefaultTextArea = (): JSX.Element => {
+const TextAreaWithHelp = (): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -24,4 +24,4 @@ const DefaultTextArea = (): JSX.Element => {
   );
 };
 
-export default DefaultTextArea;
+export default TextAreaWithHelp;

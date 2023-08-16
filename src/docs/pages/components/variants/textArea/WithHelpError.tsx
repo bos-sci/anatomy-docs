@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import TextArea from 'library/components/TextArea';
 import Example from 'docs/shared/components/Example';
 
-const DefaultTextArea = (): JSX.Element => {
+const TextAreaWithHelpError = (): JSX.Element => {
   const errorMessage = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(errorMessage);
 
@@ -30,4 +30,4 @@ const DefaultTextArea = (): JSX.Element => {
   );
 };
 
-export default DefaultTextArea;
+export default TextAreaWithHelpError;

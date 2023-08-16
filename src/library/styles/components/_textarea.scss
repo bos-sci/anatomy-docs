@@ -3,9 +3,15 @@
   max-width: 100%;
   min-width: calc(space(12x) * 3 + space(3x));
   min-height: space(12x);
+  border-color: $neutral-40;
 
   &::placeholder {
     color: $text-color-subtle;
+  }
+
+  &:hover,
+  &:active {
+    border-color: $border-color-action;
   }
 
   &:read-only {
@@ -21,8 +27,30 @@
     }
   }
 
-  &:hover,
-  &:active {
-    border-color: $border-color-action;
+  &:disabled {
+    background: $neutral-95;
+
+    &:hover {
+      border-color: $border-color-subtle;
+      cursor: not-allowed;
+    }
+  }
+
+  &:not(:disabled) {
+    &:not(:read-only) {
+      &[aria-invalid='true'] {
+        border-color: $border-color-error;
+
+        &:hover,
+        &:focus {
+          border-color: $border-color-error;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        border-color: $border-color-action;
+      }
+    }
   }
 }
