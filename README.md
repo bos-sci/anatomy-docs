@@ -102,7 +102,7 @@ Steps for adding a site section that will be accessible from the primary navigat
         1. `initialIdLookup` variable.
         2. Add another `createLookup` function call in `useEffect`.
 3. Update TS interface in `/types/docs.ts`.
-4. Create site section folder in `/docs`.
+4. Create site section folder in `/pages`.
     1. Create Router, redirect to default route.
 5. Add parent routing in `App.tsx`.
 6. Add site section link in `navPrimary.tsx`.
@@ -126,7 +126,7 @@ Steps for adding a new field to an existing section.
 
 ##### Adding a component to the library
 1. Add component in `/library`.
-2. Add subfolder in `/docs/components` with a variants controller, e.g. `_ButtonController.tsx`.
+2. Add subfolder in `/pages/components` with a variants controller, e.g. `_ButtonController.tsx`.
 3. Add variants.
     - Cases in switch case must match variant ids in Contentful (spacing and casing).
 4. Add component to `Preview.tsx`.

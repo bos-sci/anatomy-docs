@@ -3,7 +3,7 @@ build
 coverage
 node_modules
 cypress
-src/docs/shared/types/contentful.ts
+src/shared/types/contentful.ts
 schema.graphql
 **/*.md
 .github
