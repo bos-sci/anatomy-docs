@@ -68,7 +68,6 @@ const App = (): JSX.Element => {
       createLookup(data.codeStandardCollection as Collection, idMap.codeStandards);
       createLookup(data.componentCollection as Collection, idMap.components);
       createLookup(data.resourceCollection as Collection, idMap.resources);
-      console.log(idMap);
 
       setIdLookup(idMap);
       setIsLookupReady(true);
