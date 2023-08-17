@@ -11,7 +11,7 @@ import {
   useRef,
   useState
 } from 'react';
-import { getTextareaValidationMessage } from 'library/helpers/validation';
+import { getValidationMessage } from 'library/helpers/validation';
 import useTextAreaResize from 'library/helpers/useTextAreaResize';
 
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -61,7 +61,7 @@ const TextArea = forwardRef(
       if (onInvalid) {
         onInvalid(e);
       }
-      setValidationMessage(getTextareaValidationMessage(e.target));
+      setValidationMessage(getValidationMessage(e.target));
     };
 
     const handleBlur = (e: FocusEvent<HTMLTextAreaElement>) => {
@@ -131,7 +131,6 @@ const TextArea = forwardRef(
             className="bsds-textarea"
             aria-invalid={!!validationMessage}
             aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
-            rows={1}
             onInvalid={handleInvalid}
             onBlur={handleBlur}
             onChange={handleChange}
