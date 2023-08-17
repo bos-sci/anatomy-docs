@@ -1,7 +1,7 @@
 .bsds-textarea {
   @extend %field-control;
   max-width: 100%;
-  min-width: calc(space(12x) * 3 + space(3x));
+  min-width: 100%;
   min-height: space(12x);
   border-color: $neutral-40;
 
@@ -52,5 +52,9 @@
         border-color: $border-color-action;
       }
     }
+  }
+
+  @media (min-width: $breakpoint-md-min) {
+    min-width: calc(space(12x) * 3 + space(3x));
   }
 }
