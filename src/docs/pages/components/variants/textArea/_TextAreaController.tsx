@@ -1,5 +1,5 @@
 import { VariantProps } from '../Preview';
-import DefaultTextArea from './DefaultTextArea';
+import DefaultTextarea from './DefaultTextarea';
 import WithPlaceholder from './WithPlaceholder';
 import WithHelp from './WithHelp';
 import WithError from './WithError';
@@ -8,7 +8,7 @@ import Disabled from './Disabled';
 import Readonly from './Readonly';
 import Required from './Required';
 
-const TextAreaController = ({ variantId }: VariantProps): JSX.Element => {
+const TextareaController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
     case 'textAreaWithPlaceholderText':
@@ -34,8 +34,8 @@ const TextAreaController = ({ variantId }: VariantProps): JSX.Element => {
       return <Required />;
 
     default:
-      return <DefaultTextArea />;
+      return <DefaultTextarea />;
   }
 };
 
-export default TextAreaController;
+export default TextareaController;

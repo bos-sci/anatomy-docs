@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react';
-import TextArea from 'library/components/TextArea';
+import Textarea from 'library/components/Textarea';
 import Example from 'docs/shared/components/Example';
 
-const TextAreaWithPlaceholder = (): JSX.Element => {
+const TextareaWithPlaceholder = (): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -12,10 +12,10 @@ const TextAreaWithPlaceholder = (): JSX.Element => {
   return (
     <Example>
       <div className="bsds-form-control">
-        <TextArea label="Textarea" placeholder="Placeholder text" value={inputValue} onChange={handleChange} />
+        <Textarea label="Textarea" placeholder="Placeholder text" value={inputValue} onChange={handleChange} />
       </div>
     </Example>
   );
 };
 
-export default TextAreaWithPlaceholder;
+export default TextareaWithPlaceholder;

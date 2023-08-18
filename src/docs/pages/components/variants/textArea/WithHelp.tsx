@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react';
-import TextArea from 'library/components/TextArea';
+import Textarea from 'library/components/Textarea';
 import Example from 'docs/shared/components/Example';
 
-const TextAreaWithHelp = (): JSX.Element => {
+const TextareaWithHelp = (): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -12,8 +12,7 @@ const TextAreaWithHelp = (): JSX.Element => {
   return (
     <Example>
       <div className="bsds-form-control">
-        <TextArea
-          id="textAreaDefault"
+        <Textarea
           label="Textarea"
           value={inputValue}
           helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
@@ -24,4 +23,4 @@ const TextAreaWithHelp = (): JSX.Element => {
   );
 };
 
-export default TextAreaWithHelp;
+export default TextareaWithHelp;

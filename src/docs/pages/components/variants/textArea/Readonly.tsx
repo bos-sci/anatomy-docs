@@ -1,17 +1,17 @@
-import TextArea from 'library/components/TextArea';
+import Textarea from 'library/components/Textarea';
 import Example from 'docs/shared/components/Example';
 
-const ReadonlyTextArea = (): JSX.Element => {
+const ReadonlyTextarea = (): JSX.Element => {
   return (
     <Example>
       <div className="bsds-form-control">
-        <TextArea label="Readonly textarea" readOnly />
+        <Textarea label="Readonly textarea" readOnly />
       </div>
       <div className="bsds-form-control">
-        <TextArea label="Readonly textarea" value="Value" readOnly />
+        <Textarea label="Readonly textarea" value="Value" readOnly />
       </div>
     </Example>
   );
 };
 
-export default ReadonlyTextArea;
+export default ReadonlyTextarea;

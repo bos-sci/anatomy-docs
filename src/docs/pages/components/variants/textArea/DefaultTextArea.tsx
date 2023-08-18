@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react';
-import TextArea from 'library/components/TextArea';
+import Textarea from 'library/components/Textarea';
 import Example from 'docs/shared/components/Example';
 
-const DefaultTextArea = (): JSX.Element => {
+const DefaultTextarea = (): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -12,10 +12,10 @@ const DefaultTextArea = (): JSX.Element => {
   return (
     <Example>
       <div className="bsds-form-control">
-        <TextArea id="textareaDefault" label="Textarea" value={inputValue} onChange={handleChange} />
+        <Textarea id="textareaDefault" label="Textarea" value={inputValue} onChange={handleChange} />
       </div>
     </Example>
   );
 };
 
-export default DefaultTextArea;
+export default DefaultTextarea;

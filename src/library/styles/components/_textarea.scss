@@ -1,13 +1,8 @@
 .bsds-textarea {
   @extend %field-control;
   max-width: 100%;
-  min-width: 100%;
   min-height: space(12x);
   border-color: $neutral-40;
-
-  &::placeholder {
-    color: $text-color-subtle;
-  }
 
   &:hover,
   &:active {
@@ -18,7 +13,6 @@
     background: $neutral-95;
 
     &:hover {
-      border-color: $border-color-action;
       cursor: not-allowed;
     }
 
@@ -36,25 +30,25 @@
     }
   }
 
-  &:not(:disabled) {
-    &:not(:read-only) {
-      &[aria-invalid='true'] {
-        border-color: $border-color-error;
-
-        &:hover,
-        &:focus {
-          border-color: $border-color-error;
-        }
-      }
+  &:not(:disabled),
+  &:not(:read-only) {
+    &[aria-invalid='true'] {
+      border-color: $border-color-error;
 
       &:hover,
       &:focus {
-        border-color: $border-color-action;
+        border-color: $border-color-error;
       }
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $border-color-action;
     }
   }
 
-  @media (min-width: $breakpoint-md-min) {
-    min-width: calc(space(12x) * 3 + space(3x));
+  &-autoresize {
+    @extend .bsds-textarea;
+    resize: none;
   }
 }

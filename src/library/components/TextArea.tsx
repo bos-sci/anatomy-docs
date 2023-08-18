@@ -20,11 +20,12 @@ interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   errorText?: string;
   requiredText?: string;
   forceValidation?: boolean;
+  autoResize?: boolean;
 }
 
 let textAreaId = 0;
 
-const TextArea = forwardRef(
+const Textarea = forwardRef(
   (
     {
       label,
@@ -32,6 +33,7 @@ const TextArea = forwardRef(
       errorText,
       requiredText = 'required',
       forceValidation = false,
+      autoResize = false,
       onInvalid,
       onBlur,
       onChange,
@@ -46,7 +48,7 @@ const TextArea = forwardRef(
     const [isDirty, setIsDirty] = useState(false);
 
     const textareaEl = useRef<HTMLTextAreaElement>(null);
-    useTextAreaResize(textareaEl.current, value);
+    useTextAreaResize(textareaEl.current, value, autoResize);
 
     const validate = useCallback(() => {
       if (textareaEl.current) {
@@ -128,7 +130,7 @@ const TextArea = forwardRef(
                 }
               }
             }}
-            className="bsds-textarea"
+            className={autoResize ? 'bsds-textarea-autoresize' : 'bsds-textarea'}
             aria-invalid={!!validationMessage}
             aria-describedby={`${validationMessage ? errorTextId : ''} ${helpText ? helpTextId : ''}`}
             onInvalid={handleInvalid}
@@ -152,5 +154,5 @@ const TextArea = forwardRef(
   }
 );
 
-TextArea.displayName = 'TextArea';
-export default TextArea;
+Textarea.displayName = 'Textarea';
+export default Textarea;

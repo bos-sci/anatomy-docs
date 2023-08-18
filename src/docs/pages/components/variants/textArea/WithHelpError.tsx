@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react';
-import TextArea from 'library/components/TextArea';
+import Textarea from 'library/components/Textarea';
 import Example from 'docs/shared/components/Example';
 
-const TextAreaWithHelpError = (): JSX.Element => {
+const TextareaWithHelpError = (): JSX.Element => {
   const errorMessage = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(errorMessage);
 
@@ -17,7 +17,7 @@ const TextAreaWithHelpError = (): JSX.Element => {
   return (
     <Example>
       <div className="bsds-form-control">
-        <TextArea
+        <Textarea
           label="Textarea"
           errorText={errorText}
           defaultValue="Invalid value"
@@ -30,4 +30,4 @@ const TextAreaWithHelpError = (): JSX.Element => {
   );
 };
 
-export default TextAreaWithHelpError;
+export default TextareaWithHelpError;
