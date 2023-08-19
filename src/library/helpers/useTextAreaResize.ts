@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 // Automatically resizes height of TextArea when the value changes.
-const useTextAreaResize = (textAreaRef: HTMLTextAreaElement | null, value: string, resize: boolean) => {
+const useTextareaResize = (textAreaRef: HTMLTextAreaElement | null, value: string, resize: boolean) => {
   useEffect(() => {
     if (textAreaRef && resize) {
       // reset height to use scrollHeight value
@@ -12,4 +12,4 @@ const useTextAreaResize = (textAreaRef: HTMLTextAreaElement | null, value: strin
   }, [textAreaRef, value, resize]);
 };
 
-export default useTextAreaResize;
+export default useTextareaResize;

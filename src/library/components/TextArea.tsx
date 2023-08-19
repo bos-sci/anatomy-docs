@@ -12,7 +12,7 @@ import {
   useState
 } from 'react';
 import { getValidationMessage } from 'library/helpers/validation';
-import useTextAreaResize from 'library/helpers/useTextAreaResize';
+import useTextareaResize from 'library/helpers/useTextareaResize';
 
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;
@@ -48,7 +48,7 @@ const Textarea = forwardRef(
     const [isDirty, setIsDirty] = useState(false);
 
     const textareaEl = useRef<HTMLTextAreaElement>(null);
-    useTextAreaResize(textareaEl.current, value, autoResize);
+    useTextareaResize(textareaEl.current, value, autoResize);
 
     const validate = useCallback(() => {
       if (textareaEl.current) {

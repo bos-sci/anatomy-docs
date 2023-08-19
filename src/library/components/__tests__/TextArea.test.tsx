@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react';
 import Textarea from 'library/components/Textarea';
 
 describe('Textarea', () => {
-  it('Renders a blank input field by default', () => {
-    render(<Textarea label="Default Input" />);
-    expect(screen.getByLabelText('Default Input')).toBeInTheDocument();
+  it('Renders a blank textarea field by default', () => {
+    render(<Textarea label="Default textarea" />);
+    expect(screen.getByLabelText('Default textarea')).toBeInTheDocument();
   });
   it("renders an error node when 'forceValidation' is true and 'errorText' is present", () => {
     render(<Textarea label="Error Sample" errorText="Error Text" forceValidation />);
