@@ -13,32 +13,32 @@ import Required from './Required';
 const TextareaController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     // Modifiers
-    case 'textAreaWithPlaceholderText':
+    case 'textareaWithPlaceholderText':
       return <WithPlaceholder />;
 
-    case 'textAreaWithHelpText':
+    case 'textareaWithHelpText':
       return <WithHelp />;
 
-    case 'textAreaWithErrorMessage':
+    case 'textareaWithErrorMessage':
       return <WithError />;
 
-    case 'textAreaWithHelpTextAndErrorMessage':
+    case 'textareaWithHelpTextAndErrorMessage':
       return <WithHelpError />;
 
-    case 'textAreaWithManualResize':
+    case 'textareaWithManualResize':
       return <WithManualResize />;
 
-    case 'textAreaWithAutoResize':
+    case 'textareaWithAutoResize':
       return <WithAutoResize />;
 
     // States
-    case 'textAreaDisabled':
+    case 'textareaDisabled':
       return <Disabled />;
 
-    case 'textAreaReadonly':
+    case 'textareaReadonly':
       return <Readonly />;
 
-    case 'textAreaRequired':
+    case 'textareaRequired':
       return <Required />;
 
     default:

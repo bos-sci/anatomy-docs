@@ -2,18 +2,18 @@
   @extend %field-control;
   max-width: 100%;
   min-height: space(12x);
-  border-color: $neutral-40;
 
   &:hover,
   &:active {
-    border-color: $border-color-action;
+    &:not(:read-only) {
+      border-color: $border-color-action;
+    }
   }
 
   &:read-only {
     background: $neutral-95;
 
     &:hover {
-      border-color: $neutral-40;
       cursor: not-allowed;
     }
 
@@ -22,24 +22,10 @@
     }
   }
 
-  &:disabled {
-    background: $neutral-95;
-
-    &:hover {
-      border-color: $border-color-subtle;
-      cursor: not-allowed;
-    }
-  }
-
   &:not(:disabled),
   &:not(:read-only) {
     &[aria-invalid='true'] {
       border-color: $border-color-error;
-
-      &:hover,
-      &:focus {
-        border-color: $border-color-error;
-      }
     }
   }
 
