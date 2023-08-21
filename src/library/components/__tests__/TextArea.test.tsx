@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Textarea from 'library/components/Textarea';
+import Textarea from '../Textarea';
 
 describe('Textarea', () => {
   it('Renders a blank textarea field by default', () => {
