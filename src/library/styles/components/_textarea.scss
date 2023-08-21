@@ -13,6 +13,7 @@
     background: $neutral-95;
 
     &:hover {
+      border-color: $neutral-40;
       cursor: not-allowed;
     }
 
@@ -39,11 +40,6 @@
       &:focus {
         border-color: $border-color-error;
       }
-    }
-
-    &:hover,
-    &:focus {
-      border-color: $border-color-action;
     }
   }
 

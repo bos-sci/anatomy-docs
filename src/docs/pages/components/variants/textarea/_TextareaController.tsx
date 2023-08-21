@@ -4,6 +4,8 @@ import WithPlaceholder from './WithPlaceholder';
 import WithHelp from './WithHelp';
 import WithError from './WithError';
 import WithHelpError from './WithHelpError';
+import WithManualResize from './WithManualResize';
+import WithAutoResize from './WithAutoResize';
 import Disabled from './Disabled';
 import Readonly from './Readonly';
 import Required from './Required';
@@ -22,6 +24,12 @@ const TextareaController = ({ variantId }: VariantProps): JSX.Element => {
 
     case 'textAreaWithHelpTextAndErrorMessage':
       return <WithHelpError />;
+
+    case 'textAreaWithManualResize':
+      return <WithManualResize />;
+
+    case 'textAreaWithAutoResize':
+      return <WithAutoResize />;
 
     // States
     case 'textAreaDisabled':
