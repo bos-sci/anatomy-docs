@@ -9,6 +9,7 @@ import RadioGroup from 'library/components/RadioGroup';
 import Example from 'docs/shared/components/Example';
 import Select from 'library/components/Select';
 import Option from 'library/components/Option';
+import Textarea from 'library/components/Textarea';
 
 interface ADSInputElement extends HTMLInputElement {
   validate: () => void;
@@ -53,6 +54,9 @@ const DefaultForm = () => {
         </div>
         <div className="bsds-form-control">
           <InputText label="Disabled text input" disabled />
+        </div>
+        <div className="bsds-form-control">
+          <Textarea label="Textarea" />
         </div>
         <div className="bsds-form-control">
           <Select id="optionDefault" label="Select">

@@ -99,7 +99,8 @@ const Preview = (props: Props): JSX.Element => {
       TagController: lazy(() => import('./tag/_TagController')),
       DefaultNavTertiary: lazy(() => import('./navTertiary/DefaultNavTertiary')),
       InputTextController: lazy(() => import('./inputText/_InputTextController')),
-      SelectController: lazy(() => import('./select/_SelectController'))
+      SelectController: lazy(() => import('./select/_SelectController')),
+      TextareaController: lazy(() => import('./textarea/_TextareaController'))
     };
 
     if (props.shouldLinkToExamples) {
@@ -212,6 +213,10 @@ const Preview = (props: Props): JSX.Element => {
 
         case 'tertiary-navigation':
           setRenderedComponent(<ComponentControllers.DefaultNavTertiary />);
+          break;
+
+        case 'textarea':
+          setRenderedComponent(<ComponentControllers.TextareaController variantId={variantId} />);
           break;
 
         case 'text-input':
