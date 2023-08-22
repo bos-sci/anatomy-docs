@@ -6,7 +6,11 @@
     linear-gradient(135deg, rgba($neutral-95, 0.5) 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, rgba($neutral-95, 0.5) 75%),
     linear-gradient(135deg, transparent 75%, rgba($neutral-95, 0.5) 75%);
-  background-position: 0 0, space(lg) 0, space(lg) calc(0rem - space(lg)), 0 space(lg);
+  background-position:
+    0 0,
+    space(lg) 0,
+    space(lg) calc(0rem - space(lg)),
+    0 space(lg);
   background-size: space(3x) space(3x);
 
   &.dark {
