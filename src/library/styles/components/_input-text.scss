@@ -1,6 +1,10 @@
 .bsds-input {
   @extend %field-control;
 
+  &::placeholder {
+    color: $text-color-subtle;
+  }
+
   &:read-only {
     background: $neutral-95;
 

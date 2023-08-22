@@ -9,10 +9,6 @@
   font-size: inherit;
   line-height: inherit;
 
-  &::placeholder {
-    color: $text-color-subtle;
-  }
-
   &:focus {
     @include focus-default;
   }
