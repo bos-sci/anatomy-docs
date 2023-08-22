@@ -9,6 +9,7 @@ import { RadioGroup } from '@boston-scientific/anatomy-react';
 import Example from 'shared/components/Example';
 import { Select } from '@boston-scientific/anatomy-react';
 import { Option } from '@boston-scientific/anatomy-react';
+import { Textarea } from '@boston-scientific/anatomy-react';
 
 interface ADSInputElement extends HTMLInputElement {
   validate: () => void;
@@ -53,6 +54,9 @@ const DefaultForm = () => {
         </div>
         <div className="bsds-form-control">
           <InputText label="Disabled text input" disabled />
+        </div>
+        <div className="bsds-form-control">
+          <Textarea label="Textarea" />
         </div>
         <div className="bsds-form-control">
           <Select id="optionDefault" label="Select">
