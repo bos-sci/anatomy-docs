@@ -90,10 +90,6 @@ const Components = (): JSX.Element => {
             to: basePath + '/form-controls/select'
           },
           {
-            text: 'Textarea',
-            to: basePath + '/form-controls/textarea'
-          },
-          {
             text: 'Text input',
             to: basePath + '/form-controls/text-input'
           }
