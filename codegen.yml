@@ -4,10 +4,9 @@ schema:
       headers:
         Authorization: 'Bearer ${REACT_APP_CONTENTFUL_TOKEN}'
 documents:
-  - 'src/**/!(*.d).{ts,tsx}'
   - 'src/**/*.graphql'
 generates:
-  src/docs/shared/types/contentful.ts:
+  src/shared/types/contentful.ts:
     plugins:
       - typescript
       - typescript-operations

@@ -12,7 +12,7 @@
 /build
 
 # versions file
-/src/docs/shared/versions.ts
+/src/shared/versions.ts
 
 # release date file
 /src/utils/release-date.ts
