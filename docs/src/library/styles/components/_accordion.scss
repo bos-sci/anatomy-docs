@@ -1,44 +1,13 @@
 .bsds-accordion {
   width: 100%;
 
-  &:last-child {
+  > :last-child {
     border-bottom: $border-width-xxs solid $border-color-subtle;
   }
 
   &.is-contained {
-    border: $border-width-xxs solid $border-color-subtle;
-    padding: space(sm) space(lg);
-
-    .bsds-accordion-heading {
-      .bsds-accordion-trigger {
-        padding: space(lg) space(md);
-      }
-
-      &[class*='bsds-accordion-stoplight'] {
-        .bsds-accordion-trigger {
-          padding: 0;
-          padding-right: space(md);
-
-          svg {
-            margin-right: 0;
-          }
-        }
-
-        .bsds-accordion-trigger-text {
-          padding: space(lg) 0;
-        }
-      }
-
-      &:first-of-type {
-        .bsds-accordion-trigger {
-          border-top: 0;
-        }
-      }
-    }
-
-    .bsds-accordion-panel-body {
-      padding: space(sm) space(md) space(2x);
-    }
+    border-right: $border-width-xxs solid $border-color-subtle;
+    border-left: $border-width-xxs solid $border-color-subtle;
   }
 }
 
@@ -156,7 +125,7 @@
 
   ~ .bsds-accordion-panel {
     .bsds-accordion-panel-body {
-      padding: space(md) space(8x) space(lg);
+      padding: space(md) space(8x) space(3x);
     }
   }
 }
