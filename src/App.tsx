@@ -35,6 +35,19 @@ const initialIdLookup: IdLookup = {
 
 export const IdLookupContext = createContext<IdLookup>(initialIdLookup);
 
+interface RedirectProps {
+  href: string;
+}
+
+const Redirect = (props: RedirectProps) => {
+  window.location.replace(props.href);
+  return (
+    <p>
+      Redirecting to <a href={props.href}>{props.href}</a>
+    </p>
+  );
+};
+
 const App = (): JSX.Element => {
   const [idLookup, setIdLookup] = useState<IdLookup>({} as IdLookup);
   const [isLookupReady, setIsLookupReady] = useState(false);
@@ -87,6 +100,16 @@ const App = (): JSX.Element => {
           >
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route
+                path="storybook"
+                element={
+                  <Redirect
+                    href={`https://${
+                      process.env.REACT_APP_DEVELOPMENT_MODE === 'production' ? 'main' : 'develop'
+                    }--64e769384ef6b440f819fcec.chromatic.com`}
+                  />
+                }
+              />
 
               <Route path="components">
                 <Route path="" element={<LandingPage heading="Components" collection="components" />} />
