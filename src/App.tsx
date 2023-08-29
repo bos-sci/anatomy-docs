@@ -105,7 +105,7 @@ const App = (): JSX.Element => {
                 element={
                   <Redirect
                     href={`https://${
-                      process.env.NODE_ENV === 'production' ? 'main' : 'develop'
+                      process.env.REACT_APP_DEVELOPMENT_MODE === 'production' ? 'main' : 'develop'
                     }--64e769384ef6b440f819fcec.chromatic.com`}
                   />
                 }
