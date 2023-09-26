@@ -87,12 +87,12 @@ const Home = (): JSX.Element => {
               />
               <ContentCard
                 texts={{
-                  cardTitle: 'Code standards',
-                  cardDescription: 'Guidelines and best practices for front-end web development at Boston Scientific.'
+                  cardTitle: 'Installation',
+                  cardDescription: 'Implementation instructions for using Anatomy.'
                 }}
                 headingLevel="h3"
-                actionLinkText="Read our code standards"
-                linkHref="/code-standards/general"
+                actionLinkText="Install the packages"
+                linkHref="/resources/developers"
                 tag={<Tag>Web</Tag>}
                 actionLink
                 dropShadow
