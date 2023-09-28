@@ -31,7 +31,7 @@ Detailed below is a brief map of the application detailing the important files a
 - **src/**
   - **assets/** Fonts & images
   - **pages/** Where all the docs code lives. Sub folders break app into sections based on the primary nav routes
-    - **components/variations/** All the different implementations of component variations e.g. primary button and secondary button
+    - **components/variants/** All the different implementations of component variants e.g. primary button and secondary button
   - **shared/** Components, custom hooks, and types used multiple times throughout the application
   - **styles/** Global stylesheets used both in docs and library
   - **utils/** Utility scripts for build and deploy purposes
