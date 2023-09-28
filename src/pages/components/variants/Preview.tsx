@@ -83,6 +83,7 @@ const Preview = (props: Props): JSX.Element => {
       InputCheckboxController: lazy(() => import('./inputCheckbox/_inputCheckboxController')),
       InputCheckboxGroupController: lazy(() => import('./inputCheckboxGroup/_InputCheckboxGroupController')),
       DefaultForm: lazy(() => import('./forms/DefaultForm')),
+      FieldsetController: lazy(() => import('./fieldset//_FieldsetController')),
       ImageController: lazy(() => import('./image/_ImageController')),
       LinkController: lazy(() => import('./link/_LinkController')),
       ModalController: lazy(() => import('./modals/_modalController')),
@@ -99,8 +100,8 @@ const Preview = (props: Props): JSX.Element => {
       TagController: lazy(() => import('./tag/_TagController')),
       DefaultNavTertiary: lazy(() => import('./navTertiary/DefaultNavTertiary')),
       InputTextController: lazy(() => import('./inputText/_InputTextController')),
-      SelectController: lazy(() => import('./select/_SelectController')),
-      TextareaController: lazy(() => import('./textarea/_TextareaController'))
+      TextareaController: lazy(() => import('./textarea/_TextareaController')),
+      SelectController: lazy(() => import('./select/_SelectController'))
     };
 
     if (props.shouldLinkToExamples) {
@@ -149,6 +150,10 @@ const Preview = (props: Props): JSX.Element => {
 
         case 'form':
           setRenderedComponent(<ComponentControllers.DefaultForm />);
+          break;
+
+        case 'fieldset':
+          setRenderedComponent(<ComponentControllers.FieldsetController variantId={variantId} />);
           break;
 
         case 'image':
