@@ -74,6 +74,10 @@ const Components = (): JSX.Element => {
             to: basePath + '/form-controls/form'
           },
           {
+            text: 'Fieldset',
+            to: basePath + '/form-controls/fieldset'
+          },
+          {
             text: 'Checkbox',
             to: basePath + '/form-controls/checkbox'
           },
