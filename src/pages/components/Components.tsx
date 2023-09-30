@@ -157,6 +157,10 @@ const Components = (): JSX.Element => {
         ]
       },
       {
+        text: 'Ribbon',
+        to: basePath + '/ribbon'
+      },
+      {
         text: 'Stoplight',
         to: basePath + '/stoplight'
       },
