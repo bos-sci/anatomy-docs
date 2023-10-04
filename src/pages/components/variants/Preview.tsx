@@ -92,6 +92,7 @@ const Preview = (props: Props): JSX.Element => {
       NavPrimaryController: lazy(() => import('./navPrimary/_NavPrimaryController')),
       ProductCardController: lazy(() => import('./productCard/_ProductCardController')),
       InputRadioGroupController: lazy(() => import('./inputRadioGroup/_InputRadioGroupController')),
+      RibbonController: lazy(() => import('./ribbon/_RibbonController')),
       DefaultSearch: lazy(() => import('./search/DefaultSearch')),
       DefaultNavSecondary: lazy(() => import('./navSecondary/DefaultNavSecondary')),
       DefaultSkipLink: lazy(() => import('./skipLink/DefaultSkipLink')),
@@ -186,6 +187,10 @@ const Preview = (props: Props): JSX.Element => {
 
         case 'radio-group':
           setRenderedComponent(<ComponentControllers.InputRadioGroupController variantId={variantId} />);
+          break;
+
+        case 'ribbon':
+          setRenderedComponent(<ComponentControllers.RibbonController variantId={variantId} />);
           break;
 
         case 'search':
