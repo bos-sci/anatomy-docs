@@ -1,0 +1,40 @@
+.docs-home {
+  position: relative;
+  display: grid;
+  flex: 1;
+
+  .docs-container {
+    display: flex;
+    justify-content: center;
+    padding: space(2x) space(4x) space(8x);
+
+    &.bg-gradient-assertive {
+      background: $gradient-assertive;
+
+      .docs-page-title,
+      .docs-page-description {
+        color: $text-color-ghost;
+      }
+    }
+
+    &.bg-action {
+      background: $action-primary-97;
+    }
+
+    .is-constrained {
+      width: var(--app-width);
+    }
+
+    .docs-page-title {
+      margin-top: space(6x);
+    }
+
+    .docs-page-description {
+      max-width: 60ch;
+    }
+  }
+
+  + .docs-footer {
+    margin-top: space(4x);
+  }
+}

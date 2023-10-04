@@ -27,7 +27,7 @@
 
 - Manual
   - Run `npx eslint <file path>` on the command line for every file you change.
-  - Run `npm run lint:style` for stylelint.
+  - Run `npm run lint:styles` for stylelint.
 - Automated
   - If you installed the ESlint and Stylelint extensions for your editor, you should be getting linting options already.
   - Please note: If you don't see stylelint errors in VS Code:

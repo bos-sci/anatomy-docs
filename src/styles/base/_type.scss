@@ -5,8 +5,54 @@ body {
   line-height: 1.5;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include font-family-base-heavy;
+}
+
+h1 {
+  margin: space(8x) 0 0;
+  @include font-size($fs-h1);
+  line-height: 1.4;
+}
+
+h2 {
+  margin: space(6x) 0 0;
+  @include font-size($fs-h2);
+  line-height: 1.4;
+}
+
+h3 {
+  margin: space(6x) 0 0;
+  @include font-size($fs-h3);
+  line-height: 1.4;
+}
+
+h4 {
+  margin: space(4x) 0 0;
+  @include font-size($fs-h4);
+  line-height: 1.4;
+}
+
+h5 {
+  margin: space(3x) 0 0;
+  @include font-size($fs-h5);
+  line-height: 1.5;
+}
+
+h6 {
+  margin: space(3x) 0 0;
+  @include font-size($fs-h6);
+  line-height: 1.5;
+}
+
 p,
-dl {
+dl,
+small {
   margin: space(2x) 0 0;
 }
 
@@ -46,67 +92,17 @@ cite {
   font-style: normal;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.bsds-h1,
-.bsds-h2,
-.bsds-h3,
-.bsds-h4,
-.bsds-h5,
-.bsds-h6 {
-  color: $text-color-primary;
-  @include font-family-base-heavy;
+pre {
+  overflow-x: auto;
 }
 
-h1,
-.bsds-h1 {
-  margin: space(8x) 0 0;
-  @include font-size($fs-h1);
-  line-height: 1.4;
-}
-
-h2,
-.bsds-h2 {
-  margin: space(6x) 0 0;
-  @include font-size($fs-h2);
-  line-height: 1.4;
-}
-
-h3,
-.bsds-h3 {
-  margin: space(6x) 0 0;
-  @include font-size($fs-h3);
-  line-height: 1.4;
-}
-
-h4,
-.bsds-h4 {
-  margin: space(4x) 0 0;
-  @include font-size($fs-h4);
-  line-height: 1.4;
-}
-
-h5,
-.bsds-h5 {
-  margin: space(3x) 0 0;
-  @include font-size($fs-h5);
-  line-height: 1.5;
-}
-
-h6,
-.bsds-h6 {
-  margin: space(3x) 0 0;
-  @include font-size($fs-h6);
-  line-height: 1.5;
+code {
+  color: $code-snippet;
+  word-wrap: break-word;
 }
 
 .bsds-body-assertive {
   margin: space(3x) 0 0;
-  @include font-size($fs-body-assertive);
 
   li {
     &:not(:first-of-type) {
@@ -132,8 +128,6 @@ small,
 }
 
 b,
-strong,
-.bsds-font-weight-bold,
-.bsds-font-weight-heavy {
+strong {
   @include font-family-base-heavy;
 }

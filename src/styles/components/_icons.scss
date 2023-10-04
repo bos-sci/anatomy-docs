@@ -1,0 +1,18 @@
+.docs-icon-decorative,
+.docs-icon-system {
+  display: flex;
+}
+
+.docs-icon-decorative {
+  > img {
+    width: $size-icon-decorative;
+    height: $size-icon-decorative;
+  }
+}
+
+.docs-icon-system {
+  > img {
+    width: $ffs-body-assertive;
+    height: $ffs-body-assertive;
+  }
+}

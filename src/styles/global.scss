@@ -1,7 +1,7 @@
 @import '~@boston-scientific/anatomy-tokens/lib/sass/tokens';
+@import '~@boston-scientific/anatomy-react/lib/styles/library';
 @import './abstracts/abstracts';
 @import './base/base';
 @import './layout/layout';
-@import './themes/markdown-theme'; // theme for code snippets
 @import './components/components';
-@import './utilities/utilities';
+@import './pages/pages';

@@ -30,19 +30,18 @@ Develop | https://develop--anatomydesignsystem.netlify.app | N/A
 Detailed below is a brief map of the application detailing the important files and folders.
 - **src/**
   - **assets/** Fonts & images
-  - **components/** Where all the docs code lives. Sub folders break app into sections based on the primary nav routes
-    - **App.js** Handles routing, base layout, and setting idMap context
-    - **shared/** Components, custom hooks, and types used multiple times throughout the application
-    - **codeStandards/** Code Standards documentation
-    - **components/** Component documentation
-      - **variations/** All the different implementations of component variations e.g. primary button and secondary button
+  - **pages/** Where all the docs code lives. Sub folders break app into sections based on the primary nav routes
+    - **components/variants/** All the different implementations of component variants e.g. primary button and secondary button
+  - **shared/** Components, custom hooks, and types used multiple times throughout the application
   - **styles/** Global stylesheets used both in docs and library
+  - **utils/** Utility scripts for build and deploy purposes
+  - **App.tsx** Handles routing, base layout, and setting idMap context
 
 ### Process
 
 #### Local Setup
 1. Clone this repository.
-2. Get the environment variables from Contentful or a team member.<br />
+2. Get the environment variables from a team member.<br />
 *See [environment variables](#environment-variables) below*
 3. Run `npm install`.
 4. Run `npm start`.
@@ -56,6 +55,11 @@ REACT_APP_CONTENTFUL_MANAGMENT_TOKEN={contentful-management-api-key}
 REACT_APP_CONTENTFUL_ENVIRONMENT={current-working-environment-from-contentful}
 REACT_APP_CONTENTFUL_PREVIEW=false // Set this to true if you want to see draft content from contentful
 REACT_EDITOR=code
+CONTENTFUL_API_TOKEN={contentful-api-token-for-automation}
+REACT_APP_ALGOLIA_ID={algolia-search-id}
+REACT_APP_ALGOLIA_KEY={algolia-search-key}
+REACT_APP_ALGOLIA_INDEX={algolia-search-index-based-on-environment}
+REACT_APP_DEVELOPMENT_MODE=development
 ```
 
 #### Development
@@ -69,7 +73,7 @@ REACT_EDITOR=code
 
 #### Testing
 
-- Unit and component integration tests live in `src/library/components/__tests__`
+- Unit and integration tests live in `__tests__` folders near relevant code e.g. `src/utils/__tests__`
 - End-to-end tests live in `cypress/e2e/`
 
 ##### Unit and Component Integration
@@ -102,7 +106,7 @@ Steps for adding a site section that will be accessible from the primary navigat
         1. `initialIdLookup` variable.
         2. Add another `createLookup` function call in `useEffect`.
 3. Update TS interface in `/types/docs.ts`.
-4. Create site section folder in `/docs`.
+4. Create site section folder in `/pages`.
     1. Create Router, redirect to default route.
 5. Add parent routing in `App.tsx`.
 6. Add site section link in `navPrimary.tsx`.
@@ -124,18 +128,15 @@ Steps for adding a new field to an existing section.
 2. Update `get{Collection}.graphql`.
 3. Be sure to restart your local server to regen Contentful types and clear errors.
 
-##### Adding a component to the library
-1. Add component in `/library`.
-2. Add subfolder in `/docs/components` with a variants controller, e.g. `_ButtonController.tsx`.
-3. Add variants.
+##### Adding a component page
+1. Add subfolder in `/pages/components` with a variants controller, e.g. `_ButtonController.tsx`.
+2. Add variants.
     - Cases in switch case must match variant ids in Contentful (spacing and casing).
-4. Add component to `Preview.tsx`.
+3. Add component to `Preview.tsx`.
     - Case in switch case must match docs site route for that component.
-5. If the examples are external (e.g. primary nav), add the routes to those examples as ignores in SiteImprove.
+4. If the examples are external (e.g. primary nav), add the routes to those examples as ignores in SiteImprove.
 
 #### Deploy to Production
-If the release covers changes to @boston-scientific/anatomy-tokens, ensure the tokens package is released before updating the docs site
-in production.
 1. In Contentful, point the master alias environment at the working environment.
 This environment is now the production environment.
 2. Delete the oldest backup environment.
@@ -144,9 +145,11 @@ This environment is now the production environment.
 new working environment.
 5. Update local .env files with the new working environment name for `REACT_APP_CONTENTFUL_ENVIRONMENT`.
 6. Update `REACT_APP_CONTENTFUL_ENVIRONMENT` environment variable in Netlify with new working environment name for deploy previews, branch deploys, and local development.
-7. Create pull request from develop into master.
-8. Once all tests have passed and the preview is built and reviewed, the PR can be merged.
-9. Checkout and pull master locally, create a tag for the release, `git tag -a vX.Y.Z -m "Summary of release"`, and push `git push origin vX.Y.Z`.
+7. Update version number in package.json in a branch title `release/vX.Y.Z`.
+8. Create pull request from release branch into develop.
+9. Create pull request from develop into master.
+10. Once all tests have passed and the preview is built and reviewed, the PR can be merged.
+11. Create a release in Github attached to a new tag that matches the version number.
 
 In the end we should have 3 environments including master, working environment, and the past 1 version of master.
 
@@ -225,6 +228,10 @@ Try running this (or re-running start) if you suspect data is not updating due t
 
 Creates a sitemap in `public/sitemap.xml`. This runs on build.
 
+### `npm run pre`
+
+Runs necessary scripts for start and build. Will automatically run when needed.
+
 
 ### `npm run eject`
 
@@ -235,6 +242,15 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+### Linters
+- `lint:styles` - run stylelint
+- `fix:styles` run stylelint and auto-fix styles
+- `lint:scripts` - run eslint
+- `fix:scripts` - run eslint and auto-fix scripts
+- `format:check` - run prettier
+- `format:write` - run prettier and auto-format files
+- `lint:all` - run all linters and formatters
 
 ## Learn More
 
