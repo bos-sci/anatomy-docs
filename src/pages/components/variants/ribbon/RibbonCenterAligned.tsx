@@ -4,7 +4,7 @@ import Example from 'shared/components/Example';
 const RibbonCenterAligned = (): JSX.Element => {
   return (
     <Example>
-      <Ribbon textAlign="center">Center aligned Ribbon</Ribbon>
+      <Ribbon isCentered>Center aligned Ribbon</Ribbon>
     </Example>
   );
 };
