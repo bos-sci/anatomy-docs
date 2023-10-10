@@ -14,7 +14,7 @@ const WithHelp = (): JSX.Element => {
   return (
     <Example>
       <Fieldset
-        legend="Fieldset"
+        legend="Legend"
         helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
       >
         <InputText label="Related text input" value={inputValue} onChange={handleChange} />
