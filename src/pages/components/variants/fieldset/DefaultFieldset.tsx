@@ -13,7 +13,7 @@ const DefaultFieldset = (): JSX.Element => {
 
   return (
     <Example>
-      <Fieldset legend="Fieldset">
+      <Fieldset legend="Legend">
         <div className="bsds-form-control">
           <InputText
             id="defaultFieldsetTextInput"
