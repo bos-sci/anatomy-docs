@@ -119,6 +119,10 @@ const Components = (): JSX.Element => {
         text: 'Navigation',
         children: [
           {
+            text: 'Breadcrumbs',
+            to: basePath + '/navigation/breadcrumbs'
+          },
+          {
             text: 'Primary navigation',
             to: basePath + '/navigation/primary-navigation'
           },
