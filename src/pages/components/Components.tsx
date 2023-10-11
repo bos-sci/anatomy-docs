@@ -139,14 +139,6 @@ const Components = (): JSX.Element => {
             to: basePath + '/navigation/wizard-navigation'
           },
           {
-            text: 'Navigation link',
-            to: basePath + '/navigation/navigation-link'
-          },
-          {
-            text: 'Navigation back button',
-            to: basePath + '/navigation/navigation-back-button'
-          },
-          {
             text: 'Search',
             to: basePath + '/navigation/search'
           },

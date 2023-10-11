@@ -4,7 +4,9 @@ import Example from 'shared/components/Example';
 const RibbonShadow = (): JSX.Element => {
   return (
     <Example>
-      <Ribbon withShadow>Ribbon with shadow</Ribbon>
+      <Ribbon variant="informational" withShadow>
+        Ribbon with shadow
+      </Ribbon>
     </Example>
   );
 };

@@ -20,7 +20,7 @@ const WithError = (): JSX.Element => {
 
   return (
     <Example>
-      <Fieldset legend="Fieldset" errorText={errorText}>
+      <Fieldset legend="Legend" errorText={errorText}>
         <InputText label="Related text input" value={inputValue} onChange={handleChange} />
         <Textarea label="Related textarea" />
       </Fieldset>

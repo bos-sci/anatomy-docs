@@ -13,7 +13,7 @@ const Disabled = (): JSX.Element => {
 
   return (
     <Example>
-      <Fieldset legend="Fieldset" disabled>
+      <Fieldset legend="Legend" disabled>
         <div className="bsds-form-control">
           <InputText label="Related text input" value={inputValue} onChange={handleChange} />
         </div>
