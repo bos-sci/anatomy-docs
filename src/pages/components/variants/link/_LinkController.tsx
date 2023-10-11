@@ -4,6 +4,7 @@ import DefaultStyle from './DefaultStyle';
 import SubtleStyle from './SubtleStyle';
 import GhostStyle from './GhostStyle';
 import CtaStyle from './CtaStyle';
+import NavStyle from './NavStyle';
 
 const LinkController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
@@ -16,6 +17,8 @@ const LinkController = ({ variantId }: VariantProps): JSX.Element => {
       return <GhostStyle />;
     case 'linkCta':
       return <CtaStyle />;
+    case 'linkNavigation':
+      return <NavStyle />;
 
     default:
       return <DefaultLink />;

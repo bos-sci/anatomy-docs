@@ -7,6 +7,7 @@ import DefaultStyle from './DefaultStyle';
 import AssertiveStyle from './AssertiveStyle';
 import GhostStyle from './GhostStyle';
 import SubtleStyle from './SubtleStyle';
+import NavBackStyle from './NavBackStyle';
 import Disabled from './Disabled';
 
 const ButtonController = ({ variantId }: VariantProps): JSX.Element => {
@@ -28,6 +29,8 @@ const ButtonController = ({ variantId }: VariantProps): JSX.Element => {
       return <GhostStyle />;
     case 'buttonSubtle':
       return <SubtleStyle />;
+    case 'buttonNavigationBack':
+      return <NavBackStyle />;
 
     // States
     case 'buttonDisabled':

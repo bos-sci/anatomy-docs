@@ -119,10 +119,6 @@ const Components = (): JSX.Element => {
         text: 'Navigation',
         children: [
           {
-            text: 'Breadcrumbs',
-            to: basePath + '/navigation/breadcrumbs'
-          },
-          {
             text: 'Primary navigation',
             to: basePath + '/navigation/primary-navigation'
           },
@@ -137,14 +133,6 @@ const Components = (): JSX.Element => {
           {
             text: 'Wizard navigation',
             to: basePath + '/navigation/wizard-navigation'
-          },
-          {
-            text: 'Navigation link',
-            to: basePath + '/navigation/navigation-link'
-          },
-          {
-            text: 'Navigation back button',
-            to: basePath + '/navigation/navigation-back-button'
           },
           {
             text: 'Search',
