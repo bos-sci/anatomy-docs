@@ -87,8 +87,6 @@ const Preview = (props: Props): JSX.Element => {
       ImageController: lazy(() => import('./image/_ImageController')),
       LinkController: lazy(() => import('./link/_LinkController')),
       ModalController: lazy(() => import('./modals/_modalController')),
-      DefaultNavLink: lazy(() => import('./navLink/DefaultNavLink')),
-      NavBackController: lazy(() => import('./navBack/_NavBackController')),
       NavPrimaryController: lazy(() => import('./navPrimary/_NavPrimaryController')),
       ProductCardController: lazy(() => import('./productCard/_ProductCardController')),
       InputRadioGroupController: lazy(() => import('./inputRadioGroup/_InputRadioGroupController')),
@@ -167,14 +165,6 @@ const Preview = (props: Props): JSX.Element => {
 
         case 'modal':
           setRenderedComponent(<ComponentControllers.ModalController variantId={variantId} />);
-          break;
-
-        case 'navigation-link':
-          setRenderedComponent(<ComponentControllers.DefaultNavLink />);
-          break;
-
-        case 'navigation-back-button':
-          setRenderedComponent(<ComponentControllers.NavBackController variantId={variantId} />);
           break;
 
         case 'primary-navigation':
