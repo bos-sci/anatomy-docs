@@ -2,6 +2,7 @@ import { useState, useEffect, useContext, Fragment } from 'react';
 import { useLocation } from 'react-router-dom';
 import { NavItemSecondary } from '@boston-scientific/anatomy-react';
 import { NavItemTertiary } from '@boston-scientific/anatomy-react';
+
 import Markdown from 'shared/components/Markdown';
 import { GetComponentQuery } from 'shared/types/contentful';
 import useTitle from 'shared/hooks/useTitle';
@@ -11,6 +12,7 @@ import PageTemplate from 'shared/components/PageTemplate';
 import Layout from 'shared/components/Layout';
 import { ComponentContext } from './ComponentsController';
 import Preview from 'pages/components/variants/Preview';
+import { Link } from '@boston-scientific/anatomy-react';
 
 const Components = (): JSX.Element => {
   const location = useLocation();
@@ -191,6 +193,14 @@ const Components = (): JSX.Element => {
           navSecondaryItems={navItems}
           navTertiaryItems={headings}
         >
+          {/* Storybook Link */}
+          {(componentData.storybookLink && (
+            <Link href="docs-demo-link" className="docs-storybook-link">
+              View in Storybook
+            </Link>
+          )) ||
+            false}
+
           {/* Default Preview */}
           {!!componentData.name && <Preview shouldLinkToExamples={componentData.shouldLinkToExamples || false} />}
 

@@ -2,6 +2,7 @@ query getComponent($id: String!, $preview: Boolean) {
   component(id: $id, preview: $preview) {
     name
     leadParagraph
+    storybookLink
     modifiersCollection {
       items {
         name
