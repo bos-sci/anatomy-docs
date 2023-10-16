@@ -215,9 +215,9 @@ const Components = (): JSX.Element => {
         >
           {/* Storybook Link */}
           {(componentData.storybookLink && storybookComponent !== '' && (
-            <div className="docs-storybook-link">
-              <Link href={`${storybookComponent}${componentData?.name}--docs`}>View in Storybook</Link>
-            </div>
+            <Link className="docs-storybook-link" href={`${storybookComponent}${componentData?.name}--docs`}>
+              View in Storybook
+            </Link>
           )) ||
             false}
 
