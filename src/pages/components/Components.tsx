@@ -70,8 +70,8 @@ const Components = (): JSX.Element => {
         ]
       },
       {
-        text: 'Dropdown',
-        to: basePath + '/dropdown'
+        text: 'Dropdown menu',
+        to: basePath + '/dropdown-menu'
       },
       {
         text: 'Form controls',
@@ -126,7 +126,7 @@ const Components = (): JSX.Element => {
         text: 'Navigation',
         children: [
           {
-            text: 'Breadcrumb',
+            text: 'Breadcrumbs',
             to: basePath + '/navigation/breadcrumb'
           },
           {
