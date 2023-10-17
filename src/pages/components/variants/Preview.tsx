@@ -119,7 +119,7 @@ const Preview = (props: Props): JSX.Element => {
           setRenderedComponent(<ComponentControllers.AccordionController variantId={variantId} />);
           break;
 
-        case 'breadcrumbs':
+        case 'breadcrumb':
           setRenderedComponent(<ComponentControllers.BreadcrumbController variantId={variantId} />);
           break;
 
@@ -135,7 +135,7 @@ const Preview = (props: Props): JSX.Element => {
           setRenderedComponent(<ComponentControllers.CardGroupController variantId={variantId} />);
           break;
 
-        case 'dropdown-menu':
+        case 'dropdown':
           setRenderedComponent(<ComponentControllers.DropdownController variantId={variantId} />);
           break;
 

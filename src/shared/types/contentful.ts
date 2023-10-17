@@ -328,7 +328,6 @@ export type Component = Entry & {
   pageProperties?: Maybe<PageProperties>;
   shouldLinkToExamples?: Maybe<Scalars['Boolean']>;
   statesCollection?: Maybe<ComponentStatesCollection>;
-  storybookLink?: Maybe<Scalars['Boolean']>;
   stylesCollection?: Maybe<ComponentStylesCollection>;
   sys: Sys;
   usage?: Maybe<Scalars['String']>;
@@ -425,12 +424,6 @@ export type ComponentStatesCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ComponentStateFilter>;
-};
-
-
-/** The documentation page content for a component. [See type definition](https://app.contentful.com/spaces/ly1cjdv8rvqt/content_types/component) */
-export type ComponentStorybookLinkArgs = {
-  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -545,9 +538,6 @@ export type ComponentFilter = {
   shouldLinkToExamples_not?: InputMaybe<Scalars['Boolean']>;
   states?: InputMaybe<CfComponentStateNestedFilter>;
   statesCollection_exists?: InputMaybe<Scalars['Boolean']>;
-  storybookLink?: InputMaybe<Scalars['Boolean']>;
-  storybookLink_exists?: InputMaybe<Scalars['Boolean']>;
-  storybookLink_not?: InputMaybe<Scalars['Boolean']>;
   styles?: InputMaybe<CfComponentStyleNestedFilter>;
   stylesCollection_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
@@ -705,8 +695,6 @@ export enum ComponentModifierLinkingCollectionsComponentCollectionOrder {
   NameDesc = 'name_DESC',
   ShouldLinkToExamplesAsc = 'shouldLinkToExamples_ASC',
   ShouldLinkToExamplesDesc = 'shouldLinkToExamples_DESC',
-  StorybookLinkAsc = 'storybookLink_ASC',
-  StorybookLinkDesc = 'storybookLink_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -766,8 +754,6 @@ export enum ComponentOrder {
   NameDesc = 'name_DESC',
   ShouldLinkToExamplesAsc = 'shouldLinkToExamples_ASC',
   ShouldLinkToExamplesDesc = 'shouldLinkToExamples_DESC',
-  StorybookLinkAsc = 'storybookLink_ASC',
-  StorybookLinkDesc = 'storybookLink_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -889,8 +875,6 @@ export enum ComponentStateLinkingCollectionsComponentCollectionOrder {
   NameDesc = 'name_DESC',
   ShouldLinkToExamplesAsc = 'shouldLinkToExamples_ASC',
   ShouldLinkToExamplesDesc = 'shouldLinkToExamples_DESC',
-  StorybookLinkAsc = 'storybookLink_ASC',
-  StorybookLinkDesc = 'storybookLink_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1054,8 +1038,6 @@ export enum ComponentStyleLinkingCollectionsComponentCollectionOrder {
   NameDesc = 'name_DESC',
   ShouldLinkToExamplesAsc = 'shouldLinkToExamples_ASC',
   ShouldLinkToExamplesDesc = 'shouldLinkToExamples_DESC',
-  StorybookLinkAsc = 'storybookLink_ASC',
-  StorybookLinkDesc = 'storybookLink_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1618,8 +1600,6 @@ export enum PagePropertiesLinkingCollectionsComponentCollectionOrder {
   NameDesc = 'name_DESC',
   ShouldLinkToExamplesAsc = 'shouldLinkToExamples_ASC',
   ShouldLinkToExamplesDesc = 'shouldLinkToExamples_DESC',
-  StorybookLinkAsc = 'storybookLink_ASC',
-  StorybookLinkDesc = 'storybookLink_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -2190,7 +2170,7 @@ export type GetComponentQueryVariables = Exact<{
 }>;
 
 
-export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, storybookLink?: boolean | null, shouldLinkToExamples?: boolean | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, group?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
+export type GetComponentQuery = { __typename?: 'Query', component?: { __typename?: 'Component', name?: string | null, leadParagraph?: string | null, shouldLinkToExamples?: boolean | null, usage?: string | null, usageDo?: string | null, usageDont?: string | null, interactions?: string | null, contentGuidelines?: string | null, contentGuidelinesDo?: string | null, contentGuidelinesDont?: string | null, userResearch?: string | null, accessibility?: string | null, group?: string | null, modifiersCollection?: { __typename?: 'ComponentModifiersCollection', items: Array<{ __typename?: 'ComponentModifier', name?: string | null, description?: string | null, modifierId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, stylesCollection?: { __typename?: 'ComponentStylesCollection', items: Array<{ __typename?: 'ComponentStyle', name?: string | null, description?: string | null, styleId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, statesCollection?: { __typename?: 'ComponentStatesCollection', items: Array<{ __typename?: 'ComponentState', name?: string | null, description?: string | null, stateId?: string | null, isPreviewDarkThemed?: boolean | null } | null> } | null, pageProperties?: { __typename?: 'PageProperties', seoMetaDescription?: string | null } | null, sys: { __typename?: 'Sys', id: string, publishedAt?: any | null } } | null };
 
 export type GetContentGuidelineQueryVariables = Exact<{
   id: Scalars['String'];
@@ -2347,7 +2327,6 @@ export const GetComponentDocument = gql`
   component(id: $id, preview: $preview) {
     name
     leadParagraph
-    storybookLink
     modifiersCollection {
       items {
         name

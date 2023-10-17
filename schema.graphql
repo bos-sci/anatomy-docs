@@ -201,7 +201,6 @@ type Component implements Entry {
   pageProperties(locale: String, preview: Boolean, where: PagePropertiesFilter): PageProperties
   shouldLinkToExamples(locale: String): Boolean
   statesCollection(limit: Int = 100, locale: String, order: [ComponentStatesCollectionOrder], preview: Boolean, skip: Int = 0, where: ComponentStateFilter): ComponentStatesCollection
-  storybookLink(locale: String): Boolean
   stylesCollection(limit: Int = 100, locale: String, order: [ComponentStylesCollectionOrder], preview: Boolean, skip: Int = 0, where: ComponentStyleFilter): ComponentStylesCollection
   sys: Sys!
   usage(locale: String): String
@@ -286,9 +285,6 @@ input ComponentFilter {
   shouldLinkToExamples_not: Boolean
   states: cfComponentStateNestedFilter
   statesCollection_exists: Boolean
-  storybookLink: Boolean
-  storybookLink_exists: Boolean
-  storybookLink_not: Boolean
   styles: cfComponentStyleNestedFilter
   stylesCollection_exists: Boolean
   sys: SysFilter
@@ -389,8 +385,6 @@ enum ComponentModifierLinkingCollectionsComponentCollectionOrder {
   name_DESC
   shouldLinkToExamples_ASC
   shouldLinkToExamples_DESC
-  storybookLink_ASC
-  storybookLink_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -449,8 +443,6 @@ enum ComponentOrder {
   name_DESC
   shouldLinkToExamples_ASC
   shouldLinkToExamples_DESC
-  storybookLink_ASC
-  storybookLink_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -524,8 +516,6 @@ enum ComponentStateLinkingCollectionsComponentCollectionOrder {
   name_DESC
   shouldLinkToExamples_ASC
   shouldLinkToExamples_DESC
-  storybookLink_ASC
-  storybookLink_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -640,8 +630,6 @@ enum ComponentStyleLinkingCollectionsComponentCollectionOrder {
   name_DESC
   shouldLinkToExamples_ASC
   shouldLinkToExamples_DESC
-  storybookLink_ASC
-  storybookLink_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -1095,8 +1083,6 @@ enum PagePropertiesLinkingCollectionsComponentCollectionOrder {
   name_DESC
   shouldLinkToExamples_ASC
   shouldLinkToExamples_DESC
-  storybookLink_ASC
-  storybookLink_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
