@@ -23,6 +23,10 @@ export const toCamelCase = (text: string): string => {
   });
 };
 
+export const toStorybookLink = (text: string): string => {
+  return text.toLowerCase().replace(' ', '-');
+};
+
 // Index search
 const searchClient = algoliasearch(process.env.REACT_APP_ALGOLIA_ID ?? '', process.env.REACT_APP_ALGOLIA_KEY ?? '');
 const index = searchClient.initIndex(process.env.REACT_APP_ALGOLIA_INDEX ?? '');

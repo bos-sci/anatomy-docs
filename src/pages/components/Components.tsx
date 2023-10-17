@@ -13,6 +13,7 @@ import Layout from 'shared/components/Layout';
 import { ComponentContext } from './ComponentsController';
 import Preview from 'pages/components/variants/Preview';
 import { Link } from '@boston-scientific/anatomy-react';
+import { toStorybookLink } from 'shared/helpers';
 
 import axios from 'axios';
 import storybookLinkConfig from './storybookLinkConfig';
@@ -193,7 +194,6 @@ const Components = (): JSX.Element => {
 
         await axios.get(`${apiUrl}`);
         setStorybookComponent(`${apiUrl}?path=/docs/components-`);
-        console.log(storybookComponent);
       } catch (error) {
         return '';
       }
@@ -214,10 +214,10 @@ const Components = (): JSX.Element => {
           navTertiaryItems={headings}
         >
           {/* Storybook Link */}
-          {(componentData.storybookLink && storybookComponent !== '' && (
-            <Link className="docs-storybook-link" href={`${storybookComponent}${componentData?.name}--docs`}>
-              View in Storybook
-            </Link>
+          {(storybookComponent !== '' && (
+            <div className="docs-storybook-link">
+              <Link href={toStorybookLink(`${storybookComponent}${componentData?.name}--docs`)}>View in Storybook</Link>
+            </div>
           )) ||
             false}
 
