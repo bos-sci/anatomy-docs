@@ -2,7 +2,6 @@ import { useState, useEffect, useContext, Fragment } from 'react';
 import { useLocation } from 'react-router-dom';
 import { NavItemSecondary } from '@boston-scientific/anatomy-react';
 import { NavItemTertiary } from '@boston-scientific/anatomy-react';
-
 import Markdown from 'shared/components/Markdown';
 import { GetComponentQuery } from 'shared/types/contentful';
 import useTitle from 'shared/hooks/useTitle';
@@ -14,9 +13,8 @@ import { ComponentContext } from './ComponentsController';
 import Preview from 'pages/components/variants/Preview';
 import { Link } from '@boston-scientific/anatomy-react';
 import { toStorybookLink } from 'shared/helpers';
-
 import axios from 'axios';
-import storybookLinkConfig from './storybookLinkConfig';
+import storybookEnv from './storybookEnv';
 
 const Components = (): JSX.Element => {
   const location = useLocation();
@@ -26,7 +24,7 @@ const Components = (): JSX.Element => {
     {} as GetComponentQuery['component']
   );
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
-  const [storybookComponent, setStorybookComponent] = useState('');
+  const [storybookUrl, setStorybookUrl] = useState('');
 
   const data = useContext(ComponentContext);
 
@@ -127,7 +125,7 @@ const Components = (): JSX.Element => {
         children: [
           {
             text: 'Breadcrumbs',
-            to: basePath + '/navigation/breadcrumb'
+            to: basePath + '/navigation/breadcrumbs'
           },
           {
             text: 'Primary navigation',
@@ -189,17 +187,16 @@ const Components = (): JSX.Element => {
   useEffect(() => {
     const fetchStorybookComponent = async () => {
       try {
-        const apiUrl =
-          process.env.NODE_ENV === 'production' ? storybookLinkConfig.production : storybookLinkConfig.development;
+        const apiUrl = process.env.NODE_ENV === 'production' ? storybookEnv.production : storybookEnv.development;
 
         await axios.get(`${apiUrl}`);
-        setStorybookComponent(`${apiUrl}?path=/docs/components-`);
+        setStorybookUrl(`${apiUrl}?path=/docs/components-`);
       } catch (error) {
         return '';
       }
     };
     fetchStorybookComponent();
-  }, [storybookComponent]);
+  }, [storybookUrl]);
 
   if (componentData) {
     return (
@@ -214,9 +211,9 @@ const Components = (): JSX.Element => {
           navTertiaryItems={headings}
         >
           {/* Storybook Link */}
-          {(storybookComponent !== '' && (
+          {(storybookUrl !== '' && (
             <div className="docs-storybook-link">
-              <Link href={toStorybookLink(`${storybookComponent}${componentData?.name}--docs`)}>View in Storybook</Link>
+              <Link href={toStorybookLink(`${storybookUrl}${componentData?.name}--docs`)}>View in Storybook</Link>
             </div>
           )) ||
             false}
