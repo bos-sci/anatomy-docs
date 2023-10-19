@@ -58,6 +58,11 @@ main {
   padding: 0 space(sm);
 }
 
+.docs-storybook-link {
+  display: inline-block;
+  margin-top: space(lg);
+}
+
 .docs-page-content {
   grid-area: page-content;
   width: 100%;
