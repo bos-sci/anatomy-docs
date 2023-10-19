@@ -11,10 +11,6 @@ import PageTemplate from 'shared/components/PageTemplate';
 import Layout from 'shared/components/Layout';
 import { ComponentContext } from './ComponentsController';
 import Preview from 'pages/components/variants/Preview';
-import { Link } from '@boston-scientific/anatomy-react';
-import { toStorybookLink } from 'shared/helpers';
-import axios from 'axios';
-import storybookEnv from './storybookEnv';
 
 const Components = (): JSX.Element => {
   const location = useLocation();
@@ -24,7 +20,7 @@ const Components = (): JSX.Element => {
     {} as GetComponentQuery['component']
   );
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
-  const [storybookUrl, setStorybookUrl] = useState('');
+  // const [storybookUrl, setStorybookUrl] = useState('');
 
   const data = useContext(ComponentContext);
 
@@ -184,20 +180,6 @@ const Components = (): JSX.Element => {
     }
   }, [pageHeadings]);
 
-  useEffect(() => {
-    const fetchStorybookComponent = async () => {
-      try {
-        const apiUrl = process.env.NODE_ENV === 'production' ? storybookEnv.production : storybookEnv.development;
-
-        await axios.get(`${apiUrl}`);
-        setStorybookUrl(`${apiUrl}?path=/docs/components-`);
-      } catch (error) {
-        return '';
-      }
-    };
-    fetchStorybookComponent();
-  }, [storybookUrl]);
-
   if (componentData) {
     return (
       <Layout>
@@ -210,14 +192,6 @@ const Components = (): JSX.Element => {
           navSecondaryItems={navItems}
           navTertiaryItems={headings}
         >
-          {/* Storybook Link */}
-          {(storybookUrl !== '' && (
-            <div className="docs-storybook-link">
-              <Link href={toStorybookLink(`${storybookUrl}${componentData?.name}--docs`)}>View in Storybook</Link>
-            </div>
-          )) ||
-            false}
-
           {/* Default Preview */}
           {!!componentData.name && <Preview shouldLinkToExamples={componentData.shouldLinkToExamples || false} />}
 

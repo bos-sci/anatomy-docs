@@ -56,6 +56,11 @@ main {
   grid-area: intro;
   width: 100%;
   padding: 0 space(sm);
+
+  .docs-storybook-link {
+    display: inline-block;
+    margin-top: space(lg);
+  }
 }
 
 .docs-page-content {
@@ -69,11 +74,6 @@ main {
     &:first-of-type {
       margin-top: space(6x);
     }
-  }
-
-  .docs-storybook-link {
-    display: block;
-    margin-top: space(lg);
   }
 }
 

@@ -4,6 +4,10 @@ import { useLocation } from 'react-router-dom';
 import Markdown from 'shared/components/Markdown';
 import { NavSecondary, NavItemSecondary } from '@boston-scientific/anatomy-react';
 import { NavTertiary, NavItemTertiary } from '@boston-scientific/anatomy-react';
+import { Link } from '@boston-scientific/anatomy-react';
+import { toStorybookLink } from 'shared/helpers';
+import axios from 'axios';
+import storybookEnv from '../../pages/components/storybookEnv';
 
 interface Props {
   name: string;
@@ -21,6 +25,7 @@ const PageTemplate = (props: Props) => {
 
   const [navSecondaryTexts, setNavSecondaryTexts] = useState({});
   const [seoMetaDescriptionValue, setSeoMetaDescriptionValue] = useState<string | undefined>();
+  const [storybookUrl, setStorybookUrl] = useState('');
 
   useEffect(() => {
     setNavSecondaryTexts({
@@ -37,6 +42,22 @@ const PageTemplate = (props: Props) => {
       setSeoMetaDescriptionValue('Boston Scientific Anatomy Design System website');
     }
   }, [props.leadParagraph, props.seoMetaDescription]);
+
+  useEffect(() => {
+    if (props.navSecondaryMenuTrigger === 'Components') {
+      const fetchStorybookComponent = async () => {
+        try {
+          const apiUrl = process.env.NODE_ENV === 'production' ? storybookEnv.production : storybookEnv.development;
+
+          await axios.get(`${apiUrl}`);
+          setStorybookUrl(`${apiUrl}?path=/docs/components-`);
+        } catch (error) {
+          return '';
+        }
+      };
+      fetchStorybookComponent();
+    }
+  }, [props.navSecondaryMenuTrigger, storybookUrl]);
 
   return (
     <div className="docs-body">
@@ -58,6 +79,13 @@ const PageTemplate = (props: Props) => {
             )}
           </div>
           {!!props.leadParagraph && <Markdown markdown={props.leadParagraph} className="bsds-body-assertive" />}
+          {/* Storybook Link */}
+          {(storybookUrl && (
+            <Link className="docs-storybook-link" href={toStorybookLink(`${storybookUrl}${props.name}--docs`)}>
+              View in Storybook
+            </Link>
+          )) ||
+            false}
         </div>
         {!!props.navTertiaryItems && <NavTertiary navTertiaryItems={props.navTertiaryItems} />}
         <div className="docs-page-content">{props.children}</div>
