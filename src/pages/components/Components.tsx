@@ -20,7 +20,6 @@ const Components = (): JSX.Element => {
     {} as GetComponentQuery['component']
   );
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
-  // const [storybookUrl, setStorybookUrl] = useState('');
 
   const data = useContext(ComponentContext);
 
