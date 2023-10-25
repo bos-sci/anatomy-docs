@@ -82,10 +82,6 @@ const Components = (): JSX.Element => {
             to: basePath + '/form-controls/checkbox'
           },
           {
-            text: 'Checkbox group',
-            to: basePath + '/form-controls/checkbox-group'
-          },
-          {
             text: 'Radio group',
             to: basePath + '/form-controls/radio-group'
           },

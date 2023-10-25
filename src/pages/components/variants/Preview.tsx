@@ -81,7 +81,6 @@ const Preview = (props: Props): JSX.Element => {
       CardGroupController: lazy(() => import('./cardGroup/_CardGroupController')),
       DropdownController: lazy(() => import('./dropdown/_DropdownController')),
       InputCheckboxController: lazy(() => import('./inputCheckbox/_inputCheckboxController')),
-      InputCheckboxGroupController: lazy(() => import('./inputCheckboxGroup/_InputCheckboxGroupController')),
       DefaultForm: lazy(() => import('./forms/DefaultForm')),
       FieldsetController: lazy(() => import('./fieldset//_FieldsetController')),
       ImageController: lazy(() => import('./image/_ImageController')),
@@ -141,10 +140,6 @@ const Preview = (props: Props): JSX.Element => {
 
         case 'checkbox':
           setRenderedComponent(<ComponentControllers.InputCheckboxController variantId={variantId} />);
-          break;
-
-        case 'checkbox-group':
-          setRenderedComponent(<ComponentControllers.InputCheckboxGroupController variantId={variantId} />);
           break;
 
         case 'form':
