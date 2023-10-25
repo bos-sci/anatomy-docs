@@ -4,7 +4,7 @@ import Example from 'shared/components/Example';
 import { Fieldset } from '@boston-scientific/anatomy-react';
 
 const WithHelp = (): JSX.Element => {
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
 
   return (
     <>
