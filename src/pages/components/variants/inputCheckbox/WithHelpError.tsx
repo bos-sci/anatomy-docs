@@ -49,7 +49,7 @@ const WithHelpError = (): JSX.Element => {
       </Example>
       <Example>
         <Fieldset
-          legend="Checkbox group"
+          legend="Legend"
           helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
           errorText={errorText}
         >

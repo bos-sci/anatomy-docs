@@ -43,7 +43,7 @@ const WithError = (): JSX.Element => {
         </div>
       </Example>
       <Example>
-        <Fieldset legend="Checkbox group" errorText={errorText}>
+        <Fieldset legend="Legend" errorText={errorText}>
           {checkboxes.map((checkbox, i) => (
             <InputCheckbox
               key={'checkboxListWithError' + checkbox.text}

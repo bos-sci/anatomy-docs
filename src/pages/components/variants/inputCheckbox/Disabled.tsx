@@ -11,7 +11,7 @@ const Disabled = (): JSX.Element => {
         </div>
       </Example>
       <Example>
-        <Fieldset legend="Disabled checkbox group" disabled>
+        <Fieldset legend="Legend" disabled>
           <InputCheckbox label="Checkbox 1" defaultChecked />
           <InputCheckbox label="Checkbox 2" />
           <InputCheckbox label="Checkbox 3" />

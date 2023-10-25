@@ -11,7 +11,7 @@ const DefaultInputCheckbox = (): JSX.Element => {
         </div>
       </Example>
       <Example>
-        <Fieldset legend="Checkbox group">
+        <Fieldset legend="Legend">
           <InputCheckbox label="Checkbox 1" />
           <InputCheckbox label="Checkbox 2" />
           <InputCheckbox label="Checkbox 3" />
