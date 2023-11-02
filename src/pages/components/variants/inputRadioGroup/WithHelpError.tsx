@@ -4,13 +4,13 @@ import { RadioGroup } from '@boston-scientific/anatomy-react';
 import Example from 'shared/components/Example';
 
 const WithHelpError = (): JSX.Element => {
-  const error = 'This is an example of an error message.';
+  const errorMessage = 'This is an example of an error message.';
   const [selectedRadio, setSelectedRadio] = useState('groupHelpError1');
-  const [errorText, setErrorText] = useState(error);
+  const [errorText, setErrorText] = useState(errorMessage);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSelectedRadio(e.target.value);
-    setErrorText(e.target.value === 'groupHelpError1' ? error : '');
+    setErrorText(e.target.value === 'groupHelpError1' ? errorMessage : '');
   };
 
   return (

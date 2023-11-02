@@ -6,8 +6,8 @@ import Example from 'shared/components/Example';
 const ButtonGroupStyle = (): JSX.Element => {
   const [selectedRadio, setSelectedRadio] = useState('groupButtonStyleRadio1');
   const [selectedHelpErrorRadio, setSelectedHelpErrorRadio] = useState('groupButtonStyleHelpError1');
-  const error = 'This is an example of an error message.';
-  const [errorText, setErrorText] = useState(error);
+  const errorMessage = 'This is an example of an error message.';
+  const [errorText, setErrorText] = useState(errorMessage);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSelectedRadio(e.target.value);
@@ -15,7 +15,7 @@ const ButtonGroupStyle = (): JSX.Element => {
 
   const handleHelpErrorChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSelectedHelpErrorRadio(e.target.value);
-    setErrorText(e.target.value === 'groupButtonStyleHelpError1' ? error : error);
+    setErrorText(e.target.value === 'groupButtonStyleHelpError2' ? '' : errorMessage);
   };
 
   return (

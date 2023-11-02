@@ -6,6 +6,7 @@ import Example from 'shared/components/Example';
 const WithError = (): JSX.Element => {
   const errorMessage = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(errorMessage);
+  const [groupErrorText, setGroupErrorText] = useState(errorMessage);
   const [checkboxes, setCheckboxes] = useState([
     {
       text: 'Checkbox 1',
@@ -21,7 +22,15 @@ const WithError = (): JSX.Element => {
     }
   ]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked === true) {
+      setErrorText('');
+    } else {
+      setErrorText(errorMessage);
+    }
+  };
+
+  const handleGroupChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
     const updatedCheckboxes = [...checkboxes];
     updatedCheckboxes[index].isChecked = e.target.checked;
     setCheckboxes(updatedCheckboxes);
@@ -29,9 +38,9 @@ const WithError = (): JSX.Element => {
 
   useEffect(() => {
     if (checkboxes.filter((c) => c.isChecked === true).length < 2) {
-      setErrorText(errorMessage);
+      setGroupErrorText(errorMessage);
     } else {
-      setErrorText('');
+      setGroupErrorText('');
     }
   }, [checkboxes]);
 
@@ -39,19 +48,19 @@ const WithError = (): JSX.Element => {
     <>
       <Example>
         <div className="bsds-form-control">
-          <InputCheckbox label="Checkbox" forceValidation required />
+          <InputCheckbox label="Checkbox" errorText={errorText} forceValidation onChange={handleChange} />
         </div>
       </Example>
       <Example>
-        <Fieldset legend="Legend" errorText={errorText}>
+        <Fieldset legend="Legend" errorText={groupErrorText}>
           {checkboxes.map((checkbox, i) => (
             <InputCheckbox
               key={'checkboxListWithError' + checkbox.text}
               label={checkbox.text}
               aria-describedby="listErrorText"
-              aria-invalid={!!errorText}
+              aria-invalid={!!groupErrorText}
               defaultChecked={checkbox.isChecked}
-              onChange={(e) => handleChange(e, i)}
+              onChange={(e) => handleGroupChange(e, i)}
             />
           ))}
         </Fieldset>
