@@ -463,6 +463,11 @@
     @include animated-gradient-secondary;
   }
 
+  &-animated-gradient-subtle {
+    @include swatch;
+    @include animated-gradient-subtle;
+  }
+
   &-decorative-bar {
     position: relative;
 
