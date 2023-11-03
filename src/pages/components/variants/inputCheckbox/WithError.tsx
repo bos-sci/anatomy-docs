@@ -7,6 +7,11 @@ const WithError = (): JSX.Element => {
   const errorMessage = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(errorMessage);
   const [groupErrorText, setGroupErrorText] = useState(errorMessage);
+  const [checkbox, setCheckbox] = useState({
+    text: 'Checkbox',
+    isChecked: false
+  });
+
   const [checkboxes, setCheckboxes] = useState([
     {
       text: 'Checkbox 1',
@@ -23,11 +28,9 @@ const WithError = (): JSX.Element => {
   ]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked === true) {
-      setErrorText('');
-    } else {
-      setErrorText(errorMessage);
-    }
+    const updatedCheckbox = { ...checkbox };
+    updatedCheckbox.isChecked = e.target.checked;
+    setCheckbox(updatedCheckbox);
   };
 
   const handleGroupChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
@@ -44,11 +47,27 @@ const WithError = (): JSX.Element => {
     }
   }, [checkboxes]);
 
+  useEffect(() => {
+    if (checkbox.isChecked === true) {
+      setErrorText('');
+    } else {
+      setErrorText(errorMessage);
+    }
+  }, [checkbox.isChecked]);
+
   return (
     <>
       <Example>
         <div className="bsds-form-control">
-          <InputCheckbox label="Checkbox" errorText={errorText} forceValidation onChange={handleChange} />
+          <InputCheckbox
+            label={checkbox.text}
+            aria-describedby="checkboxErrorText"
+            aria-invalid={!!errorText}
+            defaultChecked={checkbox.isChecked}
+            errorText={errorText}
+            forceValidation
+            onChange={handleChange}
+          />
         </div>
       </Example>
       <Example>

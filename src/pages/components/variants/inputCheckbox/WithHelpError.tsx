@@ -7,6 +7,10 @@ const WithHelpError = (): JSX.Element => {
   const errorMessage = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(errorMessage);
   const [groupErrorText, setGroupErrorText] = useState(errorMessage);
+  const [checkbox, setCheckbox] = useState({
+    text: 'Checkbox',
+    isChecked: false
+  });
   const [checkboxes, setCheckboxes] = useState([
     {
       text: 'Checkbox 1',
@@ -23,11 +27,9 @@ const WithHelpError = (): JSX.Element => {
   ]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked === true) {
-      setErrorText('');
-    } else {
-      setErrorText(errorMessage);
-    }
+    const updatedCheckbox = { ...checkbox };
+    updatedCheckbox.isChecked = e.target.checked;
+    setCheckbox(updatedCheckbox);
   };
 
   const handleGroupChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
@@ -35,6 +37,14 @@ const WithHelpError = (): JSX.Element => {
     updatedCheckboxes[index].isChecked = e.target.checked;
     setCheckboxes(updatedCheckboxes);
   };
+
+  useEffect(() => {
+    if (checkbox.isChecked === true) {
+      setErrorText('');
+    } else {
+      setErrorText(errorMessage);
+    }
+  }, [checkbox.isChecked]);
 
   useEffect(() => {
     if (checkboxes.filter((c) => c.isChecked === true).length < 2) {
@@ -49,7 +59,8 @@ const WithHelpError = (): JSX.Element => {
       <Example>
         <div className="bsds-form-control">
           <InputCheckbox
-            label="Checkbox"
+            label={checkbox.text}
+            aria-invalid={!!errorText}
             helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
             errorText={errorText}
             forceValidation
@@ -61,7 +72,7 @@ const WithHelpError = (): JSX.Element => {
         <Fieldset
           legend="Legend"
           helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
-          errorText={errorText}
+          errorText={groupErrorText}
         >
           {checkboxes.map((checkbox, i) => (
             <InputCheckbox
