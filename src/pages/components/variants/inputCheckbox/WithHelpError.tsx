@@ -60,7 +60,6 @@ const WithHelpError = (): JSX.Element => {
         <div className="bsds-form-control">
           <InputCheckbox
             label={checkbox.text}
-            aria-invalid={!!errorText}
             helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
             errorText={errorText}
             forceValidation

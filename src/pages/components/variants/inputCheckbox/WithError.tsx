@@ -61,8 +61,6 @@ const WithError = (): JSX.Element => {
         <div className="bsds-form-control">
           <InputCheckbox
             label={checkbox.text}
-            aria-describedby="checkboxErrorText"
-            aria-invalid={!!errorText}
             defaultChecked={checkbox.isChecked}
             errorText={errorText}
             forceValidation
