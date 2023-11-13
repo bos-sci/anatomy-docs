@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@boston-scientific/anatomy-react": "^1.0.1",
-    "@boston-scientific/anatomy-tokens": "^3.1.1",
+    "@boston-scientific/anatomy-tokens": "^3.2.0",
     "@floating-ui/react-dom": "^1.0.0",
     "algoliasearch": "^4.14.2",
     "axios": "^1.2.2",
@@ -58,7 +58,7 @@
     "@apollo/client": "^3.6.9",
     "@boston-scientific/eslint-config": "^0.0.3",
     "@boston-scientific/prettier-config": "^1.0.1",
-    "@boston-scientific/stylelint-config": "^1.0.0",
+    "@boston-scientific/stylelint-config": "^1.1.0",
     "@graphql-codegen/cli": "^2.7.0",
     "@graphql-codegen/schema-ast": "^2.4.1",
     "@graphql-codegen/typescript": "^2.6.0",
