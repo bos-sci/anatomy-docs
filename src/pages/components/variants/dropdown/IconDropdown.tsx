@@ -1,12 +1,12 @@
 import { Button } from '@boston-scientific/anatomy-react';
-import { Dropdown } from '@boston-scientific/anatomy-react';
+import { DropdownMenu } from '@boston-scientific/anatomy-react';
 import { Icon } from '@boston-scientific/anatomy-react';
 import Example from 'shared/components/Example';
 
 const IconDropdown = (): JSX.Element => {
   return (
     <Example>
-      <Dropdown triggerText="Dropdown trigger" icon="ellipsis">
+      <DropdownMenu triggerText="Dropdown trigger" icon="ellipsis">
         <Button>
           <Icon name="plus" size="2x" className="bsds-icon-left" />
           Action 1
@@ -19,7 +19,7 @@ const IconDropdown = (): JSX.Element => {
           <Icon name="plus" size="2x" className="bsds-icon-left" />
           Action 3
         </Button>
-      </Dropdown>
+      </DropdownMenu>
     </Example>
   );
 };

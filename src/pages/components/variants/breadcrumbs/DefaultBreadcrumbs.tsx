@@ -1,4 +1,4 @@
-import { Breadcrumb, Crumb } from '@boston-scientific/anatomy-react';
+import { Breadcrumbs, Crumb } from '@boston-scientific/anatomy-react';
 import Example from 'shared/components/Example';
 
 const DefaultBreadcrumbs = (): JSX.Element => {
@@ -19,7 +19,7 @@ const DefaultBreadcrumbs = (): JSX.Element => {
 
   return (
     <Example>
-      <Breadcrumb crumbs={crumbs} currentPage="Current page" hasOverflow={false} />
+      <Breadcrumbs crumbs={crumbs} currentPage="Current page" hasOverflow={false} />
     </Example>
   );
 };
