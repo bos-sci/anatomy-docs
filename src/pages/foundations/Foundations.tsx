@@ -56,6 +56,10 @@ const Foundations = (): JSX.Element => {
         to: basePath + '/color'
       },
       {
+        text: 'Grid',
+        to: basePath + '/grid'
+      },
+      {
         text: 'Icons',
         children: [
           {
@@ -67,6 +71,10 @@ const Foundations = (): JSX.Element => {
             to: basePath + '/iconography/system-icons'
           }
         ]
+      },
+      {
+        text: 'Layout grid',
+        to: basePath + '/layout-grid'
       },
       {
         text: 'Spacing',
