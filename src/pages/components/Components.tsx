@@ -46,6 +46,10 @@ const Components = (): JSX.Element => {
         to: basePath + '/button'
       },
       {
+        text: 'Callout',
+        to: basePath + '/callout'
+      },
+      {
         text: 'Cards',
         children: [
           {
