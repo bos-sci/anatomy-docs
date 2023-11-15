@@ -1,17 +1,17 @@
 import { Button } from '@boston-scientific/anatomy-react';
-import { Dropdown } from '@boston-scientific/anatomy-react';
+import { DropdownMenu } from '@boston-scientific/anatomy-react';
 import { Icon } from '@boston-scientific/anatomy-react';
 import Example from 'shared/components/Example';
 
 const DefaultStyleDropdown = (): JSX.Element => {
   return (
     <Example isFlex>
-      <Dropdown triggerText="Dropdown trigger">
+      <DropdownMenu triggerText="Dropdown trigger">
         <Button>Action 1</Button>
         <Button>Action 2</Button>
         <Button>Action 3</Button>
-      </Dropdown>
-      <Dropdown triggerText="Dropdown trigger" icon="ellipsis">
+      </DropdownMenu>
+      <DropdownMenu triggerText="Dropdown trigger" icon="ellipsis">
         <Button>
           <Icon name="plus" size="2x" className="bsds-icon-left" />
           Action 1
@@ -24,7 +24,7 @@ const DefaultStyleDropdown = (): JSX.Element => {
           <Icon name="plus" size="2x" className="bsds-icon-left" />
           Action 3
         </Button>
-      </Dropdown>
+      </DropdownMenu>
     </Example>
   );
 };

@@ -1,17 +1,17 @@
 import { Button } from '@boston-scientific/anatomy-react';
-import { Dropdown } from '@boston-scientific/anatomy-react';
+import { DropdownMenu } from '@boston-scientific/anatomy-react';
 import { Icon } from '@boston-scientific/anatomy-react';
 import Example from 'shared/components/Example';
 
 const SubtleDropdown = (): JSX.Element => {
   return (
     <Example isFlex>
-      <Dropdown variant="subtle" triggerText="Dropdown trigger">
+      <DropdownMenu variant="subtle" triggerText="Dropdown trigger">
         <Button>Action 1</Button>
         <Button>Action 2</Button>
         <Button>Action 3</Button>
-      </Dropdown>
-      <Dropdown variant="subtle" triggerText="Dropdown trigger" icon="ellipsis">
+      </DropdownMenu>
+      <DropdownMenu variant="subtle" triggerText="Dropdown trigger" icon="ellipsis">
         <Button>
           <Icon name="plus" size="2x" className="bsds-icon-left" />
           Action 1
@@ -24,7 +24,7 @@ const SubtleDropdown = (): JSX.Element => {
           <Icon name="plus" size="2x" className="bsds-icon-left" />
           Action 3
         </Button>
-      </Dropdown>
+      </DropdownMenu>
     </Example>
   );
 };
