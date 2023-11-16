@@ -101,6 +101,10 @@ code {
   word-wrap: break-word;
 }
 
+.bsds-font-size-display {
+  @include font-size($fs-display);
+}
+
 .bsds-body-assertive {
   margin: space(3x) 0 0;
 

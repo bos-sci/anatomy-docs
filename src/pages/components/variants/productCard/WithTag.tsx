@@ -6,7 +6,7 @@ const WithTag = (): JSX.Element => {
   return (
     <Example>
       <ProductCard
-        tag={<Tag variant="">Product family name</Tag>}
+        tag={<Tag>Product family name</Tag>}
         texts={{
           title: 'Product card title',
           description:

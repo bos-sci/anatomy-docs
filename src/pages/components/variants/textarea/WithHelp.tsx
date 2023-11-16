@@ -11,14 +11,12 @@ const TextareaWithHelp = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="bsds-form-control">
-        <Textarea
-          label="Textarea"
-          value={inputValue}
-          helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
-          onChange={handleChange}
-        />
-      </div>
+      <Textarea
+        label="Textarea"
+        value={inputValue}
+        helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
+        onChange={handleChange}
+      />
     </Example>
   );
 };

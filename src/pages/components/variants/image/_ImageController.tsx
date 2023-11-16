@@ -5,12 +5,15 @@ import ImageStyle4to3 from './ImageStyle4to3';
 import ImageStyle16to9 from './ImageStyle16to9';
 import ImageStyle21to9 from './ImageStyle21to9';
 import WithCaption from './WithCaption';
+import WithDecorativeTreatment from './WithDecorativeTreatment';
 
 const ImageController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
     //Modifiers
     case 'withCaption':
       return <WithCaption />;
+    case 'withDecorativeTreatment':
+      return <WithDecorativeTreatment />;
     //Styles
     case 'image1to1':
       return <ImageStyle1to1 />;

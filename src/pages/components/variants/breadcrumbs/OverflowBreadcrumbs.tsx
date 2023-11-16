@@ -1,4 +1,4 @@
-import { Breadcrumb, Crumb } from '@boston-scientific/anatomy-react';
+import { Breadcrumbs, Crumb } from '@boston-scientific/anatomy-react';
 import Example from 'shared/components/Example';
 
 const OverflowBreadcrumbs = (): JSX.Element => {
@@ -19,7 +19,7 @@ const OverflowBreadcrumbs = (): JSX.Element => {
 
   return (
     <Example>
-      <Breadcrumb crumbs={crumbs} currentPage="Current page" />
+      <Breadcrumbs crumbs={crumbs} currentPage="Current page" />
     </Example>
   );
 };

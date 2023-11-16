@@ -11,9 +11,7 @@ const TextareaWithPlaceholder = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="bsds-form-control">
-        <Textarea label="Textarea" placeholder="Placeholder text" value={inputValue} onChange={handleChange} />
-      </div>
+      <Textarea label="Textarea" placeholder="Placeholder text" value={inputValue} onChange={handleChange} />
     </Example>
   );
 };

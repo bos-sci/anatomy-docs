@@ -5,6 +5,7 @@ import SubtleStyle from './SubtleStyle';
 import GhostStyle from './GhostStyle';
 import CtaStyle from './CtaStyle';
 import NavStyle from './NavStyle';
+import MailtoStyle from './MailtoStyle';
 
 const LinkController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
@@ -17,6 +18,8 @@ const LinkController = ({ variantId }: VariantProps): JSX.Element => {
       return <GhostStyle />;
     case 'linkCta':
       return <CtaStyle />;
+    case 'linkMailto':
+      return <MailtoStyle />;
     case 'linkNavigation':
       return <NavStyle />;
 

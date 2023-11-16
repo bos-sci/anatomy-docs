@@ -11,9 +11,7 @@ const DefaultInputText = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="bsds-form-control">
-        <InputText id="textInputDefault" label="Text input" value={inputValue} onChange={handleChange} />
-      </div>
+      <InputText id="textInputDefault" label="Text input" value={inputValue} onChange={handleChange} />
     </Example>
   );
 };

@@ -75,13 +75,13 @@ const Preview = (props: Props): JSX.Element => {
 
     const ComponentControllers = {
       AccordionController: lazy(() => import('./accordion/_AccordionController')),
-      BreadcrumbController: lazy(() => import('./breadcrumbs/_BreadcrumbController')),
+      BreadcrumbsController: lazy(() => import('./breadcrumbs/_BreadcrumbsController')),
       ButtonController: lazy(() => import('./buttons/_ButtonController')),
+      CalloutController: lazy(() => import('./callout/_CalloutController')),
       ContentCardController: lazy(() => import('./contentCard/_ContentCardController')),
       CardGroupController: lazy(() => import('./cardGroup/_CardGroupController')),
       DropdownController: lazy(() => import('./dropdown/_DropdownController')),
       InputCheckboxController: lazy(() => import('./inputCheckbox/_inputCheckboxController')),
-      InputCheckboxGroupController: lazy(() => import('./inputCheckboxGroup/_InputCheckboxGroupController')),
       DefaultForm: lazy(() => import('./forms/DefaultForm')),
       FieldsetController: lazy(() => import('./fieldset//_FieldsetController')),
       ImageController: lazy(() => import('./image/_ImageController')),
@@ -120,11 +120,15 @@ const Preview = (props: Props): JSX.Element => {
           break;
 
         case 'breadcrumbs':
-          setRenderedComponent(<ComponentControllers.BreadcrumbController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.BreadcrumbsController variantId={variantId} />);
           break;
 
         case 'button':
           setRenderedComponent(<ComponentControllers.ButtonController variantId={variantId} />);
+          break;
+
+        case 'callout':
+          setRenderedComponent(<ComponentControllers.CalloutController variantId={variantId} />);
           break;
 
         case 'content-card':
@@ -141,10 +145,6 @@ const Preview = (props: Props): JSX.Element => {
 
         case 'checkbox':
           setRenderedComponent(<ComponentControllers.InputCheckboxController variantId={variantId} />);
-          break;
-
-        case 'checkbox-group':
-          setRenderedComponent(<ComponentControllers.InputCheckboxGroupController variantId={variantId} />);
           break;
 
         case 'form':

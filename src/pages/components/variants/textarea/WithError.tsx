@@ -16,15 +16,13 @@ const TextareaWithError = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="bsds-form-control">
-        <Textarea
-          label="Textarea"
-          errorText={errorText}
-          defaultValue="Invalid value"
-          forceValidation
-          onChange={handleChange}
-        />
-      </div>
+      <Textarea
+        label="Textarea"
+        errorText={errorText}
+        defaultValue="Invalid value"
+        forceValidation
+        onChange={handleChange}
+      />
     </Example>
   );
 };

@@ -54,6 +54,10 @@ const Resources = (): JSX.Element => {
         to: basePath + '/community'
       },
       {
+        text: 'Contributing',
+        to: basePath + '/contributing'
+      },
+      {
         text: 'Designers',
         children: [
           {

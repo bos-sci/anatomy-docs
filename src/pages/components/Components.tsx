@@ -46,6 +46,10 @@ const Components = (): JSX.Element => {
         to: basePath + '/button'
       },
       {
+        text: 'Callout',
+        to: basePath + '/callout'
+      },
+      {
         text: 'Cards',
         children: [
           {
@@ -80,10 +84,6 @@ const Components = (): JSX.Element => {
           {
             text: 'Checkbox',
             to: basePath + '/form-controls/checkbox'
-          },
-          {
-            text: 'Checkbox group',
-            to: basePath + '/form-controls/checkbox-group'
           },
           {
             text: 'Radio group',

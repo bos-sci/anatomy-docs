@@ -21,66 +21,62 @@ const ButtonGroupStyle = (): JSX.Element => {
   return (
     <>
       <Example>
-        <div className="bsds-form-control">
-          <RadioGroup legend="Legend" buttonGroup>
-            <InputRadio
-              label="Radio 1"
-              name="groupButtonStyleRadio"
-              value="groupButtonStyleRadio1"
-              checked={selectedRadio === 'groupButtonStyleRadio1'}
-              onChange={handleChange}
-            />
-            <InputRadio
-              label="Radio 2"
-              name="groupButtonStyleRadio"
-              value="groupButtonStyleRadio2"
-              checked={selectedRadio === 'groupButtonStyleRadio2'}
-              onChange={handleChange}
-            />
-            <InputRadio
-              label="Radio 3"
-              name="groupButtonStyleRadio"
-              value="groupButtonStyleRadio3"
-              checked={selectedRadio === 'groupButtonStyleRadio3'}
-              inputUnavailable
-              onChange={handleChange}
-            />
-          </RadioGroup>
-        </div>
+        <RadioGroup legend="Legend" buttonGroup>
+          <InputRadio
+            label="Radio 1"
+            name="groupButtonStyleRadio"
+            value="groupButtonStyleRadio1"
+            checked={selectedRadio === 'groupButtonStyleRadio1'}
+            onChange={handleChange}
+          />
+          <InputRadio
+            label="Radio 2"
+            name="groupButtonStyleRadio"
+            value="groupButtonStyleRadio2"
+            checked={selectedRadio === 'groupButtonStyleRadio2'}
+            onChange={handleChange}
+          />
+          <InputRadio
+            label="Radio 3"
+            name="groupButtonStyleRadio"
+            value="groupButtonStyleRadio3"
+            checked={selectedRadio === 'groupButtonStyleRadio3'}
+            inputUnavailable
+            onChange={handleChange}
+          />
+        </RadioGroup>
       </Example>
       <Example>
-        <div className="bsds-form-control">
-          <RadioGroup
-            legend="Legend"
-            helpText="This is an example help text. It can wrap to two lines, but try not to go longer than three."
-            errorText={errorText}
-            buttonGroup
-          >
-            <InputRadio
-              label="Radio 1"
-              name="groupButtonStyleHelpError"
-              value="groupButtonStyleHelpError1"
-              checked={selectedHelpErrorRadio === 'groupButtonStyleHelpError1'}
-              forceValidation
-              onChange={handleHelpErrorChange}
-            />
-            <InputRadio
-              label="Radio 2"
-              name="groupButtonStyleHelpError"
-              value="groupButtonStyleHelpError2"
-              checked={selectedHelpErrorRadio === 'groupButtonStyleHelpError2'}
-              onChange={handleHelpErrorChange}
-            />
-            <InputRadio
-              label="Radio 3"
-              name="groupButtonStyleHelpError"
-              value="groupButtonStyleHelpError3"
-              checked={selectedHelpErrorRadio === 'groupButtonStyleHelpError3'}
-              inputUnavailable
-              onChange={handleHelpErrorChange}
-            />
-          </RadioGroup>
-        </div>
+        <RadioGroup
+          legend="Legend"
+          helpText="This is an example help text. It can wrap to two lines, but try not to go longer than three."
+          errorText={errorText}
+          buttonGroup
+        >
+          <InputRadio
+            label="Radio 1"
+            name="groupButtonStyleHelpError"
+            value="groupButtonStyleHelpError1"
+            checked={selectedHelpErrorRadio === 'groupButtonStyleHelpError1'}
+            forceValidation
+            onChange={handleHelpErrorChange}
+          />
+          <InputRadio
+            label="Radio 2"
+            name="groupButtonStyleHelpError"
+            value="groupButtonStyleHelpError2"
+            checked={selectedHelpErrorRadio === 'groupButtonStyleHelpError2'}
+            onChange={handleHelpErrorChange}
+          />
+          <InputRadio
+            label="Radio 3"
+            name="groupButtonStyleHelpError"
+            value="groupButtonStyleHelpError3"
+            checked={selectedHelpErrorRadio === 'groupButtonStyleHelpError3'}
+            inputUnavailable
+            onChange={handleHelpErrorChange}
+          />
+        </RadioGroup>
       </Example>
     </>
   );

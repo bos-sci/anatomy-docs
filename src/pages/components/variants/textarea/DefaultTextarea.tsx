@@ -11,9 +11,7 @@ const DefaultTextarea = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="bsds-form-control">
-        <Textarea id="textareaDefault" label="Textarea" value={inputValue} onChange={handleChange} />
-      </div>
+      <Textarea id="textareaDefault" label="Textarea" value={inputValue} onChange={handleChange} />
     </Example>
   );
 };
