@@ -16,7 +16,7 @@ interface ADSInputElement extends HTMLInputElement {
 }
 
 const DefaultForm = () => {
-  const noSpacesError = 'This is an example of an error message. Delete the spaces to clear the error message.';
+  const noSpacesError = 'Delete the spaces to clear the error message.';
   const [noSpacesInputError, setNoSpacesInputError] = useState(noSpacesError);
   const noSpacesInput = useRef<ADSInputElement>(null);
 
