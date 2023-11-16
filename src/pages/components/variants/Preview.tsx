@@ -75,7 +75,7 @@ const Preview = (props: Props): JSX.Element => {
 
     const ComponentControllers = {
       AccordionController: lazy(() => import('./accordion/_AccordionController')),
-      BreadcrumbController: lazy(() => import('./breadcrumbs/_BreadcrumbController')),
+      BreadcrumbsController: lazy(() => import('./breadcrumbs/_BreadcrumbsController')),
       ButtonController: lazy(() => import('./buttons/_ButtonController')),
       CalloutController: lazy(() => import('./callout/_CalloutController')),
       ContentCardController: lazy(() => import('./contentCard/_ContentCardController')),
@@ -120,7 +120,7 @@ const Preview = (props: Props): JSX.Element => {
           break;
 
         case 'breadcrumbs':
-          setRenderedComponent(<ComponentControllers.BreadcrumbController variantId={variantId} />);
+          setRenderedComponent(<ComponentControllers.BreadcrumbsController variantId={variantId} />);
           break;
 
         case 'button':

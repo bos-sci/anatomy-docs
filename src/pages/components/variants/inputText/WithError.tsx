@@ -16,15 +16,13 @@ const WithError = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="bsds-form-control">
-        <InputText
-          label="Text input"
-          errorText={errorText}
-          defaultValue="Invalid value"
-          forceValidation
-          onChange={handleChange}
-        />
-      </div>
+      <InputText
+        label="Text input"
+        errorText={errorText}
+        defaultValue="Invalid value"
+        forceValidation
+        onChange={handleChange}
+      />
     </Example>
   );
 };

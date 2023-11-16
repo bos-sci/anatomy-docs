@@ -38,9 +38,7 @@ const WithError = (): JSX.Element => {
   return (
     <>
       <Example>
-        <div className="bsds-form-control">
-          <InputCheckbox label="Checkbox" forceValidation required />
-        </div>
+        <InputCheckbox label="Checkbox" forceValidation required />
       </Example>
       <Example>
         <Fieldset legend="Legend" errorText={errorText}>

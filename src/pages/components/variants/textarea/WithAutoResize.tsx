@@ -11,9 +11,7 @@ const TextareaWithAutoResize = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="bsds-form-control">
-        <Textarea label="Textarea" value={inputValue} autoResize onChange={handleChange} />
-      </div>
+      <Textarea label="Textarea" value={inputValue} autoResize onChange={handleChange} />
     </Example>
   );
 };

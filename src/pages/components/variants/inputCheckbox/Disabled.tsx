@@ -6,9 +6,7 @@ const Disabled = (): JSX.Element => {
   return (
     <>
       <Example>
-        <div className="bsds-form-control">
-          <InputCheckbox label="Disabled checkbox" disabled />
-        </div>
+        <InputCheckbox label="Disabled checkbox" disabled />
       </Example>
       <Example>
         <Fieldset legend="Legend" disabled>

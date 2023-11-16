@@ -16,16 +16,14 @@ const TextareaWithHelpError = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="bsds-form-control">
-        <Textarea
-          label="Textarea"
-          errorText={errorText}
-          defaultValue="Invalid value"
-          helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
-          forceValidation
-          onChange={handleChange}
-        />
-      </div>
+      <Textarea
+        label="Textarea"
+        errorText={errorText}
+        defaultValue="Invalid value"
+        helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
+        forceValidation
+        onChange={handleChange}
+      />
     </Example>
   );
 };
