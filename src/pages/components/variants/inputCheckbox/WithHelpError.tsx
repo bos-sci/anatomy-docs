@@ -6,6 +6,7 @@ import Example from 'shared/components/Example';
 const WithHelpError = (): JSX.Element => {
   const errorMessage = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(errorMessage);
+  const [checkbox, setCheckbox] = useState({ text: 'Checkbox', isChecked: false });
   const [groupErrorText, setGroupErrorText] = useState(errorMessage);
   const [checkboxes, setCheckboxes] = useState([
     {
@@ -23,7 +24,9 @@ const WithHelpError = (): JSX.Element => {
   ]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setErrorText(e.target.checked ? '' : errorText);
+    const updatedCheckbox = { ...checkbox };
+    updatedCheckbox.isChecked = e.target.checked;
+    setCheckbox(updatedCheckbox);
   };
 
   const handleGroupChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
@@ -39,6 +42,14 @@ const WithHelpError = (): JSX.Element => {
       setGroupErrorText('');
     }
   }, [checkboxes]);
+
+  useEffect(() => {
+    if (checkbox.isChecked === false) {
+      setErrorText(errorMessage);
+    } else {
+      setErrorText('');
+    }
+  }, [checkbox]);
 
   return (
     <>
@@ -57,7 +68,7 @@ const WithHelpError = (): JSX.Element => {
         <Fieldset
           legend="Legend"
           helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
-          errorText={errorText}
+          errorText={groupErrorText}
         >
           {checkboxes.map((checkbox, i) => (
             <InputCheckbox
