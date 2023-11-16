@@ -1,5 +1,4 @@
 import { FormEvent } from 'react';
-// import { Form } from '@boston-scientific/anatomy-react';
 import { InputRadio } from '@boston-scientific/anatomy-react';
 import { RadioGroup } from '@boston-scientific/anatomy-react';
 import Example from 'shared/components/Example';
