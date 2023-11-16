@@ -14,12 +14,9 @@ const Disabled = (): JSX.Element => {
   return (
     <Example>
       <Fieldset legend="Legend" disabled>
-        <div className="bsds-form-control">
-          <InputText label="Related text input" value={inputValue} onChange={handleChange} />
-        </div>
-        <div className="bsds-form-control">
-          <Textarea label="Related textarea" />
-        </div>
+        <InputText label="Related text input" value={inputValue} onChange={handleChange} />
+
+        <Textarea label="Related textarea" />
       </Fieldset>
     </Example>
   );

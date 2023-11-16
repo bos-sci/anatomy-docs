@@ -6,9 +6,7 @@ const DefaultInputCheckbox = (): JSX.Element => {
   return (
     <>
       <Example>
-        <div className="bsds-form-control">
-          <InputCheckbox label="Checkbox" />
-        </div>
+        <InputCheckbox label="Checkbox" />
       </Example>
       <Example>
         <Fieldset legend="Legend">

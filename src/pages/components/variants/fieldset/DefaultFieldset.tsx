@@ -14,17 +14,14 @@ const DefaultFieldset = (): JSX.Element => {
   return (
     <Example>
       <Fieldset legend="Legend">
-        <div className="bsds-form-control">
-          <InputText
-            id="defaultFieldsetTextInput"
-            label="Related text input"
-            value={inputValue}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="bsds-form-control">
-          <Textarea id="defaultFieldsetTextarea" label="Related textarea" />
-        </div>
+        <InputText
+          id="defaultFieldsetTextInput"
+          label="Related text input"
+          value={inputValue}
+          onChange={handleChange}
+        />
+
+        <Textarea id="defaultFieldsetTextarea" label="Related textarea" />
       </Fieldset>
     </Example>
   );

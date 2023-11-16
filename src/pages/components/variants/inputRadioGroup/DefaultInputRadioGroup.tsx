@@ -12,31 +12,29 @@ const DefaultInputRadioGroup = (): JSX.Element => {
 
   return (
     <Example>
-      <div className="bsds-form-control">
-        <RadioGroup legend="Legend">
-          <InputRadio
-            label="Radio 1"
-            name="groupDefault"
-            value="defaultRadio1"
-            checked={selectedRadio === 'defaultRadio1'}
-            onChange={handleChange}
-          />
-          <InputRadio
-            label="Radio 2"
-            name="groupDefault"
-            value="defaultRadio2"
-            checked={selectedRadio === 'defaultRadio2'}
-            onChange={handleChange}
-          />
-          <InputRadio
-            label="Radio 3"
-            name="groupDefault"
-            value="defaultRadio3"
-            checked={selectedRadio === 'defaultRadio3'}
-            onChange={handleChange}
-          />
-        </RadioGroup>
-      </div>
+      <RadioGroup legend="Legend">
+        <InputRadio
+          label="Radio 1"
+          name="groupDefault"
+          value="defaultRadio1"
+          checked={selectedRadio === 'defaultRadio1'}
+          onChange={handleChange}
+        />
+        <InputRadio
+          label="Radio 2"
+          name="groupDefault"
+          value="defaultRadio2"
+          checked={selectedRadio === 'defaultRadio2'}
+          onChange={handleChange}
+        />
+        <InputRadio
+          label="Radio 3"
+          name="groupDefault"
+          value="defaultRadio3"
+          checked={selectedRadio === 'defaultRadio3'}
+          onChange={handleChange}
+        />
+      </RadioGroup>
     </Example>
   );
 };
