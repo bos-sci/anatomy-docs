@@ -6,6 +6,8 @@ import Example from 'shared/components/Example';
 const WithError = (): JSX.Element => {
   const errorMessage = 'This is an example of an error message.';
   const [errorText, setErrorText] = useState(errorMessage);
+  const [groupErrorText, setGroupErrorText] = useState(errorMessage);
+  const [checkbox, setCheckbox] = useState({ text: 'Checkbox', isChecked: false });
   const [checkboxes, setCheckboxes] = useState([
     {
       text: 'Checkbox 1',
@@ -21,7 +23,13 @@ const WithError = (): JSX.Element => {
     }
   ]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const updatedCheckbox = { ...checkbox };
+    updatedCheckbox.isChecked = e.target.checked;
+    setCheckbox(updatedCheckbox);
+  };
+
+  const handleGroupChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
     const updatedCheckboxes = [...checkboxes];
     updatedCheckboxes[index].isChecked = e.target.checked;
     setCheckboxes(updatedCheckboxes);
@@ -29,27 +37,43 @@ const WithError = (): JSX.Element => {
 
   useEffect(() => {
     if (checkboxes.filter((c) => c.isChecked === true).length < 2) {
+      setGroupErrorText(errorMessage);
+    } else {
+      setGroupErrorText('');
+    }
+  }, [checkboxes]);
+
+  useEffect(() => {
+    if (checkbox.isChecked === false) {
       setErrorText(errorMessage);
     } else {
       setErrorText('');
     }
-  }, [checkboxes]);
+  }, [checkbox]);
 
   return (
     <>
       <Example>
-        <InputCheckbox label="Checkbox" forceValidation required />
+        <div className="bsds-form-control">
+          <InputCheckbox
+            label={checkbox.text}
+            defaultChecked={checkbox.isChecked}
+            errorText={errorText}
+            forceValidation
+            onChange={handleChange}
+          />
+        </div>
       </Example>
       <Example>
-        <Fieldset legend="Legend" errorText={errorText}>
+        <Fieldset legend="Legend" errorText={groupErrorText}>
           {checkboxes.map((checkbox, i) => (
             <InputCheckbox
               key={'checkboxListWithError' + checkbox.text}
               label={checkbox.text}
               aria-describedby="listErrorText"
-              aria-invalid={!!errorText}
+              aria-invalid={!!groupErrorText}
               defaultChecked={checkbox.isChecked}
-              onChange={(e) => handleChange(e, i)}
+              onChange={(e) => handleGroupChange(e, i)}
             />
           ))}
         </Fieldset>
