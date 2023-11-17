@@ -73,10 +73,6 @@ const Foundations = (): JSX.Element => {
         ]
       },
       {
-        text: 'Layout grid',
-        to: basePath + '/layout-grid'
-      },
-      {
         text: 'Spacing',
         to: basePath + '/spacing'
       },
