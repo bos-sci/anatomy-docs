@@ -178,21 +178,21 @@ Steps for adding a new field to an existing section.
 4. If the examples are external (e.g. primary nav), add the routes to those examples as ignores in SiteImprove.
 
 ### Release and deploy to production
-1. In Contentful, point the master alias environment at the working environment.
+1. In Contentful, point the main alias environment at the working environment.
 This environment is now the production environment.
 2. Delete the oldest backup environment.
-3. Create a new environment off of master. This is the new working environment.
-4. Go to the master environment then `Settings > API Keys > Anatomy Docs > Environments` and give the API access to the
+3. Create a new environment off of main. This is the new working environment.
+4. Go to the main environment then `Settings > API Keys > Anatomy Docs > Environments` and give the API access to the
 new working environment.
 5. Update local .env files with the new working environment name for `REACT_APP_CONTENTFUL_ENVIRONMENT`.
 6. Update `REACT_APP_CONTENTFUL_ENVIRONMENT` environment variable in Netlify with new working environment name for deploy previews, branch deploys, and local development.
 7. Update version number in package.json in a branch title `release/vX.Y.Z`.
 8. Create pull request from release branch into develop.
-9. Create pull request from develop into master.
+9. Create pull request from develop into main.
 10. Once all tests have passed and the preview is built and reviewed, the PR can be merged.
 11. Create a release in Github attached to a new tag that matches the version number.
 
-In the end we should have 3 environments including master, working environment, and the past 1 version of master.
+In the end we should have 3 environments including main, working environment, and the past 1 version of main.
 
 ## Naming Conventions
 
