@@ -1,6 +1,6 @@
 {
   "name": "anatomy-docs",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "private": true,
   "dependencies": {
     "@boston-scientific/anatomy-react": "^2.0.4",
