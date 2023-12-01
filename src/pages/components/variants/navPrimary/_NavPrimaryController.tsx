@@ -1,4 +1,5 @@
 import { VariantProps } from '../Preview';
+import CobrandedNavPrimary from './CobrandedNavPrimary';
 import ComplexNavPrimary from './ComplexNavPrimary';
 import ConstrainedNavPrimary from './ConstrainedNavPrimary';
 import DefaultNavPrimary from './DefaultNavPrimary';
@@ -14,6 +15,8 @@ const NavPrimaryController = ({ variantId }: VariantProps): JSX.Element => {
       return <IntermediateNavPrimary />;
     case 'primaryNavigationComplex':
       return <ComplexNavPrimary />;
+    case 'primaryNavigationCobranded':
+      return <CobrandedNavPrimary />;
 
     // Styles
     case 'primaryNavigationDefault':
