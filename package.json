@@ -1,9 +1,9 @@
 {
   "name": "anatomy-docs",
-  "version": "5.0.2",
+  "version": "5.2.0",
   "private": true,
   "dependencies": {
-    "@boston-scientific/anatomy-react": "^2.0.5",
+    "@boston-scientific/anatomy-react": "^2.1.0",
     "@boston-scientific/anatomy-tokens": "^4.0.2",
     "@floating-ui/react-dom": "^1.0.0",
     "algoliasearch": "^4.14.2",
@@ -49,10 +49,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "engines": {
-    "npm": ">=7.0.0",
-    "node": ">=16.0.0"
   },
   "devDependencies": {
     "@apollo/client": "^3.6.9",
