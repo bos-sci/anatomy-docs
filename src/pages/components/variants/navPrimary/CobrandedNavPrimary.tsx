@@ -3,14 +3,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { NavPrimary, NavNodePrimary } from '@boston-scientific/anatomy-react';
 
 import logoBSC from 'assets/images/logo-bsc.svg';
-import logoDemo from 'assets/images/watchman-integrate-solutions-logo.svg';
+import logo from 'assets/images/watchman-integrate-solutions-logo.svg';
 import { simpleData, utilityData } from './navPrimaryData';
 import Example from 'shared/components/Example';
 import { isActiveNode } from 'shared/helpers';
 
-const logo = {
-  src: logoDemo,
-  alt: 'Demo Watchman logo',
+const primaryLogo = {
+  src: logo,
+  alt: 'WATCHMAN logo',
   to: '/'
 };
 
@@ -26,7 +26,7 @@ const CobrandedNavPrimary = (): JSX.Element => {
   return (
     <Example isFlush>
       <NavPrimary
-        logo={logo}
+        logo={primaryLogo}
         logoSecondary={secondaryLogo}
         navItems={simpleData}
         utilityItems={utilityData}
