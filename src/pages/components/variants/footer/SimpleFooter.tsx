@@ -4,7 +4,7 @@ import { legalLinks, socialLinks } from './footerData';
 
 const SimpleFooter = (): JSX.Element => {
   return (
-    <Example>
+    <Example isFlush>
       <Footer
         legalLinkItems={legalLinks}
         texts={{

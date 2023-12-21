@@ -4,7 +4,7 @@ import { navItems, legalLinks, socialLinks } from './footerData';
 
 const ComplexFooter = (): JSX.Element => {
   return (
-    <Example>
+    <Example isFlush>
       <Footer
         navItems={navItems}
         legalLinkItems={legalLinks}
