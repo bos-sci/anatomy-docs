@@ -1,7 +1,7 @@
 import { VariantProps } from '../Preview';
 import SimpleFooter from './SimpleFooter';
 import IntermediateFooter from './IntermediateFooter';
-import ComplexFooter from './IntermediateFooter';
+import ComplexFooter from './ComplexFooter';
 
 const FooterController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
