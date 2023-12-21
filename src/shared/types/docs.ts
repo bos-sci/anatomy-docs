@@ -16,3 +16,22 @@ export interface IdLookup {
   components: IdLookupEntry;
   resources: IdLookupEntry;
 }
+
+export interface CarbonResult {
+  url: string;
+  carbon: number;
+  percent: number;
+  error?: {
+    status: string;
+    statusText: string;
+  };
+}
+
+export interface CarbonData {
+  date: string;
+  results: CarbonResult[];
+}
+
+export interface CarbonRecord extends CarbonData {
+  _id: string;
+}
