@@ -120,7 +120,7 @@ const Layout = (props: Props): JSX.Element => {
         onSearchChange={onSearchChange}
       />
       <SearchIndexContext.Provider value={index}>{props.children}</SearchIndexContext.Provider>
-      <Footer />
+      <Footer className="docs-footer" />
       {!!pathname && <CarbonRibbon url={pathname} />}
     </>
   );

@@ -96,6 +96,12 @@ main {
   }
 }
 
+.docs-footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: space(12x);
+}
+
 .docs-body-minimal {
   flex: 1;
   width: var(--app-width);
