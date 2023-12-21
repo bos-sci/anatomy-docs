@@ -10,6 +10,6 @@ package = "@algolia/netlify-plugin-crawler"
   renderJavaScript = true
 
 [functions]
-  external_node_modules = ["jsdom"]
-  [functions."carbon"]
+  [functions."collectCarbon"]
+    external_node_modules = ["jsdom"]
     schedule = "0 0 * * 1"

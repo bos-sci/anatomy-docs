@@ -1,22 +1,8 @@
 import { MongoClient } from 'mongodb';
 import { Handler } from '@netlify/functions';
+import { CarbonData, CarbonResult } from '../../src/shared/types/docs';
 const { default: axios } = require('axios');
 const jsdom = require('jsdom');
-
-interface CarbonResult {
-  url: string;
-  carbon: number;
-  percent: number;
-  error?: {
-    status: string;
-    statusText: string;
-  };
-}
-
-interface CarbonData {
-  date: string;
-  results: CarbonResult[];
-}
 
 async function getCarbon(url): Promise<CarbonResult> {
   const api = 'https://api.websitecarbon.com/b?url=';
@@ -52,20 +38,17 @@ async function collectData(): Promise<CarbonData> {
   const promises = filteredUrls.map((url) => getCarbon(url));
   const results = Array.from(await Promise.all(promises));
   return {
-    date: new Date().toLocaleString(),
+    date: new Date().toISOString(),
     results
   };
 }
 
 const handler: Handler = async () => {
-  // Replace the uri string with your MongoDB deployment's connection string.
   const uri = process.env.MONGO_CONNECTION as string;
   const client = new MongoClient(uri);
 
   try {
     const database = client.db('carbon-metrics');
-    // Specifying a Schema is optional, but it enables type hints on
-    // finds and inserts
     const carbon = database.collection<CarbonData>('metrics');
     const carbonData = await collectData();
     await carbon.insertOne(carbonData);
