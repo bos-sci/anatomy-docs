@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-import { Config, BackgroundHandler } from '@netlify/functions';
+import { Config, Handler } from '@netlify/functions';
 const { default: axios } = require('axios');
 const jsdom = require('jsdom');
 
@@ -57,25 +57,30 @@ async function collectData(): Promise<CarbonData> {
   };
 }
 
-const handler: BackgroundHandler = async () => {
+const handler: Handler = async () => {
   // Replace the uri string with your MongoDB deployment's connection string.
   const uri = process.env.MONGO_CONNECTION as string;
-
   const client = new MongoClient(uri);
 
-  async function run() {
-    try {
-      const database = client.db('carbon-metrics');
-      // Specifying a Schema is optional, but it enables type hints on
-      // finds and inserts
-      const carbon = database.collection<CarbonData>('metrics');
-      const carbonData = await collectData();
-      await carbon.insertOne(carbonData);
-    } finally {
-      await client.close();
-    }
+  try {
+    const database = client.db('carbon-metrics');
+    // Specifying a Schema is optional, but it enables type hints on
+    // finds and inserts
+    const carbon = database.collection<CarbonData>('metrics');
+    const carbonData = await collectData();
+    await carbon.insertOne(carbonData);
+    return {
+      statusCode: 200,
+      body: 'Carbon data successfully collected.'
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: error
+    };
+  } finally {
+    await client.close();
   }
-  run().catch(console.dir);
 };
 
 export { handler };
