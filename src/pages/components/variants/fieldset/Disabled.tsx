@@ -14,9 +14,9 @@ const Disabled = (): JSX.Element => {
   return (
     <Example>
       <Fieldset legend="Legend" disabled>
-        <InputText label="Related text input" value={inputValue} onChange={handleChange} />
+        <InputText label="Related text input" className="bsds-mt-2x" value={inputValue} onChange={handleChange} />
 
-        <Textarea label="Related textarea" />
+        <Textarea label="Related textarea" className="bsds-mt-3x" />
       </Fieldset>
     </Example>
   );

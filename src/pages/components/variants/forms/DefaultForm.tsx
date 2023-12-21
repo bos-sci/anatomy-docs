@@ -42,19 +42,20 @@ const DefaultForm = () => {
           ref={noSpacesInput}
           label="Text input"
           defaultValue="Invalid value"
+          className="bsds-mt-2x"
           errorText={noSpacesInputError}
           helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
           onBlur={validateTextInput}
           onChange={validateTextInput}
         />
 
-        <InputText label="Required text input" required />
+        <InputText label="Required text input" className="bsds-mt-3x" required />
 
-        <InputText label="Disabled text input" disabled />
+        <InputText label="Disabled text input" className="bsds-mt-3x" disabled />
 
-        <Textarea label="Textarea" />
+        <Textarea label="Textarea" className="bsds-mt-3x" />
 
-        <Select id="optionDefault" label="Select">
+        <Select id="optionDefault" label="Select" className="bsds-mt-3x">
           <Option value="" disabled selected />
 
           <Option value="option1">Option 1</Option>
@@ -65,21 +66,24 @@ const DefaultForm = () => {
         <Fieldset
           legend="Checkbox group"
           helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
+          className="bsds-mt-4x"
         >
           <InputCheckbox label="Checkbox 1" />
           <InputCheckbox label="Checkbox 2" />
           <InputCheckbox label="Checkbox 3" />
         </Fieldset>
 
-        <RadioGroup legend="Radio group">
+        <RadioGroup legend="Radio group" className="bsds-mt-4x">
           <InputRadio label="Radio 1" name="groupDisabled" value="defaultRadio1" defaultChecked />
           <InputRadio label="Radio 2" name="groupDisabled" value="defaultRadio2" />
           <InputRadio label="Radio 3" name="groupDisabled" value="defaultRadio3" />
         </RadioGroup>
 
-        <InputCheckbox label="Required checkbox" required />
+        <InputCheckbox label="Required checkbox" className="bsds-mt-4x" required />
 
-        <Button variant="assertive">Submit</Button>
+        <Button variant="assertive" className="bsds-mt-4x">
+          Submit
+        </Button>
       </Form>
     </Example>
   );
