@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-import { Config, Handler } from '@netlify/functions';
+import { Handler } from '@netlify/functions';
 const { default: axios } = require('axios');
 const jsdom = require('jsdom');
 
@@ -70,13 +70,11 @@ const handler: Handler = async () => {
     const carbonData = await collectData();
     await carbon.insertOne(carbonData);
     return {
-      statusCode: 200,
-      body: 'Carbon data successfully collected.'
+      statusCode: 200
     };
   } catch (error) {
     return {
-      statusCode: 500,
-      body: error
+      statusCode: 500
     };
   } finally {
     await client.close();
@@ -84,7 +82,3 @@ const handler: Handler = async () => {
 };
 
 export { handler };
-
-export const config: Config = {
-  schedule: '0 0 * * 1'
-};
