@@ -1,9 +1,8 @@
 import { createContext, FormEvent, ReactNode, RefObject, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import algoliasearch from 'algoliasearch';
-import { SkipLink } from '@boston-scientific/anatomy-react';
+import { Footer, SkipLink } from '@boston-scientific/anatomy-react';
 import logoADS from 'assets/images/logo-anatomy.svg';
-import logoBSC from 'assets/images/logo-bsc.svg';
 import { NavPrimary, NavItemPrimary, NavNodePrimary } from '@boston-scientific/anatomy-react';
 import { SearchResult } from '@boston-scientific/anatomy-react';
 import { useNavigate } from 'react-router-dom';
@@ -121,15 +120,8 @@ const Layout = (props: Props): JSX.Element => {
         onSearchChange={onSearchChange}
       />
       <SearchIndexContext.Provider value={index}>{props.children}</SearchIndexContext.Provider>
-      <footer className="docs-footer">
-        <div className="docs-footer-content">
-          <img src={logoBSC} className="docs-footer-logo" alt="Boston Scientific" />
-          <small className="bsds-font-size-sm">
-            &copy; {new Date().getFullYear()} Boston Scientific Corporation or its affiliates. All rights reserved.
-          </small>
-        </div>
-        {!!pathname && <CarbonRibbon url={pathname} />}
-      </footer>
+      <Footer />
+      {!!pathname && <CarbonRibbon url={pathname} />}
     </>
   );
 };
