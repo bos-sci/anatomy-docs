@@ -63,7 +63,6 @@ const handler: Handler = async () => {
   const client = new MongoClient(uri);
 
   try {
-    console.log('');
     const database = client.db('carbon-metrics');
     // Specifying a Schema is optional, but it enables type hints on
     // finds and inserts
