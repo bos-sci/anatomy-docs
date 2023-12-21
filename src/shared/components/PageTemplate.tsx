@@ -6,7 +6,6 @@ import { NavSecondary, NavItemSecondary } from '@boston-scientific/anatomy-react
 import { NavTertiary, NavItemTertiary } from '@boston-scientific/anatomy-react';
 import { Link } from '@boston-scientific/anatomy-react';
 import { toStorybookLink } from 'shared/helpers';
-import axios from 'axios';
 import storybookEnv from '../../pages/components/storybookEnv';
 
 interface Props {
@@ -47,9 +46,11 @@ const PageTemplate = (props: Props) => {
     if (props.navSecondaryMenuTrigger === 'Components') {
       const fetchStorybookComponent = async () => {
         try {
-          const apiUrl = process.env.NODE_ENV === 'production' ? storybookEnv.production : storybookEnv.development;
+          const apiUrl =
+            process.env.REACT_APP_DEVELOPMENT_MODE === 'production'
+              ? storybookEnv.production
+              : storybookEnv.development;
 
-          await axios.get(`${apiUrl}`);
           setStorybookUrl(`${apiUrl}?path=/docs/components-`);
         } catch (error) {
           return '';

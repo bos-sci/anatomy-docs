@@ -84,6 +84,7 @@ const Preview = (props: Props): JSX.Element => {
       InputCheckboxController: lazy(() => import('./inputCheckbox/_inputCheckboxController')),
       DefaultForm: lazy(() => import('./forms/DefaultForm')),
       FieldsetController: lazy(() => import('./fieldset//_FieldsetController')),
+      FooterController: lazy(() => import('./footer//_FooterController')),
       ImageController: lazy(() => import('./image/_ImageController')),
       LinkController: lazy(() => import('./link/_LinkController')),
       ModalController: lazy(() => import('./modals/_modalController')),
@@ -149,6 +150,10 @@ const Preview = (props: Props): JSX.Element => {
 
         case 'form':
           setRenderedComponent(<ComponentControllers.DefaultForm />);
+          break;
+
+        case 'footer':
+          setRenderedComponent(<ComponentControllers.FooterController variantId={variantId} />);
           break;
 
         case 'fieldset':

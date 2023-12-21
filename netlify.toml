@@ -8,3 +8,8 @@ package = "@algolia/netlify-plugin-crawler"
   [plugins.inputs]
   branches = ['main', 'develop']
   renderJavaScript = true
+
+[functions]
+  [functions."collectCarbon"]
+    external_node_modules = ["jsdom"]
+    schedule = "0 0 * * 1"
