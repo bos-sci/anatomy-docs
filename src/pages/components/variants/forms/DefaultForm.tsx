@@ -41,8 +41,8 @@ const DefaultForm = () => {
         <InputText
           ref={noSpacesInput}
           label="Text input"
-          defaultValue="Invalid value"
           className="bsds-mt-2x"
+          defaultValue="Invalid value"
           errorText={noSpacesInputError}
           helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
           onBlur={validateTextInput}
@@ -65,8 +65,8 @@ const DefaultForm = () => {
 
         <Fieldset
           legend="Checkbox group"
-          helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
           className="bsds-mt-4x"
+          helpText="This is an example of help text. It can wrap to two lines, but try not to go longer than three."
         >
           <InputCheckbox label="Checkbox 1" />
           <InputCheckbox label="Checkbox 2" />
