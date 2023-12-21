@@ -8,3 +8,6 @@ package = "@algolia/netlify-plugin-crawler"
   [plugins.inputs]
   branches = ['main', 'develop']
   renderJavaScript = true
+
+[functions]
+  external_node_modules = ["jsdom"]
