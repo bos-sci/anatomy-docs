@@ -3,3 +3,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.docs-carbon-filters {
+  display: flex;
+
+  dd {
+    margin-left: 1ch;
+  }
+}

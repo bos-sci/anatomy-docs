@@ -6,6 +6,8 @@ import { SearchResult } from '@boston-scientific/anatomy-react';
 import { NavNodePrimary } from '@boston-scientific/anatomy-react';
 import { releaseDate } from 'utils/release-date';
 
+export const ROOT_URL = 'https://www.anatomydesignsystem.com';
+
 export const slugify = (text: string): string => {
   return text
     .toString()

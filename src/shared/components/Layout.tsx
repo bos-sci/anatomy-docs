@@ -7,7 +7,7 @@ import logoBSC from 'assets/images/logo-bsc.svg';
 import { NavPrimary, NavItemPrimary, NavNodePrimary } from '@boston-scientific/anatomy-react';
 import { SearchResult } from '@boston-scientific/anatomy-react';
 import { useNavigate } from 'react-router-dom';
-import { indexSearch, isActiveNode } from 'shared/helpers';
+import { indexSearch, isActiveNode, ROOT_URL } from 'shared/helpers';
 import useHeadingIds from 'shared/hooks/useHeadingIds';
 import CarbonRibbon from 'shared/components/CarbonRibbon';
 
@@ -100,7 +100,7 @@ const Layout = (props: Props): JSX.Element => {
   }, [searchQuery]);
 
   useEffect(() => {
-    setPathname('https://www.anatomydesignsystem.com' + (location.pathname === '/' ? '' : location.pathname));
+    setPathname(ROOT_URL + (location.pathname === '/' ? '' : location.pathname));
   }, [location]);
 
   useHeadingIds();

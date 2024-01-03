@@ -2,8 +2,9 @@ import { Button, Link } from '@boston-scientific/anatomy-react';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Layout from 'shared/components/Layout';
+import { ROOT_URL } from 'shared/helpers';
 import useTitle from 'shared/hooks/useTitle';
-import { CarbonRecord, CarbonResult } from 'shared/types/docs';
+import { CarbonRecord } from 'shared/types/docs';
 
 interface Averages {
   carbon: number;
@@ -16,12 +17,14 @@ const CarbonMetrics = (): JSX.Element => {
   useTitle({ titlePrefix: `Carbon Metrics` });
 
   const [allData, setAllData] = useState<CarbonRecord[]>();
-  const [latestData, setLatestData] = useState<CarbonRecord>();
+  const [latestData, setLatestData] = useState<CarbonRecord[]>();
+  const [prevData, setPrevData] = useState<CarbonRecord[]>();
   const [isAscending, setIsAscending] = useState(true);
   const [averages, setAverages] = useState<Averages>();
+  const [lastUpdated, setLastUpdated] = useState('');
 
   const cleanURL = (url: string): string => {
-    const removedRoot = url.replace('https://www.anatomydesignsystem.com', '');
+    const removedRoot = url.replace(ROOT_URL, '');
     if (removedRoot === '') {
       return '/';
     }
@@ -30,7 +33,7 @@ const CarbonMetrics = (): JSX.Element => {
 
   const isDataReady = allData && latestData;
 
-  const getAverages = (data: CarbonResult[]) => {
+  const getAverages = (data: CarbonRecord[]) => {
     return {
       carbon: data.reduce((acc, cur) => acc + cur.carbon, 0) / data.length,
       percent: data.reduce((acc, cur) => acc + cur.percent, 0) / data.length
@@ -40,7 +43,7 @@ const CarbonMetrics = (): JSX.Element => {
   const toggleSort = () => {
     if (latestData) {
       const dataToSort = latestData;
-      dataToSort.results.sort((a, z) => (!isAscending ? a.carbon - z.carbon : z.carbon - a.carbon));
+      dataToSort.sort((a, z) => (!isAscending ? a.carbon - z.carbon : z.carbon - a.carbon));
       setLatestData(dataToSort);
       setIsAscending(!isAscending);
     }
@@ -48,28 +51,41 @@ const CarbonMetrics = (): JSX.Element => {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch('./.netlify/functions/getAllCarbon');
-      const data = await res.json();
-      setAllData(data.records);
-      const latest: CarbonRecord = data.records[data.records.length - 1];
-      latest.results.sort((a, z) => a.carbon - z.carbon);
-      setLatestData(latest);
+      try {
+        const res = await fetch('/.netlify/functions/getAllCarbon');
+        const data: CarbonRecord[] = await res.json();
+        setAllData(data);
+        const dates = new Set<string>();
+        data.forEach((record) => dates.add(record.date));
+        const datesArray: string[] = Array.from(dates).sort().reverse();
+        setLastUpdated(datesArray[0]);
+        const latest: CarbonRecord[] = data.filter((record) => record.date === datesArray[0]);
+        latest.sort((a, z) => a.carbon - z.carbon);
+        setLatestData(latest);
+        if (datesArray.length > 1) {
+          setPrevData(data.filter((record) => record.date === datesArray[1]));
+        } else {
+          setPrevData([]);
+        }
+      } catch {
+        setAllData([]);
+      }
     };
     getData();
   }, []);
 
   useEffect(() => {
-    if (latestData && allData) {
-      const latestAverages = getAverages(latestData.results);
-      const prevAverages = getAverages(allData[allData.length - 2].results);
+    if (latestData && prevData && allData) {
+      const latestAverages = getAverages(latestData);
+      const prevAverages = getAverages(prevData);
       setAverages({
         carbon: latestAverages.carbon,
         percent: latestAverages.percent,
-        carbonChange: latestAverages.carbon - prevAverages.carbon,
-        percentChange: latestAverages.percent - prevAverages.percent
+        carbonChange: latestAverages.carbon - prevAverages.carbon || 0,
+        percentChange: latestAverages.percent - prevAverages.percent || 0
       });
     }
-  }, [latestData, allData]);
+  }, [latestData, allData, prevData]);
 
   return (
     <Layout>
@@ -80,11 +96,11 @@ const CarbonMetrics = (): JSX.Element => {
         <main id="mainContent">
           <div className="docs-page-header">
             <div className="docs-metadata">
-              <h1 className="docs-title">Carbon Metrics</h1>
+              <h1 className="docs-title">Carbon metrics</h1>
               {!!latestData && (
                 <dl className="docs-datestamp">
                   <dt>Last Updated:</dt>
-                  <dd>{new Date(latestData.date).toLocaleDateString()}</dd>
+                  <dd>{new Date(lastUpdated).toLocaleDateString()}</dd>
                 </dl>
               )}
             </div>
@@ -137,23 +153,26 @@ const CarbonMetrics = (): JSX.Element => {
                         Carbon (g of CO2)
                       </Button>
                     </th>
+                    <th>Percent cleaner</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {latestData.results.map((record) => (
-                    <tr key={record.url + 'top'}>
+                  {latestData.map((record) => (
+                    <tr key={record._id}>
                       <td>
-                        <Link to={`./page?page=${cleanURL(record.url)}`}>{cleanURL(record.url)}</Link>
+                        <Link to={`./filter?url=${record.url}`}>{cleanURL(record.url)}</Link>
                       </td>
                       <td>{record.carbon}</td>
+                      <td>{record.percent}%</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </>
           )}
-          {!isDataReady && <p>Loading data...</p>}
+          {!isDataReady && !allData && <p>Loading data...</p>}
           {!!isDataReady && allData.length === 0 && <p>No data found</p>}
+          {!isDataReady && !!allData && allData.length === 0 && <p>Error retrieving data</p>}
         </main>
       </div>
     </Layout>
