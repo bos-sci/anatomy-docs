@@ -69,7 +69,7 @@ const SparkChart = (props: LineChartProps): JSX.Element => {
 
   return (
     <div ref={containerRef} className="docs-chart-container">
-      <svg ref={svgRef} className="docs-line-chart" />
+      <svg ref={svgRef} className="docs-spark-chart" />
     </div>
   );
 };

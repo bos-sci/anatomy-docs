@@ -1,11 +1,11 @@
 .docs-table-header-sortable {
   .bsds-button-subtle {
     padding: 0;
-    color: $neutral-00;
+    color: $text-color-primary;
 
     &:hover {
       background: transparent;
-      color: $neutral-00;
+      color: $text-color-primary;
       text-decoration: underline;
     }
   }
@@ -62,15 +62,11 @@
   gap: space(sm);
 }
 
-.docs-line-chart {
+.docs-spark-chart {
   display: block;
   height: auto;
   max-width: 100%;
   margin: space(3x) auto 0 auto;
-
-  .point {
-    fill: $action-primary-40;
-  }
 
   .line {
     stroke: $action-primary-40;
