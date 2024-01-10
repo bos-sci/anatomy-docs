@@ -38,6 +38,7 @@ async function parseSitemap(): Promise<string[] | null> {
       process.env.REACT_APP_DEVELOPMENT_MODE === 'production'
         ? '../../../../../build/sitemap.xml'
         : '../../../../../public/sitemap.xml';
+    console.log(__dirname);
     const jsonPath = path.join(__dirname, ...pathToSitemap.split('/'));
     const sitemap = fs.readFileSync(jsonPath, 'utf8');
     const dom = new jsdom.JSDOM(sitemap, { contentType: 'application/xml' });
