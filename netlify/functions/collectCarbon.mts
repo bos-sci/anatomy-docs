@@ -16,37 +16,46 @@ async function getCarbon(url: string, date: string): Promise<CarbonEntry> {
       carbon: res.data.c,
       percent: res.data.p
     };
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return {
       date,
       url,
       carbon: -1,
       percent: -1,
       error: {
-        status: e.response.status,
-        statusText: e.response.statusText
+        status: error.response.status,
+        statusText: error.response.statusText
       }
     };
   }
 }
 
-async function parseSitemap(): Promise<string[]> {
+async function parseSitemap(): Promise<string[] | null> {
   console.log('Parsing sitemap...');
-  const jsonPath = path.join(__dirname, '..', '..', '..', '..', '..', 'public', 'sitemap.xml');
-  const sitemap = fs.readFileSync(jsonPath, 'utf8');
-  const dom = new jsdom.JSDOM(sitemap, { contentType: 'application/xml' });
-  return Array.from(dom.window.document.querySelectorAll('loc'), (loc: Element) => loc.textContent || '');
+  try {
+    const jsonPath = path.join(__dirname, '..', '..', '..', '..', '..', 'public', 'sitemap.xml');
+    const sitemap = fs.readFileSync(jsonPath, 'utf8');
+    const dom = new jsdom.JSDOM(sitemap, { contentType: 'application/xml' });
+    return Array.from(dom.window.document.querySelectorAll('loc'), (loc: Element) => loc.textContent || '');
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 }
 
-async function collectData(): Promise<CarbonEntry[]> {
+async function collectData(): Promise<CarbonEntry[] | null> {
   console.log('Collecting data...');
   const date = new Date().toISOString();
   const urls = await parseSitemap();
   console.log('Sitemap parsed', urls);
-  const filteredUrls = urls.map((url) => url.replace(/\/$/m, ''));
-  const promises = filteredUrls.map((url) => getCarbon(url, date));
-  return Array.from(await Promise.all(promises));
+  if (urls) {
+    const filteredUrls = urls.map((url) => url.replace(/\/$/m, ''));
+    const promises = filteredUrls.map((url) => getCarbon(url, date));
+    return Array.from(await Promise.all(promises));
+  } else {
+    return null;
+  }
 }
 
 const handler: Handler = async () => {
@@ -58,13 +67,20 @@ const handler: Handler = async () => {
     const carbon = database.collection<CarbonEntry>('metrics');
     const carbonData = await collectData();
     console.log('Collected data', carbonData);
-    console.log('Inserting into DB...');
-    await carbon.insertMany(carbonData);
-    console.log('Inserted into DB');
-    return {
-      statusCode: 200
-    };
+    if (carbonData) {
+      console.log('Inserting into DB...');
+      await carbon.insertMany(carbonData);
+      console.log('Inserted into DB');
+      return {
+        statusCode: 200
+      };
+    } else {
+      return {
+        statusCode: 500
+      };
+    }
   } catch (error) {
+    console.error(error);
     return {
       statusCode: 500
     };
