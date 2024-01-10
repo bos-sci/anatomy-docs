@@ -17,7 +17,8 @@ export interface IdLookup {
   resources: IdLookupEntry;
 }
 
-export interface CarbonResult {
+export interface CarbonEntry {
+  date: string;
   url: string;
   carbon: number;
   percent: number;
@@ -27,11 +28,6 @@ export interface CarbonResult {
   };
 }
 
-export interface CarbonData {
-  date: string;
-  results: CarbonResult[];
-}
-
-export interface CarbonRecord extends CarbonData {
+export interface CarbonRecord extends CarbonEntry {
   _id: string;
 }
