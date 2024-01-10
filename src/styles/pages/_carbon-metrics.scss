@@ -1,7 +1,14 @@
 .docs-table-header-sortable {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  .bsds-button-subtle {
+    padding: 0;
+    color: $neutral-00;
+
+    &:hover {
+      background: transparent;
+      color: $neutral-00;
+      text-decoration: underline;
+    }
+  }
 }
 
 .docs-carbon-filters {
@@ -9,5 +16,73 @@
 
   dd {
     margin-left: 1ch;
+  }
+}
+
+.docs-metrics-tile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space(6x);
+  margin-top: space(4x);
+}
+
+.docs-metrics-tile {
+  display: flex;
+  flex-direction: column;
+  border: $border-width-xxs solid $border-color-subtle;
+  padding: space(3x);
+  text-align: center;
+
+  .docs-metrics-trend-up {
+    fill: $feedback-success-40;
+  }
+
+  .docs-metrics-trend-down {
+    fill: $feedback-error-40;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+}
+
+.docs-metrics-tile-description {
+  @include font-size($fs-body-subtle);
+  margin-bottom: auto;
+}
+
+.docs-metrics-tile-value {
+  @include font-size($fs-body-assertive);
+}
+
+.docs-metrics-tile-change {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: space(sm);
+}
+
+.docs-line-chart {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: space(3x) auto 0 auto;
+
+  .point {
+    fill: $action-primary-40;
+  }
+
+  .line {
+    stroke: $action-primary-40;
+  }
+
+  text {
+    @include font-size($fs-body-subtle);
+  }
+}
+
+@media (min-width: $breakpoint-md-min) {
+  .docs-metrics-tile-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }

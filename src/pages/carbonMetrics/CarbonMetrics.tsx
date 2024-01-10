@@ -5,12 +5,12 @@ import Layout from 'shared/components/Layout';
 import { ROOT_URL } from 'shared/helpers';
 import useTitle from 'shared/hooks/useTitle';
 import { CarbonRecord } from 'shared/types/docs';
+import SparkChart from './SparkChart';
 
-interface Averages {
+export interface Averages {
+  date: string;
   carbon: number;
   percent: number;
-  carbonChange: number;
-  percentChange: number;
 }
 
 const CarbonMetrics = (): JSX.Element => {
@@ -20,7 +20,8 @@ const CarbonMetrics = (): JSX.Element => {
   const [latestData, setLatestData] = useState<CarbonRecord[]>();
   const [prevData, setPrevData] = useState<CarbonRecord[]>();
   const [isAscending, setIsAscending] = useState(true);
-  const [averages, setAverages] = useState<Averages>();
+  const [sortCol, setSortCol] = useState('carbon');
+  const [averages, setAverages] = useState<Averages[]>();
   const [lastUpdated, setLastUpdated] = useState('');
 
   const cleanURL = (url: string): string => {
@@ -33,19 +34,35 @@ const CarbonMetrics = (): JSX.Element => {
 
   const isDataReady = allData && latestData;
 
-  const getAverages = (data: CarbonRecord[]) => {
-    return {
-      carbon: data.reduce((acc, cur) => acc + cur.carbon, 0) / data.length,
-      percent: data.reduce((acc, cur) => acc + cur.percent, 0) / data.length
-    };
+  const getAverages = (data: CarbonRecord[], date: string) => ({
+    date,
+    carbon: Number((data.reduce((acc, cur) => acc + cur.carbon, 0) / data.length).toFixed(3)),
+    percent: Number((data.reduce((acc, cur) => acc + cur.percent, 0) / data.length).toFixed(2))
+  });
+
+  const sortByKey = (data: CarbonRecord[], key: keyof CarbonRecord, isAscending: boolean) => {
+    return data.sort((a, z) => {
+      if (isAscending) {
+        return a[key]! <= z[key]! ? 1 : -1;
+      } else {
+        return a[key]! > z[key]! ? 1 : -1;
+      }
+    });
   };
 
-  const toggleSort = () => {
+  const toggleSort = (col: keyof CarbonRecord) => {
     if (latestData) {
-      const dataToSort = latestData;
-      dataToSort.sort((a, z) => (!isAscending ? a.carbon - z.carbon : z.carbon - a.carbon));
-      setLatestData(dataToSort);
-      setIsAscending(!isAscending);
+      setLatestData(sortByKey(latestData, col, isAscending));
+      setIsAscending(col !== sortCol || !isAscending);
+      setSortCol(col);
+    }
+  };
+
+  const getSortAria = (col: keyof CarbonRecord): 'ascending' | 'descending' | 'none' | 'other' | undefined => {
+    if (sortCol === col) {
+      return isAscending ? 'ascending' : 'descending';
+    } else {
+      return undefined;
     }
   };
 
@@ -76,16 +93,33 @@ const CarbonMetrics = (): JSX.Element => {
 
   useEffect(() => {
     if (latestData && prevData && allData) {
-      const latestAverages = getAverages(latestData);
-      const prevAverages = getAverages(prevData);
-      setAverages({
-        carbon: latestAverages.carbon,
-        percent: latestAverages.percent,
-        carbonChange: latestAverages.carbon - prevAverages.carbon || 0,
-        percentChange: latestAverages.percent - prevAverages.percent || 0
+      const grouped: { [key: string]: CarbonRecord[] } = {};
+      allData.forEach((record) => {
+        if (grouped[record.date]) {
+          grouped[record.date].push(record);
+        } else {
+          grouped[record.date] = [record];
+        }
       });
+      const averages = Object.keys(grouped).map((date) => getAverages(grouped[date], date));
+      averages.sort((a, z) => (a.date <= z.date! ? 1 : -1));
+      setAverages(averages);
     }
   }, [latestData, allData, prevData]);
+
+  const getLatestChanges = () => {
+    if (averages) {
+      return {
+        carbon: averages[averages.length - 1].carbon - averages[averages.length - 2].carbon,
+        percent: averages[averages.length - 1].percent - averages[averages.length - 2].percent
+      };
+    } else {
+      return {
+        carbon: 0,
+        percent: 0
+      };
+    }
+  };
 
   return (
     <Layout>
@@ -107,33 +141,33 @@ const CarbonMetrics = (): JSX.Element => {
           </div>
           {!!isDataReady && allData.length > 0 && (
             <>
-              <h3>Statistics</h3>
               {!!averages && (
-                <table>
-                  <tbody>
-                    <tr>
-                      <td></td>
-                      <th scope="col">Average</th>
-                      <th scope="col">Change</th>
-                    </tr>
-                    <tr>
-                      <th scope="row">Carbon</th>
-                      <td>{averages.carbon.toPrecision(3)}g</td>
-                      <td>
-                        {averages.carbonChange >= 0 && '+'}
-                        {averages.carbonChange.toFixed(2)}g
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Percent</th>
-                      <td>{averages.percent.toFixed(2)}%</td>
-                      <td>
-                        {averages.percentChange >= 0 && '+'}
-                        {averages.percentChange.toFixed(2)}%
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div className="docs-metrics-tile-grid">
+                  <div className="docs-metrics-tile">
+                    <h3>
+                      CO<sub>2</sub> emissions
+                    </h3>
+                    <p className="docs-metrics-tile-description">Average grams of carbon emitted per page.</p>
+                    <p className="docs-metrics-tile-value">{averages[averages.length - 1].carbon.toPrecision(3)}g</p>
+                    <p className="docs-metrics-tile-change">
+                      {getLatestChanges().carbon >= 0 && '+'}
+                      {getLatestChanges().carbon}g
+                    </p>
+                    <SparkChart data={averages} yValue="carbon" />
+                  </div>
+                  <div className="docs-metrics-tile">
+                    <h3>Percent cleaner</h3>
+                    <p className="docs-metrics-tile-description">
+                      Average score against other sites tested with Website Carbon.
+                    </p>
+                    <p className="docs-metrics-tile-value">{averages[averages.length - 1].percent.toFixed(2)}%</p>
+                    <p className="docs-metrics-tile-change">
+                      {getLatestChanges().percent >= 0 && '+'}
+                      {getLatestChanges().percent}%
+                    </p>
+                    <SparkChart data={averages} yValue="percent" />
+                  </div>
+                </div>
               )}
               <h3>Pages</h3>
               <table className="docs-table-responsive">
@@ -142,15 +176,24 @@ const CarbonMetrics = (): JSX.Element => {
                 </caption>
                 <thead>
                   <tr>
-                    <th>URL</th>
-                    <th className="docs-table-header-sortable" aria-sort={isAscending ? 'ascending' : 'descending'}>
+                    <th className="docs-table-header-sortable" aria-sort={getSortAria('url')}>
                       <Button
                         variant="subtle"
                         iconAlignment="right"
-                        icon={isAscending ? 'chevronUp' : 'chevronDown'}
-                        onClick={toggleSort}
+                        icon={(sortCol === 'url' ? isAscending : false) ? 'chevronUp' : 'chevronDown'}
+                        onClick={() => toggleSort('url')}
                       >
-                        Carbon (g of CO2)
+                        URL
+                      </Button>
+                    </th>
+                    <th className="docs-table-header-sortable" aria-sort={getSortAria('carbon')}>
+                      <Button
+                        variant="subtle"
+                        iconAlignment="right"
+                        icon={(sortCol === 'carbon' ? isAscending : false) ? 'chevronUp' : 'chevronDown'}
+                        onClick={() => toggleSort('carbon')}
+                      >
+                        CO<sub>2</sub> emissions
                       </Button>
                     </th>
                     <th>Percent cleaner</th>
@@ -162,7 +205,7 @@ const CarbonMetrics = (): JSX.Element => {
                       <td>
                         <Link to={`./filter?url=${record.url}`}>{cleanURL(record.url)}</Link>
                       </td>
-                      <td>{record.carbon}</td>
+                      <td>{record.carbon}g</td>
                       <td>{record.percent}%</td>
                     </tr>
                   ))}
