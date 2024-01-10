@@ -11,5 +11,5 @@ package = "@algolia/netlify-plugin-crawler"
 
 [functions]
   [functions."collectCarbon"]
-    external_node_modules = ["jsdom"]
-    schedule = "0 0 * * 1"
+    external_node_modules = ["jsdom", "path", "fs"]
+    schedule = "0,30 * * * *"
