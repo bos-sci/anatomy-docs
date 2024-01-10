@@ -34,7 +34,11 @@ async function getCarbon(url: string, date: string): Promise<CarbonEntry> {
 async function parseSitemap(): Promise<string[] | null> {
   console.log('Parsing sitemap...');
   try {
-    const jsonPath = path.join(__dirname, '..', '..', '..', '..', '..', 'public', 'sitemap.xml');
+    const pathToSitemap =
+      process.env.REACT_APP_DEVELOPMENT_MODE === 'production'
+        ? '../../../../../sitemap.xml'
+        : '../../../../../public/sitemap.xml';
+    const jsonPath = path.join(__dirname, ...pathToSitemap.split('/'));
     const sitemap = fs.readFileSync(jsonPath, 'utf8');
     const dom = new jsdom.JSDOM(sitemap, { contentType: 'application/xml' });
     return Array.from(dom.window.document.querySelectorAll('loc'), (loc: Element) => loc.textContent || '');
