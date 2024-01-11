@@ -17,11 +17,12 @@ const DefaultFieldset = (): JSX.Element => {
         <InputText
           id="defaultFieldsetTextInput"
           label="Related text input"
+          className="bsds-mt-2x"
           value={inputValue}
           onChange={handleChange}
         />
 
-        <Textarea id="defaultFieldsetTextarea" label="Related textarea" />
+        <Textarea id="defaultFieldsetTextarea" label="Related textarea" className="bsds-mt-3x" />
       </Fieldset>
     </Example>
   );

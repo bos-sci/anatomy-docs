@@ -21,8 +21,8 @@ const WithError = (): JSX.Element => {
   return (
     <Example>
       <Fieldset legend="Legend" errorText={errorText}>
-        <InputText label="Related text input" value={inputValue} onChange={handleChange} />
-        <Textarea label="Related textarea" />
+        <InputText label="Related text input" className="bsds-mt-2x" value={inputValue} onChange={handleChange} />
+        <Textarea label="Related textarea" className="bsds-mt-3x" />
       </Fieldset>
     </Example>
   );
