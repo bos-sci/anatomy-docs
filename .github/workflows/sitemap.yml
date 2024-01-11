@@ -1,4 +1,4 @@
-name: Sitemap
+name: Update sitemap
 
 on:
   pull_request:
