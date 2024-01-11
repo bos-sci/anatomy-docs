@@ -52,7 +52,7 @@ async function parseSitemap(): Promise<string[] | null> {
 }
 
 /**
- * PAss all the sitemap urls into the website carbon api
+ * Passes all the sitemap urls into the website carbon api
  * @returns Promise<CarbonEntry[]> Records to be written to DB
  */
 async function collectData(): Promise<CarbonEntry[] | null> {
