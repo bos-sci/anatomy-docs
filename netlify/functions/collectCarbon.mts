@@ -66,8 +66,8 @@ const handler: Handler = async () => {
     console.log('Collected data', carbonData);
     if (carbonData) {
       console.log('Inserting into DB...');
-      const insertResult = await carbon.insertMany(carbonData);
-      console.log('Inserted into DB', insertResult);
+      await carbon.insertMany(carbonData);
+      console.log('Inserted into DB');
       return {
         statusCode: 200
       };
