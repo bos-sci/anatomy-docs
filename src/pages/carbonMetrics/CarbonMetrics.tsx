@@ -14,7 +14,7 @@ export interface Averages {
 }
 
 const CarbonMetrics = (): JSX.Element => {
-  useTitle({ titlePrefix: `Carbon Metrics` });
+  useTitle({ titlePrefix: `Carbon metrics` });
 
   const [allData, setAllData] = useState<CarbonRecord[]>();
   const [latestData, setLatestData] = useState<CarbonRecord[]>();
@@ -124,7 +124,7 @@ const CarbonMetrics = (): JSX.Element => {
   return (
     <Layout>
       <Helmet>
-        <meta name="description" content="Boston Scientific Anatomy Design System website carbon metrics" />
+        <meta name="description" content="Boston Scientific Anatomy Design System's carbon metrics" />
       </Helmet>
       <div className="docs-body-minimal">
         <main id="mainContent">
@@ -144,7 +144,7 @@ const CarbonMetrics = (): JSX.Element => {
               {!!averages && (
                 <div className="docs-metrics-tile-grid">
                   <div className="docs-metrics-tile">
-                    <h3>
+                    <h3 className="mt-0">
                       CO<sub>2</sub> emissions
                     </h3>
                     <p className="docs-metrics-tile-description">Average grams of carbon emitted per page.</p>
@@ -172,7 +172,8 @@ const CarbonMetrics = (): JSX.Element => {
               <h3>Pages</h3>
               <table className="docs-table-responsive">
                 <caption className="bsds-visually-hidden">
-                  Most recent carbon data for each page across the Anatomy documentation site.
+                  Most recent carbon data for each page across the Anatomy documentation site. Column headers with
+                  buttons are sortable.
                 </caption>
                 <thead>
                   <tr>

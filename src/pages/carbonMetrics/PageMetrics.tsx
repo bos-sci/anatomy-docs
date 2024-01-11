@@ -8,7 +8,7 @@ import useTitle from 'shared/hooks/useTitle';
 import { CarbonRecord } from 'shared/types/docs';
 
 const PageMetrics = (): JSX.Element => {
-  useTitle({ titlePrefix: `Carbon Metrics` });
+  useTitle({ titlePrefix: `Carbon metrics` });
 
   const [searchParams] = useSearchParams();
   const location = useLocation();
@@ -89,7 +89,7 @@ const PageMetrics = (): JSX.Element => {
   return (
     <Layout>
       <Helmet>
-        <meta name="description" content="Boston Scientific Anatomy Design System website carbon metrics" />
+        <meta name="description" content="Boston Scientific Anatomy Design System's carbon metrics" />
       </Helmet>
       <div className="docs-body-minimal">
         <main id="mainContent">
@@ -109,7 +109,9 @@ const PageMetrics = (): JSX.Element => {
           </div>
           {!!pageData && pageData.length > 0 && (
             <table className="docs-table-responsive">
-              <caption className="bsds-visually-hidden">Carbon data for the page {searchParams.get('url')}</caption>
+              <caption className="bsds-visually-hidden">
+                {getHeadingText()}. Column headers with buttons are sortable.
+              </caption>
               <thead>
                 <tr>
                   {!searchParams.has('date') && (
