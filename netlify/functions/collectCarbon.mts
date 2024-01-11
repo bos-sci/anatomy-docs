@@ -3,6 +3,8 @@ import { Handler } from '@netlify/functions';
 import { CarbonEntry } from '../../src/shared/types/docs';
 const { default: axios } = require('axios');
 const jsdom = require('jsdom');
+const fs = require('fs');
+const path = require('path');
 
 async function getCarbon(url: string, date: string): Promise<CarbonEntry> {
   const api = 'https://api.websitecarbon.com/b?url=';
@@ -32,8 +34,14 @@ async function getCarbon(url: string, date: string): Promise<CarbonEntry> {
 async function parseSitemap(): Promise<string[] | null> {
   console.log('Parsing sitemap...');
   try {
-    const res = await axios.get('https://raw.githubusercontent.com/bsc-xdc/anatomy/master/public/sitemap.xml');
-    const dom = new jsdom.JSDOM(res.data, { contentType: 'application/xml' });
+    const pathToSitemap =
+      process.env.REACT_APP_DEVELOPMENT_MODE === 'production'
+        ? '../../../../../build/sitemap.xml'
+        : '../../../../../public/sitemap.xml';
+    console.log(__dirname);
+    const jsonPath = path.join(__dirname, ...pathToSitemap.split('/'));
+    const sitemap = fs.readFileSync(jsonPath, 'utf8');
+    const dom = new jsdom.JSDOM(sitemap, { contentType: 'application/xml' });
     return Array.from(dom.window.document.querySelectorAll('loc'), (loc: Element) => loc.textContent || '');
   } catch (error) {
     console.error(error);
