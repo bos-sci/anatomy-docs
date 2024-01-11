@@ -1,0 +1,64 @@
+.docs-table-sortable {
+  .bsds-button-subtle {
+    padding: 0;
+    color: $text-color-primary;
+
+    &:hover {
+      background: transparent;
+      color: $text-color-primary;
+      text-decoration: underline;
+    }
+  }
+
+  th {
+    font-size: $ffs-body-assertive;
+  }
+}
+
+.docs-metrics-tile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space(6x);
+  margin-top: space(4x);
+}
+
+.docs-metrics-tile {
+  display: flex;
+  flex-direction: column;
+  border: $border-width-xxs solid $border-color-subtle;
+  padding: space(3x);
+  text-align: center;
+}
+
+.docs-metrics-tile-description {
+  @include font-size($fs-body-subtle);
+  margin-bottom: auto; // This pushes flex items below description to bottom of tile
+}
+
+.docs-metrics-tile-value {
+  @include font-size($fs-body-assertive);
+}
+
+.docs-metrics-tile-change {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: space(sm);
+}
+
+.docs-spark-chart {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: space(3x) auto 0;
+
+  .line {
+    stroke: $action-primary-40;
+  }
+}
+
+@media (min-width: $breakpoint-md-min) {
+  .docs-metrics-tile-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

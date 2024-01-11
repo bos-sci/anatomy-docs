@@ -7,6 +7,8 @@ import Home from 'pages/Home';
 import NotFound from 'shared/components/NotFound';
 import SearchResults from 'pages/SearchResults';
 import LandingPage from 'shared/components/LandingPage';
+import CarbonMetrics from 'pages/carbonMetrics/CarbonMetrics';
+import PageMetrics from 'pages/carbonMetrics/PageMetrics';
 
 const CodeStandardsRouter = lazy(() => import('pages/codeStandards/CodeStandardsRouter'));
 const ComponentsRouter = lazy(() => import('pages/components/ComponentsRouter'));
@@ -150,6 +152,11 @@ const App = (): JSX.Element => {
               </Route>
 
               <Route path="search" element={<SearchResults />} />
+
+              <Route path="carbon-metrics">
+                <Route path="" element={<CarbonMetrics />} />
+                <Route path="filter" element={<PageMetrics />} />
+              </Route>
 
               <Route path="*" element={<NotFound />} />
             </Routes>

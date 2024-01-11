@@ -74,7 +74,7 @@ const PageTemplate = (props: Props) => {
             <h1 className="docs-title">{props.name}</h1>
             {!!props.lastUpdated && (
               <dl className="docs-datestamp">
-                <dt>Last Updated:</dt>
+                <dt>Last updated:</dt>
                 <dd>{props.lastUpdated ? new Date(props.lastUpdated).toLocaleDateString() : 'Draft'}</dd>
               </dl>
             )}
