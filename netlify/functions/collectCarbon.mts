@@ -4,6 +4,12 @@ import { CarbonEntry } from '../../src/shared/types/docs';
 const { default: axios } = require('axios');
 const jsdom = require('jsdom');
 
+/**
+ * Query the website carbon api and return a CarbonEntry with date, url, carbon grams, and percent data.
+ * @param url Anatomy docs page url
+ * @param date Date string for the current date
+ * @returns Promise<CarbonEntry>
+ */
 async function getCarbon(url: string, date: string): Promise<CarbonEntry> {
   const api = 'https://api.websitecarbon.com/b?url=';
   try {
@@ -29,10 +35,14 @@ async function getCarbon(url: string, date: string): Promise<CarbonEntry> {
   }
 }
 
+/**
+ * Gets the sitemap from the main branch in the anatomy-docs github
+ * @returns Promise<string[]> A string of urls parsed from the sitemap
+ */
 async function parseSitemap(): Promise<string[] | null> {
   console.log('Parsing sitemap...');
   try {
-    const res = await axios.get('https://raw.githubusercontent.com/bsc-xdc/anatomy/master/public/sitemap.xml');
+    const res = await axios.get('https://raw.githubusercontent.com/bos-sci/anatomy-docs/main/public/sitemap.xml');
     const dom = new jsdom.JSDOM(res.data, { contentType: 'application/xml' });
     return Array.from(dom.window.document.querySelectorAll('loc'), (loc: Element) => loc.textContent || '');
   } catch (error) {
@@ -41,6 +51,10 @@ async function parseSitemap(): Promise<string[] | null> {
   }
 }
 
+/**
+ * Passes all the sitemap urls into the website carbon api
+ * @returns Promise<CarbonEntry[]> Records to be written to DB
+ */
 async function collectData(): Promise<CarbonEntry[] | null> {
   console.log('Collecting data...');
   const date = new Date().toISOString();
@@ -55,6 +69,10 @@ async function collectData(): Promise<CarbonEntry[] | null> {
   }
 }
 
+/**
+ * Connects to MongoDB and inserts records
+ * @returns Status code object
+ */
 const handler: Handler = async () => {
   const uri = process.env.MONGO_CONNECTION as string;
   const client = new MongoClient(uri);

@@ -56,6 +56,7 @@ REACT_APP_ALGOLIA_ID={algolia-search-id}
 REACT_APP_ALGOLIA_KEY={algolia-search-key}
 REACT_APP_ALGOLIA_INDEX={algolia-search-index-based-on-environment}
 REACT_APP_DEVELOPMENT_MODE=development
+MONGO_CONNECTION={mongodb-connection-string}
 ```
 
 ### Development
@@ -193,6 +194,11 @@ new working environment.
 11. Create a release in Github attached to a new tag that matches the version number.
 
 In the end we should have 3 environments including master, working environment, and the past 1 version of master.
+
+### Netlify functions
+1. If not already installed, install `netlify-cli` globally
+2. Run `netlify dev`
+3. Invoke functions either through function url or [netlify-cli](https://cli.netlify.com/commands/functions)
 
 ## Naming Conventions
 

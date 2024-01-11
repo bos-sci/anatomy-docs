@@ -8,7 +8,7 @@ export default async () => {
   try {
     const database = client.db('carbon-metrics');
     const carbon = database.collection<CarbonRecord>('metrics');
-    const cursor = carbon.find().sort({ date: 1 });
+    const cursor = carbon.find().sort({ date: 1 }); // Sort date ascending
     const allData = await cursor.toArray();
     return Response.json(allData);
   } catch (error) {
