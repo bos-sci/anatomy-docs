@@ -170,14 +170,14 @@ const CarbonMetrics = (): JSX.Element => {
                 </div>
               )}
               <h3>Pages</h3>
-              <table className="docs-table-responsive">
+              <table className="docs-table-responsive docs-table-sortable">
                 <caption className="bsds-visually-hidden">
                   Most recent carbon data for each page across the Anatomy documentation site. Column headers with
                   buttons are sortable.
                 </caption>
                 <thead>
                   <tr>
-                    <th className="docs-table-header-sortable" aria-sort={getSortAria('url')}>
+                    <th aria-sort={getSortAria('url')}>
                       <Button
                         variant="subtle"
                         iconAlignment="right"
@@ -187,7 +187,7 @@ const CarbonMetrics = (): JSX.Element => {
                         URL
                       </Button>
                     </th>
-                    <th className="docs-table-header-sortable" aria-sort={getSortAria('carbon')}>
+                    <th aria-sort={getSortAria('carbon')}>
                       <Button
                         variant="subtle"
                         iconAlignment="right"

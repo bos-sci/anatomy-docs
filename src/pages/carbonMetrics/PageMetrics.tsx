@@ -94,28 +94,29 @@ const PageMetrics = (): JSX.Element => {
       <div className="docs-body-minimal">
         <main id="mainContent">
           <Link to="../" className="bsds-body-subtle">
-            <IconChevronLeft className="bsds-icon-lg" /> Back to metrics overview
+            <IconChevronLeft className="bsds-icon-lg bsds-icon-left" />
+            Back to metrics overview
           </Link>
           <div className="docs-page-header">
             <div className="docs-metadata">
               <h1>{getHeadingText()}</h1>
               {!!pageData && (
                 <dl className="docs-datestamp">
-                  <dt>Last Updated:</dt>
+                  <dt>Last updated:</dt>
                   <dd>{new Date(lastUpdated).toLocaleDateString()}</dd>
                 </dl>
               )}
             </div>
           </div>
           {!!pageData && pageData.length > 0 && (
-            <table className="docs-table-responsive">
+            <table className="docs-table-responsive docs-table-sortable">
               <caption className="bsds-visually-hidden">
                 {getHeadingText()}. Column headers with buttons are sortable.
               </caption>
               <thead>
                 <tr>
                   {!searchParams.has('date') && (
-                    <th className="docs-table-header-sortable" aria-sort={getSortAria('date')}>
+                    <th aria-sort={getSortAria('date')}>
                       <Button
                         variant="subtle"
                         iconAlignment="right"
@@ -127,7 +128,7 @@ const PageMetrics = (): JSX.Element => {
                     </th>
                   )}
                   {!searchParams.has('url') && (
-                    <th className="docs-table-header-sortable" aria-sort={getSortAria('url')}>
+                    <th aria-sort={getSortAria('url')}>
                       <Button
                         variant="subtle"
                         iconAlignment="right"
@@ -138,7 +139,7 @@ const PageMetrics = (): JSX.Element => {
                       </Button>
                     </th>
                   )}
-                  <th className="docs-table-header-sortable" aria-sort={getSortAria('carbon')}>
+                  <th aria-sort={getSortAria('carbon')}>
                     <Button
                       variant="subtle"
                       iconAlignment="right"
