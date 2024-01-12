@@ -26,6 +26,7 @@
     "eject": "react-scripts eject",
     "generate-types": "graphql-codegen --config codegen.yml --require dotenv/config",
     "pre": "npm run generate-types && npm run release-date && node src/utils/updateTokensVersion.js",
+    "version": "npm run sitemap && git add .",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "sitemap": "node src/utils/generateSitemap.js",
