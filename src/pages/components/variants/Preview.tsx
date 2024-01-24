@@ -101,7 +101,8 @@ const Preview = (props: Props): JSX.Element => {
       DefaultNavTertiary: lazy(() => import('./navTertiary/DefaultNavTertiary')),
       InputTextController: lazy(() => import('./inputText/_InputTextController')),
       TextareaController: lazy(() => import('./textarea/_TextareaController')),
-      SelectController: lazy(() => import('./select/_SelectController'))
+      SelectController: lazy(() => import('./select/_SelectController')),
+      PaginationController: lazy(() => import('./pagination/DefaultPagination'))
     };
 
     if (props.shouldLinkToExamples) {
@@ -170,6 +171,10 @@ const Preview = (props: Props): JSX.Element => {
 
         case 'modal':
           setRenderedComponent(<ComponentControllers.ModalController variantId={variantId} />);
+          break;
+
+        case 'pagination':
+          setRenderedComponent(<ComponentControllers.PaginationController />);
           break;
 
         case 'primary-navigation':

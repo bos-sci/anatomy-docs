@@ -1,6 +1,7 @@
 import { VariantProps } from '../Preview';
 import DefaultSelect from './DefaulSelect';
 import Disabled from './Disabled';
+import FilterSelect from './FilterSelect';
 import WithError from './WithError';
 import WithHelp from './WithHelp';
 import WithHelpError from './WithHelpError';
@@ -20,6 +21,9 @@ const SelectController = ({ variantId }: VariantProps): JSX.Element => {
 
     case 'selectWithHelpAndError':
       return <WithHelpError />;
+
+    case 'selectFilter':
+      return <FilterSelect />;
 
     // States
 
