@@ -1668,6 +1668,7 @@ export enum PagePropertiesOrder {
 
 export type Query = {
   __typename?: 'Query';
+  _node?: Maybe<_Node>;
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
   codeStandard?: Maybe<CodeStandard>;
@@ -1689,6 +1690,13 @@ export type Query = {
   pagePropertiesCollection?: Maybe<PagePropertiesCollection>;
   resource?: Maybe<Resource>;
   resourceCollection?: Maybe<ResourceCollection>;
+};
+
+
+export type Query_NodeArgs = {
+  id: Scalars['ID'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -2040,6 +2048,10 @@ export type SysFilter = {
   publishedVersion_lte?: InputMaybe<Scalars['Float']>;
   publishedVersion_not?: InputMaybe<Scalars['Float']>;
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+};
+
+export type _Node = {
+  _id: Scalars['ID'];
 };
 
 export type CfComponentModifierNestedFilter = {
