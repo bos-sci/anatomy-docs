@@ -153,6 +153,10 @@ const Components = (): JSX.Element => {
         ]
       },
       {
+        text: 'Pagination',
+        to: basePath + '/pagination'
+      },
+      {
         text: 'Ribbon',
         to: basePath + '/ribbon'
       },
