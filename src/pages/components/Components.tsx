@@ -1,6 +1,4 @@
 import { useState, useEffect, useContext, Fragment } from 'react';
-import { useLocation } from 'react-router-dom';
-import { NavItemSecondary } from '@boston-scientific/anatomy-react';
 import { NavItemTertiary } from '@boston-scientific/anatomy-react';
 import Markdown from 'shared/components/Markdown';
 import { GetComponentQuery } from 'shared/types/contentful';
@@ -12,13 +10,9 @@ import Layout from 'shared/components/Layout';
 import { ComponentContext } from './ComponentsController';
 import Preview from 'pages/components/variants/Preview';
 import { IdLookupContext } from 'App';
-import { IdLookupProperties } from 'shared/types/docs';
-import { slugify } from 'shared/helpers';
+import useNavItems from 'shared/hooks/useNavItems';
 
 const Components = (): JSX.Element => {
-  const location = useLocation();
-
-  const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [componentData, setComponentData] = useState<GetComponentQuery['component']>(
     {} as GetComponentQuery['component']
   );
@@ -27,56 +21,13 @@ const Components = (): JSX.Element => {
   const data = useContext(ComponentContext);
   const idLookup = useContext(IdLookupContext);
 
+  const navItems = useNavItems(idLookup.components, 'components');
+
   useEffect(() => {
     if (data) {
       setComponentData(data);
     }
   }, [data]);
-
-  useEffect(() => {
-    // TODO: ADS-380 get rid of .replace()
-    const basePath = location.pathname
-      .slice(0, location.pathname.lastIndexOf('/'))
-      .replace('/form-controls', '')
-      .replace('/navigation', '')
-      .replace('/cards', '');
-
-    const groupedItems: { [key: string]: IdLookupProperties[] } = {
-      _ungrouped: []
-    };
-
-    Object.keys(idLookup.components).forEach((entry) => {
-      const item = idLookup.components[entry];
-      if (item.groupName) {
-        if (groupedItems[item.groupName]) {
-          groupedItems[item.groupName].push(item);
-        } else {
-          groupedItems[item.groupName] = [item];
-        }
-      } else {
-        groupedItems['_ungrouped'].push(item);
-      }
-    });
-
-    const navItems: NavItemSecondary[] = groupedItems._ungrouped.map((item) => ({
-      text: item.name,
-      to: basePath + '/' + slugify(item.name)
-    }));
-
-    delete groupedItems['_ungrouped'];
-
-    const groups = Object.keys(groupedItems).map((entry) => ({
-      text: entry,
-      children: groupedItems[entry].map((item) => ({
-        text: item.name,
-        to: basePath + '/' + item.group + '/' + slugify(item.name)
-      }))
-    }));
-
-    const sortedItems = navItems.concat(groups).sort((a, z) => (a.text > z.text ? 1 : -1));
-
-    setNavItems(sortedItems);
-  }, [idLookup.components, location]);
 
   const nameForTitle = componentData?.name || '';
 
