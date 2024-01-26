@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { NavItemSecondary } from '@boston-scientific/anatomy-react';
 import { NavItemTertiary } from '@boston-scientific/anatomy-react';
 import { IdLookupContext } from 'App';
 import Markdown from 'shared/components/Markdown';
@@ -11,11 +10,11 @@ import useHashScroll from 'shared/hooks/useHashScroll';
 import useHeadings from 'shared/hooks/useHeadings';
 import PageTemplate from 'shared/components/PageTemplate';
 import Layout from 'shared/components/Layout';
+import useNavItems from 'shared/hooks/useNavItems';
 
 const ContentGuidelines = (): JSX.Element => {
   const params = useParams();
   const location = useLocation();
-  const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [contentGuidelineData, setContentGuidelineData] = useState<GetContentGuidelineQuery['contentGuideline']>(
     {} as GetContentGuidelineQuery['contentGuideline']
   );
@@ -34,16 +33,12 @@ const ContentGuidelines = (): JSX.Element => {
     console.error(error);
   }
 
+  const navItems = useNavItems(idLookup.contentGuidelines, 'content');
+
   useEffect(() => {
     if (data?.contentGuideline) {
       setContentGuidelineData(data.contentGuideline);
     }
-    const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/'));
-    const navItems = Object.keys(idLookup.contentGuidelines).map((entry) => ({
-      text: idLookup.contentGuidelines[entry].name,
-      to: basePath + '/' + entry
-    }));
-    setNavItems(navItems);
   }, [data, idLookup, location]);
 
   useTitle({ titlePrefix: `${contentGuidelineData?.name} - Content` });

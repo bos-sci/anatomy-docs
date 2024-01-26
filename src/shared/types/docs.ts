@@ -2,6 +2,7 @@ export interface IdLookupProperties {
   id: string;
   name: string;
   group: string | null;
+  groupName: string | null;
   leadParagraph?: string;
 }
 

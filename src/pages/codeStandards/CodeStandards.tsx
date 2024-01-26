@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import { NavItemSecondary } from '@boston-scientific/anatomy-react';
+import { useParams } from 'react-router-dom';
 import { NavItemTertiary } from '@boston-scientific/anatomy-react';
 import { IdLookupContext } from 'App';
 import Markdown from 'shared/components/Markdown';
@@ -11,11 +10,10 @@ import useHashScroll from 'shared/hooks/useHashScroll';
 import useHeadings from 'shared/hooks/useHeadings';
 import PageTemplate from 'shared/components/PageTemplate';
 import Layout from 'shared/components/Layout';
+import useNavItems from 'shared/hooks/useNavItems';
 
 const CodeStandards = (): JSX.Element => {
-  const location = useLocation();
   const params = useParams();
-  const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [codeStandardData, setCodeStandardData] = useState<GetCodeStandardQuery['codeStandard']>(
     {} as GetCodeStandardQuery['codeStandard']
   );
@@ -34,44 +32,13 @@ const CodeStandards = (): JSX.Element => {
     console.error(error);
   }
 
+  const navItems = useNavItems(idLookup.codeStandards, 'code-standards');
+
   useEffect(() => {
     if (data?.codeStandard) {
       setCodeStandardData(data.codeStandard);
     }
-    const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/'));
-    const pathPrefix = basePath + '/';
-    const navItems = [
-      {
-        text: 'General',
-        to: pathPrefix + 'general'
-      },
-      {
-        text: 'Accessibility',
-        to: pathPrefix + 'accessibility'
-      },
-      {
-        text: 'HTML',
-        to: pathPrefix + 'html'
-      },
-      {
-        text: 'CSS',
-        to: pathPrefix + 'css'
-      },
-      {
-        text: 'JavaScript',
-        to: pathPrefix + 'javascript'
-      },
-      {
-        text: 'DevOps',
-        to: pathPrefix + 'devops'
-      },
-      {
-        text: 'Automated code quality tools',
-        to: pathPrefix + 'automated-code-quality-tools'
-      }
-    ];
-    setNavItems(navItems);
-  }, [data, idLookup, location]);
+  }, [data]);
 
   useTitle({ titlePrefix: `${codeStandardData?.name} - Code Standards` });
   useHashScroll(!!codeStandardData?.content);

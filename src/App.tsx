@@ -23,6 +23,7 @@ interface Collection {
     };
     name: string;
     group?: string;
+    groupName?: string;
     leadParagraph?: string;
   }[];
 }
@@ -70,6 +71,7 @@ const App = (): JSX.Element => {
           id: item?.sys.id,
           name: item?.name,
           group: item?.group ? slugify(item.group) : null,
+          groupName: item?.group ? item.group : null,
           leadParagraph: item?.leadParagraph
         })
     );
