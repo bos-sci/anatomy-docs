@@ -1,6 +1,4 @@
 import { useState, useEffect, useContext, Fragment } from 'react';
-import { useLocation } from 'react-router-dom';
-import { NavItemSecondary } from '@boston-scientific/anatomy-react';
 import { NavItemTertiary } from '@boston-scientific/anatomy-react';
 import Markdown from 'shared/components/Markdown';
 import { GetComponentQuery } from 'shared/types/contentful';
@@ -11,169 +9,25 @@ import PageTemplate from 'shared/components/PageTemplate';
 import Layout from 'shared/components/Layout';
 import { ComponentContext } from './ComponentsController';
 import Preview from 'pages/components/variants/Preview';
+import { IdLookupContext } from 'App';
+import useNavItems from 'shared/hooks/useNavItems';
 
 const Components = (): JSX.Element => {
-  const location = useLocation();
-
-  const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [componentData, setComponentData] = useState<GetComponentQuery['component']>(
     {} as GetComponentQuery['component']
   );
   const [headings, setHeadings] = useState<NavItemTertiary[]>([]);
 
   const data = useContext(ComponentContext);
+  const idLookup = useContext(IdLookupContext);
+
+  const navItems = useNavItems(idLookup.components, 'components');
 
   useEffect(() => {
     if (data) {
       setComponentData(data);
     }
   }, [data]);
-
-  useEffect(() => {
-    // TODO: ADS-380 get rid of .replace()
-    const basePath = location.pathname
-      .slice(0, location.pathname.lastIndexOf('/'))
-      .replace('/form-controls', '')
-      .replace('/navigation', '')
-      .replace('/cards', '');
-    setNavItems([
-      {
-        text: 'Accordion',
-        to: basePath + '/accordion'
-      },
-      {
-        text: 'Button',
-        to: basePath + '/button'
-      },
-      {
-        text: 'Callout',
-        to: basePath + '/callout'
-      },
-      {
-        text: 'Cards',
-        children: [
-          {
-            text: 'Content card',
-            to: basePath + '/cards/content-card'
-          },
-          {
-            text: 'Card group',
-            to: basePath + '/cards/card-group'
-          },
-          {
-            text: 'Product card',
-            to: basePath + '/cards/product-card'
-          }
-        ]
-      },
-      {
-        text: 'Dropdown menu',
-        to: basePath + '/dropdown-menu'
-      },
-      {
-        text: 'Form controls',
-        children: [
-          {
-            text: 'Form',
-            to: basePath + '/form-controls/form'
-          },
-          {
-            text: 'Fieldset',
-            to: basePath + '/form-controls/fieldset'
-          },
-          {
-            text: 'Checkbox',
-            to: basePath + '/form-controls/checkbox'
-          },
-          {
-            text: 'Radio group',
-            to: basePath + '/form-controls/radio-group'
-          },
-          {
-            text: 'Select',
-            to: basePath + '/form-controls/select'
-          },
-          {
-            text: 'Text input',
-            to: basePath + '/form-controls/text-input'
-          },
-          {
-            text: 'Textarea',
-            to: basePath + '/form-controls/textarea'
-          }
-        ]
-      },
-      {
-        text: 'Image',
-        to: basePath + '/image'
-      },
-      {
-        text: 'Link',
-        to: basePath + '/link'
-      },
-      {
-        text: 'Modal',
-        to: basePath + '/modal'
-      },
-      {
-        text: 'Navigation',
-        children: [
-          {
-            text: 'Breadcrumbs',
-            to: basePath + '/navigation/breadcrumbs'
-          },
-          {
-            text: 'Primary navigation',
-            to: basePath + '/navigation/primary-navigation'
-          },
-          {
-            text: 'Secondary navigation',
-            to: basePath + '/navigation/secondary-navigation'
-          },
-          {
-            text: 'Tertiary navigation',
-            to: basePath + '/navigation/tertiary-navigation'
-          },
-          {
-            text: 'Wizard navigation',
-            to: basePath + '/navigation/wizard-navigation'
-          },
-          {
-            text: 'Footer',
-            to: basePath + '/navigation/footer'
-          },
-          {
-            text: 'Search',
-            to: basePath + '/navigation/search'
-          },
-          {
-            text: 'Skip link',
-            to: basePath + '/navigation/skip-link'
-          }
-        ]
-      },
-      {
-        text: 'Pagination',
-        to: basePath + '/pagination'
-      },
-      {
-        text: 'Ribbon',
-        to: basePath + '/ribbon'
-      },
-      {
-        text: 'Stoplight',
-        to: basePath + '/stoplight'
-      },
-      {
-        text: 'Tabs',
-        to: basePath + '/tabs'
-      },
-      {
-        text: 'Tag',
-        to: basePath + '/tag'
-      }
-    ]);
-  }, [location]);
 
   const nameForTitle = componentData?.name || '';
 

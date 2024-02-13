@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import { NavItemSecondary } from '@boston-scientific/anatomy-react';
+import { useParams } from 'react-router-dom';
 import { NavItemTertiary } from '@boston-scientific/anatomy-react';
 import { IdLookupContext } from 'App';
 import Markdown from 'shared/components/Markdown';
@@ -11,12 +10,11 @@ import useHashScroll from 'shared/hooks/useHashScroll';
 import useHeadings from 'shared/hooks/useHeadings';
 import PageTemplate from 'shared/components/PageTemplate';
 import Layout from 'shared/components/Layout';
+import useNavItems from 'shared/hooks/useNavItems';
 
 const Foundations = (): JSX.Element => {
   const params = useParams();
-  const location = useLocation();
   const idLookup: IdLookup = useContext(IdLookupContext);
-  const [navItems, setNavItems] = useState<NavItemSecondary[]>([] as NavItemSecondary[]);
   const [foundationData, setFoundationData] = useState<GetFoundationQuery['foundation']>(
     {} as GetFoundationQuery['foundation']
   );
@@ -33,63 +31,13 @@ const Foundations = (): JSX.Element => {
     console.error(error);
   }
 
+  const navItems = useNavItems(idLookup.foundations, 'foundations');
+
   useEffect(() => {
     if (data?.foundation) {
       setFoundationData(data.foundation);
     }
   }, [data]);
-
-  useEffect(() => {
-    // TODO: ADS-380 get rid of .replace()
-    const basePath = location.pathname.slice(0, location.pathname.lastIndexOf('/')).replace('/iconography', '');
-    setNavItems([
-      {
-        text: 'Accessibility',
-        to: basePath + '/accessibility'
-      },
-      {
-        text: 'Anti-patterns',
-        to: basePath + '/anti-patterns'
-      },
-      {
-        text: 'Color',
-        to: basePath + '/color'
-      },
-      {
-        text: 'Grid',
-        to: basePath + '/grid'
-      },
-      {
-        text: 'Icons',
-        children: [
-          {
-            text: 'Decorative icons',
-            to: basePath + '/iconography/decorative-icons'
-          },
-          {
-            text: 'System icons',
-            to: basePath + '/iconography/system-icons'
-          }
-        ]
-      },
-      {
-        text: 'Spacing',
-        to: basePath + '/spacing'
-      },
-      {
-        text: 'Tokens',
-        to: basePath + '/tokens'
-      },
-      {
-        text: 'Typography',
-        to: basePath + '/typography'
-      },
-      {
-        text: 'Web sustainability',
-        to: basePath + '/web-sustainability'
-      }
-    ]);
-  }, [location]);
 
   useTitle({ titlePrefix: `${foundationData?.name} - Foundations` });
   useHashScroll(!!foundationData?.content);

@@ -1,9 +1,9 @@
 {
   "name": "anatomy-docs",
-  "version": "5.5.0",
+  "version": "5.6.0",
   "private": true,
   "dependencies": {
-    "@boston-scientific/anatomy-react": "^2.3.0",
+    "@boston-scientific/anatomy-react": "^2.4.1",
     "@boston-scientific/anatomy-tokens": "^4.0.2",
     "@floating-ui/react-dom": "^1.0.0",
     "algoliasearch": "^4.14.2",

@@ -7,8 +7,9 @@ import DefaultStyle from './DefaultStyle';
 import AssertiveStyle from './AssertiveStyle';
 import GhostStyle from './GhostStyle';
 import SubtleStyle from './SubtleStyle';
-import NavBackStyle from './NavBackStyle';
+import TextStyle from './TextStyle';
 import Disabled from './Disabled';
+import ActiveFilterStyle from './ActiveFilterStyle';
 
 const ButtonController = ({ variantId }: VariantProps): JSX.Element => {
   switch (variantId) {
@@ -29,8 +30,10 @@ const ButtonController = ({ variantId }: VariantProps): JSX.Element => {
       return <GhostStyle />;
     case 'buttonSubtle':
       return <SubtleStyle />;
-    case 'buttonNavigationBack':
-      return <NavBackStyle />;
+    case 'buttonText':
+      return <TextStyle />;
+    case 'buttonActiveFilter':
+      return <ActiveFilterStyle />;
 
     // States
     case 'buttonDisabled':
