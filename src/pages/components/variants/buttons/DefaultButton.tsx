@@ -4,7 +4,7 @@ import Example from 'shared/components/Example';
 const DefaultButton = (): JSX.Element => {
   return (
     <Example isFlex>
-      <Button type="button">Text button</Button>
+      <Button type="button">Button</Button>
     </Example>
   );
 };

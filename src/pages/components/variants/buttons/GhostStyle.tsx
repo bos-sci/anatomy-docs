@@ -5,7 +5,7 @@ const GhostStyle = (): JSX.Element => {
   return (
     <Example isFlex isDarkTheme>
       <Button variant="ghost" type="button">
-        Text button
+        Button
       </Button>
       <Button variant="ghost" type="button" icon="plus">
         Icon left

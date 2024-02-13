@@ -5,7 +5,7 @@ const SubtleStyle = (): JSX.Element => {
   return (
     <Example isFlex>
       <Button variant="subtle" type="button">
-        Text button
+        Button
       </Button>
       <Button variant="subtle" type="button" icon="plus">
         Icon left
